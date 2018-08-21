@@ -14,10 +14,6 @@
  * @since FoundationPress 1.0.0
  */
 
-
-/** Various URL rewrite functions to add taxonomies to url */
-require_once( 'library/url-rewrites.php' );
-
 /** Various clean up functions */
 require_once( 'library/cleanup.php' );
 
