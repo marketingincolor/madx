@@ -34,7 +34,10 @@
 	    $newRules['residential/(.+)/(.+)/?$'] = 'index.php?residential_taxonomies=$matches[2]';
 
 	    $newRules['auto/(.+)/(.+)/?$'] = 'index.php?auto=$matches[2]';
-	    $newRules['auto/(.+)/?$'] = 'index.php?auto_taxonomies=$matches[1]'; 
+	    $newRules['auto/(.+)/?$'] = 'index.php?auto_taxonomies=$matches[1]';
+
+	    $newRules['safety/(.+)/(.+)/?$'] = 'index.php?safety=$matches[2]';
+	    $newRules['safety/(.+)/?$'] = 'index.php?safety_taxonomies=$matches[1]'; 
 
 	    return array_merge($newRules, $rules);
 	}
