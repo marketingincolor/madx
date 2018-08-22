@@ -7,7 +7,7 @@
 	  $term_array        = array();
 
 	  if (count($terms > 2)) {
-	  	// If post has more than two taxonomies
+	  	// If post has three taxonomies
 	  	foreach ($terms as $term) {
 	  		if ($term->parent == 0) {
 	  			$parent_tax_id = $term->term_id;
