@@ -1,0 +1,53 @@
+.relative{
+	position:relative;
+}
+.absolute{
+	position:absolute;
+}
+.yellow-underline{
+	width: 120px;
+	border-bottom:1px solid $yellow;
+	&.left{
+		margin: 20px 0 30px;
+	}
+	&.center{
+		margin: 20px auto 30px;
+	}
+}
+.btn-yellow-solid{
+	background-color: $yellow;
+	padding: 1rem 2rem;
+	text-transform: uppercase;
+	color: white;
+	border-radius: 2rem;
+	font-size: .75rem;
+	font-family: 'AvenirLTStd-Black';
+	transition: all 0.25s ease-in-out;
+	&:hover{
+		color:$white;
+		background-color:$blue;
+	}
+}
+.blue{
+	color:$blue;
+}
+.white{
+	color:$white;
+}
+h1,h2,h3{
+	font-family: 'AvenirLTStd-Light';
+	margin: 0;
+}
+p,li,div,span,address{
+	font-family: 'AvenirLTPro-Roman';
+	font-style: normal;
+}
+h1,h2,h3,h4,h5,h6,p,li,div,span{
+	color:$text-gray;
+}
+p{
+	margin-bottom: 0;
+}
+section{
+	padding: 8% 0;
+}
