@@ -1,0 +1,24 @@
+// ============================
+// Navigation
+// ============================
+.page-template-front-page{
+	.site-header{
+		width: 100%;
+		z-index: 1;
+		top: 50px;
+	}
+	.top-bar{
+		max-width: $grid-container;
+		background-color:$clear;
+		margin: 0 auto;
+	}
+	.top-bar ul{
+		background-color:$clear;
+	}
+	.top-bar .menu a{
+		color:$white;
+	}
+	.top-bar .menu li:not(:last-child){
+		border:0;
+	}
+}

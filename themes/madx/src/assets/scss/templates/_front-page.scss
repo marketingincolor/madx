@@ -1,0 +1,49 @@
+.hero{
+	@include bg-center-cover;
+	padding-bottom: 14%;
+	height: 80vh;
+	.grid-container,.grid-x{
+		height: 100%;
+	}
+	.grid-x{
+		align-items:flex-end;
+	}
+}
+
+.dealer-callout{
+	background-color:#e5e6e6;
+	padding: 4% 0;
+	.grid-x{
+		align-items: center;
+	}
+	h2{
+		font-family: 'AvenirLTStd-Black';
+	}
+	p{
+		margin-bottom: 0;
+	}
+}
+
+.home-modules{
+	
+	.medium-6.cell{
+		border-radius:5px;
+		box-shadow: 0 1px 6px 2px #eee;
+		img{
+			width: 100%;
+			@include breakpoint(small only){
+				height: 170px;
+			}
+		}
+	}
+	.meta{
+		padding: 20px;
+		h4{
+			font-size: 1.125rem;
+			font-family: 'AvenirLTStd-Medium';
+		}
+		p{
+			font-size: .875rem;
+		}
+	}
+}
