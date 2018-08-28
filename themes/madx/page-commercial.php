@@ -173,7 +173,7 @@ function getLocation() {
     }
 }
 function getPosition(position) {
-    var apiURL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+ position.coords.latitude +','+ position.coords.longitude +'&key=AIzaSyCmI3_Se7lh1WTTyykNs2OKt4_kwLP6N6k';
+    var apiURL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+ position.coords.latitude +','+ position.coords.longitude +'&key=API_KEY';
 
     $.ajax({
     	url: apiURL,
