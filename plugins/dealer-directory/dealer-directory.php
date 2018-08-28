@@ -64,11 +64,11 @@ if(!class_exists('Dealer_Directory'))
 		public static function deactivate()
 		{
             $roles_object = new WP_Roles();
-            $roles_object->remove_cap('administrator', 'edit_locations');
-            $roles_object->remove_cap('administrator', 'create_locations');
-            $roles_object->remove_cap('administrator', 'manage_locations');
-            $roles_object->remove_cap('administrator', 'delete_locations');
-            $roles_object->remove_cap('administrator', 'read_locations');
+            $roles_object->remove_cap('administrator', 'edit_dealers');
+            $roles_object->remove_cap('administrator', 'create_dealers');
+            $roles_object->remove_cap('administrator', 'manage_dealers');
+            $roles_object->remove_cap('administrator', 'delete_dealers');
+            $roles_object->remove_cap('administrator', 'read_dealers');
             
 		} // END public static function deactivate
 
@@ -93,6 +93,14 @@ if(class_exists('Dealer_Directory'))
 	$dealer_directory = new Dealer_Directory();
 
 }
+
+/**
+ * Remove Custom Meta box from Admin
+ */
+function remove_post_custom_fields() {
+    remove_meta_box( 'postcustom' , 'dealer' , 'normal' ); 
+}
+add_action( 'admin_menu' , 'remove_post_custom_fields' );
 
 /**
  * Add Shortcodes

@@ -8,26 +8,7 @@ if(!class_exists('Post_Type_Template'))
     {
         const POST_TYPE	= "dealer";
         private $_meta	= array(
-            'meta_did', // --- dealer_id 
-            'meta_logo', // --- logo (uploaded)
-            'meta_name', // --- company name
-            'meta_address', // --- street address
-            'meta_city', // --- city
-            'meta_state', // --- state/province
-            'meta_zip', // --- zip
-            'meta_country', // --- country
-            'meta_phone', // --- phone
-            'meta_email', // --- email 
-            'meta_website', // --- website
-            'meta_fb', // --- facebook
-            'meta_fbs', // --- facebook_status
-            'meta_tw', // --- twitter 
-            'meta_tws', // --- twiter_status
-            'meta_li', // --- linkedin
-            'meta_lis', // --- linkedin_status
-            '_enable_dealer' // --- enable_dealer
-
-            /*'dealer_id',
+            'dealer_id',
             'logo',
             'company_name',
             'street',
@@ -41,11 +22,10 @@ if(!class_exists('Post_Type_Template'))
             'facebook',
             'facebook_status',
             'twitter',
-            'twiter_status',
+            'twitter_status',
             'linkedin',
             'linkedin_status',
-            '_enable_dealer' // --- enable_dealer*/
-
+            '_enable_dealer'
         );
 
         /**
@@ -84,7 +64,8 @@ if(!class_exists('Post_Type_Template'))
                     'supports' => array(
                         'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'revisions', 'page-attributes'
                     ),
-                    'taxonomies' => array('type','program'),
+                    //'taxonomies' => array('type','program'),
+                    'taxonomies' => array('type','boosts'),
                     'has_archive' => true,
                     'rewrite' => array('slug' => 'dealers'),
                     'hierarchical' => false,
@@ -177,35 +158,69 @@ if(!class_exists('Post_Type_Template'))
 } // END if(!class_exists('Post_Type_Template'))
 
 /**
-* Create the DEALER custom taxonomy for Madico Dealers 
+* Create the DEALER TYPES custom taxonomy for Madico Dealers 
 */
-add_action( 'init', 'create_dealer_nh_taxonomy', 0 );
-function create_dealer_nh_taxonomy() {
+add_action( 'init', 'create_dealer_types', 0 );
+function create_dealer_types() {
     // Labels part for the GUI
     $labels = array(
-        'name' => _x( 'Dealer Taxonomies', 'taxonomy general name' ),
-        'singular_name' => _x( 'Taxonomy', 'taxonomy singular name' ),
-        'search_items' =>  __( 'Search Taxonomies' ),
-        'popular_items' => __( 'Popular Taxonomies' ),
-        'all_items' => __( 'All Taxonomies' ),
+        'name' => _x( 'Types', 'taxonomy general name' ),
+        'singular_name' => _x( 'Type', 'taxonomy singular name' ),
+        'search_items' =>  __( 'Search Types' ),
+        'popular_items' => __( 'Popular Types' ),
+        'all_items' => __( 'All Types' ),
         'parent_item' => null,
         'parent_item_colon' => null,
-        'edit_item' => __( 'Edit Taxonomy' ), 
-        'update_item' => __( 'Update Taxonomy' ),
-        'add_new_item' => __( 'Add New Taxonomy' ),
-        'new_item_name' => __( 'New Taxonomy Name' ),
-        'separate_items_with_commas' => __( 'Separate taxonomies with commas' ),
-        'add_or_remove_items' => __( 'Add or remove taxonomies' ),
-        'choose_from_most_used' => __( 'Choose from the most used taxonomies' ),
-        'menu_name' => __( 'Taxonomy' ),
+        'edit_item' => __( 'Edit Type' ), 
+        'update_item' => __( 'Update Type' ),
+        'add_new_item' => __( 'Add New Type' ),
+        'new_item_name' => __( 'New Type Name' ),
+        'separate_items_with_commas' => __( 'Separate types with commas' ),
+        'add_or_remove_items' => __( 'Add or remove types' ),
+        'choose_from_most_used' => __( 'Choose from the most used types' ),
+        'menu_name' => __( 'Dealer Types' ),
     ); 
     // Now register the hierarchical taxonomy like category
-    register_taxonomy('dealer_taxonomies','dealer',array(
+    register_taxonomy('types','dealer',array(
         'hierarchical' => true,
         'labels' => $labels,
         'show_ui' => true,
         'show_admin_column' => true,
         'query_var' => true,
-        'rewrite' => array( 'slug' => 'dealer-taxonomy' ),
+        'rewrite' => array( 'slug' => 'type' ),
+    ));
+}
+
+/**
+* Create the DEALER BOOSTS custom taxonomy for Madico Dealers 
+*/
+add_action( 'init', 'create_dealer_boosts', 0 );
+function create_dealer_boosts() {
+    // Labels part for the GUI
+    $labels = array(
+        'name' => _x( 'Boosts', 'taxonomy general name' ),
+        'singular_name' => _x( 'Boost', 'taxonomy singular name' ),
+        'search_items' =>  __( 'Search Boosts' ),
+        'popular_items' => __( 'Popular Boosts' ),
+        'all_items' => __( 'All Boosts' ),
+        'parent_item' => null,
+        'parent_item_colon' => null,
+        'edit_item' => __( 'Edit Boost' ), 
+        'update_item' => __( 'Update Boost' ),
+        'add_new_item' => __( 'Add New Boost' ),
+        'new_item_name' => __( 'New Boost Name' ),
+        'separate_items_with_commas' => __( 'Separate boosts with commas' ),
+        'add_or_remove_items' => __( 'Add or remove boosts' ),
+        'choose_from_most_used' => __( 'Choose from the most used boosts' ),
+        'menu_name' => __( 'Dealer Boosts' ),
+    ); 
+    // Now register the hierarchical taxonomy like category
+    register_taxonomy('boosts','dealer',array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => array( 'slug' => 'boosts' ),
     ));
 }
