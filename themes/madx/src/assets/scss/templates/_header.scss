@@ -22,3 +22,81 @@
 		border:0;
 	}
 }
+#top-header {
+
+	border-bottom:1px solid #e5e6e6;
+
+	nav{
+		background-color: $white;
+
+		a{
+			color:$text-gray;
+			background-color: $white;
+		}
+	}
+
+	.top-bar-left{
+		display: flex;
+
+		.is-dropdown-submenu-parent > a{
+			padding-left: 0;
+			text-transform: uppercase;
+		}
+
+		.submenu{
+			border:1px solid #e5e6e6;
+		}
+	}
+
+	.top-bar-right{
+
+		a{
+			background-color: $white;
+
+			i {
+				color:#80a3bf
+			}
+		}
+	}
+
+	.top-bar .menu li:not(:last-child){
+		border:0;
+	}
+
+	.dropdown.menu > li.is-dropdown-submenu-parent > a::after{
+	  display:none;
+	}
+}
+
+.page-hero{
+	padding: 5% 0 0;
+
+	#page-header{
+
+		.top-bar{
+			max-width: 75rem;
+			background-color: transparent;
+			margin: 0 auto;
+		}
+
+		.top-bar .top-bar-title a{
+			padding-left: 0;
+		}
+
+		.top-bar-right{
+
+			ul{
+				background-color:$clear;
+			}
+
+			li{
+				border:0;
+
+				a{
+					text-transform: uppercase;
+					color:$text-gray;
+				}
+			}
+		}
+	}
+}
