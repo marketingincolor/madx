@@ -45,6 +45,18 @@
 
 		.submenu{
 			border:1px solid #e5e6e6;
+
+			a,i{
+				color: $white;
+			}
+			a{
+				background-color: #00467f;
+				transition: background-color 0.2s ease-in-out;
+				
+				&:hover{
+					background-color: $blue;
+				}
+			}
 		}
 	}
 
