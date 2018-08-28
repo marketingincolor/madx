@@ -23,32 +23,37 @@
 	<?php endif; ?>
 
 
-	<header class="site-header" role="banner">
+	<header id="top-header" class="site-header" role="banner">
+		<div class="site-title-bar title-bar" <?php foundationpress_title_bar_responsive_toggle(); ?>>
+			<div class="title-bar-left">
+				<button aria-label="<?php _e( 'Main Menu', 'foundationpress' ); ?>" class="menu-icon" type="button" data-toggle="<?php foundationpress_mobile_menu_id(); ?>"></button>
+				<span class="site-mobile-title title-bar-title">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+				</span>
+			</div>
+		</div>
 		<nav class="site-navigation top-bar" role="navigation">
 			<div class="top-bar-left">
-				<li class="site-desktop-title top-bar-title">
+				<div class="site-desktop-title top-bar-title">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/bug-gray.png" alt="Madico"></a>
-				</li>
+				</div>
 				<ul class="dropdown menu" data-dropdown-menu>
-		      <li class="menu-text">Site Title</li>
 		      <li>
-		        <a href="#">Navigate Site</a>
+		        <a href="#">Navigate Site &nbsp;<i class="fas fa-chevron-down"></i></a>
 		        <ul class="menu vertical">
-		          <li><a href="#">One</a></li>
-		          <li><a href="#">Two</a></li>
-		          <li><a href="#">Three</a></li>
+		          <li><a href="#">Commercial</a></li>
+		          <li><a href="#">Residential</a></li>
+		          <li><a href="#">Auto</a></li>
 		        </ul>
 		      </li>
-		      <li><a href="#">Two</a></li>
-		      <li><a href="#">Three</a></li>
 		    </ul>
 			</div>
 			<div class="top-bar-right">
-				<?php foundationpress_top_bar_r(); ?>
-
-				<?php if ( ! get_theme_mod( 'wpt_mobile_menu_layout' ) || get_theme_mod( 'wpt_mobile_menu_layout' ) === 'topbar' ) : ?>
-					<?php get_template_part( 'template-parts/mobile-top-bar' ); ?>
-				<?php endif; ?>
+				<ul class="menu">
+					<li><a href="#"><i class="fas fa-list-alt"></i>&nbsp; Performance</a></li>
+					<li><a href="#"><i class="fas fa-id-badge"></i>&nbsp; Dealer Portal</a></li>
+					<li><a href="#"><i class="fas fa-search"></i>&nbsp; Search</a></li>
+				</ul>
 			</div>
 		</nav>
 
