@@ -164,6 +164,7 @@ get_header(); ?>
 
 <script>
 var zip = document.getElementById("zip");
+var api_key = '<?php echo $GOOGLE_API_KEY; ?>'
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -173,7 +174,7 @@ function getLocation() {
     }
 }
 function getPosition(position) {
-    var apiURL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+ position.coords.latitude +','+ position.coords.longitude +'&key=API_KEY';
+    var apiURL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+ position.coords.latitude +','+ position.coords.longitude +'&key=' + api_key;
 
     $.ajax({
     	url: apiURL,
