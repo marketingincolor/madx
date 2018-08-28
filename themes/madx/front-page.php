@@ -23,7 +23,7 @@ get_header('home'); ?>
 				<p>Visit our Dealer Resource area for all the support materials and information you need.</p>
 			</div>
 			<div class="medium-5 cell text-right">
-				<a href="" class="btn-yellow-solid">Visit Dealer Portal <i class="far fa-long-arrow-alt-right"></i></a>
+				<a href="" class="btn-yellow solid">Visit Dealer Portal <i class="far fa-long-arrow-alt-right"></i></a>
 			</div>
 		</div>
 	</div>

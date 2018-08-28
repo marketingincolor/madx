@@ -41,9 +41,14 @@
 		      <li>
 		        <a href="#">Navigate Site &nbsp;<i class="fas fa-chevron-down"></i></a>
 		        <ul class="menu vertical">
-		          <li><a href="#">Commercial</a></li>
-		          <li><a href="#">Residential</a></li>
-		          <li><a href="#">Auto</a></li>
+		          <li><a href="/auto"><i class="far fa-car"></i>&nbsp; Auto</a></li>
+		          <li><a href="/residential"><i class="far fa-home"></i>&nbsp; Residential</a></li>
+		          <li><a href="/commercial"><i class="far fa-building"></i>&nbsp; Commercial</a></li>
+		          <li><a href="/safety-security"><i class="far fa-building"></i>&nbsp; Safety &amp; Security</a></li>
+		          <li><a href="/specialty-solutions"><i class="far fa-gem"></i>&nbsp; Specialty Solutions</a></li>
+		          <li><a href="/dealers"><i class="fal fa-id-badge"></i></i>&nbsp; Dealers</a></li>
+		          <li><a href="/madicou"><i class="far fa-building"></i>&nbsp; Madico U</a></li>
+		          <li><a href="/about"><i class="far fa-building"></i>&nbsp; Company</a></li>
 		        </ul>
 		      </li>
 		    </ul>
