@@ -100,7 +100,7 @@ if(class_exists('Dealer_Directory'))
 function remove_post_custom_fields() {
     remove_meta_box( 'postcustom' , 'dealer' , 'normal' ); 
 }
-add_action( 'admin_menu' , 'remove_post_custom_fields' );
+//add_action( 'admin_menu' , 'remove_post_custom_fields' );
 
 /**
  * Add Shortcodes
