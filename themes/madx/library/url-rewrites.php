@@ -6,12 +6,14 @@
 	  $terms             = wp_get_object_terms( get_the_ID(), $current_post_type.'_taxonomies');
 	  $term_array        = array();
 
+	  if (!array_key_exists('errors', $terms)) {
 	  foreach ($terms as $term) {
 	  	if ($term->parent == 0) {
 	  		array_unshift($term_array, strtolower($term->slug));
 	  	}else{
 	  		array_push($term_array, strtolower($term->slug));
 	  	}
+	  }
 	  }
 
 	  $tax_url = join('/',$term_array);
