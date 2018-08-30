@@ -1,11 +1,6 @@
 <?php
 /**
  * The template for displaying the header
- *
- * Displays all of the head element and everything up until the "container" div.
- *
- * @package FoundationPress
- * @since FoundationPress 1.0.0
  */
 
 ?>
@@ -14,9 +9,13 @@
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet"> -->
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
+
+	<!-- #app is closed in footer.php -->
+	<div id="app">
 
 	<?php if ( get_theme_mod( 'wpt_mobile_menu_layout' ) === 'offcanvas' ) : ?>
 		<?php get_template_part( 'template-parts/mobile-off-canvas' ); ?>

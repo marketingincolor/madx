@@ -4,7 +4,7 @@ get_header(); ?>
 
 <section class="page-hero" style="background-image: url(<?php bloginfo('template_directory'); ?>/dist/assets/images/commercial-hero.png);">
 
-	<?php get_template_part('template-parts/page-header-menu'); ?>
+	<?php get_template_part('template-parts/menus/commercial-header-menu'); ?>
 
 	<div class="grid-container">
 		<div class="grid-x">
