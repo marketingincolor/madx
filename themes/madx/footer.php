@@ -1,3 +1,4 @@
+</div><!-- Close div#app from header.php -->
 
 <footer class="footer">
   <div class="grid-container">
@@ -80,6 +81,10 @@
 <?php if ( get_theme_mod( 'wpt_mobile_menu_layout' ) === 'offcanvas' ) : ?>
 	</div><!-- Close off-canvas content -->
 <?php endif; ?>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <?php wp_footer(); ?>
 </body>
