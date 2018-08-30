@@ -1,0 +1,18 @@
+.page-template-page-commercial{
+	
+	.page-hero{
+
+		@include bg-center-cover;
+	}
+
+	.film-type{
+		background-color:#f8f8f8;
+	}
+
+	.module{
+
+		h4{
+			font-family: 'AvenirLTStd-Heavy';
+		}
+	}
+}
