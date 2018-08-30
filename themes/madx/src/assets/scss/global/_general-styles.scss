@@ -1,0 +1,208 @@
+.relative{
+	position:relative;
+}
+
+.absolute{
+	position:absolute;
+}
+
+.yellow-underline{
+	width: 120px;
+	border-bottom: 2px solid $yellow;
+
+	&.left{
+		margin: 20px 0 30px;
+	}
+
+	&.center{
+		margin: 20px auto 30px;
+	}
+
+	&.right{
+		margin: 20px 0 30px auto;
+	}
+}
+
+.btn-yellow{
+	padding: 1rem 2rem;
+	text-transform: uppercase;
+	border-radius: 2rem;
+	font-size: .75rem;
+	font-family: 'AvenirLTStd-Black';
+	transition: all 0.25s ease-in-out;
+
+	&.solid{
+		background-color: $yellow;
+		color: $white;
+
+		&:hover{
+			color:$white;
+			background-color:$blue;
+		}
+	}
+
+	&.border{
+		border: 1px solid $yellow;
+		color: $yellow;
+
+		&:hover{
+			color:$white;
+			background-color:$yellow;
+		}
+	}
+}
+
+.blue{
+	color:$blue;
+}
+
+.white{
+	color:$white;
+}
+
+.yellow{
+	color:$yellow;
+}
+
+h1,h2,h3{
+	font-family: 'AvenirLTStd-Light';
+	margin: 0;
+	line-height: 1.3em;
+}
+
+p,li,div,span,address{
+	font-family: 'AvenirLTPro-Roman';
+	font-style: normal;
+}
+
+h1,h2,h3,h4,h5,h6,p,li,div,span{
+	color:$text-gray;
+}
+
+p{
+	margin-bottom: 0;
+}
+
+section{
+	padding: 6% 0;
+}
+
+.subhead{
+	margin-bottom: 40px;
+}
+
+.page-hero .grid-container{
+	padding: 8% 0 9%;
+}
+
+section.benefits,section.film-type{
+
+	h3{
+		font-size: 36px;
+	}
+
+	h5{
+		font-family: 'AvenirLTStd-Black';
+	}
+
+	i{
+		color:$yellow;
+		font-size: 48px;
+		margin-bottom: 10px;
+	}
+}
+
+section.warranty{
+	padding: 15% 0;
+	@include bg-center-cover;
+}
+
+.module{
+	border-radius:5px;
+	box-shadow: 0 1px 6px 2px #eee;
+
+	img{
+		width: 100%;
+
+		@include breakpoint(small only){
+			height: 170px;
+		}
+	}
+
+	.meta{
+		padding: 20px;
+		height: 125px;
+		position: relative;
+
+		img{
+			height: 125px;
+		}
+
+		h4{
+			font-size: 1.125rem;
+			font-family: 'AvenirLTStd-Medium';
+		}
+
+		p{
+			font-size: .875rem;
+		}
+
+		.read-more{
+			position: absolute;
+			bottom: 20px;
+			font-size: 14px;
+		}
+	}
+}
+
+.find-dealer{
+	padding: 15% 0;
+	margin-bottom: 10%;
+	@include bg-center-cover;
+
+	p{
+		margin-bottom: 30px;
+	}
+
+	form{
+		display: inline-block;
+		position: relative;
+
+		input{
+			padding: 25px 15px;
+			border-radius: 3px;
+			color: $text-gray;
+
+			&:focus{
+				box-shadow:none;
+			}
+		}
+
+		button[type=submit]{
+			position: absolute;
+			right: 15px;
+			font-size: 36px;
+			top: -5px;
+			cursor: pointer;
+		}
+	}
+
+	.use-location{
+		display: inline-block;
+		margin-left: 20px;
+		font-family: 'AvenirLTStd-Medium';
+	}
+
+	::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  color: $text-gray;
+	}
+	::-moz-placeholder { /* Firefox 19+ */
+	  color: $text-gray;
+	}
+	:-ms-input-placeholder { /* IE 10+ */
+	  color: $text-gray;
+	}
+	:-moz-placeholder { /* Firefox 18- */
+	  color: $text-gray;
+	}
+}

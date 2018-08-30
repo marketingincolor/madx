@@ -1,0 +1,39 @@
+footer{
+	.credits{
+		margin-top: 50px;
+	}
+
+	ul{
+		list-style-type: none;
+		margin: 0;
+
+		li{
+			font-size: .875rem;
+			font-family: 'AvenirLTStd-Light';
+			margin-bottom: 5px;
+
+			&.heading{
+				margin-bottom: 15px;
+				font-family: 'AvenirLTStd-Medium';
+	    }
+
+	    a{
+	    	color:$text-gray;
+	    }
+		}
+	}
+
+	.privacy li{
+		display: inline-block;
+	}
+
+	address,p{
+		font-size: .875rem;
+		font-family: 'AvenirLTStd-Light';
+		margin-bottom: 5px;
+	}
+
+	.blue{
+		text-transform: uppercase;
+	}
+}

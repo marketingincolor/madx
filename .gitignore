@@ -17,6 +17,8 @@ wp-content/plugins/hello.php
 /sitemap.xml
 /sitemap.xml.gz
 
+ai1wm-backups
+packaged
 node_modules
 package-lock.json
 dist

@@ -63,6 +63,8 @@
 @import "global/colors";
 @import "global/wp-admin";
 @import "global/wp-overrides";
+@import "global/custom-mixins";
+@import "global/general-styles";
 
 // Modules
 @import "modules/navigation";
@@ -77,6 +79,18 @@
 @import "components/dividers";
 @import "components/links";
 
+// Vendor
+@import "vendor/fontawesome";
+@import "vendor/avenir-font";
+
 // Templates
-@import "templates/front";
-@import "templates/kitchen-sink";
+@import "templates/header";
+@import "templates/taxonomy";
+@import "templates/footer";
+@import "templates/contact";
+@import "templates/about";
+@import "templates/auto";
+@import "templates/commercial";
+@import "templates/residential";
+@import "templates/front-page";
+
