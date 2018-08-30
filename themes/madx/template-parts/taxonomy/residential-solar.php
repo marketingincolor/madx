@@ -46,46 +46,15 @@
 
 <section class="taxonomy-products">
 	<div class="grid-container">
-		<div class="grid-x grid-margin-x">
+		<div class="grid-x">
 			<div class="medium-10 large-8 medium-offset-1 large-offset-2 text-center">
 				<h3 class="blue">Our Solar Control Films</h3>
 				<aside class="yellow-underline center"></aside>
 				<p class="subhead">Our films were developed to add safety, savings, and privacy, as well as beautify the appearance of your home.</p>
 			</div>
 		</div>
-		<div class="grid-x grid-margin-x">
-			<div class="medium-3 cell">
 
-				<?php
-					$current_term      = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-					$current_term_name = $current_term->name;
-					$term_children     = get_terms(
-				    array(
-				    	'taxonomy'   => get_post_type().'_taxonomies',
-				    	'parent'     => get_queried_object_id(),
-				    	'hide_empty' => false
-				    )
-					);
-				 ?>
+		<tax-term-posts></tax-term-posts>
 
-				<ul id="tax-menu" class="tax-menu vertical menu">
-						
-					<li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name)}"><a href="#!" @click="activeItem = taxonomy.name;getTaxPosts()">{{ taxonomy.name }}</a></li>
-
-				</ul>
-			</div>
-			<div class="medium-9 cell">
-				<div class="grid-x">
-					<div class="medium-12 cell breadcrumbs">
-						<a href="#">{{ taxParentSlug }}</a> > <a href="#" id="bread-child">{{ activeItem }}</a>
-						<h3>Neutral</h3>
-					</div>
-					<div class="medium-4 cell" v-for="post in taxPosts">
-						<img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered">
-						<h4>{{ post.title.rendered }}</h4>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 </section>
