@@ -25,7 +25,31 @@
 		padding: 20px 0;
 
 		li{
-			padding-left: 30px;
+			
+			a{
+				padding-left: 15%;
+				color: #818285;
+			}
+
+			&.active {
+				border-left:2px solid $blue;
+
+				> a{
+					background-color: #e0e8f0;
+					color: #80a3bf;
+				}
+			}
+		}
+	}
+
+	.breadcrumbs{
+
+		.breadcrumb-title{
+			text-transform: uppercase;
+			font-family: 'AvenirLTStd-Black';
+			color: #a7a9ac;
+			font-size: 0.75rem;
+			margin-bottom: 10px;
 		}
 	}
 }
