@@ -6,6 +6,7 @@
 	  $terms             = wp_get_object_terms( get_the_ID(), $current_post_type.'_taxonomies');
 	  $term_array        = array();
 
+	if (!array_key_exists('errors', $terms)) {
 	  if (count($terms > 2)) {
 	  	// If post has three taxonomies
 	  	foreach ($terms as $term) {
@@ -36,6 +37,7 @@
 	  	}
 
 	  }
+	}
 
 	  $tax_url = join('/',$term_array);
 
