@@ -128,6 +128,35 @@ section.warranty{
 			height: 170px;
 		}
 	}
+	&.auto-height{
+
+		.meta{
+			height: auto;
+
+			.content{
+				margin-bottom: 20px;
+			}
+
+			h4{
+				color: #4d7da6;
+				transition: color 0.2s ease-in-out;
+
+				&:hover{
+					color: $blue;
+				}
+			}
+
+			.read-more{
+				position: static;
+				color:#80a3bf;
+				transition: color 0.2s ease-in-out;
+
+				&:hover{
+					color: $blue;
+				}
+			}
+		}
+	}
 
 	.meta{
 		padding: 20px;
