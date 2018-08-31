@@ -53,3 +53,33 @@
 		}
 	}
 }
+
+.taxonomy-faqs{
+
+	h5{
+		font-family: 'AvenirLTStd-Black';
+		font-size: 1.125rem;
+	}
+}
+
+.film-selector{
+	background-color: $yellow;
+
+	.grid-x{
+		align-items: center;
+	}
+
+	.fa-clipboard-check{
+		font-size: 10rem;
+		color: $white;
+	}
+
+	h3{
+		margin-bottom: 5px;
+	}
+
+	p{
+		margin-bottom: 25px;
+	}
+}
+
