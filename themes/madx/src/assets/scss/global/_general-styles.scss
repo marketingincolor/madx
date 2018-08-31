@@ -51,6 +51,34 @@
 		}
 	}
 }
+.btn-blue{
+	padding: 1rem 2rem;
+	text-transform: uppercase;
+	border-radius: 2rem;
+	font-size: .75rem;
+	font-family: 'AvenirLTStd-Black';
+	transition: all 0.25s ease-in-out;
+
+	&.solid{
+		background-color: $blue;
+		color: $white;
+
+		&:hover{
+			color:$white;
+			background-color:$blue;
+		}
+	}
+
+	&.border{
+		border: 1px solid $blue;
+		color: $blue;
+
+		&:hover{
+			color:$white;
+			background-color:$blue;
+		}
+	}
+}
 
 .blue{
 	color:$blue;
