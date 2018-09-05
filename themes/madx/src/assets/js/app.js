@@ -8,22 +8,13 @@ import Foundation from 'foundation-sites';
 // the line below
 //import './lib/foundation-explicit-pieces';
 
-$(document).foundation();
+
 
 const apiRoot = location.origin + '/wp-json/wp/v2/';
 
-// const TaxPostList = Vue.component('tax-post-list',{
-// 	props: ['postType','taxonomy'],
-// 	template: ``,
-// 	created(){
-
-// 	},
-// 	methods:{
-		
-// 	}
-// });
-
 // GLOBAL FILTERS
+
+// Limit words displayed
 Vue.filter('limitWords',function (textToLimit,wordLimit){
 	var textArray  = textToLimit.split(' ');
 	var totalWords = textArray.length;
@@ -39,18 +30,27 @@ Vue.filter('limitWords',function (textToLimit,wordLimit){
 	}
 });
 
+// CUSTOM DIRECTIVES
+
+// Add foundation dropdown menu functionality to an element
+Vue.directive('dropdown', {
+  bind: function (el) {
+    new Foundation.DropdownMenu($(el));
+  }
+});
+
 const findDealerForm = Vue.component('find-dealer-form',{
 	data(){
 		return{
 			googleKey: '',
-			zipCode: 0,
+			zipCode: '',
 			zipCodesInRadius: []
 		}
 	},
 	template:
 	 `<div>
 			<form class="zip-search" id="zip-form" v-on:submit.prevent="zipCodeLookup">
-				<input v-bind:model="zipCode" type="text" name="zip" id="zip" placeholder="Zip Code" required>
+				<input v-model="zipCode" type="text" name="zip" id="zip" placeholder="Zip Code" required>
 				<button type="submit" id="submit-form" onclick="">
 				   <i class="fas fa-map-marker-alt yellow"></i>
 				</button>
@@ -76,7 +76,7 @@ const findDealerForm = Vue.component('find-dealer-form',{
 		getPosition: function(position) {
 			let $this = this;
 	    let apiURL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+ position.coords.latitude +','+ position.coords.longitude +'&key=' + this.googleKey;
-
+	    
   		axios
   		  .get(apiURL)
   		  .then(function (response) {
@@ -89,7 +89,7 @@ const findDealerForm = Vue.component('find-dealer-form',{
 			let $this = this;
 
 			axios
-			  .get(apiRoot + $this.postType + '-categories')
+			  .get('/google-api-key.php')
 			  .then(function (response) {
 		    	$this.googleKey = response.data;
 			  }
@@ -151,7 +151,7 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 								</div>
 							</div>
 						</div>`,
-	created (){
+	mounted (){
 		this.getPostType(location.href);
 		this.getTaxParent(location.href)
 		this.getTaxParentId();
@@ -204,12 +204,12 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 		},
 		getTaxPosts: function(){
 			let $this = this;
+			let taxonomyName = $this.activeItem.toLowerCase().split(' ').join('-');
 			
 			axios
-			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + $this.activeItem.toLowerCase().split(' ').join('-'))
+			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
 			  .then(function (response) {
 			    $this.taxPosts = response.data;
-			    console.log(response.data)
 			  }
 			)
 		}
@@ -227,7 +227,7 @@ var newVue = new Vue({
   	}
   },
   created(){
-  	
+  	$(document).foundation();
   },
   methods: {
 
