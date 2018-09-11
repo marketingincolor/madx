@@ -1,6 +1,19 @@
 <?php 
-	$current_page = get_page_by_path(get_post_type());
-	$page_id = $current_page->ID;
+	$current_post = get_post();
+
+	if ($current_post->post_parent == 0) {
+
+		if (is_tax()) {
+			$current_page = get_page_by_path(get_post_type());
+			$page_id = $current_page->ID;
+		}else if(is_page()){
+			$page_id = $current_post->ID;
+		}
+
+	}else{
+		$page_id = $current_post->post_parent;
+	}
+	
  ?>
 
 <section class="find-dealer" style="background-image: url(<?php the_field('find_dealer_background_image',$page_id); ?>);">
