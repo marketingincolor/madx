@@ -91,6 +91,15 @@
 
 #page-header{
 
+	.menu .is-active > a {
+		background-color: $clear;
+		border-bottom: 2px solid $yellow;
+	}
+
+	.top-bar .menu > li:not(.menu-text) > a{
+		padding: .5rem 1rem;
+	}
+
 	.top-bar{
 		max-width: 75rem;
 		background-color: transparent;
