@@ -43,6 +43,10 @@
 			text-transform: uppercase;
 		}
 
+		.dropdown.menu > li.opens-right > .is-dropdown-submenu{
+			left: -40px;
+		}
+
 		.submenu{
 			border:1px solid #e5e6e6;
 
@@ -82,32 +86,33 @@
 
 .page-hero{
 	padding: 5% 0 0;
+	@include bg-center-cover;
+}
 
-	#page-header{
+#page-header{
 
-		.top-bar{
-			max-width: 75rem;
-			background-color: transparent;
-			margin: 0 auto;
+	.top-bar{
+		max-width: 75rem;
+		background-color: transparent;
+		margin: 0 auto;
+	}
+
+	.top-bar .top-bar-title a{
+		padding-left: 0;
+	}
+
+	.top-bar-right{
+
+		ul{
+			background-color:$clear;
 		}
 
-		.top-bar .top-bar-title a{
-			padding-left: 0;
-		}
+		li{
+			border:0;
 
-		.top-bar-right{
-
-			ul{
-				background-color:$clear;
-			}
-
-			li{
-				border:0;
-
-				a{
-					text-transform: uppercase;
-					color:$text-gray;
-				}
+			a{
+				text-transform: uppercase;
+				color:$text-gray;
 			}
 		}
 	}
