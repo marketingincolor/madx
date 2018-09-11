@@ -36,4 +36,4 @@
 
 <?php get_template_part('/template-parts/find-film'); ?>
 
-<?php get_template_part('/template-parts/find-dealer'); ?>
+<?php get_template_part('/template-parts/top-level-page/find-dealer'); ?>

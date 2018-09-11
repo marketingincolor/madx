@@ -1,0 +1,15 @@
+.page-template-page-benefits{
+
+	section{
+		@include bg-center-cover;
+		padding: 15% 0;
+	}
+
+	.benefits-intro{
+		padding: 5% 0 0;
+	}
+
+	.benefits-energy{
+		padding: 10% 0;
+	}
+}

@@ -47,7 +47,7 @@ if ( ! function_exists( 'foundationpress_mobile_nav' ) ) {
 	function foundationpress_mobile_nav() {
 		wp_nav_menu(
 			array(
-				'container'      => false,                         // Remove nav container
+				'container'      => false,   // Remove nav container
 				'menu'           => __( 'mobile-nav', 'foundationpress' ),
 				'menu_class'     => 'vertical menu',
 				'theme_location' => 'mobile-nav',
@@ -66,9 +66,9 @@ if ( ! function_exists( 'foundationpress_commercial_nav' ) ) {
 	function foundationpress_commercial_nav() {
 		wp_nav_menu(
 			array(
-				'container'      => false,                         // Remove nav container
+				'container'      => false, // Remove nav container
 				'menu'           => __( 'commercial-top-nav', 'foundationpress' ),
-				'menu_class'     => 'vertical menu',
+				'menu_class'     => 'menu',
 				'theme_location' => 'commercial-top-nav',
 				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 				'fallback_cb'    => false,
@@ -84,9 +84,9 @@ if ( ! function_exists( 'foundationpress_residential_nav' ) ) {
 	function foundationpress_residential_nav() {
 		wp_nav_menu(
 			array(
-				'container'      => false,                         // Remove nav container
+				'container'      => false,  // Remove nav container
 				'menu'           => __( 'residential-top-nav', 'foundationpress' ),
-				'menu_class'     => 'vertical menu',
+				'menu_class'     => 'menu',
 				'theme_location' => 'residential-top-nav',
 				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 				'fallback_cb'    => false,
@@ -101,9 +101,9 @@ if ( ! function_exists( 'foundationpress_auto_nav' ) ) {
 	function foundationpress_auto_nav() {
 		wp_nav_menu(
 			array(
-				'container'      => false,                         // Remove nav container
+				'container'      => false,   // Remove nav container
 				'menu'           => __( 'auto-top-nav', 'foundationpress' ),
-				'menu_class'     => 'vertical menu',
+				'menu_class'     => 'menu',
 				'theme_location' => 'auto-top-nav',
 				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 				'fallback_cb'    => false,
