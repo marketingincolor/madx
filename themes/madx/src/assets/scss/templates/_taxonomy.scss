@@ -36,20 +36,55 @@
 
 				> a{
 					background-color: #e0e8f0;
-					color: #80a3bf;
+					color: $light_blue;
 				}
 			}
 		}
 	}
 
-	.breadcrumbs{
+	.breadcrumbs .breadcrumb-title{
+		text-transform: uppercase;
+		font-family: 'AvenirLTStd-Black';
+		color: #a7a9ac;
+		font-size: 0.75rem;
+		margin-bottom: 10px;
+	}
 
-		.breadcrumb-title{
-			text-transform: uppercase;
+	.product-benefits{
+		list-style-type: none;
+		margin-left: 0;
+
+		i{
+			color: $light_blue;
+		}
+	}
+
+	#single-post{
+
+		img{
+			width: 100%;
+			margin-bottom: 1.25rem;
+		}
+
+		h4,h6{
 			font-family: 'AvenirLTStd-Black';
-			color: #a7a9ac;
-			font-size: 0.75rem;
-			margin-bottom: 10px;
+		}
+
+		h4{
+			font-size: 1.5rem;
+		}
+
+		h6{
+		  font-size: 1.125rem;
+		}
+
+		.content{
+			margin-bottom: 30px;
+		}
+
+		.fa-file-pdf{
+			font-size: 2.875rem;
+			color: $light_blue;
 		}
 	}
 }
