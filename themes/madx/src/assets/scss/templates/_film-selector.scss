@@ -1,0 +1,144 @@
+.page-container{
+	background-color: #F8F8F8;
+}
+
+.select-film{
+	padding-top: 0;
+
+	.grid-container{
+		background-color: $white;
+		padding: 5% 0;
+		box-shadow: 0 1px 6px 2px #eee;
+	}
+
+	.icon-container i{
+		font-size: 2.5rem;
+	}
+
+	.number{
+		width: 40px;
+		height: 40px;
+		border: 1px solid #e8e8e8;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 10px 0;
+		
+		span{
+			font-size: 1.375rem;
+			color: #80a3bf;
+			position: relative;
+			top: 2px;
+		}
+	}
+
+	.flex-column{
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.appearance{
+		margin-left: 0;
+	}
+
+	.film-slider{
+		width: 100%;
+		appearance: none;
+		height: 2px;
+		background-color: #e8e8e8;
+		outline:none;
+		cursor: pointer;
+
+		&::-webkit-slider-thumb {
+		  background: url(../images/slider-thumb.png) center center no-repeat;
+		  background-size: cover;
+	    appearance: none;
+	    width: 10px;
+	    height: 10px;
+	    cursor: pointer;
+	    position:relative;
+	    top:7px
+		}
+
+		&::-moz-range-thumb {
+	    background: url(../images/slider-thumb.png) center center no-repeat;
+	    background-size: cover;
+	    width: 10px;
+	    height: 10px;
+	    cursor: pointer;
+	    position:relative;
+	    top:7px
+		}
+	}
+
+	.range-labels{
+		list-style-type: none;
+		display: flex;
+		margin: 0;
+		margin-top: 15px;
+		font-size: 13px;
+
+		li{
+			flex-grow: 1;
+		}
+	}
+
+	.film-colors{
+		list-style-type: none;
+		display: flex;
+		margin: 0;
+		margin-top: 10px;
+
+		li{
+			flex-grow: 1;
+			margin: 0 5px;
+			cursor: pointer;
+			position: relative;
+
+			&:first-of-type{
+				margin-left: 0;
+			}
+
+			&:last-of-type{
+				margin-right: 0;
+			}
+		}
+
+		li .img-wrap.active-film{
+			position:absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 55px;
+			z-index: 1;
+			box-shadow: inset 0 0 0 5px $yellow;
+		}
+
+		li img{
+			width: 100%;
+			height: 55px;
+		}
+
+		li p{
+			margin: 5px 0 0 5px;
+		}
+	}
+
+	.btn-container{
+		display: flex;
+
+		a{
+			margin: auto 0 auto auto;
+		}
+	}
+	// film selector results
+	.top-results{
+		display:flex;
+
+		.left,.right{
+			flex-grow: 1;
+		}
+	}
+}

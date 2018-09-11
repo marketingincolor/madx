@@ -36,7 +36,7 @@
 				<div class="site-desktop-title top-bar-title">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/bug-gray.png" alt="Madico"></a>
 				</div>
-				<ul class="dropdown menu" data-dropdown-menu>
+				<ul class="dropdown menu" v-dropdown>
 		      <li>
 		        <a href="#">Navigate Site &nbsp;<i class="fas fa-chevron-down"></i></a>
 		        <ul class="menu vertical">

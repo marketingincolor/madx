@@ -10,36 +10,9 @@
 			</div>
 		</div>
 		<div class="grid-x grid-margin-x grid-margin-y">
-			<div class="medium-4 cell text-center">
-				<i class="far fa-sun yellow"></i>
-				<h5 class="blue">Improve Safety</h5>
-				<p>Increase your family's safety with solar control film, which blocks 99% of the sun's harmful UV rays</p>
-			</div>
-			<div class="medium-4 cell text-center">
-				<i class="far fa-sun yellow"></i>
-				<h5 class="blue">Save Money</h5>
-				<p>Solar control film cuts down heat in the summer and reflects it back into your home in the winter, reducing your energy bills</p>
-			</div>
-			<div class="medium-4 cell text-center">
-				<i class="far fa-sun yellow"></i>
-				<h5 class="blue">Control Glare</h5>
-				<p>Reduce annoying glare that penetrates through windows, and improve visibility on TV and devices with solar control film</p>
-			</div>
-			<div class="medium-4 cell text-center">
-				<i class="far fa-sun yellow"></i>
-				<h5 class="blue">Prevent Fading</h5>
-				<p>Constant exposure to the sun can speed up the fading of your floors, upholstery, and home furnishings &mdash; solar control film deters it</p>
-			</div>
-			<div class="medium-4 cell text-center">
-				<i class="far fa-sun yellow"></i>
-				<h5 class="blue">Accent Looks</h5>
-				<p>Solar control film is available in many shades and hues, so you can enhance your home's look with your personal style</p>
-			</div>
-			<div class="medium-4 cell text-center">
-				<i class="far fa-sun yellow"></i>
-				<h5 class="blue">Improve Privacy</h5>
-				<p>In addition to offering protection, solar control film can improve privacy during the day, preventing outsiders from looking in</p>
-			</div>
+
+			<?php get_template_part('template-parts/taxonomy-benefits'); ?>
+
 		</div>
 	</div>
 </section>
@@ -58,3 +31,9 @@
 
 	</div>
 </section>
+
+<?php get_template_part('/template-parts/taxonomy-faqs'); ?>
+
+<?php get_template_part('/template-parts/find-film'); ?>
+
+<?php get_template_part('/template-parts/find-dealer'); ?>
