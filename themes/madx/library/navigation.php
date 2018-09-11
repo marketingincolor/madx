@@ -11,6 +11,9 @@ register_nav_menus(
 	array(
 		'top-bar-r'  => esc_html__( 'Right Top Bar', 'foundationpress' ),
 		'mobile-nav' => esc_html__( 'Mobile', 'foundationpress' ),
+		'commercial-top-nav' => esc_html__( 'Commercial Top Nav', 'foundationpress' ),
+		'residential-top-nav' => esc_html__( 'Residential Top Nav', 'foundationpress' ),
+		'auto-top-nav' => esc_html__( 'Auto Top Nav', 'foundationpress' ),
 	)
 );
 
@@ -51,6 +54,59 @@ if ( ! function_exists( 'foundationpress_mobile_nav' ) ) {
 				'items_wrap'     => '<ul id="%1$s" class="%2$s" data-accordion-menu data-submenu-toggle="true">%3$s</ul>',
 				'fallback_cb'    => false,
 				'walker'         => new Foundationpress_Mobile_Walker(),
+			)
+		);
+	}
+}
+
+/**
+ * Commercial navigation - top nav
+ */
+if ( ! function_exists( 'foundationpress_commercial_nav' ) ) {
+	function foundationpress_commercial_nav() {
+		wp_nav_menu(
+			array(
+				'container'      => false,                         // Remove nav container
+				'menu'           => __( 'commercial-top-nav', 'foundationpress' ),
+				'menu_class'     => 'vertical menu',
+				'theme_location' => 'commercial-top-nav',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'fallback_cb'    => false,
+			)
+		);
+	}
+}
+
+/**
+ * Residential navigation - top nav
+ */
+if ( ! function_exists( 'foundationpress_residential_nav' ) ) {
+	function foundationpress_residential_nav() {
+		wp_nav_menu(
+			array(
+				'container'      => false,                         // Remove nav container
+				'menu'           => __( 'residential-top-nav', 'foundationpress' ),
+				'menu_class'     => 'vertical menu',
+				'theme_location' => 'residential-top-nav',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'fallback_cb'    => false,
+			)
+		);
+	}
+}
+/**
+ * Auto navigation - top nav
+ */
+if ( ! function_exists( 'foundationpress_auto_nav' ) ) {
+	function foundationpress_auto_nav() {
+		wp_nav_menu(
+			array(
+				'container'      => false,                         // Remove nav container
+				'menu'           => __( 'auto-top-nav', 'foundationpress' ),
+				'menu_class'     => 'vertical menu',
+				'theme_location' => 'auto-top-nav',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'fallback_cb'    => false,
 			)
 		);
 	}

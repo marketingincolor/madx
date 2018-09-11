@@ -10,7 +10,8 @@ import Foundation from 'foundation-sites';
 
 
 
-const apiRoot = location.origin + '/wp-json/wp/v2/';
+const apiRoot    = location.origin + '/wp-json/wp/v2/';
+const acfApiRoot = location.origin + '/wp-json/acf/v3/';
 
 // GLOBAL FILTERS
 
@@ -125,27 +126,67 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 	    taxParentSlug: '',
 	    taxChildSlug: '',
 	    taxParentId: 0,
-	    activeItem: ''
+	    activeItem: '',
+	    singlePost: [],
+	    singlePostActive: false,
+	    benefits: [],
+	    pdfLink: ''
 		}
 	},
-	template:`<div class="grid-x grid-margin-x">
-							<div class="medium-3 cell">
-								<ul id="tax-menu" class="tax-menu vertical menu">
-							    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name)}"><a href="#!" @click="activeItem = taxonomy.name;getTaxPosts()">{{ taxonomy.name }}</a></li>
-						    </ul>
-							</div>
-							<div class="medium-9 cell">
-								<div class="grid-x grid-margin-x grid-margin-y">
-									<div class="medium-12 cell breadcrumbs">
-										<h5 class="breadcrumb-title">{{ taxParentSlug }} > {{ activeItem }}</h5>
-										<h3>{{ activeItem }}</h3>
+	template:`<div id="posts-container">
+	            <div class="grid-x grid-margin-x">
+								<div class="medium-3 cell">
+									<ul id="tax-menu" class="tax-menu vertical menu">
+								    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name)}"><a href="#!" @click="activeItem = taxonomy.name;getTaxPosts()">{{ taxonomy.name }}</a></li>
+							    </ul>
+								</div>
+								<div class="medium-9 cell" id="all-posts" v-if="!singlePostActive">
+									<div class="grid-x grid-margin-x grid-margin-y">
+										<div class="medium-12 cell breadcrumbs">
+											<h5 class="breadcrumb-title">{{ taxParentSlug }} > {{ activeItem }}</h5>
+											<h3>{{ activeItem }}</h3>
+										</div>
+										<div class="medium-4 cell module auto-height" v-for="post in taxPosts">
+											<a @click="getSinglePost(post.id)"><img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered"></a>
+											<div class="meta">
+												<a @click="getSinglePost(post.id)"><h4 class="blue">{{ post.title.rendered }}</h4></a>
+												<div class="content" v-html="$options.filters.limitWords(post.content.rendered,25)"></div>
+												<a @click="getSinglePost(post.id)" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
+											</div>
+										</div>
 									</div>
-									<div class="medium-4 cell module auto-height" v-for="post in taxPosts">
-										<a :href="post.link"><img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered"></a>
-										<div class="meta">
-											<a :href="post.link"><h4 class="blue">{{ post.title.rendered }}</h4></a>
-											<div class="content" v-html="$options.filters.limitWords(post.content.rendered,25)"></div>
-											<a :href="post.link" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
+								</div>
+								<div class="medium-9 cell" id="single-post" v-if="singlePostActive">
+									<div class="grid-x grid-margin-x grid-margin-y">
+										<div class="medium-12 cell breadcrumbs">
+											<h5 class="breadcrumb-title">{{ taxParentSlug }} > {{ activeItem }} > {{ singlePost.title.rendered }}</h5>
+										</div>
+										<div class="medium-12 cell">
+											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost.title.rendered">
+										</div>
+										<div class="medium-12 cell">
+											<div class="grid-x grid-margin-x grid-margin-y">
+												<div class="medium-5 medium-offset-1 cell">
+													<h4 class="blue">{{ singlePost.title.rendered }}</h4>
+													<p class="content" v-html="singlePost.content.rendered">{{ singlePost.content.rendered }}</p>
+													<div class="grid-x grid-margin-y subhead" v-if="pdfLink">
+														<div class="medium-2 cell text-center">
+															<i class="fal fa-file-pdf"></i>
+														</div>
+														<div class="medium-10 cell">
+															<a :href="pdfLink" target="_blank">Product Specs Doc</a>
+															<p>Specification Sheet Description</p>
+														</div>
+													</div>
+													<a class="btn-lt-blue border" @click="singlePostActive = false"><i class="fas fa-arrow-alt-left"></i> Back to {{ activeItem }}</a>
+												</div>
+												<div class="medium-4 medium-offset-1 cell">
+													<h6>Product Benefits</h6>
+													<ul class="product-benefits">
+														<li v-for="benefit in benefits"><i class="fas fa-check"></i> &nbsp;{{ benefit.benefit1 }}</li>
+													</ul>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -190,6 +231,21 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 			  }
 			)
 		},
+		getSinglePost: function(postID){
+			let $this = this;
+
+		  axios.all([
+		      axios.get(apiRoot + $this.postType + '/' + postID + '?_embed'),
+		      axios.get(acfApiRoot + $this.postType + '/' + postID)
+		    ])
+		    .then(axios.spread((postRes, acfRes) => {
+		      $this.singlePost       = postRes.data;
+		      $this.benefits         = acfRes.data.acf.film_benefits;
+		      $this.pdfLink         = acfRes.data.acf.pdf_link;
+		      $this.singlePostActive = true;
+		      console.log($this.benefits);
+		    }));
+		},
 		getTaxonomies: function(){
 			let $this = this;
 
@@ -210,6 +266,7 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
 			  .then(function (response) {
 			    $this.taxPosts = response.data;
+			    $this.singlePostActive = false;
 			  }
 			)
 		}

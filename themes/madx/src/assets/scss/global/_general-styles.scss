@@ -80,6 +80,34 @@
 	}
 }
 
+.btn-lt-blue{
+	padding: 1rem 2rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	border-radius: 2rem;
+	font-family: 'AvenirLTStd-Heavy';
+	transition: all 0.25s ease-in-out;
+
+	&.solid{
+		background-color: $light_blue;
+		color: $white;
+
+		&:hover{
+			color:$white;
+			background-color:$blue;
+		}
+	}
+
+	&.border{
+		border: 1px solid #e0e8f0;
+		color: $light_blue;
+
+		&:hover{
+			background-color:#e0e8f0;
+		}
+	}
+}
+
 .blue{
 	color:$blue;
 }
