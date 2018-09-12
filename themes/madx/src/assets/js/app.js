@@ -280,13 +280,26 @@ var newVue = new Vue({
   el: '#app',
   data() {
   	return{
-      
+      imgHeight: 135,
+      metaHeight: {
+      	height: ''
+      }
   	}
   },
   created(){
   	$(document).foundation();
+  	this.getImageHeight();
+  },
+  mounted(){
+  	window.addEventListener('resize', this.getImageHeight)
   },
   methods: {
-
+  	getImageHeight: function(){
+  		this.imgHeight = document.querySelector('.module').querySelector('img').height;
+  		this.metaHeight.height = 'calc(' + 100 + '% - ' + this.imgHeight + 'px)'
+  	},
   },
+  computed: {
+  	
+  }
 });
