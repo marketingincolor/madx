@@ -1,5 +1,6 @@
 <?php $slug = get_post_field( 'post_name', get_post() ); ?>
 
+
 <section class="page-hero" style="background-image: url(<?php bloginfo('template_directory'); ?>/dist/assets/images/<?php echo $slug; ?>-hero.png);">
 
 	<?php get_template_part('template-parts/menus/'. $slug .'-header-menu'); ?>
