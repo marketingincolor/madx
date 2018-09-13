@@ -1,0 +1,31 @@
+.single{
+
+	.page-hero .grid-container{
+		padding: 20% 0 5%;
+		position: relative;
+
+		.post-meta{
+			background-color: $white;
+			padding: .625rem 2rem;
+			margin: 0;
+			list-style-type: none;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+			bottom: 0;
+
+			> li{
+				display: inline-block;
+				margin: auto 10px;
+			}
+		}
+
+		.social{
+			margin: 0;
+			list-style-type: none;
+			
+			li{
+				display: inline-block;
+			}
+		}
+	}
+}
