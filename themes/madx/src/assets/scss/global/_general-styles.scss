@@ -24,7 +24,7 @@
 }
 
 .btn-yellow{
-	padding: 1rem 2rem;
+	padding: 0.625rem 2rem;
 	text-transform: uppercase;
 	border-radius: 2rem;
 	font-size: .75rem;
@@ -173,15 +173,15 @@ section.warranty{
 	@include bg-center-cover;
 }
 
-.page-template-page-safety-security .module{
+.page-template-page-safety-security .module.auto-height{
 
-	.content{
-		margin-bottom: 50px;
+	.meta .content{
+		margin-bottom: 60px;
 	}
 
 	.btn-yellow{
 		position: absolute;
-    bottom: 0px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     min-width: 175px;
@@ -197,11 +197,14 @@ section.warranty{
 
 	img{
 		width: 100%;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
 
 		@include breakpoint(small only){
 			height: 170px;
 		}
 	}
+
 	&.auto-height{
 
 		.meta{
@@ -247,6 +250,10 @@ section.warranty{
 
 		p{
 			font-size: .875rem;
+		}
+
+		.post-date{
+			margin-bottom: 10px;
 		}
 
 		.read-more{
