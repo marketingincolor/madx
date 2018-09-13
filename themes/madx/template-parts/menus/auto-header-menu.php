@@ -15,18 +15,9 @@
 			</div>
 		</div>
 		<div class="top-bar-right">
-			<?php //foundationpress_top_bar_r(); ?>
-			<ul class="dropdown menu" data-dropdown-menu>
-	      <li><a href="#">Solar Control</a></li>
-	      <li><a href="#">Windshield Protection</a></li>
-	      <li><a href="#">Paint Protection</a></li>
-	      <li><a href="#">Blog</a></li>
-	      <li><a href="#">Find A Dealer</a></li>
-	    </ul>
+			
+			<?php foundationpress_auto_nav(); ?>
 
-			<?php if ( ! get_theme_mod( 'wpt_mobile_menu_layout' ) || get_theme_mod( 'wpt_mobile_menu_layout' ) === 'topbar' ) : ?>
-				<?php get_template_part( 'template-parts/mobile-top-bar' ); ?>
-			<?php endif; ?>
 		</div>
 	</nav>
 
