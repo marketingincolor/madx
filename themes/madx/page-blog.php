@@ -2,9 +2,9 @@
 /* Template Name: Blog */
 get_header(); ?>
 
-<section class="page-hero small" style="background-image: url(<?php the_field('blog_hero'); ?>);">
+<section class="blog-header">
 
-	<?php get_template_part('template-parts/menus/auto-header-menu'); ?>
+	<?php get_template_part('template-parts/menus/blog-header-menu'); ?>
 
 </section>
 
