@@ -23,10 +23,6 @@
 	}
 }
 
-.archive #page-header{
-	padding-top: 5%;
-}
-
 #top-header {
 
 	border-bottom:1px solid #e5e6e6;
@@ -92,17 +88,40 @@
 .page-hero{
 	padding: 5% 0 0;
 	@include bg-center-cover;
+
+	&.small {
+		padding-bottom: 15%;
+	}
+
+	#page-header{
+		padding-top: 0;
+	}
 }
 
 #page-header{
+	padding-top: 5%;
 
 	.menu .is-active > a {
 		background-color: $clear;
-		border-bottom: 2px solid $yellow;
+		border-bottom: 2px solid $yellow !important;
+	}
+
+	.top-bar .menu > li {
+		padding: 0 1rem;
 	}
 
 	.top-bar .menu > li:not(.menu-text) > a{
-		padding: .5rem 1rem;
+		padding: .5rem 0;
+		border-bottom: 2px solid $clear;
+	}
+
+	.top-bar .menu a {
+		transition: border-color 0.2s ease-in-out;
+
+		&:hover:not(.button){
+		  background-color: $clear;
+		  border-color: $yellow;
+		}
 	}
 
 	.top-bar{
