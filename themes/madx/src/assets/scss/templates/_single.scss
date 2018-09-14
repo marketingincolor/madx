@@ -28,4 +28,35 @@
 			}
 		}
 	}
+
+	.post-content{
+
+		.next-prev{
+			margin-top: 50px;
+		}
+
+		.next-prev a{
+			color: #80a3bf;
+		}
+	}
+
+	.related-posts{
+
+		.module img{
+			height: 170px;
+		}
+
+		h3 span{
+			font-size: 0.875rem;
+
+			a{
+				color: $light_blue;
+				transition: color 0.25s ease-in-out;
+			}
+
+			a:hover{
+				color: $blue;
+			}
+		}
+	}
 }
