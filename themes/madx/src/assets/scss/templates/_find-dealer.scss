@@ -1,0 +1,25 @@
+.page-template-page-find-dealer{
+
+	form label{
+		background-color: white;
+		padding:10px;
+		border-radius:3px;
+		text-align: center;
+		color: $light_blue;
+		font-size: 10px;
+		width: 90px;
+		margin: auto 2.5px;
+	}
+
+	form label i{
+		font-size: 1.75rem;
+		margin-bottom: 5px;
+	}
+
+	form input[type=radio]{
+		appearance:none;
+	}
+	form input[type=radio]:checked + label {
+		outline: 2px solid $yellow;
+	}
+}
