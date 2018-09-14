@@ -42,12 +42,94 @@ get_header(); ?>
 				
 				<?php the_content(); ?>
 
+				<?php var_dump(); ?>
+
+				<div class="grid-x next-prev">
+					<div class="small-6 cell text-left">
+
+						<?php //previous_post_link('%link','<i class="far fa-long-arrow-left"></i>',false,''); ?>
+						<?php previous_post_link( '%link', '<i class="far fa-long-arrow-left"></i>&nbsp; %title', false, '' ); ?>
+
+					</div>
+					<div class="small-6 cell text-right">
+
+						<?php next_post_link( '%link', '%title &nbsp;<i class="far fa-long-arrow-right"></i>', false, '' ); ?>
+						
+					</div>
+				</div>
+
 			</div>
-			<div class="medium-4 medium-offset-1 cell">
+			<div class="medium-4 medium-offset-1 cell single-sidebar">
+				<h4 class="blue">Blog Categories</h4>
+				<ul class="cat-list">
+
+					<?php
+					$categories = get_categories( array(
+					    'orderby'    => 'name',
+					    'order'      => 'ASC'
+					) );
+
+					foreach( $categories as $category ) {
+						
+						if ($category->slug == 'auto') {
+							$cat_icon = '<i class="fal fa-car"></i>';
+						}else if ($category->slug == 'commercial') {
+							$cat_icon = '<i class="fal fa-building"></i>';
+						}else if ($category->slug == 'residential') {
+							$cat_icon = '<i class="fal fa-home"></i>';
+						}else if ($category->slug == 'safety-security') {
+							$cat_icon = '<i class="fal fa-shield"></i>';
+						}else if ($category->slug == 'news') {
+							$cat_icon = '<i class="fal fa-newspaper"></i>';
+						}
+					  if ($category->slug != 'uncategorized') {
+					 ?>
+
+					 <li><a href="<?php echo get_category_link( $category->term_id ) ?>"><?php echo $cat_icon; ?> &nbsp;&nbsp;<?php echo $category->cat_name; ?></a></li>
+
+					<?php }} ?>
+
+				</ul>
 
 				<?php get_sidebar(); ?>
 
 			</div>
+		</div>
+	</div>
+</section>
+
+<section class="related-posts">
+	<div class="grid-container">
+		<div class="grid-x grid-margin-x grid-margin-y">
+			<div class="small-12 cell">
+				<?php $cat = get_the_category($post->ID); ?>
+
+				<h3>Related Posts &nbsp;<span><a href="/blog/category/<?php echo $cat[0]->slug; ?>">See More <i class="far fa-long-arrow-right"></i></a></span></h3>
+			</div>
+			
+			<?php
+
+				$related = get_posts( array( 'category__in' => wp_get_post_categories($post->ID), 'numberposts' => 3, 'post__not_in' => array($post->ID) ) );
+				if( $related ) foreach( $related as $post ) {
+				setup_postdata($post);
+				$date = strtotime($post->post_date_gmt); ?>
+
+	      <div class="medium-4 cell module auto-height">
+		     	<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>"></a>
+		     	<div class="meta">
+		     		<p class="post-date"><i class="fal fa-calendar-alt"></i> &nbsp; <?php echo date('F d, Y',$date); ?></p>
+		     		<h4 class="blue"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h4>
+		     		<p class="content">
+		     			<?php echo wp_trim_words(get_the_content(),25,'...'); ?>
+		     		</p>
+		     		<a href="<?php the_permalink(); ?>" class="read-more">Read More &nbsp;<i class="far fa-long-arrow-right"></i></a>
+		     	</div>
+	      </div>
+
+			<?php }
+			wp_reset_postdata(); ?>
+
+
 		</div>
 	</div>
 </section>

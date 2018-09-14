@@ -1,10 +1,12 @@
+<?php $term = get_queried_object(); ?>
+
 <section class="taxonomy-faqs">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="medium-10 large-8 medium-offset-1 large-offset-2 text-center">
-				<h3 class="blue">FAQs</h3>
+				<h3 class="blue"><?php the_field('taxonomy_faq_heading',$term); ?></h3>
 				<aside class="yellow-underline center"></aside>
-				<p class="subhead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia neque, pariatur quam recusandae assumenda laudantium nostrum voluptate. Animi alias perspiciatis eum accusantium soluta</p>
+				<p class="subhead"><?php the_field('taxonomy_faq_subhead',$term); ?></p>
 			</div>
 		</div>
 		<div class="grid-x">

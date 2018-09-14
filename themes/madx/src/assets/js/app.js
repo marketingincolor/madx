@@ -31,6 +31,16 @@ Vue.filter('limitWords',function (textToLimit,wordLimit){
 	}
 });
 
+// Limit words displayed
+Vue.filter('changeSlug',function (text){
+	if (text == 'safety-security') {
+		var textSplit = text.split('-').join(" & ");
+	}else{
+		var textSplit = text.split('-').join(" ");
+	}
+	return textSplit;
+});
+
 // CUSTOM DIRECTIVES
 
 // Add foundation dropdown menu functionality to an element
@@ -198,7 +208,7 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 								<div class="medium-9 cell" id="all-posts" v-if="!singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
 										<div class="medium-12 cell breadcrumbs">
-											<h5 class="breadcrumb-title">{{ taxParentSlug }} > {{ activeItem }}</h5>
+											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > {{ activeItem }}</h5>
 											<h3>{{ activeItem }}</h3>
 										</div>
 										<div class="medium-4 cell module auto-height" v-for="post in taxPosts">
@@ -214,7 +224,7 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 								<div class="medium-9 cell" id="single-post" v-if="singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
 										<div class="medium-12 cell breadcrumbs">
-											<h5 class="breadcrumb-title">{{ taxParentSlug }} > {{ activeItem }} > {{ singlePost.title.rendered }}</h5>
+											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > {{ activeItem }} > {{ singlePost.title.rendered }}</h5>
 										</div>
 										<div class="medium-12 cell">
 											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost.title.rendered">
@@ -277,12 +287,13 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 			axios
 			  .get(apiRoot + $this.postType + '-categories')
 			  .then(function (response) {
-			    response.data.forEach(function(item){
-			    	if (item.slug == $this.taxParentSlug) {
-			    		$this.taxParentId = item.id;
-			    		$this.getTaxonomies();
-			    	}
-			    });
+			  	for (var i = 0; i < response.data.length; i++) {
+			  		if (response.data[i].link.includes($this.taxParentSlug)) {
+			  			$this.taxParentId = response.data[i].parent;
+			  			break;
+			  		}
+			  	}
+			    $this.getTaxonomies();
 			  }
 			)
 		},
