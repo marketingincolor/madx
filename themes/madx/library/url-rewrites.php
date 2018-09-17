@@ -38,8 +38,9 @@
 
 	  }
 	}
-
 	  $tax_url = join('/',$term_array);
+	  // Remove the trailing '/' from $tax_url
+	  $tax_url = substr($tax_url, 0, -1);
 
 	  // Replace slug with current taxonomies
 	  if( count($term_array) > 0 ){

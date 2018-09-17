@@ -260,8 +260,6 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 						</div>`,
 	mounted (){
 		this.getPostType(location.href);
-		this.getTaxParent(location.href)
-		this.getTaxParentId();
 	},
 	methods:{
 		getPostType: function(currentURL){
@@ -271,16 +269,51 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 				this.postType = 'commercial';
 			}else if (currentURL.includes('auto')) {
 				this.postType = 'auto';
+			}else if (currentURL.includes('safety-security')) {
+				this.postType = 'safety';
 			}
+			this.getTaxParent(location.href);
 		},
 		getTaxParent: function(currentURL){
-			if (currentURL.includes('solar')) {
-				this.taxParentSlug = 'solar';
-			}else if(currentURL.includes('decorative')){
-				this.taxParentSlug = 'decorative';
-			}else if (currentURL.includes('safety-security')) {
-				this.taxParentSlug = 'safety-security';
+			switch (this.postType) {
+				case 'residential':
+					if (currentURL.includes('solar')) {
+						this.taxParentSlug = 'solar';
+					}else if(currentURL.includes('decorative')){
+						this.taxParentSlug = 'decorative';
+					}else if (currentURL.includes('safety-security')) {
+						this.taxParentSlug = 'safety-security';
+					}
+					break;
+
+					case 'commercial':
+						if (currentURL.includes('solar')) {
+							this.taxParentSlug = 'solar';
+						}else if(currentURL.includes('decorative')){
+							this.taxParentSlug = 'decorative';
+						}else if (currentURL.includes('safety-security')) {
+							this.taxParentSlug = 'safety-security';
+						}
+						break;
+
+					case 'auto':
+						if (currentURL.includes('solar')) {
+							this.taxParentSlug = 'solar';
+						}else if(currentURL.includes('decorative')){
+							this.taxParentSlug = 'decorative';
+						}else if (currentURL.includes('safety-security')) {
+							this.taxParentSlug = 'safety-security';
+						}
+						break;
+
+					case 'safety':
+						if (currentURL.includes('products')) {
+							this.taxParentSlug = 'products';
+						}
+						break;
 			}
+
+			this.getTaxParentId();
 		},
 		getTaxParentId: function(){
 			let $this = this;
@@ -288,6 +321,7 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 			axios
 			  .get(apiRoot + $this.postType + '-categories')
 			  .then(function (response) {
+			  	console.log(response.data)
 			  	for (var i = 0; i < response.data.length; i++) {
 			  		if (response.data[i].link.includes($this.taxParentSlug)) {
 			  			$this.taxParentId = response.data[i].parent;
