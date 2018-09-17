@@ -182,6 +182,75 @@ const findDealerForm = Vue.component('find-dealer-form',{
 	}
 });
 
+const SafetyPosts = Vue.component('safety-posts',{
+	data() {
+		return{
+	    activeItem: '',
+	    safetyPosts: [],
+	    safetyPostID: 0,
+	    safetySinglePost: [],
+	    taxParentSlug: 'products',
+	    postType: 'safety'
+		}
+	},
+	template:`<div class="grid-container" id="posts-container">
+	            <div class="grid-x grid-margin-x">
+								<div class="medium-3 cell">
+									<ul id="tax-menu" class="tax-menu vertical menu">
+								    <li v-for="post in safetyPosts" v-bind:class="{active: (activeItem == post.title.rendered)}"><a href="#!" @click="getSafetyPostSingle(post.title.rendered)">{{ post.title.rendered }}</a></li>
+							    </ul>
+								</div>
+								<div class="medium-9 cell" id="single-post" v-if="safetySinglePost.length > 0">
+									<div class="grid-x grid-margin-x grid-margin-y">
+										<div class="medium-12 cell breadcrumbs">
+											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > {{ activeItem }}</h5>
+										</div>
+										<div class="medium-12 cell">
+											<img :src="safetySinglePost[0]._embedded['wp:featuredmedia'][0].source_url" :alt="safetySinglePost[0].title.rendered">
+										</div>
+										<div class="small-10 small-offset-1 cell">
+											<h4 class="blue">{{ safetySinglePost[0].title.rendered }}</h4>
+											<p class="content" v-html="safetySinglePost[0].content.rendered">{{ safetySinglePost[0].content.rendered }}</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>`,
+		mounted (){
+			this.getSafetyPosts();
+		},
+		methods:{
+			getSafetyPosts: function(){
+				let $this = this;
+
+				axios
+				  .get(apiRoot + $this.postType)
+				  .then(function (response) {
+				    for (var i = 0; i < response.data.length; i++) {
+				    	if (response.data[i].link.includes($this.taxParentSlug)) {
+				    		$this.safetyPosts.push(response.data[i]);
+				    	}
+				    }
+				    $this.activeItem = 'Blast Mitigation';
+				    $this.getSafetyPostSingle($this.activeItem);
+				  }
+				)
+			},
+			getSafetyPostSingle: function(postTitle){
+				let $this = this;
+				let postSlug = postTitle.toLowerCase().split(" ").join("-");
+
+				axios
+				  .get(apiRoot + $this.postType + '?_embed&slug=' + postSlug)
+				  .then(function (response) {
+				    $this.safetySinglePost = response.data;
+				    $this.activeItem = $this.safetySinglePost[0].title.rendered;
+				  }
+				)
+			}
+		}
+});
+
 const TaxTermMenu = Vue.component('tax-term-posts',{
 	data() {
 		return{
@@ -203,14 +272,13 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 	            <div class="grid-x grid-margin-x">
 								<div class="medium-3 cell">
 									<ul id="tax-menu" class="tax-menu vertical menu">
-								    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name)}"><a href="#!" @click="activeItem = taxonomy.name;getTaxPosts()">{{ taxonomy.name }}</a></li>
+								    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name)}"><a href="#!" @click="getNewTaxPosts">{{ taxonomy.name }}</a></li>
 							    </ul>
 								</div>
 								<div class="medium-9 cell" id="all-posts" v-if="!singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
 										<div class="medium-12 cell breadcrumbs">
 											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > {{ activeItem }}</h5>
-											<h3>{{ activeItem }}</h3>
 										</div>
 										<div class="medium-4 cell module auto-height" v-for="post in taxPosts">
 											<a @click="getSinglePost(post.id)"><img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered"></a>
@@ -269,8 +337,6 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 				this.postType = 'commercial';
 			}else if (currentURL.includes('auto')) {
 				this.postType = 'auto';
-			}else if (currentURL.includes('safety-security')) {
-				this.postType = 'safety';
 			}
 			this.getTaxParent(location.href);
 		},
@@ -305,12 +371,6 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 							this.taxParentSlug = 'safety-security';
 						}
 						break;
-
-					case 'safety':
-						if (currentURL.includes('products')) {
-							this.taxParentSlug = 'products';
-						}
-						break;
 			}
 
 			this.getTaxParentId();
@@ -321,7 +381,6 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 			axios
 			  .get(apiRoot + $this.postType + '-categories')
 			  .then(function (response) {
-			  	console.log(response.data)
 			  	for (var i = 0; i < response.data.length; i++) {
 			  		if (response.data[i].link.includes($this.taxParentSlug)) {
 			  			$this.taxParentId = response.data[i].parent;
@@ -366,6 +425,19 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
 			  .then(function (response) {
 			    $this.taxPosts = response.data;
+			    $this.singlePostActive = false;
+			  }
+			)
+		},
+		getNewTaxPosts: function(event){
+			let $this = this;
+			let taxonomyName = event.target.innerHTML.toLowerCase().split(' ').join('-');
+			
+			axios
+			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
+			  .then(function (response) {
+			    $this.taxPosts = response.data;
+			    $this.activeItem = event.target.innerHTML;
 			    $this.singlePostActive = false;
 			  }
 			)

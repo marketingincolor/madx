@@ -13,7 +13,7 @@
 	</div>
 	<div class="taxonomy-products">
 
-	  <tax-term-posts></tax-term-posts>
+	  <safety-posts></safety-posts>
 
 	</div>
 </section>
