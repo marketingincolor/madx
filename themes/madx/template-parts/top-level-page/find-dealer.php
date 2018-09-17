@@ -4,7 +4,12 @@
 	if ($current_post->post_parent == 0) {
 
 		if (is_tax()) {
-			$current_page = get_page_by_path(get_post_type());
+			if (get_post_type() == 'safety') {
+				$post_type = 'safety-security';
+			}else{
+				$post_type = get_post_type();
+			}
+			$current_page = get_page_by_path($post_type);
 			$page_id = $current_page->ID;
 		}else if(is_page()){
 			$page_id = $current_post->ID;
@@ -23,9 +28,9 @@
 				<h2 class="white"><?php the_field('find_dealer_heading',$page_id); ?></h2>
 				<aside class="yellow-underline left"></aside>
 				<p class="white"><?php the_field('find_dealer_subhead',$page_id); ?></p>
-				
+					
 				<find-dealer-form></find-dealer-form>
-
+					
 			</div>
 		</div>
 	</div>

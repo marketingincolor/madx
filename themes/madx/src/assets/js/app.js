@@ -110,7 +110,8 @@ const findDealerForm = Vue.component('find-dealer-form',{
 		return{
 			googleKey: '',
 			zipCode: '',
-			zipCodesInRadius: []
+			zipCodesInRadius: [],
+			radius: 25
 		}
 	},
 	template:
@@ -167,7 +168,7 @@ const findDealerForm = Vue.component('find-dealer-form',{
 		    $.ajax({
     			url: '/wp-content/themes/madx/zip-code-search.php',
     			type: 'POST',
-    			data: { zip:$this.zipCode },
+    			data: { zip: $this.zipCode, radius: $this.radius },
     			dataType: 'json',
     			success:function(data){
     				if (data.error_code) {
@@ -179,6 +180,75 @@ const findDealerForm = Vue.component('find-dealer-form',{
     		});
 		},
 	}
+});
+
+const SafetyPosts = Vue.component('safety-posts',{
+	data() {
+		return{
+	    activeItem: '',
+	    safetyPosts: [],
+	    safetyPostID: 0,
+	    safetySinglePost: [],
+	    taxParentSlug: 'products',
+	    postType: 'safety'
+		}
+	},
+	template:`<div class="grid-container" id="posts-container">
+	            <div class="grid-x grid-margin-x">
+								<div class="medium-3 cell">
+									<ul id="tax-menu" class="tax-menu vertical menu">
+								    <li v-for="post in safetyPosts" v-bind:class="{active: (activeItem == post.title.rendered)}"><a href="#!" @click="getSafetyPostSingle(post.title.rendered)">{{ post.title.rendered }}</a></li>
+							    </ul>
+								</div>
+								<div class="medium-9 cell" id="single-post" v-if="safetySinglePost.length > 0">
+									<div class="grid-x grid-margin-x grid-margin-y">
+										<div class="medium-12 cell breadcrumbs">
+											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > {{ activeItem }}</h5>
+										</div>
+										<div class="medium-12 cell">
+											<img :src="safetySinglePost[0]._embedded['wp:featuredmedia'][0].source_url" :alt="safetySinglePost[0].title.rendered">
+										</div>
+										<div class="small-10 small-offset-1 cell">
+											<h4 class="blue">{{ safetySinglePost[0].title.rendered }}</h4>
+											<p class="content" v-html="safetySinglePost[0].content.rendered">{{ safetySinglePost[0].content.rendered }}</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>`,
+		mounted (){
+			this.getSafetyPosts();
+		},
+		methods:{
+			getSafetyPosts: function(){
+				let $this = this;
+
+				axios
+				  .get(apiRoot + $this.postType)
+				  .then(function (response) {
+				    for (var i = 0; i < response.data.length; i++) {
+				    	if (response.data[i].link.includes($this.taxParentSlug)) {
+				    		$this.safetyPosts.push(response.data[i]);
+				    	}
+				    }
+				    $this.activeItem = 'Blast Mitigation';
+				    $this.getSafetyPostSingle($this.activeItem);
+				  }
+				)
+			},
+			getSafetyPostSingle: function(postTitle){
+				let $this = this;
+				let postSlug = postTitle.toLowerCase().split(" ").join("-");
+
+				axios
+				  .get(apiRoot + $this.postType + '?_embed&slug=' + postSlug)
+				  .then(function (response) {
+				    $this.safetySinglePost = response.data;
+				    $this.activeItem = $this.safetySinglePost[0].title.rendered;
+				  }
+				)
+			}
+		}
 });
 
 const TaxTermMenu = Vue.component('tax-term-posts',{
@@ -202,14 +272,13 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 	            <div class="grid-x grid-margin-x">
 								<div class="medium-3 cell">
 									<ul id="tax-menu" class="tax-menu vertical menu">
-								    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name)}"><a href="#!" @click="activeItem = taxonomy.name;getTaxPosts()">{{ taxonomy.name }}</a></li>
+								    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name)}"><a href="#!" @click="getNewTaxPosts">{{ taxonomy.name }}</a></li>
 							    </ul>
 								</div>
 								<div class="medium-9 cell" id="all-posts" v-if="!singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
 										<div class="medium-12 cell breadcrumbs">
 											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > {{ activeItem }}</h5>
-											<h3>{{ activeItem }}</h3>
 										</div>
 										<div class="medium-4 cell module auto-height" v-for="post in taxPosts">
 											<a @click="getSinglePost(post.id)"><img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered"></a>
@@ -259,8 +328,6 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 						</div>`,
 	mounted (){
 		this.getPostType(location.href);
-		this.getTaxParent(location.href)
-		this.getTaxParentId();
 	},
 	methods:{
 		getPostType: function(currentURL){
@@ -271,15 +338,42 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 			}else if (currentURL.includes('auto')) {
 				this.postType = 'auto';
 			}
+			this.getTaxParent(location.href);
 		},
 		getTaxParent: function(currentURL){
-			if (currentURL.includes('solar')) {
-				this.taxParentSlug = 'solar';
-			}else if(currentURL.includes('decorative')){
-				this.taxParentSlug = 'decorative';
-			}else if (currentURL.includes('safety-security')) {
-				this.taxParentSlug = 'safety-security';
+			switch (this.postType) {
+				case 'residential':
+					if (currentURL.includes('solar')) {
+						this.taxParentSlug = 'solar';
+					}else if(currentURL.includes('decorative')){
+						this.taxParentSlug = 'decorative';
+					}else if (currentURL.includes('safety-security')) {
+						this.taxParentSlug = 'safety-security';
+					}
+					break;
+
+					case 'commercial':
+						if (currentURL.includes('solar')) {
+							this.taxParentSlug = 'solar';
+						}else if(currentURL.includes('decorative')){
+							this.taxParentSlug = 'decorative';
+						}else if (currentURL.includes('safety-security')) {
+							this.taxParentSlug = 'safety-security';
+						}
+						break;
+
+					case 'auto':
+						if (currentURL.includes('solar')) {
+							this.taxParentSlug = 'solar';
+						}else if(currentURL.includes('decorative')){
+							this.taxParentSlug = 'decorative';
+						}else if (currentURL.includes('safety-security')) {
+							this.taxParentSlug = 'safety-security';
+						}
+						break;
 			}
+
+			this.getTaxParentId();
 		},
 		getTaxParentId: function(){
 			let $this = this;
@@ -331,6 +425,19 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
 			  .then(function (response) {
 			    $this.taxPosts = response.data;
+			    $this.singlePostActive = false;
+			  }
+			)
+		},
+		getNewTaxPosts: function(event){
+			let $this = this;
+			let taxonomyName = event.target.innerHTML.toLowerCase().split(' ').join('-');
+			
+			axios
+			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
+			  .then(function (response) {
+			    $this.taxPosts = response.data;
+			    $this.activeItem = event.target.innerHTML;
 			    $this.singlePostActive = false;
 			  }
 			)
