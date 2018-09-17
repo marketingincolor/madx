@@ -110,7 +110,8 @@ const findDealerForm = Vue.component('find-dealer-form',{
 		return{
 			googleKey: '',
 			zipCode: '',
-			zipCodesInRadius: []
+			zipCodesInRadius: [],
+			radius: 25
 		}
 	},
 	template:
@@ -167,7 +168,7 @@ const findDealerForm = Vue.component('find-dealer-form',{
 		    $.ajax({
     			url: '/wp-content/themes/madx/zip-code-search.php',
     			type: 'POST',
-    			data: { zip:$this.zipCode },
+    			data: { zip: $this.zipCode, radius: $this.radius },
     			dataType: 'json',
     			success:function(data){
     				if (data.error_code) {
