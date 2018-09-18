@@ -1,3 +1,6 @@
+body{
+	background-color: #f8f8f8;
+}
 .relative{
 	position:relative;
 }
@@ -266,7 +269,6 @@ section.warranty{
 
 .find-dealer{
 	padding: 15% 0;
-	margin-bottom: 10%;
 	@include bg-center-cover;
 
 	p{

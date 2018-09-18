@@ -3,7 +3,7 @@
 
 	if ($current_post->post_parent == 0) {
 
-		if (is_tax()) {
+		if (is_tax() || is_single()) {
 			if (get_post_type() == 'safety') {
 				$post_type = 'safety-security';
 			}else{
@@ -24,7 +24,7 @@
 <section class="find-dealer" style="background-image: url(<?php the_field('find_dealer_background_image',$page_id); ?>);">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="medium-8 large-7 cell">
+			<div class="small-10 small-offset-1 medium-9 large-7 large-offset-0 cell">
 				<h2 class="white"><?php the_field('find_dealer_heading',$page_id); ?></h2>
 				<aside class="yellow-underline left"></aside>
 				<p class="white"><?php the_field('find_dealer_subhead',$page_id); ?></p>
