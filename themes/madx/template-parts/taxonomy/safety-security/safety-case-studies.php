@@ -29,12 +29,10 @@
 				while ( $query->have_posts() ) : $query->the_post();
 			?>
 
-				<div class="medium-10 medium-offset-1 cell">
+				<div class="medium-10 medium-offset-1 cell case-study-block">
 					<div class="grid-x">
-						<aside class="medium-4 cell">
-							<?php the_post_thumbnail('large'); ?>
-						</aside>
-						<article class="medium-8 cell">
+						<aside class="medium-5 cell case-study-img" style="background-image: url(<?php the_post_thumbnail_url(); ?>);"></aside>
+						<article class="medium-7 cell">
 							<p class="industry"><?php the_field('case_study_industry_type'); ?></p>
 							<h3 class="blue"><?php the_title(); ?></h3>
 							<p class="excerpt"><?php the_field('case_study_excerpt'); ?></p>
