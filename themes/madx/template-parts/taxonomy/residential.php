@@ -18,7 +18,7 @@
 	</div>
 </section>
 
-<section class="taxonomy-products">
+<section id="tax-posts" class="taxonomy-products">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="medium-10 large-8 medium-offset-1 large-offset-2 text-center">
