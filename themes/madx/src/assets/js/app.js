@@ -182,75 +182,6 @@ const findDealerForm = Vue.component('find-dealer-form',{
 	}
 });
 
-const SafetyPosts = Vue.component('safety-posts',{
-	data() {
-		return{
-	    activeItem: '',
-	    safetyPosts: [],
-	    safetyPostID: 0,
-	    safetySinglePost: [],
-	    taxParentSlug: 'products',
-	    postType: 'safety'
-		}
-	},
-	template:`<div class="grid-container" id="posts-container">
-	            <div class="grid-x grid-margin-x">
-								<div class="medium-3 cell">
-									<ul id="tax-menu" class="tax-menu vertical menu">
-								    <li v-for="post in safetyPosts" v-bind:class="{active: (activeItem == post.title.rendered)}"><a href="#!" @click="getSafetyPostSingle(post.title.rendered)">{{ post.title.rendered }}</a></li>
-							    </ul>
-								</div>
-								<div class="medium-9 cell" id="single-post" v-if="safetySinglePost.length > 0">
-									<div class="grid-x grid-margin-x grid-margin-y">
-										<div class="medium-12 cell breadcrumbs">
-											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > {{ activeItem }}</h5>
-										</div>
-										<div class="medium-12 cell">
-											<img :src="safetySinglePost[0]._embedded['wp:featuredmedia'][0].source_url" :alt="safetySinglePost[0].title.rendered">
-										</div>
-										<div class="small-10 small-offset-1 cell">
-											<h4 class="blue">{{ safetySinglePost[0].title.rendered }}</h4>
-											<p class="content" v-html="safetySinglePost[0].content.rendered">{{ safetySinglePost[0].content.rendered }}</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>`,
-		mounted (){
-			this.getSafetyPosts();
-		},
-		methods:{
-			getSafetyPosts: function(){
-				let $this = this;
-
-				axios
-				  .get(apiRoot + $this.postType)
-				  .then(function (response) {
-				    for (var i = 0; i < response.data.length; i++) {
-				    	if (response.data[i].link.includes($this.taxParentSlug)) {
-				    		$this.safetyPosts.push(response.data[i]);
-				    	}
-				    }
-				    $this.activeItem = 'Blast Mitigation';
-				    $this.getSafetyPostSingle($this.activeItem);
-				  }
-				)
-			},
-			getSafetyPostSingle: function(postTitle){
-				let $this = this;
-				let postSlug = postTitle.toLowerCase().split(" ").join("-");
-
-				axios
-				  .get(apiRoot + $this.postType + '?_embed&slug=' + postSlug)
-				  .then(function (response) {
-				    $this.safetySinglePost = response.data;
-				    $this.activeItem = $this.safetySinglePost[0].title.rendered;
-				  }
-				)
-			}
-		}
-});
-
 const TaxTermMenu = Vue.component('tax-term-posts',{
 	data() {
 		return{
@@ -280,12 +211,19 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 										<div class="medium-12 cell breadcrumbs">
 											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > {{ activeItem }}</h5>
 										</div>
-										<div class="medium-4 cell module auto-height" v-for="post in taxPosts">
+										<div v-if="postType != 'safety'" class="medium-4 cell module auto-height animated fadeIn" v-for="post in taxPosts">
 											<a @click="getSinglePost(post.id)"><img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered"></a>
 											<div class="meta">
 												<a @click="getSinglePost(post.id)"><h4 class="blue">{{ post.title.rendered }}</h4></a>
 												<div class="content" v-html="$options.filters.limitWords(post.content.rendered,25)"></div>
 												<a @click="getSinglePost(post.id)" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
+											</div>
+										</div>
+										<div v-if="postType == 'safety'" class="medium-12 cell module auto-height animated fadeIn" v-for="post in taxPosts">
+											<img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered">
+											<div class="meta">
+												<h4 class="blue">{{ post.title.rendered }}</h4>
+												<div class="content" v-html="post.content.rendered">{{ post.content.rendered }}</div>
 											</div>
 										</div>
 									</div>
@@ -295,30 +233,32 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 										<div class="medium-12 cell breadcrumbs">
 											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > {{ activeItem }} > {{ singlePost.title.rendered }}</h5>
 										</div>
-										<div class="medium-12 cell">
+										<div class="medium-12 cell module auto-height animated fadeIn">
 											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost.title.rendered">
-										</div>
-										<div class="medium-12 cell">
-											<div class="grid-x grid-margin-x grid-margin-y">
-												<div class="medium-5 medium-offset-1 cell">
-													<h4 class="blue">{{ singlePost.title.rendered }}</h4>
-													<p class="content" v-html="singlePost.content.rendered">{{ singlePost.content.rendered }}</p>
-													<div class="grid-x grid-margin-y subhead" v-if="pdfLink">
-														<div class="medium-2 cell text-center">
-															<i class="fal fa-file-pdf"></i>
+											<div class="meta">
+												<div class="medium-12 cell">
+													<div class="grid-x grid-margin-x grid-margin-y">
+														<div class="medium-5 medium-offset-1 cell">
+															<h4 class="blue">{{ singlePost.title.rendered }}</h4>
+															<p class="content" v-html="singlePost.content.rendered">{{ singlePost.content.rendered }}</p>
+															<div class="grid-x grid-margin-y subhead" v-if="pdfLink">
+																<div class="medium-2 cell text-center">
+																	<i class="fal fa-file-pdf"></i>
+																</div>
+																<div class="medium-10 cell">
+																	<a :href="pdfLink" target="_blank">Product Specs Doc</a>
+																	<p>Specification Sheet Description</p>
+																</div>
+															</div>
+															<a class="btn-lt-blue border" @click="scrollToProducts"><i class="fas fa-arrow-alt-left"></i> Back to {{ activeItem }}</a>
 														</div>
-														<div class="medium-10 cell">
-															<a :href="pdfLink" target="_blank">Product Specs Doc</a>
-															<p>Specification Sheet Description</p>
+														<div class="medium-4 medium-offset-1 cell">
+															<h6>Product Benefits</h6>
+															<ul class="product-benefits">
+																<li v-for="benefit in benefits"><i class="fas fa-check"></i> &nbsp;{{ benefit.benefit1 }}</li>
+															</ul>
 														</div>
 													</div>
-													<a class="btn-lt-blue border" @click="singlePostActive = false"><i class="fas fa-arrow-alt-left"></i> Back to {{ activeItem }}</a>
-												</div>
-												<div class="medium-4 medium-offset-1 cell">
-													<h6>Product Benefits</h6>
-													<ul class="product-benefits">
-														<li v-for="benefit in benefits"><i class="fas fa-check"></i> &nbsp;{{ benefit.benefit1 }}</li>
-													</ul>
 												</div>
 											</div>
 										</div>
@@ -337,6 +277,8 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 				this.postType = 'commercial';
 			}else if (currentURL.includes('auto')) {
 				this.postType = 'auto';
+			}else if (currentURL.includes('safety-security')) {
+				this.postType = 'safety';
 			}
 			this.getTaxParent(location.href);
 		},
@@ -371,6 +313,10 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 							this.taxParentSlug = 'safety-security';
 						}
 						break;
+
+					case 'safety':
+						this.taxParentSlug = 'products';
+						break;
 			}
 
 			this.getTaxParentId();
@@ -391,20 +337,6 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 			  }
 			)
 		},
-		getSinglePost: function(postID){
-			let $this = this;
-
-		  axios.all([
-		      axios.get(apiRoot + $this.postType + '/' + postID + '?_embed'),
-		      axios.get(acfApiRoot + $this.postType + '/' + postID)
-		    ])
-		    .then(axios.spread((postRes, acfRes) => {
-		      $this.singlePost       = postRes.data;
-		      $this.benefits         = acfRes.data.acf.film_benefits;
-		      $this.pdfLink          = acfRes.data.acf.pdf_link;
-		      $this.singlePostActive = true;
-		    }));
-		},
 		getTaxonomies: function(){
 			let $this = this;
 
@@ -424,6 +356,7 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 			axios
 			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
 			  .then(function (response) {
+			  	console.log(response.data)
 			    $this.taxPosts = response.data;
 			    $this.singlePostActive = false;
 			  }
@@ -441,6 +374,29 @@ const TaxTermMenu = Vue.component('tax-term-posts',{
 			    $this.singlePostActive = false;
 			  }
 			)
+		},
+		getSinglePost: function(postID){
+			let $this = this;
+
+		  axios.all([
+		      axios.get(apiRoot + $this.postType + '/' + postID + '?_embed'),
+		      axios.get(acfApiRoot + $this.postType + '/' + postID)
+		    ])
+		    .then(axios.spread((postRes, acfRes) => {
+		      $this.singlePost       = postRes.data;
+		      $this.benefits         = acfRes.data.acf.film_benefits;
+		      $this.pdfLink          = acfRes.data.acf.pdf_link;
+		      $this.singlePostActive = true;
+		    }));
+		},
+		scrollToProducts: function(){
+			let $this = this;
+			
+	    $('html, body').animate({
+        scrollTop: $("#tax-posts").offset().top
+      }, 500, function() {
+        $this.singlePostActive = false;
+      });
 		}
 	},
 	computed:{
