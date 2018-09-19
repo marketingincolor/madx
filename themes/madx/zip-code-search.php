@@ -3,8 +3,9 @@
   // using the zip code api: https://www.zipcodeapi.com/API#radius
   $api_root   = 'https://www.zipcodeapi.com/rest';
 	$api_key    = $ZIP_CODE_API_KEY;
-	$zip_radius = isset($_POST['radius']) ? $_POST['radius'] : 20;
+	$zip_radius = isset($_POST['radius']) ? $_POST['radius'] : 25;
 	$zip_code   = $_POST['zip'];
+	
 	$api_url    = $api_root.'/'.$api_key.'/radius.json/'.$zip_code.'/'.$zip_radius.'/miles?minimal';
 
 

@@ -8,129 +8,416 @@ import Foundation from 'foundation-sites';
 // the line below
 //import './lib/foundation-explicit-pieces';
 
-$(document).foundation();
 
-var apiRoot = location.origin + '/wp-json/wp/v2/';
 
-const TaxPostList = Vue.component('tax-post-list',{
-	props: ['postType','taxonomy'],
-	template: ``,
-	created(){
+const apiRoot    = location.origin + '/wp-json/wp/v2/';
+const acfApiRoot = location.origin + '/wp-json/acf/v3/';
 
-	},
-	methods:{
-		
+// GLOBAL FILTERS
+
+// Limit words displayed
+Vue.filter('limitWords',function (textToLimit,wordLimit){
+	var textArray  = textToLimit.split(' ');
+	var totalWords = textArray.length;
+	var LimitedTextArray = [];
+
+	if (totalWords < wordLimit) {
+		return textToLimit
+	}else{
+		for(var i = 0;i < wordLimit;i++){
+			LimitedTextArray.push(textArray[i]);
+		}
+		return LimitedTextArray.join(' ') + '...';
 	}
 });
 
-const TaxTermMenu = Vue.component('tax-term-menu',{
-	props: ['postType','taxonomy'],
-	data(){
+// Limit words displayed
+Vue.filter('changeSlug',function (text){
+	if (text == 'safety-security') {
+		var textSplit = text.split('-').join(" & ");
+	}else{
+		var textSplit = text.split('-').join(" ");
+	}
+	return textSplit;
+});
+
+// CUSTOM DIRECTIVES
+
+// Add foundation dropdown menu functionality to an element
+Vue.directive('dropdown', {
+  bind: function (el) {
+    new Foundation.DropdownMenu($(el));
+  }
+});
+
+const safetyFilmTypes = Vue.component('safety-film-types',{
+	data() {
 		return{
-			
+			acfPosts: [],
+	    imgHeight: 135,
+	    metaHeight: {
+	    	height: ''
+	    }
 		}
 	},
-	template: ``,
+	template:
+	 `<div class="grid-x grid-margin-x grid-margin-y">
+			<div class="medium-3 cell module auto-height text-center" v-for="post in acfPosts">
+				<a :href="post.safety_film_link"><img :src="post.safety_film_image" :alt="post.safety_film_title"></a>
+				<div class="meta" v-bind:style="metaHeight">
+					<a :href="post.safety_film_link"><h4 class="blue">{{ post.safety_film_title }}</h4></a>
+					<p class="content">{{ post.safety_film_content }}</p>
+					<a :href="post.safety_film_link" class="btn-yellow border">{{ post.safety_film_button_text }}</a>
+				</div>
+			</div>
+		</div>`,
 	created(){
-
+		this.getACFdata();
 	},
-	methods:{
-		
+	mounted(){
+		window.addEventListener('resize', this.getImageHeight);
+	},
+	updated(){
+		this.getImageHeight();
+	},
+	methods: {
+		getACFdata: function(){
+			let $this = this;
+
+			axios
+				// Get page ID in order to get ACF Data
+			  .get(apiRoot + 'pages?slug=safety-security')
+			  .then(function (response) {
+			  	let pageID = response.data[0].id
+
+			  	axios
+			  	  .get(acfApiRoot + '/pages/' + pageID)
+			  	  .then(function(response){
+			  	  	$this.acfPosts = response.data.acf.safety_film_types;
+			  	  })
+			  }
+			)
+		},
+		getImageHeight: function(){
+			this.imgHeight = document.querySelector('.module').querySelector('img').height;
+			this.metaHeight.height = 'calc(' + 100 + '% - ' + this.imgHeight + 'px)'
+		},
 	}
 });
 
-// Get post type and parent name from url, ie residential - DONE
-// apiRoot + postType + '-categories
-// loop through and find term with name=parent_name ie solar
-// and get the parent.id
+const findDealerForm = Vue.component('find-dealer-form',{
+	data(){
+		return{
+			googleKey: '',
+			zipCode: '',
+			zipCodesInRadius: [],
+			radius: 25
+		}
+	},
+	template:
+	 `<div>
+			<form class="zip-search" id="zip-form" v-on:submit.prevent="zipCodeLookup">
+				<input v-model="zipCode" type="text" name="zip" id="zip" placeholder="Zip Code" required>
+				<button type="submit" id="submit-form" onclick="">
+				   <i class="fas fa-map-marker-alt yellow"></i>
+				</button>
+			</form>
+			<div class="use-location">
+				<a id="use-location" @click="findLocation" class="yellow"><i class="far fa-location-arrow yellow"></i> &nbsp;Use My Location</a>
+			</div>
+		</div>`,
+	created(){
+		this.getGoogleApiKey();
+	},
+	methods:{
+		zipCodeLookup: function(){
+		  this.sendZip(this.zipCode);
+		},
+		findLocation: function() {
+	    if (navigator.geolocation) {
+	      navigator.geolocation.getCurrentPosition(this.getPosition);
+	    }else{
+	      alert("Geolocation is not supported by this browser. Please manually type in your zip code and press Enter");
+	    }
+		},
+		getPosition: function(position) {
+			let $this = this;
+	    let apiURL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+ position.coords.latitude +','+ position.coords.longitude +'&key=' + this.googleKey;
+	    
+  		axios
+  		  .get(apiURL)
+  		  .then(function (response) {
+  	    	$this.zipCode = response.data.results[0].address_components[7].long_name;
+  	    	$this.sendZip($this.zipCode);
+  		  }
+  		)
+		},
+		getGoogleApiKey: function(){
+			let $this = this;
 
-// get all taxonomy terms for taxonomy parent
-// apiRoot + 'residential-categories?parent=parent.id'
-// loop through and list as side menu items
+			axios
+			  .get('/google-api-key.php')
+			  .then(function (response) {
+		    	$this.googleKey = response.data;
+			  }
+			)
+		},
+		sendZip: function(zip){
+			let $this = this;
 
-// Set first item as active
+		    $.ajax({
+    			url: '/wp-content/themes/madx/zip-code-search.php',
+    			type: 'POST',
+    			data: { zip: $this.zipCode, radius: $this.radius },
+    			dataType: 'json',
+    			success:function(data){
+    				if (data.error_code) {
+    					alert(data.error_msg + ' Please enter a valid zip code');
+    				}else{
+    					console.log(data.zip_codes);
+    				}
+    			}
+    		});
+		},
+	}
+});
 
-// Be able to toggle active class on click of menu element
+const TaxTermMenu = Vue.component('tax-term-posts',{
+	data() {
+		return{
+	    taxonomies: [],
+	    taxPosts: [],
+	    taxonomy: '',
+	    postType: '',
+	    taxParentSlug: '',
+	    taxChildSlug: '',
+	    taxParentId: 0,
+	    activeItem: '',
+	    singlePost: [],
+	    singlePostActive: false,
+	    benefits: [],
+	    pdfLink: ''
+		}
+	},
+	template:`<div id="posts-container">
+	            <div class="grid-x grid-margin-x">
+								<div class="medium-3 cell">
+									<ul id="tax-menu" class="tax-menu vertical menu">
+								    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name)}"><a href="#!" @click="getNewTaxPosts">{{ taxonomy.name }}</a></li>
+							    </ul>
+								</div>
+								<div class="medium-9 cell" id="all-posts" v-if="!singlePostActive">
+									<div class="grid-x grid-margin-x grid-margin-y">
+										<div class="medium-12 cell breadcrumbs">
+											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > {{ activeItem }}</h5>
+										</div>
+										<div v-if="postType != 'safety'" class="medium-4 cell module auto-height animated fadeIn" v-for="post in taxPosts">
+											<a @click="getSinglePost(post.id)"><img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered"></a>
+											<div class="meta">
+												<a @click="getSinglePost(post.id)"><h4 class="blue">{{ post.title.rendered }}</h4></a>
+												<div class="content" v-html="$options.filters.limitWords(post.content.rendered,25)"></div>
+												<a @click="getSinglePost(post.id)" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
+											</div>
+										</div>
+										<div v-if="postType == 'safety'" class="medium-12 cell module auto-height animated fadeIn" v-for="post in taxPosts">
+											<img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered">
+											<div class="meta">
+												<h4 class="blue">{{ post.title.rendered }}</h4>
+												<div class="content" v-html="post.content.rendered">{{ post.content.rendered }}</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="medium-9 cell" id="single-post" v-if="singlePostActive">
+									<div class="grid-x grid-margin-x grid-margin-y">
+										<div class="medium-12 cell breadcrumbs">
+											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > {{ activeItem }} > {{ singlePost.title.rendered }}</h5>
+										</div>
+										<div class="medium-12 cell module auto-height animated fadeIn">
+											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost.title.rendered">
+											<div class="meta">
+												<div class="medium-12 cell">
+													<div class="grid-x grid-margin-x grid-margin-y">
+														<div class="medium-5 medium-offset-1 cell">
+															<h4 class="blue">{{ singlePost.title.rendered }}</h4>
+															<p class="content" v-html="singlePost.content.rendered">{{ singlePost.content.rendered }}</p>
+															<div class="grid-x grid-margin-y subhead" v-if="pdfLink">
+																<div class="medium-2 cell text-center">
+																	<i class="fal fa-file-pdf"></i>
+																</div>
+																<div class="medium-10 cell">
+																	<a :href="pdfLink" target="_blank">Product Specs Doc</a>
+																	<p>Specification Sheet Description</p>
+																</div>
+															</div>
+															<a class="btn-lt-blue border" @click="scrollToProducts"><i class="fas fa-arrow-alt-left"></i> Back to {{ activeItem }}</a>
+														</div>
+														<div class="medium-4 medium-offset-1 cell">
+															<h6>Product Benefits</h6>
+															<ul class="product-benefits">
+																<li v-for="benefit in benefits"><i class="fas fa-check"></i> &nbsp;{{ benefit.benefit1 }}</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>`,
+	mounted (){
+		this.getPostType(location.href);
+	},
+	methods:{
+		getPostType: function(currentURL){
+			if (currentURL.includes('residential')) {
+				this.postType = 'residential';
+			}else if(currentURL.includes('commercial')){
+				this.postType = 'commercial';
+			}else if (currentURL.includes('auto')) {
+				this.postType = 'auto';
+			}else if (currentURL.includes('safety-security')) {
+				this.postType = 'safety';
+			}
+			this.getTaxParent(location.href);
+		},
+		getTaxParent: function(currentURL){
+			switch (this.postType) {
+				case 'residential':
+					if (currentURL.includes('solar')) {
+						this.taxParentSlug = 'solar';
+					}else if(currentURL.includes('decorative')){
+						this.taxParentSlug = 'decorative';
+					}else if (currentURL.includes('safety-security')) {
+						this.taxParentSlug = 'safety-security';
+					}
+					break;
 
-// Get all the posts in that active term and display in post container
+					case 'commercial':
+						if (currentURL.includes('solar')) {
+							this.taxParentSlug = 'solar';
+						}else if(currentURL.includes('decorative')){
+							this.taxParentSlug = 'decorative';
+						}else if (currentURL.includes('safety-security')) {
+							this.taxParentSlug = 'safety-security';
+						}
+						break;
+
+					case 'auto':
+						if (currentURL.includes('solar')) {
+							this.taxParentSlug = 'solar';
+						}else if(currentURL.includes('decorative')){
+							this.taxParentSlug = 'decorative';
+						}else if (currentURL.includes('safety-security')) {
+							this.taxParentSlug = 'safety-security';
+						}
+						break;
+
+					case 'safety':
+						this.taxParentSlug = 'products';
+						break;
+			}
+
+			this.getTaxParentId();
+		},
+		getTaxParentId: function(){
+			let $this = this;
+
+			axios
+			  .get(apiRoot + $this.postType + '-categories')
+			  .then(function (response) {
+			  	for (var i = 0; i < response.data.length; i++) {
+			  		if (response.data[i].link.includes($this.taxParentSlug)) {
+			  			$this.taxParentId = response.data[i].parent;
+			  			break;
+			  		}
+			  	}
+			    $this.getTaxonomies();
+			  }
+			)
+		},
+		getTaxonomies: function(){
+			let $this = this;
+
+			axios
+			  .get(apiRoot + $this.postType + '-categories?parent=' + $this.taxParentId)
+			  .then(function (response) {
+			    $this.taxonomies = response.data;
+			    $this.activeItem = $this.taxonomies[0].name;
+			    $this.getTaxPosts();
+			  }
+			)
+		},
+		getTaxPosts: function(){
+			let $this = this;
+			let taxonomyName = $this.activeItem.toLowerCase().split(' ').join('-');
+			
+			axios
+			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
+			  .then(function (response) {
+			  	console.log(response.data)
+			    $this.taxPosts = response.data;
+			    $this.singlePostActive = false;
+			  }
+			)
+		},
+		getNewTaxPosts: function(event){
+			let $this = this;
+			let taxonomyName = event.target.innerHTML.toLowerCase().split(' ').join('-');
+			
+			axios
+			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
+			  .then(function (response) {
+			    $this.taxPosts = response.data;
+			    $this.activeItem = event.target.innerHTML;
+			    $this.singlePostActive = false;
+			  }
+			)
+		},
+		getSinglePost: function(postID){
+			let $this = this;
+
+		  axios.all([
+		      axios.get(apiRoot + $this.postType + '/' + postID + '?_embed'),
+		      axios.get(acfApiRoot + $this.postType + '/' + postID)
+		    ])
+		    .then(axios.spread((postRes, acfRes) => {
+		      $this.singlePost       = postRes.data;
+		      $this.benefits         = acfRes.data.acf.film_benefits;
+		      $this.pdfLink          = acfRes.data.acf.pdf_link;
+		      $this.singlePostActive = true;
+		    }));
+		},
+		scrollToProducts: function(){
+			let $this = this;
+			
+	    $('html, body').animate({
+        scrollTop: $("#tax-posts").offset().top
+      }, 500, function() {
+        $this.singlePostActive = false;
+      });
+		}
+	},
+	computed:{
+
+	}
+});
 
 var newVue = new Vue({
   el: '#app',
   data() {
   	return{
-      taxonomies: [],
-      taxPosts: [],
-      taxonomy: '',
-      postType: '',
-      taxParentSlug: '',
-      taxChildSlug: '',
-      taxParentId: 0,
-      activeItem: ''
+      
   	}
   },
-  created (){
-  	let $this = this;
-  	this.getPostType(location.href);
-  	this.getTaxParent(location.href)
-  	this.getTaxParentId();
+  created(){
+  	$(document).foundation();
+  },
+  mounted(){
   	
   },
   methods: {
-  	getPostType: function(currentURL){
-  		if (currentURL.includes('residential')) {
-  			this.postType = 'residential';
-  		}else if(currentURL.includes('commercial')){
-  			this.postType = 'commercial';
-  		}else if (currentURL.includes('auto')) {
-  			this.postType = 'auto';
-  		}
-  	},
-  	getTaxParent: function(currentURL){
-  		if (currentURL.includes('solar')) {
-  			this.taxParentSlug = 'solar';
-  		}else if(currentURL.includes('decorative')){
-  			this.taxParentSlug = 'decorative';
-  		}else if (currentURL.includes('safety-security')) {
-  			this.taxParentSlug = 'safety-security';
-  		}
-  	},
-  	getTaxParentId: function(){
-  		let $this = this;
 
-  		axios
-  		  .get(apiRoot + $this.postType + '-categories')
-  		  .then(function (response) {
-  		    response.data.forEach(function(item){
-  		    	if (item.slug == $this.taxParentSlug) {
-  		    		$this.taxParentId = item.id;
-  		    		$this.getTaxonomies();
-  		    	}
-  		    });
-  		  }
-  		)
-  	},
-  	getTaxonomies: function(){
-  		let $this = this;
-
-  		axios
-  		  .get(apiRoot + $this.postType + '-categories?parent=' + $this.taxParentId)
-  		  .then(function (response) {
-  		    $this.taxonomies = response.data;
-  		    $this.activeItem = $this.taxonomies[0].name;
-  		    $this.getTaxPosts();
-  		  }
-  		)
-  	},
-  	getTaxPosts: function(){
-  		let $this = this;
-  		
-  		axios
-  		  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + $this.activeItem.toLowerCase().split(' ').join('-'))
-  		  .then(function (response) {
-  		    $this.taxPosts = response.data;
-  		    console.log(response.data)
-  		  }
-  		)
-  	}
-  },
+  }
 });

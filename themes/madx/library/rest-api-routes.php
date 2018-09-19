@@ -35,6 +35,20 @@
     }
 }
 
+function get_id_by_slug($params) {
+    $page = get_page_by_path($slug);
+    if ($page) {
+        return $page->ID;
+    } else {
+        return null;
+    }
+}
+
 add_action('rest_api_init', function () {
     $all_terms = new all_terms;
+
+    register_rest_route( 'wp/v2/', 'pages', array(
+      'methods' => 'GET',
+      'callback' => 'get_id_by_slug',
+    ) );
 });
