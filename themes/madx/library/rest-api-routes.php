@@ -44,11 +44,21 @@ function get_id_by_slug($params) {
     }
 }
 
+function get_current_taxonomy_slug($params) {
+    $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+    return $term->slug;
+}
+
 add_action('rest_api_init', function () {
     $all_terms = new all_terms;
 
     register_rest_route( 'wp/v2/', 'pages', array(
       'methods' => 'GET',
       'callback' => 'get_id_by_slug',
+    ) );
+
+    register_rest_route( 'wp/v2/', 'get-current-taxonomy', array(
+      'methods' => 'GET',
+      'callback' => 'get_current_taxonomy_slug',
     ) );
 });
