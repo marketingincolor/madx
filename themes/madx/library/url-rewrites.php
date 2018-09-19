@@ -38,8 +38,9 @@
 
 	  }
 	}
-
 	  $tax_url = join('/',$term_array);
+	  // Remove the trailing '/' from $tax_url
+	  $tax_url = substr($tax_url, 0, -1);
 
 	  // Replace slug with current taxonomies
 	  if( count($term_array) > 0 ){
@@ -108,4 +109,19 @@
 	//     var_dump($array); 
 	// }; 
 	// add_filter( 'parse_request', 'filter_parse_request', 10, 1 );
+
+
+  // Allow child pages to use same slug as custom post type
+	add_filter( 'page_rewrite_rules', 'wpse16902_collect_page_rewrite_rules' );
+	function wpse16902_collect_page_rewrite_rules( $page_rewrite_rules )
+	{
+	    $GLOBALS['wpse16902_page_rewrite_rules'] = $page_rewrite_rules;
+	    return array();
+	}
+
+	add_filter( 'rewrite_rules_array', 'wspe16902_prepend_page_rewrite_rules' );
+	function wspe16902_prepend_page_rewrite_rules( $rewrite_rules )
+	{
+	    return $GLOBALS['wpse16902_page_rewrite_rules'] + $rewrite_rules;
+	}
 ?>

@@ -1,0 +1,51 @@
+.page-template-page-blog{
+
+	.blog-header{
+		padding-bottom: 0;
+	}
+
+	#page-header{
+		padding: 0;
+
+		.top-bar-left,.top-bar-right{
+			flex: 50%;
+		}
+
+		.top-bar-right{
+			text-align: right;
+		}
+
+		.top-bar-right{
+			
+			.input-group{
+				margin: 0;
+			}
+		}
+	}
+
+	.pagination{
+		display: flex;
+
+		.page-numbers{
+			display: none;
+			color: #4d7da6;
+			transition: color 0.25s ease-in-out;
+
+			&:hover {
+				background-color: $clear;
+				color: $blue;
+			}
+
+			&.next,&.prev{
+				display: block;
+				flex-grow: 1;
+			}
+
+			&.next{
+				text-align: right;
+			}
+		}
+	}
+
+
+}
