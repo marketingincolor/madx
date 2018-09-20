@@ -15,7 +15,7 @@
 			<div class=" text-center">
 				<h1 class="blue"><?php the_title(); ?></h1>
 				<aside class="yellow-underline center"></aside>
-				<p class="subhead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur voluptatibus reprehenderit veritatis, omnis ullam maiores eum excepturi aut iste, sunt quae. Quam cumque, ut, est possimus optio harum in commodi.</p>
+				<div class="subhead"><?php the_field('page_subhead'); ?></div>
 			</div>
 		</div>
 	</header>
