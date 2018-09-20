@@ -95,6 +95,54 @@
 	}
 }
 
+.taxonomy-testimonials{
+	background-color: $white;
+
+	.orbit-next,.orbit-previous{
+		cursor: pointer;
+
+		&:hover, &:active{
+			background-color: $clear;
+		}
+
+		&:hover{
+
+			i{
+				color: $text_gray;
+			}
+		}
+
+		i{
+			color: #CCC;
+			font-size: 36px;
+			transition: color 0.2s ease-in-out;
+			cursor: pointer;
+		}
+	}
+
+	.orbit-container{
+		height: auto !important;
+
+		.orbit-slide{
+			font-size: 1.125rem;
+		}
+
+		.content{
+			margin-bottom: 1.875rem;
+		}
+
+		.name{
+			font-size: 1.125rem;
+			font-family: 'AvenirLTStd-Black';
+		}
+
+		.location{
+			font-size: 0.875rem;
+			font-family: 'AvenirLTStd-Book';
+		}
+	}
+}
+
 .taxonomy-faqs{
 
 	h5{
