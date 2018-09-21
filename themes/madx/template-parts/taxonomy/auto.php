@@ -28,7 +28,7 @@
 			</div>
 		</div>
 
-		<?php if ($term->slug != 'windshield-protection') { ?>
+		<?php if ($term->slug != 'windshield-protection' && $term->slug != 'paint-protection') { ?>
 		  
 		  <auto-posts></auto-posts>
 			

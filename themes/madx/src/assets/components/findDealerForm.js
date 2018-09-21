@@ -1,5 +1,6 @@
 import { apiRoot, acfApiRoot } from './config.js';
 export default{
+	name: 'findDealerForm',
 	data(){
 		return{
 			googleKey: '',
