@@ -12,7 +12,8 @@
 	}
 
 	.icon-container i{
-		font-size: 2.5rem;
+		font-size: 1.5rem;
+		color: #cdced0;
 	}
 
 	.number{
@@ -43,41 +44,10 @@
 		margin-left: 0;
 	}
 
-	.film-slider{
-		width: 100%;
-		appearance: none;
-		height: 2px;
-		background-color: #e8e8e8;
-		outline:none;
-		cursor: pointer;
-
-		&::-webkit-slider-thumb {
-		  background: url(../images/slider-thumb.png) center center no-repeat;
-		  background-size: cover;
-	    appearance: none;
-	    width: 10px;
-	    height: 10px;
-	    cursor: pointer;
-	    position:relative;
-	    top:7px
-		}
-
-		&::-moz-range-thumb {
-	    background: url(../images/slider-thumb.png) center center no-repeat;
-	    background-size: cover;
-	    width: 10px;
-	    height: 10px;
-	    cursor: pointer;
-	    position:relative;
-	    top:7px
-		}
-	}
-
 	.range-labels{
 		list-style-type: none;
 		display: flex;
 		margin: 0;
-		margin-top: 15px;
 		font-size: 13px;
 
 		li{
@@ -93,9 +63,14 @@
 
 		li{
 			flex-grow: 1;
+			flex-basis: 0;
 			margin: 0 5px;
 			cursor: pointer;
 			position: relative;
+
+			.color-swatch{
+				height: 25px;
+			}
 
 			&:first-of-type{
 				margin-left: 0;
@@ -111,18 +86,14 @@
 			left: 0;
 			top: 0;
 			width: 100%;
-			height: 55px;
+			height: 25px;
 			z-index: 1;
-			box-shadow: inset 0 0 0 5px $yellow;
-		}
-
-		li img{
-			width: 100%;
-			height: 55px;
+			box-shadow: inset 0 0 0 3px $yellow;
 		}
 
 		li p{
-			margin: 5px 0 0 5px;
+			margin: 5px 0 0 0;
+			text-align: center;
 		}
 	}
 
@@ -141,4 +112,41 @@
 			flex-grow: 1;
 		}
 	}
+
+	.theme--light.application{
+		background-color: $white;
+	}
+
+	.theme--light.v-messages{
+		display: none;
+	}
+
+	.v-slider input{
+		cursor: pointer;
+	}
+
+	.v-input--slider{
+		margin-top: 20px;
+	}
+
+	.v-input__slot{
+		margin-bottom: 0;
+	}
+
+	.primary{
+		background-color: $yellow !important;
+		border-color: $yellow !important;
+	}
+
+  .v-slider__track__container,.v-slider__track, .v-slider__track-fill{
+  	height: 4px;
+  }
+
+  .v-slider__thumb-container:before{
+  	background-color: $clear;
+  }
+
+  .v-slider__thumb.primary:focus{
+    outline: 0;
+  }
 }

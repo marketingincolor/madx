@@ -101,7 +101,7 @@
 	.orbit-next,.orbit-previous{
 		cursor: pointer;
 
-		&:hover, &:active{
+		&:hover, &:active, &:focus{
 			background-color: $clear;
 		}
 

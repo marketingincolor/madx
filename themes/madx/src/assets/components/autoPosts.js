@@ -11,7 +11,7 @@ export default{
 								<div class="medium-9 cell" id="single-post">
 									<div class="grid-x grid-margin-x grid-margin-y">
 										<div class="medium-12 cell breadcrumbs">
-											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > {{ activeItem }} > {{ autoSinglePost.title.rendered }}</h5>
+											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > {{ activeItem }}</h5>
 										</div>
 										<div class="medium-12 cell module auto-height animated fadeIn">
 											<img :src="autoSinglePost._embedded['wp:featuredmedia'][0].source_url" :alt="autoSinglePost.title.rendered">
