@@ -9,9 +9,15 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('small-10 small-offset-1 large-8 large-offset-2'); ?>>
 	<header>
-		<h1 class="entry-title"><?php the_title(); ?></h1>
+		<div class="grid-x">
+			<div class=" text-center">
+				<h1 class="blue"><?php the_title(); ?></h1>
+				<aside class="yellow-underline center"></aside>
+				<div class="subhead"><?php the_field('page_subhead'); ?></div>
+			</div>
+		</div>
 	</header>
 	<div class="entry-content">
 		<?php the_content(); ?>
