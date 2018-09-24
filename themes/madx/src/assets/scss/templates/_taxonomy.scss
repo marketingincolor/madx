@@ -24,6 +24,10 @@
 		box-shadow: 0 1px 6px 2px #eee;
 		padding: 20px 0;
 
+		@include breakpoint(small down){
+			margin-bottom: 30px;
+		}
+
 		li{
 			
 			a{
@@ -98,6 +102,20 @@
 .taxonomy-testimonials{
 	background-color: $white;
 
+	.orbit-previous{
+
+		@include breakpoint(small only){
+			left: -30px;
+		}
+	}
+
+	.orbit-next{
+
+		@include breakpoint(small only){
+			right: -30px;
+		}
+	}
+
 	.orbit-next,.orbit-previous{
 		cursor: pointer;
 
@@ -143,6 +161,10 @@
 	}
 }
 
+.tax-residential_taxonomies .taxonomy-faqs{
+	background-color: $white;
+}
+
 .taxonomy-faqs{
 
 	h5{
@@ -170,6 +192,10 @@
 	background-color: $yellow;
 	@include bg-center-cover;
 
+	@include breakpoint(small down){
+		padding: 10% 0 12%;
+	}
+
 	.grid-x{
 		align-items: center;
 	}
@@ -177,6 +203,21 @@
 	.fa-clipboard-check{
 		font-size: 10rem;
 		color: $white;
+
+		@media(max-width:960px){
+			font-size: 8rem;
+		}
+
+		@include breakpoint(small down){
+			margin-bottom: 30px;
+		}
+	}
+
+	.cell {
+
+		@include breakpoint(small down){
+			text-align: center;
+		}
 	}
 
 	h3{

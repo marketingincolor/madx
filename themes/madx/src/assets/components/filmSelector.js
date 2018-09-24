@@ -132,9 +132,9 @@ export default{
 						<ul class="film-colors">
 							<li v-for="(swatch,index) in autoSwatches">
 							{{autoSwatches.length}}
-								<div class="color-swatch" :style="{ backgroundColor: swatch.color }"></div>
+								<div class="color-swatch" @click="changeSwatch" :style="{ backgroundColor: swatch.color }"></div>
 								<div class="img-wrap" v-bind:class="{ 'active-film':index == 0 }"></div>
-							  <p v-if="index == 0 || index == Object.keys(autoSwatches).length - 1">{{ swatch.percent }}</p>
+							  <p v-bind:class="[index == 0 || index == Object.keys(autoSwatches).length - 1 ? 'outer-percent' : 'middle-percent']">{{ swatch.percent }}</p>
 							</li>
 						</ul>
 					</div>
@@ -181,12 +181,27 @@ export default{
 		<hr>
 		</v-app>`,
 	created(){
-		
+		this.getPostType(location.href);
 	},
 	methods:{
-		getPostType: function(){
-		  
+		getPostType: function(currentURL){
+		  if (currentURL.includes('residential')) {
+		  	this.postType = 'residential';
+		  }else if (currentURL.includes('auto')) {
+		  	this.postType = 'auto';
+		  }
 		},
-		
+		changeSwatch: function(event){
+			$('.img-wrap').removeClass('active-film');
+			$('.middle-percent').css({'display':'none'});
+			let $imgWrap = $(event.target).next('div');
+			let $watches = $('.color-swatch');
+
+			$imgWrap.addClass('active-film');
+			$imgWrap.next('p').css({'display':'block'});
+		}
+	},
+	watch:{
+
 	}
 };
