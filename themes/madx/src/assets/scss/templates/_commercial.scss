@@ -14,6 +14,20 @@
 
 	.film-type{
 		background-color:#f8f8f8;
+
+		.medium-4.cell{
+
+			@include breakpoint(small only){
+				margin-bottom: 30px;
+			}
+
+			.subhead{
+
+				@include breakpoint(small only){
+					margin-bottom: 20px;
+				}
+			}
+		}
 	}
 
 	.module{
