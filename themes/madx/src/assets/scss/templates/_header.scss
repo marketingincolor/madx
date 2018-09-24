@@ -7,6 +7,12 @@
 		width: 100%;
 		z-index: 1;
 		top: 50px;
+
+		@include breakpoint(medium down){
+			width: 83.3333%;
+			left: 50%;
+			transform: translateX(-50%);
+		}
 	}
 	.top-bar{
 		max-width: $grid-container;

@@ -18,6 +18,9 @@
 	</head>
 	<body <?php body_class(); ?>>
 
+		<!-- #app is closed in footer.php -->
+		<div id="app">
+
 	<?php if ( get_theme_mod( 'wpt_mobile_menu_layout' ) === 'offcanvas' ) : ?>
 		<?php get_template_part( 'template-parts/mobile-off-canvas' ); ?>
 	<?php endif; ?>

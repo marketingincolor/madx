@@ -2,9 +2,11 @@
 	@include bg-center-cover;
 	padding-bottom: 14%;
 	height: 80vh;
+
 	.grid-container,.grid-x{
 		height: 100%;
 	}
+
 	.grid-x{
 		align-items:flex-end;
 	}
@@ -13,13 +15,41 @@
 .dealer-callout{
 	background-color:#e5e6e6;
 	padding: 4% 0;
+
+	@include breakpoint(small down){
+		padding: 10% 0 12%;
+	}
+
 	.grid-x{
 		align-items: center;
 	}
+
 	h2{
 		font-family: 'AvenirLTStd-Black';
 	}
+
 	p{
 		margin-bottom: 0;
+	}
+
+	.text{
+
+		@include breakpoint(small down){
+			margin-bottom: 30px;
+		}		
+	}
+
+	.text-right{
+
+		@include breakpoint(small down){
+			text-align: left;
+		}
+	}
+}
+
+.home-modules{
+
+	@include breakpoint(small down){
+		padding: 10% 0%;
 	}
 }
