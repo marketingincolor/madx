@@ -4,6 +4,14 @@
 		padding: 20% 0 5%;
 		position: relative;
 
+		@include breakpoint(medium down){
+			padding-bottom: 50px;
+		}
+
+		@media(max-width:500px){
+			padding-bottom: 80px;
+		}
+
 		.post-meta{
 			background-color: $white;
 			padding: .625rem 2rem;
@@ -12,6 +20,10 @@
 			border-top-left-radius: 5px;
 			border-top-right-radius: 5px;
 			bottom: 0;
+
+			@include breakpoint(small down){
+				border-radius: 0;
+			}
 
 			> li{
 				display: inline-block;

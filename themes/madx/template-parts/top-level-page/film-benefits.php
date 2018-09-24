@@ -1,8 +1,8 @@
 <section class="benefits">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="medium-8 large-6 medium-offset-2 large-offset-3 cell text-center">
-				<h3 class="blue"><?php the_field('page_benefits_heading'); ?></h3>
+			<div class="small-10 small-offset-1 medium-8 large-6 medium-offset-2 large-offset-3 cell text-center">
+				<h2 class="blue"><?php the_field('page_benefits_heading'); ?></h2>
 				<aside class="yellow-underline center"></aside>
 				<p class="subhead"><?php the_field('page_benefits_subhead'); ?></p>
 			</div>
@@ -26,7 +26,7 @@
 				while ( $query->have_posts() ) : $query->the_post();
 			?>
 
-			<div class="medium-4 cell text-center">
+			<div class="small-10 small-offset-1 medium-offset-0 medium-4 cell text-center">
 				<?php the_field('benefit_icon'); ?>
 				<h5 class="blue"><?php the_title(); ?></h5>
 				<?php the_content(); ?>

@@ -3,14 +3,14 @@
 <section class="taxonomy-faqs">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="medium-10 large-8 medium-offset-1 large-offset-2 text-center">
-				<h3 class="blue"><?php the_field('taxonomy_faq_heading',$term); ?></h3>
+			<div class="small-10 large-8 small-offset-1 large-offset-2 text-center">
+				<h2 class="blue"><?php the_field('taxonomy_faq_heading',$term); ?></h2>
 				<aside class="yellow-underline center"></aside>
 				<p class="subhead"><?php the_field('taxonomy_faq_subhead',$term); ?></p>
 			</div>
 		</div>
 		<div class="grid-x">
-			<div class="medium-10 medium-offset-1 cell">
+			<div class="small-10 small-offset-1 cell">
 			  <div class="grid-x grid-margin-x grid-margin-y">
 
 			  <!-- Query custom post type 'faq' filtered by taxonomy faq_taxonomies -->
