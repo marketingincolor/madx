@@ -3,4 +3,8 @@
 	#page-header,.taxonomy-intro{
 		background-color: $white
 	}
+
+	&.category #page-header{
+		background-color: $clear;
+	}
 }
