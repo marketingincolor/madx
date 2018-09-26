@@ -1,5 +1,12 @@
+<?php 
+$term = get_queried_object();
+if ($term->slug == 'case-studies') {
+	include( locate_template( '/template-parts/taxonomy/residential/residential-'.$term->slug.'.php', false, false ) );
+}else if($term->slug == 'safety-security'){
+	include( locate_template( '/template-parts/taxonomy/residential/residential-'.$term->slug.'.php', false, false ) );
+}else{ ?>
+
 <?php get_template_part('template-parts/menus/residential-header-menu'); ?>
-<?php $term = get_queried_object(); ?>
 
 <section class="taxonomy-intro">
 	<div class="grid-container">
@@ -36,5 +43,6 @@
 <?php get_template_part('/template-parts/taxonomy/faqs'); ?>
 
 <?php get_template_part('/template-parts/taxonomy/find-film'); ?>
+<?php } ?>
 
 <?php get_template_part('/template-parts/top-level-page/find-dealer'); ?>

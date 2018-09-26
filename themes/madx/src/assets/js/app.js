@@ -12,6 +12,7 @@ import safetyFilmTypes from '../components/safetyFilmTypes.js';
 import taxTermPosts from '../components/taxTermPosts.js';
 import findDealerForm from '../components/findDealerForm.js';
 import filmSelector from '../components/filmSelector.js';
+import safetyPosts from '../components/safetyPosts.js';
 
 
 
@@ -86,7 +87,8 @@ var newVue = new Vue({
   	'safety-film-types': safetyFilmTypes,
   	'tax-term-posts': taxTermPosts,
     'find-dealer-form': findDealerForm,
-  	'film-selector': filmSelector,
+    'film-selector': filmSelector,
+  	'safety-posts': safetyPosts,
   },
   created(){
   	$(document).foundation();
