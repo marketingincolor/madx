@@ -70,7 +70,7 @@
             <address>9251 Belcher Road N. Pinellas Park, FL 33782</address>
             <ul class="privacy">
               <li><a href="/contact">Contact Us</a></li>&nbsp; |
-              <li><a href="terms-and-conditions">Terms &amp; Conditions</a></li>&nbsp; |
+              <li><a href="/terms-conditions">Terms &amp; Conditions</a></li>&nbsp; |
               <li><a href="/privacy-policy">Privacy Policy</a></li>
             </ul>
             <p>Copyright <?php echo date('Y'); ?> Madico<sup>&reg;</sup>, Inc.</p>

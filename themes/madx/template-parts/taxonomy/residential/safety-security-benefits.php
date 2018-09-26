@@ -3,14 +3,13 @@
 		<?php
 		  $parent_tax = get_post_type($post->ID);
 		  $child_tax  = get_queried_object()->slug;
-		  
 			$args = array(
 				'post_type' => 'benefits',
 				'tax_query' => array(
 					array(
 						'taxonomy' => 'benefits_taxonomies',
 						'field'    => 'slug',
-						'terms'    => $child_tax,
+						'terms'    => $child_tax.'-'.$parent_tax,
 					),
 				),
 			);

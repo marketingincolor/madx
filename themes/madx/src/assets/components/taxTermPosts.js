@@ -21,18 +21,18 @@ export default{
 	            <div class="grid-x grid-margin-x">
 								<div class="small-10 small-offset-1 medium-3 medium-offset-0 cell">
 									<ul id="tax-menu" class="tax-menu vertical menu">
-								    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name)}"><a href="#!" @click="getNewTaxPosts">{{ taxonomy.name }}</a></li>
+								    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name)}"><a href="#!" @click="getNewTaxPosts" v-html="taxonomy.name"></a></li>
 							    </ul>
 								</div>
 								<div class="small-10 small-offset-1 medium-9 medium-offset-0 cell" id="all-posts" v-if="!singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
 										<div class="medium-12 cell breadcrumbs">
-											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > {{ activeItem }}</h5>
+											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > <span v-html="activeItem"></span></h5>
 										</div>
 										<div v-if="postType != 'safety'" class="medium-4 cell module auto-height animated fadeIn" v-for="post in taxPosts">
 											<a @click="getSinglePost(post.id)"><img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered"></a>
 											<div class="meta">
-												<a @click="getSinglePost(post.id)"><h4 class="blue">{{ post.title.rendered }}</h4></a>
+												<a @click="getSinglePost(post.id)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
 												<div class="content" v-html="$options.filters.limitWords(post.content.rendered,25)"></div>
 												<a @click="getSinglePost(post.id)" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
 											</div>
@@ -40,8 +40,8 @@ export default{
 										<div v-if="postType == 'safety'" class="medium-12 cell module auto-height animated fadeIn" v-for="post in taxPosts">
 											<img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered">
 											<div class="meta">
-												<h4 class="blue">{{ post.title.rendered }}</h4>
-												<div class="content" v-html="post.content.rendered">{{ post.content.rendered }}</div>
+												<h4 class="blue" v-html="post.title.rendered"></h4>
+												<div class="content" v-html="post.content.rendered"></div>
 											</div>
 										</div>
 									</div>
@@ -49,7 +49,7 @@ export default{
 								<div class="small-10 small-offset-1 medium-9 medium-offset-0 cell" id="single-post" v-if="singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
 										<div class="medium-12 cell breadcrumbs">
-											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > {{ activeItem }} > {{ singlePost.title.rendered }}</h5>
+											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > <span v-html="activeItem"></span> > <span v-html="singlePost.title.rendered"></span></h5>
 										</div>
 										<div class="medium-12 cell module auto-height animated fadeIn">
 											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost.title.rendered">
@@ -57,8 +57,8 @@ export default{
 												<div class="medium-12 cell">
 													<div class="grid-x grid-margin-x grid-margin-y">
 														<div class="medium-5 medium-offset-1 cell">
-															<h4 class="blue">{{ singlePost.title.rendered }}</h4>
-															<p class="content" v-html="singlePost.content.rendered">{{ singlePost.content.rendered }}</p>
+															<h4 class="blue" v-html="singlePost.title.rendered"></h4>
+															<p class="content" v-html="singlePost.content.rendered"></p>
 															<div class="grid-x grid-margin-y" v-if="pdfLink">
 																<div class="medium-2 cell text-center">
 																	<i class="fal fa-file-pdf"></i>
