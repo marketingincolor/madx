@@ -1,0 +1,46 @@
+.about-types{
+
+	i{
+		font-size: 44px;
+		margin-bottom: 10px;
+		color: $yellow;
+	}
+
+	h5{
+		font-size: 1.125rem;
+		font-family: 'AvenirLTStd-Black';
+	}
+}
+
+.about-next{
+	padding: 15% 0;
+	@include bg-center-cover;
+}
+
+.about-content{
+
+	.content-block{
+	  background-color: $white;
+	  padding: 8% 0;
+	  box-shadow: 0 1px 6px 2px #eee;
+
+	  h2,h3,h4 {
+	  	color: $blue;
+	  }
+
+	  ul{
+	  	margin: 0;
+	  	list-style-type: none;
+		
+			li{
+				text-indent: -0.9em;
+				padding: 2px 0 2px 1.9em;
+			}
+
+	  	i{
+	  		color: $light_blue;
+	  		margin-right: 5px;
+	  	}
+	  }
+	}
+}
