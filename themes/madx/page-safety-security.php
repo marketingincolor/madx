@@ -33,34 +33,9 @@ get_header(); ?>
 		</div>
 	</div>
 	<div class="grid-container">
-		<!-- <div class="grid-x grid-margin-x grid-margin-y"> -->
-
-			<?php //if( have_rows('safety_film_types') ): ?>
-				<?php //while( have_rows('safety_film_types') ): the_row(); 
-
-					// $title   = get_sub_field('safety_film_title');
-					// $subhead = get_sub_field('safety_film_content');
-					// $image   = get_sub_field('safety_film_image');
-					// $link    = get_sub_field('safety_film_link');
-					// $text    = get_sub_field('safety_film_button_text');
-
-					?>
-
-					<!-- <div class="medium-3 cell module auto-height text-center">
-						<a href="<?php echo $link; ?>"><img src="<?php echo $image; ?>" alt="<?php echo $title; ?>"></a>
-						<div class="meta" v-bind:style="metaHeight">
-							<a href="#"><h4 class="blue"><?php echo $title; ?></h4></a>
-							<p class="content"><?php echo $subhead; ?></p>
-							<a href="#" class="btn-yellow border"><?php echo $text; ?></a>
-						</div>
-					</div> -->
-
-					<safety-film-types></safety-film-types>
-
-				<?php //endwhile; ?>
-			<?php //endif; ?>
-
-		<!-- </div> -->
+		
+		<safety-film-types></safety-film-types>
+		
 	</div>
 </section>
 

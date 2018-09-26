@@ -217,7 +217,11 @@ section.warranty{
 	}
 }
 
-.page-template-page-safety-security .module.auto-height{
+.page-template-page-safety-security .module.auto-height, .tax-residential_taxonomies .module.auto-height{
+
+	.meta{
+		padding: 20px 20px 30px;
+	}
 
 	.meta .content{
 		margin-bottom: 60px;
