@@ -16,7 +16,7 @@
 		</div>
 		<div class="top-bar-right">
 			
-			<?php foundationpress_about_nav(); ?>
+			<?php foundationpress_specialty_nav(); ?>
 
 		</div>
 	</nav>
