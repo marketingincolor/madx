@@ -171,6 +171,14 @@ p{
 
 section{
 	padding: 6% 0;
+
+	@include breakpoint(medium down){
+		padding: 8% 0;
+	}
+
+	@include breakpoint(small only){
+		padding: 10% 0%;
+	}
 }
 
 .subhead{

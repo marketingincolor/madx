@@ -12,7 +12,7 @@
 	}
 }
 
-.about-next{
+.about-next,.about-ppro{
 	padding: 15% 0;
 	@include bg-center-cover;
 }
@@ -42,5 +42,54 @@
 	  		margin-right: 5px;
 	  	}
 	  }
+	}
+}
+
+.page-template-page-madico-cares{
+
+	.side-module{
+
+		.desktop{
+
+			@media(max-width: 800px){
+				display: none;
+			}
+
+			.meta{
+				height: 100%;
+				position: relative;
+
+				p{
+					position: absolute;
+					width: 80%;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%,-50%);
+
+					@include breakpoint(medium down){
+						width: 90%;
+					}
+
+				}
+			}
+		}
+
+		.mobile{
+
+			@media(min-width: 801px){
+				display: none;
+			}
+		}
+	}
+
+	.module .meta h5{
+		margin-bottom: 0;
+		font-size: 1.125rem;
+		font-family: 'AvenirLTStd-Medium';
+	}
+
+	.module .meta .event-date{
+		margin-bottom: 20px;
+		color: #a7a9ac;
 	}
 }
