@@ -25,29 +25,31 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 </section>
 
 <section class="about-types">
-	<div class="grid-x grid-margin-x grid-margin-y">
-		<div class="small-10 small-offset-1 medium-8 medium-offset-2 text-center">
-			<h2 class="blue"><?php the_field('about_what_heading'); ?></h2>
-			<aside class="yellow-underline center"></aside>
-			<p class="subhead"><?php the_field('about_what_subhead'); ?></p></a>
-		</div>
-		<div class="small-10 small-offset-1 cell">
-			<div class="grid-x grid-margin-x grid-margin-y">
-				
-				<?php
+	<div class="grid-container">
+	  <div class="grid-x grid-margin-x grid-margin-y">
+			<div class="small-10 small-offset-1 medium-8 medium-offset-2 text-center">
+				<h2 class="blue"><?php the_field('about_what_heading'); ?></h2>
+				<aside class="yellow-underline center"></aside>
+				<p class="subhead"><?php the_field('about_what_subhead'); ?></p></a>
+			</div>
+			<div class="small-10 small-offset-1 cell">
+				<div class="grid-x grid-margin-x grid-margin-y">
+					
+					<?php
 
-				// check if the repeater field has rows of data
-				if( have_rows('about_types') ):
-				  while ( have_rows('about_types') ) : the_row(); ?>
-						
-					<div class="medium-6 cell">
-						<?php the_sub_field('icon'); ?>
-						<h5 class="blue"><?php the_sub_field('heading'); ?></h5>
-						<p><?php the_sub_field('subhead'); ?></p>
-					</div>
+					// check if the repeater field has rows of data
+					if( have_rows('about_types') ):
+					  while ( have_rows('about_types') ) : the_row(); ?>
+							
+						<div class="medium-6 cell">
+							<?php the_sub_field('icon'); ?>
+							<h5 class="blue"><?php the_sub_field('heading'); ?></h5>
+							<p><?php the_sub_field('subhead'); ?></p>
+						</div>
 
-				<?php endwhile;endif; ?>
-				
+					<?php endwhile;endif; ?>
+					
+				</div>
 			</div>
 		</div>
 	</div>
