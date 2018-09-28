@@ -194,33 +194,33 @@ function create_dealer_types() {
 /**
 * Create the DEALER BOOSTS custom taxonomy for Madico Dealers 
 */
-add_action( 'init', 'create_dealer_boosts', 0 );
-function create_dealer_boosts() {
+add_action( 'init', 'create_dealer_designation', 0 );
+function create_dealer_designation() {
     // Labels part for the GUI
     $labels = array(
-        'name' => _x( 'Boosts', 'taxonomy general name' ),
-        'singular_name' => _x( 'Boost', 'taxonomy singular name' ),
-        'search_items' =>  __( 'Search Boosts' ),
-        'popular_items' => __( 'Popular Boosts' ),
-        'all_items' => __( 'All Boosts' ),
+        'name' => _x( 'Designations', 'taxonomy general name' ),
+        'singular_name' => _x( 'Designation', 'taxonomy singular name' ),
+        'search_items' =>  __( 'Search Designations' ),
+        'popular_items' => __( 'Popular Designations' ),
+        'all_items' => __( 'All Designations' ),
         'parent_item' => null,
         'parent_item_colon' => null,
-        'edit_item' => __( 'Edit Boost' ), 
-        'update_item' => __( 'Update Boost' ),
-        'add_new_item' => __( 'Add New Boost' ),
-        'new_item_name' => __( 'New Boost Name' ),
-        'separate_items_with_commas' => __( 'Separate boosts with commas' ),
-        'add_or_remove_items' => __( 'Add or remove boosts' ),
-        'choose_from_most_used' => __( 'Choose from the most used boosts' ),
-        'menu_name' => __( 'Dealer Boosts' ),
+        'edit_item' => __( 'Edit Designation' ), 
+        'update_item' => __( 'Update Designation' ),
+        'add_new_item' => __( 'Add New Designation' ),
+        'new_item_name' => __( 'New Designation Name' ),
+        'separate_items_with_commas' => __( 'Separate designations with commas' ),
+        'add_or_remove_items' => __( 'Add or remove designations' ),
+        'choose_from_most_used' => __( 'Choose from the most used designations' ),
+        'menu_name' => __( 'Dealer Designations' ),
     ); 
     // Now register the hierarchical taxonomy like category
-    register_taxonomy('boosts','dealer',array(
+    register_taxonomy('designation','dealer',array(
         'hierarchical' => true,
         'labels' => $labels,
         'show_ui' => true,
         'show_admin_column' => true,
         'query_var' => true,
-        'rewrite' => array( 'slug' => 'boosts' ),
+        'rewrite' => array( 'slug' => 'designation' ),
     ));
 }

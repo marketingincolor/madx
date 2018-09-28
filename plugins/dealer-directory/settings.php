@@ -39,7 +39,7 @@ if(!class_exists('Dealer_Directory_Settings'))
         	// add your setting's fields
             add_settings_field(
                 'dealer-directory-setting_a',
-                'Include Post Type Slug?',
+                'Dealer Directory Settings A',
                 array(&$this, 'settings_field_input_text'), 
                 'dealer-directory',
                 'dealer-directory-section',
@@ -49,7 +49,7 @@ if(!class_exists('Dealer_Directory_Settings'))
             );
             add_settings_field(
                 'dealer-directory-setting_b',
-                'Primary Analytics ID',
+                'Dealer Directory Settings B',
                 array(&$this, 'settings_field_input_text'), 
                 'dealer-directory',
                 'dealer-directory-section',
@@ -59,7 +59,7 @@ if(!class_exists('Dealer_Directory_Settings'))
             );
             add_settings_field(
                 'dealer-directory-setting_c',
-                'Secondary Analytics ID',
+                'Dealer Directory Settings C',
                 array(&$this, 'settings_field_input_text'),
                 'dealer-directory',
                 'dealer-directory-section',
