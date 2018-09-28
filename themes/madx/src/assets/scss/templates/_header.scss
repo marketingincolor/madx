@@ -81,6 +81,18 @@
 
 	.top-bar-right{
 
+		#search-dropdown{
+			right: 0 !important;
+			top: 1px !important;
+			left: -209px !important;
+			border: 0;
+			background-color: #00467f;
+
+			.input-group{
+				margin-bottom: 0;
+			}
+		}
+
 		a{
 			background-color: $white;
 
