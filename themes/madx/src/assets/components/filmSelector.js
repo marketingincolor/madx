@@ -8,6 +8,9 @@ export default{
 			safetySecurity: 50,
 			heatReduction: 50,
 			postType: '',
+			results: [],
+			maskColor: '',
+			carSize: '',
 			autoSwatches: {
 				0:  { color: 'rgba(0,0,0,.05)',percent: '5%' },
 				1:  { color: 'rgba(0,0,0,.1)' ,percent: '10%' },
@@ -128,7 +131,11 @@ export default{
 				<div class="grid-x grid-margin-x grid-margin-y">
 					<div class="small-3 medium-1 cell text-center"></div>
 					<div class="small-9 medium-11 cell appearance">
-						<img src="http://placekitten.com/1000/500" alt="House" style="width:100%">
+						<div class="film-image">
+							<img id="car-original" src="../images/film-selector-car.png">
+							<div id="mask" :style="{backgroundColor: maskColor,height: this.carSize}"></div>
+							<img id="car-transparent" src="../images/film-selector-car-transparent.png">
+						</div>
 						<ul class="film-colors">
 							<li v-for="(swatch,index) in autoSwatches">
 							{{autoSwatches.length}}
@@ -183,6 +190,13 @@ export default{
 	created(){
 		this.getPostType(location.href);
 	},
+	mounted(){
+		this.carSize = $('#car-original').height() + 'px';
+		window.addEventListener('resize', () => {
+			this.carSize = $('#car-original').height() + 'px';
+			console.log(this.carSize)
+		});
+	},
 	methods:{
 		getPostType: function(currentURL){
 		  if (currentURL.includes('residential')) {
@@ -195,13 +209,15 @@ export default{
 			$('.img-wrap').removeClass('active-film');
 			$('.middle-percent').css({'display':'none'});
 			let $imgWrap = $(event.target).next('div');
+			let bgColor  = event.target.style.backgroundColor
 			let $watches = $('.color-swatch');
 
 			$imgWrap.addClass('active-film');
 			$imgWrap.next('p').css({'display':'block'});
-		}
+			this.maskColor = bgColor;
+		},
 	},
 	watch:{
-
+		
 	}
 };
