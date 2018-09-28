@@ -63,10 +63,17 @@ Vue.filter('importance',function (total){
 
 // CUSTOM DIRECTIVES
 
-// Add foundation 6 dropdown menu functionality to an element
+// Add foundation 6 dropdown hover menu functionality to an element
 Vue.directive('dropdown', {
   bind: function (el) {
     new Foundation.DropdownMenu($(el));
+  }
+});
+
+// Add foundation 6 dropdown click functionality to an element
+Vue.directive('drop-click', {
+  bind: function (el) {
+    new Foundation.Dropdown($(el));
   }
 });
 

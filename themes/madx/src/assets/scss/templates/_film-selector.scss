@@ -101,6 +101,38 @@
 		}
 	}
 
+	.film-image{
+		height: 500px;
+		position: relative;
+
+		#car-original,#car-transparent{
+			@include bg-center-cover;
+			background-size: contain;
+			height: 100%;
+			width: 100%;
+			position: absolute;
+		}
+
+		#car-original{
+			background-image: url(../images/film-selector-car.png);
+			z-index: 1;
+		}
+
+		#car-transparent{
+			background-image: url(../images/film-selector-car-transparent.png);
+			z-index: 3;
+		}
+
+		#mask{
+			z-index: 2;
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			background: blue;
+			background-size:contain;
+		}
+	}
+
 	.btn-container{
 		display: flex;
 
