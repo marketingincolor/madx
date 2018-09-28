@@ -1,5 +1,9 @@
 .page-template-page-benefits{
 
+	#page-header{
+		background-color: $white;
+	}
+
 	section{
 		@include bg-center-cover;
 		padding: 15% 0;
@@ -7,6 +11,7 @@
 
 	.benefits-intro{
 		padding: 5% 0 0;
+		background-color: $white;
 	}
 
 	.benefits-energy{

@@ -1,17 +1,24 @@
+<?php 
+$term = get_queried_object();
+if ($term->slug == 'case-studies') {
+	include( locate_template( '/template-parts/taxonomy/residential/residential-'.$term->slug.'.php', false, false ) );
+}else if($term->slug == 'safety-security'){
+	include( locate_template( '/template-parts/taxonomy/residential/residential-'.$term->slug.'.php', false, false ) );
+}else{ ?>
+
 <?php get_template_part('template-parts/menus/residential-header-menu'); ?>
-<?php $term = get_queried_object(); ?>
 
 <section class="taxonomy-intro">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="large-8 medium-10 medium-offset-1 large-offset-2 cell text-center">
+			<div class="large-8 small-10 small-offset-1 large-offset-2 cell text-center">
 				<h1 class="blue"><?php the_field('intro_heading',$term); ?></h1>
 				<aside class="yellow-underline center"></aside>
 				<p class="subhead"><?php the_field('intro_subhead',$term); ?></p>
 			</div>
 		</div>
-		<div class="grid-x grid-margin-x grid-margin-y">
-
+		<div class="grid-x">
+					
 			<?php get_template_part('template-parts/taxonomy/benefits'); ?>
 
 		</div>
@@ -21,8 +28,8 @@
 <section id="tax-posts" class="taxonomy-products">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="medium-10 large-8 medium-offset-1 large-offset-2 text-center">
-				<h3 class="blue"><?php the_field('products_heading',$term); ?></h3>
+			<div class="small-10 large-8 small-offset-1 large-offset-2 text-center">
+				<h2 class="blue"><?php the_field('products_heading',$term); ?></h2>
 				<aside class="yellow-underline center"></aside>
 				<p class="subhead"><?php the_field('products_subhead',$term); ?></p>
 			</div>
@@ -36,5 +43,6 @@
 <?php get_template_part('/template-parts/taxonomy/faqs'); ?>
 
 <?php get_template_part('/template-parts/taxonomy/find-film'); ?>
+<?php } ?>
 
 <?php get_template_part('/template-parts/top-level-page/find-dealer'); ?>

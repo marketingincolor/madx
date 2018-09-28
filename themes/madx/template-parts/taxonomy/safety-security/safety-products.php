@@ -11,7 +11,7 @@
 	<div class="taxonomy-products">
 		<div class="grid-container">
 
-	    <tax-term-posts></tax-term-posts>
+	    <safety-posts></safety-posts>
 
 		</div>
 	</div>

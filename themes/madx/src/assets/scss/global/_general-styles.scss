@@ -9,6 +9,10 @@ body{
 	position:absolute;
 }
 
+#header-grid{
+	padding: 0;
+}
+
 .yellow-underline{
 	width: 120px;
 	border-bottom: 2px solid $yellow;
@@ -113,20 +117,43 @@ body{
 
 .blue{
 	color:$blue;
+	background-color: $clear!important;
+	border-color: $clear!important;
 }
 
 .white{
 	color:$white;
+	background-color: $clear!important;
+	border-color: $clear!important;
+}
+.left,.right{
+	float:none!important;
 }
 
 .yellow{
 	color:$yellow;
+	background-color: $clear!important;
+	border-color: $clear!important;
 }
 
 h1,h2,h3{
 	font-family: 'AvenirLTStd-Light';
 	margin: 0;
 	line-height: 1.3em;
+}
+
+h1{
+
+	@include breakpoint(small down){
+		font-size: 2.2em;
+	}
+}
+
+h2{
+
+	@include breakpoint(small down){
+		font-size: 2em;
+	}
 }
 
 p,li,div,span,address{
@@ -144,6 +171,14 @@ p{
 
 section{
 	padding: 6% 0;
+
+	@include breakpoint(medium down){
+		padding: 8% 0;
+	}
+
+	@include breakpoint(small only){
+		padding: 10% 0%;
+	}
 }
 
 .subhead{
@@ -174,9 +209,27 @@ section.benefits,section.film-type{
 section.warranty{
 	padding: 15% 0;
 	@include bg-center-cover;
+
+	.text-right{
+
+		@include breakpoint(small only){
+			text-align: center;
+		}
+	}
+
+	.yellow-underline.right{
+
+		@include breakpoint(small only){
+			margin: 20px auto 30px;
+		}
+	}
 }
 
-.page-template-page-safety-security .module.auto-height{
+.page-template-page-safety-security .module.auto-height, .tax-residential_taxonomies .module.auto-height{
+
+	.meta{
+		padding: 20px 20px 30px;
+	}
 
 	.meta .content{
 		margin-bottom: 60px;

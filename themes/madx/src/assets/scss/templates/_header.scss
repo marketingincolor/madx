@@ -1,12 +1,25 @@
 // ============================
 // Navigation
 // ============================
+.blog-name{
+	text-transform: uppercase;
+	font-size: 0.875rem;
+	font-family: 'AvenirLTStd-Medium';
+	margin-left: 20px;
+}
+
 .page-template-front-page{
 
 	.site-header{
 		width: 100%;
 		z-index: 1;
 		top: 50px;
+
+		@include breakpoint(medium down){
+			width: 83.3333%;
+			left: 50%;
+			transform: translateX(-50%);
+		}
 	}
 	.top-bar{
 		max-width: $grid-container;
