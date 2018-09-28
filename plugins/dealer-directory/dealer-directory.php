@@ -109,8 +109,8 @@ function dealer_shortcodes_init()
 {
     function dealer_alpha_shortcode($atts = [], $content = null)
     {
-        // do something to $content
-        $content = 'This is the ALPHA shortcode';
+    	global $post;
+    	$content = get_post_meta($post->ID, 'company_name', true);
         // always return
         return $content;
     }
@@ -118,11 +118,46 @@ function dealer_shortcodes_init()
 
     function dealer_beta_shortcode($atts = [], $content = null)
     {
-        // do something to $content
-        $content = 'This is the BETA shortcode';
+    	$page_id = get_queried_object_id();
+    	$args = array( 
+			'template' => __( '%s: %l.' ), 
+			'term_template' => '<a href="%1$s">%2$s</a>',
+		);
+    	//$content = get_the_taxonomies( $page_id, $args );
+
+		$content = get_the_term_list( $page_id, 'types', '<ul class="types"><li>', ',</li><li>', '</li></ul>' );
+
+    	//$term_list = wp_get_post_terms($post->ID, 'types', array("fields" => "all"));
+        //return $content;
+        
+    	$datapath = plugin_dir_path( __FILE__ ) .'templates/dealer_data.php';
+        include($datapath);
         // always return
-        return $content;
+        //return $dealer_social;
+        return $term_list;
     }
     add_shortcode('dealer-beta', 'dealer_beta_shortcode');
+
+    // Dealer Type Shortcode
+    function dealer_type_shortcode($atts = [], $content = null)
+    {
+    	global $post;
+    	$term_obj = get_the_terms( $post->ID, 'types' );
+		$term_type = join(', ', wp_list_pluck($term_obj, 'name'));
+    	return $term_type;
+    }
+    add_shortcode('dealer-type', 'dealer_type_shortcode');
+
+    // Dealer Designation Shortcode
+    function dealer_des_shortcode($atts = [], $content = null)
+    {
+    	global $post;
+    	$term_obj = get_the_terms( $post->ID, 'designation' );
+		$term_type = join(', ', wp_list_pluck($term_obj, 'name'));
+    	return $term_type;
+    }
+    add_shortcode('dealer-des', 'dealer_des_shortcode');
+
+
 }
 add_action('init', 'dealer_shortcodes_init');
