@@ -2,19 +2,23 @@
     // Collect Dealer Meta values for display and edit in Admin view
     //  
     $current_fbs = @get_post_meta($post->ID, 'facebook_status', true);
-    $fbs_value = ( $current_fbs =='1' ) ? 'value="1" checked' : 'value="0"';
-    
     $current_tws = @get_post_meta($post->ID, 'twitter_status', true);
-    $tws_value = ( $current_tws =='1' ) ? 'value="1" checked' : 'value="0"';
-
     $current_lis = @get_post_meta($post->ID, 'linkedin_status', true);
-    $lis_value = ( $current_lis =='1' ) ? 'value="1" checked' : 'value="0"';
-
     $current_active = @get_post_meta($post->ID, '_enable_dealer', true);
-    $enable_checked = ( $current_active == '1' ) ? 'checked' : '';
+    $fbs_value = ( $current_fbs =='1' ) ? 'value="1" checked' : 'value="0"';
+    $tws_value = ( $current_tws =='1' ) ? 'value="1" checked' : 'value="0"';
+    $lis_value = ( $current_lis =='1' ) ? 'value="1" checked' : 'value="0"';
     $enable_value = ( $current_active =='1' ) ? 'value="1" checked' : 'value="0"';
 ?>
-<ul>
+
+<style>
+    ul.dealer_meta {}
+    ul.dealer_meta li {}
+    ul.dealer_meta li label { display:inline-block; text-align:right; min-width:20%; }
+    ul.dealer_meta li input[type=text] { min-width:40%; }
+</style>
+
+<ul class="dealer_meta">
     <li>
         <label for="meta_did">Dealer ID</label>
         <input type="text" id="meta_did" name="dealer_id" value="<?php echo @get_post_meta($post->ID, 'dealer_id', true); ?>" />
@@ -65,8 +69,6 @@
     </li>
     <li>
         <label for="meta_fbs">Facebook Active</label>
-        <!--<input type="text" id="zzzmeta_fbs" name="zzzfacebook_status" value="<?php //echo @get_post_meta($post->ID, 'facebook_status', true); ?>" />-->
-        
         <input type="checkbox" id="facebook_status" name="facebook_status" <?php echo $fbs_value; ?> />
     </li>
     <li>
@@ -75,8 +77,6 @@
     </li>
     <li>
         <label for="twitter_status">Twitter Active</label>
-        <!--<input type="text" id="zzzmeta_tws" name="zzztwitter_status" value="<?php //echo @get_post_meta($post->ID, 'twitter_status', true); ?>" />-->
-        
         <input type="checkbox" id="twitter_status" name="twitter_status" <?php echo $tws_value; ?> />
     </li>
     <li>
@@ -85,14 +85,10 @@
     </li>
     <li>
         <label for="linkedin_status">LinkedIn Active</label>
-        <!--<input type="text" id="zzzmeta_lis" name="zzzlinkedin_status" value="<?php //echo @get_post_meta($post->ID, 'linkedin_status', true); ?>" />-->
-
         <input type="checkbox" id="linkedin_status" name="linkedin_status" <?php echo $lis_value; ?> />
     </li>
     <li>
         <label for="_enable_dealer">Dealer Enabled</label>
-        <!--<input type="text" id="zzzz_enable_dealer" name="zzzz_enable_dealer" value="<?php //echo @get_post_meta($post->ID, '_enable_dealer', true); ?>" />-->
-
         <input type="checkbox" id="_enable_dealer" name="_enable_dealer" <?php echo $enable_value; ?> />
     </li>
 </ul>

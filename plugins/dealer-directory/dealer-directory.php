@@ -107,7 +107,8 @@ function remove_post_custom_fields() {
  */
 function dealer_shortcodes_init()
 {
-    function dealer_alpha_shortcode($atts = [], $content = null)
+    // Dealer Alpha Shortcode
+    function dealer_alpha_shortcode($atts, $content = null)
     {
     	global $post;
     	$content = get_post_meta($post->ID, 'company_name', true);
@@ -116,30 +117,37 @@ function dealer_shortcodes_init()
     }
     add_shortcode('dealer-alpha', 'dealer_alpha_shortcode');
 
-    function dealer_beta_shortcode($atts = [], $content = null)
+	// Dealer Beta Shortcode
+    function dealer_beta_shortcode($atts, $content = null)
     {
     	$page_id = get_queried_object_id();
-    	$args = array( 
-			'template' => __( '%s: %l.' ), 
-			'term_template' => '<a href="%1$s">%2$s</a>',
-		);
-    	//$content = get_the_taxonomies( $page_id, $args );
-
 		$content = get_the_term_list( $page_id, 'types', '<ul class="types"><li>', ',</li><li>', '</li></ul>' );
+        return $content;
 
-    	//$term_list = wp_get_post_terms($post->ID, 'types', array("fields" => "all"));
-        //return $content;
-        
-    	$datapath = plugin_dir_path( __FILE__ ) .'templates/dealer_data.php';
-        include($datapath);
-        // always return
-        //return $dealer_social;
-        return $term_list;
     }
     add_shortcode('dealer-beta', 'dealer_beta_shortcode');
 
+	// Dealer Social Shortcode
+    function dealer_social_shortcode($atts, $content = null)
+    {
+    	global $post;
+    	$dealer_fb = get_post_meta($post->ID, 'facebook', true);
+		$dealer_fbs = get_post_meta($post->ID, 'facebook_status', true);
+		$dealer_tw = get_post_meta($post->ID, 'twitter', true);
+		$dealer_tws = get_post_meta($post->ID, 'twitter_status', true);
+		$dealer_li = get_post_meta($post->ID, 'linkedin', true);
+		$dealer_lis = get_post_meta($post->ID, 'linkedin_status', true);
+		$dealer_social = '<div class="'.$type.'"> ';
+		$dealer_social .= ($dealer_fbs == 1 && ($dealer_fb) ? '<a target="_blank" href="' . $dealer_fb . '"><i class="fa fa-facebook-official" aria-hidden="true"></i>%</a> ' : '' );
+		$dealer_social .= ($dealer_tws == 1 && ($dealer_tw) ? '<a target="_blank" href="' . $dealer_tw . '"><i class="fa fa-twitter" aria-hidden="true"></i>%</a> ' : '' );
+		$dealer_social .= ($dealer_lis == 1 && ($dealer_li) ? '<a target="_blank" href="' . $dealer_li . '"><i class="fa fa-linkedin-square" aria-hidden="true"></i>%</a> ' : '' );
+		$dealer_social .= '</div>';
+		return $dealer_social;
+    }
+    add_shortcode('dealer-social', 'dealer_social_shortcode');
+
     // Dealer Type Shortcode
-    function dealer_type_shortcode($atts = [], $content = null)
+    function dealer_type_shortcode($atts, $content = null)
     {
     	global $post;
     	$term_obj = get_the_terms( $post->ID, 'types' );
@@ -149,7 +157,7 @@ function dealer_shortcodes_init()
     add_shortcode('dealer-type', 'dealer_type_shortcode');
 
     // Dealer Designation Shortcode
-    function dealer_des_shortcode($atts = [], $content = null)
+    function dealer_des_shortcode($atts, $content = null)
     {
     	global $post;
     	$term_obj = get_the_terms( $post->ID, 'designation' );
