@@ -5,7 +5,7 @@
 	<section class="top">
 		<div class="grid-container">
 			<div class="grid-x grid-margin-y">
-				<div class="large-8 medium-10 large-offset-2 medium-offset-1 cell text-center">
+				<div class="large-8 small-10 large-offset-2 small-offset-1 cell text-center">
 					<h1 class="blue"><?php the_field('page_heading'); ?></h1>
 					<aside class="yellow-underline center"></aside>
 					<p><?php the_field('page_subheading'); ?></p>
