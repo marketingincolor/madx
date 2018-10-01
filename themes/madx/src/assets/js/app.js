@@ -48,13 +48,13 @@ Vue.filter('changeSlug',function (text){
 Vue.filter('importance',function (total){
 	let value = '';
   switch(true){
-    case(total < 5):
+    case(total < 40):
       value = 'Low';
       break;
-    case(total < 8):
+    case(total < 70):
       value = 'Medium';
       break;
-    case(total < 11):
+    case(total < 101):
       value = 'High';
       break;
   }
