@@ -1,3 +1,5 @@
+<?php get_template_part('template-parts/menus/residential-header-menu'); ?>
+
 <section class="taxonomy-intro">
 	<div class="grid-container">
 		<div class="grid-x">
@@ -9,41 +11,8 @@
 		</div>
 	</div>
 	<div class="case-studies">
-		<div class="grid-container">
-			<div class="grid-x grid-margin-y">
 
-		  <!-- Query custom post type 'safety' filtered by taxonomy safety_taxonomies -> case-studies -->
-			<?php
-			  $term = get_queried_object();
-				$args = array(
-					'post_type' => get_post_type($post->ID),
-					'tax_query' => array(
-						array(
-							'taxonomy' => get_post_type($post->ID).'_taxonomies',
-							'field'    => 'slug',
-							'terms'    => $term->slug,
-						),
-					),
-				);
-				$query = new WP_Query( $args );
-				while ( $query->have_posts() ) : $query->the_post();
-			?>
+		<case-studies></case-studies>
 
-				<div class="medium-10 medium-offset-1 cell case-study-block">
-					<div class="grid-x">
-						<aside class="medium-5 cell case-study-img" style="background-image: url(<?php the_post_thumbnail_url(); ?>);"></aside>
-						<article class="medium-7 cell">
-							<p class="industry"><?php the_field('case_study_industry_type'); ?></p>
-							<h3 class="blue"><?php the_title(); ?></h3>
-							<p class="excerpt"><?php the_field('case_study_excerpt'); ?></p>
-							<a href="<?php the_permalink(); ?>" class="btn-yellow border"><?php the_field('case_study_cta_text'); ?></a>
-						</article>
-					</div>
-				</div>
-
-			<?php endwhile; wp_reset_postdata(); ?>
-
-			</div>
-	  </div>
 	</div>
 </section>
