@@ -13,6 +13,8 @@ import taxTermPosts from '../components/taxTermPosts.js';
 import findDealerForm from '../components/findDealerForm.js';
 import filmSelector from '../components/filmSelector.js';
 import safetyPosts from '../components/safetyPosts.js';
+import specialtyIndustries from '../components/specialtyIndustries.js';
+import caseStudies from '../components/caseStudies.js';
 
 
 
@@ -95,7 +97,9 @@ var newVue = new Vue({
   	'tax-term-posts': taxTermPosts,
     'find-dealer-form': findDealerForm,
     'film-selector': filmSelector,
-  	'safety-posts': safetyPosts,
+    'safety-posts': safetyPosts,
+    'specialty-industries': specialtyIndustries,
+  	'case-studies': caseStudies,
   },
   created(){
   	$(document).foundation();

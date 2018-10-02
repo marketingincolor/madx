@@ -1,3 +1,5 @@
+<?php get_template_part('template-parts/menus/specialty-header-menu'); ?>
+
 <section class="taxonomy-intro">
 	<div class="grid-container">
 		<div class="grid-x">

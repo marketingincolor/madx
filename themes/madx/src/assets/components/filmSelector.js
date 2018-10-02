@@ -56,7 +56,7 @@ export default{
 					</div>
 				</div>
 			</div>
-			<div class="medium-5 cell">
+			<div class="medium-5 cell no-print">
 				<div class="grid-x grid-margin-x relative">
 					<div class="number absolute"><span>1</span></div>
 					<div class="small-10 small-offset-1 medium-12 medium-offset-0 cell">
@@ -65,19 +65,19 @@ export default{
 					</div>
 				</div>
 			</div>
-			<div class="medium-7 cell flex-column">
+			<div class="medium-7 cell flex-column no-print">
 				<v-flex xs12>
 	        <v-slider
 	          v-model="heatReduction"
 	        ></v-slider>
-					<ul class="range-labels">
+					<ul class="range-labels no-print">
 					  <li>Low Importance</li>
 					  <li class="text-center">Medium</li>
 					  <li class="text-right">High Importance</li>
 					</ul>
 	      </v-flex>
 			</div>
-			<div class="medium-5 cell">
+			<div class="medium-5 cell no-print">
 				<div class="grid-x grid-margin-x relative">
 					<div class="number absolute"><span>2</span></div>
 					<div class="small-10 small-offset-1 medium-12 medium-offset-0 cell">
@@ -86,19 +86,19 @@ export default{
 					</div>
 				</div>
 			</div>
-			<div class="medium-7 cell flex-column">
+			<div class="medium-7 cell flex-column no-print">
 				<v-flex xs12>
 	        <v-slider
 	          v-model="glareReduction"
 	        ></v-slider>
-					<ul class="range-labels">
+					<ul class="range-labels no-print">
 					  <li>Low Importance</li>
 					  <li class="text-center">Medium</li>
 					  <li class="text-right">High Importance</li>
 					</ul>
 	      </v-flex>
 			</div>
-			<div class="medium-5 cell">
+			<div class="medium-5 cell no-print">
 				<div class="grid-x grid-margin-x relative">
 					<div class="number absolute"><span>3</span></div>
 					<div class="small-10 small-offset-1 medium-12 medium-offset-0 cell">
@@ -107,19 +107,19 @@ export default{
 					</div>
 				</div>
 			</div>
-			<div class="medium-7 cell flex-column">
+			<div class="medium-7 cell flex-column no-print">
 				<v-flex xs12>
 	        <v-slider
 	          v-model="safetySecurity"
 	        ></v-slider>
-					<ul class="range-labels">
+					<ul class="range-labels no-print">
 					  <li>Low Importance</li>
 					  <li class="text-center">Medium</li>
 					  <li class="text-right">High Importance</li>
 					</ul>
 	      </v-flex>				
 			</div>
-			<div class="medium-12 cell">
+			<div class="medium-12 cell no-print">
 				<div class="grid-x grid-margin-x relative">
 					<div class="number absolute"><span>4</span></div>
 					<div class="small-10 small-offset-1 medium-12 medium-offset-0 cell">
@@ -128,7 +128,7 @@ export default{
 					</div>
 				</div>
 			</div>
-			<div class="medium-12 cell">
+			<div class="medium-12 cell no-print">
 				<div class="grid-x grid-margin-x grid-margin-y">
 					<div class="small-10 small-offset-1 medium-12 medium-offset-0 cell appearance">
 						<div class="film-image">
@@ -147,7 +147,7 @@ export default{
 					</div>
 				</div>
 			</div>
-			<div class="medium-12 cell">
+			<div class="medium-12 cell no-print">
 				<div class="grid-x grid-margin-x relative">
 					<div class="number absolute"><span>5</span></div>
 					<div class="small-10 small-offset-1 medium-12 medium-offset-0 cell">
@@ -180,8 +180,8 @@ export default{
 					</span>
 				</div>
 				<div class="medium-5 cell text-right">
-					<span><i class="fal fa-print light-blue"></i>&nbsp;&nbsp;Print List</span>&nbsp;&nbsp;
-					<span><i class="fal fa-envelope light-blue"></i>&nbsp;&nbsp;Email List</span>
+					<span @click="print" class="no-print"><i class="fal fa-print light-blue"></i>&nbsp;&nbsp;Print List</span>&nbsp;&nbsp;
+					<span @click="sendEmail" class="no-print"><i class="fal fa-envelope light-blue"></i>&nbsp;&nbsp;Email List</span>
 				</div>
 			</div>
 			<hr />
@@ -329,6 +329,15 @@ export default{
 	      	
 	      }
 	    );
+  	},
+  	sendEmail: function(){
+  		let link = "mailto:?subject=Madico%Film%20Selector%20Results"
+  		             + "&body=" + document.getElementsByClassName("post-container")[0].innerText;
+
+  		window.location.href = link;
+  	},
+  	print: function(){
+  		print();
   	}
 	},
 	watch: {
