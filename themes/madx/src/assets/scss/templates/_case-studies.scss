@@ -11,6 +11,7 @@
 
 	.case-study-block{
 		background-color: $white;
+		box-shadow: 0 1px 6px 2px #eee;
 
 		.case-study-img{
 			@include bg-center-cover;
@@ -35,7 +36,7 @@
 	}
 }
 
-.case-study-container{
+.term-case-studies #single-post{
 	padding-top: 0;
 
 	.meta{
@@ -49,6 +50,14 @@
 			color: $blue;
 			font-size: 1.5rem;
 			font-family: 'AvenirLTStd-Book';
+		}
+
+		.content{
+			margin-bottom: 50px;
+		}
+
+		a i {
+			color: $light_blue;
 		}
 	}
 }
