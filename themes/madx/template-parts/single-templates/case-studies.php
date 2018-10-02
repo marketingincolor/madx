@@ -1,5 +1,7 @@
 <?php while ( have_posts() ) : the_post(); ?>
 
+<?php get_template_part('template-parts/menus/'.get_post_type().'-header-menu'); ?>
+
 <section class="taxonomy-intro">
 	<div class="grid-container">
 		<div class="grid-x">

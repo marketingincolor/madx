@@ -359,6 +359,12 @@
 			font-size: 1.125rem;
 			font-family: 'AvenirLTStd-Medium';
 			color: $light_blue;
+			transition: all 0.25s ease-in-out;
+
+			&:hover{
+				color: $blue;
+				border-color: $blue;
+			}
 		}
 
 		h4{
@@ -390,4 +396,10 @@
   		color: $light_blue;
   	}
   }
+}
+
+@media print{
+	.film-image,#top-header,#page-header,.top,.warning-parent,.no-print,.range-labels li{
+		display:none;
+	}
 }

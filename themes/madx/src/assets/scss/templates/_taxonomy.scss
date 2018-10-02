@@ -16,11 +16,56 @@
 	}
 }
 
-.tax-safety_taxonomies.term-products{
+.tax-specialty_taxonomies.term-industries{
+
+	#tax-posts h4{
+		color: $blue;
+		font-family: 'AvenirLTStd-Heavy';
+	}
+
+	.taxonomy-intro .read-more{
+		
+		i{
+			font-size: 0.875rem;
+			color: #80a3bf;
+			margin-bottom: 0;
+			transition: color 0.2s ease-in-out;
+		}
+
+		&:hover i{
+			color: $blue;
+		}
+	}
+
+	#all-posts{
+
+		h4{
+			font-size: 1.125rem;
+		}
+	}
 
 	#single-post{
 
+		.meta{
+			padding: 5% 20px;
+		}
+
+		.meta i{
+			font-size: 1rem;
+			color: $light_blue;
+		}
+
+		h4{
+			font-size: 1.5rem;
+		}
+
+		.content{
+			margin-bottom: 30px;
+		}
 	}
+}
+
+.tax-safety_taxonomies.term-products{
 
 	#page-header,.taxonomy-intro{
 		background-color: $clear;
@@ -72,14 +117,6 @@
 				transition: all 0.2s ease-in-out;
 			}
 		}
-	}
-
-	.breadcrumbs .breadcrumb-title, .breadcrumbs span{
-		text-transform: uppercase;
-		font-family: 'AvenirLTStd-Black';
-		color: #a7a9ac;
-		font-size: 0.75rem;
-		margin-bottom: 10px;
 	}
 
 	.product-benefits{

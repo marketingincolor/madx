@@ -4,8 +4,11 @@ get_header(); ?>
 
 <section class="page-hero" style="background-image: url(<?php the_post_thumbnail_url($post->ID); ?>);">
 
-	<?php get_template_part('template-parts/menus/residential-header-menu'); ?>
-
+	<div id="header-grid" class="grid-container">
+		<div class="small-10 small-offset-1 large-12 large-offset-0">
+		  <?php get_template_part('template-parts/menus/residential-header-menu'); ?>
+		</div>
+	</div>
 
 	<div class="grid-container">
 		<div class="grid-x">
