@@ -110,8 +110,16 @@ export default{
 			  .get(apiRoot + $this.postType + '-categories?parent=' + $this.taxParentId)
 			  .then(function (response) {
 			    $this.taxonomies = response.data;
-			    $this.activeItem = $this.taxonomies[0].name;
-			    $this.getTaxPosts($this.taxonomies[0].description);
+
+			    // Check if url has params before setting activeItem
+			    let urlParams = new URLSearchParams(window.location.search);
+			    if (urlParams.has('product')) {
+			    	$this.activeItem = urlParams.get('product');	
+			    }else{
+				    $this.activeItem = $this.taxonomies[0].name;
+			    }
+
+				  $this.getTaxPosts($this.taxonomies[0].description);
 			  }
 			)
 		},
@@ -122,7 +130,6 @@ export default{
 			axios
 			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
 			  .then(function (response) {
-			  	console.log(response.data)
 			    $this.taxPosts = response.data;
 			    $this.taxDescription = description;
 			    $this.singlePostActive = false;

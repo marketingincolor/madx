@@ -62,11 +62,13 @@ get_header(); ?>
 				<h2 class="blue">Featured Products</h2>
 				<aside class="yellow-underline center"></aside>
 				<p class="subhead">All our speciality solutions are manufactured to meet or exceed the highest quality standards.</p>
-
+			</div>
+			<div class="small-10 small-offset-1 cell">
 				<div class="taxonomy-products">
-					<specialty-products-home></specialty-products-home>
-				</div>
 
+					<specialty-products-home></specialty-products-home>
+					
+				</div>
 			</div>
 		</div>
 	</div>
