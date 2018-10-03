@@ -38,6 +38,9 @@ export default{
 	created (){
 		this.getTaxParentId();
 	},
+	mounted(){
+		
+	},
 	methods:{
 		getTaxParentId: function(){
 			let $this = this;
@@ -66,6 +69,7 @@ export default{
 			    $this.queryString    = $this.taxonomies[0].name;
 			    $this.taxDescription = $this.taxonomies[0].description;
 			    $this.bgImage        = $this.taxonomies[0].acf.specialty_background_image;
+			    
 			  }
 			)
 		},
@@ -83,7 +87,7 @@ export default{
 		      acfRes.data.forEach(function(element) {
 		      	if(element.name == $this.activeItem){
 			        $this.taxDescription = element.description;
-			        $this.queryString = element.name;
+			        $this.queryString    = element.name;
 			        $this.bgImage = element.acf.specialty_background_image;
 			      }
 		      });
@@ -100,7 +104,16 @@ export default{
       });
 		},
 		queryLink: function(){
-			location.href = '/specialty-solutions/products?product=' + this.queryString
+			location.href = '/specialty-solutions/products?product=' + this.queryString;
+		},
+		replaceRegMark: function(){
+			// console.log('ran')
+			// let menuItems = document.getElementById('posts-container').querySelectorAll('li a');
+			// for(let i = 0;i < menuItems.length;i++){
+			// 	let str = menuItems[i].innerHTML;
+			// 	menuItems[i].innerHTML = str.replace(/®/g,'<sup>®</sup>');
+
+			// }
 		}
 	}
 };
