@@ -55,4 +55,26 @@ get_header(); ?>
 	</div>
 </section>
 
+<section class="featured-products">
+	<div class="grid-container">
+		<div class="grid-x">
+			<div class="small-10 small-offset-1 cell text-center">
+				<h2 class="blue">Featured Products</h2>
+				<aside class="yellow-underline center"></aside>
+				<p class="subhead">All our speciality solutions are manufactured to meet or exceed the highest quality standards.</p>
+			</div>
+			<div class="small-10 small-offset-1 cell">
+				<div class="taxonomy-products">
+
+					<specialty-products-home></specialty-products-home>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+
+<?php get_template_part('template-parts/taxonomy/specialty-solutions/contact'); ?>
+
 <?php get_footer();

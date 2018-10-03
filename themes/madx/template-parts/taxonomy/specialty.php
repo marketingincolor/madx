@@ -1,8 +1,6 @@
 <?php 
 $term = get_queried_object();
-if ($term->slug == 'case-studies') {
-	include( locate_template( '/template-parts/taxonomy/specialty-solutions/specialty-'.$term->slug.'.php', false, false ) );
-}else if($term->slug == 'safety-security'){
+if ($term->slug == 'case-studies' || $term->slug == 'products') {
 	include( locate_template( '/template-parts/taxonomy/specialty-solutions/specialty-'.$term->slug.'.php', false, false ) );
 }else{ ?>
 	

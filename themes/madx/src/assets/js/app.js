@@ -16,6 +16,8 @@ import safetyPosts from '../components/safetyPosts.js';
 import specialtyIndustries from '../components/specialtyIndustries.js';
 import caseStudies from '../components/caseStudies.js';
 import decorativePosts from '../components/decorativePosts.js';
+import specialtyProducts from '../components/specialtyProducts.js';
+import specialtyProductsHome from '../components/specialtyProductsHome.js';
 
 
 
@@ -101,7 +103,9 @@ var newVue = new Vue({
     'safety-posts': safetyPosts,
     'specialty-industries': specialtyIndustries,
     'case-studies': caseStudies,
-  	'decorative-posts': decorativePosts,
+    'decorative-posts': decorativePosts,
+    'specialty-products': specialtyProducts,
+  	'specialty-products-home': specialtyProductsHome,
   },
   created(){
   	$(document).foundation();
