@@ -1,20 +1,21 @@
 import { apiRoot, acfApiRoot } from './config.js';
 export default{
-	name: 'taxTermPosts',
+	name: 'specialtyProductsHome',
 	data() {
 		return{
 	    taxonomies: [],
 	    taxPosts: [],
 	    taxonomy: '',
-	    postType: '',
-	    taxParentSlug: '',
+	    postType: 'specialty',
+	    taxParentSlug: 'products',
 	    taxChildSlug: '',
 	    taxParentId: 0,
 	    activeItem: '',
 	    singlePost: [],
 	    singlePostActive: false,
 	    benefits: [],
-	    pdfLink: ''
+	    pdfLink: '',
+	    taxDescription: ''
 		}
 	},
 	template:`<div id="posts-container">
@@ -29,19 +30,15 @@ export default{
 										<div class="medium-12 cell breadcrumbs">
 											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > <span v-html="activeItem"></span></h5>
 										</div>
-										<div v-if="postType != 'safety'" class="medium-4 cell module auto-height animated fadeIn" v-for="post in taxPosts">
+										<div class="medium-12 cell" style="margin-top:0">
+											<p class="animated fadeIn" v-html="taxDescription"></p>
+										</div>
+										<div class="medium-4 cell module auto-height animated fadeIn" v-for="post in taxPosts">
 											<a @click="getSinglePost(post.id)"><img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered"></a>
 											<div class="meta">
 												<a @click="getSinglePost(post.id)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
 												<div class="content" v-html="$options.filters.limitWords(post.content.rendered,25)"></div>
 												<a @click="getSinglePost(post.id)" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
-											</div>
-										</div>
-										<div v-if="postType == 'safety'" class="medium-12 cell module auto-height animated fadeIn" v-for="post in taxPosts">
-											<img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered">
-											<div class="meta">
-												<h4 class="blue" v-html="post.title.rendered"></h4>
-												<div class="content" v-html="post.content.rendered"></div>
 											</div>
 										</div>
 									</div>
@@ -86,67 +83,10 @@ export default{
 								</div>
 							</div>
 						</div>`,
-	mounted (){
-		this.getPostType(location.href);
+	created (){
+		this.getTaxParentId();
 	},
 	methods:{
-		getPostType: function(currentURL){
-			if (currentURL.includes('residential')) {
-				this.postType = 'residential';
-			}else if(currentURL.includes('commercial')){
-				this.postType = 'commercial';
-			}else if (currentURL.includes('auto')) {
-				this.postType = 'auto';
-			}else if (currentURL.includes('safety-security')) {
-				this.postType = 'safety';
-			}else if (currentURL.includes('specialty-solutions')) {
-				this.postType = 'specialty';
-			}
-			this.getTaxParent(location.href);
-		},
-		getTaxParent: function(currentURL){
-			switch (this.postType) {
-				case 'residential':
-					if (currentURL.includes('solar')) {
-						this.taxParentSlug = 'solar';
-					}else if(currentURL.includes('decorative')){
-						this.taxParentSlug = 'decorative';
-					}else if (currentURL.includes('safety-security')) {
-						this.taxParentSlug = 'safety-security';
-					}
-					break;
-
-					case 'commercial':
-						if (currentURL.includes('solar')) {
-							this.taxParentSlug = 'solar';
-						}else if(currentURL.includes('decorative')){
-							this.taxParentSlug = 'decorative';
-						}else if (currentURL.includes('safety-security')) {
-							this.taxParentSlug = 'safety-security';
-						}
-						break;
-
-					case 'auto':
-						if (currentURL.includes('solar')) {
-							this.taxParentSlug = 'solar';
-						}else if(currentURL.includes('decorative')){
-							this.taxParentSlug = 'decorative';
-						}else if (currentURL.includes('safety-security')) {
-							this.taxParentSlug = 'safety-security';
-						}
-						break;
-
-					case 'safety':
-						this.taxParentSlug = 'products';
-						break;
-
-					case 'specialty':
-						this.taxParentSlug = 'products';
-						break;
-			}
-
-			this.getTaxParentId();
-		},
 		getTaxParentId: function(){
 			let $this = this;
 
@@ -171,11 +111,11 @@ export default{
 			  .then(function (response) {
 			    $this.taxonomies = response.data;
 			    $this.activeItem = $this.taxonomies[0].name;
-			    $this.getTaxPosts();
+			    $this.getTaxPosts($this.taxonomies[0].description);
 			  }
 			)
 		},
-		getTaxPosts: function(){
+		getTaxPosts: function(description){
 			let $this = this;
 			let taxonomyName = $this.activeItem.toLowerCase().split(' ').join('-');
 			
@@ -184,6 +124,7 @@ export default{
 			  .then(function (response) {
 			  	console.log(response.data)
 			    $this.taxPosts = response.data;
+			    $this.taxDescription = description;
 			    $this.singlePostActive = false;
 			  }
 			)
@@ -192,14 +133,19 @@ export default{
 			let $this = this;
 			let taxonomyName = event.target.innerHTML.toLowerCase().split(' ').join('-');
 			
-			axios
-			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
-			  .then(function (response) {
-			    $this.taxPosts = response.data;
-			    $this.activeItem = event.target.innerHTML;
-			    $this.singlePostActive = false;
-			  }
-			)
+		  axios.all([
+		      axios.get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName),
+		      axios.get(apiRoot + $this.postType + '-categories?parent=' + $this.taxParentId)
+		    ])
+		    .then(axios.spread((postRes, acfRes) => {
+		      $this.taxPosts = postRes.data;
+		      $this.activeItem = event.target.innerHTML;
+		      acfRes.data.forEach(function(element) {
+		      	if(element.name == $this.activeItem)
+		        $this.taxDescription = element.description;
+		      });
+		      $this.singlePostActive = false;
+		    }));
 		},
 		getSinglePost: function(postID){
 			let $this = this;
