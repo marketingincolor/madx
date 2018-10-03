@@ -35,7 +35,11 @@ if ($term->slug == 'case-studies') {
 			</div>
 		</div>
 
-		<tax-term-posts></tax-term-posts>
+		<?php if($term->slug == 'solar') { ?>
+		  <tax-term-posts></tax-term-posts>
+		<?php }else if($term->slug == 'decorative') { ?>
+			<decorative-posts></decorative-posts>
+		<?php } ?>
 
 	</div>
 </section>

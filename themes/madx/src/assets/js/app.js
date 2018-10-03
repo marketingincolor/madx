@@ -15,6 +15,7 @@ import filmSelector from '../components/filmSelector.js';
 import safetyPosts from '../components/safetyPosts.js';
 import specialtyIndustries from '../components/specialtyIndustries.js';
 import caseStudies from '../components/caseStudies.js';
+import decorativePosts from '../components/decorativePosts.js';
 
 
 
@@ -99,7 +100,8 @@ var newVue = new Vue({
     'film-selector': filmSelector,
     'safety-posts': safetyPosts,
     'specialty-industries': specialtyIndustries,
-  	'case-studies': caseStudies,
+    'case-studies': caseStudies,
+  	'decorative-posts': decorativePosts,
   },
   created(){
   	$(document).foundation();
