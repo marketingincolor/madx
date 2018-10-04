@@ -70,12 +70,13 @@ export default{
 			    $this.taxDescription = $this.taxonomies[0].description;
 			    $this.bgImage        = $this.taxonomies[0].acf.specialty_background_image;
 			    
+			    setTimeout($this.replaceRegMark,300)
 			  }
 			)
 		},
 		getNewTaxPosts: function(event){
 			let $this = this;
-			let taxonomyName = event.target.innerHTML.toLowerCase().split(' ').join('-');
+			let taxonomyName = event.target.innerHTML.toLowerCase().split(' ').join('-').replace(/<[^>]+>/g, '');
 			
 		  axios.all([
 		      axios.get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName),
@@ -85,7 +86,7 @@ export default{
 		      $this.taxPosts = postRes.data;
 		      $this.activeItem = event.target.innerHTML;
 		      acfRes.data.forEach(function(element) {
-		      	if(element.name == $this.activeItem){
+		      	if(element.name.replace(/®/g,'<sup>®</sup>') == $this.activeItem){
 			        $this.taxDescription = element.description;
 			        $this.queryString    = element.name;
 			        $this.bgImage = element.acf.specialty_background_image;
@@ -107,13 +108,11 @@ export default{
 			location.href = '/specialty-solutions/products?product=' + this.queryString;
 		},
 		replaceRegMark: function(){
-			// console.log('ran')
-			// let menuItems = document.getElementById('posts-container').querySelectorAll('li a');
-			// for(let i = 0;i < menuItems.length;i++){
-			// 	let str = menuItems[i].innerHTML;
-			// 	menuItems[i].innerHTML = str.replace(/®/g,'<sup>®</sup>');
-
-			// }
+			let menuItems = document.getElementById('posts-container').querySelectorAll('li a,h4');
+			for(let i = 0;i < menuItems.length;i++){
+				let str = menuItems[i].innerHTML;
+				menuItems[i].innerHTML = str.replace(/®/g,'<sup>®</sup>');
+			}
 		}
 	}
 };
