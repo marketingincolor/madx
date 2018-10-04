@@ -19,31 +19,9 @@ get_header(); ?>
 			</div>
 			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 				<div class="grid-x">
-					<form action="" name="find-dealer-form">
-						<fieldset>
-					    <input name="type" value="auto" id="radio1" type="radio"><label for="radio1"><i class="fal fa-car"></i><br>Auto</label>
-					    <input name="type" value="residential" id="radio2" type="radio"><label for="radio2"><i class="fal fa-home-heart"></i><br>Residential</label>
-					    <input name="type" value="commercial" id="radio3" type="radio"><label for="radio3"><i class="fal fa-building"></i><br>Commercial</label>
-					    <input name="type" value="safety" id="radio4" type="radio"><label for="radio4"><i class="fal fa-shield"></i><br>Safety</label>
-					  </fieldset>
-					  <br class="hide-for-large">
-					  <fieldset class="radius-zip">
-					  	<select name="radius">
-				  	    <option value="25">Within 25 miles</option>
-				  	    <option value="50">Within 50 miles</option>
-				  	    <option value="75">Within 75 miles</option>
-				  	    <option value="100">Within 100 miles</option>
-				  	  </select>
-				  	  <div class="zip">
-				  	  	<input type="text" placeholder="Zip Code" name="zip">
-				  	  	<button type="submit" class="btn-yellow solid"><i class="fas fa-caret-right"></i></button>
-				  	  </div>
-					  </fieldset>
-					  <br class="hide-for-large">
-					  <fieldset class="my-location">
-					  	<a id="use-location" @click="findLocation" class="yellow"><i class="far fa-location-arrow yellow"></i> &nbsp;Use My Location</a>
-					  </fieldset>
-					</form>
+					
+					<find-dealer-page></find-dealer-page>
+
 				</div>
 			</div>
 		</div>
