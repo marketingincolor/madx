@@ -1,7 +1,7 @@
 # Browsersync config
 BROWSERSYNC:
   # URL of local development server goes here (ex. http://localsite.dev)
-  url: ""
+  url: "http://localhost/madx"
 
 # Autoprefixer will make sure your CSS works with these browsers
 COMPATIBILITY:
@@ -20,6 +20,7 @@ PATHS:
   assets:
     - "src/assets/**/*"
     - "!src/assets/{images,images/**/*,js,js/**/*,scss,scss/**/*}"
+    - "src/assets/js/components/*"
   # Paths to Sass libraries, which can then be loaded with @import
   sass:
     - "node_modules/foundation-sites/scss"
