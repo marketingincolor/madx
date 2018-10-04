@@ -85,6 +85,13 @@ Vue.directive('f-orbit', {
     unbind: function (el) {
         $(el).foundation.destroy()
     }
+});
+
+// Add foundation 6 reveal functionality to an element
+Vue.directive('reveal', {
+  bind: function (el) {
+    new Foundation.Reveal($(el));
+  }
 })
 
 var newVue = new Vue({
