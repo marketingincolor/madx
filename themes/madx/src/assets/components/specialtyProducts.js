@@ -37,7 +37,7 @@ export default{
 											<a @click="getSinglePost(post.id)"><img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered"></a>
 											<div class="meta">
 												<a @click="getSinglePost(post.id)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
-												<div class="content" v-html="$options.filters.limitWords(post.content.rendered,25)"></div>
+												<div class="content" v-html="post.acf.short_description"></div>
 												<a @click="getSinglePost(post.id)" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
 											</div>
 										</div>
@@ -45,35 +45,23 @@ export default{
 								</div>
 								<div class="small-10 small-offset-1 medium-9 medium-offset-0 cell" id="single-post" v-if="singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
-										<div class="medium-12 cell breadcrumbs">
+										<div class="medium-12 cell breadcrumbs" style="margin-bottom:0">
 											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > <span v-html="activeItem"></span> > <span v-html="singlePost.title.rendered"></span></h5>
+										</div>
+										<div class="medium-12 cell breadcrumbs">
+											<p v-html="singlePost.acf.short_description"></p>
+										</div>
+										<div class="medium-12 cell breadcrumbs">
+											<a :href="singlePost.acf.data_sheet" target="_blank" class="btn-yellow border">Data Sheet</a>&nbsp;&nbsp;&nbsp;<br class="show-for-small-only"><a href="" class="btn-yellow solid">Request A Sample</a>
 										</div>
 										<div class="medium-12 cell module auto-height animated fadeIn">
 											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost.title.rendered">
 											<div class="meta">
 												<div class="medium-12 cell">
 													<div class="grid-x grid-margin-x grid-margin-y">
-														<div class="medium-5 medium-offset-1 cell">
+														<div class="small-10 small-offset-1 cell">
 															<h4 class="blue" v-html="singlePost.title.rendered"></h4>
 															<p class="content" v-html="singlePost.content.rendered"></p>
-															<div class="grid-x grid-margin-y" v-if="pdfLink">
-																<div class="medium-2 cell text-center">
-																	<i class="fal fa-file-pdf"></i>
-																</div>
-																<div class="medium-10 cell">
-																	<a :href="pdfLink" target="_blank">Product Specs Doc</a>
-																	<p>Specification Sheet Description</p>
-																</div>
-															</div>
-														</div>
-														<div class="medium-4 medium-offset-1 cell">
-															<h6>Product Benefits</h6>
-															<ul class="product-benefits">
-																<li v-for="benefit in benefits"><i class="fas fa-check"></i> &nbsp;{{ benefit.benefit1 }}</li>
-															</ul>
-														</div>
-														<div class="small-12 cell">
-															<a class="btn-lt-blue border" @click="scrollToProducts"><i class="fas fa-arrow-alt-left"></i> Back to {{ activeItem }}</a>
 														</div>
 													</div>
 												</div>
@@ -173,7 +161,7 @@ export default{
 			let $this = this;
 			
 	    $('html, body').animate({
-        scrollTop: $("#tax-posts").offset().top
+        scrollTop: $("#posts-container").offset().top
       }, 500, function() {
         $this.singlePostActive = false;
       });
