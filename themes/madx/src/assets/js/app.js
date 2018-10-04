@@ -11,6 +11,7 @@ import autoPosts from '../components/autoPosts.js';
 import safetyFilmTypes from '../components/safetyFilmTypes.js';
 import taxTermPosts from '../components/taxTermPosts.js';
 import findDealerForm from '../components/findDealerForm.js';
+import findDealerPage from '../components/findDealerPage.js';
 import filmSelector from '../components/filmSelector.js';
 import safetyPosts from '../components/safetyPosts.js';
 import specialtyIndustries from '../components/specialtyIndustries.js';
@@ -95,17 +96,18 @@ Vue.directive('f-orbit', {
 var newVue = new Vue({
   el: '#app',
   components:{
-  	'auto-posts': autoPosts,
-  	'safety-film-types': safetyFilmTypes,
-  	'tax-term-posts': taxTermPosts,
-    'find-dealer-form': findDealerForm,
-    'film-selector': filmSelector,
-    'safety-posts': safetyPosts,
-    'specialty-industries': specialtyIndustries,
-    'case-studies': caseStudies,
-    'decorative-posts': decorativePosts,
-    'specialty-products': specialtyProducts,
-  	'specialty-products-home': specialtyProductsHome,
+  	'auto-posts'              : autoPosts,
+  	'safety-film-types'       : safetyFilmTypes,
+  	'tax-term-posts'          : taxTermPosts,
+    'find-dealer-form'        : findDealerForm,
+    'film-selector'           : filmSelector,
+    'safety-posts'            : safetyPosts,
+    'specialty-industries'    : specialtyIndustries,
+    'case-studies'            : caseStudies,
+    'decorative-posts'        : decorativePosts,
+    'specialty-products'      : specialtyProducts,
+    'specialty-products-home' : specialtyProductsHome,
+  	'find-dealer-page'        : findDealerPage,
   },
   created(){
   	$(document).foundation();
