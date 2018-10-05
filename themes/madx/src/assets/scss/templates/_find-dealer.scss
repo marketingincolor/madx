@@ -7,6 +7,7 @@
 			flex-direction: column;
 		}
 	}
+
 	form label{
 		background-color: white;
 		padding:10px;
@@ -155,18 +156,18 @@
 
 		.dealer-tag{
 			position: absolute;
-			top: -30px;
-			right: 0;
-			transform: rotate(90deg);
-			width: 100px;
+			top: 0;
+			right: 30px;
+			border-bottom-right-radius: 10px;
+			border-bottom-left-radius: 10px;
+			width: auto;
 			text-align: right;
-			padding: 13px 13px 10px 0;
-			border-radius: 25px;
+			padding: 10px;
 			background-color: $blue;
 
 			i{
 				font-size: 20px;
-				transform: rotate(-90deg);
+				padding: 0 2.5px;
 				color: $white;
 			}
 		}

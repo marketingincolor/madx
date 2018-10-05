@@ -11,7 +11,6 @@
 	
 	$api_url    = $api_root.'/'.$api_key.'/radius.json/'.$zip_code.'/'.$zip_radius.'/miles?minimal';
 
-
 	$curl = curl_init($api_url);
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	$curl_response = curl_exec($curl);
@@ -68,6 +67,16 @@
 		</div>
 	</section>
 
+	<?php 
+		if($type == 'safety-security'){
+			$type = 'safety & security';
+		}else if(is_array($type)){
+			$type = '';
+	  }else{
+	  	$type = $type;
+	  }
+	?>
+
 
 <section class="dealer-results">
 	<div class="grid-container">
@@ -77,7 +86,8 @@
 				<p class="subhead">Here is a list of <span class="underline"><?php echo $type; ?></span> dealers within <span class="underline"><?php echo $zip_radius; ?></span> miles of <span class="underline"><?php echo $zip_code; ?></span></p>
 			</div>
 
-      <?php if ($meta_query->have_posts()) : while ( $meta_query->have_posts() ) : $meta_query->the_post(); 
+      <?php if ($meta_query->have_posts()) : while ( $meta_query->have_posts() ) : $meta_query->the_post();
+      	$dealer_icons  = array();
       	$dealer_street = get_post_meta($post->ID,'street',true);
       	$dealer_zip    = get_post_meta($post->ID,'zip',true);
       	$dealer_city   = get_post_meta($post->ID,'city',true);
@@ -86,10 +96,23 @@
       	$dealer_email  = get_post_meta($post->ID,'email',true);
       	$dealer_name   = get_the_title();
       	$dealer_page   = get_the_permalink();
+      	$terms = wp_get_post_terms( $post->ID, 'types');
+      	foreach ($terms as $term) {
+      		if ($term->slug == 'architectural') {
+      			array_push($dealer_icons, '<i class="fal fa-building"></i>');
+      		}
+      		if ($term->slug == 'automotive') {
+      			array_push($dealer_icons, '<i class="fal fa-car"></i>');
+      		}
+      		if ($term->slug == 'safety-security') {
+      			array_push($dealer_icons, '<i class="fal fa-shield"></i>');
+      		}
+      	}
+      	$icons_joined = implode(" ", $dealer_icons);
       	?>
 
       	<div class="medium-6 large-3 cell module auto-height">
-      		<div class="dealer-tag"><i class="fal fa-car"></i></div>
+      		<div class="dealer-tag"><?php echo $icons_joined; ?></div>
       		<h5 class="blue" data-dealerName="<?php echo $dealer_name; ?>"><a href="#!" <?php if($dealer_email) { ?>data-open="dealer-modal"<?php } ?>><?php echo $dealer_name; ?></a></h5>
       		<ul class="dealer-meta">
       			<li><address><i class="fas fa-map-marker-alt"></i> &nbsp;<?php echo $dealer_street; ?><br> <?php echo $dealer_city; ?>, <?php echo $dealer_state; ?> <?php echo $dealer_zip; ?></address></li>
