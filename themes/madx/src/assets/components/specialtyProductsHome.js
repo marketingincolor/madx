@@ -17,14 +17,14 @@ export default{
 	},
 	template:`<div id="posts-container">
 	            <div class="grid-x">
-								<div class="small-10 small-offset-1 medium-3 medium-offset-0 cell">
+								<div class="small-12 medium-3 medium-offset-0 cell">
 									<ul id="tax-menu" class="tax-menu vertical menu">
 								    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name)}">
 								      <a href="#!" @click="getNewTaxPosts" v-html="taxonomy.name"></a>
 								    </li>
 							    </ul>
 								</div>
-								<div class="small-10 small-offset-1 medium-9 medium-offset-0 cell" id="all-posts" :style="{ backgroundImage: 'url(' + bgImage + ')' }">
+								<div id="all-posts" class="small-12 medium-9 medium-offset-0 cell" :style="{ backgroundImage: 'url(' + bgImage + ')' }">
 									<div class="grid-x">
 										<div class="medium-12 cell breadcrumbs">
 											<h4 class="blue" v-html="activeItem"></h4>
@@ -84,25 +84,16 @@ export default{
 		    ])
 		    .then(axios.spread((postRes, acfRes) => {
 		      $this.taxPosts = postRes.data;
-		      $this.activeItem = event.target.innerHTML;
+		      $this.activeItem = event.target.innerHTML.replace(/<[^>]+>/g, '');
 		      acfRes.data.forEach(function(element) {
-		      	if(element.name.replace(/®/g,'<sup>®</sup>') == $this.activeItem){
+		      	if(element.name == $this.activeItem){
 			        $this.taxDescription = element.description;
 			        $this.queryString    = element.name;
-			        $this.bgImage = element.acf.specialty_background_image;
+			        $this.bgImage        = element.acf.specialty_background_image;
 			      }
 		      });
 		      $this.singlePostActive = false;
 		    }));
-		},
-		scrollToProducts: function(){
-			let $this = this;
-			
-	    $('html, body').animate({
-        scrollTop: $("#tax-posts").offset().top
-      }, 500, function() {
-        $this.singlePostActive = false;
-      });
 		},
 		queryLink: function(){
 			location.href = '/specialty-solutions/products?product=' + this.queryString;
