@@ -7,36 +7,34 @@ export default{
 	    decorativePostID: 0,
 	    decorativeSinglePost: [],
 	    taxParentSlug: 'decorative',
-	    postType: 'residential',
+	    postType: '',
 		}
 	},
 	name: 'decorativePosts',
-	template:`<div class="grid-container" id="posts-container">
-	            <div class="grid-x grid-margin-x">
-								<div class="medium-3 cell">
-									<ul id="tax-menu" class="tax-menu vertical menu">
-								    <li v-for="post in decorativePosts" v-bind:class="{active: (activeItem == post.title.rendered)}"><a href="#!" @click="getDecorativePostSingle(post.slug)" v-html="post.title.rendered"></a></li>
-							    </ul>
-								</div>
-								<div class="medium-9 cell animated fadeIn" id="single-post" v-if="decorativeSinglePost.length > 0">
-									<div class="grid-x grid-margin-x grid-margin-y">
-										<div class="medium-12 cell breadcrumbs">
-											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > <span v-html="activeItem"></span></h5>
-										</div>
-										<div class="medium-12 cell module auto-height">
-											<img :src="decorativeSinglePost[0]._embedded['wp:featuredmedia'][0].source_url" :alt="decorativeSinglePost[0].title.rendered">
-											<div class="meta">
-												<div class="medium-12 cell">
-													<h4 class="blue" v-html="decorativeSinglePost[0].title.rendered"></h4>
-													<p class="content" v-html="decorativeSinglePost[0].content.rendered"></p>
-													<div class="grid-x grid-margin-y subhead" v-if="decorativeSinglePost[0].acf.pdf_link">
-														<div class="medium-2 cell text-center">
-															<i class="fal fa-file-pdf"></i>
-														</div>
-														<div class="medium-10 cell">
-															<a :href="decorativeSinglePost[0].acf.pdf_link" target="_blank">Product Specs Doc</a>
-															<p>Specification Sheet Description</p>
-														</div>
+	template:`<div id="posts-container" class="grid-x grid-margin-x">
+							<div class="medium-3 cell">
+								<ul id="tax-menu" class="tax-menu vertical menu">
+							    <li v-for="post in decorativePosts" v-bind:class="{active: (activeItem == post.title.rendered)}"><a href="#!" @click="getDecorativePostSingle(post.slug)" v-html="post.title.rendered"></a></li>
+						    </ul>
+							</div>
+							<div class="medium-9 cell animated fadeIn" id="single-post" v-if="decorativeSinglePost.length > 0">
+								<div class="grid-x grid-margin-x grid-margin-y">
+									<div class="medium-12 cell breadcrumbs">
+										<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > <span v-html="activeItem"></span></h5>
+									</div>
+									<div class="medium-12 cell module auto-height">
+										<img :src="decorativeSinglePost[0]._embedded['wp:featuredmedia'][0].source_url" :alt="decorativeSinglePost[0].title.rendered">
+										<div class="meta">
+											<div class="medium-12 cell">
+												<h4 class="blue" v-html="decorativeSinglePost[0].title.rendered"></h4>
+												<p class="content" v-html="decorativeSinglePost[0].content.rendered"></p>
+												<div class="grid-x grid-margin-y subhead" v-if="decorativeSinglePost[0].acf.pdf_link">
+													<div class="medium-2 cell text-center">
+														<i class="fal fa-file-pdf"></i>
+													</div>
+													<div class="medium-10 cell">
+														<a :href="decorativeSinglePost[0].acf.pdf_link" target="_blank">Product Specs Doc</a>
+														<p>Specification Sheet Description</p>
 													</div>
 												</div>
 											</div>
@@ -45,10 +43,24 @@ export default{
 								</div>
 							</div>
 						</div>`,
-	created(){
-		this.getDecorativePosts();
+	mounted(){
+		this.getPostType(location.href);
 	},
 	methods:{
+		getPostType: function(currentURL){
+			if (currentURL.includes('residential')) {
+				this.postType = 'residential';
+			}else if(currentURL.includes('commercial')){
+				this.postType = 'commercial';
+			}else if (currentURL.includes('auto')) {
+				this.postType = 'auto';
+			}else if (currentURL.includes('safety-security')) {
+				this.postType = 'safety';
+			}else if (currentURL.includes('specialty-solutions')) {
+				this.postType = 'specialty';
+			}
+			this.getDecorativePosts();
+		},
 		getDecorativePosts: function(){
 			let $this = this;
 
