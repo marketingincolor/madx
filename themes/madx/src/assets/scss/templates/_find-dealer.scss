@@ -1,4 +1,4 @@
-.page-template-page-find-dealer{
+.page-template-page-find-dealer,.page-template-page-dealer-results{
 
 	form{
 		display:flex;
@@ -122,6 +122,72 @@
 			transform: translate(-50%,-50%);
 			width: 100%;
 			text-align: center;
+		}
+	}
+}
+
+.page-template-page-dealer-results{
+
+	h1{
+		font-size: 1.875rem;
+		font-family: 'AvenirLTStd-Black';
+	}
+
+	.subhead{
+		color: #80a3bf;
+		font-size: 1.25rem;
+
+		.underline{
+			border-bottom: 1px solid #80a3bf;
+			color: #80a3bf;
+			font-size: 1.25rem;
+		}
+	}
+
+	.module{
+		padding: 70px 30px 20px;
+		position: relative;
+		overflow-y: hidden;
+
+		h5{
+			font-size: 1.125rem;
+		}
+
+		.dealer-tag{
+			position: absolute;
+			top: -30px;
+			right: 0;
+			transform: rotate(90deg);
+			width: 100px;
+			text-align: right;
+			padding: 13px 13px 10px 0;
+			border-radius: 25px;
+			background-color: $blue;
+
+			i{
+				font-size: 20px;
+				transform: rotate(-90deg);
+				color: $white;
+			}
+		}
+	}
+
+	.dealer-meta{
+		list-style-type: none;
+		margin: 0;
+
+		li{
+			font-size: 14px;
+			padding: 2.5px 0 2.5px 0.9rem;
+			text-indent: -0.6rem;
+
+			&.email{
+				word-break: break-all;
+			}
+		}
+
+		li i{
+			color: #80a3bf;
 		}
 	}
 }
