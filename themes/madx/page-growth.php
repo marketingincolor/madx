@@ -87,7 +87,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			<div class="small-10 small-offset-1 medium-8 large-6 large-offset-0">
 				<h2 class="white"><?php the_field('about_next_heading') ?></h2>
 				<aside class="yellow-underline left"></aside>
-				<p class="white"><?php the_field('about_next_subhead') ?></p>
+				<div class="white"><?php the_field('about_next_subhead') ?></div>
 			</div>
 		</div>
 	</div>

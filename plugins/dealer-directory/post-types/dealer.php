@@ -65,7 +65,7 @@ if(!class_exists('Post_Type_Template'))
                         'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'revisions', 'page-attributes'
                     ),
                     //'taxonomies' => array('type','program'),
-                    'taxonomies' => array('type','boosts'),
+                    'taxonomies' => array('types','designation'),
                     'has_archive' => true,
                     'rewrite' => array('slug' => 'dealers'),
                     'hierarchical' => false,
