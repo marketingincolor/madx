@@ -6,14 +6,16 @@ export default{
 			googleKey: '',
 			zipCode: '',
 			zipCodesInRadius: [],
-			radius: 25
+			radius: 25,
+			type: ''
 		}
 	},
 	template:
 	 `<div>
-			<form class="zip-search" id="zip-form" v-on:submit.prevent="zipCodeLookup">
+			<form class="zip-search" id="zip-form" action="/dealer-results" method="post">
 				<input v-model="zipCode" type="text" name="zip" id="zip" placeholder="Zip Code" required>
-				<button type="submit" id="submit-form" onclick="">
+				<input type="hidden" name="type" :value="type">
+				<button type="submit" id="submit-form" title="Submit Zip Code">
 				   <i class="fas fa-map-marker-alt yellow"></i>
 				</button>
 			</form>
@@ -22,9 +24,20 @@ export default{
 			</div>
 		</div>`,
 	created(){
+
+		this.getType(location.href);
 		this.getGoogleApiKey();
 	},
 	methods:{
+		getType: function(url){
+			if (url.includes('commercial') || url.includes('residential')) {
+				this.type = 'architectural'
+			}else if (url.includes('safety-security')) {
+				this.type = 'safety-security';
+			}else{
+				this.type = '';
+			}
+		},
 		zipCodeLookup: function(){
 		  this.sendZip(this.zipCode);
 		},
