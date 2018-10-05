@@ -11,8 +11,14 @@ import autoPosts from '../components/autoPosts.js';
 import safetyFilmTypes from '../components/safetyFilmTypes.js';
 import taxTermPosts from '../components/taxTermPosts.js';
 import findDealerForm from '../components/findDealerForm.js';
+import findDealerPage from '../components/findDealerPage.js';
 import filmSelector from '../components/filmSelector.js';
 import safetyPosts from '../components/safetyPosts.js';
+import specialtyIndustries from '../components/specialtyIndustries.js';
+import caseStudies from '../components/caseStudies.js';
+import decorativePosts from '../components/decorativePosts.js';
+import specialtyProducts from '../components/specialtyProducts.js';
+import specialtyProductsHome from '../components/specialtyProductsHome.js';
 
 
 
@@ -48,13 +54,13 @@ Vue.filter('changeSlug',function (text){
 Vue.filter('importance',function (total){
 	let value = '';
   switch(true){
-    case(total < 5):
+    case(total < 40):
       value = 'Low';
       break;
-    case(total < 8):
+    case(total < 70):
       value = 'Medium';
       break;
-    case(total < 11):
+    case(total < 101):
       value = 'High';
       break;
   }
@@ -97,12 +103,18 @@ Vue.directive('reveal', {
 var newVue = new Vue({
   el: '#app',
   components:{
-  	'auto-posts': autoPosts,
-  	'safety-film-types': safetyFilmTypes,
-  	'tax-term-posts': taxTermPosts,
-    'find-dealer-form': findDealerForm,
-    'film-selector': filmSelector,
-  	'safety-posts': safetyPosts,
+  	'auto-posts'              : autoPosts,
+  	'safety-film-types'       : safetyFilmTypes,
+  	'tax-term-posts'          : taxTermPosts,
+    'find-dealer-form'        : findDealerForm,
+    'film-selector'           : filmSelector,
+    'safety-posts'            : safetyPosts,
+    'specialty-industries'    : specialtyIndustries,
+    'case-studies'            : caseStudies,
+    'decorative-posts'        : decorativePosts,
+    'specialty-products'      : specialtyProducts,
+    'specialty-products-home' : specialtyProductsHome,
+  	'find-dealer-page'        : findDealerPage,
   },
   created(){
   	$(document).foundation();

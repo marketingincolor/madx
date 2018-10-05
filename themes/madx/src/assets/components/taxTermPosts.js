@@ -99,6 +99,8 @@ export default{
 				this.postType = 'auto';
 			}else if (currentURL.includes('safety-security')) {
 				this.postType = 'safety';
+			}else if (currentURL.includes('specialty-solutions')) {
+				this.postType = 'specialty';
 			}
 			this.getTaxParent(location.href);
 		},
@@ -135,6 +137,10 @@ export default{
 						break;
 
 					case 'safety':
+						this.taxParentSlug = 'products';
+						break;
+
+					case 'specialty':
 						this.taxParentSlug = 'products';
 						break;
 			}

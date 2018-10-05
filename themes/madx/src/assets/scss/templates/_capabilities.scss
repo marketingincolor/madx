@@ -1,0 +1,63 @@
+.machines{
+	background-color: $clear;
+	padding-top: 0;
+
+	.orbit-controls{
+
+		@include breakpoint(small down){
+			display: none;
+		}
+
+		.orbit-next{
+			
+			@include breakpoint(medium down){
+				right: -10%;
+			}
+		}
+		.orbit-previous{
+			
+			@include breakpoint(medium down){
+				left: -10%;
+			}
+		}
+	}
+
+	.orbit-slide{
+		background-color: $white;
+		border-radius: 5px;
+	}
+
+	.content-container{
+		display: flex;
+		align-items: center;
+	}
+
+	.slider-content{
+		padding: 8%;
+
+		h5{
+			font-size: 1.5rem;
+			font-family: 'AvenirLTStd-Black';
+		}
+
+		p:first-of-type{
+			margin-bottom: 20px;
+		}
+	}
+
+	.bg-img{
+		@include bg-center-cover;
+		@include breakpoint(small only){
+			height: 300px;
+		}
+	}
+}
+
+.industries{
+
+	
+  .module.auto-height .meta h4{
+		font-family: 'AvenirLTStd-Heavy';
+		color: $blue;
+	}
+}

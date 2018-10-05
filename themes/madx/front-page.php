@@ -63,9 +63,9 @@ get_header('home'); ?>
 						</div>
 					</div>
 					<div class="medium-6 cell module">
-						<a href="#"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/specialty-module.png" alt="Specialty Solutions"></a>
+						<a href="/specialty-solutions"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/specialty-module.png" alt="Specialty Solutions"></a>
 						<div class="meta">
-							<a href=""><h4 class="blue"><i class="fal fa-car"></i>&nbsp; Specialty Solutions</h4></a>
+							<a href="/specialty-solutions"><h4 class="blue"><i class="fal fa-car"></i>&nbsp; Specialty Solutions</h4></a>
 							<p>Window film is one of the easiest—and smartest—ways to protect you and your passengers from the sun.</p>
 						</div>
 					</div>
