@@ -20,17 +20,19 @@
     curl_close($curl);
     die('error occured during curl exec. Additional info: ' . var_export($info));
 	}
-
-	//This will return an array of zip codes in the specified radius
-	// header('Content-Type: application/json');
 	
 	// Because all zip codes come back as strings, we set up an array to push 
 	// the new zip code integers into
 	$zip_array = array();
 
+	// Decode response for easy looping
+	$curl_response = json_decode($curl_response);
+
 	// Change zip code strings to integers and push into zip_array
 	foreach ($curl_response as $zipcode) {
-		array_push($zip_array, intval($zipcode));
+		foreach ($zipcode as $the_zip) {
+			array_push($zip_array, intval($the_zip));
+		}
 	}
   
 	$meta_query_args = array(
@@ -88,12 +90,12 @@
 
       	<div class="medium-6 large-3 cell module auto-height">
       		<div class="dealer-tag"><i class="fal fa-car"></i></div>
-      		<h5 class="blue"><a href="<?php echo $dealer_page; ?>"><?php echo $dealer_name; ?></a></h5>
+      		<h5 class="blue" data-dealerName="<?php echo $dealer_name; ?>"><a href="#!" <?php if($dealer_email) { ?>data-open="dealer-modal"<?php } ?>><?php echo $dealer_name; ?></a></h5>
       		<ul class="dealer-meta">
       			<li><address><i class="fas fa-map-marker-alt"></i> &nbsp;<?php echo $dealer_street; ?><br> <?php echo $dealer_city; ?>, <?php echo $dealer_state; ?> <?php echo $dealer_zip; ?></address></li>
       			<li><address><i class="fas fa-phone"></i> &nbsp;<?php echo $dealer_phone; ?></address></li>
       			<?php if($dealer_email) { ?>
-      			  <li class="email"><address><i class="fas fa-envelope"></i> &nbsp;<?php echo $dealer_email; ?></address></li>
+      			  <li class="email" data-dealerEmail="<?php echo $dealer_email; ?>"><address><i class="fas fa-envelope"></i> &nbsp;<?php echo $dealer_email; ?></address></li>
       			<?php } ?>
       		</ul>
       	</div>
@@ -110,6 +112,7 @@
 	</div>
 </section>
 
-
+<!-- Dealer Form Modal -->
+<find-dealer-modal></find-dealer-modal>
 
 <?php get_footer();

@@ -10,9 +10,26 @@
  * @since FoundationPress 1.0.0
  */
 
-get_header(); ?>
+get_header();
+global $post; ?>
 
-<?php get_template_part( 'template-parts/featured-image' ); ?>
+<?php
+	if ( is_page() && $post->post_parent ) {
+	  $parent_page = get_post($post->post_parent);
+?>
+
+<section class="page-header">
+	<div id="header-grid" class="grid-container">
+		<div class="grid-x grid-margin-x">
+			<div class="small-10 small-offset-1 large-12 large-offset-0">
+				<?php get_template_part('template-parts/menus/'. $parent_page->post_name .'-header-menu'); ?>
+			</div>
+		</div>
+	</div>
+</section>
+
+<?php } ?>
+
 <section class="page-content">
 	<div class="grid-container">
 		<main class="grid-x grid-margin-y">
