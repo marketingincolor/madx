@@ -6,7 +6,7 @@ export default{
 			acfPosts: [],
 	    imgHeight: 135,
 	    metaHeight: {
-	    	height: ''
+	    	height: 'auto'
 	    }
 		}
 	},
@@ -19,7 +19,7 @@ export default{
 						<div class="meta" v-bind:style="metaHeight">
 							<a :href="post.safety_film_link"><h4 class="blue">{{ post.safety_film_title }}</h4></a>
 							<p class="content">{{ post.safety_film_content }}</p>
-							<a :href="post.safety_film_link" class="btn-yellow border">{{ post.safety_film_button_text }}</a>
+							<a href="/safety-security/products" class="btn-yellow border">{{ post.safety_film_button_text }}</a>
 						</div>
 					</div>
 				</div>
@@ -29,13 +29,10 @@ export default{
 		this.getACFdata();
 	},
 	mounted(){
-		window.addEventListener('resize', this.getImageHeight);
-	},
-	beforeUpdate(){
-		// this.getImageHeight();
+		// window.addEventListener('resize', this.getImageHeight);
 	},
 	updated(){
-		this.getImageHeight();
+		// setTimeout(this.getImageHeight(),2000)
 	},
 	methods: {
 		getACFdata: function(){
