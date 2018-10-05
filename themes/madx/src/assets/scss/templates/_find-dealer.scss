@@ -191,4 +191,54 @@
 			color: #80a3bf;
 		}
 	}
+
+	#modal-content{
+		text-align: center;
+		padding: 40px 0;
+
+		.subhead{
+			font-size: 1.25rem;
+			color: $text-gray;
+		}
+
+		textarea{
+			resize: none;
+		}
+
+		input,textarea{
+			box-shadow: none;
+			border-radius: 3px;
+			border: 2px solid #e5e6e6;
+
+			&:not(:placeholder-shown):valid{
+				color: #80a3bf;
+				background-color: #ecf1f5;
+			}
+
+			&:not(:placeholder-shown):invalid{
+				color: red;
+				border-color: red;
+			}
+		}
+
+		input[type=number]::-webkit-inner-spin-button, 
+		input[type=number]::-webkit-outer-spin-button { 
+		  -webkit-appearance: none; 
+		  margin: 0; 
+		}
+
+		input[type='number'] {
+		    -moz-appearance:textfield;
+		}
+
+		button[type=submit]{
+			cursor: pointer;
+			transition: background-color 0.25s ease-in-out;
+
+			&:hover{
+				background-color: $yellow;
+			}
+		}
+
+	}
 }
