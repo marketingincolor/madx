@@ -17,8 +17,8 @@ export default{
 							<div class="grid-container">
 								<div class="grid-x">
 									<div id="modal-content" class="small-10 small-offset-1 cell">
-										<h2 class="blue">Contact</h2>
-										<aside class="yellow-underline left"></aside>
+										<h3 class="blue">{{ dealerName }}</h3>
+										<aside class="yellow-underline center"></aside>
 										<p class="subhead">Please fill out the information below to contact {{ dealerName }} directly</p>
 									  <form method="post">
 											<div class="grid-x grid-margin-x">
@@ -29,13 +29,13 @@ export default{
 													<input v-model="lastName" type="text" name="last_name" placeholder="Last Name *" required>
 												</div>
 												<div class="medium-6 cell">
-													<input v-model="email" type="text" name="email" placeholder="Email *" required>
+													<input v-model="email" type="email" name="email" placeholder="Email *" required email>
 												</div>
 												<div class="medium-6 cell">
-													<input v-model="phone" type="text" name="phone" placeholder="Phone Number *" required>
+													<input v-model="phone" type="number" name="phone" placeholder="Phone Number *" required>
 												</div>
 												<div class="medium-12 cell">
-													<textarea v-model="message" name="message" id="message" cols="30" rows="10" placeholder="Message" required></textarea>
+													<textarea v-model="message" name="message" id="message" cols="20" rows="10" placeholder="Message *" required></textarea>
 													<input v-model="dealerEmail" type="hidden" name="dealer_email" value="dealerEmail">
 												</div>
 												<div class="medium-12 cell">
