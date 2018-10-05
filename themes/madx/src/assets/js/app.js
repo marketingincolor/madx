@@ -19,6 +19,7 @@ import caseStudies from '../components/caseStudies.js';
 import decorativePosts from '../components/decorativePosts.js';
 import specialtyProducts from '../components/specialtyProducts.js';
 import specialtyProductsHome from '../components/specialtyProductsHome.js';
+import findDealerModal from '../components/findDealerModal.js';
 
 
 
@@ -95,9 +96,9 @@ Vue.directive('f-orbit', {
 
 // Add foundation 6 reveal functionality to an element
 Vue.directive('reveal', {
-  bind: function (el) {
-    new Foundation.Reveal($(el));
-  }
+    bind: function (el) {
+      new Foundation.Reveal($(el))
+    },
 })
 
 var newVue = new Vue({
@@ -114,7 +115,8 @@ var newVue = new Vue({
     'decorative-posts'        : decorativePosts,
     'specialty-products'      : specialtyProducts,
     'specialty-products-home' : specialtyProductsHome,
-  	'find-dealer-page'        : findDealerPage,
+    'find-dealer-page'        : findDealerPage,
+  	'find-dealer-modal'       : findDealerModal,
   },
   created(){
   	$(document).foundation();
