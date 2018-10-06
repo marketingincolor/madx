@@ -14,20 +14,6 @@ body{
 	padding: 0;
 }
 
-.error-page ul{
-	list-style-type: none;
-	margin-left: 1rem;
-
-	p{
-		margin-bottom: 10px;
-	}
-
-	li{
-		text-indent: -0.85rem;
-		padding-left: 0.75rem;
-	}
-}
-
 .yellow-circle{
 	height: 120px;
 	width: 120px;
@@ -419,5 +405,46 @@ section.warranty{
 	}
 	:-moz-placeholder { /* Firefox 18- */
 	  color: $text-gray;
+	}
+}
+
+// 404 page
+.error-page{
+
+	ul{
+	  list-style-type: none;
+	  margin-left: 1rem;
+	}
+
+	p{
+		margin-bottom: 10px;
+	}
+
+	li{
+		text-indent: -0.85rem;
+		padding-left: 0.75rem;
+	}
+}
+
+// success page
+.success-page{
+
+	.icons{
+		margin: 50px 0 0;
+		list-style-type: none;
+		text-align: center;
+
+		li{
+			display: inline-block;
+			margin: 0 7.5px;
+
+			i{
+				font-size: 36px;
+
+				@media(max-width: 370px){
+					font-size: 28px;
+				}
+			}
+		}
 	}
 }
