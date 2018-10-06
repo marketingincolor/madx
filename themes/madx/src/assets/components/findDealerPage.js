@@ -14,7 +14,7 @@ export default{
 	 `<form action="/dealer-results" method="post" name="find-dealer-form">
 			<fieldset>
 		    <input name="type" value="automotive" id="radio1" type="radio" v-model="type"><label for="radio1"><i class="fal fa-car"></i><br>Auto</label>
-		    <input name="type" value="architechtural" id="radio3" type="radio" v-model="type"><label for="radio3"><i class="fal fa-building"></i><br>Architechtural</label>
+		    <input name="type" value="architectural" id="radio3" type="radio" v-model="type"><label for="radio3"><i class="fal fa-building"></i><br>Architectural</label>
 		    <input name="type" value="safety-security" id="radio4" type="radio" v-model="type"><label for="radio4"><i class="fal fa-shield"></i><br>Safety</label>
 		  </fieldset>
 		  <br class="hide-for-large">
