@@ -20,6 +20,7 @@ import decorativePosts from '../components/decorativePosts.js';
 import specialtyProducts from '../components/specialtyProducts.js';
 import specialtyProductsHome from '../components/specialtyProductsHome.js';
 import findDealerModal from '../components/findDealerModal.js';
+import faqs from '../components/faqs.js';
 
 
 
@@ -101,6 +102,13 @@ Vue.directive('reveal', {
     },
 })
 
+// Add foundation 6 reveal functionality to an element
+Vue.directive('accordion', {
+    bind: function (el) {
+      new Foundation.Accordion($(el))
+    },
+})
+
 var newVue = new Vue({
   el: '#app',
   components:{
@@ -116,7 +124,8 @@ var newVue = new Vue({
     'specialty-products'      : specialtyProducts,
     'specialty-products-home' : specialtyProductsHome,
     'find-dealer-page'        : findDealerPage,
-  	'find-dealer-modal'       : findDealerModal,
+    'find-dealer-modal'       : findDealerModal,
+  	'faqs'                    : faqs,
   },
   created(){
   	$(document).foundation();
