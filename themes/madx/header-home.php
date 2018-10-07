@@ -44,7 +44,7 @@
 			</div>
 			<div class="top-bar-right">
 				<?php //foundationpress_top_bar_r(); ?>
-				<ul class="dropdown menu" data-dropdown-menu>
+				<ul class="dropdown menu" v-dropdown>
 		      <li>
 		        <a href="#"><i class="fal fa-globe-americas"></i>&nbsp; English&nbsp; <i class="fas fa-chevron-down"></i></a>
 		        <ul class="menu vertical">

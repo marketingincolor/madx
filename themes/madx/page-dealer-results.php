@@ -96,6 +96,7 @@
       	$dealer_email  = get_post_meta($post->ID,'email',true);
       	$dealer_name   = get_the_title();
       	$dealer_page   = get_the_permalink();
+      	// Get each dealer type and assign it an icon
       	$terms = wp_get_post_terms( $post->ID, 'types');
       	foreach ($terms as $term) {
       		if ($term->slug == 'architectural') {
