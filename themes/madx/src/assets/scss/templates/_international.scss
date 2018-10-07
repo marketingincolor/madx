@@ -1,0 +1,15 @@
+.page-template-page-international{
+
+	.about-next.ppro{
+		margin-top: -1px;
+
+		@include breakpoint(medium down){
+			background-position: 0;
+		}
+
+		@include breakpoint(small down){
+			padding-bottom: 80%;
+			background-position: right center;
+		}
+	}
+}
