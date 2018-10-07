@@ -80,7 +80,6 @@ export default {
 					  .get(apiRoot + $this.postType + '?search=' + $this.searchText)
 					  .then(function (response) {
 					    $this.searchPosts = response.data;
-					    console.log(response.data)
 					    $this.faqPosts = [];
 					  }
 					)
@@ -91,7 +90,6 @@ export default {
 					  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + $this.taxonomyName.toLowerCase() + '&search=' + $this.searchText)
 					  .then(function (response) {
 					    $this.searchPosts = response.data;
-					    console.log(response.data)
 					    $this.faqPosts = [];
 					  }
 					)
