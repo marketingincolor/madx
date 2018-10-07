@@ -28,7 +28,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		<div class="grid-x">
 			<div class="small-12 cell content-block">
 				<div class="grid-x">
-					<div class="small-10 small-offset-1 medium-8 medium-offset-2">
+					<div class="small-10 small-offset-1 medium-8 medium-offset-2 cell">
 						<?php the_content(); ?>
 					</div>
 				</div>
@@ -49,7 +49,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	</div>
 	<div class="grid-container">
 		<div class="grid-x grid-margin-x grid-margin-y">
-			<div class="small-10 small-offset-1 large-12 large-offset-0">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 				<div class="grid-x grid-margin-x grid-margin-y">
 					<div class="medium-6 large-4 cell module auto-height">
 						<img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/black-pearl-car.png" alt="Auto">
@@ -84,7 +84,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 <section class="about-next" style="background-image: url(<?php the_field('about_next_background_image') ?>);">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 medium-8 large-6 large-offset-0">
+			<div class="small-10 small-offset-1 medium-8 large-6 large-offset-0 cell">
 				<h2 class="white"><?php the_field('about_next_heading') ?></h2>
 				<aside class="yellow-underline left"></aside>
 				<div class="white"><?php the_field('about_next_subhead') ?></div>
