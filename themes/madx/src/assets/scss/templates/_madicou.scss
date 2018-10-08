@@ -18,6 +18,7 @@
 	    .main-menu > ul {
 		    padding: 0;
 		    height: 100%;
+		    background:transparent;
 		}
 		/*
 		.main-menu > ul > li {
@@ -63,8 +64,74 @@
 		*/
 	}
 	
-	.madicou-search {
-		padding:71px 0 6% 0;
+	section {
+		padding:3% 0;
+		.module .meta p {
+			padding-bottom:.5em;
+		}
+		#searchform input[type=text] {
+			max-width:440px;
+		}
 	}
+	.subnav {
+		background-color: #00467f;
+		padding:0.7em 0;
+		a, li {
+			color:#ffffff;
+		}
+		.subnav-left, .subnav-right {
+			float: right;
+    		right: 0;
+    		position: relative;
+		}
+		span {
+			line-height: 1;
+		    text-decoration: none;
+		    display: block;
+		    padding: 0.7rem 1rem;
+		    color:#ffffff !important;
+
+		}
+	}
+
+	.madicou-search {
+		padding:6% 0;
+		background-color:#ECF1F6;
+	}
+
+	.page-content {
+		.side-documents {
+			.meta {
+				.doc-link {
+					.fal {
+						font-size:2em;
+						margin:0 .5em 2em;
+						float:left;
+					}
+				}
+			}
+		}
+	}
+
+	.see-more {
+		font-family: 'AvenirLTStd-Black';
+		text-transform:uppercase;
+		font-size:12px;
+		font-weight:bold;
+		letter-spacing:0.1125em;
+	}
+
+	.virtual-campus {
+		text-align:center;
+		.fal {
+			font-size:3em;
+			color:#e09e10;;
+		}
+		h5 {
+			font-size:1.5em;
+			font-weight:bold;
+		}
+	}
+
 
 }

@@ -73,7 +73,8 @@
 
 
 <header id="top-header" class="site-header" role="banner">
-	<nav class="site-navigation top-bar" role="navigation">
+<div class="grid-container" style="height:100%;">
+	<nav class="site-navigation top-bar" role="navigation" style="height:100%;">
 		<div class="top-bar-left">
 			<div class="site-desktop-title top-bar-title">
 				<a href="/"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madico-dealer-portal-logo.png"></a>
@@ -88,16 +89,17 @@
 			</div>
 		</div>
 		<div class="top-bar-right">
-			<div class="main-menu">
+			<div class="header-btns" style="float:right;">
+				<a class="btn-yellow solid" href="">Become a Dealer</a>
+			</div>
+			<div class="main-menu" style="float:right;">
 				<ul class="menu">
 					<li><a href=""><i class="fal fa-globe-americas faleft"></i> English <i class="fa fa-chevron-down"></i></a></li>
 					<li><a href="http://madicodealers.com/customer/account/login"><i class="fal fa-lock-alt faleft"></i> Sign In</a></li>
 				</ul>
 			</div>
-			<div class="header-btns">
-				<a class="btn1 btn1-sm btn-orange btn1-invert" href="">Become a Dealer</a>
-			</div>
 		</div>
 		<div class="clear"></div>
 	</nav>
+</div>
 </header>
