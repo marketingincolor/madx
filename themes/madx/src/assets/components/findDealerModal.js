@@ -63,9 +63,6 @@ export default{
 		});
 	},
 	methods:{
-		getDealerData: function(){
-			
-		},
 		sendForm: function(event){
 			let $this = this;
 			event.preventDefault();

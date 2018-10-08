@@ -66,7 +66,7 @@ if(!class_exists('Post_Type_Template'))
                     ),
                     'taxonomies' => array('types','designation'),
                     'has_archive' => true,
-                    'rewrite' => array('slug' => 'dealers'),
+                    'rewrite' => array('slug' => 'dealers','with_front' => false),
                     'hierarchical' => false,
                     'capability_type' => 'dealer',
                     'map_meta_cap' => true,
