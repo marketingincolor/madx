@@ -70,15 +70,37 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 <section class="industries">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 large-12 large-offset-0">
+			<div class="small-10 small-offset-1">
 				<div class="grid-x grid-margin-x grid-margin-y">
 
 					<?php
-
+					$count = 0;
 					if( have_rows('industries') ):
 					  while ( have_rows('industries') ) : the_row(); ?>
 
-					<div class="large-4 medium-6 cell module auto-height">
+					<?php if(get_sub_field('industry_heading') == 'Metalizing'){ ?>
+						<div class="small-12 cell">
+							<div class="grid-x module auto-height side-module">
+								<div class="medium-4 cell show-for-medium" style="background: url(<?php the_sub_field('industry_image'); ?>) center center no-repeat;background-size:cover;">
+								</div>
+								<div class="medium-8 cell show-for-medium">
+									<div class="meta">
+										<h4 class="blue"><?php the_sub_field('industry_heading'); ?></h4>
+										<p><?php the_sub_field('industry_copy'); ?></p>
+									</div>
+								</div>
+								<div class="small-12 cell module auto-height show-for-small-only">
+									<img src="<?php the_sub_field('industry_image'); ?>" alt="<?php the_title(); ?>">
+									<div class="meta">
+										<h4 class="blue"><?php the_sub_field('industry_heading'); ?></h4>
+										<p><?php the_sub_field('industry_copy'); ?></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					<?php }else{ ?>
+
+					<div class="medium-6 cell module auto-height">
 						<img src="<?php the_sub_field('industry_image'); ?>" alt="<?php the_sub_field('industry_heading'); ?>">
 						<div class="meta">
 							<h4 class="blue"><?php the_sub_field('industry_heading'); ?></h4>
@@ -86,7 +108,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 						</div>
 					</div>
 
-					<?php endwhile;endif; ?>
+					<?php }$count++;endwhile;endif; ?>
 
 				</div>
 			</div>

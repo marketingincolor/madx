@@ -131,7 +131,24 @@ var newVue = new Vue({
   	$(document).foundation();
   },
   mounted(){
-  	
+  	if (location.href.includes('protectionpro')) {
+
+     $('.full-body-carousel').owlCarousel({
+        items:1,
+        loop:false,
+        center:true,
+        margin:0,
+        URLhashListener:true,
+        autoplayHoverPause:true,
+        startPosition: 'URLHash',
+        animateOut: 'fadeOut',
+        animateIn: 'fadeIn'
+      });
+    }
+    $('.orbit-slide').find('a').on('click',function(){
+      $('.orbit-slide').find('img').removeClass('active-swatch');
+      $(this).find('img').addClass('active-swatch');
+    });
   },
   methods: {
 

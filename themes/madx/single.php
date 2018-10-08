@@ -51,8 +51,6 @@ get_header(); ?>
 				
 				<?php the_content(); ?>
 
-				<?php var_dump(); ?>
-
 				<div class="grid-x next-prev">
 					<div class="small-6 cell text-left">
 
