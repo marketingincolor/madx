@@ -45,7 +45,7 @@ export default{
 			  	let pageID = response.data[0].id
 
 			  	axios
-			  	  .get(acfApiRoot + '/pages/' + pageID)
+			  	  .get(acfApiRoot + 'pages/' + pageID)
 			  	  .then(function(response){
 			  	  	$this.acfPosts = response.data.acf.safety_film_types;
 			  	  })
