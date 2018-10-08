@@ -90,7 +90,15 @@
 		    display: block;
 		    padding: 0.7rem 1rem;
 		    color:#ffffff !important;
-
+		}
+		.is-dropdown-submenu {
+			border:0;
+			background-color: #00467f;
+			top:inherit;
+			left:auto !important;
+		}
+		.menu .is-active > a {
+			background-color: #00467f;
 		}
 	}
 
