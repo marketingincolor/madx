@@ -34,28 +34,38 @@ get_header('madicou'); ?>
 	<?php get_template_part('template-parts/madicou/business-resources') ?>
 
 	<?php get_template_part('template-parts/madicou/sales-resources') ?>
-	
-	<?php //get_template_part('template-parts/madicou/time-management') ?>
-
-	<?php //get_template_part('template-parts/madicou/employee-relations') ?>
 
 	<?php get_template_part('template-parts/madicou/marketing-resources') ?>
+<?php } elseif (is_page('ask-a-question')) { ?>
 
-	<?php //get_template_part('template-parts/madicou/windowfilm-benefits') ?>
+	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+	<section>
+		<div class="grid-container">
+			<div class="grid-x">
+				<div class="small-10 small-offset-1 cell">
+					<h1 class="blue"><?php the_title(); ?></h1>
+					<aside class="yellow-underline left"></aside>
+					<p class="subhead"><?php the_content(); ?></p>		
+				</div>
+			</div>
+		</div>
+	</section>
+	<?php endwhile;endif; ?>
+
 <?php } else { ?>
 
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-		<section>
-			<div class="grid-container">
-				<div class="grid-x">
-					<div class="small-10 small-offset-1 medium-8 large-offset-0 cell">
-						<h1 class="blue"><?php the_title(); ?></h1>
-						<aside class="yellow-underline left"></aside>
-						<p class="subhead"><?php the_content(); ?></p>		
-					</div>
+	<section>
+		<div class="grid-container">
+			<div class="grid-x">
+				<div class="small-10 small-offset-1 large-offset-0 cell">
+					<h1 class="blue"><?php the_title(); ?></h1>
+					<aside class="yellow-underline left"></aside>
+					<p class="subhead"><?php the_content(); ?></p>		
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
 	<?php endwhile;endif; ?>
 
 
