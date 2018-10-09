@@ -1,15 +1,14 @@
 <?php
-if(!class_exists('Post_Type_Template'))
+if(!class_exists('Dist_Post_Type_Template'))
 {
     /**
      * A PostTypeTemplate class that provides additional meta fields
      */
-    class Post_Type_Template
+    class Dist_Post_Type_Template
     {
-        const POST_TYPE	= "dealer";
+        const POST_TYPE	= "distributor";
         private $_meta	= array(
-            'dealer_id',
-            'logo',
+            'dist_name',
             'company_name',
             'street',
             'city',
@@ -17,14 +16,11 @@ if(!class_exists('Post_Type_Template'))
             'zip',
             'country',
             'phone_number',
+            'alt_phone_number',
+            'fax',
             'email',
             'website',
-            'facebook',
-            'facebook_status',
-            'twitter',
-            'twitter_status',
-            'linkedin',
-            'linkedin_status',
+            'markets',
             '_enable_dealer'
         );
 
@@ -60,36 +56,36 @@ if(!class_exists('Post_Type_Template'))
                         'singular_name' => __(ucwords(str_replace("_", " ", self::POST_TYPE)))
                     ),
                     'public' => true,
-                    'menu_icon' => 'dashicons-groups',
+                    'menu_icon' => 'dashicons-building',
                     'supports' => array(
                         'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'revisions', 'page-attributes'
                     ),
-                    'taxonomies' => array('types','designation'),
+                    'taxonomies' => array('region','country'),
                     'has_archive' => true,
-                    'rewrite' => array('slug' => 'dealers','with_front' => false),
+                    'rewrite' => array('slug' => 'distributors','with_front' => false),
                     'hierarchical' => false,
-                    'capability_type' => 'dealer',
+                    'capability_type' => 'distributor',
                     'map_meta_cap' => true,
                     'capabilities' => array(
                         // meta caps (don't assign these to roles)
-                        'edit_post' => 'edit_dealer',
-                        'read_post' => 'read_dealer',
+                        'edit_post' => 'edit_distributor',
+                        'read_post' => 'read_distributor',
                         'delete_post' => 'delete_dealer',
                         // primitive/meta caps
-                        'create_posts' => 'create_dealers',
+                        'create_posts' => 'create_distributors',
                         // primitive caps used outside of map_meta_cap()
-                        'edit_posts' => 'edit_dealers',
-                        'edit_others_posts' => 'manage_dealers',
-                        'publish_posts' => 'manage_dealers',
+                        'edit_posts' => 'edit_distributors',
+                        'edit_others_posts' => 'manage_distributors',
+                        'publish_posts' => 'manage_distributors',
                         'read_private_posts' => 'read',
                         // primitive caps used inside of map_meta_cap()
                         'read' => 'read',
-                        'delete_posts' => 'manage_dealers',
-                        'delete_private_posts' => 'manage_dealers',
-                        'delete_published_posts' => 'manage_dealers',
-                        'delete_others_posts' => 'manage_dealers',
-                        'edit_private_posts' => 'edit_dealers',
-                        'edit_published_posts' => 'edit_dealers'
+                        'delete_posts' => 'manage_distributors',
+                        'delete_private_posts' => 'manage_distributors',
+                        'delete_published_posts' => 'manage_distributors',
+                        'delete_others_posts' => 'manage_distributors',
+                        'edit_private_posts' => 'edit_distributors',
+                        'edit_published_posts' => 'edit_distributors'
                     ),
                 )
             );
@@ -153,73 +149,73 @@ if(!class_exists('Post_Type_Template'))
             include(sprintf("%s/../templates/%s_metabox.php", dirname(__FILE__), self::POST_TYPE));
         } // END public function add_inner_meta_boxes($post)
 
-    } // END class Post_Type_Template
-} // END if(!class_exists('Post_Type_Template'))
+    } // END class Dist_Post_Type_Template
+} // END if(!class_exists('Dist_Post_Type_Template'))
 
 /**
-* Create the DEALER TYPES custom taxonomy for Madico Dealers 
+* Create the DISTRIBUTOR REGION custom taxonomy
 */
-add_action( 'init', 'create_dealer_types', 0 );
-function create_dealer_types() {
+add_action( 'init', 'create_distributor_regions', 0 );
+function create_distributor_regions() {
     // Labels part for the GUI
     $labels = array(
-        'name' => _x( 'Types', 'taxonomy general name' ),
-        'singular_name' => _x( 'Type', 'taxonomy singular name' ),
-        'search_items' =>  __( 'Search Types' ),
-        'popular_items' => __( 'Popular Types' ),
-        'all_items' => __( 'All Types' ),
+        'name' => _x( 'Regions', 'taxonomy general name' ),
+        'singular_name' => _x( 'Region', 'taxonomy singular name' ),
+        'search_items' =>  __( 'Search Regions' ),
+        'popular_items' => __( 'Popular Regions' ),
+        'all_items' => __( 'All Regions' ),
         'parent_item' => null,
         'parent_item_colon' => null,
-        'edit_item' => __( 'Edit Type' ), 
-        'update_item' => __( 'Update Type' ),
-        'add_new_item' => __( 'Add New Type' ),
-        'new_item_name' => __( 'New Type Name' ),
-        'separate_items_with_commas' => __( 'Separate types with commas' ),
-        'add_or_remove_items' => __( 'Add or remove types' ),
-        'choose_from_most_used' => __( 'Choose from the most used types' ),
-        'menu_name' => __( 'Dealer Types' ),
+        'edit_item' => __( 'Edit Region' ), 
+        'update_item' => __( 'Update Region' ),
+        'add_new_item' => __( 'Add New Region' ),
+        'new_item_name' => __( 'New Region Name' ),
+        'separate_items_with_commas' => __( 'Separate regions with commas' ),
+        'add_or_remove_items' => __( 'Add or remove regions' ),
+        'choose_from_most_used' => __( 'Choose from the most used regions' ),
+        'menu_name' => __( 'Regions' ),
     ); 
     // Now register the hierarchical taxonomy like category
-    register_taxonomy('types','dealer',array(
+    register_taxonomy('regions','distributor',array(
         'hierarchical' => true,
         'labels' => $labels,
         'show_ui' => true,
         'show_admin_column' => true,
         'query_var' => true,
-        'rewrite' => array( 'slug' => 'type' ),
+        'rewrite' => array( 'slug' => 'region' ),
     ));
 }
 
 /**
-* Create the DEALER BOOSTS custom taxonomy for Madico Dealers 
+* Create the DISTRIBUTOR COUNTRY custom taxonomy
 */
-add_action( 'init', 'create_dealer_designation', 0 );
-function create_dealer_designation() {
+add_action( 'init', 'create_distributor_country', 0 );
+function create_distributor_country() {
     // Labels part for the GUI
     $labels = array(
-        'name' => _x( 'Designations', 'taxonomy general name' ),
-        'singular_name' => _x( 'Designation', 'taxonomy singular name' ),
-        'search_items' =>  __( 'Search Designations' ),
-        'popular_items' => __( 'Popular Designations' ),
-        'all_items' => __( 'All Designations' ),
+        'name' => _x( 'Countries', 'taxonomy general name' ),
+        'singular_name' => _x( 'Country', 'taxonomy singular name' ),
+        'search_items' =>  __( 'Search Countries' ),
+        'popular_items' => __( 'Popular Countries' ),
+        'all_items' => __( 'All Countries' ),
         'parent_item' => null,
         'parent_item_colon' => null,
-        'edit_item' => __( 'Edit Designation' ), 
-        'update_item' => __( 'Update Designation' ),
-        'add_new_item' => __( 'Add New Designation' ),
-        'new_item_name' => __( 'New Designation Name' ),
-        'separate_items_with_commas' => __( 'Separate designations with commas' ),
-        'add_or_remove_items' => __( 'Add or remove designations' ),
-        'choose_from_most_used' => __( 'Choose from the most used designations' ),
-        'menu_name' => __( 'Dealer Designations' ),
+        'edit_item' => __( 'Edit Country' ), 
+        'update_item' => __( 'Update Country' ),
+        'add_new_item' => __( 'Add New Country' ),
+        'new_item_name' => __( 'New Country Name' ),
+        'separate_items_with_commas' => __( 'Separate countries with commas' ),
+        'add_or_remove_items' => __( 'Add or remove countries' ),
+        'choose_from_most_used' => __( 'Choose from the most used countries' ),
+        'menu_name' => __( 'Countries' ),
     ); 
     // Now register the hierarchical taxonomy like category
-    register_taxonomy('designation','dealer',array(
+    register_taxonomy('country','distributor',array(
         'hierarchical' => true,
         'labels' => $labels,
         'show_ui' => true,
         'show_admin_column' => true,
         'query_var' => true,
-        'rewrite' => array( 'slug' => 'designation' ),
+        'rewrite' => array( 'slug' => 'country' ),
     ));
 }
