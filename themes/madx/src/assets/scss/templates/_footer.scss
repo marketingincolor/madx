@@ -26,6 +26,11 @@
 
 	    a{
 	    	color:$text-gray;
+	    	transition: color 0.25s ease-in-out;
+
+	    	&:hover{
+	    		color: $blue;
+	    	}
 	    }
 		}
 	}

@@ -9,16 +9,16 @@ get_header(); ?>
 				<div class="yellow-circle">
 					<i class="fal fa-thumbs-up"></i>
 				</div>
-				<h1 class="blue">Well Done!</h1>
+				<h1 class="blue"><?php the_field('success_heading'); ?></h1>
 				<aside class="yellow-underline center"></aside>
-				<p class="subhead">Thank you for your interest in Madico<sup>®</sup>! We have received your information and someone will get back with you very shortly.</p>
+				<p class="subhead"><?php the_field('success_subhead'); ?></p>
 				<ul class="icons">
 					<li><a href="https://www.facebook.com/MadicoInc/"><i class="fab fa-facebook-square blue"></i></a></li>
 					<li><a href="https://twitter.com/MadicoInc"><i class="fab fa-twitter blue"></i></a></li>
 					<li><a href="https://plus.google.com/+MadicoInc"><i class="fab fa-google-plus-g blue"></i></a></li>
 					<li><a href="https://www.linkedin.com/company/madicoinc"><i class="fab fa-linkedin blue"></i></a></li>
 					<li><a href="https://www.youtube.com/channel/UCu9s60dm8xsrjHsXtqT49Nw"><i class="fab fa-youtube blue"></i></a></li>
-					<!-- <li><a href="#"><i class="fab fa-instagram"></i></a></li> -->
+					<li><a href="https://www.instagram.com/clearplex"><i class="fab fa-instagram"></i></a></li>
 				</ul>
 			</div>
 		</div>

@@ -9,7 +9,9 @@ get_header('home'); ?>
 			<div class="small-10 small-offset-1 medium-8 large-offset-0 cell">
 				<h1 class="white">Life, with Innovative Solutions</h1>
 				<aside class="yellow-underline left"></aside>
-				<p class="white">As one of the world’s leading manufacturers of innovative laminating and coating solutions, Madico<sup>®</sup> provides high performance, complex, multi-layer films engineered to exceed your expectations. </p>
+				<p class="white" style="margin-bottom:30px">As one of the world’s leading manufacturers of innovative laminating and coating solutions, Madico<sup>®</sup> provides high performance, complex, multi-layer films engineered to exceed your expectations.</p>
+				<a href="#!" class="btn-yellow solid">Play Video&nbsp;&nbsp;<i class="fas fa-play-circle"></i></a>&nbsp;<br class="show-for-small-only">
+				<a href="/about" class="btn-yellow border">More About Us</a>
 			</div>
 		</div>
 	</div>
