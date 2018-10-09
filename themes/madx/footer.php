@@ -62,7 +62,7 @@
               <li><a href="https://plus.google.com/+MadicoInc"><i class="fab fa-google-plus-g"></i>&nbsp; Google Plus</a></li>
               <li><a href="https://www.linkedin.com/company/madicoinc"><i class="fab fa-linkedin"></i>&nbsp; LinkedIn</a></li>
               <li><a href="https://www.youtube.com/channel/UCu9s60dm8xsrjHsXtqT49Nw"><i class="fab fa-youtube"></i>&nbsp; YouTube</a></li>
-              <li><a href="#"><i class="fab fa-instagram"></i>&nbsp; Instagram</a></li>
+              <li><a href="https://www.instagram.com/clearplex"><i class="fab fa-instagram"></i>&nbsp; Instagram</a></li>
             </ul>
           </div>
           <div class="small-12 cell text-center credits">

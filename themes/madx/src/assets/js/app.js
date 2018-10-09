@@ -109,6 +109,13 @@ Vue.directive('accordion', {
     },
 })
 
+// Add foundation 6 tabs functionality to an element
+Vue.directive('tabs', {
+    bind: function (el) {
+      new Foundation.Tabs($(el))
+    },
+})
+
 var newVue = new Vue({
   el: '#app',
   components:{
@@ -132,8 +139,12 @@ var newVue = new Vue({
   },
   mounted(){
   	if (location.href.includes('protectionpro')) {
-
-     $('.full-body-carousel').owlCarousel({
+      this.protectionProCarousel();
+    }
+  },
+  methods: {
+    protectionProCarousel: function(){
+      $('.full-body-carousel').owlCarousel({
         items:1,
         loop:false,
         center:true,
@@ -144,13 +155,17 @@ var newVue = new Vue({
         animateOut: 'fadeOut',
         animateIn: 'fadeIn'
       });
+      $('.orbit-slide').find('a').on('click',function(){
+        $('.orbit-slide').find('img').removeClass('active-swatch');
+        $(this).find('img').addClass('active-swatch');
+      });
+    },
+    openDistributionTab: function(event){
+      let id = event.target.hash;
+      $(event.target).addClass('is-active');
+      $('#tabs-content').find('.tabs-panel').removeClass('is-active');
+      $(id).addClass('is-active');
     }
-    $('.orbit-slide').find('a').on('click',function(){
-      $('.orbit-slide').find('img').removeClass('active-swatch');
-      $(this).find('img').addClass('active-swatch');
-    });
-  },
-  methods: {
 
   }
 });
