@@ -40,6 +40,9 @@ if(!class_exists('Dealer_Directory'))
 			require_once(sprintf("%s/post-types/dealer.php", dirname(__FILE__)));
 			$Post_Type_Template = new Post_Type_Template();
 
+			require_once(sprintf("%s/post-types/distributor.php", dirname(__FILE__)));
+			$Dist_Post_Type_Template = new Dist_Post_Type_Template();
+			
 			$plugin = plugin_basename(__FILE__);
 			add_filter("plugin_action_links_$plugin", array( $this, 'plugin_settings_link' ));
 		} // END public function __construct
@@ -56,6 +59,12 @@ if(!class_exists('Dealer_Directory'))
             $roles_object->add_cap('administrator', 'delete_dealers');
             $roles_object->add_cap('administrator', 'read_dealers');
 
+            $roles_object->add_cap('administrator', 'edit_distributors');
+            $roles_object->add_cap('administrator', 'create_distributors');
+            $roles_object->add_cap('administrator', 'manage_distributors');
+            $roles_object->add_cap('administrator', 'delete_distributors');
+            $roles_object->add_cap('administrator', 'read_distributors');
+
 		} // END public static function activate
 
 		/**
@@ -70,6 +79,12 @@ if(!class_exists('Dealer_Directory'))
             $roles_object->remove_cap('administrator', 'delete_dealers');
             $roles_object->remove_cap('administrator', 'read_dealers');
             
+            $roles_object->remove_cap('administrator', 'edit_distributors');
+            $roles_object->remove_cap('administrator', 'create_distributors');
+            $roles_object->remove_cap('administrator', 'manage_distributors');
+            $roles_object->remove_cap('administrator', 'delete_distributors');
+            $roles_object->remove_cap('administrator', 'read_distributors');
+
 		} // END public static function deactivate
 
 		// Add the settings link to the plugins page
