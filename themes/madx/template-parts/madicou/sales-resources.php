@@ -1,10 +1,10 @@
 <section class="sales-resources">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 large-12 large-offset-0">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 			<h3>Sales Resources <a href="./product-training" class="blue see-more">See More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
 			</div>
-			<div class="small-10 small-offset-1 large-12 large-offset-0">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 				<div class="grid-x grid-margin-x grid-margin-y">
 					<div class="medium-4 cell module auto-height">
 						<a href="#"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
