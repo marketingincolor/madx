@@ -47,10 +47,16 @@
           <div class="small-6 medium-4 large-4 cell">
             <h3>Become a Madico Dealer</h3>
             <p>As a Madico Dealer, you'll always have a product and partner you can trust. We offer exceptional products that combine quality, function, and style backed by outstanding support and personal attention through a dedicated, knowledgable team. It's all part of the Madico Experience.</p>
-            <a href="" class="btn-yellow solid">Become A Dealer</a>
+            <div class="btn-box"><a href="" class="btn-yellow solid btn-bad">Become A Dealer</a></div>
           </div>
           <div class="small-12 cell text-center credits">
-            <div>insert payment type icons here</div>
+            <div class="payment-types">
+              <img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/card-visa.png" alt="visa">
+              <img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/card-master.png" alt="master card">
+              <img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/card-discover.png" alt="discover">
+              <img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/card-amex.png" alt="american express">
+              <img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/card-paypal.png" alt="paypal">
+            </div>
             <address>9251 Belcher Road N. Pinellas Park, FL 33782</address>
             <ul class="privacy">
               <li><a href="/contact">Contact Us</a></li>&nbsp; |
