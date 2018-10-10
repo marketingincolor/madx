@@ -24,7 +24,7 @@
 				<div class="sub-menu">
 					<ul class="menu">
 						<li><span>Didn't find what you were looking for? </span></li>
-						<li><a href="<?php echo site_url(); ?>/madicou/ask-a-question">Ask a Question</a></li>
+						<li class="ask"><a href="<?php echo site_url(); ?>/madicou/ask-a-question"><i class="fal fa-question-circle"></i> Ask a Question</a></li>
 					</ul>
 				</div>
 			</div>

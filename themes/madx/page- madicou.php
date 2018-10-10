@@ -1,5 +1,7 @@
 <?php 
 /* Template Name: Madico U */
+global $post;
+$post_slug = $post->post_name;
 get_header('madicou'); ?>
 
 <?php if (is_page('madicou')) { ?> 
@@ -69,7 +71,7 @@ get_header('madicou'); ?>
 	<?php endwhile;endif; ?>
 
 
-<div class="small reveal" id="videoModal1" v-reveal>
+<!--<div class="small reveal" id="NOTvideo-modal" NOTv-reveal>
 	<div class="grid-container">
 		<div class="grid-x">
 			<div id="modal-content" class="small-10 small-offset-1 cell">
@@ -84,8 +86,9 @@ get_header('madicou'); ?>
 			</div>
 		</div>
 	</div>
-</div>
+</div>-->
 
+<madu-video-modal></madu-video-modal>
 
 <section class="page-content">
 	<div class="grid-container">
@@ -95,50 +98,97 @@ get_header('madicou'); ?>
 					<div class="cell">
 						<h3>Videos <a href="" class="blue see-more">Watch More Videos &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
 					</div>
+
+					<!-- ////////// BEGIN Body Cells for VIDEOS ////////// -->
 					<div class="cell page-videos">
 						<div class="grid-x grid-margin-x grid-margin-y">
-							<div class="medium-4 cell module auto-height">
-								<a href="#"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
+
+<?php //echo $post_slug; ?>
+<?php 
+$args = array( 
+'post_type' => 'madicou',
+'madicou_taxonomies' => $post_slug,
+);
+$the_query = new WP_Query( $args );
+?>
+
+<?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+<div class="each-book" style="display:none;">
+<h1 class="the-title"><?php the_title() ;?></h1>
+<div class="isbn-number"><?php the_field('isbn_number')?></div>
+<div class="big-intro"><?php the_field('book-introduction')?></div>
+<div class="main-summary"><?php the_content() ?></div>
+</div>
+
+<div class="medium-4 cell module auto-height <?php echo $post_slug; ?>">
+	<div class="image-link" data-videotitle="Title of Video">
+		<a href="#!" data-open="video-modal" class="videolink" data-videourl="https://www.youtube.com/embed/M7lc1UVf-VE"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
+	</div>
+	<div class="meta">
+		<button data-open="video-modal" class="videolink" data-videourl="https://www.youtube.com/embed/M7lc1UVf-VE"><h4 class="blue"><?php the_title() ;?></h4></button>
+		<p>Video Runtime / Description</p>
+	</div>
+</div>
+
+<?php endwhile; else: ?> 
+<p>Sorry, there are no posts to display</p> 
+<?php endif; ?>
+
+<?php wp_reset_query(); ?>
+
+
+
+
+
+
+							<!-- BEGIN LOOP for VIDEOS by SECTION/SLUG -->
+							<!--<div class="medium-4 cell module auto-height">
+								<div class="image-link" data-videotitle="Title of Video">
+									<a href="#!" data-open="video-modal" class="videolink" data-videourl="https://www.youtube.com/embed/M7lc1UVf-VE"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
+								</div>
 								<div class="meta">
-									<button data-open="videoModal1"><h4 class="blue">Video Title</h4></button>
+									<button data-open="video-modal" class="videolink" data-videourl="https://www.youtube.com/embed/M7lc1UVf-VE"><h4 class="blue">Video Title</h4></button>
 									<p>Video Runtime / Description</p>
 								</div>
 							</div>
 							<div class="medium-4 cell module auto-height">
-								<a href="#"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
+								<a href="#!" data-open="video-modal"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
 								<div class="meta">
-									<button data-open="videoModal1"><h4 class="blue">Video Title</h4></button>
+									<button data-open="video-modal"><h4 class="blue">Video Title</h4></button>
 									<p>Video Runtime / Description</p>
 								</div>
 							</div>
 							<div class="medium-4 cell module auto-height">
-								<a href="#"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
+								<a href="#!" data-open="video-modal"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
 								<div class="meta">
-									<button data-open="videoModal1"><h4 class="blue">Video Title</h4></button>
+									<button data-open="video-modal"><h4 class="blue">Video Title</h4></button>
 									<p>Video Runtime / Description</p>
 								</div>
 							</div>
 							<div class="medium-4 cell module auto-height">
-								<a href="#"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
+								<a href="#!" data-open="video-modal"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
 								<div class="meta">
-									<button data-open="videoModal1"><h4 class="blue">Video Title</h4></button>
+									<button data-open="video-modal"><h4 class="blue">Video Title</h4></button>
 									<p>Video Runtime / Description</p>
 								</div>
 							</div>
 							<div class="medium-4 cell module auto-height">
-								<a href="#"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
+								<a href="#!" data-open="video-modal"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
 								<div class="meta">
-									<button data-open="videoModal1"><h4 class="blue">Video Title</h4></button>
+									<button data-open="video-modal"><h4 class="blue">Video Title</h4></button>
 									<p>Video Runtime / Description</p>
 								</div>
 							</div>
 							<div class="medium-4 cell module auto-height">
-								<a href="#"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
+								<a href="#!" data-open="video-modal"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
 								<div class="meta">
-									<button data-open="videoModal1"><h4 class="blue">Video Title</h4></button>
+									<button data-open="video-modal"><h4 class="blue">Video Title</h4></button>
 									<p>Video Runtime / Description</p>
 								</div>
-							</div>
+							</div>-->
+							<!-- END LOOP for VIDEOS by SECTION/SLUG -->
+
+
 						</div>
 					</div>
 
