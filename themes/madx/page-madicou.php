@@ -1,7 +1,6 @@
 <?php 
 /* Template Name: Madico U */
 global $post;
-$post_slug = $post->post_name;
 get_header('madicou'); ?>
 
 <?php if (is_page('madicou')) { ?> 
@@ -18,39 +17,15 @@ get_header('madicou'); ?>
 	<?php get_template_part('template-parts/madicou/sales-resources') ?>
 	<?php get_template_part('template-parts/madicou/marketing-resources') ?>
 <?php } elseif (is_page('ask-a-question') || is_page('glossary')) { ?>
-
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-	<section>
-		<div class="grid-container">
-			<div class="grid-x">
-				<div class="small-10 small-offset-1 cell">
-					<h1 class="blue"><?php the_title(); ?></h1>
-					<aside class="yellow-underline left"></aside>
-					<p class="subhead"><?php the_content(); ?></p>		
-				</div>
-			</div>
-		</div>
-	</section>
+		<?php get_template_part('template-parts/madicou/page-titleblock') ?>
 	<?php endwhile;endif; ?>
-
 <?php } else { ?>
-
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-	<section>
-		<div class="grid-container">
-			<div class="grid-x">
-				<div class="small-10 small-offset-1 large-offset-0 cell">
-					<h1 class="blue"><?php the_title(); ?></h1>
-					<aside class="yellow-underline left"></aside>
-					<p class="subhead"><?php the_content(); ?></p>		
-				</div>
-			</div>
-		</div>
-	</section>
+		<?php get_template_part('template-parts/madicou/page-titleblock') ?>
 	<?php endwhile;endif; ?>
 
 <madu-video-modal></madu-video-modal>
-
 <section class="page-content">
 	<div class="grid-container">
 		<div class="grid-x grid-margin-x grid-margin-y">
@@ -71,32 +46,13 @@ get_header('madicou'); ?>
 
 					<!-- ////////// BEGIN Body Cells for FAQs ////////// -->
 					<div class="cell">
-						<h3>Frequently Asked Questions <a href="" class="blue see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
+						<h3>Frequently Asked Questions <a href="<?php echo site_url('/faqs/'); ?>" class="blue see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
 					</div>
 					<div class="cell module page-faqs">
 						<div class="grid-y grid-margin-x grid-margin-y">
-
-
-							<div class="cell">
-								<div class="meta">
-									<h4 class="blue">Title of the Question?</h4>
-									<p>The answer to the question goes here, as this is the answer to the question.</p>
-								</div>
-							</div>
-							<div class="cell">
-								<div class="meta">
-									<h4 class="blue">Title of the Question?</h4>
-									<p>The answer to the question goes here, as this is the answer to the question.</p>
-								</div>
-							</div>
-							<div class="cell">
-								<div class="meta">
-									<h4 class="blue">Title of the Question?</h4>
-									<p>The answer to the question goes here, as this is the answer to the question.</p>
-								</div>
-							</div>
-
-
+							<!-- BEGIN LOOP for FAQS by SECTION/SLUG -->
+							<?php get_template_part('template-parts/madicou/content-faq') ?>
+							<!-- END LOOP for FAQS by SECTION/SLUG -->
 						</div>
 					</div>
 
@@ -107,28 +63,13 @@ get_header('madicou'); ?>
 
 					<!-- ////////// BEGIN Sidebar Cells for ARTICLES ////////// -->
 					<div class="cell">
-						<h3>Articles <a href="" class="blue see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
+						<h3>Articles <a href="<?php echo site_url('/mu-types/article/'); ?>" class="blue see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
 					</div>
 					<div class="cell side-articles">
 						<div class="grid-y grid-margin-x grid-margin-y">
-
-
-							<div class="cell module auto-height">
-								<a href="#"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
-								<div class="meta">
-									<button data-open="videoModal1"><h4 class="blue">Article Title nec Lorem Ipsum sit Dolor</h4></button>
-									<p>Article Description donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
-								</div>
-							</div>
-							<div class="cell module auto-height">
-								<a href="#"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
-								<div class="meta">
-									<button data-open="videoModal1"><h4 class="blue">Article Title nec Lorem Ipsum sit Dolor</h4></button>
-									<p>Article Description donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
-								</div>
-							</div>
-
-
+						<!-- BEGIN LOOP for ARTICLES by SECTION/SLUG -->
+						<?php get_template_part('template-parts/madicou/content-article') ?>
+						<!-- END LOOP for ARTICLES by SECTION/SLUG -->
 						</div>
 					</div>
 
@@ -149,9 +90,6 @@ get_header('madicou'); ?>
 		</div>
 	</div>
 </section>
-
 <?php } ?>
-
-
 
 <?php get_footer('madicou'); //needs custom MadicoU footer
