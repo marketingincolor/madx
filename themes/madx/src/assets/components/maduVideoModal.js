@@ -30,9 +30,15 @@ export default{
 	},
 	mounted(){
 		let $this = this;
-		$(document).find('a').on('click',function(){
-			$this.videoTitle  = $(this).parent().data('videotitle');
-			$this.videoUrl = $(this).parent().next('.meta').find('.videolink').data('videourl')+'?rel=0';
+		//$(document).find('a').on('click',function(){
+		$(document).find('.videolink').on('click',function(){
+			$this.videoTitle  = $(this).data('videotitle');
+			$this.videoUrl = $(this).data('videourl')+'?rel=0';
+
+			//$this.videoTitle  = $(this).parent().data('videotitle');
+			//$this.videoUrl = $(this).parent().find('.videolink').data('videourl')+'?rel=0';
+
+			//$this.videoUrl = $(this).parent().next('.meta').find('.videolink').data('videourl')+'?rel=0';
 			//$this.videoUrl = $(this).parent().find('.videolink').data('videourl');
 		});
 	},
