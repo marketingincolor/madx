@@ -127,7 +127,7 @@
 	}
 }
 
-.page-template-page-dealer-results{
+.page-template-page-dealer-results,.page-template-page-distribution{
 
 	h1{
 		font-size: 1.875rem;
@@ -242,5 +242,70 @@
 			}
 		}
 
+	}
+}
+
+.page-template-page-distribution{
+
+	#region-tabs{
+		background-color: $clear;
+		border: 0;
+
+		.tabs-title{
+			background-color: $white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 95px;
+			width: 100px;
+			margin: 0 5px 10px;
+			border-radius: 3px;
+			padding: 10px;
+
+			&.is-active{
+				border: 2px solid $yellow;
+			}
+
+			> a[aria-selected='true']{
+				background-color: $white;
+			}
+
+			a{
+				padding: 0;
+				height: 100%;
+				width: 100%;
+				text-align: center;
+
+				&:focus,&:hover,&:visitied,&:active,&:focus-within{
+					background-color: $clear;
+				}
+			}
+
+			img{
+				margin-bottom: 5px;
+			}
+		}
+	}
+	
+	.module{
+		padding: 30px;
+	}
+
+	.email.website{
+		a{
+			color: $light_blue;
+			border-bottom: 1px solid $light_blue;
+		}
+	}
+
+	.info-icon.has-tip{
+		position: absolute;
+		right: 10px;
+		bottom: 5px;
+		border-bottom: 0;
+
+		i{
+			font-size: 0.875rem;
+		}
 	}
 }
