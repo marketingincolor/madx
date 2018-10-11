@@ -19,8 +19,8 @@ export default{
 	            <div class="grid-x">
 								<div class="small-12 medium-3 medium-offset-0 cell">
 									<ul id="tax-menu" class="tax-menu vertical menu">
-								    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name)}">
-								      <a href="#!" @click="getNewTaxPosts" v-html="taxonomy.name"></a>
+								    <li @click="getNewTaxPosts" v-for="(taxonomy,index) in taxonomies.slice(0,3)" v-bind:class="{active: (activeItem == taxonomy.name)}">
+								      <a href="#!" v-html="taxonomy.name"></a>
 								    </li>
 							    </ul>
 								</div>
@@ -76,7 +76,7 @@ export default{
 		},
 		getNewTaxPosts: function(event){
 			let $this = this;
-			let taxonomyName = event.target.innerHTML.toLowerCase().split(' ').join('-').replace(/<[^>]+>/g, '');
+			let taxonomyName = event.target.querySelector('a').innerHTML.toLowerCase().split(' ').join('-').replace(/<[^>]+>/g, '');
 			
 		  axios.all([
 		      axios.get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName),
