@@ -3,7 +3,9 @@ export default{
 	data() {
 		return{
 	    videoTitle: '',
-	    videoUrl: ''
+	    videoUrl: '',
+	    videoInfo: '',
+	    videoFile: ''
 		}
 	},
 	name: 'maduVideoModal',
@@ -15,7 +17,8 @@ export default{
 										    <iframe allowfullscreen frameborder="0" height="315" :src="videoUrl" width="420"></iframe>
 										</div>
 										<h2>{{ videoTitle }}</h2>
-										<p>Video Runtime / Description</p>
+										<p>{{ videoInfo }}</p>
+										<p class="file-link" v-if="videoFile"><a :href="videoFile" target="_blank" style="vm-dl-btn">Download</a></p>
 										<button class="close-button" data-close aria-label="Close modal" type="button">
 										<span aria-hidden="true">&times;</span>
 										</button>
@@ -30,17 +33,13 @@ export default{
 	},
 	mounted(){
 		let $this = this;
-		//$(document).find('a').on('click',function(){
 		$(document).find('.videolink').on('click',function(){
 			$this.videoTitle  = $(this).data('videotitle');
 			$this.videoUrl = $(this).data('videourl')+'?rel=0';
-
-			//$this.videoTitle  = $(this).parent().data('videotitle');
-			//$this.videoUrl = $(this).parent().find('.videolink').data('videourl')+'?rel=0';
-
-			//$this.videoUrl = $(this).parent().next('.meta').find('.videolink').data('videourl')+'?rel=0';
-			//$this.videoUrl = $(this).parent().find('.videolink').data('videourl');
+			$this.videoInfo = $(this).data('videometa');
+			$this.videoFile = $(this).data('attach');
 		});
+
 	},
 	methods:{
 
