@@ -34,8 +34,8 @@ export default{
 				this.type = 'architectural'
 			}else if (url.includes('safety-security')) {
 				this.type = 'safety-security';
-			}else{
-				this.type = '';
+			}else if (url.includes('auto')){
+				this.type = 'automotive';
 			}
 		},
 		zipCodeLookup: function(){

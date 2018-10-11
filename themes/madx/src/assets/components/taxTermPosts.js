@@ -182,7 +182,6 @@ export default{
 			axios
 			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
 			  .then(function (response) {
-			  	console.log(response.data)
 			    $this.taxPosts = response.data;
 			    $this.singlePostActive = false;
 			  }

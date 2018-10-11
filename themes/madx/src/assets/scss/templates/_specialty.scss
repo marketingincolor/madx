@@ -60,3 +60,34 @@
 		}
 	}
 }
+
+.page-template-page-specialty{
+
+	#tax-menu{
+		height: 100%;
+
+		li{
+			height: 33.33333%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+
+			&:hover{
+				background-color: #e0e8f0;
+			}
+
+			&.active{
+				background-color: #e0e8f0;
+			}
+
+			a{
+				padding: 0;
+
+				&:hover{
+					background-color: $clear;
+				}
+			}
+		}
+	}
+}
