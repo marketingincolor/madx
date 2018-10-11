@@ -1,4 +1,8 @@
 .page-template-page-madicou {
+	button {
+		cursor:pointer;
+		text-align:left;
+	}
 	#top-header nav,
 	#top-header nav a {
 			background-color:transparent;
@@ -49,6 +53,7 @@
 		padding:3% 0;
 		.module .meta p {
 			padding-bottom:.5em;
+			display:flex;
 		}
 		#searchform input[type=text] {
 			max-width:440px;

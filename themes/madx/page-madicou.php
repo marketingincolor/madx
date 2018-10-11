@@ -78,43 +78,50 @@ get_header('madicou'); ?>
 			<div class="cell small-10 small-offset-1 medium-9 medium-offset-0">
 				<div class="grid-x grid-margin-x grid-margin-y">
 					<div class="cell">
-						<h3>Videos <a href="" class="blue see-more">Watch More Videos &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
+						<h3>Videos <a href="<?php echo site_url('/mu-types/video/'); ?>" class="blue see-more">Watch More Videos &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
 					</div>
 
 					<!-- ////////// BEGIN Body Cells for VIDEOS ////////// -->
 					<div class="cell page-videos">
 						<div class="grid-x grid-margin-x grid-margin-y">
 
-<?php $args = array( 
-'post_type' => 'madicou',
-'madicou_taxonomies' => $post_slug,
-);
-$the_query = new WP_Query( $args );
-?>
+						<!-- ENTIRE CONSTRUCT BELOW CAN BE MOVED TO ITS OWN TEMPLATE PART IN MADICOU DIRECTORY -->
+						<?php //get_template_part('template-parts/madicou/content-video') ?>
+						<!-- ENABLE ABOVE LINE OF CODE TO INCLUDE VIDEO CONTENT -->
+						<?php $video_args = array( 
+							'post_type' => 'madicou',
+							'madicou_taxonomies' => $post_slug,
+							'madicou-types' => 'video'
+						);
+						$video_query = new WP_Query( $video_args );
+						if ( $video_query->have_posts() ) : while ( $video_query->have_posts() ) : $video_query->the_post(); 
+							//$video_url = the_field('video-url'); // Requires ACF Field for 'video-url'
+							//$video_meta = the_field('video-meta'); // Requires ACF Field for 'video-meta'
+							?>
+							<div class="each-book" style="display:none;">
+								<h1 class="the-title"><?php the_title() ;?></h1>
+								<div class="isbn-number"><?php the_field('isbn_number')?></div>
+								<div class="big-intro"><?php the_field('book-introduction')?></div>
+								<div class="main-summary"><?php the_content() ?></div>
+							</div>
 
-<?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-<div class="each-book" style="display:none;">
-<h1 class="the-title"><?php the_title() ;?></h1>
-<div class="isbn-number"><?php the_field('isbn_number')?></div>
-<div class="big-intro"><?php the_field('book-introduction')?></div>
-<div class="main-summary"><?php the_content() ?></div>
-</div>
+							<div class="medium-4 cell module auto-height <?php echo $post_slug; ?>">
+								<div class="image-link" data-videotitle="Title of Video">
+									<a href="#!" data-open="video-modal" class="videolink" data-videourl="https://www.youtube.com/embed/M7lc1UVf-VE"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
+								</div>
+								<div class="meta">
+									<button data-open="video-modal" class="videolink" data-videourl="https://www.youtube.com/embed/M7lc1UVf-VE"><h4 class="blue"><?php the_title() ;?></h4></button>
+									<p>Video Runtime / Description</p>
+								</div>
+							</div>
 
-<div class="medium-4 cell module auto-height <?php echo $post_slug; ?>">
-	<div class="image-link" data-videotitle="Title of Video">
-		<a href="#!" data-open="video-modal" class="videolink" data-videourl="https://www.youtube.com/embed/M7lc1UVf-VE"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
-	</div>
-	<div class="meta">
-		<button data-open="video-modal" class="videolink" data-videourl="https://www.youtube.com/embed/M7lc1UVf-VE"><h4 class="blue"><?php the_title() ;?></h4></button>
-		<p>Video Runtime / Description</p>
-	</div>
-</div>
+						<?php endwhile; else: ?> 
+							<div class="cell">
+								<p>Sorry, there are no Videos to display</p>
+							</div>
+						<?php endif; ?>
+						<?php wp_reset_query(); ?>
 
-<?php endwhile; else: ?> 
-<p>Sorry, there are no posts to display</p> 
-<?php endif; ?>
-
-<?php wp_reset_query(); ?>
 
 
 
@@ -128,27 +135,6 @@ $the_query = new WP_Query( $args );
 								</div>
 								<div class="meta">
 									<button data-open="video-modal" class="videolink" data-videourl="https://www.youtube.com/embed/M7lc1UVf-VE"><h4 class="blue">Video Title</h4></button>
-									<p>Video Runtime / Description</p>
-								</div>
-							</div>
-							<div class="medium-4 cell module auto-height">
-								<a href="#!" data-open="video-modal"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
-								<div class="meta">
-									<button data-open="video-modal"><h4 class="blue">Video Title</h4></button>
-									<p>Video Runtime / Description</p>
-								</div>
-							</div>
-							<div class="medium-4 cell module auto-height">
-								<a href="#!" data-open="video-modal"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
-								<div class="meta">
-									<button data-open="video-modal"><h4 class="blue">Video Title</h4></button>
-									<p>Video Runtime / Description</p>
-								</div>
-							</div>
-							<div class="medium-4 cell module auto-height">
-								<a href="#!" data-open="video-modal"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
-								<div class="meta">
-									<button data-open="video-modal"><h4 class="blue">Video Title</h4></button>
 									<p>Video Runtime / Description</p>
 								</div>
 							</div>
@@ -250,13 +236,49 @@ $the_query = new WP_Query( $args );
 							</div>
 						</div>
 					</div>
+
+
+
+
+
 					<!-- ////////// BEGIN Sidebar Cells for DOCUMENTS ////////// -->
 					<div class="cell">
-						<h3>Documents <a href="" class="blue see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
+						<h3>Documents <a href="<?php echo site_url('/mu-types/document/'); ?>" class="blue see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
 					</div>
 					<div class="cell module side-documents">
 						<div class="grid-y grid-margin-x grid-margin-y">
+
+
+
+
+
+						<!-- ENTIRE CONSTRUCT BELOW CAN BE MOVED TO ITS OWN TEMPLATE PART IN MADICOU DIRECTORY -->
+						<?php //get_template_part('template-parts/madicou/content-document') ?>
+						<!-- ENABLE ABOVE LINE OF CODE TO INCLUDE DOCUMENT CONTENT -->
+						<?php $doc_args = array( 
+							'post_type' => 'madicou',
+							'madicou_taxonomies' => $post_slug,
+							'madicou-types' => 'document'
+						);
+						$doc_query = new WP_Query( $doc_args );
+						if ( $doc_query->have_posts() ) : while ( $doc_query->have_posts() ) : $doc_query->the_post(); 
+							// TODO: Add PDF ATTACHMENT
+							?>
 							<div class="cell">
+								<div class="meta">
+									<a href="#" class="doc-link"><i class="fal fa-file-pdf"></i></a>
+									<h4 class="blue"><?php the_title() ;?></h4>
+									<?php the_excerpt() ;?>
+								</div>
+							</div>
+						<?php endwhile; else: ?> 
+							<div class="cell">
+								<p>Sorry, there are no Documents to display</p>
+							</div>
+						<?php endif; ?>
+						<?php wp_reset_query(); ?>
+
+							<!--<div class="cell">
 								<div class="meta">
 									<a href="#" class="doc-link"><i class="fal fa-file-pdf"></i></a>
 									<h4 class="blue">Document Title</h4>
@@ -276,37 +298,15 @@ $the_query = new WP_Query( $args );
 									<h4 class="blue">Document Title</h4>
 									<p>Description of the Resource would go here</p>
 								</div>
-							</div>
-							<div class="cell">
-								<div class="meta">
-									<a href="#" class="doc-link"><i class="fal fa-file-pdf"></i></a>
-									<h4 class="blue">Document Title</h4>
-									<p>Description of the Resource would go here</p>
-								</div>
-							</div>
-							<div class="cell">
-								<div class="meta">
-									<a href="#" class="doc-link"><i class="fal fa-file-pdf"></i></a>
-									<h4 class="blue">Document Title</h4>
-									<p>Description of the Resource would go here</p>
-								</div>
-							</div>
-							<div class="cell">
-								<div class="meta">
-									<a href="#" class="doc-link"><i class="fal fa-file-pdf"></i></a>
-									<h4 class="blue">Document Title</h4>
-									<p>Description of the Resource would go here</p>
-								</div>
-							</div>
-							<div class="cell">
-								<div class="meta">
-									<a href="#" class="doc-link"><i class="fal fa-file-pdf"></i></a>
-									<h4 class="blue">Document Title</h4>
-									<p>Description of the Resource would go here</p>
-								</div>
-							</div>
+							</div>-->
+
+
 						</div>
 					</div>
+
+
+
+
 				</div>
 			</div>
 		</div>
