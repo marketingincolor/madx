@@ -158,10 +158,14 @@ body{
 	border-color: $clear!important;
 }
 
-h1,h2,h3{
+h1,h2,h3,h4,h5,h6{
 	font-family: 'AvenirLTStd-Light';
 	margin: 0;
 	line-height: 1.3em;
+}
+
+h4,h5,h6{
+	font-family: 'AvenirLTStd-Heavy';
 }
 
 h1{
@@ -446,5 +450,22 @@ section.warranty{
 				}
 			}
 		}
+	}
+}
+
+.reveal{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.page-template-default .entry-content{
+	background-color: $white;
+	border-radius: 3px;
+	padding: 10%;
+	box-shadow: 0 1px 6px 2px #eee;
+
+	h3{
+		color: $blue;
 	}
 }

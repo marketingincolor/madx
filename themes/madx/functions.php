@@ -14,6 +14,55 @@
  * @since FoundationPress 1.0.0
  */
 
+function list_distributors($country_array){
+	$count = 0;
+  foreach ($country_array as $country) {
+  	$count++;
+		$dist_company  = get_post_meta($country->ID,'company_name',true);
+		$dist_street   = get_post_meta($country->ID,'street',true);
+		$dist_zip      = get_post_meta($country->ID,'zip',true);
+		$dist_city     = get_post_meta($country->ID,'city',true);
+		$dist_state    = get_post_meta($country->ID,'state',true);
+		$dist_phone    = get_post_meta($country->ID,'phone_number',true);
+		$dist_altphone = get_post_meta($country->ID,'alt_phone_number',true);
+		$dist_fax      = get_post_meta($country->ID,'fax',true);
+		$dist_email    = get_post_meta($country->ID,'email',true);
+		$dist_website  = get_post_meta($country->ID,'website',true);
+		$dist_markets  = get_post_meta($country->ID,'markets',true);
+		$dist_name     = $country->post_title;
+		$comp_name     = get_post_meta($country->ID,'compnay_name',true);
+		$website_nohttp = preg_replace('/(http:\/\/|https:\/\/|www.)/', '', $dist_website);
+	}
+
+  	echo "<h5 class='blue'>{$dist_name}</h5>";
+  	echo "<ul class='dealer-meta'>";
+  	echo "<li><address><i class='fas fa-map-marker-alt'></i> &nbsp;";
+  	if($dist_company) {
+  		echo "{$dist_company}<br>";
+  	}
+  	echo "{$dist_street}<br> {$dist_city}, {$dist_state} {$dist_zip}</address></li>";
+  	if($dist_phone) {
+  		echo "<li><address><i class='fas fa-phone'></i> &nbsp;{$dist_phone}";
+	  	if($dist_altphone) {
+	  		echo "<br>{$dist_altphone}";
+	  	}
+  		echo "</address></li>";
+  	}
+  	if($dist_fax) {
+  		echo "<li><address><i class='fas fa-fax'></i> &nbsp;{$dist_fax}</address></li>";
+  	}
+		if($dist_email) {
+		  echo "<li class='email'><address><i class='fas fa-envelope'></i> &nbsp;{$dist_email}</address></li>";
+		}
+		if($dist_website) {
+		  echo "<li class='email website'><address><i class='fas fa-globe'></i> &nbsp;<a href='{$dist_website}'>{$website_nohttp}</a></address></li>";
+		}
+  	echo "</ul>";
+		if($dist_markets) {
+		  echo "<a href='#!' class='info-icon' v-tooltip tabindex='{$count}' title='{$dist_markets}'><i class='fal fa-info-circle'></i></a>";
+	  }
+}
+
 /** Various URL rewrite functions to add taxonomies to url */
 require_once( 'library/url-rewrites.php' );
 

@@ -21,6 +21,7 @@ import specialtyProducts from '../components/specialtyProducts.js';
 import specialtyProductsHome from '../components/specialtyProductsHome.js';
 import findDealerModal from '../components/findDealerModal.js';
 import faqs from '../components/faqs.js';
+import residentialFilmSelector from '../components/residentialFilmSelector.js';
 import maduVideoModal from '../components/maduVideoModal.js';
 
 
@@ -100,40 +101,48 @@ Vue.directive('reveal', {
     bind: function (el) {
       new Foundation.Reveal($(el))
     },
-})
+});
 
 // Add foundation 6 reveal functionality to an element
 Vue.directive('accordion', {
     bind: function (el) {
       new Foundation.Accordion($(el))
     },
-})
+});
 
 // Add foundation 6 tabs functionality to an element
 Vue.directive('tabs', {
     bind: function (el) {
       new Foundation.Tabs($(el))
     },
-})
+});
+
+// Add foundation 6 tabs functionality to an element
+Vue.directive('tooltip', {
+    bind: function (el) {
+      new Foundation.Tooltip($(el))
+    },
+});
 
 var newVue = new Vue({
   el: '#app',
   components:{
-  	'auto-posts'              : autoPosts,
-  	'safety-film-types'       : safetyFilmTypes,
-  	'tax-term-posts'          : taxTermPosts,
-    'find-dealer-form'        : findDealerForm,
-    'film-selector'           : filmSelector,
-    'safety-posts'            : safetyPosts,
-    'specialty-industries'    : specialtyIndustries,
-    'case-studies'            : caseStudies,
-    'decorative-posts'        : decorativePosts,
-    'specialty-products'      : specialtyProducts,
-    'specialty-products-home' : specialtyProductsHome,
-    'find-dealer-page'        : findDealerPage,
-    'find-dealer-modal'       : findDealerModal,
-    'faqs'                    : faqs,
-  	'madu-video-modal'        : maduVideoModal,
+  	'auto-posts'               : autoPosts,
+  	'safety-film-types'        : safetyFilmTypes,
+  	'tax-term-posts'           : taxTermPosts,
+    'find-dealer-form'         : findDealerForm,
+    'film-selector'            : filmSelector,
+    'safety-posts'             : safetyPosts,
+    'specialty-industries'     : specialtyIndustries,
+    'case-studies'             : caseStudies,
+    'decorative-posts'         : decorativePosts,
+    'specialty-products'       : specialtyProducts,
+    'specialty-products-home'  : specialtyProductsHome,
+    'find-dealer-page'         : findDealerPage,
+    'find-dealer-modal'        : findDealerModal,
+    'faqs'                     : faqs,
+  	'residential-film-selector': residentialFilmSelector,
+  	'madu-video-modal'         : maduVideoModal,
   },
   created(){
   	$(document).foundation();
