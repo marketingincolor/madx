@@ -38,7 +38,7 @@ get_header('madicou'); ?>
 	<?php get_template_part('template-parts/madicou/sales-resources') ?>
 
 	<?php get_template_part('template-parts/madicou/marketing-resources') ?>
-<?php } elseif (is_page('ask-a-question')) { ?>
+<?php } elseif (is_page('ask-a-question') || is_page('glossary')) { ?>
 
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	<section>
@@ -70,24 +70,6 @@ get_header('madicou'); ?>
 	</section>
 	<?php endwhile;endif; ?>
 
-
-<!--<div class="small reveal" id="NOTvideo-modal" NOTv-reveal>
-	<div class="grid-container">
-		<div class="grid-x">
-			<div id="modal-content" class="small-10 small-offset-1 cell">
-				<div class="flex-video">
-				    <iframe allowfullscreen="" frameborder="0" height="315" src="//www.youtube.com/embed/M7lc1UVf-VE" width="420"></iframe>
-				</div>
-				<h2>Video Title</h2>
-				<p>Video Info - https://youtu.be/M7lc1UVf-VE</p>
-				<button class="close-button" data-close aria-label="Close modal" type="button">
-				<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-		</div>
-	</div>
-</div>-->
-
 <madu-video-modal></madu-video-modal>
 
 <section class="page-content">
@@ -103,9 +85,7 @@ get_header('madicou'); ?>
 					<div class="cell page-videos">
 						<div class="grid-x grid-margin-x grid-margin-y">
 
-<?php //echo $post_slug; ?>
-<?php 
-$args = array( 
+<?php $args = array( 
 'post_type' => 'madicou',
 'madicou_taxonomies' => $post_slug,
 );
