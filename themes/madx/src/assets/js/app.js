@@ -22,7 +22,7 @@ import specialtyProductsHome from '../components/specialtyProductsHome.js';
 import findDealerModal from '../components/findDealerModal.js';
 import faqs from '../components/faqs.js';
 import residentialFilmSelector from '../components/residentialFilmSelector.js';
-
+import maduVideoModal from '../components/maduVideoModal.js';
 
 
 // GLOBAL FILTERS
@@ -142,6 +142,7 @@ var newVue = new Vue({
     'find-dealer-modal'        : findDealerModal,
     'faqs'                     : faqs,
   	'residential-film-selector': residentialFilmSelector,
+  	'madu-video-modal'         : maduVideoModal,
   },
   created(){
   	$(document).foundation();
