@@ -14,7 +14,7 @@ if ( $video_query->have_posts() ) : while ( $video_query->have_posts() ) : $vide
 
 	<div class="medium-4 cell module auto-height <?php echo $post_slug; ?>">
 		<div class="image-link" data-videotitle="Title of Video">
-			<a href="#!" data-open="video-modal" class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/device-protection-module.png" alt="Device Protection"></a>
+			<a href="#!" data-open="video-modal" class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>"><?php the_post_thumbnail( 'large', array( 'alt' => get_the_title() ) ); ?></a>
 		</div>
 		<div class="meta">
 			<button data-open="video-modal" class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>"><h4 class="blue"><?php the_title() ;?></h4></button>
