@@ -26,7 +26,7 @@
 						    					array(
 						    						'taxonomy' => 'testimonials_taxonomies',
 						    						'field'    => 'slug',
-						    						'terms'    => get_post_type($post->ID),
+						    						'terms'    => $term->slug,
 						    					),
 						    				),
 						    			);

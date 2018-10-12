@@ -1,18 +1,32 @@
 <div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 	<div class="grid-x grid-margin-x grid-margin-y">
 		<?php
-		  $parent_tax = get_post_type($post->ID);
-		  $child_tax  = get_queried_object()->slug;
+	    $term = get_queried_object();
+	    $parent_cat = get_post_type($post->ID);
+	  	$parent_term = get_term_by( 'slug', $parent_cat, 'benefits_taxonomies', 'OBJECT', 'raw' );
+	  	$args = array(
+	  		'parent' => $parent_term->term_id,
+	  		'orderby' => 'slug',
+	  		'hide_empty' => false
+	  	 );
+	  	$child_terms = get_terms( 'benefits_taxonomies', $args );
+	  	foreach ($child_terms as $child) {
+	  		if ($child->name == $term->name) {
+	  			$child_cat_id = $child->term_id;
+	  		}
+	  	}
 		  
 			$args = array(
 				'post_type' => 'benefits',
 				'tax_query' => array(
 					array(
 						'taxonomy' => 'benefits_taxonomies',
-						'field'    => 'slug',
-						'terms'    => $child_tax,
+						'field'    => 'term_id',
+						'terms'    => $child_cat_id,
 					),
 				),
+				'orderby'   => 'menu_order',
+				'order'     => 'ASC'
 			);
 			$query = new WP_Query( $args );
 			while ( $query->have_posts() ) : $query->the_post();
