@@ -13,6 +13,8 @@
 						'terms'    => $child_tax,
 					),
 				),
+				'orderby'   => 'menu_order',
+				'order'     => 'ASC'
 			);
 			$query = new WP_Query( $args );
 			while ( $query->have_posts() ) : $query->the_post();
