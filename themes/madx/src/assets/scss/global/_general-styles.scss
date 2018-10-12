@@ -469,3 +469,19 @@ section.warranty{
 		color: $blue;
 	}
 }
+
+.white.read-more{
+	transition: color 0.25s ease-in-out;
+
+	i{
+		transition: color 0.25s ease-in-out;
+	}
+
+	&:hover{
+		color: $yellow;
+
+		i{
+			color:$yellow
+		}
+	}
+}
