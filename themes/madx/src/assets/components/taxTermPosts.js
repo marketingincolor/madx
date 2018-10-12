@@ -56,7 +56,7 @@ export default{
 											<div class="meta">
 												<div class="medium-12 cell">
 													<div class="grid-x grid-margin-x grid-margin-y">
-														<div class="medium-5 medium-offset-1 cell">
+														<div class="medium-10 medium-offset-1 cell">
 															<h4 class="blue" v-html="singlePost.title.rendered"></h4>
 															<p class="content" v-html="singlePost.content.rendered"></p>
 															<div class="grid-x grid-margin-y" v-if="pdfLink">
@@ -64,16 +64,10 @@ export default{
 																	<i class="fal fa-file-pdf"></i>
 																</div>
 																<div class="medium-10 cell">
-																	<a :href="pdfLink" target="_blank">Product Specs Doc</a>
-																	<p>Specification Sheet Description</p>
+																	<a :href="pdfLink" target="_blank">Product Brochure</a>
+																	<p>Click to download brochure</p>
 																</div>
 															</div>
-														</div>
-														<div class="medium-4 medium-offset-1 cell">
-															<h6>Product Benefits</h6>
-															<ul class="product-benefits">
-																<li v-for="benefit in benefits"><i class="fas fa-check"></i> &nbsp;{{ benefit.benefit1 }}</li>
-															</ul>
 														</div>
 														<div class="small-12 cell">
 															<a class="btn-lt-blue border" @click="scrollToProducts"><i class="fas fa-arrow-alt-left"></i> Back to {{ activeItem }}</a>
