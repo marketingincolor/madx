@@ -1,4 +1,19 @@
-<?php $term = get_queried_object(); ?>
+<?php
+  $term = get_queried_object();
+  $parent_cat = get_post_type($post->ID);
+	$parent_term = get_term_by( 'slug', $parent_cat, 'faq_taxonomies', 'OBJECT', 'raw' );
+	$args = array(
+		'parent' => $parent_term->term_id,
+		'orderby' => 'slug',
+		'hide_empty' => false
+	 );
+	$child_terms = get_terms( 'faq_taxonomies', $args );
+	foreach ($child_terms as $child) {
+		if ($child->slug == $term->slug) {
+			$child_cat_id = $child->term_id;
+		}
+	}
+?>
 
 <section class="taxonomy-faqs">
 	<div class="grid-container">
@@ -20,8 +35,8 @@
 						'tax_query' => array(
 							array(
 								'taxonomy' => 'faq_taxonomies',
-								'field'    => 'slug',
-								'terms'    => get_post_type($post->ID),
+								'field'    => 'term_id',
+								'terms'    => $child_cat_id,
 							),
 						),
 					);

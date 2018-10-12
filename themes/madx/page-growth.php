@@ -23,19 +23,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	</div>
 </section>
 
-<section class="about-content">
-	<div class="grid-container">
-		<div class="grid-x">
-			<div class="small-12 cell content-block">
-				<div class="grid-x">
-					<div class="small-10 small-offset-1 medium-8 medium-offset-2 cell">
-						<?php the_content(); ?>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
 
 <section class="home-modules">
 	<div class="grid-container">
@@ -81,13 +68,29 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	</div>
 </section>
 
+
 <section class="about-next" style="background-image: url(<?php the_field('about_next_background_image') ?>);">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 medium-8 large-6 large-offset-0 cell">
 				<h2 class="white"><?php the_field('about_next_heading') ?></h2>
 				<aside class="yellow-underline left"></aside>
-				<div class="white"><?php the_field('about_next_subhead') ?></div>
+				<div class="white subhead"><?php the_field('about_next_subhead') ?></div>
+				<p><a href="/specialty-solutions" class="white read-more">View Specialty &nbsp;<i class="far fa-long-arrow-right"></i></a></p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="about-content">
+	<div class="grid-container">
+		<div class="grid-x">
+			<div class="small-12 cell content-block">
+				<div class="grid-x">
+					<div class="small-10 small-offset-1 medium-8 medium-offset-2 cell">
+						<?php the_content(); ?>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -99,7 +102,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			<div class="medium-6 medium-offset-5 large-offset-6 small-10 small-offset-1 cell text-right">
 				<h2 class="white"><?php the_field('about_ppro_heading'); ?></h2>
 				<aside class="yellow-underline right"></aside>
-				<p class="white"><?php the_field('about_ppro_subhead'); ?></p>
+				<p class="white subhead"><?php the_field('about_ppro_subhead'); ?></p>
+				<p><a href="/protectionpro" class="white read-more">View ProtectionPro &nbsp;<i class="far fa-long-arrow-right"></i></a></p>
 			</div>
 		</div>
 	</div>

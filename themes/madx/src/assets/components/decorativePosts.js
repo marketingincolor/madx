@@ -33,8 +33,8 @@ export default{
 														<i class="fal fa-file-pdf"></i>
 													</div>
 													<div class="medium-10 cell">
-														<a :href="decorativeSinglePost[0].acf.pdf_link" target="_blank">Product Specs Doc</a>
-														<p>Specification Sheet Description</p>
+														<a :href="decorativeSinglePost[0].acf.pdf_link" target="_blank">Product Brochure</a>
+														<p>Click to download brochure</p>
 													</div>
 												</div>
 											</div>

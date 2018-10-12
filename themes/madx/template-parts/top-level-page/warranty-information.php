@@ -5,6 +5,9 @@
 				<h2 class="white"><?php the_field('warranty_heading'); ?></h2>
 				<aside class="yellow-underline right"></aside>
 				<p class="white"><?php the_field('warranty_subhead'); ?></p>
+				<?php if(get_field('warranty_link_url')) { ?>
+				  <p style="margin-top:30px"><a href="<?php the_field('warranty_link_url'); ?>" class="white read-more"><?php the_field('warranty_link_text'); ?> &nbsp;<i class="far fa-long-arrow-alt-right white"></i></a></p>
+				<?php } ?>
 			</div>
 		</div>
 	</div>

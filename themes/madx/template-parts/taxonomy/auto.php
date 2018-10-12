@@ -55,7 +55,7 @@
 						<div class="meta">
 							<div class="medium-12 cell">
 								<div class="grid-x grid-margin-x grid-margin-y">
-									<div class="medium-5 medium-offset-1 cell">
+									<div class="medium-10 medium-offset-1 cell">
 										<h4 class="blue"><?php the_title(); ?></h4>
 										<div class="content"><?php the_content(); ?></div>
 										<?php if (get_field('pdf_link')) { ?>
@@ -64,26 +64,11 @@
 													<i class="fal fa-file-pdf"></i>
 												</div>
 												<div class="medium-10 cell">
-													<a href="<?php the_field('pdf_link'); ?>" target="_blank">Product Specs Doc</a>
-													<p>Specification Sheet Description</p>
+													<a href="<?php the_field('pdf_link'); ?>" target="_blank">Product Brochure</a>
+													<p>Click to download brochure</p>
 												</div>
 											</div>
 										<?php } ?>
-									</div>
-									<div class="medium-4 medium-offset-1 cell">
-										<h6>Product Benefits</h6>
-										<ul class="product-benefits">
-											<?php
-												if( have_rows('film_benefits') ):
-												  while ( have_rows('film_benefits') ): 
-												  	the_row();
-										  ?>
-													
-												<li><i class="fas fa-check"></i> &nbsp;<?php the_sub_field('benefit1'); ?></li>
-
-										<?php endwhile;endif; ?>
-											
-										</ul>
 									</div>
 								</div>
 							</div>
@@ -102,6 +87,8 @@
 
 <?php get_template_part('/template-parts/taxonomy/faqs'); ?>
 
-<?php get_template_part('/template-parts/taxonomy/find-film'); ?>
+<?php 
+if ($term->slug != 'windshield-protection' && $term->slug != 'paint-protection') { get_template_part('/template-parts/taxonomy/find-film'); } 
+?>
 
 <?php get_template_part('/template-parts/top-level-page/find-dealer'); ?>
