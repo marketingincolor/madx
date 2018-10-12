@@ -5,7 +5,7 @@
 <section class="hero relative" style="background-image: url(<?php the_post_thumbnail_url($post->ID); ?>);">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 medium-8 large-offset-0 cell">
+			<div class="small-10 small-offset-1 large-offset-0 cell">
 				<h1 class="blue"><?php the_title(); ?></h1>
 				<aside class="yellow-underline left"></aside>
 				<p class="blue subhead">Madico distributors can be found across the globe&mdash;and we're still growing.</p>

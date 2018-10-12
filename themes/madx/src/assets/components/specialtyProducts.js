@@ -52,7 +52,7 @@ export default{
 											<p v-html="singlePost.acf.short_description"></p>
 										</div>
 										<div class="medium-12 cell breadcrumbs">
-											<a :href="singlePost.acf.data_sheet" target="_blank" class="btn-yellow border">Data Sheet</a>&nbsp;&nbsp;&nbsp;<br class="show-for-small-only"><br class="show-for-small-only"><a href="" class="btn-yellow solid">Request A Sample</a>
+											<a :href="singlePost.acf.data_sheet" target="_blank" class="btn-yellow border">Data Sheet</a>
 										</div>
 										<div class="medium-12 cell module auto-height animated fadeIn">
 											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost.title.rendered">

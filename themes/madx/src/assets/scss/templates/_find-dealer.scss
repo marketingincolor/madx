@@ -270,15 +270,15 @@
 				background-color: $white;
 			}
 
+			> a:focus{
+				background-color: $clear;
+			}
+
 			a{
 				padding: 0;
 				height: 100%;
 				width: 100%;
 				text-align: center;
-
-				&:focus,&:hover,&:visitied,&:active,&:focus-within{
-					background-color: $clear;
-				}
 			}
 
 			img{
