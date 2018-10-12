@@ -7,7 +7,8 @@ export default {
 	    safetyPosts: [],
 	    safetyPostID: 0,
 	    safetySinglePost: [],
-	    taxParentSlug: 'products',
+	    taxParentSlug: '',
+	    getTaxParentId: 0,
 	    postType: 'safety'
 		}
 	},
@@ -50,9 +51,21 @@ export default {
 							</div>
 						</div>`,
 		created (){
-			this.getSafetyPosts();
+			this.getTaxParent(location.href);
 		},
 		methods:{
+			getTaxParent: function(currentURL){
+				if (currentURL.includes('anti-intrusion')) {
+					this.taxParentSlug = 'anti-intrusion';
+				}else if(currentURL.includes('blast-mitigation')){
+					this.taxParentSlug = 'blast-mitigation';
+				}else if (currentURL.includes('graffiti-mitigation')) {
+					this.taxParentSlug = 'graffiti-mitigation';
+				}else if (currentURL.includes('natural-disaster-mitigation')) {
+					this.taxParentSlug = 'natural-disaster-mitigation';
+				}
+				this.getSafetyPosts();
+			},
 			getSafetyPosts: function(){
 				let $this = this;
 
