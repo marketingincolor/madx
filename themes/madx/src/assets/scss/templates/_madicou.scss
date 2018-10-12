@@ -1,4 +1,4 @@
-.page-template-page-madicou {
+.page-template-page-madicou, .single-madicou {
 	button {
 		cursor:pointer;
 		text-align:left;
@@ -159,6 +159,11 @@
 				margin:2px;
 			}
 		}
+	}
+	.reveal {
+		position: fixed;
+	    left: 50%;
+	    transform: translateX(-50%);
 	}
 	#video-modal #modal-content {
 		h2 {
