@@ -8,18 +8,17 @@ export default {
 	    taxonomyName: 'all',
 	    postType: 'faq',
 	    activeIndex: 0,
-	    searchPosts: []
+	    searchPosts: [],
+	    taxonomyTerms: []
 		}
 	},
 	template: `<div class="small-10 small-offset-1 cell">
 							<form class="subhead" id="faq-search" v-on:submit.prevent="getSearchResults">
 								<div class="input-group relative">
 								  <span class="input-group-label">
-										<select v-model="taxonomyName">
+										<select v-model="taxonomyName" v-on:change="getSearchResults">
 									    <option value="all">All</option>
-									    <option value="auto">Auto</option>
-									    <option value="commercial">Commercial</option>
-									    <option value="residential">Residential</option>
+									    <option v-for="term in taxonomyTerms" :value="term.slug">{{ term.name }}</option>
 									  </select>
 								  </span>
 								  <input class="input-group-field" type="text" v-model="searchText" v-on:keyup="getSearchResults" placeholder="Start your search">
@@ -57,6 +56,7 @@ export default {
 					  </div>`,
 		created (){
 			this.getAllFAQs();
+			this.getCategories();
 		},
 		methods:{
 			getAllFAQs: function(){
@@ -66,6 +66,20 @@ export default {
 				  .get(apiRoot + $this.postType)
 				  .then(function (response) {
 				    $this.faqPosts = response.data;
+				  }
+				)
+			},
+			getCategories: function(){
+				let $this = this;
+
+				axios
+				  .get(apiRoot + this.postType + '-categories?per_page=99')
+				  .then(function (response) {
+				  	response.data.forEach(function(element){
+				  		if (element.parent == 0) {
+				  			$this.taxonomyTerms.push(element)
+				  		}
+				  	});
 				  }
 				)
 			},
@@ -88,9 +102,11 @@ export default {
 
 					axios
 					  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + $this.taxonomyName.toLowerCase() + '&search=' + $this.searchText)
+					  // .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]')
 					  .then(function (response) {
 					    $this.searchPosts = response.data;
 					    $this.faqPosts = [];
+					    console.log(response.data)
 					  }
 					)
 				}
