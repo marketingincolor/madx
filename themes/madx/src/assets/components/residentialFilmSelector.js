@@ -110,7 +110,7 @@ export default{
 					<div class="number absolute"><span>4</span></div>
 					<div class="small-10 small-offset-1 medium-12 medium-offset-0 cell">
 						<h5 class="blue">Appearance</h5>
-						<p>Color, visible light</p>
+						<p>Madico window film is offered in a variety of styles and hues, giving you the freedom to design as bold or as subtle as you’d like.</p>
 					</div>
 				</div>
 			</div>
@@ -156,7 +156,7 @@ export default{
 			<div class="grid-x grid-margin-y">
 				<div class="medium-7 cell">
 					<span class="energy">
-						<span><strong>Energy:</strong> {{ heatReduction | importance }}</span>
+						<span><strong>Energy:</strong> {{ glareReduction | importance }}</span>
 					</span>
 					<span class="glare">
 						<span><strong>Glare:</strong> {{ glareReduction | importance }}</span>
@@ -172,12 +172,21 @@ export default{
 			</div>
 			<hr />
 			<div class="grid-x grid-margin-y">
-				<div class="small-12 cell post-container" v-if="postData.length == 0">
+				<div class="small-12 cell post-container" v-if="postData.length == 0 && premiumPostData.length == 0">
 					<p>No Films match your criteria. Please select something else.</p>
 				</div>
 				<div class="post-container small-12 cell" v-if="postData.length == 1 && premiumPostData.length == 0">
 					<div class="grid-x grid-margin-x">
 						<div class="medium-12 cell premium-post" v-for="(post,index) in postData">
+						  <h4 class="blue best-match">Best Match</h4>
+							<i class="fas fa-star yellow"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered"></a>
+							<p v-html="$options.filters.limitWords(post.content.rendered,15)"></p>
+						</div>
+					</div>
+				</div>
+				<div class="post-container small-12 cell" v-if="postData.length == 0 && premiumPostData.length == 1">
+					<div class="grid-x grid-margin-x">
+						<div class="medium-12 cell premium-post" v-for="(post,index) in premiumPostData">
 						  <h4 class="blue best-match">Best Match</h4>
 							<i class="fas fa-star yellow"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered"></a>
 							<p v-html="$options.filters.limitWords(post.content.rendered,15)"></p>
@@ -276,9 +285,9 @@ export default{
 
 	      	response.data.forEach(function(post) {
 	      		if (post.acf.energy_savings) {
-		      	  if (post.acf.energy_savings.includes(energy) && post.acf.glare_reduction.includes(glare) && post.acf.privacy_security.includes(safety)) {
+		      	  if (post.acf.energy_savings.includes(energy) && post.acf.glare_reduction.includes(glare) && post.acf.safety_security.includes(safety)) {
 		      	  	if (post.acf.premium_film) {
-		      	  		$this.premiumPostData.push(post)
+		      	  		$this.premiumPostData.push(post);
 		      	  	}else{
 		      	  	  $this.postData.push(post);
 		      	  	}
@@ -286,10 +295,8 @@ export default{
 	      		}
 	      	});
       		if ($this.postData.length > 1 && $this.premiumPostData.length == 0) {
-      			$this.premiumPostData.push($this.postData[0])
-      			$this.postData.shift()
-      			console.log($this.premiumPostData)
-      			console.log($this.postData)
+      			$this.premiumPostData.push($this.postData[0]);
+      			$this.postData.shift();
       		}
 	      }
 	    );
@@ -300,10 +307,10 @@ export default{
 	      .get(apiRoot + 'auto/' + postID + '?_embed')
 	      .then(function (response) {
 	      	console.log(response.data)
-	      	$this.modalTitle = response.data.title.rendered;
-	      	$this.modalBody  = response.data.content.rendered;
-	      	$this.modalImage = response.data.acf.film_selector_product_image;
-	      	$this.modalLogo  = response.data.acf.film_selector_product_logo;
+	      	$this.modalTitle     = response.data.title.rendered;
+	      	$this.modalBody      = response.data.content.rendered;
+	      	$this.modalImage     = response.data.acf.film_selector_product_image;
+	      	$this.modalLogo      = response.data.acf.film_selector_product_logo;
 	      	$this.modalBrochure  = response.data.acf.product_brochure;
 	      	
 	      }
