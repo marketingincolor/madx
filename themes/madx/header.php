@@ -42,7 +42,7 @@
 				</div>
 				<ul class="dropdown menu" v-dropdown>
 		      <li>
-		        <a>Navigate Site &nbsp;<i class="fas fa-chevron-down"></i></a>
+		        <a id="nav-drop">Navigate Site &nbsp;<i class="fas fa-chevron-down"></i></a>
 		        <ul class="menu vertical">
 		          <li><a href="/auto"><i class="far fa-car"></i>&nbsp; Auto</a></li>
 		          <li><a href="/residential"><i class="far fa-home"></i>&nbsp; Residential</a></li>
@@ -58,7 +58,7 @@
 			</div>
 			<div class="top-bar-right">
 				<ul class="menu">
-					<li><a href="#"><i class="fas fa-list-alt"></i>&nbsp; Performance</a></li>
+					<!--<li><a href="#"><i class="fas fa-list-alt"></i>&nbsp; Performance</a></li>-->
 					<li><a href="#"><i class="fas fa-id-badge"></i>&nbsp; Dealer Portal</a></li>
 		      <li>
 		        <a data-toggle="search-dropdown"><i class="fas fa-search"></i>&nbsp; Search</a>
