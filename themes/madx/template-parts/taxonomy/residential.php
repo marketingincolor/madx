@@ -44,7 +44,8 @@ if ($term->slug == 'case-studies' || $term->slug == 'safety-security') {
 
 <?php get_template_part('/template-parts/taxonomy/faqs'); ?>
 
+<?php if($term->slug == 'solar') { ?>
 <?php get_template_part('/template-parts/taxonomy/find-film'); ?>
-<?php } ?>
+<?php }} ?>
 
 <?php get_template_part('/template-parts/top-level-page/find-dealer'); ?>
