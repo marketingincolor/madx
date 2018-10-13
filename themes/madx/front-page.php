@@ -25,7 +25,7 @@ get_header('home'); ?>
 				<p><?php the_field('dealer_callout_subhead'); ?></p>
 			</div>
 			<div class="small-10 small-offset-1 medium-4 medium-offset-0 cell text-right">
-				<a href="<?php the_field('dealer_callout_button_link'); ?>" class="btn-yellow solid"><?php the_field('dealer_callout_heading'); ?> <i class="far fa-long-arrow-alt-right"></i></a>
+				<a href="<?php the_field('dealer_callout_button_link'); ?>" class="btn-yellow solid"><?php the_field('dealer_callout_button_text'); ?> <i class="far fa-long-arrow-alt-right"></i></a>
 			</div>
 		</div>
 	</div>
