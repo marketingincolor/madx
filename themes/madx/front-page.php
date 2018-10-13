@@ -20,11 +20,11 @@ get_header('home'); ?>
 <section class="dealer-callout">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 medium-6 cell text">
+			<div class="small-10 small-offset-1 medium-7 cell text">
 				<h2 class="blue"><i class="fal fa-id-badge"></i>&nbsp; <?php the_field('dealer_callout_heading'); ?></h2>
 				<p><?php the_field('dealer_callout_subhead'); ?></p>
 			</div>
-			<div class="small-10 small-offset-1 medium-4 medium-offset-0 cell text-right">
+			<div class="small-10 small-offset-1 medium-3 medium-offset-0 cell text-right">
 				<a href="<?php the_field('dealer_callout_button_link'); ?>" class="btn-yellow solid"><?php the_field('dealer_callout_button_text'); ?> <i class="far fa-long-arrow-alt-right"></i></a>
 			</div>
 		</div>
