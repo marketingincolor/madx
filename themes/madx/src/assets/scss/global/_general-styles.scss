@@ -302,6 +302,23 @@ section.warranty{
 		}
 	}
 
+	.module-bg{
+		@include bg-center-cover;
+		height: 180px;
+
+		@include breakpoint(small only){
+			height: 150px;
+		}
+
+		&.large{
+			height: 275px;
+
+			@include breakpoint(small only){
+				height: 150px;
+			}
+		}
+	}
+
 	&.auto-height{
 
 		.meta{
