@@ -87,6 +87,7 @@ export default{
 			    }
 
 			    $this.decorativePosts.sort(compare)
+			    console.log($this.decorativePosts)
 			    $this.activeItem = $this.decorativePosts[0].title.rendered;
 			    $this.getDecorativePostSingle($this.decorativePosts[0].slug);
 			  }
