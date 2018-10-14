@@ -278,7 +278,7 @@ export default{
   		let safety = this.$options.filters.importance(this.safetySecurity);
   		
   		axios
-	      .get(apiRoot + $this.postType)
+	      .get(apiRoot + $this.postType + '?per_page=99')
 	      .then(function (response) {
 	      	$this.postData = [];
 	      	$this.premiumPostData = [];
@@ -306,7 +306,6 @@ export default{
   		axios
 	      .get(apiRoot + 'auto/' + postID + '?_embed')
 	      .then(function (response) {
-	      	console.log(response.data)
 	      	$this.modalTitle     = response.data.title.rendered;
 	      	$this.modalBody      = response.data.content.rendered;
 	      	$this.modalImage     = response.data.acf.film_selector_product_image;

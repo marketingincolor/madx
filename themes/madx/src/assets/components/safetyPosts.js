@@ -33,7 +33,7 @@ export default {
 															<h4 class="blue" v-html="safetySinglePost[0].title.rendered"></h4>
 															<p class="content" v-html="safetySinglePost[0].content.rendered"></p>
 															<div class="grid-x grid-margin-y subhead" v-if="safetySinglePost[0].acf.pdf_link">
-																<div class="medium-2 cell text-center">
+																<div class="large-1 medium-2 cell text-center">
 																	<i class="fal fa-file-pdf"></i>
 																</div>
 																<div class="medium-10 cell">

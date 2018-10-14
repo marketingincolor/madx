@@ -1,3 +1,12 @@
+.page-template-page-front-page .gero{
+	padding-bottom: 5%;
+
+	@include breakpoint(small only){
+		height: auto;
+		padding: 10% 0;
+	}
+}
+
 .hero{
 	@include bg-center-cover;
 	padding-bottom: 14%;

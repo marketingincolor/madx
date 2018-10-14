@@ -39,22 +39,22 @@ export default{
 												<div class="grid-x">
 													<div class="medium-3 medium-offset-1 cell">
 														<p class="industry">Project</p>
-														<p class="subhead">{{ singlePost.acf.case_study_project }}</p>
+														<p class="subhead" v-html="singlePost.acf.case_study_project"></p>
 														<p class="industry">Location</p>
-														<p class="subhead">{{ singlePost.acf.case_study_location }}</p>
+														<p class="subhead" v-html="singlePost.acf.case_study_location"></p>
 														<p class="industry">Product</p>
-														<p class="subhead">{{ singlePost.acf.case_study_product }}</p>
+														<p class="subhead" v-html="singlePost.acf.case_study_product"></p>
 													</div>
 													<div class="medium-7 cell">
-														<h2 class="blue" style="margin-bottom:30px">{{ singlePost.title.rendered }}</h2>
+														<h2 class="blue" style="margin-bottom:30px" v-html="singlePost.title.rendered"></h2>
 														<article class="content" v-html="singlePost.content.rendered"></article>
-														<div class="grid-x grid-margin-y subhead" v-if="singlePost.acf.pdf_link">
-															<div class="medium-2 cell text-center">
+														<div class="grid-x grid-margin-y subhead" v-if="singlePost.acf.case_study_pdf">
+															<div class="large-1 medium-2 cell text-center">
 																<i class="fal fa-file-pdf"></i>
 															</div>
 															<div class="medium-10 cell">
-																<a :href="autoSinglePost[0].acf.pdf_link" target="_blank">Product Specs Doc</a>
-																<p>Specification Sheet Description</p>
+																<a :href="autoSinglePost[0].acf.case_study_pdf" target="_blank">Case Study PDF</a>
+																<p>Click to download case study</p>
 															</div>
 														</div>
 														<a class="btn-lt-blue border" @click="scrollToProducts"><i class="fal fa-long-arrow-left"></i>&nbsp; View Case Studies</a>

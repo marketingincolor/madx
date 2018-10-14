@@ -60,7 +60,7 @@ export default{
 															<h4 class="blue" v-html="singlePost.title.rendered"></h4>
 															<p class="content" v-html="singlePost.content.rendered"></p>
 															<div class="grid-x grid-margin-y" v-if="pdfLink">
-																<div class="medium-2 cell text-center">
+																<div class="large-1 medium-2 cell text-center">
 																	<i class="fal fa-file-pdf"></i>
 																</div>
 																<div class="medium-10 cell">
