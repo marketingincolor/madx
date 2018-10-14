@@ -7,8 +7,20 @@
 
 	.top-bar-right {
 
-		.dropdown.menu{
-			
+		.menu.vertical.is-dropdown-submenu{
+			border-bottom-left-radius: 5px;
+			border-bottom-right-radius: 5px;
+			padding-bottom: 5px;
+			background-color: #00467f;
+
+			a{
+				background-color: #00467f;
+				transition: background-color 0.2s ease-in-out;
+				
+				&:hover{
+					background-color: $blue;
+				}
+			}
 		}
 	}
 
