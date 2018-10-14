@@ -46,15 +46,20 @@
 				<?php //foundationpress_top_bar_r(); ?>
 				<ul class="dropdown menu" v-dropdown>
 		      <li>
-		        <a href="#"><i class="fal fa-globe-americas"></i>&nbsp; English&nbsp; <i class="fas fa-chevron-down"></i></a>
+		        <a><i class="fal fa-globe-americas"></i>&nbsp; English&nbsp; <i class="fas fa-chevron-down"></i></a>
 		        <ul class="menu vertical">
 		          <li><a href="#">Spanish</a></li>
 		          <li><a href="#">German</a></li>
 		          <li><a href="#">French</a></li>
 		        </ul>
 		      </li>
-		      <li><a href="#"><i class="fas fa-id-badge"></i>&nbsp; Dealer Portal</a></li>
-		      <li><a href="#"><i class="fas fa-search"></i>&nbsp; Search</a></li>
+		      <li><a href="https://madicodealers.com"><i class="fas fa-id-badge"></i>&nbsp; Dealer Portal</a></li>
+		      <li><a data-toggle="search-dropdown"><i class="fas fa-search"></i>&nbsp; Search</a></li>
+          <ul class="menu vertical">
+            <li class="dropdown-pane right" id="search-dropdown" data-position="bottom" v-drop-click>
+  						<?php get_template_part('template-parts/search/page-searchform'); ?>
+            </li>
+          </ul>
 		    </ul>
 
 				<?php if ( ! get_theme_mod( 'wpt_mobile_menu_layout' ) || get_theme_mod( 'wpt_mobile_menu_layout' ) === 'topbar' ) : ?>
