@@ -251,7 +251,7 @@ foreach($posts as $post) {
 // =============================
 // == AUSTRALIA
 // =============================
-$australia = array();
+$australia_country = array();
 $australia_args = array(
 	'post_type' => 'distributor',
 	'tax_query' => array(
@@ -269,7 +269,7 @@ foreach($posts as $post) {
 	$terms = wp_get_post_terms($post->ID,'country');
 	foreach ($terms as $term) {
 		if ($term->name == 'Australia') {
-			array_push($australia, $post);
+			array_push($australia_country, $post);
 		}
 	}
 }
@@ -344,15 +344,11 @@ foreach($posts as $post) {
 							<div class="small-12 cell">
 								<h4 class="blue">United States</h4>
 							</div>
-							<div class='medium-6 large-3 cell module auto-height'>
 								<?php list_distributors($usa); ?>
-							</div>
 							<div class="small-12 cell">
 								<h4 class="blue">Canada</h4>
 							</div>
-							<div class='medium-6 large-3 cell module auto-height'>
 								<?php list_distributors($canada); ?>
-							</div>
 						</div>
 				  </div>
 				  <div class="tabs-panel" id="latin-america">
@@ -363,45 +359,31 @@ foreach($posts as $post) {
 				    	<div class="small-12 cell">
 				    		<h4 class="blue">Barbados</h4>
 				    	</div>
-				    	<div class='medium-6 large-3 cell module auto-height'>
 				    		<?php list_distributors($barbados); ?>
-				    	</div>
 				    	<div class="small-12 cell">
 				    		<h4 class="blue">Brazil</h4>
 				    	</div>
-				    	<div class='medium-6 large-3 cell module auto-height'>
 				    		<?php list_distributors($brazil); ?>
-				    	</div>
 				    	<div class="small-12 cell">
 				    		<h4 class="blue">Chile</h4>
 				    	</div>
-				    	<div class='medium-6 large-3 cell module auto-height'>
 				    		<?php list_distributors($chile); ?>
-				    	</div>
 				    	<div class="small-12 cell">
 				    		<h4 class="blue">Costa Rica</h4>
 				    	</div>
-				    	<div class='medium-6 large-3 cell module auto-height'>
 				    		<?php list_distributors($costa_rica); ?>
-				    	</div>
 				    	<div class="small-12 cell">
 				    		<h4 class="blue">Dominican Republic</h4>
 				    	</div>
-				    	<div class='medium-6 large-3 cell module auto-height'>
 				    		<?php list_distributors($dominican_republic); ?>
-				    	</div>
 				    	<div class="small-12 cell">
 				    		<h4 class="blue">Ecuador</h4>
 				    	</div>
-				    	<div class='medium-6 large-3 cell module auto-height'>
 				    		<?php list_distributors($ecuador); ?>
-				    	</div>
 				    	<div class="small-12 cell">
 				    		<h4 class="blue">Peru</h4>
 				    	</div>
-				    	<div class='medium-6 large-3 cell module auto-height'>
 				    		<?php list_distributors($peru); ?>
-				    	</div>
 				    </div>
 				  </div>
 				  <div class="tabs-panel" id="africa">
@@ -412,21 +394,15 @@ foreach($posts as $post) {
 				    	<div class="small-12 cell">
 				    		<h4 class="blue">Cameroon</h4>
 				    	</div>
-				    	<div class='medium-6 large-3 cell module auto-height'>
 				    		<?php list_distributors($cameroon); ?>
-				    	</div>
 				    	<div class="small-12 cell">
 				    		<h4 class="blue">Egypt</h4>
 				    	</div>
-				    	<div class='medium-6 large-3 cell module auto-height'>
 				    		<?php list_distributors($egypt); ?>
-				    	</div>
 				    	<div class="small-12 cell">
 				    		<h4 class="blue">Libya</h4>
 				    	</div>
-				    	<div class='medium-6 large-3 cell module auto-height'>
 				    		<?php list_distributors($libya); ?>
-				    	</div>
 				    </div>
 				  </div>
 				  <div class="tabs-panel" id="asia">
@@ -437,39 +413,27 @@ foreach($posts as $post) {
 				    	<div class="small-12 cell">
 				    		<h4 class="blue">China</h4>
 				    	</div>
-				    	<div class='medium-6 large-3 cell module auto-height'>
 				    		<?php list_distributors($china); ?>
-				    	</div>
 				    	<div class="small-12 cell">
 				    		<h4 class="blue">Japan</h4>
 				    	</div>
-				    	<div class='medium-6 large-3 cell module auto-height'>
 				    		<?php list_distributors($japan); ?>
-				    	</div>
 				    	<div class="small-12 cell">
 				    		<h4 class="blue">Korea</h4>
 				    	</div>
-				    	<div class='medium-6 large-3 cell module auto-height'>
 				    		<?php list_distributors($korea); ?>
-				    	</div>
 				    	<div class="small-12 cell">
 				    		<h4 class="blue">Malaysia</h4>
 				    	</div>
-				    	<div class='medium-6 large-3 cell module auto-height'>
 				    		<?php list_distributors($malaysia); ?>
-				    	</div>
 				    	<div class="small-12 cell">
 				    		<h4 class="blue">Thailand</h4>
 				    	</div>
-				    	<div class='medium-6 large-3 cell module auto-height'>
 				    		<?php list_distributors($thailand); ?>
-				    	</div>
 				    	<div class="small-12 cell">
 				    		<h4 class="blue">Taiwan</h4>
 				    	</div>
-				    	<div class='medium-6 large-3 cell module auto-height'>
 				    		<?php list_distributors($taiwan); ?>
-				    	</div>
 				    </div>
 				  </div>
 				  <div class="tabs-panel" id="australia">
@@ -477,9 +441,7 @@ foreach($posts as $post) {
 					  	<div class="small-12 cell">
 					  		<h2 class="blue">Australia</h2>
 					  	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($australia); ?>
-					    </div>
 					  </div>
 				  </div>
 				  <div class="tabs-panel" id="europe">
@@ -490,111 +452,75 @@ foreach($posts as $post) {
 					  	<div class="small-12 cell">
 				    		<h4 class="blue">Austria</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($austria); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Belgium</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($belgium); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Estonia</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($estonia); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Finland</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($finland); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">France</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($france); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Germany</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($germany); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Greece</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($greece); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Iceland</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($iceland); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Latvia</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($latvia); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Lithuania</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($lithuania); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Luxembourg</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($luxembourg); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Netherlands</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($netherlands); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Norway</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($norway); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Poland</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($poland); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Romania</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($romania); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Russia</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($russia); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Spain</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($spain); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">United Kingdom</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($uk); ?>
-					    </div>
 					  </div>
 				  </div>
 				  <div class="tabs-panel" id="middle-east">
@@ -605,69 +531,47 @@ foreach($posts as $post) {
 					  	<div class="small-12 cell">
 				    		<h4 class="blue">Bahrain</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($bahrain); ?>
-					    </div>
 					  	<div class="small-12 cell">
 				    		<h4 class="blue">Iraq</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($iraq); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Israel</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($israel); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Jordan</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($jordan); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Kuwait</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($kuwait); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Lebanon</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($lebanon); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Oman</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($oman); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Qatar</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($qatar); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Saudi Arabia</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($saudi); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">Turkey</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($turkey); ?>
-					    </div>
 					    <div class="small-12 cell">
 				    		<h4 class="blue">United Arab Emirates</h4>
 				    	</div>
-					    <div class='medium-6 large-3 cell module auto-height'>
 					    	<?php list_distributors($uae); ?>
-					    </div>
 					  </div>
 				  </div>
 				</div>

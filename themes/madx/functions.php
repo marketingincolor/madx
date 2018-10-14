@@ -32,15 +32,17 @@ function list_distributors($country_array){
 		$dist_name     = $country->post_title;
 		$comp_name     = get_post_meta($country->ID,'compnay_name',true);
 		$website_nohttp = preg_replace('/(http:\/\/|https:\/\/|www.)/', '', $dist_website);
-	}
 
+		echo "<div class='medium-6 large-3 cell module auto-height'>";
   	echo "<h5 class='blue'>{$dist_name}</h5>";
   	echo "<ul class='dealer-meta'>";
   	echo "<li><address><i class='fas fa-map-marker-alt'></i> &nbsp;";
   	if($dist_company) {
   		echo "{$dist_company}<br>";
   	}
-  	echo "{$dist_street}<br> {$dist_city}, {$dist_state} {$dist_zip}</address></li>";
+  	if($dist_street) {
+  	  echo "{$dist_street}<br> {$dist_city}, {$dist_state} {$dist_zip}</address></li>";
+    }
   	if($dist_phone) {
   		echo "<li><address><i class='fas fa-phone'></i> &nbsp;{$dist_phone}";
 	  	if($dist_altphone) {
@@ -55,12 +57,14 @@ function list_distributors($country_array){
 		  echo "<li class='email'><address><i class='fas fa-envelope'></i> &nbsp;{$dist_email}</address></li>";
 		}
 		if($dist_website) {
-		  echo "<li class='email website'><address><i class='fas fa-globe'></i> &nbsp;<a href='{$dist_website}'>{$website_nohttp}</a></address></li>";
+		  echo "<li class='email website'><address><i class='fas fa-globe'></i> &nbsp;<a href='{$dist_website}' target='_blank'>{$website_nohttp}</a></address></li>";
 		}
   	echo "</ul>";
 		if($dist_markets) {
 		  echo "<a href='#!' class='info-icon' v-tooltip tabindex='{$count}' title='{$dist_markets}'><i class='fal fa-info-circle'></i></a>";
 	  }
+	  echo "</div>";
+	}
 }
 
 /** Various URL rewrite functions to add taxonomies to url */

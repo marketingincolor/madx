@@ -173,7 +173,12 @@ var newVue = new Vue({
       });
     },
     openDistributionTab: function(event){
-      let id = event.target.hash;
+      var id;
+      if (event.target.nodeName.toLowerCase() == "a") {
+        id = event.target.hash;
+      }else if(event.target.nodeName.toLowerCase() == "img"){
+        id = event.target.parentElement.hash;
+      }
       $(event.target).addClass('is-active');
       $('#tabs-content').find('.tabs-panel').removeClass('is-active');
       $(id).addClass('is-active');
