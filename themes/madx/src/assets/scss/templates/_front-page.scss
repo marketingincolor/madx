@@ -1,9 +1,35 @@
-.page-template-page-front-page .gero{
-	padding-bottom: 5%;
+.page-template-front-page {
 
-	@include breakpoint(small only){
-		height: auto;
-		padding: 10% 0;
+	.top-bar .menu a:hover:not(.button){
+		background-color: $clear;
+		color: $yellow;
+	}
+
+	.top-bar-right {
+
+		.dropdown.menu{
+			
+		}
+	}
+
+	.hero{
+		padding-bottom: 5%;
+
+		@include breakpoint(small only){
+			height: auto;
+			padding: 10% 0;
+		}
+	}
+
+	#search-dropdown{
+		top: 40px !important;
+		left: -298px !important;
+		background-color: transparent;
+		border: 0;
+
+		.input-group{
+			margin-bottom: 0;
+		}
 	}
 }
 
