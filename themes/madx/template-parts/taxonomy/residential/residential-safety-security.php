@@ -1,29 +1,17 @@
-<section class="page-hero" style="background-image: url(<?php the_field('into_background_image',$term); ?>);">
+<?php get_template_part('template-parts/menus/residential-header-menu'); ?>
 
-	<?php get_template_part('template-parts/menus/residential-header-menu'); ?>
-
-	<div class="grid-container">
-		<div class="grid-x">
-			<div class="small-10 small-offset-1 cell text-center">
-				<h1 class="blue"><?php the_field('intro_heading',$term); ?></h1>
-				<aside class="yellow-underline center"></aside>
-				<p class="subhead"><?php the_field('intro_subhead',$term); ?></p>
-				<a href="<?php the_field('intro_button_link',$term); ?>" class="btn-yellow solid"><?php the_field('intro_button_text',$term); ?></a>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section class="taxonomy-benefits">
+<section class="taxonomy-intro">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="large-8 small-10 small-offset-1 large-offset-2 cell text-center">
-				<h2 class="blue"><?php the_field('taxonomy_benefits_intro',$term); ?></h2>
+				<h1 class="blue"><?php the_field('intro_heading',$term); ?></h1>
 				<aside class="yellow-underline center"></aside>
-				<p class="subhead"><?php the_field('taxonomy_benefits_subhead',$term); ?></p>
+				<p class="subhead"><?php the_field('intro_subhead',$term); ?></p>
 			</div>
-
-			<?php get_template_part('template-parts/taxonomy/residential/safety-security-benefits'); ?>
+		</div>
+		<div class="grid-x">
+					
+			<?php get_template_part('template-parts/taxonomy/benefits'); ?>
 
 		</div>
 	</div>
@@ -57,3 +45,5 @@
 		
 	</div>
 </section>
+
+<?php get_template_part('/template-parts/taxonomy/faqs'); ?>

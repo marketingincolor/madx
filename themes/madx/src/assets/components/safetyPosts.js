@@ -7,7 +7,8 @@ export default {
 	    safetyPosts: [],
 	    safetyPostID: 0,
 	    safetySinglePost: [],
-	    taxParentSlug: 'products',
+	    taxParentSlug: '',
+	    getTaxParentId: 0,
 	    postType: 'safety'
 		}
 	},
@@ -28,24 +29,18 @@ export default {
 											<div class="meta">
 												<div class="medium-12 cell">
 													<div class="grid-x grid-margin-x grid-margin-y">
-														<div class="medium-5 medium-offset-1 cell">
+														<div class="medium-10 medium-offset-1 cell">
 															<h4 class="blue" v-html="safetySinglePost[0].title.rendered"></h4>
 															<p class="content" v-html="safetySinglePost[0].content.rendered"></p>
 															<div class="grid-x grid-margin-y subhead" v-if="safetySinglePost[0].acf.pdf_link">
-																<div class="medium-2 cell text-center">
+																<div class="large-1 medium-2 cell text-center">
 																	<i class="fal fa-file-pdf"></i>
 																</div>
 																<div class="medium-10 cell">
-																	<a :href="safetySinglePost[0].acf.pdf_link" target="_blank">Product Specs Doc</a>
-																	<p>Specification Sheet Description</p>
+																	<a :href="safetySinglePost[0].acf.pdf_link" target="_blank">Product Brochure</a>
+																	<p>Click to download brochure</p>
 																</div>
 															</div>
-														</div>
-														<div class="medium-4 medium-offset-1 cell">
-															<h6>Product Benefits</h6>
-															<ul class="product-benefits">
-																<li v-for="benefit in safetySinglePost[0].acf.film_benefits"><i class="fas fa-check"></i> &nbsp;{{ benefit.benefit1 }}</li>
-															</ul>
 														</div>
 													</div>
 												</div>
@@ -56,9 +51,21 @@ export default {
 							</div>
 						</div>`,
 		created (){
-			this.getSafetyPosts();
+			this.getTaxParent(location.href);
 		},
 		methods:{
+			getTaxParent: function(currentURL){
+				if (currentURL.includes('anti-intrusion')) {
+					this.taxParentSlug = 'anti-intrusion';
+				}else if(currentURL.includes('blast-mitigation')){
+					this.taxParentSlug = 'blast-mitigation';
+				}else if (currentURL.includes('graffiti-mitigation')) {
+					this.taxParentSlug = 'graffiti-mitigation';
+				}else if (currentURL.includes('natural-disaster-mitigation')) {
+					this.taxParentSlug = 'natural-disaster-mitigation';
+				}
+				this.getSafetyPosts();
+			},
 			getSafetyPosts: function(){
 				let $this = this;
 

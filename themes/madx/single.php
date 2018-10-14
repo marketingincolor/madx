@@ -9,8 +9,8 @@
 get_header(); ?>
 <?php while ( have_posts() ) : the_post(); ?>
 
-<section class="page-hero" style="background-image: url(<?php the_post_thumbnail_url( 'full' ); ?>);">
-
+<section class="page-hero relative" style="background-image: url(<?php the_post_thumbnail_url( 'full' ); ?>);">
+	<div class="overlay absolute"></div>
 	<div class="grid-container" id='header-grid'>
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 large-12 large-offset-0">
@@ -48,7 +48,12 @@ get_header(); ?>
 	<div class="grid-container">
 		<div class="grid-x grid-margin-x">
 			<div class="medium-6 small-10 small-offset-1 cell">
-				
+				<?php if(get_field('event_date')) { ?>
+					<p class="subhead"><strong><?php the_field('event_date'); ?></strong></p>
+				<?php } ?>
+				<?php if(get_field('news_subhead')) { ?>
+					<h4 class="subhead blue"><strong><?php the_field('news_subhead'); ?></strong></h4>
+				<?php } ?>
 				<?php the_content(); ?>
 
 				<div class="grid-x next-prev">

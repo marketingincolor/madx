@@ -2,6 +2,7 @@
 $term = get_queried_object();
 if ($term->slug == 'case-studies' || $term->slug == 'safety-security') {
 	include( locate_template( '/template-parts/taxonomy/commercial/commercial-'.$term->slug.'.php', false, false ) );
+
 }else{ ?>
 
 <?php get_template_part('template-parts/menus/commercial-header-menu'); ?>
@@ -18,12 +19,9 @@ if ($term->slug == 'case-studies' || $term->slug == 'safety-security') {
 		</div>
 	</section>
 
-	<section id="tax-posts" class="taxonomy-products">
+	<section id="tax-posts" class="taxonomy-products" style="padding-top: 5%">
 		<div class="grid-container">
 
-			<?php if($term->slug == 'solar') { ?>
-			  <tax-term-posts></tax-term-posts>
-			<?php }else if($term->slug == 'decorative') { ?>
 				<div class="grid-x grid-margin-y">
 					<div class="small-10 small-offset-1 large-12 large-offset-0 cell text-center">
 						<h2 class="blue"><?php the_field('products_heading',$term); ?></h2>
@@ -31,8 +29,11 @@ if ($term->slug == 'case-studies' || $term->slug == 'safety-security') {
 						<p class="subhead"></p>
 					</div>
 				</div>
-				<decorative-posts></decorative-posts>
-			<?php } ?>
+				<?php if($term->slug == 'solar') { ?>
+				  <tax-term-posts></tax-term-posts>
+				<?php }else if($term->slug == 'decorative') { ?>
+				  <decorative-posts></decorative-posts>
+			  <?php } ?>
 
 		</div>
 	</section>

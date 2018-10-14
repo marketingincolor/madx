@@ -18,7 +18,7 @@ get_header(); ?>
 				<h1 class="blue">Oops! You've reached a 404 page.</h1>
 				<aside class="yellow-underline center"></aside>
 			</div>
-			<div class="small-8 small-offset-2 medium-6 medium-offset-3 large-4 large-offset-4 cell">
+			<div class="small-8 small-offset-2 medium-6 medium-offset-3 large-5 large-offset-4 cell">
 				<p style="margin-bottom: 10px">The page you're looking for doesn't exist.</p>
 				<ul>
 					<li><i class="fal fa-check-circle"></i> &nbsp;Check the URL</li>
