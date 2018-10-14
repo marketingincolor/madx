@@ -18,7 +18,7 @@ global $post; ?>
 	  $parent_page = get_post($post->post_parent);
 ?>
 
-<section class="page-header">
+<section class="page-header" style="padding-bottom: 0">
 	<div id="header-grid" class="grid-container">
 		<div class="grid-x grid-margin-x">
 			<div class="small-10 small-offset-1 large-12 large-offset-0">
