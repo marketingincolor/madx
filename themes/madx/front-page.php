@@ -10,7 +10,7 @@ get_header('home'); ?>
 				<h1 class="white"><?php the_field('home_hero_heading'); ?></h1>
 				<aside class="yellow-underline left"></aside>
 				<p class="white" style="margin-bottom:30px"><?php the_field('home_hero_subhead'); ?></p>
-				<a href="#!" class="btn-yellow solid"><?php the_field('home_hero_play_button_text'); ?>&nbsp;&nbsp;<i class="fas fa-play-circle"></i></a>&nbsp;<br class="show-for-small-only">
+				<a href="#!" class="btn-yellow solid"><?php the_field('home_hero_play_button_text'); ?>&nbsp;&nbsp;<i class="fas fa-play-circle"></i></a>&nbsp;<br class="show-for-small-only"><br class="show-for-small-only">
 				<a href="/about" class="btn-yellow border"><?php the_field('home_hero_about_button_text'); ?></a>
 			</div>
 		</div>

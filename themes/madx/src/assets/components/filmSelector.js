@@ -299,7 +299,7 @@ export default{
   		let safety  = this.$options.filters.importance(this.safetySecurity);
   		
   		axios
-	      .get(apiRoot + 'auto')
+	      .get(apiRoot + $this.postType + '?per_page=99')
 	      .then(function (response) {
 	      	$this.postData = [];
 	      	$this.premiumPostData = [];
@@ -317,9 +317,7 @@ export default{
 	      	});
       		if ($this.postData.length > 1 && $this.premiumPostData.length == 0) {
       			$this.premiumPostData.push($this.postData[0])
-      			$this.postData.shift()
-      			console.log($this.premiumPostData)
-      			console.log($this.postData)
+      			$this.postData.shift();
       		}
 	      }
 	    );
@@ -329,7 +327,6 @@ export default{
   		axios
 	      .get(apiRoot + 'auto/' + postID + '?_embed')
 	      .then(function (response) {
-	      	console.log(response.data)
 	      	$this.modalTitle = response.data.title.rendered;
 	      	$this.modalBody  = response.data.content.rendered;
 	      	$this.modalImage = response.data.acf.film_selector_product_image;

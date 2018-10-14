@@ -23,7 +23,7 @@ if ($term->slug == 'case-studies' || $term->slug == 'safety-security') {
 	</div>
 </section>
 
-<section id="tax-posts" class="taxonomy-products">
+<section id="tax-posts" class="taxonomy-products" style="padding-top: 0">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 large-8 small-offset-1 large-offset-2 text-center">
