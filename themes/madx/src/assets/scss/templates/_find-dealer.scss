@@ -247,6 +247,15 @@
 
 .page-template-page-distribution{
 
+	h1{
+		font-size: 3rem;
+		font-family: 'AvenirLTStd-Light';
+
+		@include breakpoint(small down){
+			font-size: 2rem;
+		}
+	}
+
 	#region-tabs{
 		background-color: $clear;
 		border: 0;
