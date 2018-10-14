@@ -87,6 +87,7 @@
 		background-color: $white;
 		box-shadow: 0 1px 6px 2px #eee;
 		padding: 20px 0;
+		border-radius:5px;
 
 		@include breakpoint(small down){
 			margin-bottom: 30px;
@@ -115,9 +116,10 @@
 			}
 
 			a{
-				padding-left: 15%;
+				padding-left: 10%;
 				color: #818285;
 				transition: all 0.2s ease-in-out;
+				font-size:.9rem;
 			}
 		}
 	}

@@ -10,7 +10,7 @@
 								<li><a href="<?php echo site_url(); ?>/madicou/business/employee">Employee Relations</a></li>
 								<li><a href="<?php echo site_url(); ?>/madicou/business/operations">Operations</a></li>
 								<li><a href="<?php echo site_url(); ?>/madicou/business/sales">Sales</a></li>
-								<li><a href="<?php echo site_url(); ?>./madicou/business/time-mangement">Time Management</a></li>
+								<li><a href="<?php echo site_url(); ?>./madicou/business/time-management">Time Management</a></li>
 							</ul>
 						</li>
 						<li><a href="<?php echo site_url(); ?>/madicou/marketing">Marketing</a></li>
@@ -24,7 +24,7 @@
 				<div class="sub-menu">
 					<ul class="menu">
 						<li><span>Didn't find what you were looking for? </span></li>
-						<li><a href="<?php echo site_url(); ?>/madicou/ask-a-question">Ask a Question</a></li>
+						<li class="ask"><a href="<?php echo site_url(); ?>/madicou/ask-a-question"><i class="fal fa-question-circle"></i> Ask a Question</a></li>
 					</ul>
 				</div>
 			</div>

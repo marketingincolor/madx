@@ -52,7 +52,7 @@ export default{
 				<i class="fas fa-info-circle absolute"></i>
 				<div class="grid-x warning-child">
 					<div class="small-12 cell">
-						<p>For information on tint laws in the United States and Canada, refer to the International Window Film Association chart here. Consult an authorized Madico window film dealer to find the window film most appropriate to fit your autmotive needs.</p>
+						<p>For information on tint laws in the United States and Canada, refer to the International Window Film Association <a href="http://www.iwfa.com/News/StateLawCharts-AutomotiveWindowFilm.aspx" target="_blank">chart here</a>. Consult an authorized Madico window film dealer to find the window film most appropriate to fit your autmotive needs.</p>
 					</div>
 				</div>
 			</div>
@@ -81,8 +81,8 @@ export default{
 				<div class="grid-x grid-margin-x relative">
 					<div class="number absolute"><span>2</span></div>
 					<div class="small-10 small-offset-1 medium-12 medium-offset-0 cell">
-						<h5 class="blue">Glare and Fade Reduction</h5>
-						<p>Reduce unwanted glare for exterior light sources and help protect furniture from fading.</p>
+						<h5 class="blue">Glare Reduction</h5>
+						<p>Block the sun’s UV rays and reduce the fading of vehicle’s interior.</p>
 					</div>
 				</div>
 			</div>
@@ -102,8 +102,8 @@ export default{
 				<div class="grid-x grid-margin-x relative">
 					<div class="number absolute"><span>3</span></div>
 					<div class="small-10 small-offset-1 medium-12 medium-offset-0 cell">
-						<h5 class="blue">Privacy &amp; Security</h5>
-						<p>Prevent window breakage, deter break-ins, and holds glass together.</p>
+						<h5 class="blue">Safety</h5>
+						<p>Helps hold shattered glass together in the event of an accident.</p>
 					</div>
 				</div>
 			</div>
@@ -151,11 +151,11 @@ export default{
 				<div class="grid-x grid-margin-x relative">
 					<div class="number absolute"><span>5</span></div>
 					<div class="small-10 small-offset-1 medium-12 medium-offset-0 cell">
-						<h5 class="blue">Find Recommendations for Your Home</h5>
+						<h5 class="blue">Find Recommendations for Your Vehicle</h5>
 						<hr>
 						<div class="grid-x grid-margin-x">
 							<div class="medium-7 cell">
-								<p>The follwing recommendations are meant to show a variety of solutions that may meet your needs. Please consult an authorized Madio film dealer to discuss your individual window film needs and to determine the most appropriate window film for your residence.</p>
+								<p>The following recommendations are meant to show a variety of Madico solutions that may meet your needs. Please consult an authorized Madico automotive film dealer to discuss your individual window film needs and to determine the most appropriate film for your vehicle.</p>
 							</div>
 							<div class="medium-5 cell btn-container">
 								<a @click="getFilms" class="btn-yellow solid">View My Results &nbsp;&nbsp;<i class="fas fa-caret-down"></i></a>
@@ -186,12 +186,21 @@ export default{
 			</div>
 			<hr />
 			<div class="grid-x grid-margin-y">
-				<div class="small-12 cell post-container" v-if="postData.length == 0">
+				<div class="small-12 cell post-container" v-if="postData.length == 0 && premiumPostData.length == 0">
 					<p>No Films match your criteria. Please select something else.</p>
 				</div>
 				<div class="post-container small-12 cell" v-if="postData.length == 1 && premiumPostData.length == 0">
 					<div class="grid-x grid-margin-x">
 						<div class="medium-12 cell premium-post" v-for="(post,index) in postData">
+						  <h4 class="blue best-match">Best Match</h4>
+							<i class="fas fa-star yellow"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered"></a>
+							<p v-html="$options.filters.limitWords(post.content.rendered,15)"></p>
+						</div>
+					</div>
+				</div>
+				<div class="post-container small-12 cell" v-if="postData.length == 0 && premiumPostData.length == 1">
+					<div class="grid-x grid-margin-x">
+						<div class="medium-12 cell premium-post" v-for="(post,index) in premiumPostData">
 						  <h4 class="blue best-match">Best Match</h4>
 							<i class="fas fa-star yellow"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered"></a>
 							<p v-html="$options.filters.limitWords(post.content.rendered,15)"></p>
@@ -290,7 +299,7 @@ export default{
   		let safety  = this.$options.filters.importance(this.safetySecurity);
   		
   		axios
-	      .get(apiRoot + 'auto')
+	      .get(apiRoot + $this.postType + '?per_page=99')
 	      .then(function (response) {
 	      	$this.postData = [];
 	      	$this.premiumPostData = [];
@@ -308,9 +317,7 @@ export default{
 	      	});
       		if ($this.postData.length > 1 && $this.premiumPostData.length == 0) {
       			$this.premiumPostData.push($this.postData[0])
-      			$this.postData.shift()
-      			console.log($this.premiumPostData)
-      			console.log($this.postData)
+      			$this.postData.shift();
       		}
 	      }
 	    );
@@ -320,7 +327,6 @@ export default{
   		axios
 	      .get(apiRoot + 'auto/' + postID + '?_embed')
 	      .then(function (response) {
-	      	console.log(response.data)
 	      	$this.modalTitle = response.data.title.rendered;
 	      	$this.modalBody  = response.data.content.rendered;
 	      	$this.modalImage = response.data.acf.film_selector_product_image;

@@ -29,12 +29,12 @@ export default{
 												<h4 class="blue" v-html="decorativeSinglePost[0].title.rendered"></h4>
 												<p class="content" v-html="decorativeSinglePost[0].content.rendered"></p>
 												<div class="grid-x grid-margin-y subhead" v-if="decorativeSinglePost[0].acf.pdf_link">
-													<div class="medium-2 cell text-center">
+													<div class="large-1 medium-2 cell text-center">
 														<i class="fal fa-file-pdf"></i>
 													</div>
 													<div class="medium-10 cell">
-														<a :href="decorativeSinglePost[0].acf.pdf_link" target="_blank">Product Specs Doc</a>
-														<p>Specification Sheet Description</p>
+														<a :href="decorativeSinglePost[0].acf.pdf_link" target="_blank">Product Brochure</a>
+														<p>Click to download brochure</p>
 													</div>
 												</div>
 											</div>
@@ -87,6 +87,7 @@ export default{
 			    }
 
 			    $this.decorativePosts.sort(compare)
+			    console.log($this.decorativePosts)
 			    $this.activeItem = $this.decorativePosts[0].title.rendered;
 			    $this.getDecorativePostSingle($this.decorativePosts[0].slug);
 			  }

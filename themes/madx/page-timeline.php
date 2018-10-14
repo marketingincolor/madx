@@ -3,21 +3,20 @@
 get_header();
 if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-<section class="page-hero" style="background-image: url(<?php the_post_thumbnail_url(); ?>);">
+<section class="page-header">
 	<div id="header-grid" class="grid-container">
-		<div class="grid-x">
-			<div class="small-10 small-offset-1 large-12 large-offset-0">
+		<div class="grid-x grid-margin-x">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 				<?php get_template_part('template-parts/menus/about-header-menu'); ?>
 			</div>
 		</div>
 	</div>
-
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 medium-8 large-offset-0 cell">
+			<div class="small-10 small-offset-1 medium-8 medium-offset-2 cell text-center">
 				<h1 class="blue"><?php the_field('about_hero_heading'); ?></h1>
-				<aside class="yellow-underline left"></aside>
-				<p class="subhead"><?php the_field('about_hero_subhead'); ?></p></a>
+				<aside class="yellow-underline center"></aside>
+				<p><?php the_field('about_hero_subhead'); ?></p>
 			</div>
 		</div>
 	</div>
@@ -26,7 +25,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 <section class="posts about-content">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
+			<div class="small-10 small-offset-1 large-8 large-offset-2 cell">
 				<div class="grid-x grid-margin-y">
 					<div class="small-12 cell content-block">
 						<div class="grid-x">
@@ -49,7 +48,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 								while ( $query->have_posts() ) : $query->the_post();
 							?>
 
-								<div class="medium-6 large-4 cell module auto-height">
+								<div class="medium-6 cell module auto-height">
 									<img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
 									<div class="meta">
 										<h5 class="blue"><?php the_title(); ?></h5>

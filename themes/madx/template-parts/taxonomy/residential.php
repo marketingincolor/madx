@@ -1,8 +1,6 @@
 <?php 
 $term = get_queried_object();
-if ($term->slug == 'case-studies') {
-	include( locate_template( '/template-parts/taxonomy/residential/residential-'.$term->slug.'.php', false, false ) );
-}else if($term->slug == 'safety-security'){
+if ($term->slug == 'case-studies' || $term->slug == 'safety-security') {
 	include( locate_template( '/template-parts/taxonomy/residential/residential-'.$term->slug.'.php', false, false ) );
 }else{ ?>
 
@@ -25,7 +23,7 @@ if ($term->slug == 'case-studies') {
 	</div>
 </section>
 
-<section id="tax-posts" class="taxonomy-products">
+<section id="tax-posts" class="taxonomy-products" style="padding-top: 0">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 large-8 small-offset-1 large-offset-2 text-center">
@@ -46,7 +44,8 @@ if ($term->slug == 'case-studies') {
 
 <?php get_template_part('/template-parts/taxonomy/faqs'); ?>
 
+<?php if($term->slug == 'solar') { ?>
 <?php get_template_part('/template-parts/taxonomy/find-film'); ?>
-<?php } ?>
+<?php }} ?>
 
 <?php get_template_part('/template-parts/top-level-page/find-dealer'); ?>

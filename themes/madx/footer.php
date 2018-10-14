@@ -19,6 +19,7 @@
               <li><a href="/blog">Blog</a></li>
               <li><a href="/about/careers">Careers</a></li>
               <li><a href="/faqs">FAQs</a></li>
+              <li><a href="/contact">Contact Us</a></li>
             </ul>
           </div>
           <div class="small-6 medium-4 large-2 cell">
@@ -67,12 +68,7 @@
           </div>
           <div class="small-12 cell text-center credits">
             <address>9251 Belcher Road N. Pinellas Park, FL 33782</address>
-            <ul class="privacy">
-              <li><a href="/contact">Contact Us</a></li>&nbsp; |
-              <li><a href="/terms-conditions">Terms &amp; Conditions</a></li>&nbsp; |
-              <li><a href="/privacy-policy">Privacy Policy</a></li>
-            </ul>
-            <p>Copyright <?php echo date('Y'); ?> Madico<sup>&reg;</sup>, Inc.</p>
+            <p>Copyright <?php echo date('Y'); ?> Madico<sup>&reg;</sup>, Inc. | <a href="/privacy-policy">Privacy Policy</a></p>
           </div>
         </div>
       </div>
@@ -96,6 +92,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
 <?php } ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.8/postscribe.min.js"></script>
 
 <?php wp_footer(); ?>
 </body>
