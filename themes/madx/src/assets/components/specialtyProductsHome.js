@@ -67,7 +67,7 @@ export default{
 			    $this.taxonomies     = response.data;
 			    $this.activeItem     = $this.taxonomies[0].name;
 			    $this.queryString    = $this.taxonomies[0].name;
-			    $this.taxDescription = $this.taxonomies[0].description;
+			    $this.taxDescription = $this.taxonomies[0].acf.specialty_short_description;
 			    $this.bgImage        = $this.taxonomies[0].acf.specialty_background_image;
 			    
 			    setTimeout($this.replaceRegMark,300)
@@ -87,7 +87,7 @@ export default{
 		      $this.activeItem = event.target.innerHTML.replace(/<[^>]+>/g, '');
 		      acfRes.data.forEach(function(element) {
 		      	if(element.name == $this.activeItem){
-			        $this.taxDescription = element.description;
+			        $this.taxDescription = element.acf.specialty_short_description;
 			        $this.queryString    = element.name;
 			        $this.bgImage        = element.acf.specialty_background_image;
 			      }

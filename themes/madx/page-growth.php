@@ -39,7 +39,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 				<div class="grid-x grid-margin-x grid-margin-y">
 					<div class="medium-6 large-4 cell module auto-height">
-						<img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/black-pearl-car.png" alt="Auto">
+						<div class="module-bg small" style="background-image: url(<?php bloginfo('template_directory'); ?>/dist/assets/images/growth_automotive.jpg);"></div>
 						<div class="meta">
 							<h4 class="blue"><i class="fal fa-car"></i>&nbsp; Automotive Window Film</h4>
 							<p class="subhead">Window film is one of the easiest—and smartest—ways to protect you and your passengers from the sun.</p>
@@ -47,7 +47,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 						</div>
 					</div>
 					<div class="medium-6 large-4 cell module auto-height">
-						<img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/black-pearl-car.png" alt="Auto">
+						<div class="module-bg small" style="background-image: url(<?php bloginfo('template_directory'); ?>/dist/assets/images/growth_architecture.jpg);"></div>
 						<div class="meta">
 							<h4 class="blue"><i class="fal fa-car"></i>&nbsp; Architectural Window Film</h4>
 							<p class="subhead">Our residential window films are available in a variety of styles and hues, so you can be as bold or as subtle as you'd like.</p>
@@ -55,7 +55,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 						</div>
 					</div>
 					<div class="medium-6 large-4 cell module auto-height">
-						<img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/black-pearl-car.png" alt="Auto">
+						<div class="module-bg small" style="background-image: url(<?php bloginfo('template_directory'); ?>/dist/assets/images/growth_safety-security.jpg);"></div>
 						<div class="meta">
 							<h4 class="blue"><i class="fal fa-car"></i>&nbsp; Safety &amp; Security</h4>
 							<p class="subhead">Our Safety & Security Solutions help reduce the risk of crime, personal injury, and property damage and loss caused by natural disasters. </p>

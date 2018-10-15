@@ -31,8 +31,8 @@ get_header('madicou'); ?>
 		<div class="grid-x grid-margin-x grid-margin-y">
 			<div class="cell small-10 small-offset-1 medium-9 medium-offset-0">
 				<div class="grid-x grid-margin-x grid-margin-y">
-					<div class="cell">
-						<h3>Videos <a href="<?php echo site_url('/mu-types/video/'); ?>" class="blue see-more">Watch More Videos &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
+					<div class="cell heading">
+						<h3 class="section-h3">Videos <a href="<?php echo site_url('/mu-types/video/'); ?>" class="see-more">Watch More Videos &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
 					</div>
 
 					<!-- ////////// BEGIN Body Cells for VIDEOS ////////// -->
@@ -45,8 +45,8 @@ get_header('madicou'); ?>
 					</div>
 
 					<!-- ////////// BEGIN Body Cells for FAQs ////////// -->
-					<div class="cell">
-						<h3>Frequently Asked Questions <a href="<?php echo site_url('/faqs/'); ?>" class="blue see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
+					<div class="cell heading">
+						<h3 class="section-h3">Frequently Asked Questions <a href="<?php echo site_url('/faqs/'); ?>" class="see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
 					</div>
 					<div class="cell module page-faqs">
 						<div class="grid-y grid-margin-x grid-margin-y">
@@ -62,10 +62,10 @@ get_header('madicou'); ?>
 				<div class="grid-x grid-margin-x grid-margin-y">
 
 					<!-- ////////// BEGIN Sidebar Cells for ARTICLES ////////// -->
-					<div class="cell">
-						<h3>Articles <a href="<?php echo site_url('/mu-types/article/'); ?>" class="blue see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
+					<div class="cell heading">
+						<h3 class="section-h3">Articles <a href="<?php echo site_url('/mu-types/article/'); ?>" class="see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
 					</div>
-					<div class="cell side-articles">
+					<div class="cell module side-articles">
 						<div class="grid-y grid-margin-x grid-margin-y">
 						<!-- BEGIN LOOP for ARTICLES by SECTION/SLUG -->
 						<?php get_template_part('template-parts/madicou/content-article') ?>
@@ -74,8 +74,8 @@ get_header('madicou'); ?>
 					</div>
 
 					<!-- ////////// BEGIN Sidebar Cells for DOCUMENTS ////////// -->
-					<div class="cell">
-						<h3>Documents <a href="<?php echo site_url('/mu-types/document/'); ?>" class="blue see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
+					<div class="cell heading">
+						<h3 class="section-h3">Documents <a href="<?php echo site_url('/mu-types/document/'); ?>" class="see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
 					</div>
 					<div class="cell module side-documents">
 						<div class="grid-y grid-margin-x grid-margin-y">

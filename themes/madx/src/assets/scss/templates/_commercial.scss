@@ -1,4 +1,10 @@
 .tax-commercial_taxonomies{
+
+	&.term-case-studies{
+		.taxonomy-intro{
+			padding-bottom: 10%;
+		}
+	}
 	
 	.taxonomy-intro{
 		padding-bottom: 0;
@@ -10,6 +16,10 @@
 	.page-hero{
 
 		@include bg-center-cover;
+	}
+
+	.benefits{
+		background-color: $white;
 	}
 
 	.film-type{

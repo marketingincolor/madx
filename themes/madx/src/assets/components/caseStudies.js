@@ -53,7 +53,7 @@ export default{
 																<i class="fal fa-file-pdf"></i>
 															</div>
 															<div class="medium-10 cell">
-																<a :href="autoSinglePost[0].acf.case_study_pdf" target="_blank">Case Study PDF</a>
+																<a :href="singlePost.acf.case_study_pdf" target="_blank">Case Study PDF</a>
 																<p>Click to download case study</p>
 															</div>
 														</div>
