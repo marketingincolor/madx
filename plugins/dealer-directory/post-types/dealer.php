@@ -60,6 +60,7 @@ if(!class_exists('Post_Type_Template'))
                         'singular_name' => __(ucwords(str_replace("_", " ", self::POST_TYPE)))
                     ),
                     'public' => true,
+                    'exclude_from_search' => true,
                     'menu_icon' => 'dashicons-groups',
                     'supports' => array(
                         'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'revisions', 'page-attributes'
