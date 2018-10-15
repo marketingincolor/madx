@@ -28,4 +28,29 @@ get_header(); ?>
 	</div>
 </section>
 
+<section class="home-modules">
+	<div class="grid-container">
+		<div class="grid-x grid-margin-x grid-margin-y">
+			<div class="small-10 small-offset-1 large-12 large-offset-0">
+				<div class="grid-x grid-margin-x grid-margin-y">
+
+					<?php if( have_rows('home_modules_small') ):
+					    while ( have_rows('home_modules_small') ) : the_row(); ?>
+
+					  <div class="medium-6 large-3 cell module">
+					  	<a href="<?php the_sub_field('link_url'); ?>"><div class="module-bg small" style="background-image: url(<?php the_sub_field('image'); ?>);"></div></a>
+					  	<div class="meta">
+					  		<a href="<?php the_sub_field('link_url'); ?>"><h4 class="blue"><?php the_sub_field('icon'); ?>&nbsp; <?php the_sub_field('heading'); ?></h4></a>
+					  		<p><?php the_sub_field('body'); ?></p>
+					  	</div>
+					  </div>
+
+					<?php endwhile;endif; ?>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
 <?php get_footer();
