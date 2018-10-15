@@ -34,9 +34,9 @@
 						?>
 
 					<div class="medium-4 cell module auto-height">
-						<a href="<?php the_permalink(); ?>"><img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>"></a>
+						<a href="<?php the_permalink(); ?>"><div class="module-bg small" style="background-image: url(<?php the_post_thumbnail_url(); ?>);"></div></a>
 						<div class="meta">
-							<a href="<?php the_permalink(); ?>"><h4 class="blue"><?php the_title(); ?></h4></a>
+							<a href="<?php the_permalink(); ?>" style="margin-bottom: 25px;"><h4 class="blue"><?php echo wp_trim_words(get_the_title(),8,'...'); ?></h4></a>
 							<a href="<?php the_permalink(); ?>" class="blue read-more">Read More &nbsp;<i class="fal fa-long-arrow-right"></i></a>
 						</div>
 					</div>

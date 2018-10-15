@@ -45,6 +45,17 @@
 		margin-bottom: 5px;
 	}
 
+	address a{
+		color: $text-gray;
+		border-bottom:1px solid $text-gray;
+		transition: all 0.2s ease-in-out;
+
+		&:hover{
+			border-color: $blue;
+			color: $blue;
+		}
+	}
+
 	.blue{
 		text-transform: uppercase;
 	}

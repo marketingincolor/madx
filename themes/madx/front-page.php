@@ -44,7 +44,8 @@ get_header('home'); ?>
 					  	<a href="<?php the_sub_field('link_url'); ?>"><div class="module-bg small" style="background-image: url(<?php the_sub_field('image'); ?>);"></div></a>
 					  	<div class="meta">
 					  		<a href="<?php the_sub_field('link_url'); ?>"><h4 class="blue"><?php the_sub_field('icon'); ?>&nbsp; <?php the_sub_field('heading'); ?></h4></a>
-					  		<p><?php the_sub_field('body'); ?></p>
+					  		<p style="margin-bottom: 30px"><?php the_sub_field('body'); ?></p>
+					  		<a class="read-more" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_text'); ?> &nbsp;<i class="far fa-long-arrow-right"></i></a>
 					  	</div>
 					  </div>
 
@@ -57,7 +58,8 @@ get_header('home'); ?>
 					  	<a href="<?php the_sub_field('link_url'); ?>"><div class="module-bg large" style="background-image: url(<?php the_sub_field('image'); ?>);"></div></a>
 					  	<div class="meta">
 					  		<a href="<?php the_sub_field('link_url'); ?>"><h4 class="blue"><?php the_sub_field('icon'); ?>&nbsp; <?php the_sub_field('heading'); ?></h4></a>
-					  		<p><?php the_sub_field('body'); ?></p>
+					  		<p style="margin-bottom: 30px"><?php the_sub_field('body'); ?></p>
+					  		<a class="read-more" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_text'); ?> &nbsp;<i class="far fa-long-arrow-right"></i></a>
 					  	</div>
 					  </div>
 
