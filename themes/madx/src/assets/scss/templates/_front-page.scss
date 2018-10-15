@@ -10,7 +10,6 @@
 		.menu.vertical.is-dropdown-submenu{
 			border-bottom-left-radius: 5px;
 			border-bottom-right-radius: 5px;
-			padding-bottom: 5px;
 			background-color: #00467f;
 
 			a{
@@ -25,7 +24,7 @@
 	}
 
 	.hero{
-		padding-bottom: 5%;
+		padding-bottom: 8%;
 
 		@include breakpoint(small only){
 			height: auto;
