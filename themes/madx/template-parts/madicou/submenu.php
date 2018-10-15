@@ -7,16 +7,17 @@
 						<li>
 							<a href="<?php echo site_url(); ?>/madicou/business" data-toggle="submenu-dropdown">Business Growth &nbsp;<i class="fa fa-chevron-down"></i></a>
 							<ul class="menu vertical" id="submenu-dropdown">
+								<li><a href="<?php echo site_url(); ?>/madicou/marketing">Marketing</a></li>
 								<li><a href="<?php echo site_url(); ?>/madicou/business/employee">Employee Relations</a></li>
 								<li><a href="<?php echo site_url(); ?>/madicou/business/operations">Operations</a></li>
 								<li><a href="<?php echo site_url(); ?>/madicou/business/sales">Sales</a></li>
 								<li><a href="<?php echo site_url(); ?>./madicou/business/time-management">Time Management</a></li>
 							</ul>
 						</li>
-						<li><a href="<?php echo site_url(); ?>/madicou/marketing">Marketing</a></li>
-						<li><a href="<?php echo site_url(); ?>/madicou/benefits"><!--Window Film -->Benefits</a></li>
+						<li><a href="<?php echo site_url(); ?>/madicou/benefits"><!--Window Film -->Film Benefits</a></li>
 						<li><a href="<?php echo site_url(); ?>/madicou/glossary"><!--Window Film -->Glossary</a></li>
-						<li><a href="<?php echo site_url(); ?>/madicou/product-training">Product Training</a></li>
+						<li><a href="<?php echo site_url(); ?>/madicou/product-training">Training</a></li>
+						<li><a href="<?php echo site_url(); ?>/madicou/film-facts">Film Facts</a></li>
 					</ul>
 				</div>
 			</div>
