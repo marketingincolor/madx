@@ -28,7 +28,7 @@ get_header(); ?>
 			<div class="small-10 small-offset-1 cell text-center">
 				<h2 class="blue">Our Capabilities</h2>
 				<aside class="yellow-underline center"></aside>
-				<p class="subhead">Madico’s Specialty Solutions division offers OEM’s custom solutions in a wide variety of formats and can be achieved through our range of manufacturing capabilities. Coat, laminate, and vacuum deposit all on one substrate.</p>
+				<p class="subhead">Madico’s Specialty Solutions division offers custom solutions to OEM’s in a wide variety of formats that can be achieved through our range of manufacturing capabilities. Madico is able to coat, laminate, and vacuum deposit all on one substrate.</p>
 			</div>
 			<div class="medium-4 cell module auto-height">
 				<img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/coating-and-laminating.png" alt="Coating & Laminating">

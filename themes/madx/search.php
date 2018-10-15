@@ -8,7 +8,7 @@
 
 get_header(); ?>
 
-<div class="main-container">
+<section class="main-container">
 	<div class="grid-container">
 		<main id="search-results" class="grid-x">
 			<div class="small-10 small-offset-1 large-12 large-offset-0">
@@ -49,5 +49,5 @@ get_header(); ?>
 			</div>
 		</main>
 	</div>
-</div>
+</section>
 <?php get_footer();

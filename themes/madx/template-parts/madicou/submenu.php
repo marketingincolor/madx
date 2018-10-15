@@ -5,7 +5,7 @@
 				<div class="sub-menu">
 					<ul class="menu" v-dropdown>
 						<li>
-							<a href="<?php echo site_url(); ?>/madicou/business" data-toggle="submenu-dropdown">Business Growth<i class="fa fa-chevron-down"></i></a>
+							<a href="<?php echo site_url(); ?>/madicou/business" data-toggle="submenu-dropdown">Business Growth &nbsp;<i class="fa fa-chevron-down"></i></a>
 							<ul class="menu vertical" id="submenu-dropdown">
 								<li><a href="<?php echo site_url(); ?>/madicou/business/employee">Employee Relations</a></li>
 								<li><a href="<?php echo site_url(); ?>/madicou/business/operations">Operations</a></li>
