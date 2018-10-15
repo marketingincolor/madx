@@ -1,4 +1,4 @@
-<section>
+<section class="titleblock-top">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 cell">

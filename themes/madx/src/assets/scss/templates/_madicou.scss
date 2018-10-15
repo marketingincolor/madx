@@ -1,3 +1,48 @@
+.page-template-page-madicou{
+
+	.page-hero,.madicou-search{
+		position: relative;
+		height: 65vh;
+		max-height: 500px;
+		top: 71px;
+		padding: 0;
+
+		@include breakpoint(small only){
+			height: 400px;
+		}
+
+
+		.grid-container {
+			position: relative;
+			height: 100%;
+		}
+
+		img{
+			position: absolute;
+			top: 50px;
+			left: 30px;
+		}
+
+		form{
+			position: absolute;
+			width: 400px;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+
+			@include breakpoint(small only){
+				width: 90%;
+			}
+
+			.input-group{
+				margin-bottom: 0;
+			}
+		}
+	}
+	.subnav{
+		margin-top: 71px;
+	}
+}
 .page-template-page-madicou, .single-madicou {
 	button {
 		cursor:pointer;
@@ -6,35 +51,40 @@
 	#top-header nav,
 	#top-header nav a {
 			background-color:transparent;
-			color:#818285;
+			color:$text-gray;
 		}
+
+	#top-header .top-bar-left .main-menu a{
+		font-family: 'AvenirLTStd-Heavy';
+		letter-spacing: 1px;
+	}
 	.site-header {
-	    border-bottom: 1px solid #e5e6e6;
-	    background-color: rgba(255,255,255,0.95);
-	    height: 71px;
-	    transition: height 0.33s;
-	    overflow: hidden;
-	    position: fixed;
-	    width: 100%;
-	    z-index: 999;
+    border-bottom: 1px solid #e5e6e6;
+    background-color: rgba(255,255,255,0.95);
+    height: 71px;
+    transition: height 0.33s;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
 
 		.top-bar-left {
 			text-transform:uppercase;
 		}
 		.top-bar-right .btn-yellow {
 			font-family:'AvenirLTStd-Heavy';
-			font-size:11px;
+			font-size:12px;
 			background-color:#fff;
 			border:2px solid $yellow;
 			color:$yellow !important;
-			letter-spacing: 0.15em;
+			letter-spacing: 1px;
 			padding:10px 18px 9px 18px;
 			display:block;
 		}
-	    .top-bar-title {
-	        padding: 0px 0px;
-	        height: 40%;
-	    }
+    .top-bar-title {
+      padding: 0px 0px;
+      height: 40%;
+    }
 		.top-bar .menu a {
 			font-weight:normal;
 			font-size:14px;
@@ -48,34 +98,79 @@
 			font-family: 'AvenirLTStd-Medium', sans-serif;
 		}
 	}
+
+	.marketing-resources{
+		padding: 3% 0 8%;
+	}
+
+	.titleblock-top{
+		padding: 8% 0 5%;
+	}
 	
 	section {
 		padding:3% 0;
+
 		.module .meta p {
 			padding-bottom:.5em;
 			display:flex;
 		}
+
 		#searchform input[type=text] {
 			max-width:440px;
 		}
 	}
 	.subnav {
 		background-color: #00467f;
-		padding:0.7em 0;
+		padding: 0;
+
+		#submenu-dropdown{
+
+			a{
+				padding-top: 15px;
+				padding-bottom: 15px;
+
+				&:hover{
+					background-color: $light_blue;
+				}
+			}
+		}
+
+		a{
+			font-family: 'AvenirLTStd-Heavy';
+			padding-top: 25px;
+			padding-bottom: 25px;
+			line-height: 1.3;
+
+			&:hover{
+				background-color: $light_blue;
+			}
+
+			i{
+				color: $light_blue;
+			}
+		}
+
 		a, li {
-			color:#ffffff;
+			color:$white;
 		}
+
 		.subnav-left, .subnav-right {
-			float: right;
-    		right: 0;
-    		position: relative;
+  		position: relative;
 		}
+
+		.subnav-right{
+			flex: 0 1 auto;
+			margin-left: auto;
+		}
+
 		span {
-			line-height: 1;
-		    text-decoration: none;
-		    display: block;
-		    padding: 0.7rem 0rem 0.7rem 2rem;
-		    color:#ffffff !important;
+	    text-decoration: none;
+	    display: block;
+	    padding-top: 22px;
+	    padding-bottom: 20px;
+	    padding-right: 15px;
+	    font-size: 0.875rem;
+	    color:$white !important;
 		}
 		.is-dropdown-submenu {
 			border:0;
@@ -92,15 +187,23 @@
 		.sub-menu .menu .ask a {
 			text-transform:uppercase;
 			color:#B2C7D9;
+			font-family: 'AvenirLTStd-Medium';
 		}
 	}
 
 	.madicou-search {
-		padding:6% 0;
 		background-color:#ECF1F6;
 	}
 
 	.page-content {
+
+		.cell.heading{
+			margin-bottom: 0;
+
+			h3{
+				margin-bottom: 0;
+			}
+		}
 		.side-documents {
 			.meta {
 				.doc-link {
@@ -114,23 +217,32 @@
 		}
 	}
 
+	.section-h3{
+		font-size: 30px;
+		margin-bottom: 15px;
+	}
 	.see-more {
 		font-family: 'AvenirLTStd-Black';
-		text-transform:uppercase;
-		font-size:12px;
-		font-weight:bold;
-		letter-spacing:0.1125em;
+		text-transform: uppercase;
+		font-size: 0.75rem;
+		letter-spacing: 0.1125em;
+		color: $light_blue;
 	}
 
 	.virtual-campus {
 		text-align:center;
+		padding: 8% 0 0;
+
 		.fal {
 			font-size:3em;
-			color:#e09e10;;
+			color:#e09e10;
+			margin-bottom: 10px;
 		}
+
 		h5 {
-			font-size:1.5em;
-			font-weight:bold;
+			font-size: 1.125rem;
+			font-family: 'AvenirLTStd-Black';
+			margin-bottom: 10px;
 		}
 	}
 

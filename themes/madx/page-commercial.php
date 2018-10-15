@@ -24,8 +24,6 @@ get_header(); ?>
 	</div>
 </section>
 
-<?php get_template_part('template-parts/top-level-page/film-benefits') ?>
-
 <section class="film-type">
 	<div class="grid-container">
 		<div class="grid-x">
