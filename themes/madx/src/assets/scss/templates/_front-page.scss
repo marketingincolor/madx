@@ -49,6 +49,7 @@
 	@include bg-center-cover;
 	padding-bottom: 14%;
 	height: 80vh;
+	max-height: 650px;
 
 	.grid-container,.grid-x{
 		height: 100%;
@@ -81,6 +82,7 @@
 
 	p{
 		margin-bottom: 0;
+		font-size: 1.125rem;
 	}
 
 	.text{

@@ -1,22 +1,11 @@
 <?php 
-	$current_post = get_post();
-
-	if ($current_post->post_parent == 0) {
-
-		if (is_tax() || is_single()) {
-			if (get_post_type() == 'safety') {
-				$post_type = 'safety-security';
-			}else{
-				$post_type = get_post_type();
-			}
-			$current_page = get_page_by_path($post_type);
-			$page_id = $current_page->ID;
-		}else if(is_page()){
-			$page_id = $current_post->ID;
-		}
-
+	$current_post = get_queried_object();
+	if ($current_post->ID) {
+		$page_id = $current_post->ID;
 	}else{
-		$page_id = $current_post->post_parent;
+		$array    = (explode("_",$current_post->taxonomy));
+		$the_page = get_page_by_path($array[0]);
+		$page_id  = $the_page->ID;
 	}
 	
  ?>
