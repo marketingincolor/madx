@@ -2,8 +2,9 @@
 	<div class="grid-x grid-margin-x grid-margin-y">
 		<?php
 	    $term = get_queried_object();
-	    $parent_cat = get_post_type($post->ID);
-	  	$parent_term = get_term_by( 'slug', $parent_cat, 'benefits_taxonomies', 'OBJECT', 'raw' );
+	    $array = (explode("_",$term->taxonomy));
+
+	  	$parent_term = get_term_by( 'slug', $array[0], 'benefits_taxonomies', 'OBJECT', 'raw' );
 	  	$args = array(
 	  		'parent' => $parent_term->term_id,
 	  		'orderby' => 'slug',

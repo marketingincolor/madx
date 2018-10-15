@@ -31,6 +31,7 @@ $usa    = array();
 $canada = array();
 $north_america_args = array(
 	'post_type' => 'distributor',
+	'posts_per_page' => -1,
 	'tax_query' => array(
 		array(
 			'taxonomy' => 'regions',
@@ -47,7 +48,7 @@ foreach($posts as $post) {
 	foreach ($terms as $term) {
 		if ($term->name == 'Canada') {
 			array_push($canada, $post);
-		}else if ($term->name == 'United States') {
+		}if ($term->name == 'United States') {
 			array_push($usa, $post);
 		}
 	}
@@ -65,6 +66,7 @@ $ecuador            = array();
 $peru               = array();
 $latin_america_args = array(
 	'post_type' => 'distributor',
+	'posts_per_page' => -1,
 	'tax_query' => array(
 		array(
 			'taxonomy' => 'regions',
@@ -81,17 +83,17 @@ foreach($posts as $post) {
 	foreach ($terms as $term) {
 		if ($term->name == 'Barbados') {
 			array_push($barbados, $post);
-		}else if ($term->name == 'Brazil') {
+		}if ($term->name == 'Brazil') {
 			array_push($brazil, $post);
-		}else if ($term->name == 'Chile') {
+		}if ($term->name == 'Chile') {
 			array_push($chile, $post);
-		}else if ($term->name == 'Costa Rica') {
+		}if ($term->name == 'Costa Rica') {
 			array_push($costa_rica, $post);
-		}else if ($term->name == 'Dominican Republic') {
+		}if ($term->name == 'Dominican Republic') {
 			array_push($dominican_republic, $post);
-		}else if ($term->name == 'Ecuador') {
+		}if ($term->name == 'Ecuador') {
 			array_push($ecuador, $post);
-		}else if ($term->name == 'Peru') {
+		}if ($term->name == 'Peru') {
 			array_push($peru, $post);
 		}
 	}
@@ -108,6 +110,7 @@ $thailand  = array();
 $taiwan    = array();
 $asia_args = array(
 	'post_type' => 'distributor',
+	'posts_per_page' => -1,
 	'tax_query' => array(
 		array(
 			'taxonomy' => 'regions',
@@ -124,15 +127,15 @@ foreach($posts as $post) {
 	foreach ($terms as $term) {
 		if ($term->name == 'China') {
 			array_push($china, $post);
-		}else if ($term->name == 'Japan') {
+		}if ($term->name == 'Japan') {
 			array_push($japan, $post);
-		}else if ($term->name == 'Korea') {
+		}if ($term->name == 'Korea') {
 			array_push($korea, $post);
-		}else if ($term->name == 'Malaysia') {
+		}if ($term->name == 'Malaysia') {
 			array_push($malaysia, $post);
-		}else if ($term->name == 'Thailand') {
+		}if ($term->name == 'Thailand') {
 			array_push($thailand, $post);
-		}else if ($term->name == 'Taiwan') {
+		}if ($term->name == 'Taiwan') {
 			array_push($taiwan, $post);
 		}
 	}
@@ -145,6 +148,7 @@ $egypt    = array();
 $libya    = array();
 $africa_args = array(
 	'post_type' => 'distributor',
+	'posts_per_page' => -1,
 	'tax_query' => array(
 		array(
 			'taxonomy' => 'regions',
@@ -161,9 +165,9 @@ foreach($posts as $post) {
 	foreach ($terms as $term) {
 		if ($term->name == 'Cameroon') {
 			array_push($cameroon, $post);
-		}else if ($term->name == 'Egypt') {
+		}if ($term->name == 'Egypt') {
 			array_push($egypt, $post);
-		}else if ($term->name == 'Libya') {
+		}if ($term->name == 'Libya') {
 			array_push($libya, $post);
 		}
 	}
@@ -192,6 +196,7 @@ $spain       = array();
 $uk          = array();
 $europe_args = array(
 	'post_type' => 'distributor',
+	'posts_per_page' => -1,
 	'tax_query' => array(
 		array(
 			'taxonomy' => 'regions',
@@ -206,43 +211,43 @@ $posts = $europe->posts;
 foreach($posts as $post) {
 	$terms = wp_get_post_terms($post->ID,'country');
 	foreach ($terms as $term) {
-		if ($term->name == 'austria') {
+		if ($term->name == 'Austria') {
 			array_push($austria, $post);
-		}else if ($term->name == 'Belgium') {
+		}if ($term->name == 'Belgium') {
 			array_push($belgium, $post);
-		}else if ($term->name == 'Netherlands') {
+		}if ($term->name == 'Netherlands') {
 			array_push($netherlands, $post);
-		}else if ($term->name == 'Luxembourg') {
+		}if ($term->name == 'Luxembourg') {
 			array_push($luxembourg, $post);
-		}else if ($term->name == 'Finland') {
+		}if ($term->name == 'Finland') {
 			array_push($finland, $post);
-		}else if ($term->name == 'France') {
+		}if ($term->name == 'France') {
 			array_push($france, $post);
-		}else if ($term->name == 'Germany') {
+		}if ($term->name == 'Germany') {
 			array_push($germany, $post);
-		}else if ($term->name == 'Greece') {
+		}if ($term->name == 'Greece') {
 			array_push($greece, $post);
-		}else if ($term->name == 'Iceland') {
+		}if ($term->name == 'Iceland') {
 			array_push($iceland, $post);
-		}else if ($term->name == 'Italy') {
+		}if ($term->name == 'Italy') {
 			array_push($italy, $post);
-		}else if ($term->name == 'Estonia') {
+		}if ($term->name == 'Estonia') {
 			array_push($estonia, $post);
-		}else if ($term->name == 'Lithuania') {
+		}if ($term->name == 'Lithuania') {
 			array_push($lithuania, $post);
-		}else if ($term->name == 'Latvia') {
+		}if ($term->name == 'Latvia') {
 			array_push($latvia, $post);
-		}else if ($term->name == 'Norway') {
+		}if ($term->name == 'Norway') {
 			array_push($norway, $post);
-		}else if ($term->name == 'Poland') {
+		}if ($term->name == 'Poland') {
 			array_push($poland, $post);
-		}else if ($term->name == 'Romania') {
+		}if ($term->name == 'Romania') {
 			array_push($romania, $post);
-		}else if ($term->name == 'Russia') {
+		}if ($term->name == 'Russia') {
 			array_push($russia, $post);
-		}else if ($term->name == 'Spain') {
+		}if ($term->name == 'Spain') {
 			array_push($spain, $post);
-		}else if ($term->name == 'United Kingdom') {
+		}if ($term->name == 'United Kingdom') {
 			array_push($uk, $post);
 		}
 	}
@@ -254,6 +259,7 @@ foreach($posts as $post) {
 $australia_country = array();
 $australia_args = array(
 	'post_type' => 'distributor',
+	'posts_per_page' => -1,
 	'tax_query' => array(
 		array(
 			'taxonomy' => 'regions',
@@ -262,8 +268,8 @@ $australia_args = array(
 		)
 	)
 );
-$australia = new WP_Query( $australia_args );
-$posts = $australia->posts;
+$australia_continent = new WP_Query( $australia_args );
+$posts = $australia_continent->posts;
 
 foreach($posts as $post) {
 	$terms = wp_get_post_terms($post->ID,'country');
@@ -290,6 +296,7 @@ $bahrain    = array();
 $kuwait    = array();
 $middle_east_args = array(
 	'post_type' => 'distributor',
+	'posts_per_page' => -1,
 	'tax_query' => array(
 		array(
 			'taxonomy' => 'regions',
@@ -306,25 +313,25 @@ foreach($posts as $post) {
 	foreach ($terms as $term) {
 		if ($term->name == 'Iraq') {
 			array_push($iraq, $post);
-		}else if ($term->name == 'Israel') {
+		}if ($term->name == 'Israel') {
 			array_push($israel, $post);
-		}else if ($term->name == 'Jordan') {
+		}if ($term->name == 'Jordan') {
 			array_push($jordan, $post);
-		}else if ($term->name == 'Lebanon') {
+		}if ($term->name == 'Lebanon') {
 			array_push($lebanon, $post);
-		}else if ($term->name == 'Qatar') {
+		}if ($term->name == 'Qatar') {
 			array_push($qatar, $post);
-		}else if ($term->name == 'Turkey') {
+		}if ($term->name == 'Turkey') {
 			array_push($turkey, $post);
-		}else if ($term->name == 'Saudi Arabia') {
+		}if ($term->name == 'Saudi Arabia') {
 			array_push($saudi, $post);
-		}else if ($term->name == 'United Arab Emirates') {
+		}if ($term->name == 'United Arab Emirates') {
 			array_push($uae, $post);
-		}else if ($term->name == 'Oman') {
+		}if ($term->name == 'Oman') {
 			array_push($oman, $post);
-		}else if ($term->name == 'Bahrain') {
+		}if ($term->name == 'Bahrain') {
 			array_push($bahrain, $post);
-		}else if ($term->name == 'Kuwait') {
+		}if ($term->name == 'Kuwait') {
 			array_push($kuwait, $post);
 		}
 	}
@@ -441,7 +448,7 @@ foreach($posts as $post) {
 					  	<div class="small-12 cell">
 					  		<h2 class="blue">Australia</h2>
 					  	</div>
-					    	<?php list_distributors($australia); ?>
+					    	<?php list_distributors($australia_country); ?>
 					  </div>
 				  </div>
 				  <div class="tabs-panel" id="europe">
