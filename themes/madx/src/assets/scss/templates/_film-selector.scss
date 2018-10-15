@@ -402,7 +402,7 @@
 }
 
 @media print{
-	.film-image,#top-header,#page-header,.top,.warning-parent,.no-print,.range-labels li{
+	.film-image,#top-header,#page-header .top-bar-right,.top,.warning-parent,footer.footer,.no-print,.range-labels li{
 		display:none;
 	}
 }
