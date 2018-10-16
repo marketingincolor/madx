@@ -19,6 +19,9 @@ get_header(); ?>
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 cell">
 				<div class="grid-x grid-margin-x grid-margin-y">
+					<div class="medium-6 cell text-center">
+						<img src="<?php the_field('touchscreen_image'); ?>" alt="<?php the_field('touchscreen_heading'); ?>">
+					</div>
 					<div class="medium-6 cell">
 						<h2 class="blue"><?php the_field('touchscreen_heading'); ?></h2>
 						<aside class="yellow-underline left"></aside>
@@ -33,11 +36,7 @@ get_header(); ?>
 
 							<?php endwhile;endif; ?>
 
-							<li><i class="far fa-check"></i>&nbsp;&nbsp;list item text here</li>
 						</ul>
-					</div>
-					<div class="medium-6 cell text-center">
-						<img src="<?php the_field('touchscreen_image'); ?>" alt="<?php the_field('touchscreen_heading'); ?>">
 					</div>
 				</div>
 			</div>
@@ -50,7 +49,23 @@ get_header(); ?>
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 cell">
 				<div class="grid-x grid-margin-x grid-margin-y">
-					<div class="medium-6 small-order-2 medium-order-1 cell text-center">
+					<div class="medium-6 small-order-2 medium-order-1 cell">
+						<h2 class="blue"><?php the_field('body_protection_heading'); ?></h2>
+						<aside class="yellow-underline left"></aside>
+						<p><?php the_field('body_subhead'); ?></p>
+						<ul class="checklist">
+
+							<?php
+							if( have_rows('body_checklist') ):
+							  while ( have_rows('body_checklist') ) : the_row(); ?>
+
+							    <li><i class="far fa-check"></i>&nbsp;&nbsp;<?php the_sub_field('list_item_text'); ?></li>
+
+							<?php endwhile;endif; ?>
+
+						</ul>
+					</div>
+					<div class="medium-6 small-order-1 medium-order-2 cell text-center">
 						<!-- Owl Carousel goes here -->
 						<div class="full-body-carousel owl-carousel owl-theme">
 							
@@ -88,6 +103,7 @@ get_header(); ?>
 
 							    	<?php
 								    	$swatch_count = 0;
+								    	$swatches_per_slide = 5;
 								    	$total_post_count = wp_count_posts('ppro_covers')->publish;
 								    	$args = array(
 								    		'post_type'      => 'ppro_covers', 
@@ -102,7 +118,7 @@ get_header(); ?>
 						      		<a href="#<?php echo $swatch_count + 1; ?>"><img src="<?php the_field('color_swatch'); ?>" alt="<?php the_title(); ?>" <?php if ($swatch_count == 0){echo 'class="active-swatch"';} ?>></a>
 
 											<?php $swatch_count++; ?>
-											<?php if ($swatch_count % 5 == 0 && $swatch_count != $total_post_count) { ?>
+											<?php if ($swatch_count % $swatches_per_slide == 0 && $swatch_count != $total_post_count) { ?>
 											  	
 											</li><li class="orbit-slide">
 
@@ -119,23 +135,6 @@ get_header(); ?>
 						  </div>
 						</div>
 					<!-- End foundation orbit -->
-					</div>
-
-					<div class="medium-6 small-order-1 medium-order-2 cell">
-						<h2 class="blue"><?php the_field('body_protection_heading'); ?></h2>
-						<aside class="yellow-underline left"></aside>
-						<p><?php the_field('body_subhead'); ?></p>
-						<ul class="checklist">
-
-							<?php
-							if( have_rows('body_checklist') ):
-							  while ( have_rows('body_checklist') ) : the_row(); ?>
-
-							    <li><i class="far fa-check"></i>&nbsp;&nbsp;<?php the_sub_field('list_item_text'); ?></li>
-
-							<?php endwhile;endif; ?>
-
-						</ul>
 					</div>
 				</div>
 			</div>

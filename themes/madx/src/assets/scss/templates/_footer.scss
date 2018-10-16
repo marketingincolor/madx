@@ -8,6 +8,17 @@
 
 	.credits{
 		margin-top: 50px;
+
+		a{
+			color: $text-gray;
+			border-bottom: 1px solid $text-gray;
+			transition: all 0.25s ease-in-out;
+
+			&:hover{
+				color: $blue;
+				border-color: $blue;
+			}
+		}
 	}
 
 	ul{
@@ -35,10 +46,6 @@
 		}
 	}
 
-	.privacy li{
-		display: inline-block;
-	}
-
 	address,p{
 		font-size: .875rem;
 		font-family: 'AvenirLTStd-Light';
@@ -58,5 +65,36 @@
 
 	.blue{
 		text-transform: uppercase;
+	}
+
+	.footer-logos{
+		list-style-type: none;
+		margin: 0;
+		display:flex;
+		align-items: center;
+		// flex-direction: row;
+
+		@media (max-width:800px){
+			flex-wrap: wrap;
+		}
+
+		li{
+			margin: 20px 10px;
+			text-align: center;
+
+			@media (max-width:800px){
+				width: 25%;
+			}
+			@media (max-width:640px){
+				margin: 20px 0;
+				width: 33.33333%;
+			}
+
+			img{
+				@media (max-width:800px){
+					max-width: 50%;
+				}
+			}
+		}
 	}
 }

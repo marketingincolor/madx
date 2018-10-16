@@ -33,21 +33,21 @@ get_header(); ?>
 			<div class="medium-4 cell module auto-height">
 				<img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/coating-and-laminating.png" alt="Coating & Laminating">
 				<div class="meta">
-					<a href="" class="blue">Coating & Laminating</a>
+					<h4 class="blue">Coating & Laminating</h4>
 					<p>With more than 40 years of precision coating and laminating, Madico is a world leader in coating, laminating, and converting of films in wide width, roll-to-roll format. Our products are complex, multi-layered, and engineered to our cusotmers' precise specifications — and complete satisfaction.</p>
 				</div>
 			</div>
 			<div class="medium-4 cell module auto-height">
 				<img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/metalizing.png" alt="Metalizing">
 				<div class="meta">
-					<a href="" class="blue">Metalizing</a>
+					<h4 class="blue">Metalizing</h4>
 					<p>Vacuum Depositing Inc. (VDI), a subsidiary of Madico's parent company, Lintec Corp.,  offers a full range of highly specialized, cutting-edge film products and services. Founded in 1971, it is the leading custom roll-to-roll metallizer of evaporative, sputtered, and electron beam coatings.</p>
 				</div>
 			</div>
 			<div class="medium-4 cell module auto-height">
 				<img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/contract-coating.png" alt="Contract Coating">
 				<div class="meta">
-					<a href="" class="blue">Contract Coating</a>
+					<h4 class="blue">Contract Coating</h4>
 					<p>Our experience in coating and laminating spans more than four decades, and gives us the expertise to offer outstanding Toll/Contracting Manufacturing services. We achieve it with quality, adopting a near fanatical commitment to systems, processes, and execution to bring our customers' products or prototypes to reality.</p>
 				</div>
 			</div>
