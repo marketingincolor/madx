@@ -1,22 +1,22 @@
 <?php 
-	$current_post = get_post();
-
-	if ($current_post->post_parent == 0) {
-
-		if (is_tax() || is_single()) {
-			if (get_post_type() == 'safety') {
-				$post_type = 'safety-security';
-			}else{
-				$post_type = get_post_type();
-			}
-			$current_page = get_page_by_path($post_type);
-			$page_id = $current_page->ID;
-		}else if(is_page()){
-			$page_id = $current_post->ID;
-		}
-
-	}else{
+	$current_post = get_queried_object();
+	
+	if ($current_post->ID && $current_post->post_parent == 0) {
+		$page_id = $current_post->ID;
+	}else if($current_post->ID && $current_post->post_parent != 0){
 		$page_id = $current_post->post_parent;
+	}else{
+		$array    = (explode("_",$current_post->taxonomy));
+		if ($array[0] == 'specialty') {
+			$path_path = 'specialty-solutions';
+		}else if ($array[0] == 'safety') {
+			$path_path = 'safety-security';
+		}else{
+			$path_path = $array[0];
+		}
+		echo $page_path;
+		$the_page = get_page_by_path($path_path);
+		$page_id  = $the_page->ID;
 	}
 	
  ?>
