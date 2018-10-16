@@ -47,12 +47,12 @@
           <div class="small-6 medium-4 large-2 cell">
             <ul>
               <li class="heading"><h6 class="blue">Dealers</h6></li>
-              <li><a href="#">Dealer Portal</a></li>
+              <li><a href="https://madicodealers.com">Dealer Portal</a></li>
               <li><a href="#">Become a Dealer</a></li>
               <li><a href="#">Products</a></li>
-              <li><a href="#">Madico U</a></li>
+              <li><a href="/madicou">Madico U</a></li>
               <li><a href="#">Dealer Programs</a></li>
-              <li><a href="#">Distribution</a></li>
+              <li><a href="/distribution">Distribution</a></li>
             </ul>
           </div>
           <div class="small-6 medium-4 large-2 cell">
@@ -64,6 +64,19 @@
               <li><a href="https://www.linkedin.com/company/madicoinc"><i class="fab fa-linkedin"></i>&nbsp; LinkedIn</a></li>
               <li><a href="https://www.youtube.com/channel/UCu9s60dm8xsrjHsXtqT49Nw"><i class="fab fa-youtube"></i>&nbsp; YouTube</a></li>
               <li><a href="https://www.instagram.com/clearplex"><i class="fab fa-instagram"></i>&nbsp; Instagram</a></li>
+            </ul>
+          </div>
+          <div class="small-12 cell">
+            <ul class="footer-logos">
+              <li><a href="https://www.aia.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/AIA.png" alt="AIA"></a></li>
+              <li><a href="https://www.asid.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/ASID.png" alt="ASID"></a></li>
+              <li><a href="https://www.energystar.gov/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/Energy Star.png" alt="Energy Star"></a></li>
+              <li><a href="http://www.iwfa.com/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/IWFA.png" alt="IWFA"></a></li>
+              <li><a href="http://www.nfrc.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/NFRC.png" alt="NFRC"></a></li>
+              <li><a href="https://www.semashow.com/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/SEMA.png" alt="SEMA"></a></li>
+              <li><a href="http://www.ewfa.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/EWFA.png" alt="EWFA"></a></li>
+              <li><a href="https://www.apta.com/Pages/default.aspx" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/APTA.png" alt="APTA"></a></li>
+              <li><a href="https://www.uitp.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/UITP.png" alt="UITP"></a></li>
             </ul>
           </div>
           <div class="small-12 cell text-center credits">
