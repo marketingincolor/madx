@@ -38,30 +38,24 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		<div class="grid-x grid-margin-x grid-margin-y">
 			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 				<div class="grid-x grid-margin-x grid-margin-y">
-					<div class="medium-6 large-4 cell module auto-height">
-						<div class="module-bg small" style="background-image: url(<?php bloginfo('template_directory'); ?>/dist/assets/images/growth_automotive.jpg);"></div>
-						<div class="meta">
-							<h4 class="blue"><i class="fal fa-car"></i>&nbsp; Automotive Window Film</h4>
-							<p class="subhead">Window film is one of the easiest—and smartest—ways to protect you and your passengers from the sun.</p>
-							<a href="/auto" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
+
+					<?php if( have_rows('growth_module') ):
+					  while ( have_rows('growth_module') ) : the_row(); ?>
+						
+						<div class="medium-6 large-4 cell module auto-height">
+							<div class="module-bg small" style="background-image: url(<?php the_sub_field('image'); ?>)"></div>
+							<div class="meta">
+								<h4 class="blue"><i class="fal fa-car"></i>&nbsp; <?php the_sub_field('heading'); ?></h4>
+								<p class="subhead"><?php the_sub_field('subhead'); ?></p>
+								<a href="<?php the_sub_field('link_url'); ?>" class="read-more"><?php the_sub_field('link_text'); ?> &nbsp;<i class="far fa-long-arrow-right"></i></a>
+								<?php if (get_sub_field('second_link_text')) { ?>
+									&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php the_sub_field('second_link_url'); ?>" class="read-more"><?php the_sub_field('second_link_text'); ?> &nbsp;<i class="far fa-long-arrow-right"></i></a>
+								<?php } ?>
+							</div>
 						</div>
-					</div>
-					<div class="medium-6 large-4 cell module auto-height">
-						<div class="module-bg small" style="background-image: url(<?php bloginfo('template_directory'); ?>/dist/assets/images/growth_architectural.jpg);"></div>
-						<div class="meta">
-							<h4 class="blue"><i class="fal fa-car"></i>&nbsp; Architectural Window Film</h4>
-							<p class="subhead">Our residential window films are available in a variety of styles and hues, so you can be as bold or as subtle as you'd like.</p>
-							<a href="/residential" class="read-more">View Residential &nbsp;<i class="far fa-long-arrow-right"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/commercial" class="read-more">View Commercial &nbsp;<i class="far fa-long-arrow-right"></i></a>
-						</div>
-					</div>
-					<div class="medium-6 large-4 cell module auto-height">
-						<div class="module-bg small" style="background-image: url(<?php bloginfo('template_directory'); ?>/dist/assets/images/growth_safety-security.jpg);"></div>
-						<div class="meta">
-							<h4 class="blue"><i class="fal fa-car"></i>&nbsp; Safety &amp; Security</h4>
-							<p class="subhead">Our Safety & Security Solutions help reduce the risk of crime, personal injury, and property damage and loss caused by natural disasters. </p>
-							<a href="/safety-security" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
-						</div>
-					</div>
+
+					<?php endwhile;endif; ?>
+					
 				</div>
 			</div>
 		</div>
