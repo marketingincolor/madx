@@ -16,13 +16,20 @@ global $post; ?>
 <?php
 	if ( is_page() && $post->post_parent ) {
 	  $parent_page = get_post($post->post_parent);
+	  $parent_name = $parent_page->post_name;
+	
+	if ($parent_page->post_name == 'specialty-solutions') {
+		$parent_name = 'specialty';
+	}else if ($parent_page->post_name == 'safety-security') {
+		$parent_name = 'safety';
+	}
 ?>
 
 <section class="page-header" style="padding-bottom: 0">
 	<div id="header-grid" class="grid-container">
 		<div class="grid-x grid-margin-x">
 			<div class="small-10 small-offset-1 large-12 large-offset-0">
-				<?php get_template_part('template-parts/menus/'. $parent_page->post_name .'-header-menu'); ?>
+				<?php get_template_part('template-parts/menus/'. $parent_name .'-header-menu'); ?>
 			</div>
 		</div>
 	</div>

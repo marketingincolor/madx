@@ -47,7 +47,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 						</div>
 					</div>
 					<div class="medium-6 large-4 cell module auto-height">
-						<div class="module-bg small" style="background-image: url(<?php bloginfo('template_directory'); ?>/dist/assets/images/growth_architecture.jpg);"></div>
+						<div class="module-bg small" style="background-image: url(<?php bloginfo('template_directory'); ?>/dist/assets/images/growth_architectural.jpg);"></div>
 						<div class="meta">
 							<h4 class="blue"><i class="fal fa-car"></i>&nbsp; Architectural Window Film</h4>
 							<p class="subhead">Our residential window films are available in a variety of styles and hues, so you can be as bold or as subtle as you'd like.</p>
