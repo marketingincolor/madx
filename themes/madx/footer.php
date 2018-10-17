@@ -15,7 +15,7 @@
               <li><a href="/about/history">History</a></li>
               <li><a href="/about/growth-acquisitions">Growth & Acquistitions</a></li>
               <li><a href="/about/madico-cares">Madico Cares</a></li>
-              <li><a href="/about/news">News</a></li>
+              <li><a href="/blog/news">News</a></li>
               <li><a href="/blog">Blog</a></li>
               <li><a href="/about/careers">Careers</a></li>
               <li><a href="/faqs">FAQs</a></li>
@@ -93,18 +93,17 @@
 	</div><!-- Close off-canvas content -->
 <?php endif; ?>
 
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
-<?php if(is_page_template('page-film-selector.php')) { ?>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/1.2.6/vuetify.min.js"></script>
-
-<?php } ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
 <?php if(is_page_template('page-protectionpro.php')) { ?>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
 <?php } ?>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.8/postscribe.min.js"></script>
 
 <?php wp_footer(); ?>

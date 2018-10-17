@@ -29,9 +29,8 @@
 
 	// Change zip code strings to integers and push into zip_array
 	foreach ($curl_response as $zipcode) {
-		foreach ($zipcode as $the_zip) {
-			array_push($zip_array, intval($the_zip));
-		}
+		// echo $zipcode;
+		array_push($zip_array, intval($zipcode));
 	}
   
 	$meta_query_args = array(
