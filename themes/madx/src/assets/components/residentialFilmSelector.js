@@ -280,7 +280,7 @@ export default{
 
 	      	response.data.forEach(function(post) {
 	      		if (post.acf.energy_savings) {
-		      	  if (post.acf.energy_savings.includes(energy) && post.acf.glare_reduction.includes(glare) && post.acf.safety_security.includes(safety)) {
+		      	  if (post.acf.heat_reduction.indexOf(energy) > -1 && post.acf.glare_reduction.indexOf(glare) > -1 && post.acf.safety_security.indexOf(safety) > -1) {
 		      	  	if (post.acf.premium_film) {
 		      	  		$this.premiumPostData.push(post);
 		      	  	}else{

@@ -31,8 +31,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				<div class="orbit" role="region" aria-label="Madico Specialty Solutions Capabilities" v-f-orbit>
 				  <div class="orbit-wrapper">
 				    <div class="orbit-controls">
-				      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span><i class="fas fa-chevron-left"></i></button>
-				      <button class="orbit-next"><span class="show-for-sr">Next Slide</span><i class="fas fa-chevron-right"></i></button>
+				      <button class="orbit-previous" style="display:none"><span class="show-for-sr">Previous Slide</span><i class="fas fa-chevron-left"></i></button>
+				      <button class="orbit-next" style="display:none"><span class="show-for-sr">Next Slide</span><i class="fas fa-chevron-right"></i></button>
 				    </div>
 				    <div class="grid-x">
 				    	<div class="small-12 large-10 large-offset-1 cell">

@@ -76,7 +76,15 @@ export default{
 		},
 		getNewTaxPosts: function(event){
 			let $this = this;
-			let taxonomyName = event.target.querySelector('a').innerHTML.toLowerCase().split(' ').join('-').replace(/<[^>]+>/g, '');
+			let node = event.target.nodeName.toLowerCase();
+			let taxonomyName;
+			console.log(node)
+
+			if (node == 'a') {
+				taxonomyName = event.target.innerText.toLowerCase().split(' ').join('-').replace(/<[^>]+>/g, '');
+			}else if(node == 'li'){
+				taxonomyName = event.target.querySelector('a').innerHTML.toLowerCase().split(' ').join('-').replace(/<[^>]+>/g, '');
+			}
 			
 		  axios.all([
 		      axios.get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName),

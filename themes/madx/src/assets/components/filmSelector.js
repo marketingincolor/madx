@@ -302,7 +302,7 @@ export default{
 
 	      	response.data.forEach(function(post) {
 	      		if (post.acf.heat_reduction) {
-		      	  if (post.acf.heat_reduction.includes(heat) && post.acf.glare_reduction.includes(glare) && post.acf.privacy_security.includes(safety)) {
+		      	  if (post.acf.heat_reduction.indexOf(heat) > -1 && post.acf.glare_reduction.indexOf(glare) > -1 && post.acf.privacy_security.indexOf(safety) > -1) {
 		      	  	if (post.acf.premium_film) {
 		      	  		$this.premiumPostData.push(post)
 		      	  	}else{
