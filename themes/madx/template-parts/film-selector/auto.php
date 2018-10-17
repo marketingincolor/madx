@@ -25,7 +25,6 @@
 					
 					<film-selector></film-selector>
 					
-					</div>
 				</div>
 			</div>
 		</div>

@@ -9,10 +9,6 @@
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-		<?php if (is_page_template('page-film-selector.php')) { ?>
-			<link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
-		<?php } ?>
 		
 		<?php wp_head(); ?>
 	</head>
@@ -49,7 +45,7 @@
 		          <li><a href="/commercial"><i class="far fa-building"></i>&nbsp; Commercial</a></li>
 		          <li><a href="/safety-security"><i class="fal fa-shield"></i>&nbsp; Safety &amp; Security</a></li>
 		          <li><a href="/specialty-solutions"><i class="fal fa-flask"></i>&nbsp; Specialty Solutions</a></li>
-		          <li><a href="/dealers"><i class="fal fa-id-badge"></i></i>&nbsp; Dealers</a></li>
+		          <li><a href="/dealers"><i class="fal fa-id-badge"></i>&nbsp; Dealers</a></li>
 		          <li><a href="/madicou"><i class="far fa-building"></i>&nbsp; Madico U</a></li>
 		          <li><a href="/about"><i class="far fa-building"></i>&nbsp; Company</a></li>
 		        </ul>

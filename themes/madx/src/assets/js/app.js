@@ -1,3 +1,4 @@
+// import 'babel-polyfill';
 import $ from 'jquery';
 import whatInput from 'what-input';
 
@@ -87,6 +88,13 @@ Vue.directive('drop-click', {
   }
 });
 
+// Add foundation 6 input slider functionality to an element
+Vue.directive('slider', {
+  bind: function (el) {
+    new Foundation.Slider($(el));
+  }
+});
+
 // Add foundation 6 orbit functionality to an element
 Vue.directive('f-orbit', {
     bind: function (el) {
@@ -148,6 +156,7 @@ var newVue = new Vue({
   },
   created(){
   	$(document).foundation();
+    this.runIEpolyfills();
   },
   mounted(){
   	if (location.href.includes('protectionpro')) {
@@ -182,7 +191,26 @@ var newVue = new Vue({
       $(event.target).addClass('is-active');
       $('#tabs-content').find('.tabs-panel').removeClass('is-active');
       $(id).addClass('is-active');
-    }
+    },
+    runIEpolyfills: function(){
 
+      
+
+      // .includes() polyfill for Internet Explorer
+      if (!String.prototype.includes) {
+        String.prototype.includes = function(search, start) {
+          'use strict';
+          if (typeof start !== 'number') {
+            start = 0;
+          }
+          
+          if (start + search.length > this.length) {
+            return false;
+          } else {
+            return this.indexOf(search, start) !== -1;
+          }
+        };
+      }
+    }
   }
 });
