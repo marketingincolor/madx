@@ -22,7 +22,7 @@ get_header(); ?>
 	</div>
 </section>
 
-<section class="capabilities" style="padding-top: 0">
+<section class="capabilities">
 	<div class="grid-container">
 		<div class="grid-x grid-margin-x">
 			<div class="small-10 small-offset-1 cell text-center">

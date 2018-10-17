@@ -15,7 +15,7 @@ export default{
 			<div class="small-10 small-offset-1 large-12 large-offset-0">
 				<div class="grid-x grid-margin-x grid-margin-y">
 					<div class="medium-6 large-3 cell module auto-height text-center" v-for="post in acfPosts">
-						<a href="/safety-security/products"><img :src="post.safety_film_image" :alt="post.safety_film_title"></a>
+						<a :href="post.safety_film_link"><img :src="post.safety_film_image" :alt="post.safety_film_title"></a>
 						<div class="meta" v-bind:style="metaHeight">
 							<a :href="post.safety_film_link"><h4 class="blue">{{ post.safety_film_title }}</h4></a>
 							<p class="content">{{ post.safety_film_content }}</p>
