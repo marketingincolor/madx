@@ -27,11 +27,16 @@
 	// Decode response for easy looping
 	$curl_response = json_decode($curl_response);
 
+	// var_dump($curl_response);
+
 	// Change zip code strings to integers and push into zip_array
 	foreach ($curl_response as $zipcode) {
-		// echo $zipcode;
-		array_push($zip_array, intval($zipcode));
+		foreach ($zipcode as $the_zip) {
+			array_push($zip_array, intval($the_zip));
+		}
 	}
+
+	// var_dump($zip_array);
   
 	$meta_query_args = array(
 		'post_type' => 'dealer',
