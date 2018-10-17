@@ -20,19 +20,19 @@ export default{
 			modalImage: '',
 			modalLogo: '',
 			modalBrochure: '',
-			maskColor: '',
+			houseImage: '/wp-content/themes/madx/dist/assets/images/Clear.jpg',
 			carSize: '',
 			autoSwatches: {
-				0:  { color: '#e6e5e1',percent: 'Clear' },
-				1:  { color: '#7a5923',percent: 'Bronze' },
-				2:  { color: '#525252',percent: 'Gray' },
-				3:  { color: '#989c9e',percent: 'Silver' },
-				4:  { color: '#d7dcdf',percent: 'Reflective' },
+				0:  { color: '#e6e5e1',percent: 'Clear', image: '/wp-content/themes/madx/dist/assets/images/Clear.jpg' },
+				1:  { color: '#7a5923',percent: 'Bronze', image: '/wp-content/themes/madx/dist/assets/images/Bronze.jpg' },
+				2:  { color: '#525252',percent: 'Gray', image: '/wp-content/themes/madx/dist/assets/images/Gray.jpg' },
+				3:  { color: '#989c9e',percent: 'Silver', image: '/wp-content/themes/madx/dist/assets/images/Silver.jpg' },
+				4:  { color: '#d7dcdf',percent: 'Reflective', image: '/wp-content/themes/madx/dist/assets/images/Reflective.jpg' },
 			},
 		}
 	},
 	template:
-	 `<v-app id="inspire">
+	 `<div id="film-container">
 	  <div class="grid-x grid-margin-x grid-margin-y">
 			<div class="small-12 cell relative warning-parent">
 				<i class="fas fa-info-circle absolute"></i>
@@ -52,16 +52,16 @@ export default{
 				</div>
 			</div>
 			<div class="medium-7 cell flex-column no-print">
-				<v-flex xs12>
-	        <v-slider
-	          v-model="energySavings"
-	        ></v-slider>
-					<ul class="range-labels no-print">
-					  <li>Low Importance</li>
-					  <li class="text-center">Medium</li>
-					  <li class="text-right">High Importance</li>
-					</ul>
-	      </v-flex>
+				<div class="slider no-print" v-slider data-initial-start="50" data-end="100">
+		        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
+		        <span class="slider-fill" data-slider-fill></span>
+		        <input type="hidden" v-model="energySavings">
+		      </div>
+	        <ul class="range-labels no-print">
+	          <li>Low Importance</li>
+	          <li class="text-center">Medium</li>
+	          <li class="text-right">High Importance</li>
+	        </ul>
 			</div>
 			<div class="medium-5 cell no-print">
 				<div class="grid-x grid-margin-x relative">
@@ -73,16 +73,16 @@ export default{
 				</div>
 			</div>
 			<div class="medium-7 cell flex-column no-print">
-				<v-flex xs12>
-	        <v-slider
-	          v-model="glareReduction"
-	        ></v-slider>
-					<ul class="range-labels no-print">
-					  <li>Low Importance</li>
-					  <li class="text-center">Medium</li>
-					  <li class="text-right">High Importance</li>
-					</ul>
-	      </v-flex>
+				<div class="slider no-print" v-slider data-initial-start="50" data-end="100">
+	        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
+	        <span class="slider-fill" data-slider-fill></span>
+	        <input type="hidden" v-model="glareReduction">
+	      </div>
+        <ul class="range-labels no-print">
+          <li>Low Importance</li>
+          <li class="text-center">Medium</li>
+          <li class="text-right">High Importance</li>
+        </ul>
 			</div>
 			<div class="medium-5 cell no-print">
 				<div class="grid-x grid-margin-x relative">
@@ -94,16 +94,16 @@ export default{
 				</div>
 			</div>
 			<div class="medium-7 cell flex-column no-print">
-				<v-flex xs12>
-	        <v-slider
-	          v-model="safetySecurity"
-	        ></v-slider>
-					<ul class="range-labels no-print">
-					  <li>Low Importance</li>
-					  <li class="text-center">Medium</li>
-					  <li class="text-right">High Importance</li>
-					</ul>
-	      </v-flex>				
+	      <div class="slider no-print" v-slider data-initial-start="50" data-end="100">
+	        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
+	        <span class="slider-fill" data-slider-fill></span>
+	        <input type="hidden" v-model="safetySecurity">
+	      </div>
+        <ul class="range-labels no-print">
+          <li>Low Importance</li>
+          <li class="text-center">Medium</li>
+          <li class="text-right">High Importance</li>
+        </ul>			
 			</div>
 			<div class="medium-12 cell no-print">
 				<div class="grid-x grid-margin-x relative">
@@ -118,14 +118,12 @@ export default{
 				<div class="grid-x grid-margin-x grid-margin-y">
 					<div class="small-10 small-offset-1 medium-12 medium-offset-0 cell appearance">
 						<div class="film-image">
-							<img id="car-original" src="/wp-content/themes/madx/dist/assets/images/window-original.png">
-							<div id="mask" :style="{backgroundColor: maskColor,height: this.carSize}"></div>
-							<img id="car-transparent" src="/wp-content/themes/madx/dist/assets/images/window-transparent.png">
+							<img id="car-original" :src="houseImage">
 						</div>
-						<ul class="film-colors">
+						<ul class="film-colors residential">
 							<li v-for="(swatch,index) in autoSwatches">
 							{{autoSwatches.length}}
-								<div class="color-swatch" @click="changeSwatch" :style="{ backgroundColor: swatch.color }"></div>
+								<div class="color-swatch" :data-image="swatch.image" @click="changeSwatch" :style="{ backgroundColor: swatch.color }"></div>
 								<div class="img-wrap" v-bind:class="{ 'active-film':index == 0 }"></div>
 							  <p class="outer-percent">{{ swatch.percent }}</p>
 							</li>
@@ -213,40 +211,36 @@ export default{
 		</div>
 		<hr>
 		
-    <v-dialog v-model="dialog" width="90%">
-      <v-card>
-        <v-card-title class="" primary-title>
-          <div class="grid-container">
-            <div class="grid-x grid-margin-x">
-            	<div class="small-9 medium-6 cell" style="margin-bottom:30px">
-								<img :src="modalLogo">
-            	</div>
-            	<div class="small-3 medium-6 cell text-right">
-								<span @click="dialog = false"><i class="fas fa-times"></i></span>
-            	</div>
-							<div class="medium-6 cell">
-								<img :src="modalImage" class="featured-image">
+		<div class="reveal" id="filmSelectorModal" v-reveal>
+      <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+        	<div class="small-9 medium-6 cell" style="margin-bottom:30px">
+						<img :src="modalLogo">
+        	</div>
+        	<div class="small-3 medium-6 cell text-right">
+						<span @click="closeModal"><i class="fas fa-times"></i></span>
+        	</div>
+					<div class="medium-6 cell">
+						<img :src="modalImage" class="featured-image">
+					</div>
+					<div class="medium-6 cell">
+						<h4 class="blue" v-html="modalTitle"></h4>
+						<p v-html="modalBody"></p>
+						<div class="grid-x grid-margin-y" v-if="modalBrochure" style="margin-top:0">
+							<div class="small-3 medium-2 cell pdf-icon">
+								<i class="fal fa-file-pdf"></i>
 							</div>
-							<div class="medium-6 cell">
-								<h4 class="blue" v-html="modalTitle"></h4>
-								<p v-html="modalBody"></p>
-								<div class="grid-x grid-margin-y" v-if="modalBrochure" style="margin-top:0">
-									<div class="small-3 medium-2 cell pdf-icon">
-										<i class="fal fa-file-pdf"></i>
-									</div>
-									<div class="small-7 medium-10 cell">
-										<a :href="modalBrochure" target="_blank">Download</a>
-										<p>Product Brochure</p>
-									</div>
-								</div>
-								<find-dealer-form></find-dealer-form>
+							<div class="small-7 medium-10 cell">
+								<a :href="modalBrochure" target="_blank">Download</a>
+								<p>Product Brochure</p>
 							</div>
-            </div>
-          </div>
-        </v-card-title>
-      </v-card>
-    </v-dialog>
-		</v-app>`,
+						</div>
+						<find-dealer-form></find-dealer-form>
+					</div>
+        </div>
+      </div>
+		</div>
+		</div>`,
 	created(){
 		
 	},
@@ -263,13 +257,14 @@ export default{
 		changeSwatch: function(event){
 			$('.img-wrap').removeClass('active-film');
 			$('.middle-percent').css({'display':'none'});
-			let $imgWrap = $(event.target).next('div');
+			let $imgWrap = $(event.target);
+			let newImage = event.target.dataset.image;
 			let bgColor  = event.target.style.backgroundColor;
 			let $watches = $('.color-swatch');
 
 			$imgWrap.addClass('active-film');
 			$imgWrap.next('p').css({'display':'block'});
-			this.maskColor = bgColor;
+			this.houseImage = newImage;
 		},
   	getFilms: function(){
   		const $this = this;
@@ -304,33 +299,28 @@ export default{
   	setModalContent: function(postID){
   		var $this  = this;
   		axios
-	      .get(apiRoot + 'auto/' + postID + '?_embed')
+	      .get(apiRoot + 'residential/' + postID + '?_embed')
 	      .then(function (response) {
-	      	$this.modalTitle     = response.data.title.rendered;
-	      	$this.modalBody      = response.data.content.rendered;
-	      	$this.modalImage     = response.data.acf.film_selector_product_image;
-	      	$this.modalLogo      = response.data.acf.film_selector_product_logo;
-	      	$this.modalBrochure  = response.data.acf.product_brochure;
-	      	
+	      	$this.modalTitle    = response.data.title.rendered;
+	      	$this.modalBody     = response.data.content.rendered;
+	      	$this.modalImage    = response.data.acf.film_selector_product_image;
+	      	$this.modalLogo     = response.data.acf.film_selector_product_logo;
+	      	$this.modalBrochure = response.data.acf.product_brochure;
+	      	$('#filmSelectorModal').foundation('open');
 	      }
 	    );
   	},
   	sendEmail: function(){
   		let link = "mailto:?subject=Madico%Film%20Selector%20Results"
-  		             + "&body=" + document.getElementsByClassName("post-container")[0].innerText;
+  		        + "&body=" + document.getElementsByClassName("post-container")[0].innerText;
 
   		window.location.href = link;
   	},
   	print: function(){
   		print();
+  	},
+  	closeModal: function(){
+  		$('#filmSelectorModal').foundation('close');
   	}
 	},
-	watch: {
-	  dialog (val) {
-	    !val;
-	    this.modalTitle = '';
-	    this.modalBody  = '';
-	    this.modalImage = '';
-	  }
-	}
 };

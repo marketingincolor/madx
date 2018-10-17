@@ -2,9 +2,30 @@
 	background-color: #F8F8F8;
 }
 
-.page-id-75 .select-film .film-colors li{
-	flex-grow: 1;
+.page-id-75 .select-film .film-colors {
+
+	li{
+		@include breakpoint(medium){
+		  flex-grow: 1;
+		}
+
+		@include breakpoint(small down){
+			flex-basis: calc(33.3333% - 10px);
+	  }
+	}
 }
+
+#film-container{
+	background-color: $white;
+	padding: 60px;
+	border-radius: 5px;
+	box-shadow: 0 1px 6px 2px #eee;
+
+	@include breakpoint(small only){
+		padding: 30px 20px;
+	}
+}
+
 .select-film{
 	padding-top: 0;
 
@@ -14,7 +35,19 @@
 	}
 
 	.medium-12 .number{
-		left: -5.3%;
+		left: -6.7%;
+
+		@include breakpoint(medium down){
+			left: -8.4%;
+		}
+
+		@media(max-width:900px){
+			left: -9.4%;
+		}
+
+		@media(max-width:800px){
+			left: -11.4%;
+		}
 
 		@include breakpoint(small down){
 			left: 0;
@@ -26,7 +59,7 @@
 	}
 
 	.number{
-		left: -13%;
+		left: -16%;
 		background-color: white;
 		border: 2px solid #80a3bf;
 		height: 30px;
@@ -36,6 +69,18 @@
 		align-items: center;
 		justify-content: center;
 		padding: 10px 0;
+
+		@include breakpoint(medium down){
+			left: -20%;
+		}
+
+		@media(max-width:900px){
+			left: -23%;
+		}
+
+		@media(max-width:800px){
+			left: -27%;
+		}
 
 		@include breakpoint(small down){
 			left: 0;
@@ -81,6 +126,14 @@
 		margin-top: 10px;
 		flex-direction: row;
 		flex-wrap: wrap;
+
+		&.residential{
+			margin-top: 110px;
+
+			@media(max-width: 800px){
+				margin-top: 40px;
+			}
+		}
 
 		li{
 			flex-basis: 0;
@@ -307,21 +360,46 @@
 		margin-bottom: 0;
 	}
 
-	.primary{
-		background-color: $yellow !important;
-		border-color: $yellow !important;
+	.slider{
+		margin-bottom: 1.125rem;
+		height: 4px;
+		background-color: rgba(0,0,0,.26);
+	}
+	
+	.slider-fill{
+		height: 4px;
+		background-color: $yellow;
 	}
 
-  .v-slider__track__container,.v-slider__track, .v-slider__track-fill{
-  	height: 4px;
-  }
+	.slider-handle{
+		border-radius: 50%;
+		background-color: $yellow;
+		height: 14px;
+		width: 14px;
+	}
 
-  .v-slider__thumb-container:before{
-  	background-color: $clear;
-  }
+  .reveal{
+  	width: 90%;
+  	max-width: 900px;
+  	padding: 40px;
 
-  .v-slider__thumb.primary:focus{
-    outline: 0;
+  	@include breakpoint(medium down){
+  		padding: 20px;
+  	}
+
+  	img{
+  		@include breakpoint(small down){
+  			margin-bottom: 30px;
+  		}
+  	}
+
+  	#use-location{
+
+  		&:hover{
+  			color: $yellow;
+  		}
+
+  	}
   }
 
   .warning-parent{
