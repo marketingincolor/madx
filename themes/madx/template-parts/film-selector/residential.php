@@ -25,7 +25,6 @@
 					
 					<residential-film-selector></residential-film-selector>
 					
-					</div>
 				</div>
 			</div>
 		</div>
