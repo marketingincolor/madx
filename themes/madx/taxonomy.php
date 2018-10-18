@@ -13,6 +13,14 @@
 	}else if (strpos($url, 'specialty') !== false) {
 	    $post_type = 'specialty';
 	}
+
+	else if (strpos($url, 'video') !== false) {
+	    $post_type = 'video';
+	}else if (strpos($url, 'article') !== false) {
+	    $post_type = 'article';
+	}else if (strpos($url, 'document') !== false) {
+	    $post_type = 'document';
+	}
 	get_template_part('template-parts/taxonomy/'.$post_type);
 ?>
 
