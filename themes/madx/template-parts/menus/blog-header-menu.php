@@ -1,6 +1,6 @@
 <?php
- 	$cat  = get_the_category();
- 	$slug = $cat[0]->slug;
+ 	$obj = get_queried_object();
+ 	$slug = $obj->category_nicename;
 ?>
 <header id="page-header" class="site-header" role="banner">
 	<div class="site-title-bar title-bar" <?php foundationpress_title_bar_responsive_toggle(); ?>>
@@ -15,7 +15,7 @@
 	<nav class="site-navigation top-bar" role="navigation">
 		<div class="top-bar-left">
 			<div class="site-desktop-title top-bar-title">
-				<a href="<?php echo '/blog/'.$slug; ?>" rel="home"><img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/blog-header-madico.png" alt="Madico The Clear Choice"><span class="blog-name"><?php if($slug) {echo $cat[0]->cat_name;}else{echo 'Blog Home';}?></span></a>
+				<a href="<?php echo '/blog/'.$slug; ?>" rel="home"><img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/blog-header-madico.png" alt="Madico The Clear Choice"><span class="blog-name"><?php if($slug) {echo $obj->cat_name;}else{echo 'Blog Home';}?></span></a>
 			</div>
 		</div>
 		<div class="top-bar-right">
