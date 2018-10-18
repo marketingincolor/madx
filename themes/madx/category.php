@@ -20,12 +20,11 @@
 					<div class="grid-x grid-margin-x grid-margin-y">
 
 					<?php
-					$cat      = get_the_category();
-					$cat_name = $cat[0]->cat_name;
-					$paged    = (get_query_var('paged')) ? get_query_var('paged') : 1;
-					$args     = array(
+					$cat   = get_queried_object();
+					$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+					$args  = array(
 						'post_type'      => 'post',
-						'category_name'  => $cat_name,
+						'category_name'  => $cat->category_nicename,
 					  'posts_per_page' => 9,
 					  'paged'          => $paged
 					);

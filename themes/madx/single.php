@@ -72,36 +72,36 @@ get_header(); ?>
 
 			</div>
 			<div class="medium-4 small-10 small-offset-1 cell single-sidebar">
-				<h4 class="blue">Blog Categories</h4>
-				<ul class="cat-list">
+				<!-- <h4 class="blue">Blog Categories</h4>
+				<ul class="cat-list"> -->
 
 					<?php
-					$categories = get_categories( array(
-					    'orderby'    => 'name',
-					    'order'      => 'ASC'
-					) );
+					// $categories = get_categories( array(
+					//     'orderby'    => 'name',
+					//     'order'      => 'ASC'
+					// ) );
 
-					foreach( $categories as $category ) {
+					// foreach( $categories as $category ) {
 						
-						if ($category->slug == 'auto') {
-							$cat_icon = '<i class="fal fa-car"></i>';
-						}else if ($category->slug == 'commercial') {
-							$cat_icon = '<i class="fal fa-building"></i>';
-						}else if ($category->slug == 'residential') {
-							$cat_icon = '<i class="fal fa-home"></i>';
-						}else if ($category->slug == 'safety-security') {
-							$cat_icon = '<i class="fal fa-shield"></i>';
-						}else if ($category->slug == 'news') {
-							$cat_icon = '<i class="fal fa-newspaper"></i>';
-						}
-					  if ($category->slug != 'uncategorized') {
+					// 	if ($category->slug == 'auto') {
+					// 		$cat_icon = '<i class="fal fa-car"></i>';
+					// 	}else if ($category->slug == 'commercial') {
+					// 		$cat_icon = '<i class="fal fa-building"></i>';
+					// 	}else if ($category->slug == 'residential') {
+					// 		$cat_icon = '<i class="fal fa-home"></i>';
+					// 	}else if ($category->slug == 'safety-security') {
+					// 		$cat_icon = '<i class="fal fa-shield"></i>';
+					// 	}else if ($category->slug == 'news') {
+					// 		$cat_icon = '<i class="fal fa-newspaper"></i>';
+					// 	}
+					//   if ($category->slug != 'uncategorized') {
 					 ?>
 
-					 <li><a href="<?php echo get_category_link( $category->term_id ) ?>"><?php echo $cat_icon; ?> &nbsp;&nbsp;<?php echo $category->cat_name; ?></a></li>
+					 <!-- <li><a href="<?php echo get_category_link( $category->term_id ) ?>"><?php echo $cat_icon; ?> &nbsp;&nbsp;<?php echo $category->cat_name; ?></a></li> -->
 
-					<?php }} ?>
+					<?php // }} ?>
 
-				</ul>
+				<!-- </ul> -->
 
 				<?php get_sidebar(); ?>
 

@@ -1,5 +1,9 @@
 .page-template-page-faqs{
 
+	.about-content .content-block ul{
+		list-style-type: disc;
+	}
+
 	#faq-search{
 
 		.input-group.relative{
@@ -72,12 +76,14 @@
 			margin: 20px 0;
 			text-indent: -1.5em;
 			padding: 2px 0 2px 0.8em;
+			list-style-type: none;
 		}
 
 		.accordion-item.is-active {
 
 			.accordion-content{
 				display: block;
+				text-indent: 0;
 			}
 
 			.yellow-triangle{
@@ -121,7 +127,7 @@
 			font-family: 'AvenirLTPro-Roman';
 			margin-left: 7px;
 
-			p{
+			p:first-of-type{
 				display: inline;
 			}
 
