@@ -13,6 +13,11 @@
 
 	a{
 		display:inline;
+
+		&:hover{
+			background-color: $clear;
+			color: $blue;
+		}
 	}
 }
 

@@ -29,7 +29,7 @@ export default {
 							</form>
 							<article id="faq-results">
 								<ul class="accordion" data-accordion v-if="faqPosts">
-								  <li @click="setActive(post,index)" class="accordion-item" :class="{ 'is-active': activeIndex === index }" data-accordion-item  v-for="(post,index) in faqPosts" :key="post.id">
+								  <li @click="setActive(post,index)" class="accordion-item" data-accordion-item  v-for="(post,index) in faqPosts" :key="post.id">
 								    <div class="yellow-triangle"></div><a href="#!" class="accordion-title" v-html="'Q: ' + post.title.rendered"></a>
 								    <transition
 											name="custom-classes-transition"
@@ -41,7 +41,7 @@ export default {
 								  </li>
 								</ul>
 								<ul class="accordion" data-accordion v-if="searchPosts">
-								  <li @click="setActive(post,index)" class="accordion-item" :class="{ 'is-active': activeIndex === index }" data-accordion-item  v-for="(post,index) in searchPosts" :key="post.id">
+								  <li @click="setActive(post,index)" class="accordion-item" data-accordion-item  v-for="(post,index) in searchPosts" :key="post.id">
 								    <div class="yellow-triangle"></div><a href="#!" class="accordion-title" v-html="'Q: ' + post.title.rendered"></a>
 								    <transition
 											name="custom-classes-transition"
@@ -63,7 +63,7 @@ export default {
 				let $this = this;
 
 				axios
-				  .get(apiRoot + $this.postType)
+				  .get(apiRoot + $this.postType + '?per_page=99')
 				  .then(function (response) {
 				    $this.faqPosts = response.data;
 				  }
