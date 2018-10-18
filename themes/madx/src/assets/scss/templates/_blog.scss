@@ -1,8 +1,27 @@
-.page-template-page-blog{
+.blog-header{
+	padding: 0;
+}
 
-	.blog-header{
-		padding-bottom: 0;
+.pagination{
+	text-align: center;
+
+	.current{
+		background-color: $blue;
+		padding: 10px 15px;
+		border-radius: 20px;
 	}
+
+	a{
+		display:inline;
+
+		&:hover{
+			background-color: $clear;
+			color: $blue;
+		}
+	}
+}
+
+.page-template-page-blog{
 
 	#page-header{
 		padding: 0;
