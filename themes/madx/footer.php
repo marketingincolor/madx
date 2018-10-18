@@ -20,6 +20,7 @@
               <li><a href="/about/careers">Careers</a></li>
               <li><a href="/faqs">FAQs</a></li>
               <li><a href="/about/procurement">Procurement</a></li>
+              <li><a href="/about/quality-environment-and-contingency">Quality, Environment & Contingency</a></li>
               <li><a href="/contact">Contact Us</a></li>
             </ul>
           </div>
@@ -49,10 +50,10 @@
             <ul>
               <li class="heading"><h6 class="blue">Dealers</h6></li>
               <li><a href="https://madicodealers.com">Dealer Portal</a></li>
-              <li><a href="#">Become a Dealer</a></li>
-              <li><a href="#">Products</a></li>
+              <li><a href="#!">Become a Dealer</a></li>
+              <li><a href="#!">Products</a></li>
               <li><a href="/madicou">Madico U</a></li>
-              <li><a href="#">Dealer Programs</a></li>
+              <li><a href="#!">Dealer Programs</a></li>
               <li><a href="/distribution">Distribution</a></li>
             </ul>
           </div>
