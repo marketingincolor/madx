@@ -117,5 +117,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 </section>
 
 <?php 
-endwhile;endif;
-get_footer();
+endwhile;endif; ?>
+<?php get_template_part('template-parts/taxonomy/specialty-solutions/contact'); ?>
+<?php get_footer();
