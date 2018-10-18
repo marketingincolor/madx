@@ -6,11 +6,17 @@
  * @since FoundationPress 1.0.0
  */
 	$obj = get_queried_object();
-	$slug = $obj->category_nicename;
- 	if ($obj->term_id) {
- 		$name = $obj->cat_name;
+ 	
+ 	if (is_single()) {
+ 		$obj = get_the_category();
+ 		$name = $obj[0]->cat_name;
  	}else{
- 		$name = 'Blog';
+ 	  $obj = get_queried_object();
+ 	  if ($obj->term_id) {
+ 	  	$name = $obj->cat_name;
+ 	  }else{
+ 	  	$name = 'Blog';
+ 	  }
  	}
 ?>
 
