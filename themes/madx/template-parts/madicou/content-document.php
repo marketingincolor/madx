@@ -1,6 +1,7 @@
 <?php 
 $post_slug = $post->post_name;
 $doc_args = array( 
+	'posts_per_page'=>-1,
 	'post_type' => 'madicou',
 	'madicou_taxonomies' => $post_slug,
 	'madicou-types' => 'document'
