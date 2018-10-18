@@ -11,37 +11,39 @@
           <div class="small-6 medium-4 large-2 cell">
             <ul>
               <li class="heading"><h6 class="blue">Company</h6></li>
-              <li><a href="/about">Overview</a></li>
-              <li><a href="/about/our-businesses">Our Businesses</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/about/history">History</a></li>
+              <li><a href="/about/growth-acquisitions">Growth & Acquistitions</a></li>
               <li><a href="/about/madico-cares">Madico Cares</a></li>
-              <li><a href="/about/news">News</a></li>
-              <li><a href="/about/press-releases">Press Releases</a></li>
+              <li><a href="/blog/news">News</a></li>
               <li><a href="/blog">Blog</a></li>
               <li><a href="/about/careers">Careers</a></li>
-              <li><a href="#">FAQs</a></li>
+              <li><a href="/faqs">FAQs</a></li>
+              <li><a href="/about/procurement">Procurement</a></li>
+              <li><a href="/about/quality-environment-and-contingency">Quality, Environment & Contingency</a></li>
+              <li><a href="/contact">Contact Us</a></li>
             </ul>
           </div>
           <div class="small-6 medium-4 large-2 cell">
             <ul>
               <li class="heading"><h6 class="blue">Dealers</h6></li>
-              <li><a href="#">Dealer Portal</a></li>
-              <li><a href="#">Become a Dealer</a></li>
-              <li><a href="#">Products</a></li>
-              <li><a href="#">Madico U</a></li>
-              <li><a href="#">Dealer Programs</a></li>
-              <li><a href="#">Distribution</a></li>
-              <li><a href="#">FAQs</a></li>
+              <li><a href="https://madicodealers.com">Dealer Portal</a></li>
+              <li><a href="#!">Become a Dealer</a></li>
+              <li><a href="#!">Products</a></li>
+              <li><a href="/madicou">Madico U</a></li>
+              <li><a href="#!">Dealer Programs</a></li>
+              <li><a href="/distribution">Distribution</a></li>
             </ul>
           </div>
           <div class="small-6 medium-4 large-2 cell">
             <ul>
               <li class="heading"><h6 class="blue">Connect</h6></li>
-              <li><a href="#"><i class="fab fa-facebook"></i>&nbsp; Facebook</a></li>
-              <li><a href="#"><i class="fab fa-twitter"></i>&nbsp; Twitter</a></li>
-              <li><a href="#"><i class="fab fa-google-plus-g"></i>&nbsp; Google Plus</a></li>
-              <li><a href="#"><i class="fab fa-linkedin"></i>&nbsp; LinkedIn</a></li>
-              <li><a href="#"><i class="fab fa-youtube"></i>&nbsp; YouTube</a></li>
-              <li><a href="#"><i class="fab fa-instagram"></i>&nbsp; Instagram</a></li>
+              <li><a href="https://www.facebook.com/MadicoInc/"><i class="fab fa-facebook"></i>&nbsp; Facebook</a></li>
+              <li><a href="https://twitter.com/MadicoInc"><i class="fab fa-twitter"></i>&nbsp; Twitter</a></li>
+              <li><a href="https://plus.google.com/+MadicoInc"><i class="fab fa-google-plus-g"></i>&nbsp; Google Plus</a></li>
+              <li><a href="https://www.linkedin.com/company/madicoinc"><i class="fab fa-linkedin"></i>&nbsp; LinkedIn</a></li>
+              <li><a href="https://www.youtube.com/channel/UCu9s60dm8xsrjHsXtqT49Nw"><i class="fab fa-youtube"></i>&nbsp; YouTube</a></li>
+              <li><a href="https://www.instagram.com/clearplex"><i class="fab fa-instagram"></i>&nbsp; Instagram</a></li>
             </ul>
           </div>
           <div class="small-6 medium-4 large-4 cell">
