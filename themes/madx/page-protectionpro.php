@@ -52,7 +52,7 @@ get_header(); ?>
 					<div class="medium-6 small-order-2 medium-order-1 cell">
 						<h2 class="blue"><?php the_field('body_protection_heading'); ?></h2>
 						<aside class="yellow-underline left"></aside>
-						<p><?php the_field('body_subhead'); ?></p>
+						<p><?php the_field('body_protection_subhead'); ?></p>
 						<ul class="checklist">
 
 							<?php
