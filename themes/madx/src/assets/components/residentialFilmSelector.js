@@ -138,11 +138,11 @@ export default{
 						<h5 class="blue">Find Recommendations for Your Home</h5>
 						<hr>
 						<div class="grid-x grid-margin-x">
-							<div class="medium-7 cell">
+							<div class="large-7 cell recommendation">
 								<p>The follwing recommendations are meant to show a variety of solutions that may meet your needs. Please consult an authorized Madio film dealer to discuss your individual window film needs and to determine the most appropriate window film for your residence.</p>
 							</div>
-							<div class="medium-5 cell btn-container">
-								<a @click="getFilms" class="btn-yellow solid">View My Results &nbsp;&nbsp;<i class="fas fa-caret-down"></i></a>
+							<div class="large-5 cell btn-container">
+								<p><a @click="getFilms" class="btn-yellow solid">View Results &nbsp;&nbsp;<i class="fas fa-caret-down"></i></a></p>
 							</div>
 						</div>
 					</div>
@@ -268,6 +268,9 @@ export default{
 		},
   	getFilms: function(){
   		const $this = this;
+  		this.energySavings  = document.getElementById('heatInput').value;
+  		this.glareReduction = document.getElementById('glareInput').value; 
+  		this.safetySecurity = document.getElementById('safetyInput').value;
   		let energy = this.$options.filters.importance(this.energySavings);
   		let glare  = this.$options.filters.importance(this.glareReduction);
   		let safety = this.$options.filters.importance(this.safetySecurity);

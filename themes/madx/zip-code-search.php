@@ -10,7 +10,6 @@
 	
 	$api_url    = $api_root.'/'.$api_key.'/radius.json/'.$zip_code.'/'.$zip_radius.'/miles?minimal';
 
-
 	$curl = curl_init($api_url);
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	$curl_response = curl_exec($curl);
@@ -19,8 +18,6 @@
     curl_close($curl);
     die('error occured during curl exec. Additional info: ' . var_export($info));
 	}
-
-
 
 	// This will return an array of zip codes in the specified radius
 	header('Content-Type: application/json');
