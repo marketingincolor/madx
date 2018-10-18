@@ -19,6 +19,7 @@
               <li><a href="/blog">Blog</a></li>
               <li><a href="/about/careers">Careers</a></li>
               <li><a href="/faqs">FAQs</a></li>
+              <li><a href="/about/procurement">Procurement</a></li>
               <li><a href="/contact">Contact Us</a></li>
             </ul>
           </div>
