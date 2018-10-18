@@ -56,10 +56,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 						while ( $query->have_posts() ) : $query->the_post();
 					?>
 
-						<div class="medium-6 cell module auto-height">
-							<img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
+						<div class="medium-6 cell module auto-height"><a href="">
+							<div class="module-bg large" style="background-image:url(<?php the_post_thumbnail_url(); ?>)"></div>
 							<div class="meta">
-								<h5 class="blue"><?php the_title(); ?></h5>
+								<h5 class="blue"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 								<p class="event-date"><?php the_field('event_date'); ?></p>
 								<?php the_content(); ?>
 							</div>

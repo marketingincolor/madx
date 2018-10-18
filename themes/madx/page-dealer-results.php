@@ -89,32 +89,59 @@
 				<h1 class="blue">Dealer Directory Results</h1>
 				<p class="subhead">Here is a list of <span class="underline"><?php echo $type; ?></span> dealers within <span class="underline"><?php echo $zip_radius; ?></span> miles of <span class="underline"><?php echo $zip_code; ?></span></p>
 			</div>
+			
+			<?php
+				$sunscape_dealers     = array(); 
+				$safetyshield_dealers = array(); 
+				$other_dealers        = array(); 
 
-      <?php if ($meta_query->have_posts()) : while ( $meta_query->have_posts() ) : $meta_query->the_post();
-      	$dealer_icons  = array();
-      	$dealer_street = get_post_meta($post->ID,'street',true);
-      	$dealer_zip    = get_post_meta($post->ID,'zip',true);
-      	$dealer_city   = get_post_meta($post->ID,'city',true);
-      	$dealer_state  = get_post_meta($post->ID,'state',true);
-      	$dealer_phone  = get_post_meta($post->ID,'phone_number',true);
-      	$dealer_email  = get_post_meta($post->ID,'email',true);
-      	$dealer_name   = get_the_title();
-      	$dealer_page   = get_the_permalink();
-      	// Get each dealer type and assign it an icon
-      	$terms = wp_get_post_terms( $post->ID, 'types');
-      	foreach ($terms as $term) {
-      		if ($term->slug == 'architectural') {
-      			array_push($dealer_icons, '<i class="fal fa-building"></i>');
+      	if ($meta_query->have_posts()) : while ( $meta_query->have_posts() ) : $meta_query->the_post();
+
+      		if (has_term('sunscape','designations')) {
+      			array_push($sunscape_dealers, $post);
+      		}else if (has_term('safety-shield','designations')) {
+      			array_push($safetyshield_dealers, $post);
+      		}else{
+      			array_push($other_dealers, $post);
       		}
-      		if ($term->slug == 'automotive') {
-      			array_push($dealer_icons, '<i class="fal fa-car"></i>');
-      		}
-      		if ($term->slug == 'safety-security') {
-      			array_push($dealer_icons, '<i class="fal fa-shield"></i>');
-      		}
-      	}
-      	$icons_joined = implode(" ", $dealer_icons);
+
+      	endwhile;else : ?>
+
+      		<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
+      			<h4>Sorry, no dealers found in that area. Please try a different zip code or a wider radius.</h4>
+      		</div>
+
+      	<?php endif; wp_reset_postdata(); ?>
+
+      	<?php
+      		$sorted_dealers = array_merge($sunscape_dealers, $safetyshield_dealers, $other_dealers);
+      		// Loop through new sorted dealers array to display them
+      		foreach ($sorted_dealers as $dealer) { 
+      			$dealer_icons  = array();
+      			$dealer_street = get_post_meta($dealer->ID,'street',true);
+      			$dealer_zip    = get_post_meta($dealer->ID,'zip',true);
+      			$dealer_city   = get_post_meta($dealer->ID,'city',true);
+      			$dealer_state  = get_post_meta($dealer->ID,'state',true);
+      			$dealer_phone  = get_post_meta($dealer->ID,'phone_number',true);
+      			$dealer_email  = get_post_meta($dealer->ID,'email',true);
+      			$dealer_name   = get_post_meta($dealer->ID,'company_name',true);
+      			$dealer_page   = get_the_permalink();
+      			// Get each dealer type and assign it an icon
+      			$terms = wp_get_post_terms( $dealer->ID, 'types');
+      			foreach ($terms as $term) {
+      				if ($term->slug == 'architectural') {
+      					array_push($dealer_icons, '<i class="fal fa-building"></i>');
+      				}
+      				if ($term->slug == 'automotive') {
+      					array_push($dealer_icons, '<i class="fal fa-car"></i>');
+      				}
+      				if ($term->slug == 'safety-security') {
+      					array_push($dealer_icons, '<i class="fal fa-shield"></i>');
+      				}
+      			}
+      			$icons_joined = implode(" ", $dealer_icons);
       	?>
+      		   
 
       	<div class="medium-6 large-3 cell module auto-height">
       		<div class="dealer-tag"><?php echo $icons_joined; ?></div>
@@ -128,14 +155,8 @@
       		</ul>
       	</div>
 
-			<?php endwhile;else : ?>
-
-				<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
-					<h4>Sorry, no dealers found in that area. Please try a different zip code or a wider radius.</h4>
-				</div>
-
-			<?php endif; wp_reset_postdata(); ?>
-
+      	<?php	} ?>
+			
 		</div>
 	</div>
 </section>

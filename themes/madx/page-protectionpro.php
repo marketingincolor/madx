@@ -5,7 +5,7 @@ get_header(); ?>
 <section class="hero relative" style="background-image: url(<?php the_field('about_hero_background_image'); ?>);">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 medium-6 large-4 large-offset-0 cell">
+			<div class="small-10 small-offset-1 medium-6 large-offset-0 cell">
 				<h1 class="white"><?php the_field('about_hero_heading'); ?></h1>
 				<aside class="yellow-underline left"></aside>
 				<p class="white"><?php the_field('about_hero_subhead'); ?></p>
@@ -52,7 +52,7 @@ get_header(); ?>
 					<div class="medium-6 small-order-2 medium-order-1 cell">
 						<h2 class="blue"><?php the_field('body_protection_heading'); ?></h2>
 						<aside class="yellow-underline left"></aside>
-						<p><?php the_field('body_subhead'); ?></p>
+						<p><?php the_field('body_protection_subhead'); ?></p>
 						<ul class="checklist">
 
 							<?php
