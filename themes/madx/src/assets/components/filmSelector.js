@@ -69,7 +69,7 @@ export default{
 		      <div class="slider no-print" v-slider data-initial-start="50" data-end="100">
 		        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
 		        <span class="slider-fill" data-slider-fill></span>
-		        <input type="hidden" v-model="heatReduction">
+		        <input id="heatInput" type="hidden">
 		      </div>
 	        <ul class="range-labels no-print">
 	          <li>Low Importance</li>
@@ -90,7 +90,7 @@ export default{
 		      <div class="slider no-print" v-slider data-initial-start="50" data-end="100">
 		        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
 		        <span class="slider-fill" data-slider-fill></span>
-		        <input type="hidden" v-model="glareReduction">
+		        <input id="glareInput" type="hidden">
 		      </div>
 	        <ul class="range-labels no-print">
 	          <li>Low Importance</li>
@@ -111,7 +111,7 @@ export default{
 		      <div class="slider no-print" v-slider data-initial-start="50" data-end="100">
 		        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
 		        <span class="slider-fill" data-slider-fill></span>
-		        <input type="hidden" v-model="safetySecurity">
+		        <input id="safetyInput" type="hidden">
 		      </div>
 	        <ul class="range-labels no-print">
 	          <li>Low Importance</li>
@@ -154,11 +154,11 @@ export default{
 							<h5 class="blue">Find Recommendations for Your Vehicle</h5>
 							<hr>
 							<div class="grid-x grid-margin-x">
-								<div class="medium-7 cell">
+								<div class="large-7 cell recommendation">
 									<p>The following recommendations are meant to show a variety of Madico solutions that may meet your needs. Please consult an authorized Madico automotive film dealer to discuss your individual window film needs and to determine the most appropriate film for your vehicle.</p>
 								</div>
-								<div class="medium-5 cell btn-container">
-									<a @click="getFilms" class="btn-yellow solid">View My Results &nbsp;&nbsp;<i class="fas fa-caret-down"></i></a>
+								<div class="large-5 cell btn-container">
+									<p><a @click="getFilms" class="btn-yellow solid">View Results &nbsp;&nbsp;<i class="fas fa-caret-down"></i></a></p>
 								</div>
 							</div>
 						</div>
@@ -290,9 +290,13 @@ export default{
 		},
   	getFilms: function(){
   		const $this = this;
-  		let heat    = this.$options.filters.importance(this.heatReduction);
-  		let glare   = this.$options.filters.importance(this.glareReduction);
-  		let safety  = this.$options.filters.importance(this.safetySecurity);
+  		this.heatReduction  = document.getElementById('heatInput').value;
+  		this.glareReduction = document.getElementById('glareInput').value; 
+  		this.safetySecurity = document.getElementById('safetyInput').value;
+  		let heat   = this.$options.filters.importance(this.heatReduction);
+  		let glare  = this.$options.filters.importance(this.glareReduction);
+  		let safety = this.$options.filters.importance(this.safetySecurity);
+
   		
   		axios
 	      .get(apiRoot + $this.postType + '?per_page=99')
