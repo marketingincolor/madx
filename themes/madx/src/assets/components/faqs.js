@@ -7,7 +7,7 @@ export default {
 	    faqPosts: [],
 	    taxonomyName: 'all',
 	    postType: 'faq',
-	    activeIndex: 0,
+	    activeIndex: null,
 	    searchPosts: [],
 	    taxonomyTerms: []
 		}
@@ -29,7 +29,7 @@ export default {
 							</form>
 							<article id="faq-results">
 								<ul class="accordion" data-accordion v-if="faqPosts">
-								  <li @click="setActive(post,index)" class="accordion-item" data-accordion-item  v-for="(post,index) in faqPosts" :key="post.id">
+								  <li @click="setActive(post,index)" class="accordion-item" data-accordion-item  :class="{ 'is-active': activeIndex === index }" v-for="(post,index) in faqPosts" :key="post.id">
 								    <div class="yellow-triangle"></div><a href="#!" class="accordion-title" v-html="'Q: ' + post.title.rendered"></a>
 								    <transition
 											name="custom-classes-transition"
@@ -41,7 +41,7 @@ export default {
 								  </li>
 								</ul>
 								<ul class="accordion" data-accordion v-if="searchPosts">
-								  <li @click="setActive(post,index)" class="accordion-item" data-accordion-item  v-for="(post,index) in searchPosts" :key="post.id">
+								  <li @click="setActive(post,index)" class="accordion-item" data-accordion-item  :class="{ 'is-active': activeIndex === index }" v-for="(post,index) in searchPosts" :key="post.id">
 								    <div class="yellow-triangle"></div><a href="#!" class="accordion-title" v-html="'Q: ' + post.title.rendered"></a>
 								    <transition
 											name="custom-classes-transition"
@@ -84,7 +84,14 @@ export default {
 				)
 			},
 			setActive: function(post,index){
-				this.activeIndex = index;
+				// if you click on the current active FAQ, it will close
+				// and set activeIndex to null : else set newly clicked
+				// FAQ to active
+				if (this.activeIndex == index) {
+					this.activeIndex = null
+				}else{
+				  this.activeIndex = index;
+				}
 			},
 			getSearchResults: function(){
 				let $this = this;
