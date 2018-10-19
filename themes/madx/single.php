@@ -28,8 +28,8 @@ get_header(); ?>
 			</div>
 			<div class="small-12 large-10 medium-8 medium-offset-1 large-offset-0 cell">
 				<ul class="post-meta absolute">
-					<li><i class="fal fa-calendar-alt"></i> &nbsp; <?php the_date(); ?></li>
-					<li><i class="fal fa-folder-open"></i> <?php echo $cat[0]->name; ?></li>
+					<li><i class="fal fa-calendar-alt light-blue"></i> &nbsp; <?php the_date(); ?></li>
+					<li><i class="fal fa-folder-open light-blue"></i> <?php echo $cat[0]->name; ?></li>
 					<li>
 						<ul class="social">
 							<li><a href="#"><i class="fab fa-facebook-square"></i></a></li>

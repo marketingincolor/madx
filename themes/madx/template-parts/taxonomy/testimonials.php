@@ -7,7 +7,7 @@
 				<h3 class="blue">Customer Testimonials</h3>
 				<aside class="yellow-underline center"></aside>
 				<!-- Foundation 6 Carousel/Orbit -->
-				<div class="orbit" role="region" aria-label="Favorite Space Pictures" v-f-orbit>
+				<div class="orbit" role="region" aria-label="Customer Testimonials" v-f-orbit>
 				  <div class="orbit-wrapper">
 				    <div class="orbit-controls">
 				      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span><i class="fas fa-chevron-left"></i></button>

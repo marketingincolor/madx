@@ -55,7 +55,7 @@ export default{
 				<div class="slider no-print" v-slider data-initial-start="50" data-end="100">
 		        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
 		        <span class="slider-fill" data-slider-fill></span>
-		        <input type="hidden" v-model="energySavings">
+		        <input type="hidden" id="energyInput">
 		      </div>
 	        <ul class="range-labels no-print">
 	          <li>Low Importance</li>
@@ -76,7 +76,7 @@ export default{
 				<div class="slider no-print" v-slider data-initial-start="50" data-end="100">
 	        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
 	        <span class="slider-fill" data-slider-fill></span>
-	        <input type="hidden" v-model="glareReduction">
+	        <input type="hidden" id="glareInput">
 	      </div>
         <ul class="range-labels no-print">
           <li>Low Importance</li>
@@ -97,7 +97,7 @@ export default{
 	      <div class="slider no-print" v-slider data-initial-start="50" data-end="100">
 	        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
 	        <span class="slider-fill" data-slider-fill></span>
-	        <input type="hidden" v-model="safetySecurity">
+	        <input type="hidden" id="safetyInput">
 	      </div>
         <ul class="range-labels no-print">
           <li>Low Importance</li>
@@ -268,7 +268,7 @@ export default{
 		},
   	getFilms: function(){
   		const $this = this;
-  		this.energySavings  = document.getElementById('heatInput').value;
+  		this.energySavings  = document.getElementById('energyInput').value;
   		this.glareReduction = document.getElementById('glareInput').value; 
   		this.safetySecurity = document.getElementById('safetyInput').value;
   		let energy = this.$options.filters.importance(this.energySavings);
@@ -283,7 +283,7 @@ export default{
 
 	      	response.data.forEach(function(post) {
 	      		if (post.acf.energy_savings) {
-		      	  if (post.acf.heat_reduction.indexOf(energy) > -1 && post.acf.glare_reduction.indexOf(glare) > -1 && post.acf.safety_security.indexOf(safety) > -1) {
+		      	  if (post.acf.energy_savings.indexOf(energy) > -1 && post.acf.glare_reduction.indexOf(glare) > -1 && post.acf.safety_security.indexOf(safety) > -1) {
 		      	  	if (post.acf.premium_film) {
 		      	  		$this.premiumPostData.push(post);
 		      	  	}else{

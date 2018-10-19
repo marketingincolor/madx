@@ -96,6 +96,10 @@
 
 	.top-bar-right{
 
+		ul{
+			background-color: $white;
+		}
+
 		#search-dropdown{
 			right: 0 !important;
 			top: 1px !important;

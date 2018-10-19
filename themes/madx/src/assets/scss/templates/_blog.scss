@@ -1,5 +1,34 @@
 .blog-header{
-	padding: 0;
+	padding: 6% 0 0;
+}
+
+.blog-container, aside.sidebar{
+	padding-top: 50px;
+}
+
+.widget.widget_nav_menu{
+	padding-top: 0;
+
+	h6{
+		margin-bottom: 10px;
+	}
+}
+
+#menu-blog-categories{
+	display: block;
+
+	a{
+		padding-left: 0;
+		color: $text-gray;
+		transition: color 0.25s ease-in-out;
+		padding: 5px 0;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+
+		&:hover{
+			color: $blue;
+		}
+	}
 }
 
 .pagination{
