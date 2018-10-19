@@ -197,7 +197,7 @@ p{
 }
 
 section{
-	padding: 10% 0;
+	padding: 6% 0;
 
 	@include breakpoint(medium down){
 		padding: 8% 0;
@@ -334,22 +334,12 @@ section.warranty{
 			}
 
 			h4{
-				color: #4d7da6;
-				transition: color 0.2s ease-in-out;
-
-				&:hover{
-					color: $blue;
-				}
+				color: $light_blue;
 			}
 
 			.read-more{
 				position: static;
-				color:#80a3bf;
-				transition: color 0.2s ease-in-out;
-
-				&:hover{
-					color: $blue;
-				}
+				color: $light_blue;
 			}
 		}
 	}
@@ -414,6 +404,37 @@ section.warranty{
 			font-size: 36px;
 			top: -5px;
 			cursor: pointer;
+			animation: up-down 5s infinite;
+			-webkit-animation: up-down 5s infinite;
+			-moz-animation: up-down 5s infinite;
+			-o-animation: up-down 5s infinite;
+		}
+		 
+		@-webkit-keyframes up-down {
+		 0%, 28%, 100% {-webkit-transform: translateY(0);} 
+		 7% {-webkit-transform: translateY(-15px);}
+		 14% {-webkit-transform: translateY(0px);}
+		 20% {-webkit-transform: translateY(-7px);}
+		}
+		 
+		@-moz-keyframes up-down {
+		 0%, 28%, 100% {-moz-transform: translateY(0);}
+		 7% {-moz-transform: translateY(-15px);}
+		 14% {-moz-transform: translateY(0px);}
+		 20% {-moz-transform: translateY(-7px);}
+		}
+		 
+		@-o-keyframes up-down {
+		 0%, 28%, 100% {-o-transform: translateY(0);}
+		 7% {-o-transform: translateY(-15px);}
+		 14% {-o-transform: translateY(0px);}
+		 20% {-o-transform: translateY(-7px);}
+		}
+		@keyframes up-down {
+		 0%, 28%, 100% {transform: translateY(0);}
+		 7% {transform: translateY(-15px);}
+		 14% {transform: translateY(0px);}
+		 20% {transform: translateY(-7px)}
 		}
 	}
 
@@ -421,6 +442,10 @@ section.warranty{
 		display: inline-block;
 		margin-left: 20px;
 		font-family: 'AvenirLTStd-Medium';
+
+		a:hover{
+			color: $yellow;
+		}
 	}
 
 	::-webkit-input-placeholder { /* Chrome/Opera/Safari */

@@ -20,7 +20,7 @@ export default{
 							<div class="medium-9 cell animated fadeIn" id="single-post" v-if="decorativeSinglePost.length > 0">
 								<div class="grid-x grid-margin-x grid-margin-y">
 									<div class="medium-12 cell breadcrumbs">
-										<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > <span v-html="activeItem"></span></h5>
+										<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span></h5>
 									</div>
 									<div class="medium-12 cell module auto-height">
 										<img :src="decorativeSinglePost[0]._embedded['wp:featuredmedia'][0].source_url" :alt="decorativeSinglePost[0].title.rendered">
