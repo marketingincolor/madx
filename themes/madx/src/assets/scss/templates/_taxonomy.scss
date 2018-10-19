@@ -188,6 +188,7 @@
 
 	.orbit-next,.orbit-previous{
 		cursor: pointer;
+		top: 25%;
 
 		&:hover, &:active, &:focus{
 			background-color: $clear;
@@ -202,7 +203,7 @@
 
 		i{
 			color: #CCC;
-			font-size: 36px;
+			font-size: 25px;
 			transition: color 0.2s ease-in-out;
 			cursor: pointer;
 		}
@@ -217,6 +218,11 @@
 
 		.content{
 			margin-bottom: 1.875rem;
+
+			p{
+				font-size: 1rem;
+				line-height: 1.5rem;
+			}
 		}
 
 		.name{
