@@ -5,7 +5,8 @@ export default{
 	    videoTitle: '',
 	    videoUrl: '',
 	    videoInfo: '',
-	    videoFile: ''
+	    videoFile: '',
+	    videoText: ''
 		}
 	},
 	name: 'maduVideoModal',
@@ -17,7 +18,7 @@ export default{
 										    <iframe allowfullscreen frameborder="0" height="315" :src="videoUrl" width="420"></iframe>
 										</div>
 										<h2 v-html="videoTitle"></h2>
-										<p v-html="videoInfo"></p>
+										<p v-html="videoText"></p>
 										<p class="file-link" v-if="videoFile"><a :href="videoFile" target="_blank" style="vm-dl-btn">Download</a></p>
 										<button class="close-button" data-close aria-label="Close modal" type="button">
 										<span aria-hidden="true">&times;</span>
@@ -38,6 +39,7 @@ export default{
 			$this.videoUrl = $(this).data('videourl')+'?rel=0';
 			$this.videoInfo = $(this).data('videometa');
 			$this.videoFile = $(this).data('attach');
+			$this.videoText = $(this).data('videotxt');
 		});
 
 	},
