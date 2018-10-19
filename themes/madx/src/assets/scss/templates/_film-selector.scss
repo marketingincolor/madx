@@ -69,6 +69,7 @@
 		align-items: center;
 		justify-content: center;
 		padding: 10px 0;
+		box-shadow: 0px 0px 0px 7px white;
 
 		@include breakpoint(medium down){
 			left: -20%;
@@ -116,6 +117,7 @@
 
 		li{
 			flex-grow: 1;
+			color: #a7a9ac;
 		}
 	}
 
@@ -123,7 +125,7 @@
 		list-style-type: none;
 		display: flex;
 		margin: 0;
-		margin-top: 10px;
+		margin-top: -20px;
 		flex-direction: row;
 		flex-wrap: wrap;
 
@@ -219,31 +221,6 @@
 			width: 100%;
 			position: absolute;
 			background-size:contain;
-		}
-	}
-
-	.v-dialog.v-dialog--active{
-		max-width: 870px;
-
-		@include breakpoint(small only){
-			width: 95% !important;
-			margin: 24px 0;
-		}		
-	}
-
-	.v-card__title.v-card__title--primary{
-		padding: 2rem;
-
-		@include breakpoint(small only){
-			padding: 1rem;
-		}
-
-		.featured-image{
-
-			@include breakpoint(small only){
-				margin-bottom: 30px;
-				width: 100%;
-			}
 		}
 	}
 
@@ -356,37 +333,15 @@
 		}
 	}
 
-	.theme--light.application{
-		background-color: $white;
-		padding: 5%;
-		box-shadow: 0 1px 6px 2px #eee;
-	}
-
-	.theme--light.v-messages{
-		display: none;
-	}
-
-	.v-slider input{
-		cursor: pointer;
-	}
-
-	.v-input--slider{
-		margin-top: 20px;
-	}
-
-	.v-input__slot{
-		margin-bottom: 0;
-	}
-
 	.slider{
 		margin-bottom: 1.125rem;
 		height: 4px;
-		background-color: rgba(0,0,0,.26);
+		background-color: #e5e6e6;
 	}
 	
 	.slider-fill{
 		height: 4px;
-		background-color: $yellow;
+		background-color: #e9bb58;
 	}
 
 	.slider-handle{
@@ -400,6 +355,7 @@
   	width: 90%;
   	max-width: 900px;
   	padding: 40px;
+  	border-radius: 10px;
 
   	@include breakpoint(medium down){
   		padding: 20px;
