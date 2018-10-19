@@ -27,7 +27,7 @@ export default{
 								<div class="small-10 small-offset-1 medium-9 medium-offset-0 cell" id="all-posts" v-if="!singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
 										<div class="medium-12 cell breadcrumbs">
-											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > <span v-html="activeItem"></span></h5>
+											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span></h5>
 										</div>
 										<div v-if="postType != 'safety'" class="medium-4 cell module auto-height animated fadeIn" v-for="post in taxPosts">
 											<a @click="getSinglePost(post.id)"><img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered"></a>
@@ -49,7 +49,7 @@ export default{
 								<div class="small-10 small-offset-1 medium-9 medium-offset-0 cell" id="single-post" v-if="singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
 										<div class="medium-12 cell breadcrumbs">
-											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > <span v-html="activeItem"></span> > <span v-html="singlePost.title.rendered"></span></h5>
+											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span> <i class="fas fa-chevron-right"></i> <span v-html="singlePost.title.rendered"></span></h5>
 										</div>
 										<div class="medium-12 cell module auto-height animated fadeIn">
 											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost.title.rendered">
