@@ -57,7 +57,7 @@ export default{
 																<p>Click to download case study</p>
 															</div>
 														</div>
-														<a class="btn-lt-blue border" @click="scrollToProducts"><i class="fal fa-long-arrow-left"></i>&nbsp; View Case Studies</a>
+														<a class="btn-lt-blue border" @click="scrollToProducts">View Case Studies</a>
 													</div>
 												</div>
 											</div>
