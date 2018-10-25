@@ -11,16 +11,18 @@
 		<?php
 		  $current_url = $_SERVER[REQUEST_URI];
 		  if (strpos($current_url, 'auto') !== false) {
-		      $category = 'auto';
+		    $category = 'auto';
 		  }if (strpos($current_url, 'commercial') !== false) {
-		      $category = 'commercial';
+		    $category = 'commercial';
 		  }if (strpos($current_url, 'residential') !== false) {
-		      $category = 'residential';
+		    $category = 'residential';
+		  }if (strpos($current_url, 'safety-security') !== false) {
+		    $category = 'safety-security';
 		  }
 		?>
 
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 large-12 large-offset-0">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 				<div class="grid-x grid-margin-x grid-margin-y">
 
 						<?php

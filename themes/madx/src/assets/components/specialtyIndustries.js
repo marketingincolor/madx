@@ -19,20 +19,17 @@ export default{
 								<div class="small-10 small-offset-1 large-12 large-offset-0 cell" v-if="!singlePostActive" id="all-posts">
 									<div class="grid-x grid-margin-x grid-margin-y">
 										<div class="large-4 medium-6 cell module auto-height animated fadeIn" v-for="post in taxPosts">
-											<a @click="getSinglePost(post.id)"><img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered"></a>
+											<a @click="getSinglePost(post.id)"><div class="module-bg" style="background-image: url(post._embedded['wp:featuredmedia'][0].source_url)"></div></a>
 											<div class="meta">
 												<a @click="getSinglePost(post.id)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
 												<div class="content">{{ post.acf.specialty_short_description }}</div>
-												<a @click="getSinglePost(post.id)" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
+												<a @click="getSinglePost(post.id)" class="read-more">View More Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="small-10 small-offset-1 cell" id="single-post" v-if="singlePostActive">
-									<div class="grid-x grid-margin-x grid-margin-y">
-										<div class="small-12 cell breadcrumbs">
-											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} > <span v-html="singlePost.title.rendered"></span></h5>
-										</div>
+									<div class="grid-x">
 										<div class="small-12 cell module auto-height animated fadeIn">
 											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost.title.rendered">
 											<div class="meta">
@@ -41,7 +38,7 @@ export default{
 														<div class="small-10 small-offset-1 cell">
 															<h4 class="blue" v-html="singlePost.title.rendered"></h4>
 															<article class="content" v-html="singlePost.content.rendered"></article>
-															<a class="btn-lt-blue border" @click="scrollToProducts"><i class="fal fa-long-arrow-left"></i>&nbsp; View Industries</a>
+															<a class="btn-lt-blue border" @click="scrollToProducts"><i class="fal fa-long-arrow-left"></i>&nbsp; Industries</a>
 														</div>
 													</div>
 												</div>
@@ -78,7 +75,6 @@ export default{
 			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + $this.taxParentSlug)
 			  .then(function (response) {
 			    $this.taxPosts = response.data;
-			    console.log(response.data)
 			    $this.singlePostActive = false;
 			  }
 			)

@@ -138,12 +138,12 @@
 		}
 
 		li{
-			flex-basis: 0;
-			margin: 0 5px;
 			cursor: pointer;
 			position: relative;
-			min-width: 4.1%;
 			min-height: 55px;
+			max-width: calc(100% / 12);
+			flex: 1;
+			margin: 0 1%;
 
 			@include breakpoint(medium down){
 				min-width: 34px;
@@ -428,7 +428,7 @@
 		}
 
 		p{
-			padding: 0.125rem 0 0 1rem;
+			padding: 0.125rem 0 0 1.875rem;
 			font-size: 0.875rem;
 		}
   }
@@ -451,6 +451,28 @@
   		color: $light_blue;
   	}
   }
+
+  .print-results{
+  	cursor: pointer;
+
+  	&:hover{
+  		color: $blue;
+
+  		i{
+  			color: $blue;
+  		}
+  	}
+  }
+
+}
+
+#filmSelectorModal{
+
+	.download{
+		@include breakpoint(large){
+			padding-left: 10px;
+		}
+	}
 }
 
 @media print{
