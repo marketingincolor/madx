@@ -17,6 +17,7 @@ register_nav_menus(
 		'safety-top-nav' => esc_html__( 'Safety Top Nav', 'foundationpress' ),
 		'about-top-nav' => esc_html__( 'About Top Nav', 'foundationpress' ),
 		'specialty-top-nav' => esc_html__( 'Specialty Top Nav', 'foundationpress' ),
+		'protectionpro-top-nav' => esc_html__( 'ProtectionPro Top Nav', 'foundationpress' ),
 	)
 );
 
@@ -126,6 +127,24 @@ if ( ! function_exists( 'foundationpress_safety_nav' ) ) {
 				'menu'           => __( 'safety-top-nav', 'foundationpress' ),
 				'menu_class'     => 'menu',
 				'theme_location' => 'safety-top-nav',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'fallback_cb'    => false,
+			)
+		);
+	}
+}
+
+/**
+ * ProtectionPro navigation - top nav
+ */
+if ( ! function_exists( 'foundationpress_protectionpro_nav' ) ) {
+	function foundationpress_protectionpro_nav() {
+		wp_nav_menu(
+			array(
+				'container'      => false,   // Remove nav container
+				'menu'           => __( 'protectionpro-top-nav', 'foundationpress' ),
+				'menu_class'     => 'menu',
+				'theme_location' => 'protectionpro-top-nav',
 				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 				'fallback_cb'    => false,
 			)
