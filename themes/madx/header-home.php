@@ -59,7 +59,7 @@
 				<ul class="menu">
 					<ul class="dropdown menu" v-dropdown>
 			      <li>
-			        <a><i class="fal fa-globe-americas"></i>&nbsp; English&nbsp; <i class="fas fa-chevron-down"></i></a>
+			        <a class="language"><i class="fal fa-globe-americas"></i>&nbsp; English&nbsp; <i class="fas fa-chevron-down"></i></a>
 			        <ul class="menu vertical">
 			          <li><a href="#">Spanish</a></li>
 			          <li><a href="#">German</a></li>

@@ -19,8 +19,12 @@
 		text-align: center;
 		color: $light_blue;
 		font-size: 10px;
-		width: 90px;
+		width: 115px;
 		margin: auto 2.5px;
+		line-height: 0.9rem;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		font-weight: bold;
 
 		@include breakpoint(small down){
 			width: 40%;
@@ -29,7 +33,7 @@
 	}
 
 	form label i{
-		font-size: 1.75rem;
+		font-size: 2rem;
 		margin-bottom: 5px;
 	}
 
@@ -321,4 +325,9 @@
 			font-size: 0.875rem;
 		}
 	}
+}
+
+.tabs-content{
+	border: 0;
+	background-color: $clear;
 }

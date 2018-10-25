@@ -17,12 +17,28 @@
 			@include bg-center-cover;
 			border-top-left-radius: 5px;
 			border-bottom-left-radius: 5px;
+
+			@include breakpoint(medium down){
+				height: 300px;
+			}
+
+			@include breakpoint(small down){
+				height: 200px;
+			}
 		}
 
 		article{
 			padding: 50px 60px 60px;
 			border-top-right-radius: 5px;
 			border-bottom-right-radius: 5px;
+
+			@include breakpoint(small only){
+				padding: 20px 20px 40px;
+			}
+
+			@media(max-width: 320px){
+				padding: 20px 15px 40px;
+			}
 		}
 
 		h3{
