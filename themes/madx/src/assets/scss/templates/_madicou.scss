@@ -1,3 +1,9 @@
+.subnav{
+	position: sticky;
+	top: 71px;
+	z-index: 3;
+}
+
 .page-template-page-madicou{
 
 	.page-hero,.madicou-search{
@@ -10,7 +16,6 @@
 		@include breakpoint(small only){
 			height: 400px;
 		}
-
 
 		.grid-container {
 			position: relative;
@@ -43,22 +48,74 @@
 		margin-top: 71px;
 	}
 }
+.search-results{
+	#top-header.madicou-header nav,
+	#top-header.madicou-header nav a {
+		background-color:transparent;
+		color:$text-gray;
+	}
+
+	#top-header.madicou-header .top-bar-left .main-menu a{
+		font-family: 'AvenirLTStd-Heavy';
+		letter-spacing: 1px;
+	}
+	.site-header.madicou-header {
+    border-bottom: 1px solid #e5e6e6;
+    background-color: rgba(255,255,255,0.95);
+    height: 71px;
+    transition: height 0.33s;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+
+		.top-bar-left {
+			text-transform:uppercase;
+		}
+		.top-bar-right .btn-yellow {
+			font-family:'AvenirLTStd-Heavy';
+			font-size:12px;
+			background-color:#fff;
+			border:2px solid $yellow;
+			color:$yellow !important;
+			letter-spacing: 1px;
+			padding:10px 18px 9px 18px;
+			display:block;
+		}
+    .top-bar-title {
+      padding: 0px 0px;
+      height: 40%;
+    }
+		.top-bar .menu a {
+			font-weight:normal;
+			font-size:14px;
+		}
+	    .main-menu > ul {
+		    padding: 0;
+		    height: 100%;
+		    background:transparent;
+		}
+		.main-menu > ul >li {
+			font-family: 'AvenirLTStd-Medium', sans-serif;
+		}
+	}
+}
 .page-template-page-madicou, .single-madicou {
 	button {
 		cursor:pointer;
 		text-align:left;
 	}
-	#top-header nav,
-	#top-header nav a {
-			background-color:transparent;
-			color:$text-gray;
-		}
+	#top-header.madicou-header nav,
+	#top-header.madicou-header nav a {
+		background-color:transparent;
+		color:$text-gray;
+	}
 
-	#top-header .top-bar-left .main-menu a{
+	#top-header.madicou-header .top-bar-left .main-menu a{
 		font-family: 'AvenirLTStd-Heavy';
 		letter-spacing: 1px;
 	}
-	.site-header {
+	.site-header.madicou-header {
     border-bottom: 1px solid #e5e6e6;
     background-color: rgba(255,255,255,0.95);
     height: 71px;
@@ -187,7 +244,7 @@
 		.sub-menu .menu .ask a {
 			text-transform:uppercase;
 			color:#B2C7D9;
-			font-family: 'AvenirLTStd-Medium';
+			font-family: 'AvenirLTStd-Heavy';
 		}
 	}
 

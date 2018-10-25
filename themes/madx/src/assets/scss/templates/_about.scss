@@ -76,6 +76,7 @@
 					top: 50%;
 					left: 50%;
 					transform: translate(-50%,-50%);
+					font-size: 1rem;
 
 					@include breakpoint(medium down){
 						width: 90%;
@@ -93,10 +94,17 @@
 		}
 	}
 
-	.module .meta h5{
-		margin-bottom: 0;
-		font-size: 1.125rem;
-		font-family: 'AvenirLTStd-Medium';
+	.module .meta {
+
+		h5{
+			margin-bottom: 0;
+			font-size: 1.125rem;
+			font-family: 'AvenirLTStd-Medium';
+		}
+
+		p:not(.event-date){
+			font-size: 1rem;
+		}
 	}
 
 	.module .meta .event-date{
@@ -114,7 +122,12 @@
 	#page-header{
 		padding: 5% 0;
 	}
+
 	.posts.about-content{
 		padding-top: 0;
+	}
+
+	.module img{
+		border-bottom: 1px solid #EEE;
 	}
 }

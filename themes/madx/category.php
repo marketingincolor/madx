@@ -36,7 +36,7 @@
 					    $post_query->the_post(); ?>
 					 
 					    <div class="medium-4 cell module auto-height">
-					    	<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'large', array( 'alt' => get_the_title() ) ); ?></a>
+					    	<a href="<?php the_permalink(); ?>"><div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div></a>
 					    	<div class="meta">
 					    		<p class="post-date"><i class="fal fa-calendar-alt"></i> &nbsp; <?php the_date(); ?></p>
 					    		<a href="<?php the_permalink(); ?>"><h4 class="blue"><?php the_title(); ?></h4></a>

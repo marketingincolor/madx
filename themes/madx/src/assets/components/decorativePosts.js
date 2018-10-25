@@ -28,7 +28,7 @@ export default{
 											<div class="medium-12 cell">
 												<h4 class="blue" v-html="decorativeSinglePost[0].title.rendered"></h4>
 												<p class="content" v-html="decorativeSinglePost[0].content.rendered"></p>
-												<div class="grid-x grid-margin-y subhead" v-if="decorativeSinglePost[0].acf.pdf_link">
+												<div class="grid-x grid-margin-y" v-if="decorativeSinglePost[0].acf.pdf_link">
 													<div class="large-1 medium-2 cell text-center">
 														<i class="fal fa-file-pdf"></i>
 													</div>
