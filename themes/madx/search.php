@@ -5,12 +5,16 @@
  * @package FoundationPress
  * @since FoundationPress 1.0.0
  */
-
-get_header(); ?>
+if ($_GET['post_type'] === 'madicou') {
+	get_header('madicou');
+}else{
+  get_header();
+}
+?>
 
 <section class="main-container">
 	<div class="grid-container">
-		<main id="search-results" class="grid-x">
+		<main id="search-results" class="grid-x" <?php if ($_GET['post_type'] === 'madicou') {echo 'style="margin-top:40px"';} ?>>
 			<div class="small-10 small-offset-1 large-12 large-offset-0">
 				<div class="grid-x grid-margin-x grid-margin-y">
 					<div class="small-12 cell">

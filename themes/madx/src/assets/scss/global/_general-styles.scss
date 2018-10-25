@@ -123,8 +123,10 @@ body{
 	}
 
 	&.border{
-		border: 1px solid #e0e8f0;
+		border: 2px solid #e0e8f0;
 		color: $light_blue;
+		font-size: 0.75rem;
+		padding: 0.5rem 1rem;
 
 		&:hover{
 			background-color:#e0e8f0;
@@ -262,10 +264,6 @@ section.warranty{
 
 .page-template-page-safety-security .module.auto-height, .tax-residential_taxonomies .module.auto-height{
 
-	.meta{
-		padding: 20px 20px 30px;
-	}
-
 	.meta .content{
 		margin-bottom: 60px;
 	}
@@ -347,6 +345,10 @@ section.warranty{
 	.meta{
 		padding: 40px;
 		position: relative;
+
+		@include breakpoint(medium down){
+			padding: 20px;
+		}
 
 		img{
 			height: 125px;

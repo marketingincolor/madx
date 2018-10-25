@@ -20,8 +20,8 @@ export default{
 									<div class="grid-x grid-margin-y">
 									  <div class="small-12 medium-10 medium-offset-1 cell case-study-block" v-for="post in taxPosts">
 											<div class="grid-x">
-												<aside class="medium-5 cell case-study-img" :style="{ backgroundImage: 'url(' + post._embedded['wp:featuredmedia'][0].source_url + ')' }"></aside>
-												<article class="medium-7 cell">
+												<aside class="large-5 cell case-study-img" :style="{ backgroundImage: 'url(' + post._embedded['wp:featuredmedia'][0].source_url + ')' }"></aside>
+												<article class="large-7 cell">
 													<p class="industry">{{ post.acf.case_study_industry_type }}</p>
 													<h3 class="blue" v-html="post.title.rendered"></h3>
 													<p class="excerpt" v-html="post.acf.case_study_excerpt"></p>
@@ -50,7 +50,7 @@ export default{
 														<article class="content" v-html="singlePost.content.rendered"></article>
 														<div class="grid-x grid-margin-y subhead" v-if="singlePost.acf.case_study_pdf">
 															<div class="large-1 medium-2 cell text-center">
-																<i class="fal fa-file-pdf"></i>
+																<i class="fal fa-file-pdf" style="font-size:2.875rem;color:#4d7da6"></i>
 															</div>
 															<div class="medium-10 cell">
 																<a :href="singlePost.acf.case_study_pdf" target="_blank">Case Study PDF</a>

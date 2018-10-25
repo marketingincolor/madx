@@ -78,7 +78,6 @@ export default{
 			let $this = this;
 			let node = event.target.nodeName.toLowerCase();
 			let taxonomyName;
-			console.log(node)
 
 			if (node == 'a') {
 				taxonomyName = event.target.innerText.toLowerCase().split(' ').join('-').replace(/<[^>]+>/g, '');
@@ -111,6 +110,7 @@ export default{
 			for(let i = 0;i < menuItems.length;i++){
 				let str = menuItems[i].innerHTML;
 				menuItems[i].innerHTML = str.replace(/®/g,'<sup>®</sup>');
+				menuItems[i].innerHTML = str.replace(/™/g,'<sup>™</sup>');
 			}
 		}
 	}
