@@ -8,4 +8,4 @@ Madx
 https://madico.com
 
 ### Tools Used
-Wordpress, Sass, FoundationPress, Vue.js 2
+Wordpress, Sass, [FoundationPress](https://github.com/olefredrik/FoundationPress), [Vue.js 2](https://vuejs.org), Node.js 
