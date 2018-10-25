@@ -3,6 +3,7 @@
 get_header(); ?>
 
 <section class="hero relative" style="background-image: url(<?php the_field('about_hero_background_image'); ?>);">
+	<?php get_template_part('template-parts/menus/protectionpro-header-menu'); ?>
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 medium-6 large-offset-0 cell">
@@ -14,7 +15,7 @@ get_header(); ?>
 	</div>
 </section>
 
-<section class="touchscreen-pro">
+<section id="touchscreen-protection" class="touchscreen-pro">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 cell">
@@ -44,7 +45,7 @@ get_header(); ?>
 	</div>
 </section>
 
-<section class="touchscreen-pro">
+<section id="body-protection" class="touchscreen-pro">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 cell">
@@ -142,7 +143,7 @@ get_header(); ?>
 	</div>
 </section>
 
-<section class="about-content">
+<section id="contact" class="about-content">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-12 cell content-block">

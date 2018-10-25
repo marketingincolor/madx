@@ -21,7 +21,7 @@
 	
  ?>
 
-<section class="find-dealer" style="background-image: url(<?php the_field('find_dealer_background_image',$page_id); ?>);">
+<section id="find-dealer" class="find-dealer" style="background-image: url(<?php the_field('find_dealer_background_image',$page_id); ?>);">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 medium-9 large-7 large-offset-0 cell">

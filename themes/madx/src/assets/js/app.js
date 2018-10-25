@@ -59,13 +59,10 @@ Vue.filter('changeSlug',function (text){
 Vue.filter('importance',function (total){
 	let value = '';
   switch(true){
-    case(total < 40):
+    case(total <= 55):
       value = 'Low';
       break;
-    case(total < 70):
-      value = 'Medium';
-      break;
-    case(total < 101):
+    case(total <= 100):
       value = 'High';
       break;
   }
@@ -159,6 +156,7 @@ var newVue = new Vue({
     this.runIEpolyfills();
   },
   mounted(){
+    this.menuDropdown();
   	if (location.href.includes('protectionpro')) {
       this.protectionProCarousel();
     }
@@ -193,9 +191,6 @@ var newVue = new Vue({
       $(id).addClass('is-active');
     },
     runIEpolyfills: function(){
-
-      
-
       // .includes() polyfill for Internet Explorer
       if (!String.prototype.includes) {
         String.prototype.includes = function(search, start) {
@@ -211,6 +206,18 @@ var newVue = new Vue({
           }
         };
       }
+    },
+    menuDropdown: function(){
+      $(".dropdown").on('show.zf.dropdownmenu', function (ev, $el) {
+        $el.css({"display": "none"})
+           .slideDown(300);
+      });
+
+      $(".dropdown").on('hide.zf.dropdownmenu', function (ev, $el) {
+        $el.children("ul")
+           .css('display', 'inherit')
+           .slideUp(200);
+      });
     }
   }
 });
