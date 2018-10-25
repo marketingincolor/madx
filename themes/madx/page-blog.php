@@ -26,9 +26,10 @@ get_header(); ?>
 							<?php
 							$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 							$args = array(
-								'post_type'      => 'post',
-							  'posts_per_page' => 9,
-							  'paged'          => $paged
+								'post_type'        => 'post',
+								'category__not_in' => 85,
+							  'posts_per_page'   => array(9,345,80),
+							  'paged'            => $paged
 							);
 							 
 							$post_query = new WP_Query($args);

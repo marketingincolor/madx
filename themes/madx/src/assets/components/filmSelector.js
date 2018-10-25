@@ -7,10 +7,9 @@ export default{
 	},
 	data(){
 		return{
-			energySavings: 50,
-			glareReduction: 50,
-			safetySecurity: 50,
-			heatReduction: 50,
+			glareReduction: 10,
+			safetySecurity: 10,
+			heatReduction: 10,
 			postType: '',
 			results: [],
 			postData: [],
@@ -24,24 +23,18 @@ export default{
 			maskColor: '',
 			carSize: '',
 			autoSwatches: {
-				0:  { color: 'rgba(0,0,0,.05)',percent: '90%' },
-				1:  { color: 'rgba(0,0,0,.1)' ,percent: '85%' },
-				2:  { color: 'rgba(0,0,0,.15)',percent: '80%' },
-				3:  { color: 'rgba(0,0,0,.2)' ,percent: '75%' },
-				4:  { color: 'rgba(0,0,0,.25)',percent: '70%' },
-				5:  { color: 'rgba(0,0,0,.3)' ,percent: '65%' },
-				6:  { color: 'rgba(0,0,0,.35)',percent: '60%' },
-				7:  { color: 'rgba(0,0,0,.4)' ,percent: '55%' },
-				8:  { color: 'rgba(0,0,0,.45)',percent: '50%' },
-				9:  { color: 'rgba(0,0,0,.5)' ,percent: '45%' },
-				10: { color: 'rgba(0,0,0,.55)',percent: '40%' },
-				11: { color: 'rgba(0,0,0,.6)' ,percent: '35%' },
-				12: { color: 'rgba(0,0,0,.65)',percent: '30%' },
-				13: { color: 'rgba(0,0,0,.7)' ,percent: '25%' },
-				14: { color: 'rgba(0,0,0,.75)',percent: '20%' },
-				15: { color: 'rgba(0,0,0,.8)' ,percent: '15%' },
-				16: { color: 'rgba(0,0,0,.85)',percent: '10%' },
-				17: { color: 'rgba(0,0,0,.9)' ,percent: '5%' }
+				0: { color: 'rgba(0,0,0,.05)',percent: '90%' },
+				1: { color: 'rgba(0,0,0,.2)' ,percent: '75%' },
+				2: { color: 'rgba(0,0,0,.25)',percent: '70%' },
+				3: { color: 'rgba(0,0,0,.35)',percent: '60%' },
+				4: { color: 'rgba(0,0,0,.4)' ,percent: '55%' },
+				5: { color: 'rgba(0,0,0,.5)' ,percent: '45%' },
+				6: { color: 'rgba(0,0,0,.6)' ,percent: '35%' },
+				7: { color: 'rgba(0,0,0,.65)',percent: '30%' },
+				8: { color: 'rgba(0,0,0,.75)',percent: '20%' },
+				9: { color: 'rgba(0,0,0,.8)' ,percent: '15%' },
+				10:{ color: 'rgba(0,0,0,.85)',percent: '10%' },
+				11:{ color: 'rgba(0,0,0,.9)' ,percent: '5%'  }
 			},
 		}
 	},
@@ -66,7 +59,7 @@ export default{
 					</div>
 				</div>
 				<div class="medium-7 cell flex-column no-print">
-		      <div class="slider no-print" v-slider data-initial-start="50" data-end="100">
+		      <div class="slider no-print" v-slider data-initial-start="10" data-end="100">
 		        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
 		        <span class="slider-fill" data-slider-fill></span>
 		        <input id="heatInput" type="hidden">
@@ -87,7 +80,7 @@ export default{
 					</div>
 				</div>
 				<div class="medium-7 cell flex-column no-print">
-		      <div class="slider no-print" v-slider data-initial-start="50" data-end="100">
+		      <div class="slider no-print" v-slider data-initial-start="10" data-end="100">
 		        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
 		        <span class="slider-fill" data-slider-fill></span>
 		        <input id="glareInput" type="hidden">
@@ -108,7 +101,7 @@ export default{
 					</div>
 				</div>
 				<div class="medium-7 cell flex-column no-print">
-		      <div class="slider no-print" v-slider data-initial-start="50" data-end="100">
+		      <div class="slider no-print" v-slider data-initial-start="10" data-end="100">
 		        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
 		        <span class="slider-fill" data-slider-fill></span>
 		        <input id="safetyInput" type="hidden">
@@ -138,7 +131,6 @@ export default{
 							</div>
 							<ul class="film-colors">
 								<li v-for="(swatch,index) in autoSwatches">
-								{{autoSwatches.length}}
 									<div class="color-swatch" @click="changeSwatch" :style="{ backgroundColor: swatch.color }"></div>
 									<div class="img-wrap" v-bind:class="{ 'active-film':index == 0 }"></div>
 								  <p v-bind:class="[index == 0 || index == Object.keys(autoSwatches).length - 1 ? 'outer-percent' : 'middle-percent']">{{ swatch.percent }}</p>
@@ -170,18 +162,18 @@ export default{
 				<div class="grid-x grid-margin-y">
 					<div class="medium-7 cell">
 						<span class="energy">
-							<span><strong>Energy:</strong> {{ heatReduction | importance }}</span>
+							<span><strong>Heat:</strong> {{ heatReduction | importance }}</span>
 						</span>
 						<span class="glare">
 							<span><strong>Glare:</strong> {{ glareReduction | importance }}</span>
 						</span>
 						<span class="safety">
-							<span><strong>Privacy:</strong> {{ safetySecurity | importance }}</span>
+							<span><strong>Safety:</strong> {{ safetySecurity | importance }}</span>
 						</span>
 					</div>
 					<div class="medium-5 cell text-right">
-						<span @click="print" class="no-print"><i class="fal fa-print light-blue"></i>&nbsp;&nbsp;Print List</span>&nbsp;&nbsp;
-						<span @click="sendEmail" class="no-print"><i class="fal fa-envelope light-blue"></i>&nbsp;&nbsp;Email List</span>
+						<span @click="print" class="no-print print-results"><i class="fal fa-print light-blue"></i>&nbsp;&nbsp;Print List</span>&nbsp;&nbsp;
+						<span @click="sendEmail" class="no-print print-results"><i class="fal fa-envelope light-blue"></i>&nbsp;&nbsp;Email List</span>
 					</div>
 				</div>
 				<hr />
@@ -189,37 +181,19 @@ export default{
 					<div class="small-12 cell post-container" v-if="postData.length == 0 && premiumPostData.length == 0">
 						<p>No Films match your criteria. Please select something else.</p>
 					</div>
-					<div class="post-container small-12 cell" v-if="postData.length == 1 && premiumPostData.length == 0">
-						<div class="grid-x grid-margin-x">
-							<div class="medium-12 cell premium-post" v-for="(post,index) in postData">
-							  <h4 class="blue best-match">Best Match</h4>
-								<i class="fas fa-star yellow"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="setModalContent(post.id)" v-html="post.title.rendered"></a>
-								<p v-html="$options.filters.limitWords(post.content.rendered,15)"></p>
-							</div>
-						</div>
-					</div>
-					<div class="post-container small-12 cell" v-if="postData.length == 0 && premiumPostData.length == 1">
-						<div class="grid-x grid-margin-x">
-							<div class="medium-12 cell premium-post" v-for="(post,index) in premiumPostData">
-							  <h4 class="blue best-match">Best Match</h4>
-								<i class="fas fa-star yellow"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered"></a>
-								<p v-html="$options.filters.limitWords(post.content.rendered,15)"></p>
-							</div>
-						</div>
-					</div>
-					<div class="post-container small-12 cell" v-if="postData.length >= 1 && premiumPostData.length == 1">
+					<div class="post-container small-12 cell">
 						<div class="grid-x grid-margin-x">
 							<div class="medium-12 cell premium-post" v-for="(post,index) in premiumPostData" v-if="premiumPostData.length > 0">
 							  <h4 class="blue best-match">Best Match</h4>
 								<i class="fas fa-star yellow"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered"></a>
-								<p v-html="$options.filters.limitWords(post.content.rendered,15)"></p>
+								<p v-html="post.film_description"></p>
 							</div>
 							<div class="medium-12 cell">
 	 							<h4 class="other-headline">Other Products to Consider</h4>
 							</div>
 							<div class="medium-12 cell other-posts" v-for="(post,index) in postData">
 								<i class="fas fa-check"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered"></a>
-								<p v-html="$options.filters.limitWords(post.content.rendered,15)"></p>
+								<p v-html="post.film_description"></p>
 							</div>
 						</div>
 					</div>
@@ -234,24 +208,29 @@ export default{
 							<img :src="modalLogo">
 	        	</div>
 	        	<div class="small-3 medium-6 cell text-right">
-							<span @click="closeModal"><i class="fas fa-times"></i></span>
+							<span @click="closeModal" style="cursor:pointer"><i class="fas fa-times"></i></span>
 	        	</div>
 						<div class="medium-6 cell">
-							<img :src="modalImage" class="featured-image">
+							<img :src="modalImage" class="featured-image" style="width:100%">
+							<h5 class="blue show-for-medium-only" style="margin-top:20px">Find Dealer</h5>
+							<find-dealer-form class="show-for-medium-only"></find-dealer-form>
 						</div>
 						<div class="medium-6 cell">
 							<h4 class="blue" v-html="modalTitle"></h4>
 							<p v-html="modalBody"></p>
 							<div class="grid-x grid-margin-y" v-if="modalBrochure" style="margin-top:0">
-								<div class="small-3 medium-2 cell pdf-icon">
+								<div class="small-3 medium-2 large-1 cell pdf-icon">
 									<i class="fal fa-file-pdf"></i>
 								</div>
-								<div class="small-7 medium-10 cell">
+								<div class="small-7 medium-10 cell download">
 									<a :href="modalBrochure" target="_blank">Download</a>
 									<p>Product Brochure</p>
 								</div>
+								<div class="small-12 cell hide-for-medium-only">
+									<h5 class="blue">Find Dealer</h5>
+								</div>
 							</div>
-							<find-dealer-form></find-dealer-form>
+							<find-dealer-form class="hide-for-medium-only"></find-dealer-form>
 						</div>
 	        </div>
 	      </div>
@@ -292,10 +271,8 @@ export default{
   		const $this = this;
   		this.heatReduction  = document.getElementById('heatInput').value;
   		this.glareReduction = document.getElementById('glareInput').value; 
-  		this.safetySecurity = document.getElementById('safetyInput').value;
   		let heat   = this.$options.filters.importance(this.heatReduction);
   		let glare  = this.$options.filters.importance(this.glareReduction);
-  		let safety = this.$options.filters.importance(this.safetySecurity);
 
   		
   		axios
@@ -305,20 +282,20 @@ export default{
 	      	$this.premiumPostData = [];
 
 	      	response.data.forEach(function(post) {
-	      		if (post.acf.heat_reduction) {
-		      	  if (post.acf.heat_reduction.indexOf(heat) > -1 && post.acf.glare_reduction.indexOf(glare) > -1 && post.acf.privacy_security.indexOf(safety) > -1) {
-		      	  	if (post.acf.premium_film) {
-		      	  		$this.premiumPostData.push(post)
-		      	  	}else{
-		      	  	  $this.postData.push(post);
-		      	  	}
-		      	  }
+	      		if (post.acf.combinations) {
+	      			post.acf.combinations.forEach(function(combination){
+	      				if (combination.heat_reduction.indexOf(heat) > -1 && combination.glare_reduction.indexOf(glare) > -1) {
+	      					console.log(post)
+	      					post.film_description = combination.description;
+	      					if (combination.best_match.length > 0) {
+	      						$this.premiumPostData.push(post);
+	      					}else{
+	      						$this.postData.push(post);
+	      					}
+	      				}
+	      			});
 	      		}
 	      	});
-      		if ($this.postData.length > 1 && $this.premiumPostData.length == 0) {
-      			$this.premiumPostData.push($this.postData[0])
-      			$this.postData.shift();
-      		}
 	      }
 	    );
   	},
@@ -331,13 +308,13 @@ export default{
 	      	$this.modalBody     = response.data.content.rendered;
 	      	$this.modalImage    = response.data.acf.film_selector_product_image;
 	      	$this.modalLogo     = response.data.acf.film_selector_product_logo;
-	      	$this.modalBrochure = response.data.acf.product_brochure;
+	      	$this.modalBrochure = response.data.acf.pdf_link;
 	      	$('#filmSelectorModal').foundation('open');
 	      }
 	    );
   	},
   	sendEmail: function(){
-  		let link = "mailto:?subject=Madico%Film%20Selector%20Results"
+  		let link = "mailto:?subject=Madico%20Film%20Selector%20Results"
   		             + "&body=" + document.getElementsByClassName("post-container")[0].innerText;
 
   		window.location.href = link;
