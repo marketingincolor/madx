@@ -1,5 +1,17 @@
 .page-template-front-page {
 
+	h1{
+		font-size: 3.5rem;
+
+		@include breakpoint(medium down){
+			font-size: 3rem;
+		}
+
+		@include breakpoint(small down){
+			font-size: 2rem;
+		}
+	}
+
 	.top-bar .menu a:hover:not(.button){
 		background-color: $clear;
 		color: $yellow;
@@ -33,6 +45,10 @@
 
 		.btn-yellow.solid{
 			border: 2px solid $yellow;
+
+			&:hover{
+				border-color: $blue
+			}
 		}
 	}
 

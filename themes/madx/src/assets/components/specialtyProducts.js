@@ -34,7 +34,9 @@ export default{
 											<p class="animated fadeIn" v-html="taxDescription"></p>
 										</div>
 										<div class="medium-4 cell module auto-height animated fadeIn" v-for="post in taxPosts">
-											<a @click="getSinglePost(post.id)"><img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered"></a>
+											<a @click="getSinglePost(post.id)">
+											  <div class="module-bg" style="background-image: url(post._embedded['wp:featuredmedia'][0].source_url)"</div>
+											</a>
 											<div class="meta">
 												<a @click="getSinglePost(post.id)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
 												<div class="content" v-html="post.acf.short_description"></div>

@@ -82,7 +82,7 @@ get_header(); ?>
 
 						    <div class="item" data-hash="<?php echo $post->menu_order + 1; ?>">
 						    	<img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
-						    	<h4 style="margin-bottom:15px"><?php the_title(); ?></h4>
+						    	<h4 style="margin-bottom:15px;font-size: 1.25rem;"><?php the_title(); ?></h4>
 						    </div>
 
 					    <?php $count++;endwhile; wp_reset_postdata(); ?>
