@@ -14,8 +14,8 @@
 								<li><a href="<?php echo site_url(); ?>./madicou/business/time-management">Time Management</a></li>
 							</ul>
 						</li>
-						<li><a href="<?php echo site_url(); ?>/madicou/benefits"><!--Window Film -->Film Benefits</a></li>
-						<li><a href="<?php echo site_url(); ?>/madicou/glossary"><!--Window Film -->Glossary</a></li>
+						<li><a href="<?php echo site_url(); ?>/madicou/benefits">Film Benefits</a></li>
+						<li><a href="<?php echo site_url(); ?>/madicou/glossary">Glossary</a></li>
 						<li><a href="<?php echo site_url(); ?>/madicou/product-training">Training</a></li>
 						<li><a href="<?php echo site_url(); ?>/madicou/film-facts">Film Facts</a></li>
 					</ul>
@@ -24,7 +24,7 @@
 			<div class="subnav-right">
 				<div class="sub-menu">
 					<ul class="menu">
-						<li><span>Didn't find what you were looking for? </span></li>
+						<li><span class="find">Didn't find what you were looking for? </span></li>
 						<li class="ask"><a href="<?php echo site_url(); ?>/madicou/ask-a-question"><i class="fal fa-question-circle"></i> Ask a Question</a></li>
 					</ul>
 				</div>
