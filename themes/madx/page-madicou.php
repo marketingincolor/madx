@@ -45,13 +45,22 @@ get_header('madicou'); ?>
 					</div>
 
 					<!-- ////////// BEGIN Body Cells for FAQs ////////// -->
+					<?php
+						$post_slug = $post->post_name;
+						$doc_args = array( 
+							'posts_per_page'=>-1,
+							'post_type' => 'faq',
+							'faq_taxonomies' => $post_slug
+						);
+						$doc_query = new WP_Query( $doc_args );
+					?>
 					<div class="cell heading">
-						<h3 class="section-h3">Frequently Asked Questions <a href="<?php echo site_url('/faqs/'); ?>" class="see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
+						<h3 class="section-h3">Frequently Asked Questions <?php if($doc_query->have_posts()){ ?><a href="<?php echo site_url('/faqs/'); ?>" class="see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a><?php } ?></h3>
 					</div>
 					<div class="cell module page-faqs">
 						<div class="grid-y grid-margin-x grid-margin-y">
 							<!-- BEGIN LOOP for FAQS by SECTION/SLUG -->
-							<?php get_template_part('template-parts/madicou/content-faq') ?>
+							<?php include(locate_template('template-parts/madicou/content-faq.php')); ?>
 							<!-- END LOOP for FAQS by SECTION/SLUG -->
 						</div>
 					</div>
@@ -61,26 +70,47 @@ get_header('madicou'); ?>
 			<div class="cell small-10 small-offset-1 medium-3 medium-offset-0">
 				<div class="grid-x grid-margin-x grid-margin-y">
 
+					<?php
+						$post_slug = $post->post_name;
+						$article_args = array( 
+							'posts_per_page'=>-1,
+							'post_type' => 'madicou',
+							'madicou_taxonomies' => $post_slug,
+							'madicou-types' => 'article'
+						);
+						$article_query = new WP_Query( $article_args );
+					?>
+
 					<!-- ////////// BEGIN Sidebar Cells for ARTICLES ////////// -->
 					<div class="cell heading">
-						<h3 class="section-h3">Articles <a href="<?php echo site_url('/mu-types/article/'); ?>" class="see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
+						<h3 class="section-h3">Articles <?php if($article_query->have_posts()){ ?><a href="<?php echo site_url('/mu-types/article/'); ?>" class="see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a><?php } ?></h3>
 					</div>
 					<div class="cell module side-articles">
 						<div class="grid-y grid-margin-x grid-margin-y">
 						<!-- BEGIN LOOP for ARTICLES by SECTION/SLUG -->
-						<?php get_template_part('template-parts/madicou/content-article') ?>
+						<?php include(locate_template('template-parts/madicou/content-article.php')); ?>
 						<!-- END LOOP for ARTICLES by SECTION/SLUG -->
 						</div>
 					</div>
 
+					<?php
+						$post_slug = $post->post_name;
+						$doc_args = array( 
+							'posts_per_page'=>-1,
+							'post_type' => 'madicou',
+							'madicou_taxonomies' => $post_slug,
+							'madicou-types' => 'document'
+						);
+						$doc_query = new WP_Query( $doc_args );
+					?>
 					<!-- ////////// BEGIN Sidebar Cells for DOCUMENTS ////////// -->
 					<div class="cell heading">
-						<h3 class="section-h3">Documents <a href="<?php echo site_url('/mu-types/document/'); ?>" class="see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
+						<h3 class="section-h3">Documents <?php if($doc_query->have_posts()){ ?><a href="<?php echo site_url('/mu-types/document/'); ?>" class="see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a><?php } ?></h3>
 					</div>
 					<div class="cell module side-documents">
 						<div class="grid-y grid-margin-x grid-margin-y">
 						<!-- BEGIN LOOP for DOCUMENTS by SECTION/SLUG -->
-						<?php get_template_part('template-parts/madicou/content-document') ?>
+						<?php include(locate_template('template-parts/madicou/content-document.php')); ?>
 						<!-- END LOOP for DOCUMENTS by SECTION/SLUG -->
 						</div>
 					</div>

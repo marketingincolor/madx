@@ -51,7 +51,7 @@
 .search-results{
 	#top-header.madicou-header nav,
 	#top-header.madicou-header nav a {
-		background-color:transparent;
+		background-color: $clear;
 		color:$text-gray;
 	}
 
@@ -64,7 +64,6 @@
     background-color: rgba(255,255,255,0.95);
     height: 71px;
     transition: height 0.33s;
-    overflow: hidden;
     position: fixed;
     width: 100%;
     z-index: 999;
@@ -75,7 +74,7 @@
 		.top-bar-right .btn-yellow {
 			font-family:'AvenirLTStd-Heavy';
 			font-size:12px;
-			background-color:#fff;
+			background-color: $white;
 			border:2px solid $yellow;
 			color:$yellow !important;
 			letter-spacing: 1px;
@@ -83,8 +82,7 @@
 			display:block;
 		}
     .top-bar-title {
-      padding: 0px 0px;
-      height: 40%;
+      align-self: center;
     }
 		.top-bar .menu a {
 			font-weight:normal;
@@ -93,21 +91,40 @@
 	    .main-menu > ul {
 		    padding: 0;
 		    height: 100%;
-		    background:transparent;
+		    background:$clear;
 		}
 		.main-menu > ul >li {
 			font-family: 'AvenirLTStd-Medium', sans-serif;
 		}
 	}
 }
-.page-template-page-madicou, .single-madicou {
+.page-template-page-madicou, .single-madicou, .tax-madicou_types {
+
 	button {
 		cursor:pointer;
 		text-align:left;
 	}
+
+	.taxonomy-intro{
+		padding: 10% 0 6%;
+		
+		.meta{
+
+			button{
+			  text-align: left;
+			}
+
+			i{
+				font-size: 16px;
+				color: $light_blue;
+			}
+		}
+	}
+
+
 	#top-header.madicou-header nav,
 	#top-header.madicou-header nav a {
-		background-color:transparent;
+		background-color:$clear;
 		color:$text-gray;
 	}
 
@@ -120,7 +137,6 @@
     background-color: rgba(255,255,255,0.95);
     height: 71px;
     transition: height 0.33s;
-    overflow: hidden;
     position: fixed;
     width: 100%;
     z-index: 999;
@@ -128,6 +144,7 @@
 		.top-bar-left {
 			text-transform:uppercase;
 		}
+
 		.top-bar-right .btn-yellow {
 			font-family:'AvenirLTStd-Heavy';
 			font-size:12px;
@@ -137,22 +154,56 @@
 			letter-spacing: 1px;
 			padding:10px 18px 9px 18px;
 			display:block;
+			transition: all 0.25s ease-in-out;
+
+			&:hover{
+				background-color: $yellow !important;
+				color: $white !important;
+			}
 		}
+
     .top-bar-title {
-      padding: 0px 0px;
-      height: 40%;
+      align-self: center;
     }
+
 		.top-bar .menu a {
 			font-weight:normal;
 			font-size:14px;
 		}
-	    .main-menu > ul {
-		    padding: 0;
-		    height: 100%;
-		    background:transparent;
+
+    .main-menu > ul {
+	    padding: 0;
+	    height: 100%;
+	    background:$clear;
 		}
-		.main-menu > ul >li {
+
+		.main-menu > ul > li {
 			font-family: 'AvenirLTStd-Medium', sans-serif;
+
+			a{
+				padding: 1.75rem 1rem;
+			}
+		}
+
+		.is-dropdown-submenu-item a{
+			color: $white !important;
+			transition: background-color 0.25s ease-in-out;
+
+			&:hover{
+				background-color: #1a598c;
+			}
+		}
+
+		#right-dropdown{
+
+			.submenu.first-sub{
+				left: -15px;
+				min-width: 150px;
+			}
+			
+			.language{
+				padding: 1.75rem 1rem;
+			}
 		}
 	}
 
@@ -218,6 +269,13 @@
 		.subnav-right{
 			flex: 0 1 auto;
 			margin-left: auto;
+
+			.find{
+
+				@media(max-width: 1096px){
+					display: none;
+				}
+			}
 		}
 
 		span {
@@ -229,18 +287,22 @@
 	    font-size: 0.875rem;
 	    color:$white !important;
 		}
+
 		.is-dropdown-submenu {
 			border:0;
 			background-color: #00467f;
 			top:inherit;
 			left:auto !important;
 		}
+
 		.menu .is-active > a {
 			background-color: #00467f;
 		}
+
 		.sub-menu .menu i {
 			color:#B2C7D9;
 		}
+
 		.sub-menu .menu .ask a {
 			text-transform:uppercase;
 			color:#B2C7D9;
@@ -252,7 +314,12 @@
 		background-color:#ECF1F6;
 	}
 
+	.module-bg{
+		border-bottom: 1px solid #EEE;
+	}
+
 	.page-content {
+		padding: 3% 0 6%;
 
 		.cell.heading{
 			margin-bottom: 0;
@@ -261,6 +328,7 @@
 				margin-bottom: 0;
 			}
 		}
+
 		.side-documents {
 			.meta {
 				.doc-link {
@@ -304,16 +372,19 @@
 	}
 
 	.footer {
+
 		.credits {
-			margin-top:calc(150px - 0.9375rem);
+			margin-top: 0;
 		}
+
 		p {
 			line-height:28px;
-			font-size:16px;
 		}
+
 		h3 {
 			color:#4d7da6;
 		}
+
 		.btn-box {
 			margin-top:23px;
 			display:flex;
@@ -322,8 +393,10 @@
 				letter-spacing:0.15em;
 			}
 		}
+
 		.payment-types {
 			padding-bottom:27px;
+			margin-top: 20px;
 			img {
 				margin:2px;
 			}
