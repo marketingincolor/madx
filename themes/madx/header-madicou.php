@@ -26,7 +26,7 @@
 	<nav class="site-navigation top-bar" role="navigation" style="height:100%;">
 		<div class="top-bar-left">
 			<div class="site-desktop-title top-bar-title">
-				<a href="https://madicodealers.com"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madico-dealer-portal-logo.png"></a>
+				<a href="/madicou"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madico-dealer-portal-logo.png"></a>
 			</div>
 			<div class="main-menu">
 				<ul class="menu">
