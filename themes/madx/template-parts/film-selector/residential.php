@@ -1,6 +1,10 @@
 <main class="page-container">
+
+	<div class="show-for-small-only">
+		<?php get_template_part('template-parts/menus/residential-header-menu'); ?>
+	</div>
 	
-	<div id="header-grid" class="grid-container">
+	<div id="header-grid" class="grid-container show-for-medium">
 		<div class="small-10 small-offset-1 large-12 large-offset-0">
 		  <?php get_template_part('template-parts/menus/residential-header-menu'); ?>
 		</div>

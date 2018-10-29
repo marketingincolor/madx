@@ -166,7 +166,6 @@ var newVue = new Vue({
     closeMobileMenuOutside: function(){
       let $this = this;
       $('section').on('click',function(){
-        console.log('clicked');
         $this.mobileLeftMenuClose();
       });
     },

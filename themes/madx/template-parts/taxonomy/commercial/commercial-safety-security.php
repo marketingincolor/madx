@@ -16,7 +16,7 @@
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="medium-8 large-6 medium-offset-2 large-offset-3 cell text-center">
-				<h3 class="blue"><?php the_field('safety_film_heading',$term); ?></h3>
+				<h2 class="blue"><?php the_field('safety_film_heading',$term); ?></h2>
 				<aside class="yellow-underline center"></aside>
 				<p class="subhead"><?php the_field('safety_film_subhead',$term); ?></p>
 			</div>

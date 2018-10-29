@@ -4,7 +4,11 @@ get_header(); ?>
 
 <section class="page-hero" style="background-image: url(<?php the_field('commercial_hero_background_image'); ?>);">
 
-	<div id="header-grid" class="grid-container">
+	<div class="show-for-small-only">
+		<?php get_template_part('template-parts/menus/specialty-header-menu'); ?>
+	</div>
+
+	<div id="header-grid" class="grid-container show-for-medium">
 		<div class="small-10 small-offset-1 large-12 large-offset-0">
 		  <?php get_template_part('template-parts/menus/specialty-header-menu'); ?>
 		</div>
