@@ -14,7 +14,6 @@
 		}else{
 			$path_path = $array[0];
 		}
-		echo $page_path;
 		$the_page = get_page_by_path($path_path);
 		$page_id  = $the_page->ID;
 	}

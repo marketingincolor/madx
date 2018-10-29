@@ -4,13 +4,19 @@ get_header();
 if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 <section class="page-header">
-	<div id="header-grid" class="grid-container">
+
+	<div class="show-for-small-only">
+		<?php get_template_part('template-parts/menus/about-header-menu'); ?>
+	</div>
+
+	<div id="header-grid" class="grid-container show-for-medium">
 		<div class="grid-x grid-margin-x">
 			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 				<?php get_template_part('template-parts/menus/about-header-menu'); ?>
 			</div>
 		</div>
 	</div>
+
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 medium-8 medium-offset-2 cell text-center">

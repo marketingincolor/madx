@@ -61,11 +61,82 @@
 }
 
 #top-header {
-
 	border-bottom:1px solid #e5e6e6;
+
+	// Mobile top nav
+	.mobile-nav{
+		background-color: $white;
+		padding: 20px 0;
+
+		div{
+			display: inline-block;
+			width: 32.4%;
+		}
+
+		.hamburger-container{
+			padding-left: 30px;
+
+			.menu-icon::after{
+				background-color: $light_blue;
+				box-shadow: 0 7px 0 $light_blue, 0 14px 0 $light_blue
+			}
+		}
+
+		.search-container{
+			text-align: right;
+			padding-right: 25px;
+			position: relative;
+			top: 5px;
+
+			a{
+				padding: 5px;
+			}
+
+			i{
+				font-size: 22px;
+				color: $light_blue;
+				top: 5px;
+			}
+		}
+	}
+
+	#mobile-search{
+		width: 100%;
+		border: 0;
+		background-color: #e2e3e3;
+		top: 69px !important;
+
+		.input-group{
+			margin-bottom: 0;
+		}
+
+		#searchform input[type=text]{
+			border: 1px solid $light_blue;
+			color: $light_blue;
+			max-width: 100%;
+			background-color: #e2e3e3;
+		}
+
+		::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		  color: $light_blue;
+		}
+		::-moz-placeholder { /* Firefox 19+ */
+		  color: $light_blue;
+		}
+		:-ms-input-placeholder { /* IE 10+ */
+		  color: $light_blue;
+		}
+		:-moz-placeholder { /* Firefox 18- */
+		  color: $light_blue;
+		}
+	}
 
 	nav{
 		background-color: $white;
+
+		@include breakpoint(small only){
+			display: none;
+		}
 
 		#nav-drop {
 			letter-spacing:1px;
@@ -177,6 +248,45 @@
 	}
 }
 
+.mobile-left-menu{
+	background-color: #e2e3e3;
+	z-index: 9999;
+	height: 100vh;
+	width: 260px;
+	transform: translateX(-260px);
+	transition: transform 0.35s linear;
+
+	&.mobile-menu-open{
+		transform: translateX(0);
+	}
+
+	.menu-container{
+		height: 100%;
+		width: 100%;
+	}
+
+	button{
+		top: 0;
+		right: 0;
+		padding: 20px 30px;
+
+		i{
+			color: $light_blue;
+			font-size: 1.5rem;
+		}
+	}
+
+	.menu.vertical{
+		padding-left: 30px;
+		top: 50%;
+		transform: translateY(-50%);
+
+		a,i{
+			color: $light_blue;
+		}
+	}
+}
+
 .page-hero{
 	padding: 5% 0 0;
 	@include bg-center-cover;
@@ -224,16 +334,48 @@
 		max-width: 75rem;
 		background-color: transparent;
 		margin: 0 auto;
+
+		@include breakpoint(small only){
+			box-shadow: inset 0 -12px 0px -10px #e5e6e6;
+		}
 	}
 
 	.top-bar .top-bar-title a{
 		padding-left: 0;
 	}
 
+	.site-title-bar{
+
+		@include breakpoint(small only){
+			// override javascript styling
+			display: none!important;
+		}
+	}
+
 	.top-bar-right{
+
+		@include breakpoint(small only){
+			overflow-x: auto;
+			width: 500px;
+			white-space: nowrap;
+			-webkit-overflow-scrolling: touch;
+			-ms-overflow-style: -ms-autohiding-scrollbar;
+
+			&::-webkit-scrollbar{
+				display: none;
+			}
+		}
 
 		ul{
 			background-color:$clear;
+
+			@include breakpoint(small only){
+				display: block;
+
+				li{
+					display: inline-block;
+				}
+			}
 		}
 
 		li{

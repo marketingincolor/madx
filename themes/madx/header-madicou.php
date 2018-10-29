@@ -26,7 +26,7 @@
 	<nav class="site-navigation top-bar" role="navigation" style="height:100%;">
 		<div class="top-bar-left">
 			<div class="site-desktop-title top-bar-title">
-				<a href="https://madicodealers.com"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madico-dealer-portal-logo.png"></a>
+				<a href="/madicou"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madico-dealer-portal-logo.png"></a>
 			</div>
 			<div class="main-menu">
 				<ul class="menu">
@@ -38,17 +38,21 @@
 			</div>
 		</div>
 		<div class="top-bar-right">
-			<div class="header-btns" style="float:right;">
-				<a class="btn-yellow solid" href="https://madicodealers.com">Become a Dealer</a>
-			</div>
-			<div class="main-menu" style="float:right;">
-				<ul class="menu">
-					<li><a href="https://madicodealers.com"><i class="fal fa-globe-americas faleft"></i> English <i class="fa fa-chevron-down"></i></a></li>
-					<li><a href="http://madicodealers.com/customer/account/login"><i class="fal fa-lock-alt faleft"></i> Sign In</a></li>
-				</ul>
-			</div>
+			<ul class="menu">
+				<li style="padding:15px 10px"><a class="btn-yellow solid" href="https://madicodealers.com">Become a Dealer</a></li>
+				<li>
+					<ul id="right-dropdown" class="dropdown menu" v-dropdown>
+						<li><a class="language"><i class="fal fa-globe-americas faleft"></i> English <i class="fa fa-chevron-down"></i></a>
+							<ul class="menu vertical">
+							  <li><a href="#">Spanish</a></li>
+							  <li><a href="#">German</a></li>
+							  <li><a href="#">French</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
 		</div>
-		<div class="clear"></div>
 	</nav>
 </div>
 </header>
