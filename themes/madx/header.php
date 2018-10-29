@@ -23,14 +23,20 @@
 
 
 	<header id="top-header" class="site-header" role="banner">
-		<div class="site-title-bar title-bar" <?php foundationpress_title_bar_responsive_toggle(); ?>>
-			<div class="title-bar-left">
-				<button aria-label="<?php _e( 'Main Menu', 'foundationpress' ); ?>" class="menu-icon" type="button" data-toggle="<?php foundationpress_mobile_menu_id(); ?>"></button>
-				<span class="site-mobile-title title-bar-title">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-				</span>
+		<div class="mobile-nav">
+			<div class="hamburger-container">
+				<button id="hamburger" aria-label="<?php _e( 'Main Menu', 'madx' ); ?>" class="menu-icon" type="button"></button>
+			</div>
+			<div class="site-mobile-title title-bar-title">
+				<a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madico-mobile-blue.png" alt="Madico"></a>
+			</div>
+			<div class="search-container">
+				<a id="search-toggle" data-toggle="mobile-search" @click="mobileMenuSearch" aria-open="false"><i class="fal fa-times hide"></i><i class="far fa-search"></i></a>
 			</div>
 		</div>
+    <div class="dropdown-pane right" id="mobile-search" v-drop-click>
+			<?php get_template_part('template-parts/search/page-searchform'); ?>
+    </div>
 		<nav class="site-navigation top-bar" role="navigation">
 			<div class="top-bar-left">
 				<div class="site-desktop-title top-bar-title">
@@ -54,7 +60,6 @@
 			</div>
 			<div class="top-bar-right">
 				<ul class="menu">
-					<!--<li><a href="#"><i class="fas fa-list-alt"></i>&nbsp; Performance</a></li>-->
 					<li><a href="https://madicodealers.com"><i class="fas fa-id-badge"></i>&nbsp; Dealer Portal</a></li>
 		      <li>
 		        <a data-toggle="search-dropdown"><i class="fas fa-search"></i>&nbsp; Search</a>
