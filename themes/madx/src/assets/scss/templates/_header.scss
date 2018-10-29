@@ -98,7 +98,6 @@
 				top: 5px;
 			}
 		}
-
 	}
 
 	#mobile-search{
@@ -246,6 +245,45 @@
 
 	.dropdown.menu > li.is-dropdown-submenu-parent > a::after{
 	  display:none;
+	}
+}
+
+.mobile-left-menu{
+	background-color: #e2e3e3;
+	z-index: 9999;
+	height: 100vh;
+	width: 260px;
+	transform: translateX(-260px);
+	transition: transform 0.35s linear;
+
+	&.mobile-menu-open{
+		transform: translateX(0);
+	}
+
+	.menu-container{
+		height: 100%;
+		width: 100%;
+	}
+
+	button{
+		top: 0;
+		right: 0;
+		padding: 20px 30px;
+
+		i{
+			color: $light_blue;
+			font-size: 1.5rem;
+		}
+	}
+
+	.menu.vertical{
+		padding-left: 30px;
+		top: 50%;
+		transform: translateY(-50%);
+
+		a,i{
+			color: $light_blue;
+		}
 	}
 }
 

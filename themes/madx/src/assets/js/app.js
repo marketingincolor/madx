@@ -157,11 +157,33 @@ var newVue = new Vue({
   },
   mounted(){
     this.menuDropdown();
-  	if (location.href.includes('protectionpro')) {
+    this.closeMobileMenuOutside();
+    if (location.href.includes('protectionpro')) {
       this.protectionProCarousel();
     }
   },
   methods: {
+    closeMobileMenuOutside: function(){
+      let $this = this;
+      $('section').on('click',function(){
+        console.log('clicked');
+        $this.mobileLeftMenuClose();
+      });
+    },
+    mobileLeftMenuOpen: function(){
+      let menu = document.getElementById('mobile-left-menu');
+      let body = document.getElementsByTagName('body')[0];
+
+      menu.classList.add('mobile-menu-open');
+      body.classList.add('no-scroll');
+    },
+    mobileLeftMenuClose: function(){
+      let menu = document.getElementById('mobile-left-menu');
+      let body = document.getElementsByTagName('body')[0];
+
+      menu.classList.remove('mobile-menu-open');
+      body.classList.remove('no-scroll');
+    },
     mobileMenuSearch: function(){
       // Toggle between search icon and X icon in mobile header
       let searchToggle = document.getElementById('search-toggle');
