@@ -21,11 +21,26 @@
 		<?php get_template_part( 'template-parts/mobile-off-canvas' ); ?>
 	<?php endif; ?>
 
+	<div id="mobile-left-menu" class="mobile-left-menu absolute">
+		<div class="menu-container relative">
+			<button class="absolute" aria-label="<?php _e( 'Close Menu', 'madx' ); ?>" type="button" @click="mobileLeftMenuClose"><i class="fal fa-long-arrow-left"></i></button>
+			<ul class="menu vertical absolute">
+			  <li><a href="/auto"><i class="far fa-car"></i>&nbsp; Auto</a></li>
+			  <li><a href="/residential"><i class="far fa-home"></i>&nbsp; Residential</a></li>
+			  <li><a href="/commercial"><i class="far fa-building"></i>&nbsp; Commercial</a></li>
+			  <li><a href="/safety-security"><i class="fal fa-shield"></i>&nbsp; Safety &amp; Security</a></li>
+			  <li><a href="/specialty-solutions"><i class="fal fa-flask"></i>&nbsp; Specialty Solutions</a></li>
+			  <li><a href="/dealers"><i class="fal fa-id-badge"></i>&nbsp; Dealers</a></li>
+			  <li><a href="/madicou"><i class="far fa-building"></i>&nbsp; Madico U</a></li>
+			  <li><a href="/about"><i class="far fa-building"></i>&nbsp; Company</a></li>
+			</ul>
+		</div>
+	</div>
 
 	<header id="top-header" class="site-header" role="banner">
 		<div class="mobile-nav">
 			<div class="hamburger-container">
-				<button id="hamburger" aria-label="<?php _e( 'Main Menu', 'madx' ); ?>" class="menu-icon" type="button"></button>
+				<button id="hamburger" aria-label="<?php _e( 'Open Menu', 'madx' ); ?>" class="menu-icon" type="button" @click="mobileLeftMenuOpen"></button>
 			</div>
 			<div class="site-mobile-title title-bar-title">
 				<a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madico-mobile-blue.png" alt="Madico"></a>
