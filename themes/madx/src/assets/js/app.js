@@ -157,11 +157,48 @@ var newVue = new Vue({
   },
   mounted(){
     this.menuDropdown();
-  	if (location.href.includes('protectionpro')) {
+    this.closeMobileMenuOutside();
+    if (location.href.includes('protectionpro')) {
       this.protectionProCarousel();
     }
   },
   methods: {
+    closeMobileMenuOutside: function(){
+      let $this = this;
+      $('section').on('click',function(){
+        $this.mobileLeftMenuClose();
+      });
+    },
+    mobileLeftMenuOpen: function(){
+      let menu = document.getElementById('mobile-left-menu');
+      let body = document.getElementsByTagName('body')[0];
+
+      menu.classList.add('mobile-menu-open');
+      body.classList.add('no-scroll');
+    },
+    mobileLeftMenuClose: function(){
+      let menu = document.getElementById('mobile-left-menu');
+      let body = document.getElementsByTagName('body')[0];
+
+      menu.classList.remove('mobile-menu-open');
+      body.classList.remove('no-scroll');
+    },
+    mobileMenuSearch: function(){
+      // Toggle between search icon and X icon in mobile header
+      let searchToggle = document.getElementById('search-toggle');
+      let searchIcon   = searchToggle.querySelector('.fa-search')
+      let exitIcon     = searchToggle.querySelector('.fa-times')
+
+      if (searchToggle.getAttribute('aria-open') === 'false') {
+        searchToggle.setAttribute('aria-open',true);
+        searchIcon.classList.add('hide');
+        exitIcon.classList.remove('hide');
+      }else{
+        searchToggle.setAttribute('aria-open',false);
+        searchIcon.classList.remove('hide');
+        exitIcon.classList.add('hide');
+      }
+    },
     protectionProCarousel: function(){
       $('.full-body-carousel').owlCarousel({
         items:1,

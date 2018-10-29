@@ -22,7 +22,7 @@
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 large-8 small-offset-1 large-offset-2 text-center">
-				<h3 class="blue"><?php the_field('products_heading',$term); ?></h3>
+				<h2 class="blue"><?php the_field('products_heading',$term); ?></h2>
 				<aside class="yellow-underline center"></aside>
 				<p class="subhead"><?php the_field('products_subhead',$term); ?></p>
 			</div>

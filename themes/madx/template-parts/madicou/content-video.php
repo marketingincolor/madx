@@ -25,7 +25,6 @@ if ( $video_query->have_posts() ) : while ( $video_query->have_posts() ) : $vide
 
 <?php endwhile; else: ?> 
 	<div class="cell">
-		<p style="padding:1em;">Sorry, there are no <?php echo $post->post_title; ?> Videos to display</p>
+		<p style="padding:1em;">There are no <?php echo $post->post_title; ?> Videos to display</p>
 	</div>
-<?php endif;
-wp_reset_query(); ?>
+<?php endif;wp_reset_postdata(); ?>

@@ -34,7 +34,7 @@
 						<aside class="medium-5 cell case-study-img" style="background-image: url(<?php the_post_thumbnail_url(); ?>);"></aside>
 						<article class="medium-7 cell">
 							<p class="industry"><?php the_field('case_study_industry_type'); ?></p>
-							<h3 class="blue"><?php the_title(); ?></h3>
+							<h2 class="blue"><?php the_title(); ?></h2>
 							<p class="excerpt"><?php the_field('case_study_excerpt'); ?></p>
 							<a href="<?php the_permalink(); ?>" class="btn-yellow border"><?php the_field('case_study_cta_text'); ?></a>
 						</article>

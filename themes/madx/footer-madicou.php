@@ -59,12 +59,10 @@
               <img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/card-amex.png" alt="american express">
               <img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/card-paypal.png" alt="paypal">
             </div>
-            <address>9251 Belcher Road N. Pinellas Park, FL 33782</address>
-            <ul class="privacy">
-              <li><a href="/contact">Contact Us</a></li>&nbsp; |
-              <li><a href="/privacy-policy">Privacy Policy</a></li>
-            </ul>
-            <p>Copyright <?php echo date('Y'); ?> Madico<sup>&reg;</sup>, Inc.</p>
+            <div class="small-12 cell text-center credits">
+              <address>9251 Belcher Road N. Pinellas Park, FL 33782</address>
+              <p>Copyright <?php echo date('Y'); ?> Madico<sup>&reg;</sup>, Inc. | <a href="/privacy-policy">Privacy Policy</a></p>
+            </div>
           </div>
         </div>
       </div>
