@@ -162,6 +162,22 @@ var newVue = new Vue({
     }
   },
   methods: {
+    mobileMenuSearch: function(){
+      // Toggle between search icon and X icon in mobile header
+      let searchToggle = document.getElementById('search-toggle');
+      let searchIcon   = searchToggle.querySelector('.fa-search')
+      let exitIcon     = searchToggle.querySelector('.fa-times')
+
+      if (searchToggle.getAttribute('aria-open') === 'false') {
+        searchToggle.setAttribute('aria-open',true);
+        searchIcon.classList.add('hide');
+        exitIcon.classList.remove('hide');
+      }else{
+        searchToggle.setAttribute('aria-open',false);
+        searchIcon.classList.remove('hide');
+        exitIcon.classList.add('hide');
+      }
+    },
     protectionProCarousel: function(){
       $('.full-body-carousel').owlCarousel({
         items:1,
