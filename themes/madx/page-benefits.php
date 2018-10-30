@@ -2,7 +2,20 @@
 /* Template Name: Benefits */
 get_header(); ?>
 
-<?php get_template_part('template-parts/menus/commercial-header-menu'); ?>
+<div class="show-for-small-only">
+	<?php get_template_part('template-parts/menus/commercial-header-menu'); ?>
+</div>
+
+<div class="grid-container">
+	<div class="grid-x">
+		<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
+			<?php get_template_part('template-parts/menus/commercial-tablet-menu'); ?>
+		</div>
+		<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-large">
+			<?php get_template_part('template-parts/menus/commercial-header-menu'); ?>
+		</div>
+	</div>
+</div>
 
 <section class="benefits-intro">
 	<div class="grid-container">

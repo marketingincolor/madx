@@ -31,8 +31,8 @@
 			  <li><a href="/safety-security"><i class="fal fa-shield"></i>&nbsp; Safety &amp; Security</a></li>
 			  <li><a href="/specialty-solutions"><i class="fal fa-flask"></i>&nbsp; Specialty Solutions</a></li>
 			  <li><a href="/dealers"><i class="fal fa-id-badge"></i>&nbsp; Dealers</a></li>
-			  <li><a href="/madicou"><i class="far fa-building"></i>&nbsp; Madico U</a></li>
-			  <li><a href="/about"><i class="far fa-building"></i>&nbsp; Company</a></li>
+			  <li><a href="/madicou"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madicou-menu-icon.png" alt="madico u" style="width:15px">&nbsp; Madico U</a></li>
+			  <li><a href="/about"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madico-menu-icon.png" alt="madico" style="width:15px">&nbsp; Company</a></li>
 			</ul>
 		</div>
 	</div>

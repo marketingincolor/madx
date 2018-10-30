@@ -15,7 +15,7 @@ if ($_GET['post_type'] === 'madicou') {
 <section class="main-container">
 	<div class="grid-container">
 		<main id="search-results" class="grid-x" <?php if ($_GET['post_type'] === 'madicou') {echo 'style="margin-top:40px"';} ?>>
-			<div class="small-10 small-offset-1 large-12 large-offset-0">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 				<div class="grid-x grid-margin-x grid-margin-y">
 					<div class="small-12 cell">
 						<header>
