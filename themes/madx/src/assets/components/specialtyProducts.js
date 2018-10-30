@@ -35,7 +35,7 @@ export default{
 										</div>
 										<div class="medium-4 cell module auto-height animated fadeIn" v-for="post in taxPosts">
 											<a @click="getSinglePost(post.id)">
-											  <div class="module-bg" style="background-image: url(post._embedded['wp:featuredmedia'][0].source_url)"</div>
+											  <div class="module-bg" v-bind:style="{backgroundImage: 'url(' + post._embedded['wp:featuredmedia'][0].source_url + ')'}"></div>
 											</a>
 											<div class="meta">
 												<a @click="getSinglePost(post.id)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
@@ -53,7 +53,7 @@ export default{
 										<div class="medium-12 cell breadcrumbs">
 											<p v-html="singlePost.acf.short_description"></p>
 										</div>
-										<div class="medium-12 cell breadcrumbs">
+										<div class="medium-12 cell breadcrumbs" v-if="singlePost.acf.data_sheet">
 											<a :href="singlePost.acf.data_sheet" target="_blank" class="btn-yellow border">Data Sheet</a>
 										</div>
 										<div class="medium-12 cell module auto-height animated fadeIn">
@@ -108,7 +108,6 @@ export default{
 			    }else{
 				    $this.activeItem = $this.taxonomies[0].name.replace(/®/g,'<sup>®</sup>');
 			    }
-			    console.log($this.activeItem)
 				  $this.getTaxPosts($this.taxonomies[0].description);
 			  }
 			)
