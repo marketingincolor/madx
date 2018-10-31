@@ -14,6 +14,7 @@
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="google-site-verification" content="8pBJeFk4PjfJf-4iS9dFmhC8hNZ7Lbo4voqFA6lDEuM" /> 
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
@@ -24,16 +25,7 @@
 		<div id="mobile-left-menu" class="mobile-left-menu absolute">
 			<div class="menu-container relative">
 				<button class="absolute" aria-label="<?php _e( 'Close Menu', 'madx' ); ?>" type="button" @click="mobileLeftMenuClose"><i class="fal fa-long-arrow-left"></i></button>
-				<ul class="menu vertical absolute">
-				  <li><a href="/auto"><i class="far fa-car"></i>&nbsp; Auto</a></li>
-				  <li><a href="/residential"><i class="far fa-home"></i>&nbsp; Residential</a></li>
-				  <li><a href="/commercial"><i class="far fa-building"></i>&nbsp; Commercial</a></li>
-				  <li><a href="/safety-security"><i class="fal fa-shield"></i>&nbsp; Safety &amp; Security</a></li>
-				  <li><a href="/specialty-solutions"><i class="fal fa-flask"></i>&nbsp; Specialty Solutions</a></li>
-				  <li><a href="/dealers"><i class="fal fa-id-badge"></i>&nbsp; Dealers</a></li>
-				  <li><a href="/madicou"><i class="far fa-building"></i>&nbsp; Madico U</a></li>
-				  <li><a href="/about"><i class="far fa-building"></i>&nbsp; Company</a></li>
-				</ul>
+				<?php foundationpress_header_nav(); ?>
 			</div>
 		</div>
 
@@ -61,25 +53,16 @@
 				<div class="site-desktop-title top-bar-title">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/bug-gray.png" alt="Madico"></a>
 				</div>
-				<ul class="dropdown menu" v-dropdown>
+				<ul class="dropdown menu" data-closing-time="0" v-dropdown>
 		      <li>
 		        <a id="nav-drop">Navigate Site &nbsp;<i class="fas fa-chevron-down"></i></a>
-		        <ul class="menu vertical">
-		          <li><a href="/auto"><i class="far fa-car"></i>&nbsp; Auto</a></li>
-		          <li><a href="/residential"><i class="far fa-home"></i>&nbsp; Residential</a></li>
-		          <li><a href="/commercial"><i class="far fa-building"></i>&nbsp; Commercial</a></li>
-		          <li><a href="/safety-security"><i class="fal fa-shield"></i>&nbsp; Safety &amp; Security</a></li>
-		          <li><a href="/specialty-solutions"><i class="fal fa-flask"></i>&nbsp; Specialty Solutions</a></li>
-		          <li><a href="/dealers"><i class="fal fa-id-badge"></i></i>&nbsp; Dealers</a></li>
-		          <li><a href="/madicou"><i class="far fa-building"></i>&nbsp; Madico U</a></li>
-		          <li><a href="/about"><i class="far fa-building"></i>&nbsp; Company</a></li>
-		        </ul>
+		        <?php foundationpress_header_nav(); ?>
 		      </li>
 		    </ul>
 			</div>
 			<div class="top-bar-right">
 				<ul class="menu">
-					<ul class="dropdown menu" v-dropdown>
+					<ul class="dropdown menu" data-closing-time="0" v-dropdown>
 			      <li>
 			        <a class="language"><i class="fal fa-globe-americas"></i>&nbsp; English&nbsp; <i class="fas fa-chevron-down"></i></a>
 			        <ul class="menu vertical">

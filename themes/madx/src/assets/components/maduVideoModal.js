@@ -28,8 +28,9 @@ export default{
 							</div>
 						</div>`,
 	created(){
-		$(document).on('open.zf.reveal', '#video-modal[data-reveal]', function(event) {
-		  
+		let $this = this;
+		$(document).on('closed.zf.reveal', '#video-modal', function(event) {
+		  $this.videoUrl = '';
 		});
 	},
 	mounted(){

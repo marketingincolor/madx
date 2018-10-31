@@ -46,7 +46,7 @@
               <li><a href="https://www.instagram.com/clearplex"><i class="fab fa-instagram"></i>&nbsp; Instagram</a></li>
             </ul>
           </div>
-          <div class="small-6 medium-4 large-4 cell">
+          <div class="small-12 medium-4 large-4 cell">
             <h3>Become a Madico Dealer</h3>
             <p>As a Madico Dealer, you'll always have a product and partner you can trust. We offer exceptional products that combine quality, function, and style backed by outstanding support and personal attention through a dedicated, knowledgable team. It's all part of the Madico Experience.</p>
             <div class="btn-box"><a href="" class="btn-yellow solid btn-bad">Become A Dealer</a></div>

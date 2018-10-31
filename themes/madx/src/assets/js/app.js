@@ -241,19 +241,20 @@ var newVue = new Vue({
           } else {
             return this.indexOf(search, start) !== -1;
           }
-        };
+        }
       }
     },
     menuDropdown: function(){
+      // Change foundation hover menus to slide down
       $(".dropdown").on('show.zf.dropdownmenu', function (ev, $el) {
         $el.css({"display": "none"})
-           .slideDown(300);
+           .fadeIn(300);
       });
 
       $(".dropdown").on('hide.zf.dropdownmenu', function (ev, $el) {
         $el.children("ul")
            .css('display', 'inherit')
-           .slideUp(200);
+           .fadeOut(200);
       });
     }
   }

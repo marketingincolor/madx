@@ -86,6 +86,11 @@
 		@include breakpoint(small down){
 			left: 0;
 		}
+
+		@media(max-width: 320px){
+			width: 25px;
+			height: 25px;
+		}
 		
 		span{
 			font-size: 1.125rem;
@@ -199,7 +204,7 @@
 		}
 
 		@media(max-width: 375px){
-			height: 135px;
+			height: 165px;
 		}
 
 		#car-original,#car-transparent{

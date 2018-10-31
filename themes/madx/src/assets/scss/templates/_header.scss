@@ -35,6 +35,10 @@
 			transform: translateX(-50%);
 		}
 
+		@include breakpoint(small only){
+			width: 100%;
+		}
+
 		.top-bar{
 			max-width: $grid-container;
 			background-color: $clear;
@@ -63,10 +67,27 @@
 #top-header {
 	border-bottom:1px solid #e5e6e6;
 
+	.is-dropdown-submenu-parent.is-active{
+
+		#nav-drop,.language{
+			transition: all 0.25s ease-in-out;
+			background-color: #00467f !important;
+		  color: $white;
+		}
+	}
+
+	#nav-drop,.language{
+		padding-left: 15px !important;
+	}
+
 	// Mobile top nav
 	.mobile-nav{
 		background-color: $white;
 		padding: 20px 0;
+
+		@include breakpoint(medium){
+			display: none;
+		}
 
 		div{
 			display: inline-block;
@@ -160,7 +181,6 @@
 		}
 
 		.dropdown.menu > li.opens-right > .is-dropdown-submenu{
-			left: -15px;
 			border-bottom-left-radius: 5px;
 			border-bottom-right-radius: 5px;
 			background-color:#00467f;
@@ -249,7 +269,8 @@
 }
 
 .mobile-left-menu{
-	background-color: #e2e3e3;
+	background-image: url(/wp-content/themes/madx/dist/assets/images/mobile-menu-bg.jpg);
+	@include bg-center-cover;
 	z-index: 9999;
 	height: 100vh;
 	width: 260px;
@@ -258,6 +279,10 @@
 
 	&.mobile-menu-open{
 		transform: translateX(0);
+	}
+
+	.menu .is-active > a{
+		background-color: $clear;
 	}
 
 	.menu-container{
@@ -305,6 +330,43 @@
 
 	a:hover img{
 		opacity: 0.8;
+	}
+
+	.top-bar-right.tablet .dropdown .is-dropdown-submenu-parent{
+
+		&.is-active, &.is-active a{
+			border-bottom: 0 !important;
+			background-color: #00467f;
+			color: $white;
+		}
+	}
+
+	.top-bar-right.tablet .dropdown .submenu{
+		background-color: $blue;
+
+		li{
+			padding: 0;
+
+			&.current-menu-item a{
+				background-color: $blue !important;
+			}
+
+			&:first-of-type{
+				a{
+					padding-top: 20px;
+				}
+			}
+			&:last-of-type{
+				a{
+					padding-bottom: 20px;
+				}
+			}
+
+			a{
+				color: $white;
+				padding: 12px 0 12px 20px;
+			}
+		}
 	}
 
 	.menu .is-active > a {
