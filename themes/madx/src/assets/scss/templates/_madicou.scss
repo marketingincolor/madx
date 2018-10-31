@@ -16,6 +16,10 @@
 			height: 400px;
 		}
 
+		@media(max-width: 414px){
+			height: 250px;
+		}
+
 		.grid-container {
 			position: relative;
 			height: 100%;
