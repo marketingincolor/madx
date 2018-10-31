@@ -34,7 +34,7 @@
 				<button id="hamburger" aria-label="<?php _e( 'Open Menu', 'madx' ); ?>" class="menu-icon" type="button" @click="mobileLeftMenuOpen"></button>
 			</div>
 			<div class="site-mobile-title title-bar-title">
-				<a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madico-mobile-blue.png" alt="Madico"></a>
+				<a href="<?php echo esc_url(home_url('madicou','relative')); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madicou-logo.png" alt="Madico U"></a>
 			</div>
 			<div class="search-container">
 				<a id="search-toggle" data-toggle="mobile-search" @click="mobileMenuSearch" aria-open="false"><i class="fal fa-times hide"></i><i class="far fa-search"></i></a>
