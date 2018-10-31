@@ -49,7 +49,7 @@
 				<div class="site-desktop-title top-bar-title">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/bug-gray.png" alt="Madico"></a>
 				</div>
-				<ul class="dropdown menu" v-dropdown>
+				<ul class="dropdown menu" data-closing-time="0" v-dropdown>
 		      <li>
 		        <a id="nav-drop">Navigate Site &nbsp;<i class="fas fa-chevron-down"></i></a>
 		        <?php foundationpress_header_nav(); ?>

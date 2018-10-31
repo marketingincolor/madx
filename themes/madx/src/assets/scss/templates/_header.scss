@@ -67,6 +67,19 @@
 #top-header {
 	border-bottom:1px solid #e5e6e6;
 
+	.is-dropdown-submenu-parent.is-active{
+
+		#nav-drop,.language{
+			transition: all 0.25s ease-in-out;
+			background-color: $blue !important;
+		  color: $white;
+		}
+	}
+
+	#nav-drop,.language{
+		padding-left: 15px !important;
+	}
+
 	// Mobile top nav
 	.mobile-nav{
 		background-color: $white;
@@ -168,7 +181,6 @@
 		}
 
 		.dropdown.menu > li.opens-right > .is-dropdown-submenu{
-			left: -15px;
 			border-bottom-left-radius: 5px;
 			border-bottom-right-radius: 5px;
 			background-color:#00467f;
