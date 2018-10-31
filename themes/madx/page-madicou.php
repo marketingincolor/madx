@@ -28,7 +28,7 @@ get_header('madicou'); ?>
 <madu-video-modal></madu-video-modal>
 <section class="page-content">
 	<div class="grid-container">
-		<div class="grid-x">
+		<div class="grid-x grid-margin-x">
 			<div class="cell small-10 small-offset-1 medium-9 medium-offset-0">
 				<div class="grid-x grid-margin-x grid-margin-y">
 					<div class="cell heading">
