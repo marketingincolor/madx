@@ -6,13 +6,15 @@ get_header(); ?>
 	<?php get_template_part('template-parts/menus/commercial-header-menu'); ?>
 </div>
 
-<div class="grid-container">
-	<div class="grid-x">
-		<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
-			<?php get_template_part('template-parts/menus/commercial-tablet-menu'); ?>
-		</div>
-		<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-large">
-			<?php get_template_part('template-parts/menus/commercial-header-menu'); ?>
+<div style="background-color:#FFF">
+	<div class="grid-container">
+		<div class="grid-x">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
+				<?php get_template_part('template-parts/menus/commercial-tablet-menu'); ?>
+			</div>
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-large">
+				<?php get_template_part('template-parts/menus/commercial-header-menu'); ?>
+			</div>
 		</div>
 	</div>
 </div>
