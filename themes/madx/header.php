@@ -24,15 +24,7 @@
 	<div id="mobile-left-menu" class="mobile-left-menu absolute">
 		<div class="menu-container relative">
 			<button class="absolute" aria-label="<?php _e( 'Close Menu', 'madx' ); ?>" type="button" @click="mobileLeftMenuClose"><i class="fal fa-long-arrow-left"></i></button>
-			<ul class="menu vertical absolute">
-			  <li><a href="/auto"><i class="far fa-car"></i>&nbsp; Auto</a></li>
-			  <li><a href="/residential"><i class="far fa-home"></i>&nbsp; Residential</a></li>
-			  <li><a href="/commercial"><i class="far fa-building"></i>&nbsp; Commercial</a></li>
-			  <li><a href="/safety-security"><i class="fal fa-shield"></i>&nbsp; Safety &amp; Security</a></li>
-			  <li><a href="/specialty-solutions"><i class="fal fa-flask"></i>&nbsp; Specialty Solutions</a></li>
-			  <li><a href="/dealers"><i class="fal fa-id-badge"></i>&nbsp; Dealers</a></li>
-			  <li><a href="/madicou"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madicou-menu-icon.png" alt="madico u" style="width:15px">&nbsp; Madico U</a></li>
-			  <li><a href="/about"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madico-menu-icon.png" alt="madico" style="width:15px">&nbsp; Company</a></li>
+			<?php foundationpress_header_nav(); ?>
 			</ul>
 		</div>
 	</div>
@@ -60,16 +52,7 @@
 				<ul class="dropdown menu" v-dropdown>
 		      <li>
 		        <a id="nav-drop">Navigate Site &nbsp;<i class="fas fa-chevron-down"></i></a>
-		        <ul class="menu vertical">
-		          <li><a href="/auto"><i class="far fa-car"></i>&nbsp; Auto</a></li>
-		          <li><a href="/residential"><i class="far fa-home"></i>&nbsp; Residential</a></li>
-		          <li><a href="/commercial"><i class="far fa-building"></i>&nbsp; Commercial</a></li>
-		          <li><a href="/safety-security"><i class="fal fa-shield"></i>&nbsp; Safety &amp; Security</a></li>
-		          <li><a href="/specialty-solutions"><i class="fal fa-flask"></i>&nbsp; Specialty Solutions</a></li>
-		          <li><a href="/dealers"><i class="fal fa-id-badge"></i>&nbsp; Dealers</a></li>
-		          <li><a href="/madicou"><i class="far fa-building"></i>&nbsp; Madico U</a></li>
-		          <li><a href="/about"><i class="far fa-building"></i>&nbsp; Company</a></li>
-		        </ul>
+		        <?php foundationpress_header_nav(); ?>
 		      </li>
 		    </ul>
 			</div>
