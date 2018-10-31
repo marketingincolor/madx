@@ -13,7 +13,7 @@ get_header(); ?>
 	<div class="overlay absolute"></div>
 	<div class="grid-container" id='header-grid'>
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 large-12 large-offset-0">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 				<?php get_template_part('template-parts/menus/blog-header-menu'); ?>
 			</div>
 		</div>

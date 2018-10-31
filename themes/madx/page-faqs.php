@@ -9,9 +9,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		<?php get_template_part('template-parts/menus/about-header-menu'); ?>
 	</div>
 
-	<div id="header-grid" class="grid-container show-for-medium">
+	<div id="header-grid" class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 large-12 large-offset-0">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
+				<?php get_template_part('template-parts/menus/about-tablet-menu'); ?>
+			</div>
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-large">
 				<?php get_template_part('template-parts/menus/about-header-menu'); ?>
 			</div>
 		</div>

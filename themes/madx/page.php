@@ -26,13 +26,21 @@ global $post; ?>
 ?>
 
 <section class="page-header" style="padding-bottom: 0">
+	<div class="show-for-small-only">
+		<?php get_template_part('template-parts/menus/'. $parent_name .'-header-menu'); ?>
+	</div>
+
 	<div id="header-grid" class="grid-container">
-		<div class="grid-x grid-margin-x">
-			<div class="small-10 small-offset-1 large-12 large-offset-0">
+		<div class="grid-x">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
+				<?php get_template_part('template-parts/menus/'. $parent_name .'-tablet-menu'); ?>
+			</div>
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-large">
 				<?php get_template_part('template-parts/menus/'. $parent_name .'-header-menu'); ?>
 			</div>
 		</div>
 	</div>
+
 </section>
 
 <?php } ?>
