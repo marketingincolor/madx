@@ -9,10 +9,25 @@
 		'hide_empty' => false
 	 );
 	$child_terms = get_terms( 'faq_taxonomies', $args );
+  
 	foreach ($child_terms as $child) {
-		if ($child->slug == $term->slug) {
+		if (strpos($child->slug, "-") !== false) {
+		  $child_slug_array = explode("-", $child->slug);
+			if (in_array("commercial",$child_slug_array,true) || in_array("residential",$child_slug_array,true) || in_array("auto",$child_slug_array,true)) {
+				$child_slug = $child_slug_array[0];
+			}else{
+			  $child_slug = $child->slug;
+			}
+		}else{
+		  $child_slug = $child->slug;
+		}
+		if ($child_slug == $term->slug) {
 			$child_cat_id = $child->term_id;
 		}
+	}
+	// If child_cat_id doesn't exist, cat is safety-security
+	if (!$child_cat_id) {
+		$child_cat_id = 334;
 	}
 ?>
 
