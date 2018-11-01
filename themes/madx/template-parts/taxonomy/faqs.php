@@ -1,6 +1,7 @@
 <?php
-  $term = get_queried_object();
-  $parent_cat = get_post_type($post->ID);
+  $term        = get_queried_object();
+  $array       = (explode("_",$term->taxonomy));
+  $parent_cat  = $array[0];
 	$parent_term = get_term_by( 'slug', $parent_cat, 'faq_taxonomies', 'OBJECT', 'raw' );
 	$args = array(
 		'parent' => $parent_term->term_id,
