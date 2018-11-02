@@ -23,7 +23,7 @@
 	}else{
 ?>
 
-<section class="taxonomy-intro">
+<section class="taxonomy-intro" style="padding-bottom:0">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="large-8 small-10 small-offset-1 large-offset-2 cell text-center">

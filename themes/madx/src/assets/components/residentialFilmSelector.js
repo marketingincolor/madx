@@ -88,7 +88,7 @@ export default{
 				<div class="grid-x grid-margin-x relative">
 					<div class="number absolute"><span>3</span></div>
 					<div class="small-10 small-offset-1 medium-12 medium-offset-0 cell">
-						<h5 class="blue">Privacy &amp; Security</h5>
+						<h5 class="blue">Safety &amp; Security</h5>
 						<p>Prevent window breakage, deter break-ins, and holds glass together.</p>
 					</div>
 				</div>
@@ -139,7 +139,7 @@ export default{
 						<hr>
 						<div class="grid-x grid-margin-x">
 							<div class="large-7 cell recommendation">
-								<p>The follwing recommendations are meant to show a variety of solutions that may meet your needs. Please consult an authorized Madio film dealer to discuss your individual window film needs and to determine the most appropriate window film for your residence.</p>
+								<p>The following recommendations are meant to show a variety of solutions that may meet your needs. Please consult an authorized Madio film dealer to discuss your individual window film needs and to determine the most appropriate window film for your residence.</p>
 							</div>
 							<div class="large-5 cell btn-container">
 								<p><a @click="getFilms" class="btn-yellow solid">View Results &nbsp;&nbsp;<i class="fas fa-caret-down"></i></a></p>
@@ -212,34 +212,39 @@ export default{
 		<hr>
 		
 		<div class="reveal" id="filmSelectorModal" v-reveal>
-      <div class="grid-container">
-        <div class="grid-x grid-margin-x">
-        	<div class="small-9 medium-6 cell" style="margin-bottom:30px">
-						<img :src="modalLogo">
-        	</div>
-        	<div class="small-3 medium-6 cell text-right">
-						<span @click="closeModal"><i class="fas fa-times"></i></span>
-        	</div>
-					<div class="medium-6 cell">
-						<img :src="modalImage" class="featured-image">
-					</div>
-					<div class="medium-6 cell">
-						<h4 class="blue" v-html="modalTitle"></h4>
-						<p v-html="modalBody"></p>
-						<div class="grid-x grid-margin-y" v-if="modalBrochure" style="margin-top:0">
-							<div class="small-3 medium-2 cell pdf-icon">
-								<i class="fal fa-file-pdf"></i>
-							</div>
-							<div class="small-7 medium-10 cell">
-								<a :href="modalBrochure" target="_blank">Download</a>
-								<p>Product Brochure</p>
-							</div>
+	      <div class="grid-container">
+	        <div class="grid-x grid-margin-x">
+	        	<div class="small-9 medium-6 cell" style="margin-bottom:30px">
+							<img :src="modalLogo">
+	        	</div>
+	        	<div class="small-3 medium-6 cell text-right">
+							<span @click="closeModal" style="cursor:pointer"><i class="fas fa-times"></i></span>
+	        	</div>
+						<div class="medium-6 cell">
+							<img :src="modalImage" class="featured-image" style="width:100%">
+							<h5 class="blue show-for-medium-only" style="margin-top:20px">Find Dealer</h5>
+							<find-dealer-form class="show-for-medium-only"></find-dealer-form>
 						</div>
-						<find-dealer-form></find-dealer-form>
-					</div>
-        </div>
-      </div>
-		</div>
+						<div class="medium-6 cell">
+							<h4 class="blue" v-html="modalTitle"></h4>
+							<p v-html="modalBody"></p>
+							<div class="grid-x grid-margin-y" v-if="modalBrochure" style="margin-top:0">
+								<div class="small-3 medium-2 large-1 cell pdf-icon">
+									<i class="fal fa-file-pdf"></i>
+								</div>
+								<div class="small-7 medium-10 cell download">
+									<a :href="modalBrochure" target="_blank">Download</a>
+									<p>Product Brochure</p>
+								</div>
+								<div class="small-12 cell hide-for-medium-only">
+									<h5 class="blue">Find Dealer</h5>
+								</div>
+							</div>
+							<find-dealer-form class="hide-for-medium-only"></find-dealer-form>
+						</div>
+	        </div>
+	      </div>
+			</div>
 		</div>`,
 	created(){
 		

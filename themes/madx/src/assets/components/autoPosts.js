@@ -6,8 +6,8 @@ export default{
 	    autoPosts: [],
 	    autoPostID: 0,
 	    autoSinglePost: [],
-	    taxParentSlug: 'solar',
-	    postType: 'auto',
+	    taxParentSlug: 'window-tint',
+	    postType: 'automotive',
 		}
 	},
 	name: 'autoPosts',
@@ -36,8 +36,8 @@ export default{
 																	<i class="fal fa-file-pdf"></i>
 																</div>
 																<div class="medium-10 cell">
-																	<a :href="autoSinglePost[0].acf.pdf_link" target="_blank">Product Specs Doc</a>
-																	<p>Specification Sheet Description</p>
+																	<a :href="autoSinglePost[0].acf.pdf_link" target="_blank">Product Brochure</a>
+																	<p>Click to download brochure</p>
 																</div>
 															</div>
 														</div>
@@ -50,19 +50,9 @@ export default{
 							</div>
 						</div>`,
 	created(){
-		this.getTaxonomyParentSlug(location.href);
+		this.getAutoPosts();
 	},
 	methods:{
-		getTaxonomyParentSlug: function(currentURL){
-			if (currentURL.includes('solar')) {
-				this.taxParentSlug = 'solar';
-			}else if(currentURL.includes('paint-protection')){
-				this.taxParentSlug = 'paint-protection';
-			}else if (currentURL.includes('windshield-protection')) {
-				this.taxParentSlug = 'windshield-protection';
-			}
-			this.getAutoPosts();
-		},
 		getAutoPosts: function(){
 			let $this = this;
 

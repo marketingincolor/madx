@@ -22,6 +22,7 @@ import specialtyProducts from '../components/specialtyProducts.js';
 import specialtyProductsHome from '../components/specialtyProductsHome.js';
 import findDealerModal from '../components/findDealerModal.js';
 import faqs from '../components/faqs.js';
+import taxonomyFaqs from '../components/taxonomyFaqs.js';
 import residentialFilmSelector from '../components/residentialFilmSelector.js';
 import maduVideoModal from '../components/maduVideoModal.js';
 import jotForm from '../components/jotForm.js';
@@ -147,6 +148,7 @@ var newVue = new Vue({
     'find-dealer-page'         : findDealerPage,
     'find-dealer-modal'        : findDealerModal,
     'faqs'                     : faqs,
+    'taxonomy-faqs'            : taxonomyFaqs,
   	'residential-film-selector': residentialFilmSelector,
     'madu-video-modal'         : maduVideoModal,
   	'jot-form'                 : jotForm,

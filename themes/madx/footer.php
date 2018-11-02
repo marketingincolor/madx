@@ -27,7 +27,7 @@
           <div class="small-6 medium-4 large-2 cell">
             <ul>
               <li class="heading"><h6 class="blue">Films</h6></li>
-              <li><a href="/auto">Auto</a></li>
+              <li><a href="/automotive">Automotive</a></li>
               <li><a href="/residential">Residential</a></li>
               <li><a href="/commercial">Commercial</a></li>
               <li><a href="/safety-security">Safety &amp; Security</a></li>
