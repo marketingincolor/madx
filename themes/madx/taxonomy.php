@@ -10,8 +10,8 @@
 	    $post_type = 'residential';
 	}else if (strpos($url, 'commercial') !== false) {
 	    $post_type = 'commercial';
-	}else if (strpos($url, 'auto') !== false) {
-	    $post_type = 'auto';
+	}else if (strpos($url, 'automotive') !== false) {
+	    $post_type = 'automotive';
 	}else if (strpos($url, 'safety') !== false) {
 	    $post_type = 'safety';
 	}else if (strpos($url, 'specialty') !== false) {

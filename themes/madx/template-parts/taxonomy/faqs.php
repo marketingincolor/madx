@@ -13,7 +13,7 @@
 	foreach ($child_terms as $child) {
 		if (strpos($child->slug, "-") !== false) {
 		  $child_slug_array = explode("-", $child->slug);
-			if (in_array("commercial",$child_slug_array,true) || in_array("residential",$child_slug_array,true) || in_array("auto",$child_slug_array,true)) {
+			if (in_array("commercial",$child_slug_array,true) || in_array("residential",$child_slug_array,true) || in_array("automotive",$child_slug_array,true)) {
 				$child_slug = $child_slug_array[0];
 			}else{
 			  $child_slug = $child->slug;
@@ -44,28 +44,30 @@
 			<div class="small-10 small-offset-1 cell">
 			  <div class="grid-x grid-margin-x grid-margin-y">
 
+			  	<taxonomy-faqs term-id="<?php echo $child_cat_id; ?>">
+
 			  <!-- Query custom post type 'faq' filtered by taxonomy faq_taxonomies -->
 				<?php
-					$args = array(
-						'post_type' => 'faq',
-						'tax_query' => array(
-							array(
-								'taxonomy' => 'faq_taxonomies',
-								'field'    => 'term_id',
-								'terms'    => $child_cat_id,
-							),
-						),
-					);
-					$query = new WP_Query( $args );
-					while ( $query->have_posts() ) : $query->the_post();
+					// $args = array(
+					// 	'post_type' => 'faq',
+					// 	'tax_query' => array(
+					// 		array(
+					// 			'taxonomy' => 'faq_taxonomies',
+					// 			'field'    => 'term_id',
+					// 			'terms'    => $child_cat_id,
+					// 		),
+					// 	),
+					// );
+					// $query = new WP_Query( $args );
+					// while ( $query->have_posts() ) : $query->the_post();
 				?>
 				
-				<div class="medium-6 cell">
-					<h5><?php the_title(); ?></h5>
-					<?php the_content(); ?>
-				</div>
+				<!-- <div class="medium-6 cell">
+					<h5><?php //the_title(); ?></h5>
+					<?php //the_content(); ?>
+				</div> -->
 				
-				<?php endwhile; wp_reset_postdata(); ?>
+				<?php //endwhile; wp_reset_postdata(); ?>
 					
 				</div>
 			</div>

@@ -75,8 +75,8 @@ export default{
 				this.postType = 'residential';
 			}else if(currentURL.includes('commercial')){
 				this.postType = 'commercial';
-			}else if (currentURL.includes('auto')) {
-				this.postType = 'auto';
+			}else if (currentURL.includes('automotive')) {
+				this.postType = 'automotive';
 			}else if (currentURL.includes('safety-security')) {
 				this.postType = 'safety';
 			}else if (currentURL.includes('specialty-solutions')) {

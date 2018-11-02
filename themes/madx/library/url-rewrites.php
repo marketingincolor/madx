@@ -66,8 +66,8 @@
 	    $newRules['specialty-solutions/(.+)/(.+)/(.+)/(.+)/?$'] = 'index.php?specialty=$matches[4]';
 	    $newRules['specialty-solutions/(.+)/(.+)/?$'] = 'index.php?specialty_taxonomies=$matches[2]';
 
-	    $newRules['auto/(.+)/(.+)/?$'] = 'index.php?auto=$matches[2]';
-	    $newRules['auto/(.+)/?$'] = 'index.php?auto_taxonomies=$matches[1]';
+	    $newRules['automotive/(.+)/(.+)/?$'] = 'index.php?automotive=$matches[2]';
+	    $newRules['automotive/(.+)/?$'] = 'index.php?automotive_taxonomies=$matches[1]';
 
 	    $newRules['safety-security/(.+)/(.+)/?$'] = 'index.php?safety=$matches[2]';
 	    $newRules['safety-security/(.+)/?$'] = 'index.php?safety_taxonomies=$matches[1]'; 

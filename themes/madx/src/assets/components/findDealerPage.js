@@ -13,20 +13,21 @@ export default{
 	template:
 	 `<form action="/dealer-results" method="post" name="find-dealer-form">
 			<fieldset>
-		    <input name="type" value="automotive" id="radio1" type="radio" v-model="type"><label for="radio1"><i class="fal fa-car"></i><br>Auto</label>
+		    <input name="type" value="automotive" id="radio1" type="radio" v-model="type"><label for="radio1"><i class="fal fa-car"></i><br>Automotive</label>
 		    <input name="type" value="architectural" id="radio3" type="radio" v-model="type"><label for="radio3"><i class="fal fa-building"></i><br>Architectural</label>
 		    <input name="type" value="safety-security" id="radio4" type="radio" v-model="type"><label for="radio4"><i class="fal fa-shield"></i><br>Safety</label>
 		  </fieldset>
 		  <br class="hide-for-large">
 		  <fieldset class="radius-zip">
 		  	<select name="radius">
+	  	    <option value="10">Within 10 miles</option>
 	  	    <option value="25">Within 25 miles</option>
 	  	    <option value="50">Within 50 miles</option>
 	  	    <option value="75">Within 75 miles</option>
 	  	    <option value="100">Within 100 miles</option>
 	  	  </select>
 	  	  <div class="zip">
-	  	  	<input type="text" placeholder="Zip Code" name="zip" v-model="zipCode">
+	  	  	<input type="text" placeholder="Zip Code" name="zip" maxlength="5" v-model="zipCode">
 	  	  	<button type="submit" class="btn-yellow solid"><i class="fas fa-caret-right"></i></button>
 	  	  </div>
 		  </fieldset>

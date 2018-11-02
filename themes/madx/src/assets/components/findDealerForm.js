@@ -13,7 +13,7 @@ export default{
 	template:
 	 `<div>
 			<form class="zip-search" id="zip-form" action="/dealer-results" method="post">
-				<input v-model="zipCode" type="text" name="zip" id="zip" placeholder="Zip Code" required>
+				<input v-model="zipCode" type="text" name="zip" id="zip" maxlength="5" placeholder="Zip Code" required>
 				<input type="hidden" name="type" :value="type">
 				<button type="submit" id="submit-form" title="Submit Zip Code">
 				   <i class="fas fa-map-marker-alt yellow"></i>
@@ -34,7 +34,7 @@ export default{
 				this.type = 'architectural'
 			}else if (url.includes('safety-security')) {
 				this.type = 'safety-security';
-			}else if (url.includes('auto')){
+			}else if (url.includes('automotive')){
 				this.type = 'automotive';
 			}
 		},

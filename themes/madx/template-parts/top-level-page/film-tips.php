@@ -10,8 +10,8 @@
 
 		<?php
 		  $current_url = $_SERVER[REQUEST_URI];
-		  if (strpos($current_url, 'auto') !== false) {
-		    $category = 'auto';
+		  if (strpos($current_url, 'automotive') !== false) {
+		    $category = 'automotive';
 		  }if (strpos($current_url, 'commercial') !== false) {
 		    $category = 'commercial';
 		  }if (strpos($current_url, 'residential') !== false) {
