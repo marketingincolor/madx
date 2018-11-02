@@ -21,7 +21,7 @@
 				<aside class="yellow-underline center"></aside>
 			</div>
 		</div>
-		<section class="taxonomy-products">
+		<section class="taxonomy-products" style="margin-bottom:0">
 			
 			<specialty-products></specialty-products>
 
