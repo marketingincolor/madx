@@ -109,7 +109,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					<?php }else{ ?>
 
 					<div class="medium-6 cell module auto-height">
-						<img src="<?php the_sub_field('industry_image'); ?>" alt="<?php the_sub_field('industry_heading'); ?>">
+						<div class="module-bg large" style="background-image:url(<?php the_sub_field('industry_image'); ?>)"></div>
 						<div class="meta">
 							<h4 class="blue"><?php the_sub_field('industry_heading'); ?></h4>
 							<p><?php the_sub_field('industry_copy'); ?></p>

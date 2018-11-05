@@ -11,7 +11,7 @@
 	<nav class="site-navigation top-bar" role="navigation">
 		<div class="top-bar-left">
 			<div class="site-desktop-title top-bar-title">
-				<a href="/residential" rel="home"><img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/madico-page-logo.png" alt="Madico The Clear Choice"></a>
+				<a href="/residential" rel="home"><img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/l-residential-film.svg" alt="Madico The Clear Choice"></a>
 			</div>
 		</div>
 		<div class="top-bar-right">

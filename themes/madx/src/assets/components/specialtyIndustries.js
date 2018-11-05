@@ -72,7 +72,7 @@ export default{
 			let $this = this;
 			
 			axios
-			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + $this.taxParentSlug)
+			  .get(apiRoot + $this.postType + '?_embed&orderby=menu_order&order=asc&filter['+ $this.postType +'_taxonomies]=' + $this.taxParentSlug)
 			  .then(function (response) {
 			    $this.taxPosts = response.data;
 			    $this.singlePostActive = false;
@@ -84,7 +84,7 @@ export default{
 			let taxonomyName = event.target.innerHTML.toLowerCase().split(' ').join('-');
 			
 			axios
-			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
+			  .get(apiRoot + $this.postType + '?_embed&orderby=menu_order&order=asc&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
 			  .then(function (response) {
 			    $this.taxPosts = response.data;
 			    $this.activeItem = event.target.innerHTML;
