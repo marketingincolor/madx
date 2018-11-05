@@ -37,7 +37,7 @@
 
 	.hero{
 		height: 70vh;
-		padding: 6% 0;
+		padding: 60px 0;
 
 		@include breakpoint (medium down){
 			height: 80vh;
