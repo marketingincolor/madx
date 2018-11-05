@@ -1,14 +1,18 @@
 <div class="show-for-small-only">
-	<?php get_template_part('template-parts/menus/auto-header-menu'); ?>
+	<?php get_template_part('template-parts/menus/automotive-header-menu'); ?>
 </div>
 
-<div class="grid-container show-for-medium">
+<div class="grid-container">
 	<div class="grid-x">
-		<div class="small-10 small-offset-1 large-12 large-offset-0">
-			<?php get_template_part('template-parts/menus/auto-header-menu'); ?>
+		<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
+			<?php get_template_part('template-parts/menus/automotive-tablet-menu'); ?>
+		</div>
+		<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-large">
+			<?php get_template_part('template-parts/menus/automotive-header-menu'); ?>
 		</div>
 	</div>
 </div>
+
 <?php $term = get_queried_object(); ?>
 
 <section class="taxonomy-intro">
@@ -46,10 +50,10 @@
 
 			<?php
 				$args = array(
-					'post_type' => 'auto',
+					'post_type' => 'automotive',
 					'tax_query' => array(
 						array(
-							'taxonomy' => 'auto_taxonomies',
+							'taxonomy' => 'automotive_taxonomies',
 							'field'    => 'slug',
 							'terms'    => $term->slug
 						),

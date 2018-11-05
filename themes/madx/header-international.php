@@ -26,18 +26,40 @@
 		<?php get_template_part( 'template-parts/mobile-off-canvas' ); ?>
 	<?php endif; ?>
 
-
 	<header class="site-header absolute" role="banner">
-		<div class="site-title-bar title-bar" <?php foundationpress_title_bar_responsive_toggle(); ?>>
-			<div class="title-bar-left">
-				<button aria-label="<?php _e( 'Main Menu', 'foundationpress' ); ?>" class="menu-icon" type="button" data-toggle="<?php foundationpress_mobile_menu_id(); ?>"></button>
-				<span class="site-mobile-title title-bar-title">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-				</span>
+		<div id="international-mobile-menu" class="hide-for-medium">
+			<div class="grid-container">
+				<div class="grid-x">
+					<div class="small-10 small-offset-1 cell">
+						<div class="grid-x">
+							<div class="small-6 cell">
+								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/logo-white.png" alt="Madico The clear choice"></a>
+							</div>
+							<div class="small-6 cell text-right">
+								<ul class="dropdown menu" v-dropdown data-alignment="left">
+									<li>
+										<a data-alignment="left" data-toggle="submenu-dropdown" style="color: #FFF">Menu &nbsp;<i class="fa fa-chevron-down"></i></a>
+										<ul class="menu">
+											<li><a href="#!"><i class="fal fa-phone"></i>&nbsp; +1 (800) 123-4567</a></li>
+											<li>
+												<a href="#" data-toggle="submenu-dropdown">Language &nbsp;<i class="fa fa-chevron-down"></i></a>
+												<ul class="menu" v-dropdown>
+													<li><a href="#">Spanish</a></li>
+													<li><a href="#">German</a></li>
+													<li><a href="#">French</a></li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
-		<nav class="site-navigation top-bar" role="navigation">
+		<nav class="site-navigation top-bar show-for-medium" role="navigation">
 			<div class="top-bar-left">
 				<div class="site-desktop-title top-bar-title">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/logo-white.png" alt="Madico The clear choice"></a>

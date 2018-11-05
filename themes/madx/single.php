@@ -14,7 +14,9 @@ get_header(); ?>
 	<div class="grid-container" id='header-grid'>
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
-				<?php get_template_part('template-parts/menus/blog-header-menu'); ?>
+				<?php if(get_post_type() == 'post') { ?>
+				  <?php get_template_part('template-parts/menus/blog-header-menu'); ?>
+				<?php } ?>
 			</div>
 		</div>
 	</div>
@@ -72,36 +74,6 @@ get_header(); ?>
 
 			</div>
 			<div class="medium-4 small-10 small-offset-1 cell single-sidebar">
-				<!-- <h4 class="blue">Blog Categories</h4>
-				<ul class="cat-list"> -->
-
-					<?php
-					// $categories = get_categories( array(
-					//     'orderby'    => 'name',
-					//     'order'      => 'ASC'
-					// ) );
-
-					// foreach( $categories as $category ) {
-						
-					// 	if ($category->slug == 'auto') {
-					// 		$cat_icon = '<i class="fal fa-car"></i>';
-					// 	}else if ($category->slug == 'commercial') {
-					// 		$cat_icon = '<i class="fal fa-building"></i>';
-					// 	}else if ($category->slug == 'residential') {
-					// 		$cat_icon = '<i class="fal fa-home"></i>';
-					// 	}else if ($category->slug == 'safety-security') {
-					// 		$cat_icon = '<i class="fal fa-shield"></i>';
-					// 	}else if ($category->slug == 'news') {
-					// 		$cat_icon = '<i class="fal fa-newspaper"></i>';
-					// 	}
-					//   if ($category->slug != 'uncategorized') {
-					 ?>
-
-					 <!-- <li><a href="<?php echo get_category_link( $category->term_id ) ?>"><?php echo $cat_icon; ?> &nbsp;&nbsp;<?php echo $category->cat_name; ?></a></li> -->
-
-					<?php // }} ?>
-
-				<!-- </ul> -->
 
 				<?php get_sidebar(); ?>
 
