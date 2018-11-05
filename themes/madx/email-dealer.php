@@ -7,7 +7,7 @@ $phone        = $_POST['phone'];
 $message      = $_POST['message'];
 $dealer_email = $_POST['dealerEmail'];
 
-$to = 'nbeers22@gmail.com';
+$to      = $dealer_email;
 $subject = "Inquiry from Madico Dealer Directory";
 $headers = "From: noreply@madico.com\n";
 

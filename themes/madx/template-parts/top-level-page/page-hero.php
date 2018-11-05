@@ -3,7 +3,20 @@
 
 <section class="page-hero" style="background-image: url(<?php the_field('page_hero_background_image'); ?>);">
 
-	<?php get_template_part('template-parts/menus/'. $slug .'-header-menu'); ?>
+	<div class="show-for-small-only">
+		<?php get_template_part('template-parts/menus/'. $slug .'-header-menu'); ?>
+	</div>
+
+	<div id="header-grid" class="grid-container">
+		<div class="grid-x">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
+				<?php get_template_part('template-parts/menus/'. $slug .'-tablet-menu'); ?>
+			</div>
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-large">
+				<?php get_template_part('template-parts/menus/'. $slug .'-header-menu'); ?>
+			</div>
+		</div>
+	</div>
 
 	<div class="grid-container">
 		<div class="grid-x">

@@ -57,7 +57,7 @@ get_header(); ?>
 	</div>
 </section>
 
-<section class="featured-products">
+<!-- <section class="featured-products">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 cell text-center">
@@ -74,7 +74,7 @@ get_header(); ?>
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 
 <?php get_template_part('template-parts/taxonomy/specialty-solutions/contact'); ?>
 

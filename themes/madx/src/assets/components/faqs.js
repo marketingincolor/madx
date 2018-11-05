@@ -1,6 +1,6 @@
 import { apiRoot, acfApiRoot } from './config.js';
 export default {
-	name: 'safetyPosts',
+	name: 'faqs',
 	data() {
 		return{
 			searchText: '',

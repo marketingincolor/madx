@@ -1,4 +1,20 @@
-<?php $term = get_queried_object(); ?>
+<?php
+$term = get_queried_object();
+$args = array(
+	'post_type' => 'testimonials',
+	'posts_per_page' => 1,
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'testimonials_taxonomies',
+			'field'    => 'slug',
+			'terms'    => $term->slug,
+		),
+	),
+);
+$query = new WP_Query( $args );
+// if have testimonials then show section
+if ($query->have_posts()) {
+?>
 
 <section class="taxonomy-testimonials">
 	<div class="grid-container">
@@ -19,18 +35,6 @@
 
 						    	  <!-- Query custom post type 'testimonials' filtered by taxonomy testimonials_taxonomies -->
 						    		<?php
-						    			$args = array(
-						    				'post_type' => 'testimonials',
-						    				'posts_per_page' => 1,
-						    				'tax_query' => array(
-						    					array(
-						    						'taxonomy' => 'testimonials_taxonomies',
-						    						'field'    => 'slug',
-						    						'terms'    => $term->slug,
-						    					),
-						    				),
-						    			);
-						    			$query = new WP_Query( $args );
 						    			while ( $query->have_posts() ) : $query->the_post();
 						    		?>
 						    		
@@ -78,3 +82,4 @@
 		</div>
 	</div>
 </section>
+<?php } ?>

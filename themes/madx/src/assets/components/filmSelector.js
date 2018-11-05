@@ -95,14 +95,14 @@ export default{
 					<div class="grid-x grid-margin-x relative">
 						<div class="number absolute"><span>3</span></div>
 						<div class="small-10 small-offset-1 medium-12 medium-offset-0 cell">
-							<h5 class="blue">Safety</h5>
-							<p>Helps hold shattered glass together in the event of an accident.</p>
+							<h5 class="blue">Privacy & Security</h5>
+							<p>A wide range of shades offer privacy for you and your passengers and security for valuables inside.</p>
 						</div>
 					</div>
 				</div>
 				<div class="medium-7 cell flex-column no-print">
 		      <div class="slider no-print" v-slider data-initial-start="10" data-end="100">
-		        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
+		        <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
 		        <span class="slider-fill" data-slider-fill></span>
 		        <input id="safetyInput" type="hidden">
 		      </div>
@@ -252,8 +252,8 @@ export default{
 		getPostType: function(currentURL){
 		  if (currentURL.includes('residential')) {
 		  	this.postType = 'residential';
-		  }else if (currentURL.includes('auto')) {
-		  	this.postType = 'auto';
+		  }else if (currentURL.includes('automotive')) {
+		  	this.postType = 'automotive';
 		  }
 		},
 		changeSwatch: function(event){
@@ -302,7 +302,7 @@ export default{
   	setModalContent: function(postID){
   		var $this  = this;
   		axios
-	      .get(apiRoot + 'auto/' + postID + '?_embed')
+	      .get(apiRoot + 'automotive/' + postID + '?_embed')
 	      .then(function (response) {
 	      	$this.modalTitle    = response.data.title.rendered;
 	      	$this.modalBody     = response.data.content.rendered;

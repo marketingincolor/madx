@@ -44,12 +44,15 @@
 			background-color: $clear;
 			margin: 0 auto;
 		}
+
 		.top-bar ul{
 			background-color: $clear;
 		}
+
 		.top-bar .menu a{
 			color:$white;
 		}
+
 		.top-bar .menu li:not(:last-child){
 			border:0;
 		}
@@ -62,6 +65,10 @@
 			padding-left: 1.125rem !important
 		}
 	}
+}
+
+.page-template-page-international .site-header.absolute .top-bar ul.is-dropdown-submenu{
+	background-color: #1a598c;
 }
 
 #top-header {
@@ -220,7 +227,7 @@
 		#search-dropdown{
 			right: 0 !important;
 			top: 0 !important;
-			left: -204px !important;
+			left: -206px !important;
 			border: 0;
 			background-color: #00467f;
 
@@ -330,6 +337,10 @@
 
 	a:hover img{
 		opacity: 0.8;
+	}
+
+	.top-bar-left img{
+		max-width: 220px;
 	}
 
 	.top-bar-right.tablet .dropdown .is-dropdown-submenu-parent{
