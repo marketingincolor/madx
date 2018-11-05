@@ -9,7 +9,8 @@ get_header('international'); ?>
 			<div class="small-10 small-offset-1 medium-8 large-offset-0 cell">
 				<h1 class="white"><?php the_field('international_hero_heading'); ?></h1>
 				<aside class="yellow-underline left"></aside>
-				<p class="white"><?php the_field('international_hero_subhead'); ?></p>
+				<p class="white subhead"><?php the_field('international_hero_subhead'); ?></p>
+				<a href="<?php the_field('international_hero_button_link'); ?>" class="btn-yellow solid"><?php the_field('international_hero_button_text'); ?></a>
 			</div>
 		</div>
 	</div>
@@ -51,7 +52,7 @@ get_header('international'); ?>
 	</div>
 </section>
 
-<section class="about-content">
+<section id="contact" class="about-content">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-12 cell content-block">

@@ -1,5 +1,66 @@
 .page-template-page-international{
 
+	header.site-header.absolute{
+		top: 100px;
+
+		@include breakpoint(medium down){
+			top: 75px;
+		}
+
+		@include breakpoint(small down){
+			top: 40px;
+		}
+
+		@media(max-width:320px){
+			top: 30px;
+		}
+	}
+
+	.is-dropdown-submenu-parent.opens-right,.is-dropdown-submenu-parent.opens-left{
+		margin: auto 0 auto auto;
+	}
+
+	.is-dropdown-submenu-parent.opens-inner > .is-dropdown-submenu{
+		top: 100%;
+	}
+
+	.dropdown.menu > li.opens-left > .is-dropdown-submenu,
+	.is-dropdown-submenu .is-dropdown-submenu-parent.opens-right > a::after,
+	.dropdown.menu > li.is-dropdown-submenu-parent > a::after{
+		border: 0;
+	}
+
+	.dropdown.menu .is-active > a{
+		background-color: $blue;
+		color: $white;
+	}
+
+	.hero{
+		height: 70vh;
+		padding: 6% 0;
+
+		@include breakpoint (medium down){
+			height: 80vh;
+		}
+
+		@include breakpoint (small down){
+			height: 100vh;
+			padding: 10% 0;
+		}
+
+		@media(max-height:450px){
+			height: 150vh;
+		}
+
+		.small-10.cell{
+			align-self: flex-end;
+		}
+
+		.subhead{
+			margin-bottom: 30px;
+		}
+	}
+
 	.about-next.ppro{
 		margin-top: -1px;
 
