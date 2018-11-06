@@ -39,7 +39,7 @@ export default{
 											</a>
 											<div class="meta">
 												<a @click="getSinglePost(post.id)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
-												<div class="content" v-html="$options.filters.limitWords(acf.short_description,20)"></div>
+												<div class="content" v-html="$options.filters.limitWords(post.acf.short_description,20)"></div>
 												<a @click="getSinglePost(post.id)" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
 											</div>
 										</div>
@@ -122,7 +122,7 @@ export default{
 			    $this.taxPosts = response.data;
 			    $this.taxDescription = description;
 			    $this.singlePostActive = false;
-			    setTimeout($this.replaceRegMark,300)
+			    setTimeout($this.replaceRegMark,300);
 			  }
 			)
 		},

@@ -36,7 +36,6 @@ export default{
 	mounted(){
 		let $this = this;
 		$(document).find('.videolink').on('click',function(){
-			console.log('hello')
 			$this.videoTitle = $(this).data('videotitle');
 			$this.videoUrl   = $(this).data('videourl')+'?rel=0';
 			$this.videoInfo  = $(this).data('videometa');
