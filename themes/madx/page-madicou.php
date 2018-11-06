@@ -5,8 +5,8 @@ get_header('madicou'); ?>
 
 <?php if (is_page('madicou')) { ?> 
 	<?php get_template_part('template-parts/madicou/page-hero'); ?>
-<?php } else { ?>
-	<?php get_template_part('template-parts/madicou/page-search'); ?>
+<?php //} else { ?>
+	<?php //get_template_part('template-parts/madicou/page-search'); ?>
 <?php } ?>
 
 <?php get_template_part('template-parts/madicou/submenu'); ?>
@@ -16,6 +16,7 @@ get_header('madicou'); ?>
 	<?php get_template_part('template-parts/madicou/business-resources') ?>
 	<?php get_template_part('template-parts/madicou/sales-resources') ?>
 	<?php get_template_part('template-parts/madicou/marketing-resources') ?>
+	<madu-video-modal></madu-video-modal>
 <?php } elseif (is_page('ask-a-question') || is_page('glossary')) { ?>
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		<?php get_template_part('template-parts/madicou/page-titleblock') ?>
