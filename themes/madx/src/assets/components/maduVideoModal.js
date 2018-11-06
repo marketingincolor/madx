@@ -36,11 +36,11 @@ export default{
 	mounted(){
 		let $this = this;
 		$(document).find('.videolink').on('click',function(){
-			$this.videoTitle  = $(this).data('videotitle');
-			$this.videoUrl = $(this).data('videourl')+'?rel=0';
-			$this.videoInfo = $(this).data('videometa');
-			$this.videoFile = $(this).data('attach');
-			$this.videoText = $(this).data('videotxt');
+			$this.videoTitle = $(this).data('videotitle');
+			$this.videoUrl   = $(this).data('videourl')+'?rel=0';
+			$this.videoInfo  = $(this).data('videometa');
+			$this.videoFile  = $(this).data('attach');
+			$this.videoText  = $(this).data('videotxt');
 		});
 
 	},
