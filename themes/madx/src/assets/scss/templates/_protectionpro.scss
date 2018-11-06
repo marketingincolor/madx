@@ -1,13 +1,37 @@
 .page-template-page-protectionpro{
 
 	.hero{
-		padding-bottom: 10%;
+		height: 70vh;
+		padding: 60px 0;
 
-		.grid-x{
+		@include breakpoint (medium down){
+			height: 80vh;
+		}
 
-			@include breakpoint(small only){
-				align-items: center;
-			}
+		@media(max-width: 748px){
+			height: 100vh;
+			max-height: 700px;
+		}
+
+		@include breakpoint (small down){
+			height: 70vh;
+			padding: 10% 0;
+		}
+
+		@media(max-width: 375px){
+			height: 85vh;
+		}
+
+		@media(max-width: 320px){
+			height: 100vh;
+		}
+
+		@media(max-height: 414px){
+			height: 150vh;
+		}
+
+		.subhead{
+			margin-bottom: 30px;
 		}
 	}
 }
