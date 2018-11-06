@@ -9,18 +9,13 @@ get_header(); ?>
 	</div>
 
 	<div id="header-grid" class="grid-container">
-		<div class="grid-x">
-			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
+		<div class="grid-x relative">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 cell show-for-medium-only">
 				<?php get_template_part('template-parts/menus/protectionpro-tablet-menu'); ?>
 			</div>
-			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-large">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 cell show-for-large">
 				<?php get_template_part('template-parts/menus/protectionpro-header-menu'); ?>
 			</div>
-		</div>
-	</div>
-	
-	<div class="grid-container">
-		<div class="grid-x">
 			<div class="small-10 small-offset-1 medium-6 large-offset-0 cell">
 				<h1 class="white"><?php the_field('about_hero_heading'); ?></h1>
 				<aside class="yellow-underline left"></aside>
@@ -169,6 +164,19 @@ get_header(); ?>
 						<p><jot-form form-id="82823879486173"></jot-form></p>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="find-dealer" class="find-dealer" style="background-image: url(<?php the_field('find_retailer_background_image'); ?>);">
+	<div class="grid-container">
+		<div class="grid-x">
+			<div class="small-10 small-offset-1 medium-9 large-7 large-offset-0 cell">
+				<h2 class="white"><?php the_field('find_retailer_heading'); ?></h2>
+				<aside class="yellow-underline left"></aside>
+				<p class="white subhead"><?php the_field('find_retailer_subhead'); ?></p>
+				<a href="<?php the_field('find_retailer_button_link'); ?>" class="btn-yellow solid"><?php the_field('find_retailer_button_text'); ?></a>
 			</div>
 		</div>
 	</div>

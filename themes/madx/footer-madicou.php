@@ -13,10 +13,8 @@
               <li class="heading"><h6 class="blue">Company</h6></li>
               <li><a href="/about">About</a></li>
               <li><a href="/about/history">History</a></li>
-              <li><a href="/about/growth-acquisitions">Growth & Acquistitions</a></li>
               <li><a href="/about/madico-cares">Madico Cares</a></li>
               <li><a href="/blog/news">News</a></li>
-              <li><a href="/blog">Blog</a></li>
               <li><a href="/about/careers">Careers</a></li>
               <li><a href="/faqs">FAQs</a></li>
               <li><a href="/about/procurement">Procurement</a></li>
@@ -38,12 +36,12 @@
           <div class="small-6 medium-4 large-2 cell">
             <ul>
               <li class="heading"><h6 class="blue">Connect</h6></li>
-              <li><a href="https://www.facebook.com/MadicoInc/"><i class="fab fa-facebook"></i>&nbsp; Facebook</a></li>
-              <li><a href="https://twitter.com/MadicoInc"><i class="fab fa-twitter"></i>&nbsp; Twitter</a></li>
-              <li><a href="https://plus.google.com/+MadicoInc"><i class="fab fa-google-plus-g"></i>&nbsp; Google Plus</a></li>
-              <li><a href="https://www.linkedin.com/company/madicoinc"><i class="fab fa-linkedin"></i>&nbsp; LinkedIn</a></li>
-              <li><a href="https://www.youtube.com/channel/UCu9s60dm8xsrjHsXtqT49Nw"><i class="fab fa-youtube"></i>&nbsp; YouTube</a></li>
-              <li><a href="https://www.instagram.com/clearplex"><i class="fab fa-instagram"></i>&nbsp; Instagram</a></li>
+              <li><a href="https://www.facebook.com/MadicoInc/" target="_blank"><i class="fab fa-facebook"></i>&nbsp; Facebook</a></li>
+              <li><a href="https://twitter.com/MadicoInc" target="_blank"><i class="fab fa-twitter"></i>&nbsp; Twitter</a></li>
+              <li><a href="https://plus.google.com/+MadicoInc" target="_blank"><i class="fab fa-google-plus-g"></i>&nbsp; Google Plus</a></li>
+              <li><a href="https://www.linkedin.com/company/madicoinc" target="_blank"><i class="fab fa-linkedin"></i>&nbsp; LinkedIn</a></li>
+              <li><a href="https://www.youtube.com/channel/UCu9s60dm8xsrjHsXtqT49Nw" target="_blank"><i class="fab fa-youtube"></i>&nbsp; YouTube</a></li>
+              <li><a href="https://www.instagram.com/clearplex" target="_blank"><i class="fab fa-instagram"></i>&nbsp; Instagram</a></li>
             </ul>
           </div>
           <div class="small-12 medium-4 large-4 cell">
