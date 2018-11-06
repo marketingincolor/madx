@@ -68,31 +68,12 @@
 	}
 
 	.footer-logos{
-		list-style-type: none;
-		margin: 0;
-		display:flex;
-		align-items: center;
-
-		@media (max-width:800px){
-			flex-wrap: wrap;
-		}
-
-		li{
-			margin: 20px 15px;
-			text-align: center;
-
-			@media (max-width:800px){
-				width: 25%;
-			}
-			@media (max-width:640px){
-				margin: 20px 0;
-				width: 33.33333%;
-			}
+		
+		.cell{
 
 			img{
-				@media (max-width:800px){
-					max-width: 50%;
-				}
+				max-width: 130px;
+				max-height: 75px;
 			}
 		}
 	}
