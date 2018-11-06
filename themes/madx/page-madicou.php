@@ -29,7 +29,7 @@ get_header('madicou'); ?>
 <section class="page-content">
 	<div class="grid-container">
 		<div class="grid-x grid-margin-x grid-margin-y">
-			<div class="cell small-10 small-offset-1 medium-9 medium-offset-0">
+			<div class="cell small-10 small-offset-1 large-12 large-offset-0">
 				<div class="grid-x grid-margin-x grid-margin-y">
 					<div class="cell heading">
 						<h3 class="section-h3">Videos <a href="<?php echo site_url('/mu-types/video/'); ?>" class="see-more">Watch More Videos &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
@@ -54,8 +54,9 @@ get_header('madicou'); ?>
 						);
 						$doc_query = new WP_Query( $doc_args );
 					?>
+					<?php if($doc_query->have_posts()){ ?>
 					<div class="cell heading">
-						<h3 class="section-h3">Frequently Asked Questions <?php if($doc_query->have_posts()){ ?><a href="<?php echo site_url('/faqs/'); ?>" class="see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a><?php } ?></h3>
+						<h3 class="section-h3">Frequently Asked Questions <a href="<?php echo site_url('/faqs/'); ?>" class="see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
 					</div>
 					<div class="cell module page-faqs">
 						<div class="grid-y grid-margin-x grid-margin-y">
@@ -64,6 +65,7 @@ get_header('madicou'); ?>
 							<!-- END LOOP for FAQS by SECTION/SLUG -->
 						</div>
 					</div>
+					<?php } ?>
 
 				</div>
 			</div>
@@ -82,8 +84,9 @@ get_header('madicou'); ?>
 					?>
 
 					<!-- ////////// BEGIN Sidebar Cells for ARTICLES ////////// -->
+					<?php if($article_query->have_posts()){ ?>
 					<div class="cell heading">
-						<h3 class="section-h3">Articles <?php if($article_query->have_posts()){ ?><a href="<?php echo site_url('/mu-types/article/'); ?>" class="see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a><?php } ?></h3>
+						<h3 class="section-h3">Articles <a href="<?php echo site_url('/mu-types/article/'); ?>" class="see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
 					</div>
 					<div class="cell module side-articles">
 						<div class="grid-y grid-margin-x grid-margin-y">
@@ -92,6 +95,7 @@ get_header('madicou'); ?>
 						<!-- END LOOP for ARTICLES by SECTION/SLUG -->
 						</div>
 					</div>
+					<?php } ?>
 
 					<?php
 						$post_slug = $post->post_name;
@@ -104,8 +108,9 @@ get_header('madicou'); ?>
 						$doc_query = new WP_Query( $doc_args );
 					?>
 					<!-- ////////// BEGIN Sidebar Cells for DOCUMENTS ////////// -->
+					<?php if($doc_query->have_posts()){ ?>
 					<div class="cell heading">
-						<h3 class="section-h3">Documents <?php if($doc_query->have_posts()){ ?><a href="<?php echo site_url('/mu-types/document/'); ?>" class="see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a><?php } ?></h3>
+						<h3 class="section-h3">Documents <a href="<?php echo site_url('/mu-types/document/'); ?>" class="see-more">More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
 					</div>
 					<div class="cell module side-documents">
 						<div class="grid-y grid-margin-x grid-margin-y">
@@ -114,6 +119,7 @@ get_header('madicou'); ?>
 						<!-- END LOOP for DOCUMENTS by SECTION/SLUG -->
 						</div>
 					</div>
+					<?php } ?>
 
 				</div>
 			</div>

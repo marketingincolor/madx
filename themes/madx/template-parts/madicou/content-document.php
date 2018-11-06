@@ -2,7 +2,7 @@
 if ( $doc_query->have_posts() ) : while ( $doc_query->have_posts() ) : $doc_query->the_post(); 
 	$doc_attachment = get_field('doc_attachment'); // Requires ACF Field for 'doc_attachment'
 	?>
-	<div class="cell">
+	<div class="cell medium-3">
 		<div class="meta">
 		<?php if ( $doc_attchment != '' ) { ?>
 			<a href="<?php echo $doc_attchment; ?>" class="doc-link"><i class="fal fa-file-pdf"></i></a>
