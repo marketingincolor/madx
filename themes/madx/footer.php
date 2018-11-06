@@ -66,18 +66,36 @@
               <li><a href="https://www.instagram.com/clearplex" target="_blank"><i class="fab fa-instagram"></i>&nbsp; Instagram</a></li>
             </ul>
           </div>
-          <div class="small-12 cell">
-            <ul class="footer-logos">
-              <li><a href="https://www.aia.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/AIA.png" alt="AIA"></a></li>
-              <li><a href="https://www.asid.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/ASID.png" alt="ASID"></a></li>
-              <li><a href="https://www.energystar.gov/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/Energy Star.png" alt="Energy Star"></a></li>
-              <li><a href="http://www.iwfa.com/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/IWFA.png" alt="IWFA"></a></li>
-              <li><a href="http://www.nfrc.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/NFRC.png" alt="NFRC"></a></li>
-              <li><a href="https://www.semashow.com/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/SEMA.png" alt="SEMA"></a></li>
-              <li><a href="http://www.ewfa.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/EWFA.png" alt="EWFA"></a></li>
-              <li><a href="https://www.apta.com/Pages/default.aspx" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/APTA.png" alt="APTA"></a></li>
-              <li><a href="https://www.uitp.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/UITP.png" alt="UITP"></a></li>
-            </ul>
+          <div class="small-12 cell" style="margin-top:30px">
+            <div class="grid-x grid-margin-x align-middle align-center grid-margin-y small-up-3 medium-up-5 large-up-5 footer-logos">
+              <div class="cell text-center">
+                <a href="https://www.aia.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/AIA.png" alt="AIA"></a>
+              </div>
+              <div class="cell text-center">
+                <a href="https://www.asid.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/ASID.png" alt="ASID"></a>
+              </div>
+              <div class="cell text-center">
+                <a href="https://www.energystar.gov/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/Energy Star.png" alt="Energy Star"></a>
+              </div>
+              <div class="cell text-center">
+                <a href="http://www.iwfa.com/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/IWFA.png" alt="IWFA"></a>
+              </div>
+              <div class="cell text-center">
+                <a href="http://www.nfrc.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/NFRC.png" alt="NFRC"></a>
+              </div>
+              <div class="cell text-center">
+                <a href="https://www.semashow.com/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/SEMA.png" alt="SEMA"></a>
+              </div>
+              <div class="cell text-center">
+                <a href="http://www.ewfa.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/EWFA.png" alt="EWFA"></a>
+              </div>
+              <div class="cell text-center">
+                <a href="https://www.apta.com/Pages/default.aspx" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/APTA.png" alt="APTA"></a>
+              </div>
+              <div class="cell text-center">
+                <a href="https://www.uitp.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/UITP.png" alt="UITP"></a>
+              </div>
+            </div>
           </div>
           <div class="small-12 cell text-center credits">
             <address>9251 Belcher Road N. Pinellas Park, FL 33782</address>
