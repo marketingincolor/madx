@@ -59,10 +59,14 @@
 	}
 	// For protectionpro page
 	#page-header{
-		top: 50px;
+		top: 0;
+
+		@include breakpoint(small down){
+			top: 30px;
+		}
 
 		.top-bar .top-bar-title a{
-			padding-left: 1.125rem !important
+			padding-left: .5rem !important
 		}
 	}
 }
@@ -226,7 +230,7 @@
 
 		#search-dropdown{
 			right: 0 !important;
-			top: 0 !important;
+			top: 1px !important;
 			left: -206px !important;
 			border: 0;
 			background-color: #00467f;
@@ -469,7 +473,8 @@
 		padding: 0.375rem 1.5rem;
 		border: 1px solid #e5e6e6;
 		margin: 0 0 0 auto;
-		max-width: 250px;
+		max-width: 100%;
+		width: 100%;
 	}
 
 	button[type=submit] {

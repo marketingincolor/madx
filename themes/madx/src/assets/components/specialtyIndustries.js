@@ -14,7 +14,7 @@ export default{
 	    singlePostActive: false,
 		}
 	},
-	template:`<div class="grid-container" id="tax-posts">
+	template:`<div class="grid-container small-12" id="tax-posts">
 	            <div class="grid-x">
 								<div class="small-10 small-offset-1 large-12 large-offset-0 cell" v-if="!singlePostActive" id="all-posts">
 									<div class="grid-x grid-margin-x grid-margin-y">
@@ -23,7 +23,6 @@ export default{
 											<div class="meta">
 												<a @click="getSinglePost(post.id)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
 												<div class="content">{{ post.acf.specialty_short_description }}</div>
-												<a @click="getSinglePost(post.id)" class="read-more">View More Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
 											</div>
 										</div>
 									</div>
