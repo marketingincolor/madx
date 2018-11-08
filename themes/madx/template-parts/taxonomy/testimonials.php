@@ -1,5 +1,10 @@
 <?php
 $term = get_queried_object();
+if ($term->ID == 1258) {
+	$slug = 'protectionpro';
+}else{
+	$slug = $term->slug;
+}
 $args = array(
 	'post_type' => 'testimonials',
 	'posts_per_page' => 1,
@@ -7,7 +12,7 @@ $args = array(
 		array(
 			'taxonomy' => 'testimonials_taxonomies',
 			'field'    => 'slug',
-			'terms'    => $term->slug,
+			'terms'    => $slug,
 		),
 	),
 );

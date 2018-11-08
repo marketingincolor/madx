@@ -34,7 +34,7 @@ export default{
 								<div class="small-10 small-offset-1 cell" id="single-post" v-if="singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
 										<div class="small-12 cell module auto-height animated fadeIn">
-											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost.title.rendered">
+											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost._embedded['wp:featuredmedia'][0].alt_text">
 											<div class="meta">
 												<div class="grid-x">
 													<div class="medium-3 medium-offset-1 cell">

@@ -21,13 +21,13 @@ export default{
 		  <fieldset class="radius-zip">
 		  	<select name="radius">
 	  	    <option value="10">Within 10 miles</option>
-	  	    <option value="25">Within 25 miles</option>
+	  	    <option value="25" selected>Within 25 miles</option>
 	  	    <option value="50">Within 50 miles</option>
 	  	    <option value="75">Within 75 miles</option>
 	  	    <option value="100">Within 100 miles</option>
 	  	  </select>
 	  	  <div class="zip">
-	  	  	<input type="text" placeholder="Zip Code" name="zip" maxlength="5" v-model="zipCode">
+	  	  	<input type="text" placeholder="Zip Code" id="zip" name="zip" maxlength="5" pattern="\\d{5}" required v-model="zipCode">
 	  	  	<button type="submit" class="btn-yellow solid"><i class="fas fa-caret-right"></i></button>
 	  	  </div>
 		  </fieldset>
@@ -39,7 +39,21 @@ export default{
 	created(){
 		this.getGoogleApiKey();
 	},
+	mounted(){
+		this.validateZip();
+	},
 	methods:{
+		validateZip: function(){
+			let form = document.forms['find-dealer-form'];
+			let zip  = form.querySelector("#zip");
+
+			zip.addEventListener("invalid", function(){
+			  this.setCustomValidity("Zip code must be a 5-digit number");
+			});
+			zip.addEventListener("input", function(){
+			  this.setCustomValidity("");
+			});
+		},
 		zipCodeLookup: function(){
 		  this.sendZip(this.zipCode);
 		},
@@ -58,7 +72,11 @@ export default{
   		  .get(apiURL)
   		  .then(function (response) {
   	    	$this.zipCode = response.data.results[0].address_components[7].long_name;
-  	    	$this.sendZip($this.zipCode);
+  	    	let form = document.forms['find-dealer-form'];
+  	    	let zip  = form.querySelector("#zip");
+
+  	    	zip.setCustomValidity("");
+  	    	// $this.sendZip($this.zipCode);
   		  }
   		)
 		},

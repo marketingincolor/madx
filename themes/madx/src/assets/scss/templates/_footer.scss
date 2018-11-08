@@ -74,6 +74,16 @@
 			img{
 				max-width: 130px;
 				max-height: 75px;
+
+				@include breakpoint(medium down){
+					max-width: 90px;
+					max-height: 50px;
+				}
+
+				@include breakpoint(small down){
+					max-width: 60px;
+					max-height: 45px;
+				}
 			}
 		}
 	}
