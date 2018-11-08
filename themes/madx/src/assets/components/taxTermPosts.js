@@ -30,7 +30,7 @@ export default{
 											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span></h5>
 										</div>
 										<div v-if="postType != 'safety'" class="medium-4 cell module auto-height animated fadeIn" v-for="post in taxPosts">
-											<a @click="getSinglePost(post.id)"><img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered"></a>
+											<a @click="getSinglePost(post.id)"><img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post._embedded['wp:featuredmedia'][0].alt_text"></a>
 											<div class="meta">
 												<a @click="getSinglePost(post.id)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
 												<div class="content" v-html="$options.filters.limitWords(post.content.rendered,25)"></div>
@@ -38,7 +38,7 @@ export default{
 											</div>
 										</div>
 										<div v-if="postType == 'safety'" class="medium-12 cell module auto-height animated fadeIn" v-for="post in taxPosts">
-											<img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post.title.rendered">
+											<img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post._embedded['wp:featuredmedia'][0].alt_text">
 											<div class="meta">
 												<h4 class="blue" v-html="post.title.rendered"></h4>
 												<div class="content" v-html="post.content.rendered"></div>
@@ -52,7 +52,7 @@ export default{
 											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span> <i class="fas fa-chevron-right"></i> <span v-html="singlePost.title.rendered"></span></h5>
 										</div>
 										<div class="medium-12 cell module auto-height animated fadeIn">
-											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost.title.rendered">
+											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="post._embedded['wp:featuredmedia'][0].alt_text">
 											<div class="meta">
 												<div class="medium-12 cell">
 													<div class="grid-x grid-margin-x grid-margin-y">
@@ -177,6 +177,7 @@ export default{
 			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
 			  .then(function (response) {
 			    $this.taxPosts = response.data;
+			    console.log(response.data)
 			    $this.singlePostActive = false;
 			  }
 			)

@@ -127,15 +127,11 @@
 	p{
 		margin-bottom: 0;
 		font-size: 1.125rem;
-
-		@include breakpoint(medium down){
-			margin-bottom: 30px;
-		}
 	}
 
 	.text{
 
-		@include breakpoint(small down){
+		@include breakpoint(medium down){
 			margin-bottom: 30px;
 		}		
 	}

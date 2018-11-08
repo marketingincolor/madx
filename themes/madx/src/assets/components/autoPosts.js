@@ -24,7 +24,7 @@ export default{
 											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span></h5>
 										</div>
 										<div class="medium-12 cell module auto-height">
-											<img :src="autoSinglePost[0]._embedded['wp:featuredmedia'][0].source_url" :alt="autoSinglePost[0].title.rendered">
+											<img :src="autoSinglePost[0]._embedded['wp:featuredmedia'][0].source_url" :alt="autoSinglePost[0]._embedded['wp:featuredmedia'][0].alt_text">
 											<div class="meta">
 												<div class="medium-12 cell">
 													<div class="grid-x grid-margin-x grid-margin-y">
