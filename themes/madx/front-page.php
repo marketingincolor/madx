@@ -41,7 +41,11 @@ get_header('home'); ?>
 					    while ( have_rows('home_modules_small') ) : the_row(); ?>
 
 					  <div class="medium-6 large-3 cell module">
-					  	<a href="<?php the_sub_field('link_url'); ?>"><div class="module-bg small" style="background-image: url(<?php the_sub_field('image'); ?>);"></div></a>
+					  	<a href="<?php the_sub_field('link_url'); ?>">
+					  		<div class="module-bg small relative" style="background-image: url(<?php the_sub_field('image'); ?>);">
+					  			<div class="label absolute"><strong><?php the_sub_field('label'); ?></strong></div>
+					  	  </div>
+					  	</a>
 					  	<div class="meta">
 					  		<a href="<?php the_sub_field('link_url'); ?>"><h4 class="blue"><?php the_sub_field('icon'); ?>&nbsp; <?php the_sub_field('heading'); ?></h4></a>
 					  		<p style="margin-bottom: 30px"><?php the_sub_field('body'); ?></p>
@@ -55,7 +59,11 @@ get_header('home'); ?>
 					    while ( have_rows('home_modules_large') ) : the_row(); ?>
 
 					  <div class="medium-6 cell module">
-					  	<a href="<?php the_sub_field('link_url'); ?>"><div class="module-bg large" style="background-image: url(<?php the_sub_field('image'); ?>);"></div></a>
+					  	<a href="<?php the_sub_field('link_url'); ?>">
+					  		<div class="module-bg large relative" style="background-image: url(<?php the_sub_field('image'); ?>);">
+					  			<div class="label absolute"><strong><?php the_sub_field('label'); ?></strong></div>
+					  		</div>
+					  	</a>
 					  	<div class="meta">
 					  		<a href="<?php the_sub_field('link_url'); ?>"><h4 class="blue"><?php the_sub_field('icon'); ?>&nbsp; <?php the_sub_field('heading'); ?></h4></a>
 					  		<p style="margin-bottom: 30px"><?php the_sub_field('body'); ?></p>
