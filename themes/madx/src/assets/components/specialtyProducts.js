@@ -57,7 +57,7 @@ export default{
 											<a :href="singlePost.acf.data_sheet" target="_blank" class="btn-yellow border">Data Sheet</a>
 										</div>
 										<div class="medium-12 cell module auto-height animated fadeIn">
-											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost.title.rendered">
+											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost._embedded['wp:featuredmedia'][0].alt_text">
 											<div class="meta">
 												<div class="medium-12 cell">
 													<div class="grid-x grid-margin-x grid-margin-y">
