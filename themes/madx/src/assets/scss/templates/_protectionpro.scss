@@ -34,6 +34,20 @@
 			margin-bottom: 30px;
 		}
 	}
+
+	.taxonomy-testimonials{
+		background-image: url(../images/protectionpro-hero.png);
+		@include bg-center-cover;
+
+		h2,p,address{
+			color: $white;
+		}
+
+		.orbit-next:hover i,.orbit-previous:hover i{
+			color: $yellow;
+		}
+		
+	}
 }
 
 .checklist{

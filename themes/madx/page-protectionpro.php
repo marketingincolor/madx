@@ -55,7 +55,7 @@ get_header(); ?>
 	</div>
 </section>
 
-<section id="body-protection" class="touchscreen-pro">
+<section id="body-protection" class="touchscreen-pro" style="padding-top:0">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 cell">
@@ -153,6 +153,8 @@ get_header(); ?>
 	</div>
 </section>
 
+<?php get_template_part('/template-parts/taxonomy/testimonials'); ?>
+
 <section id="contact" class="about-content">
 	<div class="grid-container">
 		<div class="grid-x">
@@ -172,7 +174,7 @@ get_header(); ?>
 <section id="find-dealer" class="find-dealer" style="background-image: url(<?php the_field('find_retailer_background_image'); ?>);">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 medium-9 large-7 large-offset-0 cell">
+			<div class="small-10 small-offset-1 medium-7 large-5 large-offset-0 cell">
 				<h2 class="white"><?php the_field('find_retailer_heading'); ?></h2>
 				<aside class="yellow-underline left"></aside>
 				<p class="white subhead"><?php the_field('find_retailer_subhead'); ?></p>

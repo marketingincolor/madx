@@ -332,6 +332,17 @@ section.warranty{
 				height: 150px;
 			}
 		}
+
+		.label{
+			background-color: $yellow;
+			padding: 10px 15px;
+			border-top-left-radius: 3px;
+			border-bottom-left-radius: 3px;
+			color: $white;
+			bottom: 20px;
+			right: -10px;
+			font-size: 14px;
+		}
 	}
 
 	&.auto-height{
@@ -390,9 +401,11 @@ section.warranty{
 .find-dealer{
 	padding: 6% 0;
 	@include bg-center-cover;
+
 	h2 {
 		font-size:3rem;
 	}
+	
 	p{
 		margin-bottom: 30px;
 	}
@@ -407,8 +420,10 @@ section.warranty{
 			color: $text-gray;
 			border:none;
 			box-shadow:none;
+
 			&:focus{
 				box-shadow:none;
+				border: 0;
 			}
 		}
 
