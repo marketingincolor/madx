@@ -6,7 +6,7 @@ get_header('home'); ?>
 <section class="hero relative" style="background-image: url(<?php bloginfo('template_directory'); ?>/dist/assets/images/home-hero.png);">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 medium-8 large-offset-0 cell">
+			<div class="small-10 small-offset-1 medium-8 large-10 large-offset-0 cell">
 				<h1 class="white"><?php the_field('home_hero_heading'); ?></h1>
 				<aside class="yellow-underline left"></aside>
 				<p class="white" style="margin-bottom:30px"><?php the_field('home_hero_subhead'); ?></p>
@@ -20,11 +20,11 @@ get_header('home'); ?>
 <section class="dealer-callout">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 medium-7 cell text">
+			<div class="small-10 small-offset-1 large-7 cell text">
 				<h2 class="blue"><i class="fal fa-id-badge"></i>&nbsp; <?php the_field('dealer_callout_heading'); ?></h2>
 				<p><?php the_field('dealer_callout_subhead'); ?></p>
 			</div>
-			<div class="small-10 small-offset-1 medium-3 medium-offset-0 cell text-right">
+			<div class="small-10 small-offset-1 large-3 large-offset-0 cell text-right">
 				<a href="<?php the_field('dealer_callout_button_link'); ?>" class="btn-yellow solid"><?php the_field('dealer_callout_button_text'); ?> <i class="far fa-long-arrow-alt-right"></i></a>
 			</div>
 		</div>
