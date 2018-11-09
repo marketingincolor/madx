@@ -71,6 +71,13 @@
 	}
 }
 
+.page-template-front-page {
+
+	.site-header.absolute, #page-header{
+		top: 100px;
+	}
+}
+
 .page-template-page-international .site-header.absolute .top-bar ul.is-dropdown-submenu{
 	background-color: #1a598c;
 }
