@@ -20,12 +20,12 @@ export default{
 	},
 	template:`<div id="posts-container">
 	            <div class="grid-x grid-margin-x">
-								<div class="small-10 small-offset-1 medium-3 medium-offset-0 cell">
+								<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 									<ul id="tax-menu" class="tax-menu vertical menu">
 								    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name.replace(/®/g,'<sup>®</sup>'))}"><a href="#!" @click="getNewTaxPosts" v-html="taxonomy.name"></a></li>
 							    </ul>
 								</div>
-								<div class="small-10 small-offset-1 medium-9 medium-offset-0 cell" id="all-posts" v-if="!singlePostActive">
+								<div class="small-10 small-offset-1 large-12 large-offset-0 cell" id="all-posts" v-if="!singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
 										<div class="medium-12 cell breadcrumbs">
 											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span></h5>
