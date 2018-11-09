@@ -78,6 +78,29 @@
 #top-header {
 	border-bottom:1px solid #e5e6e6;
 
+	.site-desktop-title.top-bar-title{
+		margin: 0;
+
+		#madico-bug,a{
+			transition: all 0.25s ease-in-out;
+
+			&:hover{
+				fill:$blue;
+
+				#madico-bug{
+					fill: $blue;
+				}
+			}
+		}
+	}
+
+
+	#Layer_1{
+		width: 34px;
+		position: relative;
+		top: 5px;
+	}
+
 	.is-dropdown-submenu-parent.is-active{
 
 		#nav-drop,.language{
