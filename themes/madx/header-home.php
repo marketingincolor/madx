@@ -52,7 +52,7 @@
 		<nav class="site-navigation top-bar" role="navigation">
 			<div class="top-bar-left">
 				<div class="site-desktop-title top-bar-title">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/bug-gray.png" alt="Madico"></a>
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php get_template_part('/template-parts/svg/madico-bug'); ?></a>
 				</div>
 				<ul class="dropdown menu" data-closing-time="0" v-dropdown>
 		      <li>

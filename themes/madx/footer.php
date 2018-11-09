@@ -98,8 +98,9 @@
             </div>
           </div>
           <div class="small-12 cell text-center credits">
-            <address>9251 Belcher Road N. Pinellas Park, FL 33782</address>
-            <p>Copyright <?php echo date('Y'); ?> Madico<sup>&reg;</sup>, Inc. | <a href="/privacy-policy">Privacy Policy</a></p>
+            <address><?php _e( '9251 Belcher Road N. Pinellas Park, FL 33782', 'madx' ); ?></address>
+            <p><?php _e( 'Copyright', 'madx' ); ?> <?php echo date('Y'); ?> <?php _e( 'Madico', 'madx' ); ?><sup>&reg;</sup>, Inc. | <a href="/privacy-policy"><?php _e( 'Privacy Policy', 'madx' ); ?></a></p>
+            <p><a href="/wp-content/uploads/2018/11/QMS-0863a_ENG_MADICO-Inc..pdf" target="_blank"><?php _e( 'ISO 9001:2008', 'madx' ); ?></a><?php _e( ' | ISO 14001', 'madx' ); ?></p>
           </div>
         </div>
       </div>
