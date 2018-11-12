@@ -91,6 +91,62 @@
 
 	background-color: #f8f8f8;
 
+	.tax-cats{
+		background-color: $clear;
+		border: 0;
+		display: table;
+		margin: 0 auto;
+
+		li{
+			display: inline;
+			margin: 0 10px;
+
+			&.is-active a{
+				background-color: $yellow;
+				border-color: $yellow;
+				color: $white;
+			}
+
+			a{
+				padding: 10px 15px;
+				color: $text-gray;
+				font-size: 1.125rem;
+				font-family: 'AvenirLTStd-Heavy';
+				border: 2px solid $text-gray;
+			  border-radius: 3px;
+				transition: all 0.25s ease-in-out;
+
+				&:hover{
+					background-color: $yellow;
+					border-color: $yellow;
+					color: $white;
+				}
+			}
+		}
+	}
+
+	#products-tabs{
+		margin-bottom: 30px;
+	}
+
+	ul.hide-for-large{
+		margin-left: 0;
+		text-align: center;
+
+		select{
+			border-radius: 5px;
+			color: $text-gray;
+			font-family: 'AvenirLTStd-Heavy';
+			max-width: 250px;
+			box-shadow: 0 1px 6px 2px #eee;
+			border: 2px solid $text-gray;
+		}
+	}
+	
+	.tabs-panel{
+		padding: 1rem 0;
+	}
+
 	.tax-menu{
 		background-color: $white;
 		box-shadow: 0 1px 6px 2px #eee;
