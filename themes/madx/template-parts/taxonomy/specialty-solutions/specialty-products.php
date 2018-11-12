@@ -65,8 +65,11 @@
 
 							<?php
 								$args = array(
-									'post_type' => 'specialty',
-									'tax_query' => array(
+									'post_type'      => 'specialty',
+									'posts_per_page' => -1,
+									'orderby'        => 'title',
+									'order'          => 'ASC',
+									'tax_query'      => array(
 										array(
 											'taxonomy' => 'specialty_taxonomies',
 											'field'    => 'slug',
@@ -85,8 +88,8 @@
 										<div class="content">
 											<?php the_field('short_description'); ?>
 										</div>
-										<?php if(get_field('specialty_product_data_sheet')) { ?>
-										  <a class="btn-yellow border" target="_blank"><?php _e( 'Data Sheet', 'madx' ); ?></a>
+										<?php if(get_field('data_sheet')) { ?>
+										  <a href="<?php the_field('data_sheet') ?>" class="btn-yellow border" target="_blank"><?php _e( 'Data Sheet', 'madx' ); ?></a>
 									  <?php } ?>
 									</div>
 								</div>
@@ -103,8 +106,11 @@
 									
 								<?php
 									$args = array(
-										'post_type' => 'specialty',
-										'tax_query' => array(
+										'post_type'      => 'specialty',
+										'posts_per_page' => -1,
+										'orderby'        => 'title',
+										'order'          => 'ASC',
+										'tax_query'      => array(
 											array(
 												'taxonomy' => 'specialty_taxonomies',
 												'field'    => 'slug',
@@ -123,8 +129,8 @@
 										<div class="content">
 											<?php the_field('short_description'); ?>
 										</div>
-										<?php if(get_field('specialty_product_data_sheet')) { ?>
-										  <a class="btn-yellow border" target="_blank"><?php _e( 'Data Sheet', 'madx' ); ?></a>
+										<?php if(get_field('data_sheet')) { ?>
+										  <a href="<?php the_field('data_sheet') ?>" class="btn-yellow border" target="_blank"><?php _e( 'Data Sheet', 'madx' ); ?></a>
 									  <?php } ?>
 									</div>
 								</div>
