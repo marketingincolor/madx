@@ -8,6 +8,10 @@
 	margin-left: 20px;
 }
 
+.top-bar, .top-bar ul{
+	background-color: $white;
+}
+
 .page-template-front-page,.page-template-page-international,.page-template-page-protectionpro{
 
 	.site-header.absolute{
@@ -101,7 +105,6 @@
 		}
 	}
 
-
 	#Layer_1{
 		width: 34px;
 		position: relative;
@@ -115,6 +118,10 @@
 			background-color: #00467f !important;
 		  color: $white;
 		}
+	}
+
+	#nav-drop{
+		height: 100%;
 	}
 
 	#nav-drop,.language{
@@ -215,6 +222,7 @@
 	}
 
 	.top-bar-left,.top-bar-right{
+		height: 47px;
 		display: flex;
 
 		.is-dropdown-submenu-parent > a{
@@ -229,7 +237,6 @@
 		}
 
 		.submenu{
-			border-top: 1px solid $white;
 
 			a,i{
 				color: $white;
@@ -274,6 +281,7 @@
 			background-color: $white;
 			font-size: 14px;
 			transition: all 0.2s ease-in-out;
+			height: 100%;
 
 			&:hover{
 				background-color: $blue;
