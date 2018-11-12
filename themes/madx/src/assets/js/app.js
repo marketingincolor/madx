@@ -224,8 +224,18 @@ var newVue = new Vue({
         id = event.target.hash;
       }else if(event.target.nodeName.toLowerCase() == "img"){
         id = event.target.parentElement.hash;
+      }else if(event.target.nodeName.toLowerCase() == "select"){
+        id = $('select.is-active').find('option:selected').val();
+        console.log(id)
       }
       $(event.target).addClass('is-active');
+      $('#tabs-content').find('.tabs-panel').removeClass('is-active');
+      $(id).addClass('is-active');
+    },
+    openProductTab: function(event){
+      let id = $('#product-list').find('option:selected').val();
+      console.log(id)
+      
       $('#tabs-content').find('.tabs-panel').removeClass('is-active');
       $(id).addClass('is-active');
     },

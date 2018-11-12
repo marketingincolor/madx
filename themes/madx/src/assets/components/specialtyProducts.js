@@ -18,61 +18,7 @@ export default{
 	    taxDescription: ''
 		}
 	},
-	template:`<div id="posts-container">
-	            <div class="grid-x grid-margin-x">
-								<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
-									<ul id="tax-menu" class="tax-menu vertical menu">
-								    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name.replace(/®/g,'<sup>®</sup>'))}"><a href="#!" @click="getNewTaxPosts" v-html="taxonomy.name"></a></li>
-							    </ul>
-								</div>
-								<div class="small-10 small-offset-1 large-12 large-offset-0 cell" id="all-posts" v-if="!singlePostActive">
-									<div class="grid-x grid-margin-x grid-margin-y">
-										<div class="medium-12 cell breadcrumbs">
-											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span></h5>
-										</div>
-										<div class="medium-12 cell" style="margin-top:0">
-											<p class="animated fadeIn" v-html="taxDescription"></p>
-										</div>
-										<div class="medium-4 cell module auto-height animated fadeIn" v-for="post in taxPosts">
-											<a @click="getSinglePost(post.id)">
-											  <div class="module-bg" v-bind:style="{backgroundImage: 'url(' + post._embedded['wp:featuredmedia'][0].source_url + ')'}"></div>
-											</a>
-											<div class="meta">
-												<a @click="getSinglePost(post.id)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
-												<div class="content" v-html="$options.filters.limitWords(post.acf.short_description,20)"></div>
-												<a @click="getSinglePost(post.id)" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="small-10 small-offset-1 medium-9 medium-offset-0 cell" id="single-post" v-if="singlePostActive">
-									<div class="grid-x grid-margin-x grid-margin-y">
-										<div class="medium-12 cell breadcrumbs" style="margin-bottom:0">
-											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span> <i class="fas fa-chevron-right"></i> <span v-html="singlePost.title.rendered"></span></h5>
-										</div>
-										<div class="medium-12 cell breadcrumbs">
-											<p v-html="singlePost.acf.short_description"></p>
-										</div>
-										<div class="medium-12 cell breadcrumbs" v-if="singlePost.acf.data_sheet">
-											<a :href="singlePost.acf.data_sheet" target="_blank" class="btn-yellow border">Data Sheet</a>
-										</div>
-										<div class="medium-12 cell module auto-height animated fadeIn">
-											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost._embedded['wp:featuredmedia'][0].alt_text">
-											<div class="meta">
-												<div class="medium-12 cell">
-													<div class="grid-x grid-margin-x grid-margin-y">
-														<div class="small-10 small-offset-1 cell">
-															<h4 class="blue" v-html="singlePost.title.rendered"></h4>
-															<p class="content" v-html="singlePost.content.rendered"></p>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>`,
+	template:``,
 	created (){
 		this.getTaxParentId();
 	},
@@ -105,10 +51,11 @@ export default{
 			    let urlParams = new URLSearchParams(window.location.search);
 			    if (urlParams.has('product')) {
 			    	$this.activeItem = urlParams.get('product').replace(/®/g,'<sup>®</sup>');	
+				    $this.getTaxPosts($this.taxonomies[0].description);
 			    }else{
-				    $this.activeItem = $this.taxonomies[0].name.replace(/®/g,'<sup>®</sup>');
+				    $this.activeItem = 'All';
+				    $this.getAllPosts();
 			    }
-				  $this.getTaxPosts($this.taxonomies[0].description);
 			  }
 			)
 		},
@@ -143,6 +90,20 @@ export default{
 		      });
 		      $this.singlePostActive = false;
 		    }));
+		},
+		getAllPosts: function(event){
+			let $this = this;
+			let taxonomyName = event.target.innerHTML.toLowerCase().split(' ').join('-').replace(/<[^>]+>/g, '');
+			
+		  axios
+		    .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
+		    .then(function (response) {
+		      $this.taxPosts = response.data;
+		      $this.taxDescription = description;
+		      $this.singlePostActive = false;
+		      setTimeout($this.replaceRegMark,300);
+		    }
+		  )
 		},
 		getSinglePost: function(postID){
 			let $this = this;
