@@ -148,9 +148,18 @@
 			border: 2px solid $text-gray;
 		}
 	}
+
+	@keyframes fadeIn {
+	  from { opacity: 0; }
+	  to { opacity: 1; }
+	}
 	
 	.tabs-panel{
 		padding: 1rem 0;
+
+		&.is-active{
+			animation: fadeIn 1s;
+		}
 	}
 
 	.tax-menu{
