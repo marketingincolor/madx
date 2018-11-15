@@ -10,8 +10,8 @@ get_header();
 $terms = get_the_terms($post->ID, 'safety_taxonomies');
 if ($terms[0]->slug == 'case-studies') {
 	get_template_part('/template-parts/single-templates/case-studies');
-}  else{
-	get_template_part('single');
+}else{
+	get_template_part('/template-parts/single-templates/product');
 }
 ?>
 

@@ -1,7 +1,7 @@
 .page-template-page-international{
 
 	header.site-header.absolute{
-		top: 100px;
+		top: 60px;
 
 		@include breakpoint(medium down){
 			top: 75px;
@@ -36,8 +36,8 @@
 	}
 
 	.hero{
-		height: 70vh;
-		padding: 60px 0;
+		height: 65vh;
+		padding-bottom: 90px;
 
 		@include breakpoint (medium down){
 			height: 80vh;
@@ -61,6 +61,10 @@
 		}
 	}
 
+	.about-next,.about-ppro{
+		padding: 7% 0;
+	}
+
 	.about-next.ppro{
 		margin-top: -1px;
 
@@ -69,8 +73,14 @@
 		}
 
 		@include breakpoint(small down){
-			padding-bottom: 80%;
-			background-position: right center;
+			background-image: url(../images/madico-international-protectionpro-mobile-A.jpg) !important;
 		}
+	}
+
+	.about-next.residential{
+
+		@include breakpoint(small down){
+			background-image: url(../images/madico-international-window-film-mobile-D.jpg) !important;
+		}	
 	}
 }

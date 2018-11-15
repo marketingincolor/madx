@@ -25,11 +25,14 @@
 				<a href="<?php echo '/blog/'.$slug; ?>" rel="home"><img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/blog-header-madico.png" alt="Madico The Clear Choice"><span class="blog-name"><?php if($slug) {echo $cat_name;}else{echo 'Blog Home';}?></span></a>
 			</div>
 		</div>
-		<div class="top-bar-right">
-
-			<?php foundationpress_blog_nav(); ?>
-			<?php get_template_part('template-parts/search/searchform'); ?>
-
+		<div class="top-bar-right tablet">
+			<ul class="dropdown menu" v-dropdown>
+				<li><?php get_template_part('template-parts/search/searchform'); ?></li>
+	      <li>
+	        <a id="nav-drop">Menu &nbsp;<i class="fas fa-chevron-down"></i></a>
+	        <?php foundationpress_blog_nav(); ?>
+	      </li>
+	    </ul>
 		</div>
 	</nav>
 

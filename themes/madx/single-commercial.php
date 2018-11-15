@@ -6,19 +6,15 @@
  * @since FoundationPress 1.0.0
  */
 
-get_header(); ?>
+get_header();
+$terms = get_the_terms($post->ID, 'commercial_taxonomies');
+if ($terms[0]->slug == 'case-studies') {
+	get_template_part('template-parts/single-templates/case-studies');
+}else{
+	get_template_part('/template-parts/single-templates/product');
+}
+?>
 
-<?php get_template_part( 'template-parts/featured-image' ); ?>
-<div class="main-container">
-	<div class="main-grid">
-		<main class="main-content">
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'template-parts/content', '' ); ?>
-				<?php the_post_navigation(); ?>
-				<?php comments_template(); ?>
-			<?php endwhile; ?>
-		</main>
-		<?php get_sidebar(); ?>
-	</div>
-</div>
+	
+
 <?php get_footer();

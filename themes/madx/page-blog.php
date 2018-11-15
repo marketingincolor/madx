@@ -2,13 +2,25 @@
 /* Template Name: Blog */
 get_header(); ?>
 
-<section class="blog-header">
+<div class="show-for-small-only" style="padding-top:30px">
+	<?php get_template_part('template-parts/menus/commercial-header-menu'); ?>
+	<div class="grid-container" style="margin-top:30px">
+		<div class="grid-x grid-margin-x grid-margin-y">
+			<div class="small-10 small-offset-1 cell">
+				<?php get_template_part('template-parts/search/searchform'); ?>
+			</div>
+		</div>		
+	</div>
+</div>
+
+<section class="blog-header show-for-medium">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 large-12 large-offset-0">
-
+			<div class="small-10 small-offset-1 medium-12 medium-offset-0 show-for-medium-only">
+				<?php get_template_part('template-parts/menus/blog-tablet-menu'); ?>
+			</div>
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-large">
 				<?php get_template_part('template-parts/menus/blog-header-menu'); ?>
-			
 			</div>
 		</div>
 	</div>

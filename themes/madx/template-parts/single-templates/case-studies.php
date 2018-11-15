@@ -1,6 +1,19 @@
 <?php while ( have_posts() ) : the_post(); ?>
 
-<?php get_template_part('template-parts/menus/'.get_post_type().'-header-menu'); ?>
+	<div class="show-for-small-only">
+		<?php get_template_part('template-parts/menus/'.get_post_type().'-header-menu'); ?>
+	</div>
+
+	<div id="header-grid" class="grid-container">
+		<div class="grid-x">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
+				<?php get_template_part('template-parts/menus/'.get_post_type().'-tablet-menu'); ?>
+			</div>
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-large">
+				<?php get_template_part('template-parts/menus/'.get_post_type().'-header-menu'); ?>
+			</div>
+		</div>
+	</div>
 
 <section class="taxonomy-intro">
 	<div class="grid-container">
@@ -18,7 +31,12 @@
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 cell module auto-height">
-				<?php the_post_thumbnail(); ?>
+				<?php
+				  // Get featured image and alt attribute
+					$thumbnail_id = get_post_thumbnail_id( $post->ID );
+					$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);   
+					the_post_thumbnail( 'full', array( 'alt' => $alt ) );
+				?>
 				<div class="meta">
 					<div class="grid-x">
 						<div class="medium-3 medium-offset-1 cell">
