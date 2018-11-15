@@ -16,7 +16,7 @@ get_header('international'); ?>
 	</div>
 </section>
 
-<section class="about-next" style="background-image: url(<?php the_field('international_film_background_image'); ?>);">
+<section class="about-next residential" style="background-image: url(<?php the_field('international_film_background_image'); ?>);">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 medium-6 large-4 large-offset-0 cell">

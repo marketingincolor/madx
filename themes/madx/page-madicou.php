@@ -3,11 +3,7 @@
 global $post;
 get_header('madicou'); ?>
 
-<?php if (is_page('madicou')) { ?> 
-	<?php get_template_part('template-parts/madicou/page-hero'); ?>
-<?php //} else { ?>
-	<?php //get_template_part('template-parts/madicou/page-search'); ?>
-<?php } ?>
+<?php get_template_part('template-parts/madicou/page-hero'); ?>
 
 <?php get_template_part('template-parts/madicou/submenu'); ?>
 
