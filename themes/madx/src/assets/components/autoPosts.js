@@ -12,41 +12,48 @@ export default{
 	},
 	name: 'autoPosts',
 	template:`<div class="grid-container" id="posts-container">
-	            <div class="grid-x grid-margin-x">
-								<div class="medium-3 cell">
-									<ul id="tax-menu" class="tax-menu vertical menu">
-								    <li v-for="post in autoPosts" v-bind:class="{active: (activeItem == post.title.rendered)}"><a href="#!" @click="getAutoPostSingle(post.slug)" v-html="post.title.rendered"></a></li>
-							    </ul>
-								</div>
-								<div class="medium-9 cell animated fadeIn" id="single-post" v-if="autoSinglePost.length > 0">
-									<div class="grid-x grid-margin-x grid-margin-y">
-										<div class="medium-12 cell breadcrumbs">
-											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span></h5>
-										</div>
-										<div class="medium-12 cell module auto-height">
-											<img :src="autoSinglePost[0]._embedded['wp:featuredmedia'][0].source_url" :alt="autoSinglePost[0]._embedded['wp:featuredmedia'][0].alt_text">
+	            <div class="grid-x">
+								<div class="small-10 small-offset-1 large-12 large-offset-0 cell animated fadeIn" v-if="autoSinglePost.length == 0">
+							    <div class="grid-x grid-margin-x grid-margin-y">
+										<div class="medium-6 large-4 cell module auto-height" v-for="post in autoPosts">
+											<a @click="scrollToProducts(true);getAutoPostSingle(post.slug)"><div class="module-bg" v-bind:style="{backgroundImage: 'url(' + post._embedded['wp:featuredmedia'][0].source_url + ')'}"></div></a>
 											<div class="meta">
-												<div class="medium-12 cell">
-													<div class="grid-x grid-margin-x grid-margin-y">
-														<div class="medium-10 medium-offset-1 cell">
-															<h4 class="blue" v-html="autoSinglePost[0].title.rendered"></h4>
-															<p class="content" v-html="autoSinglePost[0].content.rendered"></p>
-															<div class="grid-x grid-margin-y subhead" v-if="autoSinglePost[0].acf.pdf_link">
-																<div class="large-1 medium-2 cell text-center">
-																	<i class="fal fa-file-pdf"></i>
-																</div>
-																<div class="medium-10 cell">
-																	<a :href="autoSinglePost[0].acf.pdf_link" target="_blank">Product Brochure</a>
-																	<p>Click to download brochure</p>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
+												<a @click="scrollToProducts(true);getAutoPostSingle(post.slug)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
+												<div class="content" v-html="$options.filters.limitWords(post.content.rendered,25)"></div>
+												<a @click="scrollToProducts(true);getAutoPostSingle(post.slug)" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
 											</div>
 										</div>
-									</div>
+							    </div>
 								</div>
+								<div class="small-10 small-offset-1 large-8 large-offset-2 cell" v-if="autoSinglePost.length > 0">
+							    <div class="grid-x grid-margin-x grid-margin-y animated fadeIn">
+							    	<div class="medium-12 cell breadcrumbs">
+							    		<h5 class="breadcrumb-title"><a @click="scrollToProducts(false)">{{ taxParentSlug | changeSlug }}</a> <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span></h5>
+							    	</div>
+							    	<div class="medium-12 cell module auto-height">
+							    		<img :src="autoSinglePost[0]._embedded['wp:featuredmedia'][0].source_url" :alt="autoSinglePost[0]._embedded['wp:featuredmedia'][0].alt_text">
+							    		<div class="meta">
+							    			<div class="medium-12 cell">
+							    				<div class="grid-x grid-margin-x grid-margin-y">
+							    					<div class="medium-10 medium-offset-1 cell">
+							    						<h4 class="blue" v-html="autoSinglePost[0].title.rendered"></h4>
+							    						<p class="content" v-html="autoSinglePost[0].content.rendered"></p>
+							    						<div class="grid-x grid-margin-y" v-if="autoSinglePost[0].acf.pdf_link" style="margin-bottom:20px">
+							    							<div class="large-1 medium-2 cell text-center">
+							    								<i class="fal fa-file-pdf blue" style="font-size: 2.875rem"></i>
+							    							</div>
+							    							<div class="medium-10 cell">
+							    								<a :href="autoSinglePost[0].acf.pdf_link" target="_blank">Product Brochure</a>
+							    								<p>Click to download brochure</p>
+							    							</div>
+							    						</div>
+							    						<a class="btn-lt-blue border" @click="scrollToProducts(false)"><i class="fas fa-arrow-alt-left"></i> &nbsp;Back</a>
+							    					</div>
+							    				</div>
+							    			</div>
+							    		</div>
+							    	</div>
+							    </div>
 							</div>
 						</div>`,
 	created(){
@@ -57,7 +64,7 @@ export default{
 			let $this = this;
 
 			axios
-			  .get(apiRoot + $this.postType)
+			  .get(apiRoot + $this.postType + '?_embed&per_page=99')
 			  .then(function (response) {
 			    for (var i = 0; i < response.data.length; i++) {
 			    	if (response.data[i].link.includes($this.taxParentSlug)) {
@@ -80,7 +87,6 @@ export default{
 
 			    $this.autoPosts.sort(compare)
 			    $this.activeItem = $this.autoPosts[0].title.rendered;
-			    $this.getAutoPostSingle($this.autoPosts[0].slug);
 			  }
 			)
 		},
@@ -94,6 +100,17 @@ export default{
 			    $this.activeItem = $this.autoSinglePost[0].title.rendered;
 			  }
 			)
+		},
+		scrollToProducts: function(singlePostState){
+			let $this = this;
+			
+	    $('html, body').animate({
+        scrollTop: $('#posts-container').offset().top - 50
+      }, 500, function() {
+      	if (singlePostState === false) {
+          $this.autoSinglePost = [];
+      	}
+      });
 		}
 	}
 };
