@@ -23,10 +23,10 @@ export default{
 	            <div class="grid-x grid-margin-x">
 								<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 									<ul id="tax-menu" class="tax-cats show-for-large" role="tablist" aria-label="categories">
-									  <li v-bind:class="{active: (activeItem == 'All')}" :aria-selected="activeItem == 'All' ? true : false" v-if="showAllCat">
+									  <li v-bind:class="{active: (activeItem == 'All')}" :aria-selected="activeItem == 'All' ? 'true' : 'false'" v-if="showAllCat" aria-controls="All" :tabindex="activeItem == 'All' ? 0 : -1">
 									    <a href="#!" @click="getAllPosts">All</a>
 									  </li>
-								    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name)}" :aria-selected="activeItem == taxonomy.name ? true : false">
+								    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name)}" :aria-controls="taxonomy.name" :aria-selected="activeItem == taxonomy.name ? 'true' : 'false'" :tabindex="activeItem == taxonomy.name ? 0 : -1">
 								      <a href="#!" @click="getNewTaxPosts" v-html="taxonomy.name"></a>
 								    </li>
 							    </ul>
