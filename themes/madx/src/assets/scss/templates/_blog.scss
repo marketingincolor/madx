@@ -62,15 +62,15 @@
 	#page-header{
 		padding: 0;
 
-		.top-bar-left,.top-bar-right{
-			flex: 50%;
+		.top-bar-left{
+			flex: 34%;
 		}
 
 		.top-bar-right{
-			text-align: right;
-		}
 
-		.top-bar-right{
+			.menu{
+				justify-content: flex-end;
+			}
 			
 			.input-group{
 				margin: 0;

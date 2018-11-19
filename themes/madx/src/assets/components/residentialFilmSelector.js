@@ -7,9 +7,9 @@ export default{
 	},
 	data(){
 		return{
-			energySavings: 50,
-			glareReduction: 50,
-			safetySecurity: 50,
+			energySavings: 10,
+			glareReduction: 10,
+			safetySecurity: 10,
 			postType: 'residential',
 			results: [],
 			postData: [],
@@ -52,7 +52,7 @@ export default{
 				</div>
 			</div>
 			<div class="medium-7 cell flex-column no-print">
-				<div class="slider no-print" v-slider data-initial-start="50" data-end="100">
+				<div class="slider no-print" v-slider data-initial-start="10" data-end="100">
 		        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
 		        <span class="slider-fill" data-slider-fill></span>
 		        <input type="hidden" id="energyInput">
@@ -73,7 +73,7 @@ export default{
 				</div>
 			</div>
 			<div class="medium-7 cell flex-column no-print">
-				<div class="slider no-print" v-slider data-initial-start="50" data-end="100">
+				<div class="slider no-print" v-slider data-initial-start="10" data-end="100">
 	        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
 	        <span class="slider-fill" data-slider-fill></span>
 	        <input type="hidden" id="glareInput">
@@ -94,7 +94,7 @@ export default{
 				</div>
 			</div>
 			<div class="medium-7 cell flex-column no-print">
-	      <div class="slider no-print" v-slider data-initial-start="50" data-end="100">
+	      <div class="slider no-print" v-slider data-initial-start="10" data-end="100">
 	        <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
 	        <span class="slider-fill" data-slider-fill></span>
 	        <input type="hidden" id="safetyInput">
@@ -149,7 +149,7 @@ export default{
 				</div>
 			</div>
 		</div>
-		<div class="medium-12 cell top-results animated fadeIn" v-if="postData.length > 0">
+		<div class="medium-12 cell top-results animated fadeIn" v-if="postData.length > 0 || premiumPostData.length > 0">
 			<hr />
 			<div class="grid-x grid-margin-y">
 				<div class="medium-7 cell">
@@ -173,37 +173,19 @@ export default{
 				<div class="small-12 cell post-container" v-if="postData.length == 0 && premiumPostData.length == 0">
 					<p>No Films match your criteria. Please select something else.</p>
 				</div>
-				<div class="post-container small-12 cell" v-if="postData.length == 1 && premiumPostData.length == 0">
+				<div class="post-container small-12 cell">
 					<div class="grid-x grid-margin-x">
-						<div class="medium-12 cell premium-post" v-for="(post,index) in postData">
+						<div class="medium-12 cell premium-post" v-for="post in premiumPostData" v-if="premiumPostData.length > 0">
 						  <h4 class="blue best-match">Best Match</h4>
 							<i class="fas fa-star yellow"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered"></a>
-							<p v-html="$options.filters.limitWords(post.content.rendered,15)"></p>
+							<p v-html="post.film_description"></p>
 						</div>
-					</div>
-				</div>
-				<div class="post-container small-12 cell" v-if="postData.length == 0 && premiumPostData.length == 1">
-					<div class="grid-x grid-margin-x">
-						<div class="medium-12 cell premium-post" v-for="(post,index) in premiumPostData">
-						  <h4 class="blue best-match">Best Match</h4>
-							<i class="fas fa-star yellow"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered"></a>
-							<p v-html="$options.filters.limitWords(post.content.rendered,15)"></p>
-						</div>
-					</div>
-				</div>
-				<div class="post-container small-12 cell" v-if="postData.length >= 1 && premiumPostData.length == 1">
-					<div class="grid-x grid-margin-x">
-						<div class="medium-12 cell premium-post" v-for="(post,index) in premiumPostData" v-if="premiumPostData.length > 0">
-						  <h4 class="blue best-match">Best Match</h4>
-							<i class="fas fa-star yellow"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered"></a>
-							<p v-html="$options.filters.limitWords(post.content.rendered,15)"></p>
-						</div>
-						<div class="medium-12 cell">
+						<div class="medium-12 cell" v-if="postData.length > 0">
  							<h4 class="other-headline">Other Products to Consider</h4>
 						</div>
-						<div class="medium-12 cell other-posts" v-for="(post,index) in postData">
+						<div class="medium-12 cell other-posts" v-for="(post,index) in postData" v-if="postData.length > 0">
 							<i class="fas fa-check"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered"></a>
-							<p v-html="$options.filters.limitWords(post.content.rendered,15)"></p>
+							<p v-html="post.film_description"></p>
 						</div>
 					</div>
 				</div>
@@ -228,11 +210,11 @@ export default{
 						<div class="medium-6 cell">
 							<h4 class="blue" v-html="modalTitle"></h4>
 							<p v-html="modalBody"></p>
-							<div class="grid-x grid-margin-y" v-if="modalBrochure" style="margin-top:0">
-								<div class="small-3 medium-2 large-1 cell pdf-icon">
+							<div class="grid-x grid-margin-y" style="margin-top:0">
+								<div class="small-3 medium-2 large-1 cell pdf-icon" v-if="modalBrochure">
 									<i class="fal fa-file-pdf"></i>
 								</div>
-								<div class="small-7 medium-10 cell download">
+								<div class="small-7 medium-10 cell download" v-if="modalBrochure">
 									<a :href="modalBrochure" target="_blank">Download</a>
 									<p>Product Brochure</p>
 								</div>
@@ -246,9 +228,6 @@ export default{
 	      </div>
 			</div>
 		</div>`,
-	created(){
-		
-	},
 	mounted(){
 		window.addEventListener('resize', this.getCarSize);
 	},
@@ -262,7 +241,7 @@ export default{
 		changeSwatch: function(event){
 			$('.img-wrap').removeClass('active-film');
 			$('.middle-percent').css({'display':'none'});
-			let $imgWrap = $(event.target);
+			let $imgWrap = $(event.target).next('div');
 			let newImage = event.target.dataset.image;
 			let bgColor  = event.target.style.backgroundColor;
 			let $watches = $('.color-swatch');
@@ -278,29 +257,32 @@ export default{
   		this.safetySecurity = document.getElementById('safetyInput').value;
   		let energy = this.$options.filters.importance(this.energySavings);
   		let glare  = this.$options.filters.importance(this.glareReduction);
-  		let safety = this.$options.filters.importance(this.safetySecurity);
+  		let safety = this.$options.filters.safetyImportance(this.safetySecurity);
+
+  		console.log('ENERY = '+energy + ' GLARE = '+glare + ' SAFETY = '+safety)
   		
   		axios
 	      .get(apiRoot + $this.postType + '?per_page=99')
 	      .then(function (response) {
 	      	$this.postData = [];
 	      	$this.premiumPostData = [];
+	      	console.log(response.data)
 
 	      	response.data.forEach(function(post) {
-	      		if (post.acf.energy_savings) {
-		      	  if (post.acf.energy_savings.indexOf(energy) > -1 && post.acf.glare_reduction.indexOf(glare) > -1 && post.acf.safety_security.indexOf(safety) > -1) {
-		      	  	if (post.acf.premium_film) {
-		      	  		$this.premiumPostData.push(post);
-		      	  	}else{
-		      	  	  $this.postData.push(post);
-		      	  	}
-		      	  }
+	      		if (post.acf.combinations) {
+	      			post.acf.combinations.forEach(function(combination){
+	      				if (combination.energy_savings.indexOf(energy) > -1 && combination.glare_reduction.indexOf(glare) > -1 && combination.safety_security.indexOf(safety) > -1) {
+	      					post.film_description = combination.description;
+	      					if (combination.best_match.length > 0) {
+	      						$this.premiumPostData.push(post);
+	      					}else{
+	      					  $this.postData.push(post);
+	      					}
+	      					console.log($this.premiumPostData)
+	      				}
+	      			});
 	      		}
 	      	});
-      		if ($this.postData.length > 1 && $this.premiumPostData.length == 0) {
-      			$this.premiumPostData.push($this.postData[0]);
-      			$this.postData.shift();
-      		}
 	      }
 	    );
   	},
@@ -313,7 +295,7 @@ export default{
 	      	$this.modalBody     = response.data.content.rendered;
 	      	$this.modalImage    = response.data.acf.film_selector_product_image;
 	      	$this.modalLogo     = response.data.acf.film_selector_product_logo;
-	      	$this.modalBrochure = response.data.acf.product_brochure;
+	      	$this.modalBrochure = response.data.acf.pdf_link;
 	      	$('#filmSelectorModal').foundation('open');
 	      }
 	    );
