@@ -33,7 +33,7 @@
 					<div class="small-10 small-offset-1 cell">
 						<div class="grid-x">
 							<div class="small-6 cell">
-								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/logo-white.png" alt="Madico The clear choice"></a>
+								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madico-white.svg" alt="Madico The clear choice" style="max-width:120px"></a>
 							</div>
 							<div class="small-6 cell text-right">
 								<ul class="dropdown menu" v-dropdown data-alignment="left">
@@ -62,7 +62,7 @@
 		<nav class="site-navigation top-bar show-for-medium" role="navigation">
 			<div class="top-bar-left">
 				<div class="site-desktop-title top-bar-title">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/logo-white.png" alt="Madico The clear choice"></a>
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madico-white.svg" alt="Madico The clear choice" style="max-width:120px"></a>
 				</div>
 			</div>
 			<div class="top-bar-right">

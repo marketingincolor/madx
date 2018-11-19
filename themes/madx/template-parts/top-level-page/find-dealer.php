@@ -3,6 +3,30 @@
 	
 	if ($current_post->ID && $current_post->post_parent == 0) {
 		$page_id = $current_post->ID;
+		if (is_single()) {
+			switch (get_post_type()) {
+				case 'residential':
+				  $page = get_page_by_title('Residential');
+					$page_id = $page->ID;
+					break;
+				case 'commercial':
+				  $page = get_page_by_title('Commercial');
+					$page_id = $page->ID;
+					break;
+				case 'automotive':
+				  $page = get_page_by_title('Automotive');
+					$page_id = $page->ID;
+					break;
+				case 'safety':
+				  $page = get_page_by_title('Safety and Security');
+					$page_id = $page->ID;
+					break;
+				case 'specialty':
+				  $page = get_page_by_title('Specialty Solutions');
+					$page_id = $page->ID;
+					break;
+			}
+		}
 	}else if($current_post->ID && $current_post->post_parent != 0){
 		$page_id = $current_post->post_parent;
 	}else{
@@ -14,7 +38,6 @@
 		}else{
 			$path_path = $array[0];
 		}
-		echo $page_path;
 		$the_page = get_page_by_path($path_path);
 		$page_id  = $the_page->ID;
 	}

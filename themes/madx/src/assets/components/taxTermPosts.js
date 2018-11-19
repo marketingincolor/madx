@@ -10,49 +10,58 @@ export default{
 	    taxParentSlug: '',
 	    taxChildSlug: '',
 	    taxParentId: 0,
-	    activeItem: '',
+	    activeItem: 'All',
 	    singlePost: [],
 	    singlePostActive: false,
 	    benefits: [],
-	    pdfLink: ''
+	    pdfLink: '',
+	    loading: false,
+	    showAllCat: false
 		}
 	},
 	template:`<div id="posts-container">
 	            <div class="grid-x grid-margin-x">
-								<div class="small-10 small-offset-1 medium-3 medium-offset-0 cell">
-									<ul id="tax-menu" class="tax-menu vertical menu">
-								    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name)}"><a href="#!" @click="getNewTaxPosts" v-html="taxonomy.name"></a></li>
+								<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
+									<ul id="tax-menu" class="tax-cats show-for-large" role="tablist" aria-label="categories">
+									  <li v-bind:class="{active: (activeItem == 'All')}" :aria-selected="activeItem == 'All' ? 'true' : 'false'" v-if="showAllCat" aria-controls="All" :tabindex="activeItem == 'All' ? 0 : -1">
+									    <a href="#!" @click="getAllPosts">All</a>
+									  </li>
+								    <li v-for="taxonomy in taxonomies" v-bind:class="{active: (activeItem == taxonomy.name)}" :aria-controls="taxonomy.name" :aria-selected="activeItem == taxonomy.name ? 'true' : 'false'" :tabindex="activeItem == taxonomy.name ? 0 : -1">
+								      <a href="#!" @click="getNewTaxPosts" v-html="taxonomy.name"></a>
+								    </li>
 							    </ul>
+							    <div class="hide-for-large text-center">
+										<select id="product-list" @change="getNewTaxPostsMobile">
+											<option value="all">All</option>
+											<option v-for="taxonomy in taxonomies" :value="taxonomy.slug" v-bind:class="{active: (activeItem == taxonomy.name)}">{{ taxonomy.name }}</option>
+										</select>
+							    </div>
 								</div>
-								<div class="small-10 small-offset-1 medium-9 medium-offset-0 cell" id="all-posts" v-if="!singlePostActive">
+								<div id="breadcrumbs" class="small-10 small-offset-1 large-12 large-offset-0 cell breadcrumbs" v-if="!singlePostActive && showAllCat">
+									<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span></h5>
+								</div>
+								<div class="small-10 small-offset-1 large-12 large-offset-0 cell" id="all-posts" v-if="!singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
-										<div class="medium-12 cell breadcrumbs">
-											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span></h5>
-										</div>
-										<div v-if="postType != 'safety'" class="medium-4 cell module auto-height animated fadeIn" v-for="post in taxPosts">
-											<a @click="getSinglePost(post.id)"><img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post._embedded['wp:featuredmedia'][0].alt_text"></a>
+									  <div class="small-12 cell text-center" v-if="loading">
+									    <img src="/wp-content/themes/madx/dist/assets/images/loader.gif" alt="Loading Products" />
+									  </div>
+										<div class="medium-6 large-4 cell module auto-height animated fadeIn" v-for="post in taxPosts">
+											<a @click="scrollToProducts(true);getSinglePost(post.id)"><div class="module-bg" v-bind:style="{backgroundImage: 'url(' + post._embedded['wp:featuredmedia'][0].source_url + ')'}"></a>
 											<div class="meta">
-												<a @click="getSinglePost(post.id)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
+												<a @click="scrollToProducts(true);getSinglePost(post.id)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
 												<div class="content" v-html="$options.filters.limitWords(post.content.rendered,25)"></div>
-												<a @click="getSinglePost(post.id)" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
-											</div>
-										</div>
-										<div v-if="postType == 'safety'" class="medium-12 cell module auto-height animated fadeIn" v-for="post in taxPosts">
-											<img :src="post._embedded['wp:featuredmedia'][0].source_url" :alt="post._embedded['wp:featuredmedia'][0].alt_text">
-											<div class="meta">
-												<h4 class="blue" v-html="post.title.rendered"></h4>
-												<div class="content" v-html="post.content.rendered"></div>
+												<a @click="scrollToProducts(true);getSinglePost(post.id)" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="small-10 small-offset-1 medium-9 medium-offset-0 cell" id="single-post" v-if="singlePostActive">
+								<div class="small-10 small-offset-1 large-8 large-offset-2 cell" id="single-post" v-if="singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
 										<div class="medium-12 cell breadcrumbs">
 											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span> <i class="fas fa-chevron-right"></i> <span v-html="singlePost.title.rendered"></span></h5>
 										</div>
 										<div class="medium-12 cell module auto-height animated fadeIn">
-											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="post._embedded['wp:featuredmedia'][0].alt_text">
+											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost._embedded['wp:featuredmedia'][0].alt_text">
 											<div class="meta">
 												<div class="medium-12 cell">
 													<div class="grid-x grid-margin-x grid-margin-y">
@@ -69,8 +78,8 @@ export default{
 																</div>
 															</div>
 														</div>
-														<div class="small-12 cell">
-															<a class="btn-lt-blue border" @click="scrollToProducts"><i class="fas fa-arrow-alt-left"></i> Back to {{ activeItem }}</a>
+														<div class="medium-10 medium-offset-1 cell">
+															<a class="btn-lt-blue border" @click="scrollToProducts(false)"><i class="fas fa-arrow-alt-left"></i> <span class="show-for-medium">Back to</span> {{ activeItem }}</a>
 														</div>
 													</div>
 												</div>
@@ -82,6 +91,7 @@ export default{
 						</div>`,
 	mounted (){
 		this.getPostType(location.href);
+		this.loading = true;
 	},
 	methods:{
 		getPostType: function(currentURL){
@@ -164,20 +174,20 @@ export default{
 			  .get(apiRoot + $this.postType + '-categories?parent=' + $this.taxParentId)
 			  .then(function (response) {
 			    $this.taxonomies = response.data;
-			    $this.activeItem = $this.taxonomies[0].name;
-			    $this.getTaxPosts();
+			    $this.showAllCat = true;
+			    $this.getAllPosts();
 			  }
 			)
 		},
-		getTaxPosts: function(){
+		getAllPosts: function(){
 			let $this = this;
-			let taxonomyName = $this.activeItem.toLowerCase().split(' ').join('-');
-			
+
 			axios
-			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
+			  .get(apiRoot + $this.postType + '?_embed&per_page=99&filter['+ $this.postType +'_taxonomies]=solar')
 			  .then(function (response) {
+			  	$this.loading = false;
 			    $this.taxPosts = response.data;
-			    console.log(response.data)
+			    $this.activeItem = "All";
 			    $this.singlePostActive = false;
 			  }
 			)
@@ -189,33 +199,63 @@ export default{
 			axios
 			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
 			  .then(function (response) {
+			  	$this.loading = false;
 			    $this.taxPosts = response.data;
 			    $this.activeItem = event.target.innerHTML;
 			    $this.singlePostActive = false;
 			  }
 			)
 		},
+		getNewTaxPostsMobile: function(event){
+			let $this = this;
+			let slug  = event.target.value;
+			
+			if (slug === 'all') {
+				this.getAllPosts();
+			}else{
+				axios
+				  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + slug)
+				  .then(function (response) {
+				  	$this.loading = false;
+				    $this.taxPosts = response.data;
+				    $this.activeItem = slug.charAt(0).toUpperCase() + slug.slice(1);
+				    $this.singlePostActive = false;
+				  }
+				)
+			}
+		},
 		getSinglePost: function(postID){
 			let $this = this;
 
 		  axios.all([
-		      axios.get(apiRoot + $this.postType + '/' + postID + '?_embed'),
-		      axios.get(acfApiRoot + $this.postType + '/' + postID)
-		    ])
-		    .then(axios.spread((postRes, acfRes) => {
-		      $this.singlePost       = postRes.data;
-		      $this.benefits         = acfRes.data.acf.film_benefits;
-		      $this.pdfLink          = acfRes.data.acf.pdf_link;
-		      $this.singlePostActive = true;
-		    }));
+	      axios.get(apiRoot + $this.postType + '/' + postID + '?_embed'),
+	      axios.get(acfApiRoot + $this.postType + '/' + postID)
+	    ])
+	    .then(axios.spread((postRes, acfRes) => {
+	      $this.singlePost       = postRes.data;
+	      $this.benefits         = acfRes.data.acf.film_benefits;
+	      $this.pdfLink          = acfRes.data.acf.pdf_link;
+	      $this.singlePostActive = true;
+	    }));
 		},
-		scrollToProducts: function(){
+		scrollToProducts: function(singlePostState){
 			let $this = this;
+			let element;
+
+			if (window.innerWidth > 640) {
+				element = "#tax-menu";
+			}else{
+				element = "#product-list";
+			}
 			
 	    $('html, body').animate({
-        scrollTop: $("#tax-posts").offset().top
+        scrollTop: $(element).offset().top - 50
       }, 500, function() {
-        $this.singlePostActive = false;
+      	if (singlePostState === false) {
+          $this.singlePostActive = false;
+      	}else{
+      		$this.singlePostActive = true;
+      	}
       });
 		}
 	}

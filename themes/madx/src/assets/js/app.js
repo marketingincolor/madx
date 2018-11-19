@@ -56,12 +56,29 @@ Vue.filter('changeSlug',function (text){
   return textSplit;
 });
 
-// Display importance
+// Display auto importance
 Vue.filter('importance',function (total){
-	let value = '';
+  let value = '';
   switch(true){
     case(total <= 55):
       value = 'Low';
+      break;
+    case(total <= 100):
+      value = 'High';
+      break;
+  }
+  return value;
+});
+
+// Display safety importance
+Vue.filter('safetyImportance',function (total){
+	let value = '';
+  switch(true){
+    case(total <= 59):
+      value = 'Low';
+      break;
+    case(total <= 79):
+      value = 'Medium';
       break;
     case(total <= 100):
       value = 'High';
@@ -224,8 +241,18 @@ var newVue = new Vue({
         id = event.target.hash;
       }else if(event.target.nodeName.toLowerCase() == "img"){
         id = event.target.parentElement.hash;
+      }else if(event.target.nodeName.toLowerCase() == "select"){
+        id = $('select.is-active').find('option:selected').val();
+        console.log(id)
       }
       $(event.target).addClass('is-active');
+      $('#tabs-content').find('.tabs-panel').removeClass('is-active');
+      $(id).addClass('is-active');
+    },
+    openProductTab: function(event){
+      let id = $('#product-list').find('option:selected').val();
+      console.log(id)
+      
       $('#tabs-content').find('.tabs-panel').removeClass('is-active');
       $(id).addClass('is-active');
     },
