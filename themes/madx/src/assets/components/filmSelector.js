@@ -10,7 +10,7 @@ export default{
 			glareReduction: 10,
 			safetySecurity: 10,
 			heatReduction: 10,
-			postType: '',
+			postType: 'automotive',
 			results: [],
 			postData: [],
 			premiumPostData: [],
@@ -157,7 +157,7 @@ export default{
 					</div>
 				</div>
 			</div>
-			<div class="medium-12 cell top-results animated fadeIn" v-if="postData.length > 0">
+			<div class="medium-12 cell top-results animated fadeIn" v-if="postData.length > 0 || premiumPostData.length > 0">
 				<hr />
 				<div class="grid-x grid-margin-y">
 					<div class="medium-7 cell">
@@ -218,11 +218,11 @@ export default{
 						<div class="medium-6 cell">
 							<h4 class="blue" v-html="modalTitle"></h4>
 							<p v-html="modalBody"></p>
-							<div class="grid-x grid-margin-y" v-if="modalBrochure" style="margin-top:0">
-								<div class="small-3 medium-2 large-1 cell pdf-icon">
+							<div class="grid-x grid-margin-y" style="margin-top:0">
+								<div class="small-3 medium-2 large-1 cell pdf-icon" v-if="modalBrochure">
 									<i class="fal fa-file-pdf"></i>
 								</div>
-								<div class="small-7 medium-10 cell download">
+								<div class="small-7 medium-10 cell download" v-if="modalBrochure">
 									<a :href="modalBrochure" target="_blank">Download</a>
 									<p>Product Brochure</p>
 								</div>
@@ -236,9 +236,6 @@ export default{
 	      </div>
 			</div>
 		</div>`,
-	created(){
-		this.getPostType(location.href);
-	},
 	mounted(){
 		window.addEventListener('resize', this.getCarSize);
 	},
@@ -285,7 +282,6 @@ export default{
 	      		if (post.acf.combinations) {
 	      			post.acf.combinations.forEach(function(combination){
 	      				if (combination.heat_reduction.indexOf(heat) > -1 && combination.glare_reduction.indexOf(glare) > -1) {
-	      					console.log(post)
 	      					post.film_description = combination.description;
 	      					if (combination.best_match.length > 0) {
 	      						$this.premiumPostData.push(post);
