@@ -79,7 +79,7 @@ export default{
 															</div>
 														</div>
 														<div class="medium-10 medium-offset-1 cell">
-															<a class="btn-lt-blue border" @click="scrollToProducts(false)"><i class="fas fa-arrow-alt-left"></i> <span class="show-for-medium">Back to</span> {{ activeItem }}</a>
+															<a class="btn-lt-blue border" @click="scrollToProducts(false)"><i class="fas fa-arrow-alt-left"></i>&nbsp; Back</a>
 														</div>
 													</div>
 												</div>
