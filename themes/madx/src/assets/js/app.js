@@ -46,6 +46,23 @@ Vue.filter('limitWords',function (textToLimit,wordLimit){
 	}
 });
 
+// Display importance to user
+Vue.filter('userImportance',function (total){
+  let value = '';
+  switch(true){
+    case(total <= 39):
+      value = 'Low';
+      break;
+    case(total <= 69):
+      value = 'Medium';
+      break;
+    case(total <= 100):
+      value = 'High';
+      break;
+  }
+  return value;
+});
+
 // Limit words displayed
 Vue.filter('changeSlug',function (text){
   if (text == 'safety-security') {
