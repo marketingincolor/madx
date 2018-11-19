@@ -24,13 +24,21 @@
 <section class="find-dealer" style="background-image: url(<?php the_field('find_dealer_background_image',$page_id); ?>);">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 medium-9 large-7 large-offset-0 cell">
+			<div class="small-10 small-offset-1 large-8 large-offset-2 cell text-center">
 				<h2 class="white">Find a SafetyShield by Madico Premier Partner</h2>
-				<aside class="yellow-underline left"></aside>
+				<aside class="yellow-underline center"></aside>
 				<p class="white">Madico SafetyShield Premier Partners (MSPP) have the expertise to help reduce your risk of personal injury, property damage, and loss. To find the nearest MSPP, enter your information below. </p>
-					
-				<find-dealer-form></find-dealer-form>
-					
+				<div class="grid-x grid-margin-x grid-margin-y">
+					<div class="medium-6 large-5 cell">
+						<a href="/find-dealer" class="btn-yellow border" style="color:#FFF">U.S. Partners</a>
+					</div>
+					<div class="large-2 cell hide-for-medium-only">
+						<p class="white" style="margin-bottom:0">OR</p>
+					</div>
+					<div class="medium-6 large-5 cell">
+						<a href="/distribution" class="btn-yellow border" style="color:#FFF">International Partners</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

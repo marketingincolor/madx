@@ -36,9 +36,28 @@
 		</div>
 	</div>
 	<div class="grid-container">
-		
-		<safety-film-types></safety-film-types>
-		
+		<div class="grid-x">
+			<div class="small-10 small-offset-1 large-12 large-offset-0">
+				<div class="grid-x grid-margin-x grid-margin-y">
+
+					<?php
+					if( have_rows('safety_film_types',$term) ):
+					  while ( have_rows('safety_film_types',$term) ) : the_row(); ?>
+
+					<div class="medium-6 large-3 cell module auto-height text-center">
+						<a href="<?php the_sub_field('safety_film_link',$term); ?>"><img src="<?php the_sub_field('safety_film_image',$term); ?>" alt="<?php the_sub_field('safety_film_title',$term); ?>"></a>
+						<div class="meta">
+							<a href="<?php the_sub_field('safety_film_link',$term); ?>"><h4 class="blue"><?php the_sub_field('safety_film_title',$term); ?></h4></a>
+							<p class="content"><?php the_sub_field('safety_film_content',$term); ?></p>
+							<a href="<?php the_sub_field('safety_film_link',$term); ?>" class="btn-yellow border"><?php the_sub_field('safety_film_button_text',$term); ?></a>
+						</div>
+					</div>
+
+					<?php endwhile;endif; ?>
+
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
 
