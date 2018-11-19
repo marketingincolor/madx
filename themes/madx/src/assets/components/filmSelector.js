@@ -162,13 +162,13 @@ export default{
 				<div class="grid-x grid-margin-y">
 					<div class="medium-7 cell">
 						<span class="energy">
-							<span><strong>Heat:</strong> {{ heatReduction | importance }}</span>
+							<span><strong>Heat:</strong> {{ heatReduction | userImportance }}</span>
 						</span>
 						<span class="glare">
-							<span><strong>Glare:</strong> {{ glareReduction | importance }}</span>
+							<span><strong>Glare:</strong> {{ glareReduction | userImportance }}</span>
 						</span>
 						<span class="safety">
-							<span><strong>Safety:</strong> {{ safetySecurity | importance }}</span>
+							<span><strong>Safety:</strong> {{ safetySecurity | userImportance }}</span>
 						</span>
 					</div>
 					<div class="medium-5 cell text-right">

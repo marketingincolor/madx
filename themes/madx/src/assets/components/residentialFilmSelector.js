@@ -154,13 +154,13 @@ export default{
 			<div class="grid-x grid-margin-y">
 				<div class="medium-7 cell">
 					<span class="energy">
-						<span><strong>Energy:</strong> {{ glareReduction | importance }}</span>
+						<span><strong>Energy:</strong> {{ energySavings | userImportance }}</span>
 					</span>
 					<span class="glare">
-						<span><strong>Glare:</strong> {{ glareReduction | importance }}</span>
+						<span><strong>Glare:</strong> {{ glareReduction | userImportance }}</span>
 					</span>
 					<span class="safety">
-						<span><strong>Privacy:</strong> {{ safetySecurity | importance }}</span>
+						<span><strong>Security:</strong> {{ safetySecurity | userImportance }}</span>
 					</span>
 				</div>
 				<div class="medium-5 cell text-right">
@@ -252,21 +252,22 @@ export default{
 		},
   	getFilms: function(){
   		const $this = this;
+
   		this.energySavings  = document.getElementById('energyInput').value;
   		this.glareReduction = document.getElementById('glareInput').value; 
   		this.safetySecurity = document.getElementById('safetyInput').value;
+  		console.log(this.energySavings)
+  		console.log(this.glareReduction)
+  		console.log(this.safetySecurity)
   		let energy = this.$options.filters.importance(this.energySavings);
   		let glare  = this.$options.filters.importance(this.glareReduction);
   		let safety = this.$options.filters.safetyImportance(this.safetySecurity);
-
-  		console.log('ENERY = '+energy + ' GLARE = '+glare + ' SAFETY = '+safety)
   		
   		axios
 	      .get(apiRoot + $this.postType + '?per_page=99')
 	      .then(function (response) {
 	      	$this.postData = [];
 	      	$this.premiumPostData = [];
-	      	console.log(response.data)
 
 	      	response.data.forEach(function(post) {
 	      		if (post.acf.combinations) {
@@ -278,7 +279,6 @@ export default{
 	      					}else{
 	      					  $this.postData.push(post);
 	      					}
-	      					console.log($this.premiumPostData)
 	      				}
 	      			});
 	      		}

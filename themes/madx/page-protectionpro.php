@@ -43,7 +43,7 @@ get_header(); ?>
 							if( have_rows('touchscreen_checklist') ):
 							  while ( have_rows('touchscreen_checklist') ) : the_row(); ?>
 
-							    <li><i class="far fa-check"></i>&nbsp;&nbsp;<?php the_sub_field('list_item_text'); ?></li>
+							    <li><?php the_sub_field('list_item_icon'); ?>&nbsp;&nbsp;<?php the_sub_field('list_item_text'); ?></li>
 
 							<?php endwhile;endif; ?>
 
@@ -70,7 +70,7 @@ get_header(); ?>
 							if( have_rows('body_checklist') ):
 							  while ( have_rows('body_checklist') ) : the_row(); ?>
 
-							    <li><i class="far fa-check"></i>&nbsp;&nbsp;<?php the_sub_field('list_item_text'); ?></li>
+							    <li><?php the_sub_field('list_item_icon'); ?>&nbsp;&nbsp;<?php the_sub_field('list_item_text'); ?></li>
 
 							<?php endwhile;endif; ?>
 
