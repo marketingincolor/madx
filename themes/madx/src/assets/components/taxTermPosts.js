@@ -174,7 +174,6 @@ export default{
 			  .get(apiRoot + $this.postType + '-categories?parent=' + $this.taxParentId)
 			  .then(function (response) {
 			    $this.taxonomies = response.data;
-			    console.log(response.data)
 			    $this.showAllCat = true;
 			    $this.getAllPosts();
 			  }

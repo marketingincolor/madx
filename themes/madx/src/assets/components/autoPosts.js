@@ -8,11 +8,15 @@ export default{
 	    autoSinglePost: [],
 	    taxParentSlug: 'window-tint',
 	    postType: 'automotive',
+	    loading: false
 		}
 	},
 	name: 'autoPosts',
 	template:`<div class="grid-container" id="posts-container">
 	            <div class="grid-x">
+	            <div class="small-12 cell text-center" v-if="loading">
+	              <img src="/wp-content/themes/madx/dist/assets/images/loader.gif" alt="Loading Products" />
+	            </div>
 								<div class="small-10 small-offset-1 large-12 large-offset-0 cell animated fadeIn" v-if="autoSinglePost.length == 0">
 							    <div class="grid-x grid-margin-x grid-margin-y">
 										<div class="medium-6 large-4 cell module auto-height" v-for="post in autoPosts">
@@ -58,6 +62,7 @@ export default{
 						</div>`,
 	created(){
 		this.getAutoPosts();
+		this.loading = true;
 	},
 	methods:{
 		getAutoPosts: function(){
@@ -85,6 +90,7 @@ export default{
 			      return comparison;
 			    }
 
+			    $this.loading = false;
 			    $this.autoPosts.sort(compare)
 			    $this.activeItem = $this.autoPosts[0].title.rendered;
 			  }

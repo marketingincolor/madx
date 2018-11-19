@@ -56,12 +56,29 @@ Vue.filter('changeSlug',function (text){
   return textSplit;
 });
 
-// Display importance
+// Display auto importance
 Vue.filter('importance',function (total){
-	let value = '';
+  let value = '';
   switch(true){
     case(total <= 55):
       value = 'Low';
+      break;
+    case(total <= 100):
+      value = 'High';
+      break;
+  }
+  return value;
+});
+
+// Display safety importance
+Vue.filter('safetyImportance',function (total){
+	let value = '';
+  switch(true){
+    case(total <= 59):
+      value = 'Low';
+      break;
+    case(total <= 79):
+      value = 'Medium';
       break;
     case(total <= 100):
       value = 'High';
