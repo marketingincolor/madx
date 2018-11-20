@@ -29,14 +29,9 @@
 				<aside class="yellow-underline center"></aside>
 				<p class="white">Madico SafetyShield Premier Partners (MSPP) have the expertise to help reduce your risk of personal injury, property damage, and loss. To find the nearest MSPP, enter your information below. </p>
 				<div class="grid-x grid-margin-x grid-margin-y">
-					<div class="medium-6 large-5 cell">
-						<a href="/find-dealer" class="btn-yellow border" style="color:#FFF">U.S. Partners</a>
-					</div>
-					<div class="large-2 cell hide-for-medium-only">
-						<p class="white" style="margin-bottom:0">OR</p>
-					</div>
-					<div class="medium-6 large-5 cell">
-						<a href="/distribution" class="btn-yellow border" style="color:#FFF">International Partners</a>
+					<div class="medium-12 cell">
+						<a href="/find-dealer"><button class="btn-yellow border" style="color:#FFF">U.S. Partners</button></a><br class="hide-for-medium"><br class="hide-for-medium"><span class="white">&nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;</span><br class="hide-for-medium"><br class="hide-for-medium">
+						<a href="/distribution"><button class="btn-yellow border" style="color:#FFF">International Partners</button></a>
 					</div>
 				</div>
 			</div>
