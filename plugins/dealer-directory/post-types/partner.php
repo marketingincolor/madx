@@ -1,14 +1,14 @@
 <?php
-if(!class_exists('Dist_Post_Type_Template'))
+if(!class_exists('Partner_Post_Type_Template'))
 {
     /**
      * A PostTypeTemplate class that provides additional meta fields
      */
-    class Dist_Post_Type_Template
+    class Partner_Post_Type_Template
     {
-        const POST_TYPE	= "distributor";
+        const POST_TYPE	= "partner";
         private $_meta	= array(
-            'dist_name',
+            'partner_name',
             'company_name',
             'street',
             'city',
@@ -57,36 +57,36 @@ if(!class_exists('Dist_Post_Type_Template'))
                     ),
                     'public' => true,
                     'exclude_from_search' => true,
-                    'menu_icon' => 'dashicons-building',
+                    'menu_icon' => 'dashicons-businessman',
                     'supports' => array(
                         'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'revisions', 'page-attributes'
                     ),
-                    'taxonomies' => array('region','country'),
+                    'taxonomies' => array('partner_region','partner_country'),
                     'has_archive' => true,
-                    'rewrite' => array('slug' => 'distributors','with_front' => false),
+                    'rewrite' => array('slug' => 'partner','with_front' => false),
                     'hierarchical' => false,
-                    'capability_type' => 'distributor',
+                    'capability_type' => 'partner',
                     'map_meta_cap' => true,
                     'capabilities' => array(
                         // meta caps (don't assign these to roles)
-                        'edit_post' => 'edit_distributor',
-                        'read_post' => 'read_distributor',
-                        'delete_post' => 'delete_distributor',
+                        'edit_post' => 'edit_partner',
+                        'read_post' => 'read_partner',
+                        'delete_post' => 'delete_partner',
                         // primitive/meta caps
-                        'create_posts' => 'create_distributors',
+                        'create_posts' => 'create_partners',
                         // primitive caps used outside of map_meta_cap()
-                        'edit_posts' => 'edit_distributors',
-                        'edit_others_posts' => 'manage_distributors',
-                        'publish_posts' => 'manage_distributors',
+                        'edit_posts' => 'edit_partners',
+                        'edit_others_posts' => 'manage_partners',
+                        'publish_posts' => 'manage_partners',
                         'read_private_posts' => 'read',
                         // primitive caps used inside of map_meta_cap()
                         'read' => 'read',
-                        'delete_posts' => 'manage_distributors',
-                        'delete_private_posts' => 'manage_distributors',
-                        'delete_published_posts' => 'manage_distributors',
-                        'delete_others_posts' => 'manage_distributors',
-                        'edit_private_posts' => 'edit_distributors',
-                        'edit_published_posts' => 'edit_distributors'
+                        'delete_posts' => 'manage_partners',
+                        'delete_private_posts' => 'manage_partners',
+                        'delete_published_posts' => 'manage_partners',
+                        'delete_others_posts' => 'manage_partners',
+                        'edit_private_posts' => 'edit_partners',
+                        'edit_published_posts' => 'edit_partners'
                     ),
                 )
             );
@@ -154,10 +154,10 @@ if(!class_exists('Dist_Post_Type_Template'))
 } // END if(!class_exists('Dist_Post_Type_Template'))
 
 /**
-* Create the DISTRIBUTOR REGION custom taxonomy
+* Create the PARTNER REGION custom taxonomy
 */
-add_action( 'init', 'create_distributor_regions', 0 );
-function create_distributor_regions() {
+add_action( 'init', 'create_partner_regions', 0 );
+function create_partner_regions() {
     // Labels part for the GUI
     $labels = array(
         'name' => _x( 'Regions', 'taxonomy general name' ),
@@ -177,21 +177,21 @@ function create_distributor_regions() {
         'menu_name' => __( 'Regions' ),
     ); 
     // Now register the hierarchical taxonomy like category
-    register_taxonomy('regions','distributor',array(
+    register_taxonomy('partner_region','partner',array(
         'hierarchical' => true,
         'labels' => $labels,
         'show_ui' => true,
         'show_admin_column' => true,
         'query_var' => true,
-        'rewrite' => array( 'slug' => 'region' ),
+        'rewrite' => array( 'slug' => 'partner-region' ),
     ));
 }
 
 /**
-* Create the DISTRIBUTOR COUNTRY custom taxonomy
+* Create the PARTNER COUNTRY custom taxonomy
 */
-add_action( 'init', 'create_distributor_country', 0 );
-function create_distributor_country() {
+add_action( 'init', 'create_partner_country', 0 );
+function create_partner_country() {
     // Labels part for the GUI
     $labels = array(
         'name' => _x( 'Countries', 'taxonomy general name' ),
@@ -211,12 +211,12 @@ function create_distributor_country() {
         'menu_name' => __( 'Countries' ),
     ); 
     // Now register the hierarchical taxonomy like category
-    register_taxonomy('country','distributor',array(
+    register_taxonomy('partner_country','partner',array(
         'hierarchical' => true,
         'labels' => $labels,
         'show_ui' => true,
         'show_admin_column' => true,
         'query_var' => true,
-        'rewrite' => array( 'slug' => 'country' ),
+        'rewrite' => array( 'slug' => 'partner-country' ),
     ));
 }
