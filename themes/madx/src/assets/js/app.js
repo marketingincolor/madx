@@ -9,7 +9,6 @@ import Foundation from 'foundation-sites';
 // the line below
 //import './lib/foundation-explicit-pieces';
 import autoPosts from '../components/autoPosts.js';
-import safetyFilmTypes from '../components/safetyFilmTypes.js';
 import taxTermPosts from '../components/taxTermPosts.js';
 import findDealerForm from '../components/findDealerForm.js';
 import findDealerPage from '../components/findDealerPage.js';
@@ -169,7 +168,6 @@ var newVue = new Vue({
   el: '#app',
   components:{
   	'auto-posts'               : autoPosts,
-  	'safety-film-types'        : safetyFilmTypes,
   	'tax-term-posts'           : taxTermPosts,
     'find-dealer-form'         : findDealerForm,
     'film-selector'            : filmSelector,
