@@ -34,13 +34,18 @@
 
 <section id="tax-posts" class="taxonomy-products" style="padding-top: 0;">
 	<div class="grid-container">
+
+		<?php if(get_field('products_heading',$term)) { ?>
+
 		<div class="grid-x">
 			<div class="small-10 large-8 small-offset-1 large-offset-2 text-center">
 				<h2 class="blue"><?php the_field('products_heading',$term); ?></h2>
 				<aside class="yellow-underline center"></aside>
-				<p class="subhead"><?php the_field('products_subhead',$term); ?></p>
+				<?php if(get_field('products_subhead',$term)) { ?><p class="subhead"><?php the_field('products_subhead',$term); ?></p><?php } ?>
 			</div>
 		</div>
+
+	  <?php } ?>
 
 		<?php if ($term->slug != 'windshield-protection' && $term->slug != 'paint-protection') { ?>
 		  

@@ -33,7 +33,7 @@
 							$args = array(
 								'parent' => 86,
 								'orderby' => 'slug',
-								'hide_empty' => false
+								'hide_empty' => true
 							 );
 							$child_terms = get_terms( 'specialty_taxonomies', $args );
 							foreach ($child_terms as $term) {
@@ -81,7 +81,7 @@
 								while ( $query->have_posts() ) : $query->the_post();
 							?>
 
-								<div class="medium-6 large-4 cell module auto-height">
+								<div class="medium-6 large-4 cell module auto-height relative">
 									<div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url() ?>)"></div>
 									<div class="meta">
 										<h4 class="blue"><?php the_title(); ?></h4>
@@ -89,7 +89,7 @@
 											<?php the_field('short_description'); ?>
 										</div>
 										<?php if(get_field('data_sheet')) { ?>
-										  <a href="<?php the_field('data_sheet') ?>" class="btn-yellow border" target="_blank"><?php _e( 'Data Sheet', 'madx' ); ?></a>
+										  <a href="<?php the_field('data_sheet') ?>" class="btn-yellow border absolute" target="_blank"><?php _e( 'Data Sheet', 'madx' ); ?></a>
 									  <?php } ?>
 									</div>
 								</div>
@@ -122,7 +122,7 @@
 									while ( $query->have_posts() ) : $query->the_post();
 								?>
 
-								<div class="medium-6 large-4 cell module auto-height">
+								<div class="medium-6 large-4 cell module auto-height relative">
 									<div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url() ?>)"></div>
 									<div class="meta">
 										<h4 class="blue"><?php the_title(); ?></h4>
@@ -130,7 +130,7 @@
 											<?php the_field('short_description'); ?>
 										</div>
 										<?php if(get_field('data_sheet')) { ?>
-										  <a href="<?php the_field('data_sheet') ?>" class="btn-yellow border" target="_blank"><?php _e( 'Data Sheet', 'madx' ); ?></a>
+										  <a href="<?php the_field('data_sheet') ?>" class="btn-yellow border absolute" target="_blank"><?php _e( 'Data Sheet', 'madx' ); ?></a>
 									  <?php } ?>
 									</div>
 								</div>
