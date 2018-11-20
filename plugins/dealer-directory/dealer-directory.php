@@ -42,6 +42,9 @@ if(!class_exists('Dealer_Directory'))
 
 			require_once(sprintf("%s/post-types/distributor.php", dirname(__FILE__)));
 			$Dist_Post_Type_Template = new Dist_Post_Type_Template();
+
+			require_once(sprintf("%s/post-types/partner.php", dirname(__FILE__)));
+			$Partner_Post_Type_Template = new Partner_Post_Type_Template();
 			
 			$plugin = plugin_basename(__FILE__);
 			add_filter("plugin_action_links_$plugin", array( $this, 'plugin_settings_link' ));
@@ -65,6 +68,12 @@ if(!class_exists('Dealer_Directory'))
             $roles_object->add_cap('administrator', 'delete_distributors');
             $roles_object->add_cap('administrator', 'read_distributors');
 
+            $roles_object->add_cap('administrator', 'edit_partners');
+            $roles_object->add_cap('administrator', 'create_partners');
+            $roles_object->add_cap('administrator', 'manage_partners');
+            $roles_object->add_cap('administrator', 'delete_partners');
+            $roles_object->add_cap('administrator', 'read_partners');
+
 		} // END public static function activate
 
 		/**
@@ -84,6 +93,12 @@ if(!class_exists('Dealer_Directory'))
             $roles_object->remove_cap('administrator', 'manage_distributors');
             $roles_object->remove_cap('administrator', 'delete_distributors');
             $roles_object->remove_cap('administrator', 'read_distributors');
+
+            $roles_object->remove_cap('administrator', 'edit_partners');
+            $roles_object->remove_cap('administrator', 'create_partners');
+            $roles_object->remove_cap('administrator', 'manage_partners');
+            $roles_object->remove_cap('administrator', 'delete_partners');
+            $roles_object->remove_cap('administrator', 'read_partners');
 
 		} // END public static function deactivate
 
