@@ -14,7 +14,7 @@
 		<div class="small-12 cell text-center">
 			<h1 class="blue"><?php the_title(); ?></h1>
 			<aside class="yellow-underline center"></aside>
-			<div class="subhead"><?php the_field('page_subhead'); ?></div>
+			<?php if(get_field('page_subhead')) { ?><div class="subhead"><?php the_field('page_subhead'); ?></div><?php } ?>
 		</div>
 	</div>
 	<div class="entry-content">

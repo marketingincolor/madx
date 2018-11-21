@@ -1,5 +1,16 @@
 .page-template-front-page {
 
+	#video-modal{
+		left: 50% !important;
+		padding-top: 50px !important;
+		width: 90%;
+		max-width: 800px;
+
+		@include breakpoint(small only){
+			width: 100%;
+		}
+	}
+
 	h1{
 		font-size: 3.5rem;
 
@@ -39,6 +50,10 @@
 		padding-bottom: 60px;
 		height: 65vh;
 
+		@include breakpoint(large){
+			max-height: 500px;
+		}
+
 		@include breakpoint(medium only){
 			height: 75vh;
 			padding: 7% 0;
@@ -47,6 +62,7 @@
 		@include breakpoint(small only){
 			height: auto;
 			padding: 10% 0;
+			max-height: none;
 		}
 
 		@media(max-height: 425px){

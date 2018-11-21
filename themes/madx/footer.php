@@ -40,7 +40,7 @@
               <li><a href="/specialty-solutions/industries">Industries</a></li>
               <li><a href="/specialty-solutions/products">Products</a></li>
               <li><a href="/specialty-solutions/capabilities">Capabilities</a></li>
-              <li><a href="/specialty-solutions/case-studies">Case Studies</a></li>
+              <!-- <li><a href="/specialty-solutions/case-studies">Case Studies</a></li> -->
               <li><a href="/specialty-solutions/contact">Contact</a></li>
             </ul>
           </div>

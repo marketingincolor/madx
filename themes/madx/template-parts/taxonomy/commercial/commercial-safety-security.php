@@ -22,6 +22,11 @@
 				<p class="subhead"><?php the_field('intro_subhead',$term); ?></p>
 			</div>
 		</div>
+		<div class="grid-x">
+					
+			<?php get_template_part('template-parts/taxonomy/benefits'); ?>
+
+		</div>
 	</div>
 </section>
 

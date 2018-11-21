@@ -20,6 +20,115 @@
 	margin-bottom: 0;
 }
 
+//safety security tabs
+#safety-tabs{
+	border: 0;
+	background-color: $clear;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+
+	.tabs-title{
+		background-color: #a7a9ac;
+		width: 25%;
+		text-align: center;
+		border-right: 1px solid $white;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+
+		a{
+			font-family: 'AvenirLTStd-Black';
+			color: $white;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+			padding-left: 0;
+			padding-right: 0;
+			font-size: 1rem;
+
+			&:focus,&[aria-selected=true]{
+				background-color: #dfe2e6;
+			}
+
+			&:hover{
+				background-color: #BBB;
+			}
+		}
+
+		&.is-active{
+			background-color: #dfe2e6;
+
+			a{
+				color: $blue;
+
+				&:hover{
+					background-color: #dfe2e6;
+					opacity: 1;
+				}
+			}
+		}
+		&:last-of-type{
+			border-right: 0;
+		}
+	}
+}
+
+.testing{
+	padding: 30px 0 40px;
+	max-height: 360px;
+	height: auto;
+	overflow: hidden;
+	background-color: $yellow;
+	transition: max-height 0.25s ease-in-out;
+
+	@include breakpoint(medium down){
+		padding: 20px 20px 40px;
+	}
+
+	&.slide-down{
+		max-height: 1000px;
+
+		.learn-more{
+
+			span{
+				display: none;
+			}
+
+			i{
+				transform: rotateX(180deg);
+			}
+		}
+	}
+
+	.learn-more{
+		position: absolute;
+		bottom: 5px;
+		left: 50%;
+		transform: translateX(-50%);
+		cursor: pointer;
+
+		i{
+			position: relative;
+			top: -5px;
+		}
+	}
+
+	.testing-content p{
+		color: $white;
+	}
+}
+
+#safety-tabs-content{
+
+	.tabs-panel{
+		padding: 30px;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+
+		&.is-active{
+			background-color: #dfe2e6;
+		}
+	}
+}
+
 .tax-specialty_taxonomies.term-products{
 
 	.module.auto-height{
