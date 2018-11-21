@@ -77,6 +77,12 @@
 	</div>
 </section>
 
-<?php get_template_part('/template-parts/taxonomy/find-dealer-safetyshield'); ?>
+<?php
+	if ($term->slug == 'blast-mitigation') {
+	  get_template_part('/template-parts/taxonomy/find-dealer-safetyshield');
+	}else{
+		get_template_part('/template-parts/top-level-page/find-dealer');;
+	}
+?>
 
 <?php } ?>

@@ -17,18 +17,6 @@
 	</div>
 </section>
 
-<section class="warranty" style="background-image: url(<?php the_field('warranty_background_image',47); ?>)">
-	<div class="grid-container">
-		<div class="grid-x">
-			<div class="medium-6 medium-offset-6 small-10 small-offset-1 cell text-right">
-				<h2 class="white"><?php the_field('warranty_heading',47); ?></h2>
-				<aside class="yellow-underline right"></aside>
-				<p class="white"><?php the_field('warranty_subhead',47); ?></p>
-			</div>
-		</div>
-	</div>
-</section>
-
 <section class="film-type">
 	<div class="grid-container">
 		<div class="grid-x">
@@ -49,11 +37,11 @@
 					  while ( have_rows('safety_film_types',$term) ) : the_row(); ?>
 
 					<div class="medium-6 large-4 cell module auto-height text-center">
-						<a href="<?php the_sub_field('safety_film_link',$term); ?>"><img src="<?php the_sub_field('safety_film_image',$term); ?>" alt="<?php the_sub_field('safety_film_title',$term); ?>"></a>
+						<a href="<?php the_sub_field('safety_film_link',$term); ?>"><div class="module-bg" style="background-image: url(<?php the_sub_field('safety_film_image',$term); ?>)"></div></a>
 						<div class="meta">
 							<a href="<?php the_sub_field('safety_film_link',$term); ?>"><h4 class="blue"><?php the_sub_field('safety_film_title',$term); ?></h4></a>
 							<p class="content"><?php the_sub_field('safety_film_content',$term); ?></p>
-							<a href="<?php the_sub_field('safety_film_link',$term); ?>" class="btn-yellow border"><?php the_sub_field('safety_film_button_text',$term); ?></a>
+							<a href="<?php the_sub_field('safety_film_link',$term); ?>"><button class="btn-yellow border"><?php the_sub_field('safety_film_button_text',$term); ?></button>
 						</div>
 					</div>
 

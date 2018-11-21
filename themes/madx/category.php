@@ -1,12 +1,32 @@
-<?php get_header(); ?>
+<?php
+get_header();
+// Get the featured image of the blog page to use on category pages
+$featured_image = get_the_post_thumbnail_url(5);
+?>
 
-<section class="blog-header">
-	<div class="grid-container">
-		<div class="grid-x">
-			<div class="small-10 small-offset-1 large-12 large-offset-0">
+<section class="page-hero relative" style="background-image: url(<?php echo $featured_image; ?>)">
 
+	<div class="show-for-small-only">
+		<?php get_template_part('template-parts/menus/blog-header-menu'); ?>
+	</div>
+
+	<div id="header-grid" class="grid-container">
+		<div class="grid-x grid-margin-x">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
+				<?php get_template_part('template-parts/menus/blog-tablet-menu'); ?>
+			</div>
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-large">
 				<?php get_template_part('template-parts/menus/blog-header-menu'); ?>
-			
+			</div>
+		</div>
+	</div>
+
+	<div class="grid-container">
+		<div class="grid-x grid-margin-x">
+			<div class="small-10 small-offset-1 cell text-center">
+				<div class="blog-search text-center absolute">
+					<?php get_template_part('template-parts/search/searchform'); ?>
+				</div>
 			</div>
 		</div>
 	</div>
