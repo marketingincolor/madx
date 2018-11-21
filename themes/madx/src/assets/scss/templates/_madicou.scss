@@ -9,7 +9,7 @@
 	.page-hero,.madicou-search{
 		position: relative;
 		height: 65vh;
-		max-height: 500px;
+		max-height: 400px;
 		padding: 0;
 
 		@include breakpoint(small only){
@@ -208,11 +208,15 @@
 	}
 
 	.marketing-resources{
-		padding: 3% 0 8%;
+		padding: 3% 0 5%;
 	}
 
 	.titleblock-top{
-		padding: 8% 0 5%;
+		padding: 3% 0 2%;
+
+		@include breakpoint(small only){
+			padding: 6% 0;
+		}
 	}
 	
 	section {
@@ -329,7 +333,7 @@
 	}
 
 	.page-content {
-		padding: 3% 0 6%;
+		padding: 3% 0;
 
 		.cell.heading{
 			margin-bottom: 0;
@@ -366,7 +370,11 @@
 
 	.virtual-campus {
 		text-align:center;
-		padding: 8% 0 0;
+		padding: 3% 0 0;
+
+		@include breakpoint(small only){
+			padding: 30px 0 0;
+		}
 
 		.fal {
 			font-size:3em;

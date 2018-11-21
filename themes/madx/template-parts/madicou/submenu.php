@@ -11,7 +11,7 @@
 								<li><a href="<?php echo site_url(); ?>/madicou/business/employee">Employee Relations</a></li>
 								<li><a href="<?php echo site_url(); ?>/madicou/business/operations">Operations</a></li>
 								<li><a href="<?php echo site_url(); ?>/madicou/business/sales">Sales</a></li>
-								<li><a href="<?php echo site_url(); ?>./madicou/business/time-management">Time Management</a></li>
+								<li><a href="<?php echo site_url(); ?>/madicou/business/time-management">Time Management</a></li>
 							</ul>
 						</li>
 						<li><a href="<?php echo site_url(); ?>/madicou/benefits">Film Benefits</a></li>
@@ -34,7 +34,7 @@
 										<li><a href="<?php echo site_url(); ?>/madicou/business/employee">Employee Relations</a></li>
 										<li><a href="<?php echo site_url(); ?>/madicou/business/operations">Operations</a></li>
 										<li><a href="<?php echo site_url(); ?>/madicou/business/sales">Sales</a></li>
-										<li><a href="<?php echo site_url(); ?>./madicou/business/time-management">Time Management</a></li>
+										<li><a href="<?php echo site_url(); ?>/madicou/business/time-management">Time Management</a></li>
 									</ul>
 								</li>
 							</ul>

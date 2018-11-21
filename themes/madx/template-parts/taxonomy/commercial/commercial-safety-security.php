@@ -50,7 +50,7 @@
 					  while ( have_rows('safety_film_types',$term) ) : the_row(); ?>
 
 					<div class="medium-6 large-3 cell module auto-height text-center">
-						<a href="<?php the_sub_field('safety_film_link',$term); ?>"><img src="<?php the_sub_field('safety_film_image',$term); ?>" alt="<?php the_sub_field('safety_film_title',$term); ?>"></a>
+						<a href="<?php the_sub_field('safety_film_link',$term); ?>"><div class="module-bg" style="background-image: url(<?php the_sub_field('safety_film_image',$term); ?>)"></div></a>
 						<div class="meta">
 							<a href="<?php the_sub_field('safety_film_link',$term); ?>"><h4 class="blue"><?php the_sub_field('safety_film_title',$term); ?></h4></a>
 							<p class="content"><?php the_sub_field('safety_film_content',$term); ?></p>

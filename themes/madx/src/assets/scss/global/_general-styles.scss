@@ -2,6 +2,10 @@ body{
 	background-color: #f8f8f8;
 }
 
+button{
+	cursor: pointer;
+}
+
 .relative{
 	position:relative;
 }
@@ -288,37 +292,6 @@ section.warranty{
 	}
 }
 
-.page-template-page-safety-security .module.auto-height, .tax-residential_taxonomies .module.auto-height{
-
-	.meta .content{
-		margin-bottom: 60px;
-	}
-
-	.btn-yellow{
-		position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    min-width: 175px;
-    width: 70%;
-    border: 2px solid #e09e10;
-	}
-}
-
-.page-template-page-safety-security .module.auto-height{
-
-	.btn-yellow{
-		position: relative;
-		left: 0;
-		margin-top: 30px;
-		bottom: 0;
-	}
-
-	.meta .content{
-		margin-bottom: 30px;
-	}
-}
-
 .module{
 	border-radius:5px;
 	box-shadow: 0 1px 6px 2px #eee;
@@ -580,5 +553,12 @@ section.warranty{
 		i{
 			color:$yellow
 		}
+	}
+}
+
+#careers-orbit{
+
+	.orbit-container{
+		height: auto !important;
 	}
 }

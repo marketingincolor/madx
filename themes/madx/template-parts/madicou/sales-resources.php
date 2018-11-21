@@ -3,7 +3,7 @@
 		<div class="grid-x">
 			<!-- Need to update this stuff to not be hardcoded -->
 			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
-			<h3 class="section-h3">Sales Resources <a href="./product-training" class="see-more">See More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
+			<h3 class="section-h3">Sales Resources <a href="/madicou/business/sales" class="see-more">See More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
 			</div>
 			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 				<div class="grid-x grid-margin-x grid-margin-y">

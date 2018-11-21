@@ -83,6 +83,16 @@
 		padding: 20px 20px 40px;
 	}
 
+	a{
+		color: $white;
+		border-bottom: 1px solid $white;
+
+		&:hover{
+			color: $white;
+			opacity: 0.8;
+		}
+	}
+
 	&.slide-down{
 		max-height: 1000px;
 
@@ -104,10 +114,17 @@
 		left: 50%;
 		transform: translateX(-50%);
 		cursor: pointer;
+		font-size: 0.875rem;
+		font-family: 'AvenirLTStd-Black';
+
+		span{
+			font-family: 'AvenirLTStd-Black';
+		}
 
 		i{
 			position: relative;
 			top: -5px;
+			font-size: 0.875rem;
 		}
 	}
 

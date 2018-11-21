@@ -135,7 +135,7 @@
 	}
 }
 
-.page-template-page-dealer-results,.page-template-page-distribution{
+.page-template-page-dealer-results,.page-template-page-distribution,.page-template-page-partner{
 
 	h1{
 		font-size: 1.875rem;
@@ -253,7 +253,12 @@
 	}
 }
 
-.page-template-page-distribution{
+.page-template-page-distribution,.page-template-page-partner{
+
+	.hero{
+		padding-bottom: 3%;
+		height: auto;
+	}
 
 	h1{
 		font-size: 3rem;
