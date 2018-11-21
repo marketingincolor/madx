@@ -31,7 +31,7 @@
 				<div class="grid-x grid-margin-x grid-margin-y">
 					<div class="medium-12 cell">
 						<a href="/find-dealer"><button class="btn-yellow border" style="color:#FFF">U.S. Partners</button></a><br class="hide-for-medium"><br class="hide-for-medium"><span class="white">&nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;</span><br class="hide-for-medium"><br class="hide-for-medium">
-						<a href="/distribution"><button class="btn-yellow border" style="color:#FFF">International Partners</button></a>
+						<a href="/international-safetyshield-partners"><button class="btn-yellow border" style="color:#FFF">International Partners</button></a>
 					</div>
 				</div>
 			</div>

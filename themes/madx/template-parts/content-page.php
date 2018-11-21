@@ -53,11 +53,21 @@
 	  <?php endif; ?>
 
 		<?php the_content(); ?>
+
 		<?php if(is_page('product-warranties')) { ?>
+
 			<jot-form form-id="82824355186160"></jot-form>
+
 		<?php }else if(is_page('warranty')) { ?>
+
 			<jot-form form-id="82824093286160"></jot-form>
+
+	  <?php }else if(is_page('contact')) { ?>
+
+			<jot-form form-id="82804498686171"></jot-form>
+
 		<?php } ?>
+		
 	</div>
 	<footer>
 		<?php
