@@ -300,6 +300,30 @@ var newVue = new Vue({
            .css('display', 'inherit')
            .fadeOut(200);
       });
+    },
+    testingSlideDown: function(){
+      let testing = document.getElementById('testing');
+      let learnMore = testing.querySelector('.learn-more');
+      let testingContent = document.getElementById('testing-content');
+      let open;
+
+      if (testing.classList.contains('slide-down')){
+        open = true;
+      }else{
+        open = false;
+      }
+
+      // learnMore.addEventListener('click',function(){
+        if (open == false) {
+          testing.classList.add('slide-down');
+          testingContent.querySelector('.hide').classList.remove('hide');
+          open = true;
+        }else{
+          testing.classList.remove('slide-down');
+          testingContent.querySelectorAll('p')[2].classList.add('hide');
+          open = false;
+        }
+      // });
     }
   }
 });

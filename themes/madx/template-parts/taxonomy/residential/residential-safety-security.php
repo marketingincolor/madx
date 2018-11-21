@@ -17,18 +17,6 @@
 	</div>
 </section>
 
-<section class="warranty" style="background-image: url(<?php the_field('warranty_background_image',47); ?>)">
-	<div class="grid-container">
-		<div class="grid-x">
-			<div class="medium-6 medium-offset-6 small-10 small-offset-1 cell text-right">
-				<h2 class="white"><?php the_field('warranty_heading',47); ?></h2>
-				<aside class="yellow-underline right"></aside>
-				<p class="white"><?php the_field('warranty_subhead',47); ?></p>
-			</div>
-		</div>
-	</div>
-</section>
-
 <section class="film-type">
 	<div class="grid-container">
 		<div class="grid-x">

@@ -336,6 +336,7 @@ section.warranty{
 
 	.module-bg{
 		@include bg-center-cover;
+		background-position: left center;
 		height: 180px;
 
 		@include breakpoint(small only){
@@ -363,6 +364,7 @@ section.warranty{
 	}
 
 	&.auto-height{
+		position: relative;
 
 		.meta{
 			height: auto;
