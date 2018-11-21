@@ -10,7 +10,7 @@ get_header('home'); ?>
 				<h1 class="white"><?php the_field('home_hero_heading'); ?></h1>
 				<aside class="yellow-underline left"></aside>
 				<p class="white" style="margin-bottom:30px"><?php the_field('home_hero_subhead'); ?></p>
-				<a href="#!" class="btn-yellow solid"><?php the_field('home_hero_play_button_text'); ?>&nbsp;&nbsp;<i class="fas fa-play-circle"></i></a>&nbsp;<br class="show-for-small-only"><br class="show-for-small-only"><br class="show-for-small-only">
+				<a href="#!" class="btn-yellow solid videolink" data-videourl="<?php the_field('video_embed_url'); ?>" data-open="video-modal"><?php the_field('home_hero_play_button_text'); ?>&nbsp;&nbsp;<i class="fas fa-play-circle"></i></a>&nbsp;<br class="show-for-small-only"><br class="show-for-small-only"><br class="show-for-small-only">
 				<a href="/about" class="btn-yellow border"><?php the_field('home_hero_about_button_text'); ?></a>
 			</div>
 		</div>
@@ -40,7 +40,7 @@ get_header('home'); ?>
 					<?php if( have_rows('home_modules_small') ):
 					    while ( have_rows('home_modules_small') ) : the_row(); ?>
 
-					  <div class="medium-6 large-3 cell module">
+					  <div class="medium-6 large-3 cell module auto-height">
 					  	<a href="<?php the_sub_field('link_url'); ?>">
 					  		<div class="module-bg small relative" style="background-image: url(<?php the_sub_field('image'); ?>);">
 					  			<div class="label absolute"><strong><?php the_sub_field('label'); ?></strong></div>
@@ -58,7 +58,7 @@ get_header('home'); ?>
 					<?php if( have_rows('home_modules_large') ):
 					    while ( have_rows('home_modules_large') ) : the_row(); ?>
 
-					  <div class="medium-6 cell module">
+					  <div class="medium-6 cell module auto-height">
 					  	<a href="<?php the_sub_field('link_url'); ?>">
 					  		<div class="module-bg large relative" style="background-image: url(<?php the_sub_field('image'); ?>);">
 					  			<div class="label absolute"><strong><?php the_sub_field('label'); ?></strong></div>
@@ -78,5 +78,7 @@ get_header('home'); ?>
 		</div>
 	</div>
 </section>
+
+<madu-video-modal></madu-video-modal>
 
 <?php get_footer();

@@ -1,6 +1,8 @@
 <?php 
 	/* Template Name: Distribution */
-	get_header(); ?>
+	get_header();
+	$post_type = 'distributor';
+?>
 
 <section class="hero relative" style="background-image: url(<?php the_post_thumbnail_url($post->ID); ?>);">
 	<div class="grid-container">
@@ -30,7 +32,7 @@
 $usa    = array();
 $canada = array();
 $north_america_args = array(
-	'post_type' => 'distributor',
+	'post_type' => $post_type,
 	'posts_per_page' => -1,
 	'tax_query' => array(
 		array(
@@ -65,7 +67,7 @@ $dominican_republic = array();
 $ecuador            = array();
 $peru               = array();
 $latin_america_args = array(
-	'post_type' => 'distributor',
+	'post_type' => $post_type,
 	'posts_per_page' => -1,
 	'tax_query' => array(
 		array(
@@ -109,7 +111,7 @@ $malaysia  = array();
 $thailand  = array();
 $taiwan    = array();
 $asia_args = array(
-	'post_type' => 'distributor',
+	'post_type' => $post_type,
 	'posts_per_page' => -1,
 	'tax_query' => array(
 		array(
@@ -147,7 +149,7 @@ $cameroon = array();
 $egypt    = array();
 $libya    = array();
 $africa_args = array(
-	'post_type' => 'distributor',
+	'post_type' => $post_type,
 	'posts_per_page' => -1,
 	'tax_query' => array(
 		array(
@@ -195,7 +197,7 @@ $russia      = array();
 $spain       = array();
 $uk          = array();
 $europe_args = array(
-	'post_type' => 'distributor',
+	'post_type' => $post_type,
 	'posts_per_page' => -1,
 	'tax_query' => array(
 		array(
@@ -258,7 +260,7 @@ foreach($posts as $post) {
 // =============================
 $australia_country = array();
 $australia_args = array(
-	'post_type' => 'distributor',
+	'post_type' => $post_type,
 	'posts_per_page' => -1,
 	'tax_query' => array(
 		array(
@@ -295,7 +297,7 @@ $oman    = array();
 $bahrain    = array();
 $kuwait    = array();
 $middle_east_args = array(
-	'post_type' => 'distributor',
+	'post_type' => $post_type,
 	'posts_per_page' => -1,
 	'tax_query' => array(
 		array(

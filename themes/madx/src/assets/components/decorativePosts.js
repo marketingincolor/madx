@@ -31,7 +31,7 @@ export default{
 							<div class="small-10 small-offset-1 large-8 large-offset-2 cell" v-if="decorativeSinglePost.length > 0">
 						    <div class="grid-x grid-margin-x grid-margin-y animated fadeIn">
 						    	<div class="medium-12 cell breadcrumbs">
-						    		<h5 class="breadcrumb-title"><a @click="scrollToProducts(false)">{{ taxParentSlug | changeSlug }}</a> <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span></h5>
+						    		<h5 class="breadcrumb-title"><a @click="scrollToProducts(false);getDecorativePosts">{{ taxParentSlug | changeSlug }}</a> <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span></h5>
 						    	</div>
 						    	<div class="medium-12 cell module auto-height">
 						    		<img :src="decorativeSinglePost[0]._embedded['wp:featuredmedia'][0].source_url" :alt="decorativeSinglePost[0]._embedded['wp:featuredmedia'][0].alt_text">
@@ -50,7 +50,7 @@ export default{
 						    								<p>Click to download brochure</p>
 						    							</div>
 						    						</div>
-						    						<a class="btn-lt-blue border" @click="scrollToProducts(false)"><i class="fas fa-arrow-alt-left"></i> &nbsp;Back</a>
+						    						<a class="btn-lt-blue border" @click="scrollToProducts(false);getDecorativePosts"><i class="fas fa-arrow-alt-left"></i> &nbsp;Back</a>
 						    					</div>
 						    				</div>
 						    			</div>
@@ -127,7 +127,7 @@ export default{
         scrollTop: $('#posts-container').offset().top - 50
       }, 500, function() {
       	if (singlePostState === false) {
-          $this.autoSinglePost = [];
+          $this.decorativeSinglePost = [];
       	}
       });
 		}

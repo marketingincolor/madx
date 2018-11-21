@@ -61,7 +61,7 @@ get_header(); ?>
 							<?php echo $icon; ?>
 							<h5 class="blue"><?php echo $title; ?></h5>
 							<p class="subhead"><?php echo $subhead; ?></p>
-							<a href="<?php echo $link; ?>" class="btn-yellow border"><?php echo $text; ?></a>
+							<a href="<?php echo $link; ?>"><button class="btn-yellow border"><?php echo $text; ?></button></a>
 						</div>
 
 					<?php endwhile; ?>
@@ -72,8 +72,6 @@ get_header(); ?>
 		</div>
 	</div>
 </section>
-
-<?php get_template_part('template-parts/top-level-page/warranty-information'); ?>
 
 <?php get_template_part('template-parts/top-level-page/film-tips'); ?>
 

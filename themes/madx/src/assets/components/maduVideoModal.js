@@ -41,6 +41,7 @@ export default{
 			$this.videoInfo  = $(this).data('videometa');
 			$this.videoFile  = $(this).data('attach');
 			$this.videoText  = $(this).data('videotxt');
+			console.log($this.videoUrl)
 		});
 
 	},

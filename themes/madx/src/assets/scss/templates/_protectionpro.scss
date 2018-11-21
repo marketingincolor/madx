@@ -4,6 +4,10 @@
 		height: 65vh;
 		padding: 50px 0 75px;
 
+		@include breakpoint (large){
+			max-height: 500px;
+		}
+
 		@include breakpoint (medium down){
 			height: 80vh;
 		}
@@ -16,6 +20,7 @@
 		@include breakpoint (small down){
 			height: 70vh;
 			padding: 10% 0;
+			max-height: none;
 		}
 
 		@media(max-width: 375px){

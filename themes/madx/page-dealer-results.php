@@ -97,9 +97,9 @@
 
       	if ($meta_query->have_posts()) : while ( $meta_query->have_posts() ) : $meta_query->the_post();
 
-      		if (has_term('sunscape','designations')) {
+      		if (has_term('sunscape','designation')) {
       			array_push($sunscape_dealers, $post);
-      		}else if (has_term('safety-shield','designations')) {
+      		}else if (has_term('safety-shield','designation')) {
       			array_push($safetyshield_dealers, $post);
       		}else{
       			array_push($other_dealers, $post);
@@ -117,6 +117,7 @@
       		$sorted_dealers = array_merge($sunscape_dealers, $safetyshield_dealers, $other_dealers);
       		// Loop through new sorted dealers array to display them
       		foreach ($sorted_dealers as $dealer) { 
+      			// var_dump($dealer);
       			$dealer_icons  = array();
       			$dealer_street = get_post_meta($dealer->ID,'street',true);
       			$dealer_zip    = get_post_meta($dealer->ID,'zip',true);
@@ -152,7 +153,21 @@
       			<?php if($dealer_email) { ?>
       			  <li class="email" data-dealerEmail="<?php echo $dealer_email; ?>"><address><i class="fas fa-envelope"></i> &nbsp;<?php echo $dealer_email; ?></address></li>
       			<?php } ?>
+      		
+      		<?php if(has_term('sunscape','designation',$dealer->ID) || has_term('safety-shield','designations',$dealer->ID)){ ?>
+						
+						<hr>
+
+						<?php if (has_term('sunscape','designation',$dealer->ID)) { ?>
+							<li style="text-indent: -1.375rem;"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/sunscape-icon.png" alt="Madico Sunscape Dealer" style="width:auto;height:auto">&nbsp; <span style="font-size:14px">Sunscape Dealer</span></li>
+						<?php } ?>
+
+						<?php if (has_term('safety-shield','designation',$dealer->ID)) { ?>
+							<li style="text-indent: -1.375rem;"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/safety-shield-icon.png" alt="Madico SafetyShield Dealer" style="width:auto;height:auto">&nbsp; <span style="font-size:14px">SafetyShield Premier Partner</span></li>
+						<?php } ?>
       		</ul>
+
+      		<?php } ?>
       	</div>
 
       	<?php	} ?>
