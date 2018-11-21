@@ -48,13 +48,19 @@ function list_distributors($country_array){
 		echo "<div class='medium-6 large-3 cell module auto-height'>";
   	echo "<h5 class='blue'>{$dist_name}</h5>";
   	echo "<ul class='dealer-meta'>";
-  	echo "<li><address><i class='fas fa-map-marker-alt'></i> &nbsp;";
-  	if($dist_company) {
-  		echo "{$dist_company}<br>";
-  	}
-  	if($dist_street) {
-  	  echo "{$dist_street}<br> {$dist_city}, {$dist_state} {$dist_zip}</address></li>";
+
+    if ($dist_company || $dist_street || $dist_city) {
+    
+    	echo "<li><address><i class='fas fa-map-marker-alt'></i> &nbsp;";
+    	if($dist_company) {
+    		echo "{$dist_company}<br>";
+    	}
+    	if($dist_street) {
+    	  echo "{$dist_street}<br> {$dist_city}, {$dist_state} {$dist_zip}</address></li>";
+      }
+
     }
+
   	if($dist_phone) {
   		echo "<li><address><i class='fas fa-phone'></i> &nbsp;{$dist_phone}";
 	  	if($dist_altphone) {

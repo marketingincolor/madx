@@ -31,6 +31,7 @@
               <li><a href="/safety-security">Safety &amp; Security</a></li>
               <li><a href="/find-dealer">Find a Dealer</a></li>
               <li><a href="/distribution">Distribution</a></li>
+              <li><a href="/product-warranties">Warranty</a></li>
             </ul>
           </div>
           <div class="small-6 medium-4 large-2 cell">
@@ -42,6 +43,7 @@
               <li><a href="/specialty-solutions/capabilities">Capabilities</a></li>
               <!-- <li><a href="/specialty-solutions/case-studies">Case Studies</a></li> -->
               <li><a href="/specialty-solutions/contact">Contact</a></li>
+              <li><a href="/specialty-solutions/warranty">Warranty</a></li>
             </ul>
           </div>
           <div class="small-6 medium-4 large-2 cell">

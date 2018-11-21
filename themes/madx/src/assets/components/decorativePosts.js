@@ -127,7 +127,7 @@ export default{
         scrollTop: $('#posts-container').offset().top - 50
       }, 500, function() {
       	if (singlePostState === false) {
-          $this.autoSinglePost = [];
+          $this.decorativeSinglePost = [];
       	}
       });
 		}
