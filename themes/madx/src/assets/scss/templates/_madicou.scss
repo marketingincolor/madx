@@ -4,14 +4,32 @@
 	z-index: 3;
 }
 
-.page-template-page-madicou,.search-results {
+.page-template-page-madicou,.search-results,.tax-madicou_types {
 
 	.reveal{
 		padding: 50px 0;
+
+		.flex-video{
+			margin-bottom: 0;
+
+			@include breakpoint(medium down){
+				margin-bottom: 1rem;
+			}
+		}
+
+		iframe{
+			width: 560px;
+			height: 315px;
+
+			@include breakpoint(medium down){
+				width: 100%;
+				height: 100%;
+			}
+		}
 	}
 }
 
-.page-template-page-madicou{
+.page-template-page-madicou,.tax-madicou_types{
 
 	.page-hero,.madicou-search{
 		position: relative;
@@ -113,7 +131,7 @@
 	}
 
 	.taxonomy-intro{
-		padding: 10% 0 6%;
+		padding: 5% 0;
 		
 		.meta{
 
@@ -451,6 +469,11 @@
 
 		p{
 			font-size: 1rem;
+			display: block;
 		}
 	}
+}
+
+.tax-madicou_types section .module .meta p{
+	display: block;
 }
