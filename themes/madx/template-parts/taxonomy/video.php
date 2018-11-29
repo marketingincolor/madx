@@ -1,10 +1,14 @@
+<?php get_template_part('template-parts/madicou/page-hero'); ?>
+
+<?php get_template_part('template-parts/madicou/submenu'); ?>
+
 <section class="taxonomy-intro">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="large-8 medium-10 medium-offset-1 large-offset-2 cell text-center">
-				<h1 class="blue">Videos<?php //the_field('intro_heading',$term); ?></h1>
+				<h1 class="blue"><?php _e( 'MadicoU Videos', 'madx' ); ?></h1>
 				<aside class="yellow-underline center"></aside>
-				<p class="subhead"><?php //the_field('intro_subhead',$term); ?></p>
+				<p class="subhead"></p>
 			</div>
 		</div>
 	</div>
@@ -28,12 +32,13 @@
 							$video_file = get_field('video_attachment'); // Requires ACF Field for 'video_meta'
 							?>
 
-							<div class="medium-6 large-3 cell module auto-height <?php //echo $post_slug; ?>">
+							<div class="medium-6 large-4 cell module auto-height <?php //echo $post_slug; ?>">
 								<div class="image-link" data-videotitle="Title of Video">
-									<a href="#!" data-open="video-modal" class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>"><div class="module-bg" style="background-image:url(<?php the_post_thumbnail_url(); ?>)"></div></a>
+									<a href="#!" data-open="video-modal" class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><div class="module-bg" style="background-image:url(<?php the_post_thumbnail_url(); ?>)"></div></a>
 								</div>
 								<div class="meta">
-									<button data-open="video-modal" class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>"><h4 class="blue"><?php the_title() ;?></h4></button>
+									<button data-open="video-modal" class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><h4 class="blue"><?php the_title() ;?></h4></button>
+									<?php the_content(); ?>
 									<p><i class="fal fa-clock"></i> &nbsp;<?php echo $video_meta; ?></p>
 								</div>
 							</div>
@@ -43,6 +48,7 @@
 								<p style="padding:1em;">Sorry, there are no <?php echo $post->post_title; ?> Videos to display</p>
 							</div>
 						<?php endif;wp_reset_postdata(); ?>
+						<madu-video-modal></madu-video-modal>
 					</div>
 				</div>
 			</div>

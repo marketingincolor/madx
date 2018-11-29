@@ -17,7 +17,7 @@ export default{
 										<div class="flex-video">
 										    <iframe allowfullscreen frameborder="0" height="315" :src="videoUrl" width="420"></iframe>
 										</div>
-										<h2 class="blue" v-html="videoTitle"></h2>
+										<h3 class="blue" v-html="videoTitle"></h3>
 										<p v-html="videoText"></p>
 										<p class="file-link" v-if="videoFile"><a :href="videoFile" target="_blank" style="vm-dl-btn">Download</a></p>
 										<button class="close-button" data-close aria-label="Close modal" type="button">
