@@ -103,6 +103,20 @@
 	}
 	add_filter( 'request', 'wpd_specialty_request_filter' );
 
+	// Filter request to allow for variable amount of taxonomies in 
+	// commercial custom post url
+	function wpd_commercial_request_filter( $request ){
+	    if( array_key_exists( 'commercial_taxonomies' , $request )
+	        && ! get_term_by( 'slug', $request['commercial_taxonomies'], 'commercial_taxonomies' ) ){
+	            $request['commercial'] = $request['commercial_taxonomies'];
+	            $request['name'] = $request['commercial_taxonomies'];
+	            $request['post_type'] = 'commercial';
+	            unset( $request['commercial_taxonomies'] );
+	    }
+	    return $request;
+	}
+	add_filter( 'request', 'wpd_commercial_request_filter' );
+
 	// Uncomment to see full request on page for debugging purposes
 
 	// function filter_parse_request( $array ) {

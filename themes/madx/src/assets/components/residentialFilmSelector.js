@@ -20,14 +20,14 @@ export default{
 			modalImage: '',
 			modalLogo: '',
 			modalBrochure: '',
-			houseImage: '/wp-content/themes/madx/dist/assets/images/Clear.jpg',
+			houseImage: '/wp-content/themes/madx/dist/assets/images/residential-film-selector_Clear.jpg',
 			carSize: '',
 			autoSwatches: {
-				0:  { color: '#e6e5e1',percent: 'Clear', image: '/wp-content/themes/madx/dist/assets/images/Clear.jpg' },
-				1:  { color: '#7a5923',percent: 'Bronze', image: '/wp-content/themes/madx/dist/assets/images/Bronze.jpg' },
-				2:  { color: '#525252',percent: 'Gray', image: '/wp-content/themes/madx/dist/assets/images/Gray.jpg' },
-				3:  { color: '#989c9e',percent: 'Silver', image: '/wp-content/themes/madx/dist/assets/images/Silver.jpg' },
-				4:  { color: '#d7dcdf',percent: 'Reflective', image: '/wp-content/themes/madx/dist/assets/images/Reflective.jpg' },
+				0:  { color: '#e6e5e1',percent: 'Clear', image: '/wp-content/themes/madx/dist/assets/images/residential-film-selector_Clear.jpg' },
+				1:  { color: '#7a5923',percent: 'Bronze', image: '/wp-content/themes/madx/dist/assets/images/residential-film-selector_Bronze.jpg' },
+				2:  { color: '#525252',percent: 'Gray', image: '/wp-content/themes/madx/dist/assets/images/residential-film-selector_Gray.jpg' },
+				3:  { color: '#989c9e',percent: 'Silver', image: '/wp-content/themes/madx/dist/assets/images/residential-film-selector_Silver.jpg' },
+				4:  { color: '#d7dcdf',percent: 'Reflective', image: '/wp-content/themes/madx/dist/assets/images/residential-film-selector_Reflective.jpg' },
 			},
 		}
 	},
@@ -164,8 +164,7 @@ export default{
 					</span>
 				</div>
 				<div class="medium-5 cell text-right">
-					<span @click="print" class="no-print"><i class="fal fa-print light-blue"></i>&nbsp;&nbsp;Print List</span>&nbsp;&nbsp;
-					<span @click="sendEmail" class="no-print"><i class="fal fa-envelope light-blue"></i>&nbsp;&nbsp;Email List</span>
+					<span @click="print" class="no-print"><i class="fal fa-print light-blue"></i>&nbsp;&nbsp;Print List</span>
 				</div>
 			</div>
 			<hr />
@@ -186,6 +185,9 @@ export default{
 						<div class="medium-12 cell other-posts" v-for="(post,index) in postData" v-if="postData.length > 0">
 							<i class="fas fa-check"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered"></a>
 							<p v-html="post.film_description"></p>
+						</div>
+						<div class="medium-12 cell text-center" style="margin-top:30px;margin-bottom:30px">
+							<a href="/find-dealer" style="border-bottom:0"><button class="btn-yellow solid">Find Dealer</button></a>
 						</div>
 					</div>
 				</div>

@@ -54,18 +54,13 @@ if ($term->slug == 'case-studies' || $term->slug == 'products') {
 							);
 							$query = new WP_Query( $args );
 							while ( $query->have_posts() ) : $query->the_post();
-							if (get_the_title() == "Contract Coating" || get_the_title() == "Information Display") {
-								$cta = 'Start Your Project';
-							}else{
-								$cta = 'Start A Project';
-							}
 						?>
 
-							<div class="large-4 medium-6 cell text-center benefit">
+							<div class="large-4 medium-6 cell text-center benefit relative">
 								<?php the_field('specialty_category_icon'); ?>
 								<h5 class="blue"><?php the_title(); ?></h5>
-								<p class="subhead" style="margin-bottom:30px"><?php the_field('specialty_short_description'); ?></p>
-								<p class="text-center"><a href="/specialty-solutions/contact" class="btn-yellow border"><?php _e( $cta, 'madx' ); ?></a></p>
+								<p class="subhead" style="margin-bottom:60px"><?php the_field('specialty_short_description'); ?></p>
+								<p class="text-center absolute"><a href="/specialty-solutions/contact"><button class="btn-yellow border"><?php _e( 'Start A Project', 'madx' ); ?></button></a></p>
 							</div>
 
 						<?php endwhile; wp_reset_postdata(); ?>
