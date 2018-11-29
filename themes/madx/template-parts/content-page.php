@@ -62,11 +62,7 @@
 
 			<jot-form form-id="82824093286160"></jot-form>
 
-	  <?php }else if(is_page('contact')) { ?>
-
-			<jot-form form-id="82804498686171"></jot-form>
-
-		<?php } ?>
+	  <?php } ?>
 		
 	</div>
 	<footer>

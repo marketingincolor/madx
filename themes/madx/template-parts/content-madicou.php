@@ -10,30 +10,12 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header>
-	<?php
-		if ( is_single() ) {
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		} else {
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		}
-	?>
-		<?php foundationpress_entry_meta(); ?>
-	</header>
-	<div class="entry-content">
-		<?php the_content(); ?>
-		<?php edit_post_link( __( '(Edit)', 'foundationpress' ), '<span class="edit-link">', '</span>' ); ?>
+<article id="post-<?php the_ID(); ?>" class="small-12 cell module auto-height">
+	<div class="flex-video">
+		<iframe allowfullscreen="allowfullscreen" frameborder="0" height="315" src="<?php echo get_field('video_url').'?rel=0'; ?>" width="420"></iframe>
 	</div>
-	<footer>
-		<?php
-			wp_link_pages(
-				array(
-					'before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'foundationpress' ),
-					'after'  => '</p></nav>',
-				)
-			);
-		?>
-		<?php $tag = get_the_tags(); if ( $tag ) { ?><p><?php the_tags(); ?></p><?php } ?>
-	</footer>
+	<div class="meta">
+		<h1 class="blue"><?php the_title(); ?></h1>
+		<?php the_content(); ?>
+	</div>
 </article>

@@ -10,7 +10,10 @@
 
 	<nav class="site-navigation top-bar" role="navigation">
 		<div class="top-bar-left">
-			<div class="site-desktop-title top-bar-title">
+			<div class="site-desktop-title top-bar-title no-print">
+				<a href="/residential" rel="home"><img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/l-residential-film.svg" alt="Madico The Clear Choice"></a>
+			</div>
+			<div class="site-desktop-title top-bar-title logo-print" style="display:none">
 				<a href="/residential" rel="home"><img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/l-residential-film.svg" alt="Madico The Clear Choice"></a>
 			</div>
 		</div>

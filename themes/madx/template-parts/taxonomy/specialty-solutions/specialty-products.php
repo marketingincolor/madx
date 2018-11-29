@@ -108,7 +108,7 @@
 									$args = array(
 										'post_type'      => 'specialty',
 										'posts_per_page' => -1,
-										'orderby'        => 'title',
+										'orderby'        => 'menu_order',
 										'order'          => 'ASC',
 										'tax_query'      => array(
 											array(

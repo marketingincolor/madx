@@ -130,4 +130,4 @@ get_header('madicou'); ?>
 </section>
 <?php } ?>
 
-<?php get_footer('madicou'); //needs custom MadicoU footer
+<?php get_footer();
