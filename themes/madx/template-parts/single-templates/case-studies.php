@@ -40,13 +40,28 @@
 				<div class="meta">
 					<div class="grid-x">
 						<div class="medium-3 medium-offset-1 cell">
-							<p class="industry"><?php the_field('case_study_industry_type'); ?></p>
-							<p class="subhead"><?php the_field('case_study_industry'); ?></p>
-							<p class="industry"><?php the_field('case_study_product_heading'); ?></p>
+							<p class="industry"><?php _e( 'Project', 'madx' ); ?></p>
+							<p class="subhead"><?php the_field('case_study_project'); ?></p>
+							<p class="industry"><?php _e( 'Location', 'madx' ); ?></p>
+							<p class="subhead"><?php the_field('case_study_location'); ?></p>
+							<p class="industry"><?php _e( 'Product', 'madx' ); ?></p>
 							<p class="subhead"><?php the_field('case_study_product'); ?></p>
 						</div>
 						<div class="medium-7 cell">
-							<?php the_content(); ?>
+							<div class="content"><?php the_content(); ?></div>
+							<?php if(get_field('case_study_pdf')) { ?>
+
+								<div class="grid-x grid-margin-y subhead">
+									<div class="large-1 medium-2 cell text-center">
+										<i class="fal fa-file-pdf" style="font-size:2.875rem;color:#4d7da6"></i>
+									</div>
+									<div class="medium-10 cell">
+										<a href="<?php the_field('case_study_pdf'); ?>" target="_blank"><?php _e( 'Case Study PDF', 'madx' ); ?></a>
+										<p><?php _e( 'Click to download case study', 'madx' ); ?></p>
+									</div>
+								</div>
+
+							<?php } ?>
 						</div>
 					</div>
 				</div>

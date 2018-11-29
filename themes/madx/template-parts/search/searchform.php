@@ -22,7 +22,7 @@
 
 <form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
 	<div class="input-group relative">
-		<input type="text" class="input-group-field" value="" name="s" id="s" placeholder="<?php esc_attr_e( "{$name}", 'foundationpress' ); ?>">
+		<input type="text" class="input-group-field" value="" name="s" id="s" placeholder="<?php esc_attr_e( "{$name}", 'madx' ); ?>">
 		<?php if($name != 'Blog') { ?>
 		  <input type="hidden" value="<?php echo $name ?>" name="category_name">
 		<?php } ?>

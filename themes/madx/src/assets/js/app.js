@@ -188,10 +188,12 @@ var newVue = new Vue({
   created(){
   	$(document).foundation();
     this.runIEpolyfills();
+    
   },
   mounted(){
     this.menuDropdown();
     this.closeMobileMenuOutside();
+    this.validateForms();
     if (location.href.includes('protectionpro')) {
       this.protectionProCarousel();
     }
@@ -313,17 +315,26 @@ var newVue = new Vue({
         open = false;
       }
 
-      // learnMore.addEventListener('click',function(){
-        if (open == false) {
-          testing.classList.add('slide-down');
-          testingContent.querySelector('.hide').classList.remove('hide');
-          open = true;
+      if (open == false) {
+        testing.classList.add('slide-down');
+        testingContent.querySelector('.hide').classList.remove('hide');
+        open = true;
+      }else{
+        testing.classList.remove('slide-down');
+        testingContent.querySelectorAll('p')[2].classList.add('hide');
+        open = false;
+      }
+    },
+    validateForms: function(){
+      $('.jotform-form').find('input,textarea,select').on('keyup change',function(){
+        let $this = $(this);
+
+        if ($this.val().length > 0 && $this.is(':valid')) {
+          $this.addClass('validInput');
         }else{
-          testing.classList.remove('slide-down');
-          testingContent.querySelectorAll('p')[2].classList.add('hide');
-          open = false;
+          $this.removeClass('validInput');
         }
-      // });
+      });
     }
   }
 });

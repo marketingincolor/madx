@@ -61,7 +61,7 @@ if ($query->have_posts()) {
 		    		    					array(
 		    		    						'taxonomy' => 'testimonials_taxonomies',
 		    		    						'field'    => 'slug',
-		    		    						'terms'    => $term->slug,
+		    		    						'terms'    => $slug,
 		    		    					),
 		    		    				),
 		    		    			);
