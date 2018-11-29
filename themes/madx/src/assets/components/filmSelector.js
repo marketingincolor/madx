@@ -172,8 +172,7 @@ export default{
 						</span>
 					</div>
 					<div class="medium-5 cell text-right">
-						<span @click="print" class="no-print print-results"><i class="fal fa-print light-blue"></i>&nbsp;&nbsp;Print List</span>&nbsp;&nbsp;
-						<span @click="sendEmail" class="no-print print-results"><i class="fal fa-envelope light-blue"></i>&nbsp;&nbsp;Email List</span>
+						<span @click="print" class="no-print print-results"><i class="fal fa-print light-blue"></i>&nbsp;&nbsp;Print List</span>
 					</div>
 				</div>
 				<hr />
@@ -194,6 +193,9 @@ export default{
 							<div class="medium-12 cell other-posts" v-for="(post,index) in postData">
 								<i class="fas fa-check"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered"></a>
 								<p v-html="post.film_description"></p>
+							</div>
+							<div class="medium-12 cell text-center" style="margin-top:30px;margin-bottom:30px">
+								<a href="/find-dealer" style="border-bottom:0"><button class="btn-yellow solid">Find Dealer</button></a>
 							</div>
 						</div>
 					</div>

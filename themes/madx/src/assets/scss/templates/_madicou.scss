@@ -4,6 +4,13 @@
 	z-index: 3;
 }
 
+.page-template-page-madicou,.search-results {
+
+	.reveal{
+		padding: 50px 0;
+	}
+}
+
 .page-template-page-madicou{
 
 	.page-hero,.madicou-search{
@@ -431,5 +438,19 @@
 			font-weight:bold;
 		}
 	}
+}
 
+.single-madicou{
+
+	section .module .meta{
+
+		h1{
+			font-size: 2.5rem;
+			line-height: 1.2em;
+		}
+
+		p{
+			font-size: 1rem;
+		}
+	}
 }
