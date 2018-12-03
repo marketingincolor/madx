@@ -496,5 +496,9 @@
 
 	.logo-print{
 		display:block !important;
+
+		img{
+			max-width: 200px;
+		}
 	}
 }
