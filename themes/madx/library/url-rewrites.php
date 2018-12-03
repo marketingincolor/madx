@@ -138,4 +138,3 @@
 	{
 	    return $GLOBALS['wpse16902_page_rewrite_rules'] + $rewrite_rules;
 	}
-?>
