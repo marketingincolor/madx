@@ -490,11 +490,16 @@
 }
 
 @media print{
-	.film-image,#top-header,#page-header .top-bar-right,.top,.warning-parent,footer.footer,.no-print,.range-labels li{
+
+	.film-image,#top-header,#page-header .top-bar-right,#page-header .top-bar-left,.top,.warning-parent,footer.footer,.no-print,.range-labels li{
 		display:none;
 	}
 
 	.logo-print{
-		display:block !important;
+		// display:block !important;
+
+		img{
+			max-width: 300px;
+		}
 	}
 }

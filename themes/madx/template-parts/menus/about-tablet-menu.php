@@ -1,6 +1,6 @@
 <header id="page-header" class="site-header" role="banner">
 	<div class="site-title-bar title-bar" <?php foundationpress_title_bar_responsive_toggle(); ?>>
-		<div class="title-bar-left">
+		<div class="title-bar-left no-print">
 			<button aria-label="<?php _e( 'Main Menu', 'foundationpress' ); ?>" class="menu-icon" type="button" data-toggle="<?php foundationpress_mobile_menu_id(); ?>"></button>
 			<span class="site-mobile-title title-bar-title">
 				<a href="/about" rel="home"><?php bloginfo( 'template_directory' ); ?></a>
@@ -8,7 +8,7 @@
 		</div>
 	</div>
 
-	<nav class="site-navigation top-bar" role="navigation">
+	<nav class="site-navigation top-bar no-print" role="navigation">
 		<div class="top-bar-left">
 			<div class="site-desktop-title top-bar-title">
 				<a href="/about" rel="home">

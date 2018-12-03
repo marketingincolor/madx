@@ -80,12 +80,7 @@
 				<ul class="menu">
 					<ul class="dropdown menu" data-closing-time="0" v-dropdown>
 			      <li>
-			        <a class="language"><i class="fal fa-globe-americas"></i>&nbsp; English&nbsp; <i class="fas fa-chevron-down"></i></a>
-			        <ul class="menu vertical">
-			          <li><a href="#">Spanish</a></li>
-			          <li><a href="#">German</a></li>
-			          <li><a href="#">French</a></li>
-			        </ul>
+			        <?php icl_post_languages(); ?>
 			      </li>
 			    </ul>
 			    <li><a href="/madicou"><i class="icon-madico-u-icon"></i>&nbsp; <?php _e( 'Madico U', 'madx' ); ?></a></li>

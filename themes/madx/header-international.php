@@ -53,16 +53,11 @@
 							<div class="small-6 cell text-right">
 								<ul class="dropdown menu" v-dropdown data-alignment="left">
 									<li>
-										<a data-alignment="left" data-toggle="submenu-dropdown" style="color: #FFF">Menu &nbsp;<i class="fa fa-chevron-down"></i></a>
+										<a data-alignment="left" data-toggle="submenu-dropdown" style="color: #FFF"><?php _e('Menu','madx') ?> &nbsp;<i class="fa fa-chevron-down"></i></a>
 										<ul class="menu">
 											<li><a href="#!"><i class="fal fa-phone"></i>&nbsp; +1 (800) 123-4567</a></li>
 											<li>
-												<a href="#" data-toggle="submenu-dropdown">Language &nbsp;<i class="fa fa-chevron-down"></i></a>
-												<ul class="menu" v-dropdown>
-													<li><a href="#">Spanish</a></li>
-													<li><a href="#">German</a></li>
-													<li><a href="#">French</a></li>
-												</ul>
+												<?php icl_post_languages_mobile() ?>
 											</li>
 										</ul>
 									</li>
@@ -81,15 +76,9 @@
 				</div>
 			</div>
 			<div class="top-bar-right">
-				<?php //foundationpress_top_bar_r(); ?>
 				<ul class="dropdown menu" v-dropdown>
 		      <li>
-		        <a href="#!"><i class="fal fa-globe-americas"></i>&nbsp; English&nbsp; <i class="fas fa-chevron-down"></i></a>
-		        <ul class="menu vertical">
-		          <li><a href="#">Spanish</a></li>
-		          <li><a href="#">German</a></li>
-		          <li><a href="#">French</a></li>
-		        </ul>
+		        <?php icl_post_languages(); ?>
 		      </li>
 		      <li><a href="#!"><i class="fal fa-phone"></i>&nbsp; +1 (800) 123-4567</a></li>
 		    </ul>

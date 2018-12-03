@@ -71,6 +71,7 @@ if ($_GET['post_type'] === 'madicou') {
 						<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 							
 						<div class="medium-6 large-4 cell module auto-height">
+							<div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div>
 							<div class="meta">
 								<a href="<?php the_permalink(); ?>"><h4 class="blue" style="margin-bottom:20px"><?php echo wp_trim_words(get_the_title(),10,'...'); ?></h4></a>
 								<p><?php echo wp_trim_words(get_the_content(),30,'...'); ?></p>
