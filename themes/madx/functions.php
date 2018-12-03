@@ -14,16 +14,27 @@
  * @since FoundationPress 1.0.0
  */
 
-// This enables the orderby=menu_order for Posts
-add_filter( 'rest_post_collection_params', 'filter_add_rest_orderby_params', 10, 1 );
-// And this for a custom post type called 'portfolio'
-add_filter( 'rest_portfolio_collection_params', 'filter_add_rest_orderby_params', 10, 1 );
-/**
- * Add menu_order to the list of permitted orderby values
- */
-function filter_add_rest_orderby_params( $params ) {
-  $params['orderby']['enum'][] = 'menu_order';
-  return $params;
+// Fix pagination 404 errors on blog category pages
+function bamboo_request($query_string ){
+  	if( isset( $query_string['page'] ) ) {
+  	  if( ''!=$query_string['page'] ) {
+  	    if( isset( $query_string['name'] ) ) {
+  	        unset( $query_string['name'] );
+  	    }
+  	  }
+  	}
+  	return $query_string;
+}
+add_filter('request', 'bamboo_request');
+
+add_action('pre_get_posts','bamboo_pre_get_posts');
+function bamboo_pre_get_posts( $query ) {
+	// Only for pagination on category pages
+  if (is_category()) {
+   	if( $query->is_main_query() && !$query->is_feed() && !is_admin() ) { 
+   	  $query->set( 'paged', str_replace( '/', '', get_query_var( 'page' ) ) ); 
+   	}
+  } 
 }
 
 function list_distributors($country_array){
@@ -85,28 +96,8 @@ function list_distributors($country_array){
 	}
 }
 
-// Fix pagination 404 errors on blog category pages
-function bamboo_request($query_string ){
-  	if( isset( $query_string['page'] ) ) {
-  	  if( ''!=$query_string['page'] ) {
-  	    if( isset( $query_string['name'] ) ) {
-  	        unset( $query_string['name'] );
-  	    }
-  	  }
-  	}
-  	return $query_string;
-}
-add_filter('request', 'bamboo_request');
-
-add_action('pre_get_posts','bamboo_pre_get_posts');
-function bamboo_pre_get_posts( $query ) {
-	// Only for pagination on category pages
-  if (is_category()) {
-   	if( $query->is_main_query() && !$query->is_feed() && !is_admin() ) { 
-   	  $query->set( 'paged', str_replace( '/', '', get_query_var( 'page' ) ) ); 
-   	}
-  } 
-}
+/** Lanugage switcher functions  */
+require_once( 'library/languages.php' );
 
 /** Various URL rewrite functions to add taxonomies to url */
 require_once( 'library/url-rewrites.php' );

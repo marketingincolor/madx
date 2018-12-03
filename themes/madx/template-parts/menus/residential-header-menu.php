@@ -25,3 +25,5 @@
 	</nav>
 
 </header>
+
+<img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/blog-header-madico.png" alt="Madico The Clear Choice" class="logo-print" style="display:none">

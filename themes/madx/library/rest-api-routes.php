@@ -79,3 +79,15 @@ add_action( 'rest_api_init', function() {
         
     });
 }, 15 );
+
+// This enables the orderby=menu_order for Posts
+add_filter( 'rest_post_collection_params', 'filter_add_rest_orderby_params', 10, 1 );
+// And this for a custom post type called 'portfolio'
+add_filter( 'rest_portfolio_collection_params', 'filter_add_rest_orderby_params', 10, 1 );
+/**
+ * Add menu_order to the list of permitted orderby values
+ */
+function filter_add_rest_orderby_params( $params ) {
+  $params['orderby']['enum'][] = 'menu_order';
+  return $params;
+}

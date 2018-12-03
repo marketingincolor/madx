@@ -38,7 +38,7 @@ export default{
 							    </div>
 								</div>
 								<div id="breadcrumbs" class="small-10 small-offset-1 large-12 large-offset-0 cell breadcrumbs" v-if="!singlePostActive && showAllCat">
-									<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span></h5>
+									<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <a @click="scrollToProducts(false)"><span v-html="activeItem"></span></a><span v-html="activeItem"></span></a></h5>
 								</div>
 								<div class="small-10 small-offset-1 large-12 large-offset-0 cell" id="all-posts" v-if="!singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
@@ -58,7 +58,7 @@ export default{
 								<div class="small-10 small-offset-1 large-8 large-offset-2 cell" id="single-post" v-if="singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
 										<div class="medium-12 cell breadcrumbs">
-											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span> <i class="fas fa-chevron-right"></i> <span v-html="singlePost.title.rendered"></span></h5>
+											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <a @click="scrollToProducts(false)"><span v-html="activeItem"></span></a> <i class="fas fa-chevron-right"></i> <span v-html="singlePost.title.rendered"></span></h5>
 										</div>
 										<div class="medium-12 cell module auto-height animated fadeIn">
 											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost._embedded['wp:featuredmedia'][0].alt_text">
