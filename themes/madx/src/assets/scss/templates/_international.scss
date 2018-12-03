@@ -38,6 +38,7 @@
 	.hero{
 		height: 65vh;
 		padding-bottom: 90px;
+		min-height: 500px;
 
 		@include breakpoint (medium down){
 			height: 80vh;
@@ -45,11 +46,12 @@
 
 		@include breakpoint (small down){
 			height: 100vh;
-			padding: 10% 0;
+			padding: 40px 0;
 		}
 
 		@media(max-height:450px){
 			height: 150vh;
+			padding: 40px 0;
 		}
 
 		.small-10.cell{

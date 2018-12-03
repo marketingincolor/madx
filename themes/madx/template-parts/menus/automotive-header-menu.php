@@ -13,9 +13,6 @@
 			<div class="site-desktop-title top-bar-title no-print">
 				<a href="/automotive" rel="home"><img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/l-automotive.svg" alt="Madico The Clear Choice"></a>
 			</div>
-			<div class="site-desktop-title top-bar-title logo-print" style="display:none">
-				<a href="/automotive" rel="home"><img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/l-automotive.svg" alt="Madico The Clear Choice"></a>
-			</div>
 		</div>
 		<div class="top-bar-right">
 			
@@ -25,3 +22,5 @@
 	</nav>
 
 </header>
+
+<img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/blog-header-madico.png" alt="Madico The Clear Choice" class="logo-print" style="display:none">
