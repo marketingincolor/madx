@@ -17,13 +17,53 @@
 .page-template-page-blog,.category{
 
 	.page-hero.relative{
-		min-height: 300px;
+		padding: 5% 0;
+	}
 
-		@include breakpoint(small down){
-			min-height: 200px;
+	#menu-blog-top-nav{
+		justify-content: center;
+
+		li{
+			margin: 0 10px;
+
+			a{
+				padding: 10px 15px;
+				color: #818285;
+				font-size: 1.125rem;
+				font-family: AvenirLTStd-Heavy;
+				border: 2px solid #818285;
+				border-radius: 3px;
+				transition: all .25s ease-in-out;
+
+				&:hover{
+					background-color: #e09e10;
+					border-color: #e09e10;
+					color: #fff;
+				}
+			}
+
+			&.is-active a{
+				background-color: $yellow;
+				border-color: #e09e10;
+				color: $white;
+			}
 		}
 	}
+
+	#page-header .top-bar-right{
+
+		@include breakpoint(small down){
+			max-width: 80%;
+			margin: 0 auto;
+		}
+	}
+
+	#cat-select{
+
+	}
 }
+
+
 .blog-search{
 	width: 100%;
 	max-width: 400px;
