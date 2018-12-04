@@ -18,26 +18,38 @@ get_header(); ?>
 			</div>
 		</div>
 	</div>
-
-	<div class="grid-container">
-		<div class="grid-x grid-margin-x">
-			<div class="small-10 small-offset-1 cell text-center">
-				<div class="blog-search text-center absolute">
-					<?php get_template_part('template-parts/search/searchform'); ?>
-				</div>
-			</div>
-		</div>
-	</div>
 </section>
 
 <main>
 	<div class="grid-container">
 		<div class="grid-x grid-margin-x">
-			<div class="small-10 small-offset-1 medium-9 medium-offset-0 cell">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 				<section class="blog-container">
 					<div class="grid-x">
 						<div class="small-12 cell">
 							<div class="grid-x grid-margin-x grid-margin-y">
+								<div class="small-12 cell show-for-large">
+									<?php foundationpress_blog_nav(); ?>
+								</div>
+								<div class="small-12 cell hide-for-large">
+									<select name="" id="cat-select" onchange="location.href = this.value">
+										
+									<?php
+									  $menu_items = wp_get_nav_menu_items(499);
+									  $url        = $_SERVER['REQUEST_URI'];
+									  foreach ($menu_items as $item) {
+									  	echo '<option value="'.$item->url.'"';
+									  	if (stripos($url, $item->title)) {
+									  		echo ' selected>';
+									  	} else{
+									  		echo ">";
+									  	}
+									  	echo $item->title.'</option>';
+									  }
+									?>
+
+									</select>
+								</div>
 
 							<?php
 							$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -92,9 +104,6 @@ get_header(); ?>
 						</div>
 					</div>
 				</section>
-			</div>
-			<div class="small-10 small-offset-1 medium-3 medium-offset-0 cell">
-				<?php get_sidebar(); ?>
 			</div>
 		</div>
 	</div>
