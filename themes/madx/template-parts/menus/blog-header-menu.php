@@ -27,7 +27,7 @@
 		</div>
 		<div class="top-bar-right">
 
-			<?php foundationpress_blog_nav(); ?>
+			<?php get_template_part('template-parts/search/searchform'); ?>
 
 		</div>
 	</nav>

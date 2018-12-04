@@ -6,38 +6,38 @@
 	  $terms             = wp_get_object_terms( get_the_ID(), $current_post_type.'_taxonomies');
 	  $term_array        = array();
 
-	if (!array_key_exists('errors', $terms)) {
-	  if (count($terms > 2)) {
-	  	// If post has three taxonomies
-	  	foreach ($terms as $term) {
-	  		if ($term->parent == 0) {
-	  			$parent_tax_id = $term->term_id;
-	  			array_unshift($term_array, $term->slug);
-	  		}
-	  	}
+		if (!array_key_exists('errors', $terms)) {
+		  if (count($terms > 2)) {
+		  	// If post has three taxonomies
+		  	foreach ($terms as $term) {
+		  		if ($term->parent == 0) {
+		  			$parent_tax_id = $term->term_id;
+		  			array_unshift($term_array, $term->slug);
+		  		}
+		  	}
 
-	  	foreach ($terms as $term) {
-	  		if ($term->parent != 0) {
-	  			if ($term->parent == $parent_tax_id) {
-	  				array_push($term_array, $term->slug);
-	  			}else{
-	  				$last_child = $term->slug;
-	  			}
-	  		}
-	  	}
-	  	array_push($term_array, $last_child);
-	  }else{
-	  	// If post has 2 or less taxonomies
-	  	foreach ($terms as $term) {
-	  		if ($term->parent == 0) {
-	  			array_unshift($term_array, strtolower($term->slug));
-	  		}else{
-	  			array_push($term_array, strtolower($term->slug));
-	  		}
-	  	}
+		  	foreach ($terms as $term) {
+		  		if ($term->parent != 0) {
+		  			if ($term->parent == $parent_tax_id) {
+		  				array_push($term_array, $term->slug);
+		  			}else{
+		  				$last_child = $term->slug;
+		  			}
+		  		}
+		  	}
+		  	array_push($term_array, $last_child);
+		  }else{
+		  	// If post has 2 or less taxonomies
+		  	foreach ($terms as $term) {
+		  		if ($term->parent == 0) {
+		  			array_unshift($term_array, strtolower($term->slug));
+		  		}else{
+		  			array_push($term_array, strtolower($term->slug));
+		  		}
+		  	}
 
-	  }
-	}
+		  }
+		}
 	  $tax_url = join('/',$term_array);
 	  // Remove the trailing '/' from $tax_url
 	  $tax_url = substr($tax_url, 0, -1);
