@@ -14,6 +14,8 @@
  * @since FoundationPress 1.0.0
  */
 
+add_filter('acf/format_value/type=text', 'do_shortcode');
+
 // Fix pagination 404 errors on blog category pages
 function bamboo_request($query_string ){
   	if( isset( $query_string['page'] ) ) {
