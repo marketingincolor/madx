@@ -80,7 +80,7 @@ get_header('madicou'); ?>
 							'posts_per_page'=> 2,
 							'post_type' => 'post',
 							'cat_name' => strtolower($post_slug)
-							// 'madicou-types' => 'article'
+							'madicou-types' => 'article'
 						);
 						$article_query = new WP_Query( $article_args );
 					?>

@@ -55,7 +55,7 @@ get_header(); ?>
 							$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 							$args = array(
 								'post_type'        => 'post',
-								'category__not_in' => array(9,345,80),
+								'category__not_in' => array(9,345,80,85),
 							  'posts_per_page'   => 9,
 							  'paged'            => $paged
 							);

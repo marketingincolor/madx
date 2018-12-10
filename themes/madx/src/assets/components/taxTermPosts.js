@@ -38,7 +38,7 @@ export default{
 							    </div>
 								</div>
 								<div id="breadcrumbs" class="small-10 small-offset-1 large-12 large-offset-0 cell breadcrumbs" v-if="!singlePostActive && showAllCat">
-									<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <a @click="scrollToProducts(false)"><span v-html="activeItem"></span></a><span v-html="activeItem"></span></a></h5>
+									<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <a @click="scrollToProducts(false)"><span v-html="activeItem"></span></a></h5>
 								</div>
 								<div class="small-10 small-offset-1 large-12 large-offset-0 cell" id="all-posts" v-if="!singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
@@ -171,7 +171,7 @@ export default{
 			let $this = this;
 
 			axios
-			  .get(apiRoot + $this.postType + '-categories?parent=' + $this.taxParentId)
+			  .get(apiRoot + $this.postType + '-categories?parent=' + $this.taxParentId + '&hide_empty=true')
 			  .then(function (response) {
 			    $this.taxonomies = response.data;
 			    $this.showAllCat = true;

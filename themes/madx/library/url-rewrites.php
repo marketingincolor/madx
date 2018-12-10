@@ -139,6 +139,12 @@
 	    return $GLOBALS['wpse16902_page_rewrite_rules'] + $rewrite_rules;
 	}
 
+	add_filter('wpml_is_redirected', 'ret_fls');
+	function ret_fls($q){
+	    if(strpos($q, 'commercial')){
+	        return false;
+	    }
+	};
 	/**
 	* This will prevent redirection in the secondary language for the custom rule:
 	* '^products/([A-Za-z0-9-]+)/?' => 'index.php?pagename=new-sample&type=$matches[1]'

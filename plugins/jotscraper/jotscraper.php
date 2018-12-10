@@ -3,7 +3,7 @@
 Plugin Name: Jot & SharpSpring Integrator
 Description: A CUSTOM Wordpress plugin for grabbing Jot Forms and integrating SharpSpring
 Version: 0.1
-Author: Marketing In Color
+Author: Nate Beers
 Author URI: http://www.marketingincolor.com
 License: GPL2
 
