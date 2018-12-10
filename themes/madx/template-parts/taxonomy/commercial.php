@@ -37,7 +37,14 @@ if ($term->slug == 'case-studies' || $term->slug == 'safety-security') {
 		</div>
 	</section>
 
-	<section id="tax-posts" class="taxonomy-products" style="padding-top: 5%">
+	<?php if ($term->slug == 'decorative') { ?>
+		<section class="deco-example" style="padding-bottom:0">
+			<?php $deco_image = get_field('decorative_image1',$term); ?>
+			<img src="<?php echo $deco_image['url']; ?>" alt="<?php echo $deco_image['alt']; ?>" style="width:100%">
+		</section>
+	<?php } ?>
+
+	<section id="tax-posts" class="taxonomy-products">
 		<div class="grid-container">
 
 				<div class="grid-x grid-margin-y">
@@ -55,6 +62,13 @@ if ($term->slug == 'case-studies' || $term->slug == 'safety-security') {
 
 		</div>
 	</section>
+
+	<?php if ($term->slug == 'decorative') { ?>
+		<section class="deco-example" style="padding:0">
+			<?php $deco_image = get_field('decorative_image1',$term); ?>
+			<img src="<?php echo $deco_image['url']; ?>" alt="<?php echo $deco_image['alt']; ?>" style="width:100%">
+		</section>
+	<?php } ?>
 
 <?php get_template_part('/template-parts/top-level-page/find-dealer'); ?>
 

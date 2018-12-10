@@ -8,8 +8,16 @@
 		width: 100%;
 	}
 
+	.form-label.form-label-auto{
+		width: 100%;
+	}
+
 	li[data-type=control_head]{
 		display: none;
+	}
+
+	.form-sub-label{
+		font-family: 'AvenirLTStd-Medium';
 	}
 
 	input,select,textarea{
@@ -110,6 +118,27 @@
 					color: $white;
 				}
 			}
+		}
+	}
+}
+
+.page-template-page-protectionpro,.page-template-page-international{
+
+	.about-content .content-block{
+
+		.jotform-form ul li{
+			text-indent: 0;
+			padding: 0 20px;
+		}
+
+		.form-multiple-column .form-radio-item, .form-multiple-column .form-checkbox-item{
+			width: 200px;
+		}
+
+		.form-multiple-column .form-radio-other-input, .form-multiple-column .form-checkbox-other-input{
+			width: 150px;
+			display: inline-block;
+			margin-left: -20px;
 		}
 	}
 }

@@ -556,7 +556,9 @@
 	padding: 40px;
 	height: 80%;
 	width: 80%;
-	top: 10% !important;
+	top: 50% !important;
+	left: 50%;
+	transform: translate(-50%,-50%);
 	overflow-y: hidden;
 
 	@include breakpoint(small down){
