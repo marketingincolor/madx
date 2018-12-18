@@ -24,7 +24,7 @@
 				<h1 class="blue"><?php the_field('page_hero_title'); ?></h1>
 				<aside class="yellow-underline left"></aside>
 				<p class="subhead"><?php the_field('page_hero_subhead'); ?></p>
-				<a href="<?php the_field('page_hero_left_button_link'); ?>" class="btn-yellow solid"><?php the_field('page_hero_left_button_text'); ?></a>&nbsp;&nbsp;&nbsp;<br class="show-for-small-only"><br class="show-for-small-only"><a href="<?php the_field('page_hero_right_button_link'); ?>" class="btn-yellow border"><?php the_field('page_hero_right_button_text'); ?></a>
+				<a href="<?php the_field('page_hero_left_button_link'); ?>" class="btn-yellow solid film-selector-<?php echo $slug; ?>"><?php the_field('page_hero_left_button_text'); ?></a>&nbsp;&nbsp;&nbsp;<br class="show-for-small-only"><br class="show-for-small-only"><a href="<?php the_field('page_hero_right_button_link'); ?>" class="btn-yellow border"><?php the_field('page_hero_right_button_text'); ?></a>
 			</div>
 		</div>
 	</div>

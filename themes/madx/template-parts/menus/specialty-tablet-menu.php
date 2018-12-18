@@ -3,7 +3,7 @@
 		<div class="title-bar-left">
 			<button aria-label="<?php _e( 'Main Menu', 'foundationpress' ); ?>" class="menu-icon" type="button" data-toggle="<?php foundationpress_mobile_menu_id(); ?>"></button>
 			<span class="site-mobile-title title-bar-title">
-				<a href="/specialty-solutions" rel="home"><?php bloginfo( 'template_directory' ); ?></a>
+				<a href="/specialty-solutions" rel="home" class="menu-section-home-image"><?php bloginfo( 'template_directory' ); ?></a>
 			</span>
 		</div>
 	</div>
@@ -11,7 +11,7 @@
 	<nav class="site-navigation top-bar" role="navigation">
 		<div class="top-bar-left">
 			<div class="site-desktop-title top-bar-title">
-				<a href="/specialty-solutions" rel="home"><img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/l-specialty-solutions.svg" alt="Madico The Clear Choice"></a>
+				<a href="/specialty-solutions" rel="home"><img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/l-specialty-solutions.svg" alt="Madico The Clear Choice" class="menu-section-home-image"></a>
 			</div>
 		</div>
 		<div class="top-bar-right tablet">
