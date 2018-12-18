@@ -35,6 +35,10 @@
 		border-top-left-radius: 5px;
 		border-top-right-radius: 5px;
 
+		@include breakpoint(small only){
+			width: 50%;
+		}
+
 		a{
 			font-family: 'AvenirLTStd-Black';
 			color: $white;
@@ -549,6 +553,23 @@
 
 	p{
 		margin-bottom: 25px;
+	}
+}
+
+#specialty-pdf-modal{
+	padding: 40px;
+	height: 80%;
+	width: 80%;
+	top: 50% !important;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	overflow-y: hidden;
+
+	@include breakpoint(small down){
+		padding: 40px 20px 20px;
+		height: 100%;
+		width: 100%;
+		top: 0 !important;
 	}
 }
 

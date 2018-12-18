@@ -1,10 +1,12 @@
+<?php $term = get_queried_object(); ?>
+
 <section class="taxonomy-intro">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="large-8 medium-10 medium-offset-1 large-offset-2 cell text-center">
-				<h1 class="blue">Articles<?php //the_field('intro_heading',$term); ?></h1>
+			<div class="large-8 small-10 small-offset-1 large-offset-2 cell text-center">
+				<h1 class="blue"><?php the_field('intro_heading',$term); ?></h1>
 				<aside class="yellow-underline center"></aside>
-				<p class="subhead"><?php //the_field('intro_subhead',$term); ?></p>
+				<p class="subhead"><?php the_field('intro_subhead',$term); ?></p>
 			</div>
 		</div>
 	</div>
@@ -22,11 +24,11 @@
 						$doc_query = new WP_Query( $doc_args );
 						if ( $doc_query->have_posts() ) : while ( $doc_query->have_posts() ) : $doc_query->the_post(); 
 							?>
-							<div class="medium-6 large-3 cell module auto-height">
+							<div class="medium-6 large-4 cell module auto-height">
 								<a href="<?php echo get_permalink(); ?>"><div class="module-bg" style="background-image:url(<?php the_post_thumbnail_url(); ?>)"></div></a>
 								<div class="meta">
 									<a href="<?php echo get_permalink(); ?>"><h4 class="blue"><?php the_title() ;?></h4></a>
-									<?php the_excerpt() ;?>
+									<p><?php echo wp_trim_words(get_the_excerpt(),20,'[..]'); ?></p>
 								</div>
 							</div>
 						<?php endwhile; else: ?> 

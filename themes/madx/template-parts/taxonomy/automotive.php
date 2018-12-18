@@ -78,15 +78,17 @@
 										<h4 class="blue"><?php the_title(); ?></h4>
 										<div class="content"><?php the_content(); ?></div>
 										<?php if (get_field('pdf_link')) { ?>
+
 											<div class="grid-x grid-margin-y subhead">
 												<div class="medium-2 large-1 cell text-center">
 													<i class="fal fa-file-pdf"></i>
 												</div>
 												<div class="medium-10 cell">
 													<a href="<?php the_field('pdf_link'); ?>" target="_blank">Product Brochure</a>
-													<p>Click to download brochure</p>
+													<p>Click to download</p>
 												</div>
 											</div>
+
 										<?php } ?>
 									</div>
 								</div>

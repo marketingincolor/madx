@@ -43,12 +43,21 @@ export default{
 							    						<h4 class="blue" v-html="autoSinglePost[0].title.rendered"></h4>
 							    						<p class="content" v-html="autoSinglePost[0].content.rendered"></p>
 							    						<div class="grid-x grid-margin-y" v-if="autoSinglePost[0].acf.pdf_link" style="margin-bottom:20px">
-							    							<div class="large-1 medium-2 cell text-center">
+							    							<div class="large-1 small-2 cell text-center">
 							    								<i class="fal fa-file-pdf blue" style="font-size: 2.875rem"></i>
 							    							</div>
-							    							<div class="medium-10 cell">
+							    							<div class="small-10 cell">
 							    								<a :href="autoSinglePost[0].acf.pdf_link" target="_blank">Product Brochure</a>
-							    								<p>Click to download brochure</p>
+							    								<p>Click to download</p>
+							    							</div>
+							    						</div>
+							    						<div class="grid-x grid-margin-y" v-if="autoSinglePost[0].acf.spec_sheet" style="margin-bottom:20px">
+							    							<div class="large-1 small-2 cell text-center">
+							    								<i class="fal fa-file-pdf blue" style="font-size: 2.875rem"></i>
+							    							</div>
+							    							<div class="small-10 cell">
+							    								<a :href="autoSinglePost[0].acf.spec_sheet" target="_blank">Solar Performance Specifications</a>
+							    								<p>Click to download</p>
 							    							</div>
 							    						</div>
 							    						<a class="btn-lt-blue border" @click="scrollToProducts(false)"><i class="fas fa-arrow-alt-left"></i> &nbsp;Back</a>

@@ -105,6 +105,7 @@ button{
 		transition: all .25s ease-in-out;
 	}
 }
+
 .btn-blue{
 	padding: 1rem 2rem;
 	text-transform: uppercase;
@@ -395,6 +396,10 @@ section.warranty{
 
 	h2 {
 		font-size:3rem;
+
+		@include breakpoint(small down){
+			font-size: 2rem;
+		}
 	}
 	
 	p{

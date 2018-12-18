@@ -29,9 +29,11 @@ get_header(); ?>
 						<div class="small-12 cell">
 							<div class="grid-x grid-margin-x grid-margin-y">
 								<div class="small-12 cell show-for-large">
+									<h2 class="text-center subhead" style="">Madico Window Film Blog Articles</h2>
 									<?php foundationpress_blog_nav(); ?>
 								</div>
 								<div class="small-12 cell hide-for-large">
+									<h2 class="text-center subhead" style="">Madico Window Film Blog Articles</h2>
 									<select name="" id="cat-select" onchange="location.href = this.value">
 										
 									<?php
@@ -55,7 +57,7 @@ get_header(); ?>
 							$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 							$args = array(
 								'post_type'        => 'post',
-								'category__not_in' => array(9,345,80),
+								'category__not_in' => array(9,345,80,85),
 							  'posts_per_page'   => 9,
 							  'paged'            => $paged
 							);

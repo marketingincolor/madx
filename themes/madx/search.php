@@ -45,16 +45,16 @@ if ($_GET['post_type'] === 'madicou') {
 						  			} ?>
 
 									<div class="medium-6 large-4 cell module auto-height">
-										<div class="image-link" data-videotitle="Title of Video">
-										  <a href="<?php echo $post_link; ?>" <?php if (has_post_format('video')) {echo 'data-open="video-modal"';} ?> class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><div class="module-bg small" style="background-image: url(<?php the_post_thumbnail_url(); ?>);"></div></a>
+										<div class="image-link" data-videotitle="<?php the_title(); ?>">
+										  <a href="<?php echo $post_link; ?>" <?php if (has_post_format('video')) {echo 'data-open="video-modal"';} ?> class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php ?>"><div class="module-bg small" style="background-image: url(<?php the_post_thumbnail_url(); ?>);"></div></a>
 										</div>
 										<div class="meta">
-											<a href="<?php echo $post_link; ?>" <?php if (has_post_format('video')) {echo 'data-open="video-modal"';} ?> class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><h4 class="blue"><?php the_title(); ?></h4></a>
-											<?php the_content(); ?>
+											<a href="<?php echo $post_link; ?>" <?php if (has_post_format('video')) {echo 'data-open="video-modal"';} ?> class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php ?>"><h4 class="blue"><?php the_title(); ?></h4></a>
+											<p style="margin-bottom:20px"><?php echo wp_trim_words(get_the_content(),20,'...'); ?></p>
 												<?php if(has_post_format('video')) { ?>
 													<p><i class="fal fa-clock"></i> &nbsp;<?php echo $video_meta; ?></p>
 												<?php }else{ ?>
-												  <a href="<?php echo $post_link; ?>" class="blue read-more"><?php _e( 'Learn More', 'madx' ); ?> &nbsp;<i class="fal fa-long-arrow-right"></i></a>
+												  <a href="<?php echo $post_link; ?>" class="blue read-more"><?php _e( 'Read More', 'madx' ); ?> &nbsp;<i class="fal fa-long-arrow-right"></i></a>
 											  <?php } ?>
 										</div>
 									</div>
