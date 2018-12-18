@@ -88,7 +88,7 @@ export default {
 				// and set activeIndex to null : else set newly clicked
 				// FAQ to active
 				if (this.activeIndex == index) {
-					this.activeIndex = null
+					this.activeIndex = null;
 				}else{
 				  this.activeIndex = index;
 				}
@@ -97,14 +97,18 @@ export default {
 				let $this = this;
 				if (this.taxonomyName.toLowerCase() == 'all'){
 
-					axios
-					  .get(apiRoot + $this.postType + '?search=' + $this.searchText)
-					  .then(function (response) {
-					    $this.searchPosts = response.data;
-					    $this.faqPosts = [];
-					  }
-					)
-
+					if (this.searchText === '') {
+						this.getAllFAQs();
+					}else{
+						axios
+						  .get(apiRoot + $this.postType + '?search=' + $this.searchText)
+						  .then(function (response) {
+						    $this.searchPosts = response.data;
+						    $this.faqPosts = [];
+						  }
+						)
+					}
+					
 				}else{
 
 					axios

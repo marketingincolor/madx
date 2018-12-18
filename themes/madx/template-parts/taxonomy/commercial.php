@@ -65,7 +65,7 @@ if ($term->slug == 'case-studies' || $term->slug == 'safety-security') {
 
 	<?php if ($term->slug == 'decorative') { ?>
 		<section class="deco-example" style="padding:0">
-			<?php $deco_image = get_field('decorative_image1',$term); ?>
+			<?php $deco_image = get_field('decorative_image2',$term); ?>
 			<img src="<?php echo $deco_image['url']; ?>" alt="<?php echo $deco_image['alt']; ?>" style="width:100%">
 		</section>
 	<?php } ?>

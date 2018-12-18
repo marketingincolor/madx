@@ -83,7 +83,7 @@ function short_sharp_jot($atts, $content = null){
         scr.parentNode.insertBefore(ss, scr);
     })();
     window.onload = function(){
-	    __ss_noform.push(['baseURI', 'https://app-3QN6SVTYI8.marketingautomation.services/webforms/receivePostback/MzawMDE1MbQwAgA/']);
+	    __ss_noform.push(['baseURI', 'https://app-3QN6SVTYI8.marketingautomation.services/webforms/receivePostback/MzawMDE3NjSzBAA/']);
 	    __ss_noform.push(['form', '$jot_id','$ss_id']);
 	    __ss_noform.push(['submitType', 'manual']);
     }; 
@@ -121,13 +121,13 @@ EOT;
 		<script>
 			setTimeout(function(){
 				$('#$jot_id').find('button[type=submit]').on('click',function(event){
-					__ss_noform.push(['submit',function(event){window.location = '/success'}, '$ss_id']);
+					__ss_noform.push(['submit',null, '$ss_id']);
 				});
 			},1000)
 		</script>
 		<script type="text/javascript">
 	    var __ss_noform = __ss_noform || [];
-	    __ss_noform.push(['baseURI', 'https://app-3QN6SVTYI8.marketingautomation.services/webforms/receivePostback/MzawMDE1MbQwAgA/']);
+	    __ss_noform.push(['baseURI', 'https://app-3QN6SVTYI8.marketingautomation.services/webforms/receivePostback/MzawMDE3NjSzBAA/']);
 	    __ss_noform.push(['form', '$jot_id','$ss_id']);
 	    __ss_noform.push(['submitType', 'manual']);
 		</script>

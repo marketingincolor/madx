@@ -89,7 +89,13 @@
 											<?php the_field('short_description'); ?>
 										</div>
 										<?php if(get_field('data_sheet')) { ?>
+
 										  <a href="#!" class="btn-yellow border absolute data-sheet" data-pdf="<?php the_field('data_sheet'); ?>"><?php _e( 'Data Sheet', 'madx' ); ?></a>
+
+									  <?php }else{ ?>
+
+									  	<a href="/specialty-solutions/contact" class="btn-yellow border absolute"><?php _e( 'Start A Project', 'madx' ); ?></a>
+
 									  <?php } ?>
 									</div>
 								</div>
@@ -130,7 +136,13 @@
 											<?php the_field('short_description'); ?>
 										</div>
 										<?php if(get_field('data_sheet')) { ?>
+
 										  <a href="#!" class="btn-yellow border absolute data-sheet" data-pdf="<?php the_field('data_sheet'); ?>"><?php _e( 'Data Sheet', 'madx' ); ?></a>
+
+									  <?php }else{ ?>
+
+									  	<a href="/specialty-solutions/contact" class="btn-yellow border absolute"><?php _e( 'Start Your Project', 'madx' ); ?></a>
+
 									  <?php } ?>
 									</div>
 								</div>

@@ -21,7 +21,7 @@ get_header(); ?>
 
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="medium-10 medium-offset-1 cell text-center">
+			<div class="small-10 small-offset-1 cell text-center">
 				<h1 class="blue"><?php the_field('commercial_hero_heading'); ?></h1>
 				<aside class="yellow-underline center"></aside>
 				<p class="subhead"><?php the_field('commercial_hero_subhead'); ?></p>
@@ -36,7 +36,7 @@ get_header(); ?>
 <section class="film-type">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="medium-8 large-6 medium-offset-2 large-offset-3 cell text-center">
+			<div class="small-10 small-offset-1 medium-8 medium-offset-2 large-6 large-offset-3 cell text-center">
 				<h3 class="blue"><?php the_field('safety_film_heading'); ?></h3>
 				<aside class="yellow-underline center"></aside>
 				<p class="subhead"><?php the_field('safety_film_subhead'); ?></p>

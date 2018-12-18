@@ -396,6 +396,10 @@ section.warranty{
 
 	h2 {
 		font-size:3rem;
+
+		@include breakpoint(small down){
+			font-size: 2rem;
+		}
 	}
 	
 	p{
