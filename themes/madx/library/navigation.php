@@ -29,17 +29,31 @@ register_nav_menus(
  *
  * @link http://codex.wordpress.org/Function_Reference/wp_nav_menu
  */
+// Add classes to each menu item <a> tag
+function add_specific_menu_location_atts( $atts, $item, $args ) {
+    // check if the item is in the primary menu
+    if( $args->theme_location == 'header-top-nav' ) {
+    	$url = $item->url;
+    	$menu_class = substr($url, 1);
+      // add the desired attributes:
+      $atts['class'] = 'header-menu-'.$menu_class;
+
+    }
+    return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'add_specific_menu_location_atts', 10, 3 );
+
 if ( ! function_exists( 'foundationpress_top_bar_r' ) ) {
 	function foundationpress_top_bar_r() {
 		wp_nav_menu(
 			array(
-				'container'      => false,
-				'menu_class'     => 'dropdown menu',
-				'items_wrap'     => '<ul id="%1$s" class="%2$s desktop-menu" data-dropdown-menu>%3$s</ul>',
-				'theme_location' => 'top-bar-r',
-				'depth'          => 3,
-				'fallback_cb'    => false,
-				'walker'         => new Foundationpress_Top_Bar_Walker(),
+				'container'       => false,
+				'menu_class'      => 'dropdown menu',
+				'items_wrap'      => '<ul id="%1$s" class="%2$s desktop-menu" data-dropdown-menu>%3$s</ul>',
+				'theme_location'  => 'top-bar-r',
+				'depth'           => 3,
+				'fallback_cb'     => false,
+				'walker'          => new Foundationpress_Top_Bar_Walker(),
 			)
 		);
 	}
