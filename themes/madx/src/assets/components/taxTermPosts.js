@@ -47,11 +47,11 @@ export default{
 									    <img src="/wp-content/themes/madx/dist/assets/images/loader.gif" alt="Loading Products" />
 									  </div>
 										<div class="medium-6 large-4 cell module auto-height animated fadeIn" v-for="post in taxPosts">
-											<a @click="scrollToProducts(true);getSinglePost(post.id)"><div class="module-bg" v-bind:style="{backgroundImage: 'url(' + post._embedded['wp:featuredmedia'][0].source_url + ')'}"></a>
+											<a @click="scrollToProducts(true);getSinglePost(post.id)" class="product-a-image"><div class="module-bg product-div-image" v-bind:style="{backgroundImage: 'url(' + post._embedded['wp:featuredmedia'][0].source_url + ')'}"></a>
 											<div class="meta">
-												<a @click="scrollToProducts(true);getSinglePost(post.id)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
+												<a @click="scrollToProducts(true);getSinglePost(post.id)" class="product-a-headline"><h4 class="blue product-h4-image" v-html="post.title.rendered"></h4></a>
 												<div class="content" v-html="$options.filters.limitWords(post.content.rendered,25)"></div>
-												<a @click="scrollToProducts(true);getSinglePost(post.id)" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
+												<a @click="scrollToProducts(true);getSinglePost(post.id)" class="read-more product-a-read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
 											</div>
 										</div>
 									</div>
