@@ -25,7 +25,7 @@ export default{
 													<p class="industry">{{ post.acf.case_study_industry_type }}</p>
 													<h3 class="blue" v-html="post.title.rendered"></h3>
 													<p class="excerpt" v-html="post.acf.case_study_excerpt"></p>
-													<a @click="getSinglePost(post.id)" class="btn-yellow border">{{ post.acf.case_study_cta_text }}</a>
+													<a @click="getSinglePost(post.id)" class="btn-yellow border" :class="'case-study-' + post.slug">{{ post.acf.case_study_cta_text }}</a>
 												</article>
 											</div>
 										</div>

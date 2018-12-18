@@ -31,15 +31,24 @@ register_nav_menus(
  */
 // Add classes to each menu item <a> tag
 function add_specific_menu_location_atts( $atts, $item, $args ) {
-    // check if the item is in the primary menu
-    if( $args->theme_location == 'header-top-nav' ) {
-    	$url = $item->url;
-    	$menu_class = substr($url, 1);
-      // add the desired attributes:
-      $atts['class'] = 'header-menu-'.$menu_class;
-
-    }
-    return $atts;
+	// get the relative slug
+	$url = $item->url;
+	// get the title
+	$title = $item->title;
+	// lowercase title and join with hyphen
+	$title_lowercase = strtolower($title);
+	$title_split = explode(' ', $title_lowercase);
+	$title_joined = implode('-', $title_split);
+	// remove the '/' from the beginning
+	$menu_class = substr($url, 1);
+  // check if the item is in the header-top-nav
+  if( $args->theme_location == 'header-top-nav' ) {
+    // add the desired class to the <a> tag:
+    $atts['class'] = 'header-menu-'.$menu_class;
+  }else{
+  	$atts['class'] = 'sub-menu-'.$title_joined;
+  }
+  return $atts;
 }
 add_filter( 'nav_menu_link_attributes', 'add_specific_menu_location_atts', 10, 3 );
 
