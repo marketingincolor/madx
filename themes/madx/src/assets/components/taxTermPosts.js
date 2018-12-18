@@ -7,7 +7,7 @@ export default{
 	    taxPosts: [],
 	    taxonomy: '',
 	    postType: '',
-	    taxParentSlug: '',
+	    taxParentSlug: 'solar',
 	    taxChildSlug: '',
 	    taxParentId: 0,
 	    activeItem: 'All',
@@ -109,56 +109,7 @@ export default{
 				this.postType = 'residential';
 			}else if(currentURL.includes('commercial')){
 				this.postType = 'commercial';
-			}else if (currentURL.includes('automotive')) {
-				this.postType = 'automotive';
-			}else if (currentURL.includes('safety-security')) {
-				this.postType = 'safety';
-			}else if (currentURL.includes('specialty-solutions')) {
-				this.postType = 'specialty';
 			}
-			this.getTaxParent(location.href);
-		},
-		getTaxParent: function(currentURL){
-			switch (this.postType) {
-				case 'residential':
-					if (currentURL.includes('solar')) {
-						this.taxParentSlug = 'solar';
-					}else if(currentURL.includes('decorative')){
-						this.taxParentSlug = 'decorative';
-					}else if (currentURL.includes('safety-security')) {
-						this.taxParentSlug = 'safety-security';
-					}
-					break;
-
-					case 'commercial':
-						if (currentURL.includes('solar')) {
-							this.taxParentSlug = 'solar';
-						}else if(currentURL.includes('decorative')){
-							this.taxParentSlug = 'decorative';
-						}else if (currentURL.includes('safety-security')) {
-							this.taxParentSlug = 'safety-security';
-						}
-						break;
-
-					case 'automotive':
-						if (currentURL.includes('solar')) {
-							this.taxParentSlug = 'solar';
-						}else if(currentURL.includes('decorative')){
-							this.taxParentSlug = 'decorative';
-						}else if (currentURL.includes('safety-security')) {
-							this.taxParentSlug = 'safety-security';
-						}
-						break;
-
-					case 'safety':
-						this.taxParentSlug = 'products';
-						break;
-
-					case 'specialty':
-						this.taxParentSlug = 'products';
-						break;
-			}
-
 			this.getTaxParentId();
 		},
 		getTaxParentId: function(){
@@ -195,9 +146,9 @@ export default{
 			axios
 			  .get(apiRoot + $this.postType + '?_embed&per_page=99&filter['+ $this.postType +'_taxonomies]=solar')
 			  .then(function (response) {
-			  	$this.loading = false;
-			    $this.taxPosts = response.data;
-			    $this.activeItem = "All";
+			  	$this.loading          = false;
+			    $this.taxPosts         = response.data;
+			    $this.activeItem       = "All";
 			    $this.singlePostActive = false;
 			  }
 			)
@@ -209,9 +160,9 @@ export default{
 			axios
 			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
 			  .then(function (response) {
-			  	$this.loading = false;
-			    $this.taxPosts = response.data;
-			    $this.activeItem = event.target.innerHTML;
+			  	$this.loading          = false;
+			    $this.taxPosts         = response.data;
+			    $this.activeItem       = event.target.innerHTML;
 			    $this.singlePostActive = false;
 			  }
 			)

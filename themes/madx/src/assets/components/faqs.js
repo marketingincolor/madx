@@ -113,11 +113,9 @@ export default {
 
 					axios
 					  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + $this.taxonomyName.toLowerCase() + '&search=' + $this.searchText)
-					  // .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]')
 					  .then(function (response) {
 					    $this.searchPosts = response.data;
 					    $this.faqPosts = [];
-					    console.log(response.data)
 					  }
 					)
 				}
