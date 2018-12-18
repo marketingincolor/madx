@@ -15,7 +15,7 @@
 								array(
 									'taxonomy' => 'madicou_taxonomies',
 									'field'    => 'slug',
-									'terms'    => 'employee',
+									'terms'    => 'employee-relations',
 								),
 							),
 						);

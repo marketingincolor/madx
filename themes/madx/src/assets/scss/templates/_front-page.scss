@@ -48,15 +48,13 @@
 
 	.hero{
 		padding-bottom: 60px;
-		height: 65vh;
-
-		@include breakpoint(large){
-			max-height: 500px;
-		}
+		min-height: 500px;
+		max-height: 550px;
 
 		@include breakpoint(medium only){
 			height: 75vh;
 			padding: 7% 0;
+			max-height: 600px;
 		}
 
 		@include breakpoint(small only){

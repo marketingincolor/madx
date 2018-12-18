@@ -15,6 +15,7 @@ export default{
 	    singlePostActive: false,
 	    benefits: [],
 	    pdfLink: '',
+	    specSheet: '',
 	    loading: false,
 	    showAllCat: false
 		}
@@ -38,7 +39,7 @@ export default{
 							    </div>
 								</div>
 								<div id="breadcrumbs" class="small-10 small-offset-1 large-12 large-offset-0 cell breadcrumbs" v-if="!singlePostActive && showAllCat">
-									<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <a @click="scrollToProducts(false)"><span v-html="activeItem"></span></a><span v-html="activeItem"></span></a></h5>
+									<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <a @click="scrollToProducts(false)"><span v-html="activeItem"></span></a></h5>
 								</div>
 								<div class="small-10 small-offset-1 large-12 large-offset-0 cell" id="all-posts" v-if="!singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
@@ -69,12 +70,21 @@ export default{
 															<h4 class="blue" v-html="singlePost.title.rendered"></h4>
 															<p class="content" v-html="singlePost.content.rendered"></p>
 															<div class="grid-x grid-margin-y" v-if="pdfLink">
-																<div class="large-1 medium-2 cell text-center">
+																<div class="large-1 small-2 cell text-center">
 																	<i class="fal fa-file-pdf"></i>
 																</div>
-																<div class="medium-10 cell">
+																<div class="small-10 cell">
 																	<a :href="pdfLink" target="_blank">Product Brochure</a>
-																	<p>Click to download brochure</p>
+																	<p>Click to download</p>
+																</div>
+															</div>
+															<div class="grid-x grid-margin-y" v-if="specSheet">
+																<div class="large-1 small-2 cell text-center">
+																	<i class="fal fa-file-pdf"></i>
+																</div>
+																<div class="small-10 cell">
+																	<a :href="specSheet" target="_blank">Solar Performance Specifications</a>
+																	<p>Click to download</p>
 																</div>
 															</div>
 														</div>
@@ -171,7 +181,7 @@ export default{
 			let $this = this;
 
 			axios
-			  .get(apiRoot + $this.postType + '-categories?parent=' + $this.taxParentId)
+			  .get(apiRoot + $this.postType + '-categories?parent=' + $this.taxParentId + '&hide_empty=true')
 			  .then(function (response) {
 			    $this.taxonomies = response.data;
 			    $this.showAllCat = true;
@@ -235,6 +245,7 @@ export default{
 	      $this.singlePost       = postRes.data;
 	      $this.benefits         = acfRes.data.acf.film_benefits;
 	      $this.pdfLink          = acfRes.data.acf.pdf_link;
+	      $this.specSheet        = acfRes.data.acf.spec_sheet;
 	      $this.singlePostActive = true;
 	    }));
 		},

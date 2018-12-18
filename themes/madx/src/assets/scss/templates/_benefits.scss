@@ -16,5 +16,45 @@
 
 	.benefits-energy{
 		padding: 10% 0;
+
+		@include breakpoint(small down){
+			background: $white!important;
+		}
+
+		h2{
+
+			@include breakpoint(small down){
+				margin-top: 10%;
+			}
+		}
+	}
+
+	.benefits-fade{
+
+		@include breakpoint(small down){
+			background: #212121!important;
+			padding-top: 0;
+		}
+
+		h2{
+
+			@include breakpoint(small down){
+				margin-top: 10%;
+			}
+		}
+	}
+
+	.benefits-safety{
+
+		@include breakpoint(small down){
+			background: $white!important;
+		}
+
+		h2{
+
+			@include breakpoint(small down){
+				margin-top: 10%;
+			}
+		}
 	}
 }

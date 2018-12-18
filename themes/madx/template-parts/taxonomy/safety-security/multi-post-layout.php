@@ -10,17 +10,29 @@
 
 						<?php if (get_field('pdf_link')) { ?>
 
-							<div class="grid-x grid-margin-y subhead">
-								<div class="medium-2 large-1 cell text-center">
-									<i class="fal fa-file-pdf"></i>
+							<div class="grid-x grid-margin-y grid-margin-x" style="margin-bottom: 20px">
+								<div class="small-2 cell text-center">
+									<i class="fal fa-file-pdf blue" style="font-size: 2.5rem"></i>
 								</div>
-								<div class="medium-10 cell">
+								<div class="small-10 cell">
 									<a href="<?php the_field('pdf_link'); ?>" target="_blank"><?php _e( 'Product Brochure', 'madx' ); ?></a>
-									<p><?php _e( 'Click to download brochure', 'madx' ); ?></p>
+									<p><?php _e( 'Click to download', 'madx' ); ?></p>
 								</div>
 							</div>
 
-						<?php } ?>
+						<?php }if (get_field('spec_sheet')) { ?>
+
+							<div class="grid-x grid-margin-y grid-margin-x" style="margin-bottom: 20px">
+								<div class="small-2 cell text-center">
+									<i class="fal fa-file-pdf blue" style="font-size: 2.5rem"></i>
+								</div>
+								<div class="small-10 cell">
+									<a href="<?php the_field('spec_sheet'); ?>" target="_blank"><?php _e( 'Solar Performance Specifications', 'madx' ); ?></a>
+									<p><?php _e( 'Click to download', 'madx' ); ?></p>
+								</div>
+							</div>
+
+							<?php } ?>
 
 					</div>
 				</div>

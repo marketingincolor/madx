@@ -9,22 +9,24 @@
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-		<!-- SS -->
-		<script type="text/javascript">
-		    var _ss = _ss || [];
-		    _ss.push(['_setDomain', 'https://koi-3QN6SVTYI8.marketingautomation.services/net']);
-		    _ss.push(['_setAccount', 'KOI-42GDPGWMYW']);
-		    _ss.push(['_trackPageView']);
-		(function() {
-		    var ss = document.createElement('script');
-		    ss.type = 'text/javascript'; ss.async = true;
-		    ss.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'koi-3QN6SVTYI8.marketingautomation.services/client/ss.js?ver=1.1.1';
-		    var scr = document.getElementsByTagName('script')[0];
-		    scr.parentNode.insertBefore(ss, scr);
-		})();
-		</script>
-		<!-- SS -->
+		<?php $url = $_SERVER['REQUEST_URI']; ?>
+		<?php if (strpos($url, 'specialty-solutions/products') === false) { ?>
+			<!-- SS -->
+			<script type="text/javascript">
+			    var _ss = _ss || [];
+			    _ss.push(['_setDomain', 'https://koi-3QN6SVTYI8.marketingautomation.services/net']);
+			    _ss.push(['_setAccount', 'KOI-42GDPGWMYW']);
+			    _ss.push(['_trackPageView']);
+			(function() {
+			    var ss = document.createElement('script');
+			    ss.type = 'text/javascript'; ss.async = true;
+			    ss.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'koi-3QN6SVTYI8.marketingautomation.services/client/ss.js?ver=1.1.1';
+			    var scr = document.getElementsByTagName('script')[0];
+			    scr.parentNode.insertBefore(ss, scr);
+			})();
+			</script>
+			<!-- SS -->
+	  <?php } ?>
 		
 		<?php wp_head(); ?>
 	</head>
@@ -75,7 +77,7 @@
 			<div class="top-bar-right">
 				<ul class="menu">
 					<li><a href="/madicou"><i class="icon-madico-u-icon"></i>&nbsp; <?php _e( 'Madico U', 'madx' ); ?></a></li>
-					<li><a href="https://madicodealers.com"><i class="fas fa-id-badge"></i>&nbsp; <?php _e( 'Dealer Portal', 'madx' ); ?></a></li>
+					<li><a href="/dealer-portal"><i class="fas fa-id-badge"></i>&nbsp; <?php _e( 'Dealer Portal', 'madx' ); ?></a></li>
 		      <li>
 		        <a data-toggle="search-dropdown"><i class="fas fa-search"></i>&nbsp; <?php _e( 'Search', 'madx' ); ?></a>
 		        <ul class="menu vertical">

@@ -77,10 +77,10 @@ get_header('madicou'); ?>
 					<?php
 						$post_slug = $post->post_name;
 						$article_args = array( 
-							'posts_per_page'=> 2,
-							'post_type' => 'post',
-							'cat_name' => strtolower($post_slug)
-							// 'madicou-types' => 'article'
+							'posts_per_page'     => 2,
+							'post_type'          => 'madicou',
+							'madicou_taxonomies' => $post_slug,
+							'madicou-types'      => 'article'
 						);
 						$article_query = new WP_Query( $article_args );
 					?>
@@ -102,10 +102,10 @@ get_header('madicou'); ?>
 					<?php
 						$post_slug = $post->post_name;
 						$doc_args = array( 
-							'posts_per_page'=> 3,
-							'post_type' => 'madicou',
-							'cat_name' => strtolower($post_slug),
-							'madicou-types' => 'document'
+							'posts_per_page'     => 3,
+							'post_type'          => 'madicou',
+							'madicou_taxonomies' => $post_slug,
+							'madicou-types'      => 'document'
 						);
 						$doc_query = new WP_Query( $doc_args );
 					?>

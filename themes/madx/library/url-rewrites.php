@@ -138,3 +138,23 @@
 	{
 	    return $GLOBALS['wpse16902_page_rewrite_rules'] + $rewrite_rules;
 	}
+
+	add_filter('wpml_is_redirected', 'ret_fls');
+	function ret_fls($q){
+	    if(strpos($q, 'commercial')){
+	        return false;
+	    }
+	};
+	/**
+	* This will prevent redirection in the secondary language for the custom rule:
+	* '^products/([A-Za-z0-9-]+)/?' => 'index.php?pagename=new-sample&type=$matches[1]'
+	*/
+	function wpmlcore_4704_block_redirect( $redirect, $post_id, $q ) {
+	// Decide on which condition we should prevent the redirection
+	if ( isset( $q->query_vars['pagename'] ) && 'sample-page' === $q->query_vars['pagename'] ) {
+	return false;
+	}
+	 
+	return $redirect;
+	}
+	add_filter( 'wpml_is_redirected', 'wpmlcore_4704_block_redirect', 10, 3 );
