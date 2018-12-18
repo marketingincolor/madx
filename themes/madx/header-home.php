@@ -78,13 +78,13 @@
 			</div>
 			<div class="top-bar-right">
 				<ul class="menu">
-					<ul class="dropdown menu" data-closing-time="0" v-dropdown>
+					<!-- <ul class="dropdown menu" data-closing-time="0" v-dropdown>
 			      <li>
-			        <?php icl_post_languages(); ?>
+			        <?php //icl_post_languages(); ?>
 			      </li>
-			    </ul>
+			    </ul> -->
 			    <li><a href="/madicou"><i class="icon-madico-u-icon"></i>&nbsp; <?php _e( 'Madico U', 'madx' ); ?></a></li>
-					<li><a href="https://madicodealers.com"><i class="fas fa-id-badge"></i>&nbsp; <?php _e( 'Dealer Portal', 'madx' ); ?></a></li>
+					<li><a href="/dealer-portal"><i class="fas fa-id-badge"></i>&nbsp; <?php _e( 'Dealer Portal', 'madx' ); ?></a></li>
 		      <li>
 		        <a data-toggle="search-dropdown"><i class="fas fa-search"></i>&nbsp; <?php _e( 'Search', 'madx' ); ?></a>
 		        <ul class="menu vertical">

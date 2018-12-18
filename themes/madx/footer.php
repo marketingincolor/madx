@@ -49,11 +49,11 @@
           <div class="small-6 medium-4 large-2 cell">
             <ul>
               <li class="heading"><h6 class="blue">Dealers</h6></li>
-              <li><a href="https://madicodealers.com">Dealer Portal</a></li>
-              <li><a href="#!">Become a Dealer</a></li>
-              <li><a href="#!">Products</a></li>
+              <li><a href="/dealer-portal">Dealer Portal</a></li>
+              <li><a href="/dealer-portal">Become a Dealer</a></li>
+              <li><a href="/dealer-portal">Products</a></li>
               <li><a href="/madicou">Madico U</a></li>
-              <li><a href="#!">Dealer Programs</a></li>
+              <li><a href="/dealer-portal">Dealer Programs</a></li>
               <li><a href="/distribution">Distribution</a></li>
             </ul>
           </div>

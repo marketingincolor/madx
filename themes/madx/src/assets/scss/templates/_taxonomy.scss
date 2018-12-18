@@ -35,6 +35,10 @@
 		border-top-left-radius: 5px;
 		border-top-right-radius: 5px;
 
+		@include breakpoint(small only){
+			width: 50%;
+		}
+
 		a{
 			font-family: 'AvenirLTStd-Black';
 			color: $white;
