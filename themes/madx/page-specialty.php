@@ -25,7 +25,7 @@ get_header(); ?>
 				<h1 class="blue"><?php the_field('commercial_hero_heading'); ?></h1>
 				<aside class="yellow-underline center"></aside>
 				<p class="subhead"><?php the_field('commercial_hero_subhead'); ?></p>
-				<a href="<?php the_field('commercial_hero_button_link'); ?>" class="btn-yellow solid"><?php the_field('commercial_hero_button_text'); ?></a>
+				<a href="<?php the_field('commercial_hero_button_link'); ?>" class="btn-yellow solid specialty-solutions-hero-cta"><?php the_field('commercial_hero_button_text'); ?></a>
 			</div>
 		</div>
 	</div>

@@ -19,9 +19,9 @@ export default{
 								<div class="small-10 small-offset-1 large-12 large-offset-0 cell" v-if="!singlePostActive" id="all-posts">
 									<div class="grid-x grid-margin-x grid-margin-y">
 										<div class="large-4 medium-6 cell module auto-height animated fadeIn" v-for="post in taxPosts">
-											<a @click="getSinglePost(post.id)"><div class="module-bg" v-bind:style="{backgroundImage: 'url(' + post._embedded['wp:featuredmedia'][0].source_url + ')'}"></div></a>
+											<a @click="getSinglePost(post.id)"><div class="module-bg" :class="post.slug + '-product-image'" v-bind:style="{backgroundImage: 'url(' + post._embedded['wp:featuredmedia'][0].source_url + ')'}"></div></a>
 											<div class="meta">
-												<a @click="getSinglePost(post.id)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
+												<a @click="getSinglePost(post.id)"><h4 class="blue" :class="post.slug + '-product-heading'" v-html="post.title.rendered"></h4></a>
 												<div class="content">{{ post.acf.specialty_short_description }}</div>
 											</div>
 										</div>

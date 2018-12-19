@@ -142,7 +142,7 @@ export default{
 								<p>The following recommendations are meant to show a variety of solutions that may meet your needs. Please consult an authorized Madio film dealer to discuss your individual window film needs and to determine the most appropriate window film for your residence.</p>
 							</div>
 							<div class="large-5 cell btn-container">
-								<p><a @click="getFilms" class="btn-yellow solid">View Results &nbsp;&nbsp;<i class="fas fa-caret-down"></i></a></p>
+								<p><a @click="getFilms" class="btn-yellow solid view-results">View Results &nbsp;&nbsp;<i class="fas fa-caret-down"></i></a></p>
 							</div>
 						</div>
 					</div>
@@ -176,14 +176,14 @@ export default{
 					<div class="grid-x grid-margin-x">
 						<div class="medium-12 cell premium-post" v-for="post in premiumPostData" v-if="premiumPostData.length > 0">
 						  <h4 class="blue best-match">Best Match</h4>
-							<i class="fas fa-star yellow"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered"></a>
+							<i class="fas fa-star yellow"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered" :class="'best-match-' + post.slug"></a>
 							<p v-html="post.film_description"></p>
 						</div>
 						<div class="medium-12 cell" v-if="postData.length > 0">
  							<h4 class="other-headline">Other Products to Consider</h4>
 						</div>
 						<div class="medium-12 cell other-posts" v-for="(post,index) in postData" v-if="postData.length > 0">
-							<i class="fas fa-check"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered"></a>
+							<i class="fas fa-check"></i>&nbsp;&nbsp;&nbsp;<a href="#!" @click.stop="dialog = true;setModalContent(post.id)" v-html="post.title.rendered" :class="'other-' + post.slug"></a>
 							<p v-html="post.film_description"></p>
 						</div>
 						<div class="medium-12 cell text-center no-print" style="margin-top:30px;margin-bottom:30px">

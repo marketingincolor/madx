@@ -71,25 +71,46 @@ function short_sharp_jot($atts, $content = null){
 	      });
       }
     };
+    var callThisAgain = function(resp) {
+    	console.log('called it again');
+			console.log(resp);
+      if(location.href.indexOf('specialty-solutions/products') > -1){
+	      $('.data-sheet').on('click',function(){
+	      	var that = $(this);
+		      if (resp && resp.contact) {
+		      	$('#specialty-pdf-modal').find('iframe').attr('src',$(this).data('pdf'))
+		      	$('#specialty-pdf-modal').foundation('open');
+		      } else{
+						$('#specialty-form-modal').foundation('open');
+						var pdfLink = $(this).data('pdf').split('.com')[1];
+						$('#input_6').val(pdfLink);
+						$('#$jot_id').find('button[type=submit]').on('click',function(event){
+							event.preventDefault();
+							submitForm(pdfLink);
+						});
+		      }
+	      });
+      }
+    };
     _ss.push(['_setResponseCallback', callThisOnReturn]);
-    _ss.push(['_setDomain', 'https://koi-3QN6SVTYI8.marketingautomation.services/net']);
-    _ss.push(['_setAccount', 'KOI-42GDPGWMYW']);
+    _ss.push(['_setDomain', 'https://koi-3QNHJKLJ4E.marketingautomation.services/net']);
+    _ss.push(['_setAccount', 'KOI-42O9KA253C']);
 		_ss.push(['_trackPageView']);
     (function() {
         var ss = document.createElement('script');
         ss.type = 'text/javascript'; ss.async = true;
-        ss.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'koi-3QN6SVTYI8.marketingautomation.services/client/ss.js?ver=1.1.1';
+        ss.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'koi-3QNHJKLJ4E.marketingautomation.services/client/ss.js?ver=1.1.1';
         var scr = document.getElementsByTagName('script')[0];
         scr.parentNode.insertBefore(ss, scr);
     })();
     window.onload = function(){
-	    __ss_noform.push(['baseURI', 'https://app-3QN6SVTYI8.marketingautomation.services/webforms/receivePostback/MzawMDE3NjSzBAA/']);
+	    __ss_noform.push(['baseURI', 'https://app-3QNHJKLJ4E.marketingautomation.services/webforms/receivePostback/MzawMDE3NjSzBAA/']);
 	    __ss_noform.push(['form', '$jot_id','$ss_id']);
 	    __ss_noform.push(['submitType', 'manual']);
     }; 
     
 	</script>
-	<script type="text/javascript" src="https://koi-3QN6SVTYI8.marketingautomation.services/client/noform.js?ver=1.24"></script>
+	<script type="text/javascript" src="https://koi-3QNHJKLJ4E.marketingautomation.services/client/noform.js?ver=1.24"></script>
 	<script>
 
 		function submitForm(pdfLink){
@@ -101,6 +122,9 @@ function short_sharp_jot($atts, $content = null){
 				  		$('#specialty-form-modal').foundation('close');
 							$('#specialty-pdf-modal').find('iframe').attr('src',pdfLink)
 							$('#specialty-pdf-modal').foundation('open');
+							setTimeout(function(){
+								callThisOnReturn();
+							},10000);
 				  	}
 						__ss_noform.push(['submit',null, '$ss_id']);
 						goToPdf();
@@ -127,11 +151,11 @@ EOT;
 		</script>
 		<script type="text/javascript">
 	    var __ss_noform = __ss_noform || [];
-	    __ss_noform.push(['baseURI', 'https://app-3QN6SVTYI8.marketingautomation.services/webforms/receivePostback/MzawMDE3NjSzBAA/']);
+	    __ss_noform.push(['baseURI', 'https://app-3QNHJKLJ4E.marketingautomation.services/webforms/receivePostback/MzawMDE3NjSzBAA/']);
 	    __ss_noform.push(['form', '$jot_id','$ss_id']);
 	    __ss_noform.push(['submitType', 'manual']);
 		</script>
-		<script type="text/javascript" src="https://koi-3QN6SVTYI8.marketingautomation.services/client/noform.js?ver=1.24"></script>
+		<script type="text/javascript" src="https://koi-3QNHJKLJ4E.marketingautomation.services/client/noform.js?ver=1.24"></script>
 EOT;
 
 	$form_output = $page_html . $page_ss;

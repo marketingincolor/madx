@@ -19,7 +19,7 @@
               <li><a href="/faqs">FAQs</a></li>
               <li><a href="/about/procurement">Procurement</a></li>
               <li><a href="/about/quality-environment-and-contingency">Quality, Environment & Contingency</a></li>
-              <li><a href="/contact">Contact Us</a></li>
+              <li><a href="/contact" class="footer-menu-contact-us">Contact Us</a></li>
             </ul>
           </div>
           <div class="small-6 medium-4 large-2 cell">
@@ -42,17 +42,17 @@
               <li><a href="/specialty-solutions/products">Products</a></li>
               <li><a href="/specialty-solutions/capabilities">Capabilities</a></li>
               <!-- <li><a href="/specialty-solutions/case-studies">Case Studies</a></li> -->
-              <li><a href="/specialty-solutions/contact">Contact</a></li>
+              <li><a href="/specialty-solutions/contact" class="footer-menu-specialty-contact">Contact</a></li>
               <li><a href="/specialty-solutions/warranty">Warranty</a></li>
             </ul>
           </div>
           <div class="small-6 medium-4 large-2 cell">
             <ul>
               <li class="heading"><h6 class="blue">Dealers</h6></li>
-              <li><a href="/dealer-portal">Dealer Portal</a></li>
+              <li><a href="/dealer-portal" class="footer-menu-dealer-portal">Dealer Portal</a></li>
               <li><a href="/dealer-portal">Become a Dealer</a></li>
               <li><a href="/dealer-portal">Products</a></li>
-              <li><a href="/madicou">Madico U</a></li>
+              <li><a href="/madicou" class="footer-menu-madicou">Madico U</a></li>
               <li><a href="/dealer-portal">Dealer Programs</a></li>
               <li><a href="/distribution">Distribution</a></li>
             </ul>

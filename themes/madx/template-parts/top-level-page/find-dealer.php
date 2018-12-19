@@ -41,6 +41,12 @@
 		$the_page = get_page_by_path($path_path);
 		$page_id  = $the_page->ID;
 	}
+
+	$current_url = $_SERVER['REQUEST_URI'];
+	if (stripos($current_url, 'commercial/safety-security') || stripos($current_url, 'residential/safety-security')) {
+	  $page = get_page_by_title('Safety and Security');
+		$page_id = $page->ID;
+	}
 	
  ?>
 
