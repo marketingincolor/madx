@@ -3,7 +3,7 @@
 		<div class="title-bar-left">
 			<button aria-label="<?php _e( 'Main Menu', 'foundationpress' ); ?>" class="menu-icon" type="button" data-toggle="<?php foundationpress_mobile_menu_id(); ?>"></button>
 			<span class="site-mobile-title title-bar-title">
-				<a href="/about" rel="home"><?php bloginfo( 'template_directory' ); ?></a>
+				<a href="/about" rel="home" class="menu-section-home-image"><?php bloginfo( 'template_directory' ); ?></a>
 			</span>
 		</div>
 	</div>
@@ -14,11 +14,11 @@
 				<a href="/about" rel="home">
 					<?php if(is_page_template('page-madico-cares.php')) { ?>
 
-					  <img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/madico-cares.png" alt="Madico Cares"></a>
+					  <img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/madico-cares.png" alt="Madico Cares" class="menu-section-home-image"></a>
 
 					<?php }else{ ?>
 
-					  <img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/madico-page-logo.png" alt="Madico The Clear Choice"></a>
+					  <img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/madico-page-logo.png" alt="Madico The Clear Choice" class="menu-section-home-image"></a>
 
 					<?php } ?>
 			</div>

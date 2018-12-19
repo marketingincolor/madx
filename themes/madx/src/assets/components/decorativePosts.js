@@ -19,11 +19,11 @@ export default{
 							<div class="small-10 small-offset-1 large-12 large-offset-0 cell animated fadeIn" v-if="decorativeSinglePost.length == 0">
 						    <div class="grid-x grid-margin-x grid-margin-y">
 									<div class="medium-6 large-4 cell module auto-height" v-for="post in decorativePosts">
-										<a @click="scrollToProducts(true);getDecorativePostSingle(post.slug)"><div class="module-bg" v-bind:style="{backgroundImage: 'url(' + post._embedded['wp:featuredmedia'][0].source_url + ')'}"></div></a>
+										<a @click="scrollToProducts(true);getDecorativePostSingle(post.slug)"><div class="module-bg" :class="post.slug + '-product-image'" v-bind:style="{backgroundImage: 'url(' + post._embedded['wp:featuredmedia'][0].source_url + ')'}"></div></a>
 										<div class="meta">
-											<a @click="scrollToProducts(true);getDecorativePostSingle(post.slug)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
+											<a @click="scrollToProducts(true);getDecorativePostSingle(post.slug)"><h4 class="blue" :class="post.slug + '-product-heading'" v-html="post.title.rendered"></h4></a>
 											<div class="content" v-html="$options.filters.limitWords(post.content.rendered,25)"></div>
-											<a @click="scrollToProducts(true);getDecorativePostSingle(post.slug)" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
+											<a @click="scrollToProducts(true);getDecorativePostSingle(post.slug)" class="read-more" :class="post.slug + '-product-read-more'">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
 										</div>
 									</div>
 						    </div>

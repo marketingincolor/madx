@@ -29,17 +29,40 @@ register_nav_menus(
  *
  * @link http://codex.wordpress.org/Function_Reference/wp_nav_menu
  */
+// Add classes to each menu item <a> tag
+function add_specific_menu_location_atts( $atts, $item, $args ) {
+	// get the relative slug
+	$url = $item->url;
+	// get the title
+	$title = $item->title;
+	// lowercase title and join with hyphen
+	$title_lowercase = strtolower($title);
+	$title_split = explode(' ', $title_lowercase);
+	$title_joined = implode('-', $title_split);
+	// remove the '/' from the beginning
+	$menu_class = substr($url, 1);
+  // check if the item is in the header-top-nav
+  if( $args->theme_location == 'header-top-nav' ) {
+    // add the desired class to the <a> tag:
+    $atts['class'] = 'header-menu-'.$menu_class;
+  }else{
+  	$atts['class'] = 'sub-menu-'.$title_joined;
+  }
+  return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'add_specific_menu_location_atts', 10, 3 );
+
 if ( ! function_exists( 'foundationpress_top_bar_r' ) ) {
 	function foundationpress_top_bar_r() {
 		wp_nav_menu(
 			array(
-				'container'      => false,
-				'menu_class'     => 'dropdown menu',
-				'items_wrap'     => '<ul id="%1$s" class="%2$s desktop-menu" data-dropdown-menu>%3$s</ul>',
-				'theme_location' => 'top-bar-r',
-				'depth'          => 3,
-				'fallback_cb'    => false,
-				'walker'         => new Foundationpress_Top_Bar_Walker(),
+				'container'       => false,
+				'menu_class'      => 'dropdown menu',
+				'items_wrap'      => '<ul id="%1$s" class="%2$s desktop-menu" data-dropdown-menu>%3$s</ul>',
+				'theme_location'  => 'top-bar-r',
+				'depth'           => 3,
+				'fallback_cb'     => false,
+				'walker'          => new Foundationpress_Top_Bar_Walker(),
 			)
 		);
 	}

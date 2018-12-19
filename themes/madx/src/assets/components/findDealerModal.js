@@ -9,7 +9,10 @@ export default{
 	    email: '',
 	    phone: '',
 	    message: '',
-	    successMessage: ''
+	    successMessage: '',
+	    showSuccess: false,
+	    error: false,
+	    errorMessage: ''
 		}
 	},
 	name: 'findDealerModal',
@@ -17,42 +20,51 @@ export default{
 							<div class="grid-container">
 								<div class="grid-x">
 									<div id="modal-content" class="small-10 small-offset-1 cell">
-										<h3 class="blue">{{ dealerName }}</h3>
-										<aside class="yellow-underline center"></aside>
-										<p class="subhead">Please fill out the information below to contact {{ dealerName }} directly</p>
-									  <form method="post">
-											<div class="grid-x grid-margin-x">
-												<div class="medium-6 cell">
-													<input v-model="firstName" type="text" name="first_name" placeholder="First Name *" required>
+										<div id="modal-form" v-if="!showSuccess">	
+											<h3 class="blue">{{ dealerName }}</h3>
+											<aside class="yellow-underline center"></aside>
+											<p class="subhead">Please fill out the information below to contact {{ dealerName }} directly</p>
+										  <form method="post">
+												<div class="grid-x grid-margin-x">
+													<div class="medium-6 cell">
+														<input id="first-name" v-model="firstName" type="text" name="first_name" placeholder="First Name *" required>
+													</div>
+													<div class="medium-6 cell">
+														<input id="last-name" v-model="lastName" type="text" name="last_name" placeholder="Last Name *" required>
+													</div>
+													<div class="medium-6 cell">
+														<input id="email" v-model="email" type="email" name="email" placeholder="Email *" required email>
+													</div>
+													<div class="medium-6 cell">
+														<input id="phone-num" v-model="phone" type="number" name="phone" placeholder="Phone Number *" required>
+													</div>
+													<div class="medium-12 cell">
+														<textarea id="user-message" v-model="message" name="message" id="message" cols="20" rows="5" placeholder="Message *" required></textarea>
+														<input v-model="dealerEmail" type="hidden" name="dealer_email" value="dealerEmail">
+													</div>
+													<div class="medium-12 cell">
+														<p v-if="error" style="color:red">{{ errorMessage }}</p>
+													</div>
+													<div class="medium-12 cell">
+														<button class="btn-blue solid" type="submit" @click="validateForm">Submit</button>
+													</div>
 												</div>
-												<div class="medium-6 cell">
-													<input v-model="lastName" type="text" name="last_name" placeholder="Last Name *" required>
-												</div>
-												<div class="medium-6 cell">
-													<input v-model="email" type="email" name="email" placeholder="Email *" required email>
-												</div>
-												<div class="medium-6 cell">
-													<input v-model="phone" type="number" name="phone" placeholder="Phone Number *" required>
-												</div>
-												<div class="medium-12 cell">
-													<textarea v-model="message" name="message" id="message" cols="20" rows="10" placeholder="Message *" required></textarea>
-													<input v-model="dealerEmail" type="hidden" name="dealer_email" value="dealerEmail">
-												</div>
-												<div class="medium-12 cell">
-													<button class="btn-blue solid" type="submit" @click="sendForm">Submit</button>
-												</div>
-												<div class="medium-12 cell">
-													<p>{{ successMessage }}</p>
-												</div>
+										  </form>
+										</div>
+										<div id="modal-success" v-if="showSuccess">
+											<div class="medium-12 cell">
+												<p>{{ successMessage }}</p>
 											</div>
-									  </form>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>`,
 	created(){
-		$(document).on('open.zf.reveal', '#dealer-modal[data-reveal]', function(event) {
-		  
+		let $this = this;
+
+		$(document).on('closed.zf.reveal', '#dealer-modal', function(event) {
+			$this.showSuccess = false;  
 		});
 	},
 	mounted(){
@@ -63,6 +75,28 @@ export default{
 		});
 	},
 	methods:{
+		validateForm: function(){
+			let emailInput = document.getElementById('email');
+
+			if ($this.firstName === '') {
+				document.getElementById('first-name').style.border = '2px solid red';
+				$this.errorMessage = 'Please enter your first name';
+				return false;
+			}else if($this.lastName === ''){
+				document.getElementById('last-name').style.border = '2px solid red';
+				$this.errorMessage = 'Please enter your last name';
+				return false;
+			}else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($this.email) || $this.email === ''){
+		    $this.errorMessage = 'Please enter a valid email';
+		    return false;
+      }else if($this.phone === ''){
+      	document.getElementById('phone-num').style.border = '2px solid red';
+      	$this.errorMessage = 'Please enter your phone number';
+      	return false;
+      }else{
+      	$this.sendForm();
+      }
+		},
 		sendForm: function(event){
 			let $this = this;
 			event.preventDefault();
@@ -79,8 +113,8 @@ export default{
   				dealer_email: $this.dealerEmail
   			},
   			success:function(data){
-  				$this.successMessage = data;
-  				$('#modal-content').html('<p>'+ $this.dealerName +' has received your message and will respond soon. Thank you!</p>');
+  				$this.successMessage = $this.dealerName + ' has received your message and will respond soon. Thank you!';
+  				$this.showSuccess    = true;
   			},
   			error: function(error){
   				alert(error);

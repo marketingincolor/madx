@@ -146,7 +146,7 @@
 
       	<div class="medium-6 large-3 cell module auto-height">
       		<div class="dealer-tag"><?php echo $icons_joined; ?></div>
-      		<h5 class="blue" data-dealerName="<?php echo $dealer_name; ?>"><a href="#!" <?php if($dealer_email) { ?>data-open="dealer-modal"<?php } ?>><?php echo $dealer_name; ?></a></h5>
+      		<h5 class="blue" data-dealerName="<?php echo $dealer_name; ?>"><a href="#!" class="dealer-directory-modal-form" <?php if($dealer_email) { ?>data-open="dealer-modal"<?php } ?>><?php echo $dealer_name; ?></a></h5>
       		<ul class="dealer-meta">
       			<li><address><i class="fas fa-map-marker-alt"></i> &nbsp;<?php echo $dealer_street; ?><br> <?php echo $dealer_city; ?>, <?php echo $dealer_state; ?> <?php echo $dealer_zip; ?></address></li>
       			<li><address><i class="fas fa-phone"></i> &nbsp;<?php echo $dealer_phone; ?></address></li>

@@ -178,7 +178,7 @@ get_header(); ?>
 				<h2 class="white"><?php the_field('find_retailer_heading'); ?></h2>
 				<aside class="yellow-underline left"></aside>
 				<p class="white subhead"><?php the_field('find_retailer_subhead'); ?></p>
-				<a href="<?php the_field('find_retailer_button_link'); ?>" class="btn-yellow solid" target="_blank"><?php the_field('find_retailer_button_text'); ?></a>
+				<a href="<?php the_field('find_retailer_button_link'); ?>" class="btn-yellow solid protectionpro-footer-cta" target="_blank"><?php the_field('find_retailer_button_text'); ?></a>
 			</div>
 		</div>
 	</div>
