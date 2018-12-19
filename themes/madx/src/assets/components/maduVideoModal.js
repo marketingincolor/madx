@@ -6,7 +6,8 @@ export default{
 	    videoUrl: '',
 	    videoInfo: '',
 	    videoFile: '',
-	    videoText: ''
+	    videoText: '',
+	    videoTitleJoined: ''
 		}
 	},
 	name: 'maduVideoModal',
@@ -19,7 +20,7 @@ export default{
 										</div>
 										<h3 class="blue" v-html="videoTitle"></h3>
 										<p v-html="videoText"></p>
-										<p class="file-link" v-if="videoFile"><a :href="videoFile" target="_blank" style="vm-dl-btn">Download</a></p>
+										<p class="file-link" v-if="videoFile"><a :href="videoFile" target="_blank" style="vm-dl-btn" :class="'madicou-' + videoTitleJoined + '-download'">Download</a></p>
 										<button class="close-button" data-close aria-label="Close modal" type="button">
 										<span aria-hidden="true">&times;</span>
 										</button>
@@ -41,7 +42,9 @@ export default{
 			$this.videoInfo  = $(this).data('videometa');
 			$this.videoFile  = $(this).data('attach');
 			$this.videoText  = $(this).data('videotxt');
-			console.log($this.videoUrl)
+			var titleCharsRemoved = $this.videoTitle.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+			let titleSplit = titleCharsRemoved.split(' ');
+			$this.videoTitleJoined = titleSplit.join('-');
 		});
 
 	},
