@@ -3,7 +3,7 @@ export default{
 	data() {
 		return{
 	    dealerName: '',
-	    dealerEmail: 'nbeers22@gmail.com',
+	    dealerEmail: '',
 	    firstName: '',
 	    lastName: '',
 	    email: '',
@@ -39,7 +39,7 @@ export default{
 														<input id="phone-num" v-model="phone" type="number" name="phone" placeholder="Phone Number *" required>
 													</div>
 													<div class="medium-12 cell">
-														<textarea id="user-message" v-model="message" name="message" id="message" cols="20" rows="10" placeholder="Message *" required></textarea>
+														<textarea id="user-message" v-model="message" name="message" id="message" cols="20" rows="5" placeholder="Message *" required></textarea>
 														<input v-model="dealerEmail" type="hidden" name="dealer_email" value="dealerEmail">
 													</div>
 													<div class="medium-12 cell">

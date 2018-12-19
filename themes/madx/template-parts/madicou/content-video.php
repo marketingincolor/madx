@@ -11,14 +11,17 @@ if ( $video_query->have_posts() ) : while ( $video_query->have_posts() ) : $vide
 	$video_url = get_field('video_url'); // Requires ACF Field for 'video_url'
 	$video_meta = get_field('video_meta'); // Requires ACF Field for 'video_meta'
 	$video_file = get_field('video_attachment'); // Requires ACF Field for 'video_meta'
+	$title_lower  = strtolower(get_the_title());
+	$title_split  = explode(' ', $title_lower);
+	$title_joined = implode('-', $title_split);
 	?>
 
 	<div class="medium-4 cell module auto-height <?php echo $post_slug; ?>">
 		<div class="image-link" data-videotitle="Title of Video">
-			<a href="#!" data-open="video-modal" class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div></a>
+			<a href="#!" data-open="video-modal" class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><div class="module-bg madicou-modal-image-<?php echo $title_joined; ?>" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div></a>
 		</div>
 		<div class="meta">
-			<button data-open="video-modal" class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><h4 class="blue"><?php the_title() ;?></h4></button>
+			<button data-open="video-modal" class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><h4 class="blue madicou-modal-heading-<?php echo $title_joined; ?>"><?php the_title() ;?></h4></button>
 			<p><i class="fal fa-clock"></i> &nbsp;<?php echo $video_meta; ?></p>
 		</div>
 	</div>

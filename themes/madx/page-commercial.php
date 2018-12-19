@@ -25,7 +25,7 @@ get_header(); ?>
 				<h1 class="blue"><?php the_field('commercial_hero_heading'); ?></h1>
 				<aside class="yellow-underline center"></aside>
 				<p class="subhead"><?php the_field('commercial_hero_subhead'); ?></p>
-				<a href="<?php the_field('commercial_hero_button_link'); ?>" class="btn-yellow solid"><?php the_field('commercial_hero_button_text'); ?></a>
+				<a href="<?php the_field('commercial_hero_button_link'); ?>" class="btn-yellow solid commercial-hero-cta"><?php the_field('commercial_hero_button_text'); ?></a>
 			</div>
 		</div>
 	</div>
@@ -49,11 +49,12 @@ get_header(); ?>
 				<?php if( have_rows('commercial_film_types') ): ?>
 					<?php while( have_rows('commercial_film_types') ): the_row(); 
 
-						$title   = get_sub_field('film_title');
-						$subhead = get_sub_field('film_subhead');
-						$icon    = get_sub_field('film_icon');
-						$link    = get_sub_field('film_button_link');
-						$text    = get_sub_field('film_button_text');
+						$title     = get_sub_field('film_title');
+						$subhead   = get_sub_field('film_subhead');
+						$icon      = get_sub_field('film_icon');
+						$link      = get_sub_field('film_button_link');
+						$text      = get_sub_field('film_button_text');
+						$link_join = substr($link, 12);
 
 						?>
 
@@ -61,7 +62,7 @@ get_header(); ?>
 							<?php echo $icon; ?>
 							<h5 class="blue"><?php echo $title; ?></h5>
 							<p class="subhead"><?php echo $subhead; ?></p>
-							<a href="<?php echo $link; ?>"><button class="btn-yellow border"><?php echo $text; ?></button></a>
+							<a href="<?php echo $link; ?>"><button class="btn-yellow border commercial-benefit-<?php echo $link_join; ?>"><?php echo $text; ?></button></a>
 						</div>
 
 					<?php endwhile; ?>

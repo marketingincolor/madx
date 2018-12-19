@@ -27,7 +27,7 @@
 				<h2 class="white"><?php the_field('specialty_contact_heading',$page_id); ?></h2>
 				<aside class="yellow-underline left"></aside>
 				<p class="white"><?php the_field('specialty_contact_subhead',$page_id); ?></p>
-				<a href="<?php the_field('specialty_contact_button_link',$page_id); ?>" class="btn-yellow solid"><?php the_field('specialty_contact_button_text',$page_id); ?></a>
+				<a href="<?php the_field('specialty_contact_button_link',$page_id); ?>" class="btn-yellow solid specialty-solutions-footer-cta"><?php the_field('specialty_contact_button_text',$page_id); ?></a>
 			</div>
 		</div>
 	</div>

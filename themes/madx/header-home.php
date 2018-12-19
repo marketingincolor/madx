@@ -18,7 +18,7 @@
 		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-5SX67FL');</script>
+		})(window,document,'script','dataLayer','GTM-KQ2BB3');</script>
 		<!-- End Google Tag Manager -->
 
 		<meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -28,13 +28,13 @@
 		<!-- SS -->
 		<script type="text/javascript">
 		    var _ss = _ss || [];
-		    _ss.push(['_setDomain', 'https://koi-3QN6SVTYI8.marketingautomation.services/net']);
-		    _ss.push(['_setAccount', 'KOI-42GDPGWMYW']);
+		    _ss.push(['_setDomain', 'https://koi-3QNHJKLJ4E.marketingautomation.services/net']);
+		    _ss.push(['_setAccount', 'KOI-42O9KA253C']);
 		    _ss.push(['_trackPageView']);
 		(function() {
 		    var ss = document.createElement('script');
 		    ss.type = 'text/javascript'; ss.async = true;
-		    ss.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'koi-3QN6SVTYI8.marketingautomation.services/client/ss.js?ver=1.1.1';
+		    ss.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'koi-3QNHJKLJ4E.marketingautomation.services/client/ss.js?ver=1.1.1';
 		    var scr = document.getElementsByTagName('script')[0];
 		    scr.parentNode.insertBefore(ss, scr);
 		})();
@@ -45,7 +45,7 @@
 	<body <?php body_class(); ?>>
 
 		<!-- Google Tag Manager (noscript) -->
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5SX67FL"
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ2BB3"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<!-- End Google Tag Manager (noscript) -->
 
