@@ -24,7 +24,7 @@
 		<meta charset="<?php bloginfo( 'charset' ); ?>" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="google-site-verification" content="8pBJeFk4PjfJf-4iS9dFmhC8hNZ7Lbo4voqFA6lDEuM" />
-		<meta name="google-site-verification" content="tUjNPNmt_iNu8FapM9zW4bGEjbUQNfQVcNTlKxIekZU" />
+		<link rel="shortcut icon" type="image/x-icon" href="<?php bloginfo('stylesheet_directory');?>/dist/assets/images/madico-favicon.png">
 		<!-- SS -->
 		<script type="text/javascript">
 		    var _ss = _ss || [];
@@ -40,6 +40,12 @@
 		})();
 		</script>
 		<!-- SS -->
+
+		<!-- Hide Spanish until translated -->
+			<!-- <script>
+				document.querySelector('a[href="https://madico.com/es?page_id=11764"]').parentElement.style.display = "none";
+			</script> -->
+		<!-- /Hide spanish -->
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
@@ -55,6 +61,11 @@
 		<div id="mobile-left-menu" class="mobile-left-menu absolute">
 			<div class="menu-container relative">
 				<button class="absolute" aria-label="<?php _e( 'Close Menu', 'madx' ); ?>" type="button" @click="mobileLeftMenuClose"><i class="fal fa-long-arrow-left"></i></button>
+				<ul id="mobile-lang-menu" class="dropdown menu" data-closing-time="0" v-dropdown>
+		      <li>
+		        <?php icl_post_languages_mobile(); ?>
+		      </li>
+		    </ul>
 				<?php foundationpress_header_nav(); ?>
 			</div>
 		</div>
@@ -91,16 +102,16 @@
 		    </ul>
 			</div>
 			<div class="top-bar-right">
-				<!-- <ul class="dropdown menu" data-closing-time="0" v-dropdown>
+				<ul class="dropdown menu" data-closing-time="0" v-dropdown>
 		      <li>
-		        <?php //icl_post_languages(); ?>
+		        <?php icl_post_languages(); ?>
 		      </li>
-		    </ul> -->
+		    </ul>
 				<ul class="menu">
-					<li><a href="/madicou" class="header-menu-madicou"><i class="icon-madico-u-icon"></i>&nbsp; <?php _e( 'Madico U', 'madx' ); ?></a></li>
-					<li><a href="/dealer-portal" class="header-menu-dealer-portal"><i class="fas fa-id-badge"></i>&nbsp; <?php _e( 'Dealer Portal', 'madx' ); ?></a></li>
+					<li><a href="/madicou" class="top-nav-menu-madicou"><i class="icon-madico-u-icon"></i>&nbsp; <?php _e( 'Madico U', 'madx' ); ?></a></li>
+					<li><a href="/dealer-portal" class="top-nav-menu-dealer-portal"><i class="fas fa-id-badge"></i>&nbsp; <?php _e( 'Dealer Portal', 'madx' ); ?></a></li>
 		      <li>
-		        <a data-toggle="search-dropdown" class="header-menu-search"><i class="fas fa-search"></i>&nbsp; <?php _e( 'Search', 'madx' ); ?></a>
+		        <a data-toggle="search-dropdown" class="top-nav-menu-search"><i class="fas fa-search"></i>&nbsp; <?php _e( 'Search', 'madx' ); ?></a>
 		        <ul class="menu vertical">
 		          <li class="dropdown-pane right" id="search-dropdown" data-position="bottom" v-drop-click>
 								<?php get_template_part('template-parts/search/page-searchform'); ?>

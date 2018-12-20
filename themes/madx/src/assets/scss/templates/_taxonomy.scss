@@ -519,8 +519,13 @@
 	background-color: $yellow;
 	@include bg-center-cover;
 
+	@media(max-width: 800px){
+		background-position: -250px 0px;
+	}
+
 	@include breakpoint(small down){
 		padding: 10% 0 12%;
+		background-position: center center;
 	}
 
 	.grid-x{

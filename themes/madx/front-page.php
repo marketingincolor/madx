@@ -44,14 +44,14 @@ get_header('home'); ?>
 
 					  <div class="medium-6 large-3 cell module auto-height">
 					  	<a href="<?php the_sub_field('link_url'); ?>">
-					  		<div class="module-bg small relative consumer-router-image-<?php echo $url_text; ?>" style="background-image: url(<?php the_sub_field('image'); ?>);">
+					  		<div class="module-bg small relative consumerRouter_image_<?php echo $url_text; ?>" style="background-image: url(<?php the_sub_field('image'); ?>);">
 					  			<div class="label absolute"><strong><?php the_sub_field('label'); ?></strong></div>
 					  	  </div>
 					  	</a>
 					  	<div class="meta">
-					  		<a href="<?php the_sub_field('link_url'); ?>"><h4 class="blue consumer-router-heading-<?php echo $url_text; ?>"><?php the_sub_field('icon'); ?>&nbsp; <?php the_sub_field('heading'); ?></h4></a>
+					  		<a href="<?php the_sub_field('link_url'); ?>"><h4 class="blue consumerRouter_Heading_<?php echo $url_text; ?>"><?php the_sub_field('icon'); ?>&nbsp; <?php the_sub_field('heading'); ?></h4></a>
 					  		<p style="margin-bottom: 30px"><?php the_sub_field('body'); ?></p>
-					  		<a class="read-more consumer-router-read-more-<?php echo $url_text; ?>" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_text'); ?> &nbsp;<i class="far fa-long-arrow-right"></i></a>
+					  		<a class="read-more consumerRouter_readMore_<?php echo $url_text; ?>" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_text'); ?> &nbsp;<i class="far fa-long-arrow-right"></i></a>
 					  	</div>
 					  </div>
 
@@ -64,14 +64,14 @@ get_header('home'); ?>
 
 					  <div class="medium-6 cell module auto-height">
 					  	<a href="<?php the_sub_field('link_url'); ?>">
-					  		<div class="module-bg large relative consumer-router-image-<?php echo $url_text; ?>" style="background-image: url(<?php the_sub_field('image'); ?>);">
+					  		<div class="module-bg large relative consumerRouter_image_<?php echo $url_text; ?>" style="background-image: url(<?php the_sub_field('image'); ?>);">
 					  			<div class="label absolute"><strong><?php the_sub_field('label'); ?></strong></div>
 					  		</div>
 					  	</a>
 					  	<div class="meta">
-					  		<a href="<?php the_sub_field('link_url'); ?>"><h4 class="blue consumer-router-heading-<?php echo $url_text; ?>"><?php the_sub_field('icon'); ?>&nbsp; <?php the_sub_field('heading'); ?></h4></a>
+					  		<a href="<?php the_sub_field('link_url'); ?>"><h4 class="blue consumerRouter_heading_<?php echo $url_text; ?>"><?php the_sub_field('icon'); ?>&nbsp; <?php the_sub_field('heading'); ?></h4></a>
 					  		<p style="margin-bottom: 30px"><?php the_sub_field('body'); ?></p>
-					  		<a class="read-more consumer-router-read-more-<?php echo $url_text; ?>" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_text'); ?> &nbsp;<i class="far fa-long-arrow-right"></i></a>
+					  		<a class="read-more consumerRouter_readMore_<?php echo $url_text; ?>" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_text'); ?> &nbsp;<i class="far fa-long-arrow-right"></i></a>
 					  	</div>
 					  </div>
 

@@ -79,7 +79,7 @@
 										<div class="content"><?php the_content(); ?></div>
 										<?php if (get_field('pdf_link')) { ?>
 
-											<div class="grid-x grid-margin-y subhead">
+											<div class="grid-x grid-margin-y">
 												<div class="medium-2 large-1 cell text-center">
 													<i class="fal fa-file-pdf"></i>
 												</div>
