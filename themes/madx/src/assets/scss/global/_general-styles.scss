@@ -255,6 +255,10 @@ section{
 
 .page-hero .grid-container{
 	padding: 8% 0 9%;
+
+	@include breakpoint(small down){
+		padding: 8% 0 15%;
+	}
 }
 
 section.benefits,section.film-type{
@@ -331,7 +335,7 @@ section.warranty{
 			border-top-left-radius: 3px;
 			border-bottom-left-radius: 3px;
 			color: $white;
-			bottom: 20px;
+			bottom: 25px;
 			right: -10px;
 			font-size: 14px;
 		}
@@ -394,6 +398,10 @@ section.warranty{
 	padding: 6% 0;
 	@include bg-center-cover;
 
+	@include breakpoint(small only){
+		padding: 10% 0;
+	}
+
 	h2 {
 		font-size:3rem;
 
@@ -411,7 +419,6 @@ section.warranty{
 		position: relative;
 
 		input{
-			padding: 25px 15px;
 			border-radius: 3px;
 			color: $text-gray;
 			border:none;

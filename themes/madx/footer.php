@@ -100,6 +100,8 @@
             </div>
           </div>
           <div class="small-12 cell text-center credits">
+            <p><?php _e( 'For window film assistance, call a Madico Service Center at +1 (888) 887-2022', 'madx' ); ?></p>
+            <p><?php _e( 'For corporate or Specialty Solutions assistance, call +1 (727) 327-2544', 'madx' ); ?></p>
             <address><?php _e( '9251 Belcher Road N. Pinellas Park, FL 33782', 'madx' ); ?></address>
             <p><?php _e( 'Copyright', 'madx' ); ?> <?php echo date('Y'); ?> <?php _e( 'Madico', 'madx' ); ?><sup>&reg;</sup>, Inc. | <a href="/privacy-policy"><?php _e( 'Privacy Policy', 'madx' ); ?></a></p>
             <p><a href="/wp-content/uploads/2018/11/QMS-0863a_ENG_MADICO-Inc..pdf" target="_blank"><?php _e( 'ISO 9001:2015', 'madx' ); ?></a> | <?php _e( ' ISO 14001', 'madx' ); ?></p>
@@ -128,6 +130,7 @@
 <?php } ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.8/postscribe.min.js"></script>
+
 
 <?php wp_footer(); ?>
 </body>

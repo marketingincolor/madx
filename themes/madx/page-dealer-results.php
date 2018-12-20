@@ -39,12 +39,14 @@
 	// var_dump($zip_array);
   
 	$meta_query_args = array(
-		'post_type' => 'dealer',
-		'meta_query' => array(
+		'post_type'      => 'dealer',
+		'posts_per_page' => -1,
+		'meta_query'     => array(
 			array(
-				'key' => 'zip',
-				'value' => $zip_array,
-				'compare' => 'IN'
+				'key'     => 'zip',
+				'value'   => $zip_array,
+				'compare' => 'IN',
+				'type'    => 'NUMERIC'
 			)
 		),
 		'tax_query' => array(

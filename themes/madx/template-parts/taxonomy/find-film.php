@@ -9,7 +9,7 @@
 			</div>
 			<?php } ?>
 			<div class="small-10 small-offset-1 medium-8 <?php if(get_field('taxonomy_film_background_image',$term)){ ?>medium-offset-4 <?php }else{echo 'medium-offset-0';} ?> cell">
-				<h2 class="white"><?php the_field('taxonomy_film_heading',$term); ?></h2>
+				<h2 class="white"><?php the_field('taxonomy_film_heading',$term); ?></h2><br class="show-for-small-only">
 				<p class="white"><?php the_field('taxonomy_film_subhead',$term); ?></p>
 				<a href="<?php the_field('taxonomy_film_button_link',$term); ?>" class="btn-blue solid"><?php the_field('taxonomy_film_button_text',$term); ?> &nbsp;<i class="fas fa-arrow-alt-right"></i></a>
 			</div>
