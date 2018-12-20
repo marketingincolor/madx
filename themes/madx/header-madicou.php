@@ -19,6 +19,7 @@
 		<meta charset="<?php bloginfo( 'charset' ); ?>" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="google-site-verification" content="8pBJeFk4PjfJf-4iS9dFmhC8hNZ7Lbo4voqFA6lDEuM" /> 
+		<link rel="shortcut icon" type="image/x-icon" href="<?php bloginfo('stylesheet_directory');?>/dist/assets/images/madico-favicon.png">
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
@@ -71,10 +72,10 @@
 			</div>
 			<div class="top-bar-right">
 				<ul class="menu">
-					<li><a href="/madicou" class="header-menu-madicou"><i class="icon-madico-u-icon"></i>&nbsp; <?php _e( 'Madico U', 'madx' ); ?></a></li>
-					<li><a href="/dealer-portal" class="header-menu-dealer-portal"><i class="fas fa-id-badge"></i>&nbsp; <?php _e( 'Dealer Portal', 'madx' ); ?></a></li>
+					<li><a href="/madicou" class="top-nav-menu-madicou"><i class="icon-madico-u-icon"></i>&nbsp; <?php _e( 'Madico U', 'madx' ); ?></a></li>
+					<li><a href="/dealer-portal" class="top-nav-menu-dealer-portal"><i class="fas fa-id-badge"></i>&nbsp; <?php _e( 'Dealer Portal', 'madx' ); ?></a></li>
 		      <li>
-		        <a data-toggle="search-dropdown" class="header-menu-search"><i class="fas fa-search"></i>&nbsp; <?php _e( 'Search', 'madx' ); ?></a>
+		        <a data-toggle="search-dropdown" class="top-nav-menu-search"><i class="fas fa-search"></i>&nbsp; <?php _e( 'Search', 'madx' ); ?></a>
 		        <ul class="menu vertical">
 		          <li class="dropdown-pane right" id="search-dropdown" data-position="bottom" v-drop-click>
 								<?php get_template_part('template-parts/search/page-searchform'); ?>

@@ -3,7 +3,7 @@
 // Get Available Languages
 function icl_post_languages(){
 
-  $languages = icl_get_languages('skip_missing=0');
+  $languages = icl_get_languages('skip_missing=0&link_empty_to=/{%lang}/international');
   $langs      = array();
   
   foreach($languages as $l){
@@ -16,7 +16,7 @@ function icl_post_languages(){
   ksort($langs);
 
   if(1 < count($languages)){
-    echo '<a href="#!"><i class="fal fa-globe-americas"></i>&nbsp; '. __('Language','madx') .'&nbsp; <i class="fas fa-chevron-down"></i></a>';
+    echo '<a id="nav-drop" href="#!"><i class="fal fa-globe-americas"></i>&nbsp; '. __('Language','madx') .'&nbsp; <i class="fas fa-chevron-down"></i></a>';
 
     echo '<ul class="menu vertical" v-dropdown>';
     
@@ -29,7 +29,7 @@ function icl_post_languages(){
 
 function icl_post_languages_mobile(){
 
-  $languages = icl_get_languages('skip_missing=0');
+  $languages = icl_get_languages('skip_missing=0&link_empty_to=/{%lang}/international');
   $langs      = array();
   
   foreach($languages as $l){
@@ -41,7 +41,7 @@ function icl_post_languages_mobile(){
   ksort($langs);
   
   if(1 < count($languages)){
-    echo '<a href="#" data-toggle="submenu-dropdown">'. __('Language','madx') . '&nbsp;<i class="fa fa-chevron-down"></i></a>';
+    echo '<a href="#" data-toggle="submenu-dropdown"><i class="fal fa-globe-americas"></i>&nbsp;&nbsp;'. __('Language','madx') . '&nbsp;</a>';
 
     echo '<ul class="menu" v-dropdown>';
     
@@ -64,3 +64,15 @@ do_action( 'wpml_register_single_string', 'Jot Forms7', 'Form Label', 'City');
 do_action( 'wpml_register_single_string', 'Jot Forms8', 'Form Label', 'State/Province');
 do_action( 'wpml_register_single_string', 'Jot Forms9', 'Form Label', 'Postal/Zip Code');
 do_action( 'wpml_register_single_string', 'Jot Forms10', 'Form Label', 'Country');
+do_action( 'wpml_register_single_string', 'Jot Forms11', 'Form Label', 'What products are you interested in? Check all that apply.');
+do_action( 'wpml_register_single_string', 'Jot Forms12', 'Form Label', 'Architectural Film');
+do_action( 'wpml_register_single_string', 'Jot Forms13', 'Form Label', 'Automotive Film');
+do_action( 'wpml_register_single_string', 'Jot Forms14', 'Form Label', 'Decorative Film');
+do_action( 'wpml_register_single_string', 'Jot Forms15', 'Form Label', 'Device Protection');
+do_action( 'wpml_register_single_string', 'Jot Forms16', 'Form Label', 'Paint Protection Film');
+do_action( 'wpml_register_single_string', 'Jot Forms17', 'Form Label', 'Safety & Security Film');
+do_action( 'wpml_register_single_string', 'Jot Forms18', 'Form Label', 'Specialty Solutions');
+do_action( 'wpml_register_single_string', 'Jot Forms19', 'Form Label', 'Windshield Protection');
+do_action( 'wpml_register_single_string', 'Jot Forms20', 'Form Label', 'Other');
+do_action( 'wpml_register_single_string', 'Jot Forms21', 'Form Label', 'Questions/Comments');
+do_action( 'wpml_register_single_string', 'Jot Forms22', 'Form Label', 'Submit');

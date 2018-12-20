@@ -188,7 +188,6 @@ var newVue = new Vue({
   created(){
   	$(document).foundation();
     this.runIEpolyfills();
-    
   },
   mounted(){
     this.menuDropdown();

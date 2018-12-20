@@ -491,6 +491,10 @@ foreach($posts as $post) {
 				    	</div>
 					    	<?php list_distributors($iceland); ?>
 					    <div class="small-12 cell">
+				    		<h4 class="blue">Italy</h4>
+				    	</div>
+					    	<?php list_distributors($italy); ?>
+					    <div class="small-12 cell">
 				    		<h4 class="blue">Latvia</h4>
 				    	</div>
 					    	<?php list_distributors($latvia); ?>

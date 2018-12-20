@@ -71,27 +71,6 @@ function short_sharp_jot($atts, $content = null){
 	      });
       }
     };
-    var callThisAgain = function(resp) {
-    	console.log('called it again');
-			console.log(resp);
-      if(location.href.indexOf('specialty-solutions/products') > -1){
-	      $('.data-sheet').on('click',function(){
-	      	var that = $(this);
-		      if (resp && resp.contact) {
-		      	$('#specialty-pdf-modal').find('iframe').attr('src',$(this).data('pdf'))
-		      	$('#specialty-pdf-modal').foundation('open');
-		      } else{
-						$('#specialty-form-modal').foundation('open');
-						var pdfLink = $(this).data('pdf').split('.com')[1];
-						$('#input_6').val(pdfLink);
-						$('#$jot_id').find('button[type=submit]').on('click',function(event){
-							event.preventDefault();
-							submitForm(pdfLink);
-						});
-		      }
-	      });
-      }
-    };
     _ss.push(['_setResponseCallback', callThisOnReturn]);
     _ss.push(['_setDomain', 'https://koi-3QNHJKLJ4E.marketingautomation.services/net']);
     _ss.push(['_setAccount', 'KOI-42O9KA253C']);
@@ -122,9 +101,6 @@ function short_sharp_jot($atts, $content = null){
 				  		$('#specialty-form-modal').foundation('close');
 							$('#specialty-pdf-modal').find('iframe').attr('src',pdfLink)
 							$('#specialty-pdf-modal').foundation('open');
-							setTimeout(function(){
-								callThisOnReturn();
-							},10000);
 				  	}
 						__ss_noform.push(['submit',null, '$ss_id']);
 						goToPdf();
