@@ -188,6 +188,12 @@ var newVue = new Vue({
   created(){
   	$(document).foundation();
     this.runIEpolyfills();
+    // Hide a language from navbar until it is translated
+    let listItems = document.querySelectorAll('a[href="/ar/international"');
+    listItems.forEach(function(item){
+      item.parentElement.style.display = "none";
+    });
+
   },
   mounted(){
     this.menuDropdown();
