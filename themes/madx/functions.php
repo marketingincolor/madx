@@ -41,60 +41,68 @@ function bamboo_pre_get_posts( $query ) {
 
 function list_distributors($country_array){
 	$count = 0;
-  foreach ($country_array as $country) {
-  	$count++;
-		$dist_company  = get_post_meta($country->ID,'company_name',true);
-		$dist_street   = get_post_meta($country->ID,'street',true);
-		$dist_zip      = get_post_meta($country->ID,'zip',true);
-		$dist_city     = get_post_meta($country->ID,'city',true);
-		$dist_state    = get_post_meta($country->ID,'state',true);
-		$dist_phone    = get_post_meta($country->ID,'phone_number',true);
-		$dist_altphone = get_post_meta($country->ID,'alt_phone_number',true);
-		$dist_fax      = get_post_meta($country->ID,'fax',true);
-		$dist_email    = get_post_meta($country->ID,'email',true);
-		$dist_website  = get_post_meta($country->ID,'website',true);
-		$dist_markets  = get_post_meta($country->ID,'markets',true);
-		$dist_name     = $country->post_title;
-		$comp_name     = get_post_meta($country->ID,'compnay_name',true);
-		$website_nohttp = preg_replace('/(http:\/\/|https:\/\/|www.)/', '', $dist_website);
+  foreach ($country_array as $country => $country_post) {
+    echo "<div class='small-12 cell'>";
+    echo "<h4 class='blue'>{$country}</h4>";
+    echo "</div>";
 
-		echo "<div class='medium-6 large-3 cell module auto-height'>";
-  	echo "<h5 class='blue'>{$dist_name}</h5>";
-  	echo "<ul class='dealer-meta'>";
+    // Loop through each country's distributor posts
+    foreach ($country_post as $distributor_post) {
+      $count++;
+      $dist_company   = get_post_meta($distributor_post->ID,'company_name',true);
+      $dist_street    = get_post_meta($distributor_post->ID,'street',true);
+      $dist_zip       = get_post_meta($distributor_post->ID,'zip',true);
+      $dist_city      = get_post_meta($distributor_post->ID,'city',true);
+      $dist_state     = get_post_meta($distributor_post->ID,'state',true);
+      $dist_phone     = get_post_meta($distributor_post->ID,'phone_number',true);
+      $dist_altphone  = get_post_meta($distributor_post->ID,'alt_phone_number',true);
+      $dist_fax       = get_post_meta($distributor_post->ID,'fax',true);
+      $dist_email     = get_post_meta($distributor_post->ID,'email',true);
+      $dist_website   = get_post_meta($distributor_post->ID,'website',true);
+      $dist_markets   = get_post_meta($distributor_post->ID,'markets',true);
+      $dist_name      = $distributor_post->post_title;
+      $comp_name      = get_post_meta($distributor_post->ID,'compnay_name',true);
+      $website_nohttp = preg_replace('/(http:\/\/|https:\/\/|www.)/', '', $dist_website);
 
-    if ($dist_company || $dist_street || $dist_city) {
-    
-    	echo "<li><address><i class='fas fa-map-marker-alt'></i> &nbsp;";
-    	if($dist_company) {
-    		echo "{$dist_company}<br>";
-    	}
-    	if($dist_street) {
-    	  echo "{$dist_street}<br> {$dist_city}, {$dist_state} {$dist_zip}</address></li>";
+      echo "<div class='medium-6 large-3 cell module auto-height'>";
+      echo "<h5 class='blue'>{$dist_name}</h5>";
+      echo "<ul class='dealer-meta'>";
+
+      if ($dist_company || $dist_street || $dist_city) {
+      
+        echo "<li><address><i class='fas fa-map-marker-alt'></i> &nbsp;";
+        if($dist_company) {
+          echo "{$dist_company}<br>";
+        }
+        if($dist_street) {
+          echo "{$dist_street}<br> {$dist_city}, {$dist_state} {$dist_zip}</address></li>";
+        }
+
       }
 
-    }
-
-  	if($dist_phone) {
-  		echo "<li><address><i class='fas fa-phone'></i> &nbsp;{$dist_phone}";
-	  	if($dist_altphone) {
-	  		echo "<br>{$dist_altphone}";
-	  	}
-  		echo "</address></li>";
-  	}
-  	if($dist_fax) {
-  		echo "<li><address><i class='fas fa-fax'></i> &nbsp;{$dist_fax}</address></li>";
-  	}
-		if($dist_email) {
-		  echo "<li class='email'><address><i class='fas fa-envelope'></i> &nbsp;{$dist_email}</address></li>";
-		}
-		if($dist_website) {
-		  echo "<li class='email website'><address><i class='fas fa-globe'></i> &nbsp;<a href='{$dist_website}' target='_blank'>{$website_nohttp}</a></address></li>";
-		}
-  	echo "</ul>";
-		if($dist_markets) {
-		  echo "<a href='#!' class='info-icon' v-tooltip tabindex='{$count}' title='{$dist_markets}'><i class='fal fa-info-circle'></i></a>";
-	  }
-	  echo "</div>";
+      if($dist_phone) {
+        echo "<li><address><i class='fas fa-phone'></i> &nbsp;{$dist_phone}";
+        if($dist_altphone) {
+          echo "<br>{$dist_altphone}";
+        }
+        echo "</address></li>";
+      }
+      if($dist_fax) {
+        echo "<li><address><i class='fas fa-fax'></i> &nbsp;{$dist_fax}</address></li>";
+      }
+      if($dist_email) {
+        echo "<li class='email'><address><i class='fas fa-envelope'></i> &nbsp;{$dist_email}</address></li>";
+      }
+      if($dist_website) {
+        echo "<li class='email website'><address><i class='fas fa-globe'></i> &nbsp;<a href='{$dist_website}' target='_blank'>{$website_nohttp}</a></address></li>";
+      }
+      echo "</ul>";
+      if($dist_markets) {
+        echo "<a href='#!' class='info-icon' v-tooltip tabindex='{$count}' title='{$dist_markets}'><i class='fal fa-info-circle'></i></a>";
+      }
+      echo "</div>";
+      }
+    
 	}
 }
 

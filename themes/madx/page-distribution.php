@@ -29,314 +29,264 @@
 // ===========================
 // == NORTH AMERICA
 // ===========================
-$usa    = array();
-$canada = array();
-$north_america_args = array(
-	'post_type' => $post_type,
-	'posts_per_page' => -1,
-	'tax_query' => array(
-		array(
-			'taxonomy' => 'regions',
-			'field'    => 'slug',
-			'terms'    => 'north-america'
-		)
-	)
-);
-$north_america = new WP_Query( $north_america_args );
-$posts = $north_america->posts;
+$na_term_names  = array();
+$na_posts_by_country = array();
+// Get term parent id
+$na_parent    = get_term_by('slug','north-america','regions');
+$na_parent_id = $na_parent->term_id;
 
-foreach($posts as $post) {
-	$terms = wp_get_post_terms($post->ID,'country');
-	foreach ($terms as $term) {
-		if ($term->name == 'Canada') {
-			array_push($canada, $post);
-		}if ($term->name == 'United States') {
-			array_push($usa, $post);
-		}
-	}
+// Get each child term under term parent
+$na_terms = get_terms(array( 
+  'taxonomy' => 'regions',
+  'parent'   => $na_parent_id,
+));
+
+// add each child term name into an array
+foreach ($na_terms as $term) {
+	array_push($na_term_names, $term->name);
 }
 
+// Loop over each term name and query its posts, then assign the
+// posts to that name in an associative array
+for ($i=0; $i < count($na_term_names); $i++) { 
+	$args = array(
+	'post_type'      => 'distributor',
+	'posts_per_page' => -1,
+	'tax_query' => array(
+	    array(
+	    'taxonomy' => 'regions',
+	    'field'    => 'name',
+	    'terms'    => $na_term_names[$i]
+	    )
+	  )
+	);
+	$query = get_posts( $args );
+	$na_posts_by_country[$na_term_names[$i]] = $query;
+}
 // ===========================
 // == LATIN AMERICA
 // ===========================
-$barbados           = array();
-$brazil             = array();
-$chile              = array();
-$costa_rica         = array();
-$dominican_republic = array();
-$ecuador            = array();
-$peru               = array();
-$latin_america_args = array(
-	'post_type' => $post_type,
+$la_term_names  = array();
+$la_posts_by_country = array();
+// Get term parent id
+$la_parent    = get_term_by('slug','latin-america','regions');
+$la_parent_id = $la_parent->term_id;
+
+// Get each child term under term parent
+$la_terms = get_terms(array( 
+  'taxonomy' => 'regions',
+  'parent'   => $la_parent_id,
+));
+
+// add each child term name into an array
+foreach ($la_terms as $term) {
+	array_push($la_term_names, $term->name);
+}
+
+// Loop over each term name and query its posts, then assign the
+// posts to that name in an associative array
+for ($i=0; $i < count($la_term_names); $i++) { 
+	$args = array(
+	'post_type'      => 'distributor',
 	'posts_per_page' => -1,
 	'tax_query' => array(
-		array(
-			'taxonomy' => 'regions',
-			'field'    => 'slug',
-			'terms'    => 'latin-america'
-		)
-	)
-);
-$latin_america = new WP_Query( $latin_america_args );
-$posts = $latin_america->posts;
-
-foreach($posts as $post) {
-	$terms = wp_get_post_terms($post->ID,'country');
-	foreach ($terms as $term) {
-		if ($term->name == 'Barbados') {
-			array_push($barbados, $post);
-		}if ($term->name == 'Brazil') {
-			array_push($brazil, $post);
-		}if ($term->name == 'Chile') {
-			array_push($chile, $post);
-		}if ($term->name == 'Costa Rica') {
-			array_push($costa_rica, $post);
-		}if ($term->name == 'Dominican Republic') {
-			array_push($dominican_republic, $post);
-		}if ($term->name == 'Ecuador') {
-			array_push($ecuador, $post);
-		}if ($term->name == 'Peru') {
-			array_push($peru, $post);
-		}
-	}
+	    array(
+	    'taxonomy' => 'regions',
+	    'field'    => 'name',
+	    'terms'    => $la_term_names[$i]
+	    )
+	  )
+	);
+	$query = get_posts( $args );
+	$la_posts_by_country[$la_term_names[$i]] = $query;
 }
 
 // =======================
 // == ASIA
 // =======================
-$china     = array();
-$japan     = array();
-$korea     = array();
-$malaysia  = array();
-$thailand  = array();
-$taiwan    = array();
-$asia_args = array(
-	'post_type' => $post_type,
+$asia_term_names  = array();
+$asia_posts_by_country = array();
+// Get term parent id
+$asia_parent    = get_term_by('slug','asia','regions');
+$asia_parent_id = $asia_parent->term_id;
+
+// Get each child term under term parent
+$asia_terms = get_terms(array( 
+  'taxonomy' => 'regions',
+  'parent'   => $asia_parent_id,
+));
+
+// add each child term name into an array
+foreach ($asia_terms as $term) {
+	array_push($asia_term_names, $term->name);
+}
+
+// Loop over each term name and query its posts, then assign the
+// posts to that name in an associative array
+for ($i=0; $i < count($asia_term_names); $i++) { 
+	$args = array(
+	'post_type'      => 'distributor',
 	'posts_per_page' => -1,
 	'tax_query' => array(
-		array(
-			'taxonomy' => 'regions',
-			'field'    => 'slug',
-			'terms'    => 'asia'
-		)
-	)
-);
-$asia  = new WP_Query( $asia_args );
-$posts = $asia->posts;
-
-foreach($posts as $post) {
-	$terms = wp_get_post_terms($post->ID,'country');
-	foreach ($terms as $term) {
-		if ($term->name == 'China') {
-			array_push($china, $post);
-		}if ($term->name == 'Japan') {
-			array_push($japan, $post);
-		}if ($term->name == 'Korea') {
-			array_push($korea, $post);
-		}if ($term->name == 'Malaysia') {
-			array_push($malaysia, $post);
-		}if ($term->name == 'Thailand') {
-			array_push($thailand, $post);
-		}if ($term->name == 'Taiwan') {
-			array_push($taiwan, $post);
-		}
-	}
+	    array(
+	    'taxonomy' => 'regions',
+	    'field'    => 'name',
+	    'terms'    => $asia_term_names[$i]
+	    )
+	  )
+	);
+	$query = get_posts( $args );
+	$asia_posts_by_country[$asia_term_names[$i]] = $query;
 }
 // ============================
 // == AFRICA
 // ============================
-$cameroon = array();
-$egypt    = array();
-$libya    = array();
-$africa_args = array(
-	'post_type' => $post_type,
+$africa_term_names  = array();
+$africa_posts_by_country = array();
+// Get term parent id
+$africa_parent    = get_term_by('slug','africa','regions');
+$africa_parent_id = $africa_parent->term_id;
+
+// Get each child term under term parent
+$africa_terms = get_terms(array( 
+  'taxonomy' => 'regions',
+  'parent'   => $africa_parent_id,
+));
+
+// add each child term name into an array
+foreach ($africa_terms as $term) {
+	array_push($africa_term_names, $term->name);
+}
+
+// Loop over each term name and query its posts, then assign the
+// posts to that name in an associative array
+for ($i=0; $i < count($africa_term_names); $i++) { 
+	$args = array(
+	'post_type'      => 'distributor',
 	'posts_per_page' => -1,
 	'tax_query' => array(
-		array(
-			'taxonomy' => 'regions',
-			'field'    => 'slug',
-			'terms'    => 'africa'
-		)
-	)
-);
-$africa = new WP_Query( $africa_args );
-$posts = $africa->posts;
-
-foreach($posts as $post) {
-	$terms = wp_get_post_terms($post->ID,'country');
-	foreach ($terms as $term) {
-		if ($term->name == 'Cameroon') {
-			array_push($cameroon, $post);
-		}if ($term->name == 'Egypt') {
-			array_push($egypt, $post);
-		}if ($term->name == 'Libya') {
-			array_push($libya, $post);
-		}
-	}
+	    array(
+	    'taxonomy' => 'regions',
+	    'field'    => 'name',
+	    'terms'    => $africa_term_names[$i]
+	    )
+	  )
+	);
+	$query = get_posts( $args );
+	$africa_posts_by_country[$africa_term_names[$i]] = $query;
 }
 // =============================
 // == EUROPE
 // =============================
-$austria     = array();
-$belgium     = array();
-$netherlands = array();
-$luxembourg  = array();
-$finland     = array();
-$france      = array();
-$germany     = array();
-$greece      = array();
-$iceland     = array();
-$italy       = array();
-$estonia     = array();
-$lithuania   = array();
-$latvia      = array();
-$norway      = array();
-$poland      = array();
-$romania     = array();
-$russia      = array();
-$spain       = array();
-$uk          = array();
-$europe_args = array(
-	'post_type' => $post_type,
+$europe_term_names  = array();
+$europe_posts_by_country = array();
+// Get term parent id
+$europe_parent    = get_term_by('slug','europe','regions');
+$europe_parent_id = $europe_parent->term_id;
+
+// Get each child term under term parent
+$europe_terms = get_terms(array( 
+  'taxonomy' => 'regions',
+  'parent'   => $europe_parent_id,
+));
+
+// add each child term name into an array
+foreach ($europe_terms as $term) {
+	array_push($europe_term_names, $term->name);
+}
+
+// Loop over each term name and query its posts, then assign the
+// posts to that name in an associative array
+for ($i=0; $i < count($europe_term_names); $i++) { 
+	$args = array(
+	'post_type'      => 'distributor',
 	'posts_per_page' => -1,
 	'tax_query' => array(
-		array(
-			'taxonomy' => 'regions',
-			'field'    => 'slug',
-			'terms'    => 'europe'
-		)
-	)
-);
-$europe  = new WP_Query( $europe_args );
-$posts = $europe->posts;
-
-foreach($posts as $post) {
-	$terms = wp_get_post_terms($post->ID,'country');
-	foreach ($terms as $term) {
-		if ($term->name == 'Austria') {
-			array_push($austria, $post);
-		}if ($term->name == 'Belgium') {
-			array_push($belgium, $post);
-		}if ($term->name == 'Netherlands') {
-			array_push($netherlands, $post);
-		}if ($term->name == 'Luxembourg') {
-			array_push($luxembourg, $post);
-		}if ($term->name == 'Finland') {
-			array_push($finland, $post);
-		}if ($term->name == 'France') {
-			array_push($france, $post);
-		}if ($term->name == 'Germany') {
-			array_push($germany, $post);
-		}if ($term->name == 'Greece') {
-			array_push($greece, $post);
-		}if ($term->name == 'Iceland') {
-			array_push($iceland, $post);
-		}if ($term->name == 'Italy') {
-			array_push($italy, $post);
-		}if ($term->name == 'Estonia') {
-			array_push($estonia, $post);
-		}if ($term->name == 'Lithuania') {
-			array_push($lithuania, $post);
-		}if ($term->name == 'Latvia') {
-			array_push($latvia, $post);
-		}if ($term->name == 'Norway') {
-			array_push($norway, $post);
-		}if ($term->name == 'Poland') {
-			array_push($poland, $post);
-		}if ($term->name == 'Romania') {
-			array_push($romania, $post);
-		}if ($term->name == 'Russia') {
-			array_push($russia, $post);
-		}if ($term->name == 'Spain') {
-			array_push($spain, $post);
-		}if ($term->name == 'United Kingdom') {
-			array_push($uk, $post);
-		}
-	}
+	    array(
+	    'taxonomy' => 'regions',
+	    'field'    => 'name',
+	    'terms'    => $europe_term_names[$i]
+	    )
+	  )
+	);
+	$query = get_posts( $args );
+	$europe_posts_by_country[$europe_term_names[$i]] = $query;
 }
 
 // =============================
 // == AUSTRALIA
 // =============================
-$australia_country = array();
-$australia_args = array(
-	'post_type' => $post_type,
+$australia_term_names  = array();
+$australia_posts_by_country = array();
+// Get term parent id
+$australia_parent    = get_term_by('slug','australia','regions');
+$australia_parent_id = $australia_parent->term_id;
+
+// Get each child term under term parent
+$australia_terms = get_terms(array( 
+  'taxonomy' => 'regions',
+  'parent'   => $australia_parent_id,
+));
+
+// add each child term name into an array
+foreach ($australia_terms as $term) {
+	array_push($australia_term_names, $term->name);
+}
+
+// Loop over each term name and query its posts, then assign the
+// posts to that name in an associative array
+for ($i=0; $i < count($australia_term_names); $i++) { 
+	$args = array(
+	'post_type'      => 'distributor',
 	'posts_per_page' => -1,
 	'tax_query' => array(
-		array(
-			'taxonomy' => 'regions',
-			'field'    => 'slug',
-			'terms'    => 'australia'
-		)
-	)
-);
-$australia_continent = new WP_Query( $australia_args );
-$posts = $australia_continent->posts;
-
-foreach($posts as $post) {
-	$terms = wp_get_post_terms($post->ID,'country');
-	foreach ($terms as $term) {
-		if ($term->name == 'Australia') {
-			array_push($australia_country, $post);
-		}
-	}
+	    array(
+	    'taxonomy' => 'regions',
+	    'field'    => 'name',
+	    'terms'    => $australia_term_names[$i]
+	    )
+	  )
+	);
+	$query = get_posts( $args );
+	$australia_posts_by_country[$australia_term_names[$i]] = $query;
 }
 
 // ===========================
 // == MIDDLE EAST
 // ===========================
-$iraq = array();
-$israel    = array();
-$jordan    = array();
-$lebanon    = array();
-$qatar    = array();
-$turkey    = array();
-$saudi    = array();
-$uae    = array();
-$oman    = array();
-$bahrain    = array();
-$kuwait    = array();
-$middle_east_args = array(
-	'post_type' => $post_type,
+$mideast_term_names  = array();
+$mideast_posts_by_country = array();
+// Get term parent id
+$mideast_parent    = get_term_by('slug','middle-east','regions');
+$mideast_parent_id = $mideast_parent->term_id;
+
+// Get each child term under term parent
+$mideast_terms = get_terms(array( 
+  'taxonomy' => 'regions',
+  'parent'   => $mideast_parent_id,
+));
+
+// add each child term name into an array
+foreach ($mideast_terms as $term) {
+	array_push($mideast_term_names, $term->name);
+}
+
+// Loop over each term name and query its posts, then assign the
+// posts to that name in an associative array
+for ($i=0; $i < count($mideast_term_names); $i++) { 
+	$args = array(
+	'post_type'      => 'distributor',
 	'posts_per_page' => -1,
 	'tax_query' => array(
-		array(
-			'taxonomy' => 'regions',
-			'field'    => 'slug',
-			'terms'    => 'middle-east'
-		)
-	)
-);
-$middle_east = new WP_Query( $middle_east_args );
-$posts = $middle_east->posts;
-
-foreach($posts as $post) {
-	$terms = wp_get_post_terms($post->ID,'country');
-	foreach ($terms as $term) {
-		if ($term->name == 'Iraq') {
-			array_push($iraq, $post);
-		}if ($term->name == 'Israel') {
-			array_push($israel, $post);
-		}if ($term->name == 'Jordan') {
-			array_push($jordan, $post);
-		}if ($term->name == 'Lebanon') {
-			array_push($lebanon, $post);
-		}if ($term->name == 'Qatar') {
-			array_push($qatar, $post);
-		}if ($term->name == 'Turkey') {
-			array_push($turkey, $post);
-		}if ($term->name == 'Saudi Arabia') {
-			array_push($saudi, $post);
-		}if ($term->name == 'United Arab Emirates') {
-			array_push($uae, $post);
-		}if ($term->name == 'Oman') {
-			array_push($oman, $post);
-		}if ($term->name == 'Bahrain') {
-			array_push($bahrain, $post);
-		}if ($term->name == 'Kuwait') {
-			array_push($kuwait, $post);
-		}
-	}
+	    array(
+	    'taxonomy' => 'regions',
+	    'field'    => 'name',
+	    'terms'    => $mideast_term_names[$i]
+	    )
+	  )
+	);
+	$query = get_posts( $args );
+	$mideast_posts_by_country[$mideast_term_names[$i]] = $query;
 }
 ?>
 
@@ -350,14 +300,7 @@ foreach($posts as $post) {
 							<div class="small-12 cell">
 								<h2 class="blue">North America</h2>
 							</div>
-							<div class="small-12 cell">
-								<h4 class="blue">United States</h4>
-							</div>
-								<?php list_distributors($usa); ?>
-							<div class="small-12 cell">
-								<h4 class="blue">Canada</h4>
-							</div>
-								<?php list_distributors($canada); ?>
+							<?php list_distributors($na_posts_by_country); ?>
 						</div>
 				  </div>
 				  <div class="tabs-panel" id="latin-america">
@@ -365,34 +308,7 @@ foreach($posts as $post) {
 				    	<div class="small-12 cell">
 				    		<h2 class="blue">Latin America</h2>
 				    	</div>
-				    	<div class="small-12 cell">
-				    		<h4 class="blue">Barbados</h4>
-				    	</div>
-				    		<?php list_distributors($barbados); ?>
-				    	<div class="small-12 cell">
-				    		<h4 class="blue">Brazil</h4>
-				    	</div>
-				    		<?php list_distributors($brazil); ?>
-				    	<div class="small-12 cell">
-				    		<h4 class="blue">Chile</h4>
-				    	</div>
-				    		<?php list_distributors($chile); ?>
-				    	<div class="small-12 cell">
-				    		<h4 class="blue">Costa Rica</h4>
-				    	</div>
-				    		<?php list_distributors($costa_rica); ?>
-				    	<div class="small-12 cell">
-				    		<h4 class="blue">Dominican Republic</h4>
-				    	</div>
-				    		<?php list_distributors($dominican_republic); ?>
-				    	<div class="small-12 cell">
-				    		<h4 class="blue">Ecuador</h4>
-				    	</div>
-				    		<?php list_distributors($ecuador); ?>
-				    	<div class="small-12 cell">
-				    		<h4 class="blue">Peru</h4>
-				    	</div>
-				    		<?php list_distributors($peru); ?>
+							<?php list_distributors($la_posts_by_country); ?>
 				    </div>
 				  </div>
 				  <div class="tabs-panel" id="africa">
@@ -400,18 +316,7 @@ foreach($posts as $post) {
 				    	<div class="small-12 cell">
 				    		<h2 class="blue">Africa</h2>
 				    	</div>
-				    	<div class="small-12 cell">
-				    		<h4 class="blue">Cameroon</h4>
-				    	</div>
-				    		<?php list_distributors($cameroon); ?>
-				    	<div class="small-12 cell">
-				    		<h4 class="blue">Egypt</h4>
-				    	</div>
-				    		<?php list_distributors($egypt); ?>
-				    	<div class="small-12 cell">
-				    		<h4 class="blue">Libya</h4>
-				    	</div>
-				    		<?php list_distributors($libya); ?>
+				    	<?php list_distributors($africa_posts_by_country); ?>
 				    </div>
 				  </div>
 				  <div class="tabs-panel" id="asia">
@@ -419,30 +324,7 @@ foreach($posts as $post) {
 				    	<div class="small-12 cell">
 				    		<h2 class="blue">Asia</h2>
 				    	</div>
-				    	<div class="small-12 cell">
-				    		<h4 class="blue">China</h4>
-				    	</div>
-				    		<?php list_distributors($china); ?>
-				    	<div class="small-12 cell">
-				    		<h4 class="blue">Japan</h4>
-				    	</div>
-				    		<?php list_distributors($japan); ?>
-				    	<div class="small-12 cell">
-				    		<h4 class="blue">Korea</h4>
-				    	</div>
-				    		<?php list_distributors($korea); ?>
-				    	<div class="small-12 cell">
-				    		<h4 class="blue">Malaysia</h4>
-				    	</div>
-				    		<?php list_distributors($malaysia); ?>
-				    	<div class="small-12 cell">
-				    		<h4 class="blue">Thailand</h4>
-				    	</div>
-				    		<?php list_distributors($thailand); ?>
-				    	<div class="small-12 cell">
-				    		<h4 class="blue">Taiwan</h4>
-				    	</div>
-				    		<?php list_distributors($taiwan); ?>
+				    	<?php list_distributors($asia_posts_by_country); ?>
 				    </div>
 				  </div>
 				  <div class="tabs-panel" id="australia">
@@ -450,7 +332,7 @@ foreach($posts as $post) {
 					  	<div class="small-12 cell">
 					  		<h2 class="blue">Australia</h2>
 					  	</div>
-					    	<?php list_distributors($australia_country); ?>
+					    	<?php list_distributors($australia_posts_by_country); ?>
 					  </div>
 				  </div>
 				  <div class="tabs-panel" id="europe">
@@ -458,82 +340,7 @@ foreach($posts as $post) {
 					  	<div class="small-12 cell">
 					  		<h2 class="blue">Europe</h2>
 					  	</div>
-					  	<div class="small-12 cell">
-				    		<h4 class="blue">Austria</h4>
-				    	</div>
-					    	<?php list_distributors($austria); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Belgium</h4>
-				    	</div>
-					    	<?php list_distributors($belgium); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Estonia</h4>
-				    	</div>
-					    	<?php list_distributors($estonia); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Finland</h4>
-				    	</div>
-					    	<?php list_distributors($finland); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">France</h4>
-				    	</div>
-					    	<?php list_distributors($france); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Germany</h4>
-				    	</div>
-					    	<?php list_distributors($germany); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Greece</h4>
-				    	</div>
-					    	<?php list_distributors($greece); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Iceland</h4>
-				    	</div>
-					    	<?php list_distributors($iceland); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Italy</h4>
-				    	</div>
-					    	<?php list_distributors($italy); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Latvia</h4>
-				    	</div>
-					    	<?php list_distributors($latvia); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Lithuania</h4>
-				    	</div>
-					    	<?php list_distributors($lithuania); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Luxembourg</h4>
-				    	</div>
-					    	<?php list_distributors($luxembourg); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Netherlands</h4>
-				    	</div>
-					    	<?php list_distributors($netherlands); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Norway</h4>
-				    	</div>
-					    	<?php list_distributors($norway); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Poland</h4>
-				    	</div>
-					    	<?php list_distributors($poland); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Romania</h4>
-				    	</div>
-					    	<?php list_distributors($romania); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Russia</h4>
-				    	</div>
-					    	<?php list_distributors($russia); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Spain</h4>
-				    	</div>
-					    	<?php list_distributors($spain); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">United Kingdom</h4>
-				    	</div>
-					    	<?php list_distributors($uk); ?>
+					  	<?php list_distributors($europe_posts_by_country); ?>
 					  </div>
 				  </div>
 				  <div class="tabs-panel" id="middle-east">
@@ -541,50 +348,7 @@ foreach($posts as $post) {
 					  	<div class="small-12 cell">
 					  		<h2 class="blue">Middle East</h2>
 					  	</div>
-					  	<div class="small-12 cell">
-				    		<h4 class="blue">Bahrain</h4>
-				    	</div>
-					    	<?php list_distributors($bahrain); ?>
-					  	<div class="small-12 cell">
-				    		<h4 class="blue">Iraq</h4>
-				    	</div>
-					    	<?php list_distributors($iraq); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Israel</h4>
-				    	</div>
-					    	<?php list_distributors($israel); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Jordan</h4>
-				    	</div>
-					    	<?php list_distributors($jordan); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Kuwait</h4>
-				    	</div>
-					    	<?php list_distributors($kuwait); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Lebanon</h4>
-				    	</div>
-					    	<?php list_distributors($lebanon); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Oman</h4>
-				    	</div>
-					    	<?php list_distributors($oman); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Qatar</h4>
-				    	</div>
-					    	<?php list_distributors($qatar); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Saudi Arabia</h4>
-				    	</div>
-					    	<?php list_distributors($saudi); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">Turkey</h4>
-				    	</div>
-					    	<?php list_distributors($turkey); ?>
-					    <div class="small-12 cell">
-				    		<h4 class="blue">United Arab Emirates</h4>
-				    	</div>
-					    	<?php list_distributors($uae); ?>
+					  	<?php list_distributors($mideast_posts_by_country); ?>
 					  </div>
 				  </div>
 				</div>
