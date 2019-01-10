@@ -126,6 +126,10 @@ EOT;
 			},1000)
 		</script>
 		<script type="text/javascript">
+			var address = document.getElementsByClassName('form-address-line')[1];
+			if(address){
+				address.removeAttribute('required');
+			}
 	    var __ss_noform = __ss_noform || [];
 	    __ss_noform.push(['baseURI', 'https://app-3QNHJKLJ4E.marketingautomation.services/webforms/receivePostback/MzawMDE3NjSzBAA/']);
 	    __ss_noform.push(['form', '$jot_id','$ss_id']);
