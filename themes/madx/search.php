@@ -28,10 +28,9 @@ if ($_GET['post_type'] === 'madicou') {
 					  if($_GET['post_type'] === 'madicou'){
 						  $args = array(
 						  	'post_type'      => 'madicou',
-						  	'posts_per_page' => 99
+						  	'posts_per_page' => -1
 						  );
 						  $the_query = new WP_Query( $args );
-						  // var_dump($the_query->request);
 						  if ( $the_query->have_posts() ) :
 						  	while ( $the_query->have_posts() ) : $the_query->the_post();
 						  		if(stripos(get_the_content(), get_search_query()) !== false || stripos(get_the_title(), get_search_query()) !== false){
@@ -43,6 +42,8 @@ if ($_GET['post_type'] === 'madicou') {
 						  				$video_file = get_field('video_attachment');
 						  				$post_link  = '#!';
 						  			} ?>
+
+						  		<?php if (has_post_format('video')) { ?>
 
 									<div class="medium-6 large-4 cell module auto-height">
 										<div class="image-link" data-videotitle="<?php the_title(); ?>">
@@ -58,8 +59,23 @@ if ($_GET['post_type'] === 'madicou') {
 											  <?php } ?>
 										</div>
 									</div>
+
+									<?php }else{ ?>
+
+								  	<div class="medium-6 large-4 cell module auto-height">
+											<a href="<?php the_permalink(); ?>">
+												<div class="module-bg small" style="background-image: url(<?php the_post_thumbnail_url(); ?>);"></div>
+											</a>
+											<div class="meta">
+												<a href="<?php the_permalink(); ?>"><h4 class="blue"><?php the_title(); ?></h4></a>
+												<p><?php echo wp_trim_words(get_the_content(),30,'...') ?></p>
+												<a href="<?php the_permalink(); ?>" class="blue read-more">Read More &nbsp;<i class="fal fa-long-arrow-right"></i></a>
+											</div>
+								  	</div>
+
+									<?php } ?>
 						  		
-						  	<?php }endwhile;wp_reset_postdata(); ?>
+						  <?php }endwhile;wp_reset_postdata(); ?>
 
 						  <?php else : ?>
 						  	<p><?php esc_html_e( 'Sorry, no results matched your search criteria.' ); ?></p>
@@ -68,33 +84,48 @@ if ($_GET['post_type'] === 'madicou') {
 					
 					<?php }else{ ?>
 
-						<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+						<?php
+						  // Exclude Success pages from search
+							$args = array(
+								'post_type'      => array('post','page'),
+								's'              => get_search_query(),
+								'posts_per_page' => 99,
+								'post__not_in'   => array(12747,12789,12791,1314,12746,1227,12750)
+							);
+							$the_query = new WP_Query( $args );
+							if ( $the_query->have_posts() ) :
+								while ( $the_query->have_posts() ) : $the_query->the_post();
+						?>
 							
-						<div class="medium-6 large-4 cell module auto-height">
-							<div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div>
-							<div class="meta">
-								<a href="<?php the_permalink(); ?>"><h4 class="blue" style="margin-bottom:20px"><?php echo wp_trim_words(get_the_title(),10,'...'); ?></h4></a>
-								<p><?php echo wp_trim_words(get_the_content(),30,'...'); ?></p>
+							<div class="medium-6 large-4 cell module auto-height">
+								<a href="<?php the_permalink(); ?>"><div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div></a>
+								<div class="meta">
+									<a href="<?php the_permalink(); ?>"><h4 class="blue" style="margin-bottom:20px"><?php echo wp_trim_words(get_the_title(),10,'...'); ?></h4></a>
+									<p><?php echo wp_trim_words(get_the_content(),30,'...'); ?></p>
+								</div>
 							</div>
-						</div>
 							
-						<?php endwhile;endif; ?>
+						<?php endwhile;wp_reset_postdata(); ?>
+
+						<?php else : ?>
+							<p><?php esc_html_e( 'Sorry, no results matched your search criteria.' ); ?></p>
+						<?php endif; ?>
 
 						<?php
-						if ( function_exists( 'foundationpress_pagination' ) ) :
-							echo '<div class="small-12 cell">';
-							  foundationpress_pagination();
-							echo '</div>';
-						elseif ( is_paged() ) :
+						// if ( function_exists( 'foundationpress_pagination' ) ) :
+						// 	echo '<div class="small-12 cell">';
+						// 	  foundationpress_pagination();
+						// 	echo '</div>';
+						// elseif ( is_paged() ) :
 						?>
-						<div class="small-12 cell">
+						<!-- <div class="small-12 cell">
 							<nav id="post-nav">
 								<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'foundationpress' ) ); ?></div>
 								<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'foundationpress' ) ); ?></div>
 							</nav>
-						</div>
+						</div> -->
 
-						<?php endif; ?>
+						<?php //endif; ?>
 				  <?php } ?>
 
 				</div>

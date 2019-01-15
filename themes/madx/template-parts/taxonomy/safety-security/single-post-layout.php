@@ -73,6 +73,20 @@
 
 						<?php } ?>
 
+						<?php if (get_field('spec_sheet')) { ?>
+
+							<div class="grid-x grid-margin-y subhead">
+								<div class="medium-2 large-1 cell text-center">
+									<i class="fal fa-file-pdf"></i>
+								</div>
+								<div class="medium-10 cell">
+									<a href="<?php the_field('spec_sheet'); ?>" target="_blank"><?php _e( 'Spec Sheet', 'madx' ); ?></a>
+									<p><?php _e( 'Click to download', 'madx' ); ?></p>
+								</div>
+							</div>
+
+						<?php } ?>
+
 					</div>
 				</div>
 			</div>
