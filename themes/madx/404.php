@@ -26,7 +26,7 @@ get_header(); ?>
 						<ul>
 							<li><a href="/">Homepage</a></li>
 							<li><a href="/automotive">Automotive Window Films</a></li>
-							<li><a href="/residential">Resiential Window Films</a></li>
+							<li><a href="/residential">Residential Window Films</a></li>
 							<li><a href="/commercial">Commercial Window Films</a></li>
 							<li><a href="/dealer-portal">Dealer Portal</a></li>
 						</ul>
