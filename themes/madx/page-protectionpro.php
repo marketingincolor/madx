@@ -163,7 +163,7 @@ get_header(); ?>
 					<div class="small-10 small-offset-1 medium-8 medium-offset-2 cell">
 						<h4><?php the_field('protectionpro_contact_header'); ?></h4>
 						<p class="subhead"><?php the_field('protectionpro_contact_subhead'); ?></p>
-						<?php the_content(); ?>
+						<div><?php the_field('protectionpro_contact_form'); ?></div>
 					</div>
 				</div>
 			</div>

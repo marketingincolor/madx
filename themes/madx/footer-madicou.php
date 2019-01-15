@@ -60,7 +60,7 @@
             <div class="small-12 cell text-center credits">
               <p><?php _e( 'For window film assistance, call a Madico Service Center at +1 (888) 887-2022', 'madx' ); ?></p>
               <p><?php _e( 'For corporate or Specialty Solutions assistance, call +1 (727) 327-2544', 'madx' ); ?></p>
-              <address><?php _e( '9251 Belcher Road N. Pinellas Park, FL 33782', 'madx' ); ?></address>
+              <address><a target="_blank" href="https://www.google.com/maps/place/9251+Belcher+Rd+N,+Pinellas+Park,+FL+33782/@27.856469,-82.7361847,17z/data=!3m1!4b1!4m5!3m4!1s0x88c2e4cb5830069f:0xa9227c508134fcc1!8m2!3d27.856469!4d-82.733996"><?php _e( '9251 Belcher Road N. Pinellas Park, FL 33782', 'madx' ); ?></a></address>
               <p><?php _e( 'Copyright', 'madx' ); ?> <?php echo date('Y'); ?> <?php _e( 'Madico', 'madx' ); ?><sup>&reg;</sup>, Inc. | <a href="/privacy-policy"><?php _e( 'Privacy Policy', 'madx' ); ?></a></p>
               <p><a href="/wp-content/uploads/2018/11/QMS-0863a_ENG_MADICO-Inc..pdf" target="_blank"><?php _e( 'ISO 9001:2015', 'madx' ); ?></a><?php _e( ' | ISO 14001', 'madx' ); ?></p>
             </div>

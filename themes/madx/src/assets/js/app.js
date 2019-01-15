@@ -25,6 +25,7 @@ import taxonomyFaqs from '../components/taxonomyFaqs.js';
 import residentialFilmSelector from '../components/residentialFilmSelector.js';
 import maduVideoModal from '../components/maduVideoModal.js';
 import jotForm from '../components/jotForm.js';
+import safetyProducts from '../components/safetyProducts.js';
 
 
 // GLOBAL FILTERS
@@ -183,7 +184,8 @@ var newVue = new Vue({
     'taxonomy-faqs'            : taxonomyFaqs,
   	'residential-film-selector': residentialFilmSelector,
     'madu-video-modal'         : maduVideoModal,
-  	'jot-form'                 : jotForm,
+    'jot-form'                 : jotForm,
+  	'safety-products'          : safetyProducts,
   },
   created(){
   	$(document).foundation();
