@@ -86,7 +86,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					if( have_rows('industries') ):
 					  while ( have_rows('industries') ) : the_row(); ?>
 
-					<?php if(get_sub_field('industry_heading') == 'Metalizing'){ ?>
+					<?php if(get_sub_field('industry_heading') == 'Metallizing'){ ?>
 						<div class="small-12 cell">
 							<div class="grid-x module auto-height side-module">
 								<div class="medium-4 cell show-for-medium" style="background: url(<?php the_sub_field('industry_image'); ?>) center center no-repeat;background-size:cover;">
