@@ -33,6 +33,8 @@
 							$title_joined = implode('-', $title_split);
 					?>
 
+					<?php if (has_post_format('video')) { ?>
+
 					<div class="medium-6 large-4 cell module auto-height">
 						<div class="image-link" data-videotitle="Title of Video">
 						  <a href="<?php echo $post_link; ?>" <?php if (has_post_format('video')) {echo 'data-open="video-modal"';} ?> class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><div class="module-bg small madicou-modal-image-<?php echo $title_joined; ?>" style="background-image: url(<?php the_post_thumbnail_url(); ?>);"></div></a>
@@ -47,6 +49,21 @@
 							  <?php } ?>
 						</div>
 					</div>
+
+				  <?php }else{ ?>
+
+				  	<div class="medium-6 large-4 cell module auto-height">
+							<a href="<?php the_permalink(); ?>">
+								<div class="module-bg small" style="background-image: url(<?php the_post_thumbnail_url(); ?>);"></div>
+							</a>
+							<div class="meta">
+								<a href="<?php the_permalink(); ?>"><h4 class="blue"><?php the_title(); ?></h4></a>
+								<p><?php echo wp_trim_words(get_the_content(),25,'...') ?></p>
+								<a href="<?php the_permalink(); ?>" class="blue read-more">Learn More &nbsp;<i class="fal fa-long-arrow-right"></i></a>
+							</div>
+				  	</div>
+
+				  <?php } ?>
 
 					<?php endwhile;endif;wp_reset_postdata(); ?>
 

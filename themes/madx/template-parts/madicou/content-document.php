@@ -1,17 +1,11 @@
 <?php 
 if ( $doc_query->have_posts() ) : while ( $doc_query->have_posts() ) : $doc_query->the_post(); 
-	$doc_attachment = get_field('doc_attachment'); // Requires ACF Field for 'doc_attachment'
+	$doc_attachment = get_field('document_attachment'); // Requires ACF Field for 'document_attachment'
 	?>
-	<div class="cell medium-4">
+	<div class="cell medium-4 module auto-height">
 		<div class="meta">
-		<?php if ( $doc_attchment != '' ) { ?>
-			<a href="<?php echo $doc_attchment; ?>" class="doc-link"><i class="fal fa-file-pdf"></i></a>
-			<h4 class="blue"><a href="<?php echo $doc_attchment; ?>" class="doc-link"><?php the_title() ;?></a></h4>
-		<?php } else { ?>
-			<span class="doc-link blue"><i class="fal fa-file-pdf"></i></span>
-			<h4 class="blue"><span class="doc-link blue"><?php the_title() ;?></span></h4>
-		<?php } ?>
-			<?php the_excerpt() ;?>
+			<h4 class="blue" style="margin-bottom:20px"><?php the_title() ;?></h4>
+			<a href="<?php the_field('document_attachment'); ?>" target="_blank"><i class="far fa-file-pdf"></i>&nbsp; Download</a>
 		</div>
 	</div>
 <?php endwhile; else: ?> 
