@@ -1,49 +1,166 @@
+.page-template-front-page {
+
+	#video-modal{
+		left: 50% !important;
+		padding-top: 50px !important;
+		width: 90%;
+		max-width: 800px;
+
+		@include breakpoint(small only){
+			width: 100%;
+		}
+	}
+
+	h1{
+		font-size: 3.5rem;
+
+		@include breakpoint(medium down){
+			font-size: 2.75rem;
+		}
+
+		@include breakpoint(small down){
+			font-size: 2rem;
+		}
+	}
+
+	.top-bar .menu a:hover:not(.button){
+		background-color: $clear;
+		color: $yellow;
+	}
+
+	.top-bar-right {
+
+		.menu.vertical.is-dropdown-submenu{
+			border-bottom-left-radius: 5px;
+			border-bottom-right-radius: 5px;
+			background-color: #00467f;
+
+			a{
+				background-color: #00467f;
+				transition: background-color 0.2s ease-in-out;
+				
+				&:hover{
+					background-color: $blue;
+				}
+			}
+		}
+	}
+
+	.hero{
+		padding-bottom: 60px;
+		min-height: 500px;
+		max-height: 550px;
+
+		@include breakpoint(medium only){
+			height: 75vh;
+			padding: 7% 0;
+			max-height: 600px;
+		}
+
+		@include breakpoint(small only){
+			height: auto;
+			padding: 10% 0 15%;
+			max-height: none;
+		}
+
+		@media(max-height: 425px){
+			height: 150vh;
+		}
+
+		.btn-yellow.solid{
+			border: 2px solid $yellow;
+
+			&:hover{
+				border-color: $blue
+			}
+		}
+
+		p.white{
+
+			@include breakpoint(large up){
+				width: 80%;
+			}
+		}
+
+		.site-header.absolute.show-for-medium{
+			top: 125px;
+		}
+	}
+
+	#search-dropdown{
+		top: 40px !important;
+		left: -298px !important;
+		background-color: transparent;
+		border: 0;
+
+		.input-group{
+			margin-bottom: 0;
+		}
+	}
+}
+
 .hero{
 	@include bg-center-cover;
 	padding-bottom: 14%;
 	height: 80vh;
+	max-height: 650px;
+
 	.grid-container,.grid-x{
 		height: 100%;
 	}
+
 	.grid-x{
 		align-items:flex-end;
+	}
+
+	.btn-yellow.border{
+		color: $white;
 	}
 }
 
 .dealer-callout{
 	background-color:#e5e6e6;
 	padding: 4% 0;
+
+	@include breakpoint(medium down){
+		padding: 4% 0 7%;
+	}
+
+	@include breakpoint(small down){
+		padding: 10% 0 12%;
+	}
+
 	.grid-x{
 		align-items: center;
 	}
+
 	h2{
 		font-family: 'AvenirLTStd-Black';
 	}
+
 	p{
 		margin-bottom: 0;
+		font-size: 1.125rem;
+	}
+
+	.text{
+
+		@include breakpoint(medium down){
+			margin-bottom: 30px;
+		}		
+	}
+
+	.text-right{
+
+		@include breakpoint(medium down){
+			text-align: left;
+		}
 	}
 }
 
 .home-modules{
-	
-	.medium-6.cell{
-		border-radius:5px;
-		box-shadow: 0 1px 6px 2px #eee;
-		img{
-			width: 100%;
-			@include breakpoint(small only){
-				height: 170px;
-			}
-		}
-	}
-	.meta{
-		padding: 20px;
-		h4{
-			font-size: 1.125rem;
-			font-family: 'AvenirLTStd-Medium';
-		}
-		p{
-			font-size: .875rem;
-		}
+
+	@include breakpoint(small down){
+		padding: 10% 0%;
 	}
 }

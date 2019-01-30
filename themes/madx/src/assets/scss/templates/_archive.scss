@@ -1,0 +1,29 @@
+.archive:not(.term-case-studies):not(.term-safety-security):not(.tax-specialty_taxonomies.term-products){
+
+	#page-header,.taxonomy-intro{
+		background-color: $white
+	}
+
+	&.category #page-header{
+		background-color: $clear;
+	}
+}
+
+.archive{
+	
+	.breadcrumbs .breadcrumb-title, .breadcrumbs span, .breadcrumbs a{
+		text-transform: uppercase;
+		font-family: 'AvenirLTStd-Black';
+		color: #a7a9ac;
+		font-size: 0.75rem;
+		margin-bottom: 10px;
+	}
+
+	#breadcrumbs,#single-post{
+		margin-top: 40px;
+	}
+}
+
+.breadcrumb-title i{
+	font-size: .5rem !important;
+}

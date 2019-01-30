@@ -1,0 +1,132 @@
+.single-madicou{
+
+	.module .meta img{
+		height: auto;
+		width: auto;
+	}
+}
+
+.single{
+
+	.overlay{
+		height: 100%;
+		width: 100%;
+		top: 0;
+		background-color: rgba(255,255,255,0.80);
+	}
+
+	.page-hero .grid-container{
+		padding: 20% 0 5%;
+		position: relative;
+
+		@include breakpoint(medium down){
+			padding-bottom: 50px;
+		}
+
+		@media(max-width:500px){
+			padding-bottom: 80px;
+		}
+
+		.post-meta{
+			background-color: $white;
+			padding: .625rem 0.5rem 0.5rem;
+			margin: 0;
+			list-style-type: none;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+			bottom: 0;
+
+			@include breakpoint(small down){
+				border-radius: 0;
+			}
+
+			> li{
+				display: inline-block;
+				margin: auto 10px;
+			}
+		}
+
+		.social{
+			margin: 0;
+			list-style-type: none;
+
+			.fa-facebook-square{
+				color: $facebook;
+			}
+			.fa-twitter{
+				color: $twitter;
+			}
+			.fa-google-plus-g{
+				color: $google;
+			}
+			.fa-linkedin{
+				color: $linkedin;
+			}
+			
+			li{
+				display: inline-block;
+				margin: auto 2.5px;
+			}
+		}
+	}
+
+	.post-content{
+
+		.next-prev{
+			margin-top: 50px;
+		}
+
+		.next-prev a{
+			color: #80a3bf;
+		}
+	}
+
+	.related-posts{
+
+		.module img{
+			height: 170px;
+		}
+
+		h3 span{
+			font-size: 0.875rem;
+
+			a{
+				color: $light_blue;
+				transition: color 0.25s ease-in-out;
+			}
+
+			a:hover{
+				color: $blue;
+			}
+		}
+	}
+
+	.single-sidebar{
+
+		.cat-list{
+			list-style-type: none;
+			margin: 0;
+
+			a{
+				color:$text_gray;
+
+				&:hover, &:hover i{
+					color: $blue;
+				}
+			}
+
+			a i{
+				color: $light_blue;
+			}
+		}
+	}
+
+	.case-study-container{
+
+		h3{
+			color: #1a598c;
+			font-size: 1.5rem;
+			font-family: AvenirLTStd-Book;
+		}
+	}
+}

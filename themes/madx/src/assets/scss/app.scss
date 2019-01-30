@@ -33,12 +33,12 @@
 @include foundation-off-canvas;
 @include foundation-orbit;
 @include foundation-pagination;
-@include foundation-progress-bar;
+// @include foundation-progress-bar;
 @include foundation-slider;
 @include foundation-sticky;
 @include foundation-reveal;
 @include foundation-switch;
-@include foundation-table;
+// @include foundation-table;
 @include foundation-tabs;
 @include foundation-thumbnail;
 @include foundation-title-bar;
@@ -82,14 +82,32 @@
 // Vendor
 @import "vendor/fontawesome";
 @import "vendor/avenir-font";
+@import "vendor/animate";
+@import "vendor/owl-carousel";
+@import "vendor/owl-theme";
 
 // Templates
 @import "templates/header";
+@import "templates/taxonomy";
 @import "templates/footer";
 @import "templates/contact";
+@import "templates/benefits";
 @import "templates/about";
+@import "templates/blog";
 @import "templates/auto";
+@import "templates/archive";
+@import "templates/film-selector";
+@import "templates/case-studies";
+@import "templates/find-dealer";
 @import "templates/commercial";
 @import "templates/residential";
+@import "templates/international";
+@import "templates/protectionpro";
 @import "templates/front-page";
-
+@import "templates/single";
+@import "templates/search-results";
+@import "templates/faqs";
+@import "templates/madicou";
+@import "templates/capabilities";
+@import "templates/specialty";
+@import "templates/jotforms";

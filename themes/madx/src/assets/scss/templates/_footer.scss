@@ -1,6 +1,24 @@
-footer{
+.footer{
+	background-color: $white;
+	padding: 8% 0;
+
+	@include breakpoint(small down){
+		padding: 10% 0;
+	}
+
 	.credits{
 		margin-top: 50px;
+
+		a{
+			color: $text-gray;
+			border-bottom: 1px solid $text-gray;
+			transition: all 0.25s ease-in-out;
+
+			&:hover{
+				color: $blue;
+				border-color: $blue;
+			}
+		}
 	}
 
 	ul{
@@ -19,12 +37,13 @@ footer{
 
 	    a{
 	    	color:$text-gray;
+	    	transition: color 0.25s ease-in-out;
+
+	    	&:hover{
+	    		color: $blue;
+	    	}
 	    }
 		}
-	}
-
-	.privacy li{
-		display: inline-block;
 	}
 
 	address,p{
@@ -33,7 +52,39 @@ footer{
 		margin-bottom: 5px;
 	}
 
+	address a{
+		color: $text-gray;
+		border-bottom:1px solid $text-gray;
+		transition: all 0.2s ease-in-out;
+
+		&:hover{
+			border-color: $blue;
+			color: $blue;
+		}
+	}
+
 	.blue{
 		text-transform: uppercase;
+	}
+
+	.footer-logos{
+		
+		.cell{
+
+			img{
+				max-width: 130px;
+				max-height: 75px;
+
+				@include breakpoint(medium down){
+					max-width: 90px;
+					max-height: 50px;
+				}
+
+				@include breakpoint(small down){
+					max-width: 60px;
+					max-height: 45px;
+				}
+			}
+		}
 	}
 }

@@ -1,0 +1,144 @@
+.jotform-form{
+	
+	@media(min-width: 768px){
+		padding: 0!important;
+	}
+
+	.form-all{
+		width: 100%;
+	}
+
+	.form-label.form-label-auto{
+		width: 100%;
+	}
+
+	li[data-type=control_head]{
+		display: none;
+	}
+
+	.form-sub-label{
+		font-family: 'AvenirLTStd-Medium';
+	}
+
+	input,select,textarea{
+		border-radius: 3px;
+		border: 2px solid #CCC;
+		padding: 5px 10px;
+		font-size: 1rem;
+
+		&.validInput{
+			color: #4477a1;
+			background-color: #ecf1f5;
+		}
+
+		&:focus{
+			box-shadow: none;
+			border: 2px solid #CCC;
+		}
+	}
+
+	textarea{
+		resize: none;
+		padding: 10px;
+	}
+
+	select{
+		background-position: right 0rem center;
+	}
+
+	.form-label{
+		font-family: 'AvenirLTStd-Medium';
+		color: #636466;
+	}
+
+	.form-label-top{
+		margin-bottom: 5px;
+	}
+
+	.form-line-column{
+		width: 50%;
+
+		input{
+			width: 100% !important;
+		}
+	}
+
+	.form-line{
+		padding: 0 20px;
+	}
+
+	.form-address-table{
+		width: 100%;
+
+		.form-sub-label-container{
+			width: 100%;
+
+			input,select{
+				width: 100%;
+			}
+		}
+
+		tr > td:first-of-type{
+			padding-right: 20px;
+		}
+
+		tr > td:last-of-type{
+			padding-left: 20px;
+		}
+
+		tr > td[colspan="2"]{
+			padding: 0 0 10px;
+		}
+	}
+
+	.form-buttons-wrapper{
+		margin-left: 0!important;
+		text-align: center;
+
+		button[type=submit]{
+			padding: 1rem 1.6rem .9rem;
+		  text-transform: uppercase;
+		  border-radius: 2rem;
+		  font-size: .9rem;
+		  font-family: AvenirLTStd-Black;
+		  transition: all .25s ease-in-out;
+		  letter-spacing: 1px;
+			background: $yellow;
+			color: $white;
+			margin-bottom: 0;
+			border: 0;
+			text-shadow: none;
+			box-shadow: none;
+
+			&:hover{
+				color:$white;
+				background-color:$blue;
+
+				span{
+					color: $white;
+				}
+			}
+		}
+	}
+}
+
+.page-template-page-protectionpro,.page-template-page-international{
+
+	.about-content .content-block{
+
+		.jotform-form ul li{
+			text-indent: 0;
+			padding: 0 20px;
+		}
+
+		.form-multiple-column .form-radio-item, .form-multiple-column .form-checkbox-item{
+			width: 200px;
+		}
+
+		.form-multiple-column .form-radio-other-input, .form-multiple-column .form-checkbox-other-input{
+			width: 150px;
+			display: inline-block;
+			margin-left: -20px;
+		}
+	}
+}

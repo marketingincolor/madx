@@ -1,0 +1,88 @@
+.page-template-page-international{
+
+	header.site-header.absolute{
+		top: 60px;
+
+		@include breakpoint(medium down){
+			top: 75px;
+		}
+
+		@include breakpoint(small down){
+			top: 40px;
+		}
+
+		@media(max-width:320px){
+			top: 30px;
+		}
+	}
+
+	.is-dropdown-submenu-parent.opens-right,.is-dropdown-submenu-parent.opens-left{
+		margin: auto 0 auto auto;
+	}
+
+	.is-dropdown-submenu-parent.opens-inner > .is-dropdown-submenu{
+		top: 100%;
+	}
+
+	.dropdown.menu > li.opens-left > .is-dropdown-submenu,
+	.is-dropdown-submenu .is-dropdown-submenu-parent.opens-right > a::after,
+	.dropdown.menu > li.is-dropdown-submenu-parent > a::after{
+		border: 0;
+	}
+
+	.dropdown.menu .is-active > a{
+		background-color: $blue;
+		color: $white;
+	}
+
+	.hero{
+		height: 65vh;
+		padding-bottom: 90px;
+		min-height: 500px;
+
+		@include breakpoint (medium down){
+			height: 80vh;
+		}
+
+		@include breakpoint (small down){
+			height: 100vh;
+			padding: 40px 0;
+		}
+
+		@media(max-height:450px){
+			height: 150vh;
+			padding: 40px 0;
+		}
+
+		.small-10.cell{
+			align-self: flex-end;
+		}
+
+		.subhead{
+			margin-bottom: 30px;
+		}
+	}
+
+	.about-next,.about-ppro{
+		padding: 7% 0;
+	}
+
+	.about-next.ppro{
+		margin-top: -1px;
+
+		@include breakpoint(medium down){
+			background-position: 0;
+		}
+
+		@include breakpoint(small down){
+			background-image: url(../images/madico-international-protectionpro-mobile-A.jpg) !important;
+		}
+	}
+
+	.about-next.residential{
+
+		@include breakpoint(small down){
+			background-image: url(../images/madico-international-window-film-mobile-D.jpg) !important;
+		}	
+	}
+}

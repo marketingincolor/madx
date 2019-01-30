@@ -1,0 +1,133 @@
+.about-types{
+
+	i{
+		font-size: 44px;
+		margin-bottom: 10px;
+		color: $yellow;
+	}
+
+	h5{
+		font-size: 1.125rem;
+		font-family: 'AvenirLTStd-Black';
+	}
+}
+
+.about-next,.about-ppro{
+	padding: 15% 0;
+	@include bg-center-cover;
+}
+
+.about-content{
+
+	.content-block{
+	  background-color: $white;
+	  padding: 8% 0;
+	  box-shadow: 0 1px 6px 2px #eee;
+
+	  h2,h3,h4 {
+	  	color: $blue;
+	  }
+
+	  ul{
+	  	margin: 0;
+	  	list-style-type: none;
+		
+			li{
+				text-indent: -0.9em;
+				padding: 2px 0 2px 1.9em;
+			}
+
+	  	i{
+	  		color: $light_blue;
+	  		margin-right: 5px;
+	  	}
+	  }
+	}
+}
+
+.about-next{
+
+	.white p{
+		color: $white;
+	}
+}
+
+.page-template-page-madico-cares{
+
+	.side-module{
+
+		.desktop{
+
+			@media(max-width: 800px){
+				display: none;
+			}
+
+			img{
+				border-top-right-radius: 0;
+			}
+
+			.meta{
+				height: 100%;
+				position: relative;
+
+				p{
+					position: absolute;
+					width: 80%;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%,-50%);
+					font-size: 1rem;
+
+					@include breakpoint(medium down){
+						width: 90%;
+					}
+
+				}
+			}
+		}
+
+		.mobile{
+
+			@media(min-width: 801px){
+				display: none;
+			}
+		}
+	}
+
+	.module .meta {
+
+		h5{
+			margin-bottom: 0;
+			font-size: 1.125rem;
+			font-family: 'AvenirLTStd-Medium';
+		}
+
+		p:not(.event-date){
+			font-size: 1rem;
+		}
+	}
+
+	.module .meta .event-date{
+		margin-bottom: 20px;
+		color: #a7a9ac;
+	}
+}
+
+.page-template-page-timeline {
+
+	.page-header{
+		padding-top: 0;
+	}
+
+	#page-header{
+		padding: 5% 0;
+	}
+
+	.posts.about-content{
+		padding-top: 0;
+	}
+
+	.module img{
+		border-bottom: 1px solid #EEE;
+	}
+}

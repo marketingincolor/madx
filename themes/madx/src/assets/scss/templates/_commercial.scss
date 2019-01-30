@@ -1,0 +1,49 @@
+.tax-commercial_taxonomies{
+
+	&.term-case-studies{
+		.taxonomy-intro{
+			padding-bottom: 10%;
+		}
+	}
+	
+	.taxonomy-intro{
+		padding-bottom: 0;
+	}
+}
+
+.page-template-page-commercial{
+	
+	.page-hero{
+
+		@include bg-center-cover;
+	}
+
+	.benefits{
+		background-color: $white;
+	}
+
+	.film-type{
+		background-color:#f8f8f8;
+
+		.medium-4.cell{
+
+			@include breakpoint(small only){
+				margin-bottom: 30px;
+			}
+
+			.subhead{
+
+				@include breakpoint(small only){
+					margin-bottom: 20px;
+				}
+			}
+		}
+	}
+
+	.module{
+
+		h4{
+			font-family: 'AvenirLTStd-Heavy';
+		}
+	}
+}

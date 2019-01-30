@@ -14,6 +14,100 @@
  * @since FoundationPress 1.0.0
  */
 
+add_filter('acf/format_value/type=text', 'do_shortcode');
+
+// Fix pagination 404 errors on blog category pages
+function bamboo_request($query_string ){
+  	if( isset( $query_string['page'] ) ) {
+  	  if( ''!=$query_string['page'] ) {
+  	    if( isset( $query_string['name'] ) ) {
+  	        unset( $query_string['name'] );
+  	    }
+  	  }
+  	}
+  	return $query_string;
+}
+add_filter('request', 'bamboo_request');
+
+add_action('pre_get_posts','bamboo_pre_get_posts');
+function bamboo_pre_get_posts( $query ) {
+	// Only for pagination on category pages
+  if (is_category()) {
+   	if( $query->is_main_query() && !$query->is_feed() && !is_admin() ) { 
+   	  $query->set( 'paged', str_replace( '/', '', get_query_var( 'page' ) ) ); 
+   	}
+  } 
+}
+
+function list_distributors($country_array){
+	$count = 0;
+  foreach ($country_array as $country => $country_post) {
+    echo "<div class='small-12 cell'>";
+    echo "<h4 class='blue'>{$country}</h4>";
+    echo "</div>";
+
+    // Loop through each country's distributor posts
+    foreach ($country_post as $distributor_post) {
+      $count++;
+      $dist_company   = get_post_meta($distributor_post->ID,'company_name',true);
+      $dist_street    = get_post_meta($distributor_post->ID,'street',true);
+      $dist_zip       = get_post_meta($distributor_post->ID,'zip',true);
+      $dist_city      = get_post_meta($distributor_post->ID,'city',true);
+      $dist_state     = get_post_meta($distributor_post->ID,'state',true);
+      $dist_phone     = get_post_meta($distributor_post->ID,'phone_number',true);
+      $dist_altphone  = get_post_meta($distributor_post->ID,'alt_phone_number',true);
+      $dist_fax       = get_post_meta($distributor_post->ID,'fax',true);
+      $dist_email     = get_post_meta($distributor_post->ID,'email',true);
+      $dist_website   = get_post_meta($distributor_post->ID,'website',true);
+      $dist_markets   = get_post_meta($distributor_post->ID,'markets',true);
+      $dist_name      = $distributor_post->post_title;
+      $comp_name      = get_post_meta($distributor_post->ID,'compnay_name',true);
+      $website_nohttp = preg_replace('/(http:\/\/|https:\/\/|www.)/', '', $dist_website);
+
+      echo "<div class='medium-6 large-3 cell module auto-height'>";
+      echo "<h5 class='blue'>{$dist_name}</h5>";
+      echo "<ul class='dealer-meta'>";
+
+      if ($dist_company || $dist_street || $dist_city) {
+      
+        echo "<li><address><i class='fas fa-map-marker-alt'></i> &nbsp;";
+        if($dist_company) {
+          echo "{$dist_company}<br>";
+        }
+        if($dist_street) {
+          echo "{$dist_street}<br> {$dist_city}, {$dist_state} {$dist_zip}</address></li>";
+        }
+
+      }
+
+      if($dist_phone) {
+        echo "<li><address><i class='fas fa-phone'></i> &nbsp;{$dist_phone}";
+        if($dist_altphone) {
+          echo "<br>{$dist_altphone}";
+        }
+        echo "</address></li>";
+      }
+      if($dist_fax) {
+        echo "<li><address><i class='fas fa-fax'></i> &nbsp;{$dist_fax}</address></li>";
+      }
+      if($dist_email) {
+        echo "<li class='email'><address><i class='fas fa-envelope'></i> &nbsp;{$dist_email}</address></li>";
+      }
+      if($dist_website) {
+        echo "<li class='email website'><address><i class='fas fa-globe'></i> &nbsp;<a href='{$dist_website}' target='_blank'>{$website_nohttp}</a></address></li>";
+      }
+      echo "</ul>";
+      if($dist_markets) {
+        echo "<a href='#!' class='info-icon' v-tooltip tabindex='{$count}' title='{$dist_markets}'><i class='fal fa-info-circle'></i></a>";
+      }
+      echo "</div>";
+      }
+    
+	}
+}
+
+/** Lanugage switcher functions  */
+require_once( 'library/languages.php' );
 
 /** Various URL rewrite functions to add taxonomies to url */
 require_once( 'library/url-rewrites.php' );
@@ -54,6 +148,9 @@ require_once( 'library/sticky-posts.php' );
 
 /** Configure responsive image sizes */
 require_once( 'library/responsive-images.php' );
+
+/** Add custom shortcodes */
+require_once( 'library/shortcodes.php' );
 
 /** If your site requires protocol relative url's for theme assets, uncomment the line below */
 // require_once( 'library/class-foundationpress-protocol-relative-theme-assets.php' );

@@ -8,39 +8,34 @@
 
 get_header(); ?>
 
-<div class="main-container">
-	<div class="main-grid">
-		<main class="main-content">
-			<article>
-				<header>
-					<h1 class="entry-title"><?php _e( 'File Not Found', 'foundationpress' ); ?></h1>
-				</header>
-				<div class="entry-content">
-					<div class="error">
-						<p class="bottom"><?php _e( 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'foundationpress' ); ?></p>
-					</div>
-					<p><?php _e( 'Please try the following:', 'foundationpress' ); ?></p>
-					<ul>
-						<li>
-							<?php _e( 'Check your spelling', 'foundationpress' ); ?>
-						</li>
-						<li>
-							<?php
-								/* translators: %s: home page url */
-								printf(
-									__( 'Return to the <a href="%s">home page</a>', 'foundationpress' ),
-									home_url()
-								);
-							?>
-						</li>
-						<li>
-							<?php _e( 'Click the <a href="javascript:history.back()">Back</a> button', 'foundationpress' ); ?>
-						</li>
-					</ul>
+<section class="error-page">
+	<div class="grid-container">
+		<div class="grid-x">
+			<div class="small-10 small-offset-1 medium-8 medium-offset-2 cell text-center">
+				<div class="yellow-circle">
+					<i class="fal fa-exclamation-triangle blue"></i>
 				</div>
-			</article>
-		</main>
-		<?php get_sidebar(); ?>
+				<h1 class="blue">Oops! You've reached a 404 page.</h1>
+				<aside class="yellow-underline center"></aside>
+			</div>
+			<div class="small-8 small-offset-2 medium-6 medium-offset-3 large-5 large-offset-4 cell">
+				<p style="margin-bottom: 10px">The page you're looking for doesn't exist.</p>
+				<ul>
+					<li><i class="fal fa-check-circle"></i> &nbsp;Check the URL</li>
+					<li><i class="fal fa-arrow-circle-left"></i> &nbsp;Visit one of these pages on our site:
+						<ul>
+							<li><a href="/">Homepage</a></li>
+							<li><a href="/automotive">Automotive Window Films</a></li>
+							<li><a href="/residential">Residential Window Films</a></li>
+							<li><a href="/commercial">Commercial Window Films</a></li>
+							<li><a href="/dealer-portal">Dealer Portal</a></li>
+						</ul>
+					</li>
+					<li><i class="fal fa-search"></i> &nbsp;Or, use the search bar in our navigation to find what you're looking for</li>
+				</ul>
+			</div>
+		</div>
 	</div>
-</div>
+</section>
+
 <?php get_footer();

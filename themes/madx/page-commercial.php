@@ -1,28 +1,81 @@
-<?php
-/**
- * The template for displaying pages
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages and that
- * other "pages" on your WordPress site will use a different template.
- *
- * @package FoundationPress
- * @since FoundationPress 1.0.0
- */
-
+<?php 
+/* Template Name: Commercial */
 get_header(); ?>
 
-<?php get_template_part( 'template-parts/featured-image' ); ?>
-<div class="main-container">
-	<div class="main-grid">
-		<main class="main-content">
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'template-parts/content', 'page' ); ?>
-				<?php comments_template(); ?>
-			<?php endwhile; ?>
-		</main>
-		<?php get_sidebar(); ?>
+<section class="page-hero" style="background-image: url(<?php the_field('commercial_hero_background_image'); ?>);">
+
+	<div class="show-for-small-only">
+		<?php get_template_part('template-parts/menus/commercial-header-menu'); ?>
 	</div>
-</div>
-<?php
-get_footer();
+
+	<div id="header-grid" class="grid-container">
+		<div class="grid-x">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
+				<?php get_template_part('template-parts/menus/commercial-tablet-menu'); ?>
+			</div>
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-large">
+				<?php get_template_part('template-parts/menus/commercial-header-menu'); ?>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid-container">
+		<div class="grid-x">
+			<div class="small-10 small-offset-1 cell text-center">
+				<h1 class="blue"><?php the_field('commercial_hero_heading'); ?></h1>
+				<aside class="yellow-underline center"></aside>
+				<p class="subhead"><?php the_field('commercial_hero_subhead'); ?></p>
+				<a href="<?php the_field('commercial_hero_button_link'); ?>" class="btn-yellow solid commercial-hero-cta"><?php the_field('commercial_hero_button_text'); ?></a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="film-type">
+	<div class="grid-container">
+		<div class="grid-x">
+			<div class="small-10 small-offset-1 medium-8 large-6 medium-offset-2 large-offset-3 cell text-center">
+				<h2 class="blue"><?php the_field('film_type_heading'); ?></h2>
+				<aside class="yellow-underline center"></aside>
+				<p class="subhead"><?php the_field('film_type_subhead'); ?></p>
+			</div>
+		</div>
+	</div>
+	<div class="grid-container">
+		<div class="grid-x">
+			<div class="small-10 small-offset-1 large-12 large-offset-0">
+				<div class="grid-x grid-margin-x grid-margin-y">
+
+				<?php if( have_rows('commercial_film_types') ): ?>
+					<?php while( have_rows('commercial_film_types') ): the_row(); 
+
+						$title     = get_sub_field('film_title');
+						$subhead   = get_sub_field('film_subhead');
+						$icon      = get_sub_field('film_icon');
+						$link      = get_sub_field('film_button_link');
+						$text      = get_sub_field('film_button_text');
+						$link_join = substr($link, 12);
+
+						?>
+
+						<div class="medium-4 cell text-center">
+							<?php echo $icon; ?>
+							<h5 class="blue"><?php echo $title; ?></h5>
+							<p class="subhead"><?php echo $subhead; ?></p>
+							<a href="<?php echo $link; ?>"><button class="btn-yellow border commercial-benefit-<?php echo $link_join; ?>"><?php echo $text; ?></button></a>
+						</div>
+
+					<?php endwhile; ?>
+				<?php endif; ?>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<?php get_template_part('template-parts/top-level-page/film-tips'); ?>
+
+<?php get_template_part('template-parts/top-level-page/find-dealer'); ?>
+
+<?php get_footer();

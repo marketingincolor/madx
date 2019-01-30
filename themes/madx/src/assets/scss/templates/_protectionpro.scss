@@ -1,0 +1,248 @@
+.page-template-page-protectionpro{
+
+	.hero{
+		height: 65vh;
+		padding: 50px 0 75px;
+
+		@include breakpoint (large){
+			max-height: 500px;
+		}
+
+		@include breakpoint (medium down){
+			height: 80vh;
+		}
+
+		@media(max-width: 748px){
+			height: 100vh;
+			max-height: 700px;
+		}
+
+		@include breakpoint (small down){
+			height: 70vh;
+			padding: 10% 0;
+			max-height: none;
+		}
+
+		@media(max-width: 375px){
+			height: 85vh;
+		}
+
+		@media(max-width: 320px){
+			height: 100vh;
+		}
+
+		@media(max-height: 414px){
+			height: 150vh;
+		}
+
+		.subhead{
+			margin-bottom: 30px;
+		}
+	}
+
+	#infinity-tabs{
+		display: flex;
+		border: 0;
+
+		@include breakpoint(small down){
+			flex-wrap: wrap;
+		}
+
+		.tabs-title{
+			@include bg-center-cover;
+			flex-grow: 1;
+			text-align: center;
+			font-size: 0.875rem;
+			text-transform: uppercase;
+			font-family: 'AvenirLTStd-Medium';
+			border-bottom: 3px solid $white;
+			border-right: 3px solid $white;
+
+			&:last-of-type{
+				border-right: 0;
+
+				@include breakpoint(small down){
+					border-right: 3px solid $white;
+				}
+			}
+
+			&.is-active{
+				border-bottom: 0;
+
+				@include breakpoint(small down){
+					border-bottom: 3px solid $white;
+				}
+			}
+
+			a{
+				color: $text-gray;
+				letter-spacing: 1px;
+			}
+		}
+
+		.tabs-title>a:focus, .tabs-title>a[aria-selected=true],.tabs-title>a:hover{
+			background: transparent;
+		}
+	}
+
+	.tabs-panel{
+		@include bg-center-cover;
+
+		@include breakpoint(small down){
+			padding-bottom: 0;
+			background-position: 0 0;
+		}
+
+		.text-column{
+			padding: 40px 0;
+
+			@media(min-width:1500px){
+				padding: 60px 0;
+			}
+		}
+
+		h3.blue{
+
+			@include breakpoint(small down){
+				font-size: 1.5rem;
+				text-align: center;
+			}
+		}
+
+		p{
+
+			@include breakpoint(small down){
+				text-align: center;
+			}
+		}
+
+		.yellow-underline{
+
+			@include breakpoint(small down){
+				margin: 20px auto 30px;
+			}
+		}
+
+		img{
+
+			@include breakpoint(small down){
+				vertical-align: inherit;
+			}
+		}
+
+		.cell img{
+			margin-bottom: 10px;
+		}
+
+		.cell h5{
+			font-size:0.75rem;
+			color: #333;
+
+			@include breakpoint(small down){
+				font-size: 1rem;
+			}
+		}
+	}
+
+	.taxonomy-testimonials{
+		background-image: url(../images/protectionpro-hero.png);
+		@include bg-center-cover;
+
+		h2,p,address{
+			color: $white;
+		}
+
+		.orbit-next:hover i,.orbit-previous:hover i{
+			color: $yellow;
+		}
+		
+	}
+}
+
+.checklist{
+	list-style-type: none;
+	margin: 0;
+
+	li{
+		padding: 5px 0 5px 1.5rem;
+		text-indent: -0.8rem;
+	}
+
+	i{
+		color: $light_blue;
+	}
+}
+
+.touchscreen-pro{
+	background-color: $white;
+
+
+}
+
+.full-body-carousel{
+
+	.owl-dots{
+		display: none;
+	}
+}
+
+#swatch-carousel{
+
+	.orbit-container{
+		height: auto!important;
+	}
+
+	.orbit-previous{
+
+		@include breakpoint(medium down){
+			left: -30px;
+		}
+	}
+
+	.orbit-next{
+
+		@include breakpoint(medium down){
+			right: -30px;
+		}
+	}
+
+	.orbit-next,.orbit-previous{
+		cursor: pointer;
+
+		&:hover, &:active, &:focus{
+			background-color: $clear;
+		}
+
+		&:hover{
+
+			i{
+				color: $text_gray;
+			}
+		}
+
+		i{
+			color: #CCC;
+			font-size: 24px;
+			transition: color 0.2s ease-in-out;
+			cursor: pointer;
+		}
+	}
+
+	.orbit-slide{
+
+		img{
+			height: 55px;
+			border: 3px solid #CCC;
+			border-radius: 50%;
+			margin: 0 5px;
+
+			@media(max-width: 800px){
+				height: 35px;
+			}
+
+			&.active-swatch{
+				border-color: #336b99;
+			}
+		}
+	}
+}
