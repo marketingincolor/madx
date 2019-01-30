@@ -90,7 +90,7 @@ if ($_GET['post_type'] === 'madicou') {
 								'post_type'      => array('post','page'),
 								's'              => get_search_query(),
 								'posts_per_page' => 99,
-								'post__not_in'   => array(12747,12789,12791,1314,12746,1227,12750)
+								'post__not_in'   => array(12747,12789,12791,1314,12746,1227,12750,13274)
 							);
 							$the_query = new WP_Query( $args );
 							if ( $the_query->have_posts() ) :
