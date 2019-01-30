@@ -20,6 +20,11 @@ register_nav_menus(
 		'protectionpro-top-nav' => esc_html__( 'ProtectionPro Top Nav', 'foundationpress' ),
 		'header-top-nav' => esc_html__( 'Header Top Nav', 'foundationpress' ),
 		'blog-top-nav' => esc_html__( 'Blog Top Nav', 'foundationpress' ),
+		'footer-company' => esc_html__( 'Footer Company', 'foundationpress' ),
+		'footer-films' => esc_html__( 'Footer Films', 'foundationpress' ),
+		'footer-specialty' => esc_html__( 'Footer Specialty', 'foundationpress' ),
+		'footer-dealers' => esc_html__( 'Footer Dealers', 'foundationpress' ),
+		'footer-connect' => esc_html__( 'Footer Connect', 'foundationpress' ),
 	)
 );
 
@@ -242,6 +247,96 @@ if ( ! function_exists( 'foundationpress_blog_nav' ) ) {
 				'menu'           => __( 'blog-top-nav', 'foundationpress' ),
 				'menu_class'     => 'menu',
 				'theme_location' => 'blog-top-nav',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'fallback_cb'    => false,
+			)
+		);
+	}
+}
+
+/**
+ * Footer Navigation - Company Menu
+ */
+if ( ! function_exists( 'foundationpress_footer_company' ) ) {
+	function foundationpress_footer_company() {
+		wp_nav_menu(
+			array(
+				'container'      => false,   // Remove nav container
+				'menu'           => __( 'footer-company', 'foundationpress' ),
+				'menu_class'     => '',
+				'theme_location' => 'footer-company',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'fallback_cb'    => false,
+			)
+		);
+	}
+}
+
+/**
+ * Footer Navigation - Films Menu
+ */
+if ( ! function_exists( 'foundationpress_footer_films' ) ) {
+	function foundationpress_footer_films() {
+		wp_nav_menu(
+			array(
+				'container'      => false,   // Remove nav container
+				'menu'           => __( 'footer-films', 'foundationpress' ),
+				'menu_class'     => '',
+				'theme_location' => 'footer-films',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'fallback_cb'    => false,
+			)
+		);
+	}
+}
+
+/**
+ * Footer Navigation - Specialty Menu
+ */
+if ( ! function_exists( 'foundationpress_footer_specialty' ) ) {
+	function foundationpress_footer_specialty() {
+		wp_nav_menu(
+			array(
+				'container'      => false,   // Remove nav container
+				'menu'           => __( 'footer-specialty', 'foundationpress' ),
+				'menu_class'     => '',
+				'theme_location' => 'footer-specialty',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'fallback_cb'    => false,
+			)
+		);
+	}
+}
+
+/**
+ * Footer Navigation - Dealers Menu
+ */
+if ( ! function_exists( 'foundationpress_footer_dealers' ) ) {
+	function foundationpress_footer_dealers() {
+		wp_nav_menu(
+			array(
+				'container'      => false,   // Remove nav container
+				'menu'           => __( 'footer-dealers', 'foundationpress' ),
+				'menu_class'     => '',
+				'theme_location' => 'footer-dealers',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'fallback_cb'    => false,
+			)
+		);
+	}
+}
+
+/**
+ * Footer Navigation - Connect Menu
+ */
+if ( ! function_exists( 'foundationpress_footer_connect' ) ) {
+	function foundationpress_footer_connect() {
+		wp_nav_menu(
+			array(
+				'container'      => false,   // Remove nav container
+				'menu'           => __( 'footer-connect', 'foundationpress' ),
+				'menu_class'     => '',
+				'theme_location' => 'footer-connect',
 				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 				'fallback_cb'    => false,
 			)

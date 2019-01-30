@@ -65,7 +65,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					?>
 
 						<div class="medium-6 cell module auto-height"><a href="">
-							<div class="module-bg large" style="background-image:url(<?php the_post_thumbnail_url(); ?>)"></div>
+							<a href="<?php the_permalink(); ?>"><div class="module-bg large" style="background-image:url(<?php the_post_thumbnail_url(); ?>)"></div></a>
 							<div class="meta">
 								<h5 class="blue"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 								<p class="event-date"><?php the_field('event_date'); ?></p>
