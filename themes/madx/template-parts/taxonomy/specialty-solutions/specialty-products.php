@@ -33,13 +33,13 @@
 							$args = array(
 								'parent' => 86,
 								'orderby' => 'slug',
-								'hide_empty' => false
+								'hide_empty' => true
 							 );
 							$child_terms = get_terms( 'specialty_taxonomies', $args );
-							foreach ($child_terms as $term) {
+							foreach ($child_terms as $child_term) {
 						?>
 
-						  <li class="tabs-title"><a href="<?php echo "#{$term->slug}"; ?>" @click="openDistributionTab"><?php echo $term->name; ?></a></li>
+						  <li class="tabs-title"><a href="<?php echo "#{$child_term->slug}"; ?>" @click="openDistributionTab"><?php echo $child_term->name; ?></a></li>
 								
 						<?php	} ?>
 
@@ -51,9 +51,9 @@
 									<option value="#all"><?php _e( 'All', 'madx' ); ?></option>
 									<?php
 										$child_terms = get_terms( 'specialty_taxonomies', $args );
-										foreach ($child_terms as $term) {
+										foreach ($child_terms as $child_term) {
 									?>
-									<option value="<?php echo "#{$term->slug}"; ?>"><?php echo $term->name; ?></option>
+									<option value="<?php echo "#{$child_term->slug}"; ?>"><?php echo $child_term->name; ?></option>
 								  <?php } ?>
 								</select>
 							</ul>
@@ -81,7 +81,7 @@
 								while ( $query->have_posts() ) : $query->the_post();
 							?>
 
-								<div class="medium-6 large-4 cell module auto-height">
+								<div class="medium-6 large-4 cell module auto-height relative">
 									<div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url() ?>)"></div>
 									<div class="meta">
 										<h4 class="blue"><?php the_title(); ?></h4>
@@ -89,7 +89,13 @@
 											<?php the_field('short_description'); ?>
 										</div>
 										<?php if(get_field('data_sheet')) { ?>
-										  <a href="<?php the_field('data_sheet') ?>" class="btn-yellow border" target="_blank"><?php _e( 'Data Sheet', 'madx' ); ?></a>
+
+										  <a href="#!" class="btn-yellow border absolute data-sheet" data-pdf="<?php the_field('data_sheet'); ?>"><?php _e( 'Data Sheet', 'madx' ); ?></a>
+
+									  <?php }else{ ?>
+
+									  	<a href="/specialty-solutions/contact" class="btn-yellow border absolute"><?php _e( 'Start A Project', 'madx' ); ?></a>
+
 									  <?php } ?>
 									</div>
 								</div>
@@ -99,22 +105,22 @@
 							</div>
 						</div>
 
-						<?php foreach ($child_terms as $term) { ?>
+						<?php foreach ($child_terms as $child_term) { ?>
 
-					  <div class="tabs-panel" id="<?php echo $term->slug; ?>">
+					  <div class="tabs-panel" id="<?php echo $child_term->slug; ?>">
 							<div class="grid-x grid-margin-x grid-margin-y">
 									
 								<?php
 									$args = array(
 										'post_type'      => 'specialty',
 										'posts_per_page' => -1,
-										'orderby'        => 'title',
+										'orderby'        => 'menu_order',
 										'order'          => 'ASC',
 										'tax_query'      => array(
 											array(
 												'taxonomy' => 'specialty_taxonomies',
 												'field'    => 'slug',
-												'terms'    => $term->slug,
+												'terms'    => $child_term->slug,
 											),
 										),
 									);
@@ -122,7 +128,7 @@
 									while ( $query->have_posts() ) : $query->the_post();
 								?>
 
-								<div class="medium-6 large-4 cell module auto-height">
+								<div class="medium-6 large-4 cell module auto-height relative">
 									<div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url() ?>)"></div>
 									<div class="meta">
 										<h4 class="blue"><?php the_title(); ?></h4>
@@ -130,7 +136,13 @@
 											<?php the_field('short_description'); ?>
 										</div>
 										<?php if(get_field('data_sheet')) { ?>
-										  <a href="<?php the_field('data_sheet') ?>" class="btn-yellow border" target="_blank"><?php _e( 'Data Sheet', 'madx' ); ?></a>
+
+										  <a href="#!" class="btn-yellow border absolute data-sheet" data-pdf="<?php the_field('data_sheet'); ?>"><?php _e( 'Data Sheet', 'madx' ); ?></a>
+
+									  <?php }else{ ?>
+
+									  	<a href="/specialty-solutions/contact" class="btn-yellow border absolute"><?php _e( 'Start Your Project', 'madx' ); ?></a>
+
 									  <?php } ?>
 									</div>
 								</div>
@@ -148,3 +160,22 @@
 		</section>
 	</div>
 </section>
+
+<!-- Form Modal -->
+	<div class="reveal" id="specialty-form-modal" v-reveal>
+		<h3 class="blue">Please fill out the form to access the product's data sheet</h3>
+	  <?php the_field('specialty_short_description',$term); ?>
+	  <button class="close-button" data-close aria-label="Close modal" type="button">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+<!-- /Form Modal -->
+
+<!-- PDF Modal -->
+	<div class="reveal" id="specialty-pdf-modal" v-reveal>
+		<iframe src="" style="border:0;height:100%;width:100%"></iframe>
+	  <button class="close-button" data-close aria-label="Close modal" type="button">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+<!-- /PDF Modal -->

@@ -3,7 +3,7 @@
 Plugin Name: Madico Dealer Directory
 Description: A CUSTOM Wordpress plugin for Madico's Dealer Directory
 Version: 0.1
-Author: Marketing In Color
+Author: Nate Beers
 Author URI: http://www.marketingincolor.com
 License: GPL2
 

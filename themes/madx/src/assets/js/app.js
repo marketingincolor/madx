@@ -9,7 +9,6 @@ import Foundation from 'foundation-sites';
 // the line below
 //import './lib/foundation-explicit-pieces';
 import autoPosts from '../components/autoPosts.js';
-import safetyFilmTypes from '../components/safetyFilmTypes.js';
 import taxTermPosts from '../components/taxTermPosts.js';
 import findDealerForm from '../components/findDealerForm.js';
 import findDealerPage from '../components/findDealerPage.js';
@@ -26,6 +25,7 @@ import taxonomyFaqs from '../components/taxonomyFaqs.js';
 import residentialFilmSelector from '../components/residentialFilmSelector.js';
 import maduVideoModal from '../components/maduVideoModal.js';
 import jotForm from '../components/jotForm.js';
+import safetyProducts from '../components/safetyProducts.js';
 
 
 // GLOBAL FILTERS
@@ -169,7 +169,6 @@ var newVue = new Vue({
   el: '#app',
   components:{
   	'auto-posts'               : autoPosts,
-  	'safety-film-types'        : safetyFilmTypes,
   	'tax-term-posts'           : taxTermPosts,
     'find-dealer-form'         : findDealerForm,
     'film-selector'            : filmSelector,
@@ -185,15 +184,23 @@ var newVue = new Vue({
     'taxonomy-faqs'            : taxonomyFaqs,
   	'residential-film-selector': residentialFilmSelector,
     'madu-video-modal'         : maduVideoModal,
-  	'jot-form'                 : jotForm,
+    'jot-form'                 : jotForm,
+  	'safety-products'          : safetyProducts,
   },
   created(){
   	$(document).foundation();
     this.runIEpolyfills();
+    // Hide a language from navbar until it is translated
+    let listItems = document.querySelectorAll('a[href="/ar/international"');
+    listItems.forEach(function(item){
+      item.parentElement.style.display = "none";
+    });
+
   },
   mounted(){
     this.menuDropdown();
     this.closeMobileMenuOutside();
+    this.validateForms();
     if (location.href.includes('protectionpro')) {
       this.protectionProCarousel();
     }
@@ -301,6 +308,39 @@ var newVue = new Vue({
         $el.children("ul")
            .css('display', 'inherit')
            .fadeOut(200);
+      });
+    },
+    testingSlideDown: function(){
+      let testing = document.getElementById('testing');
+      let learnMore = testing.querySelector('.learn-more');
+      let testingContent = document.getElementById('testing-content');
+      let open;
+
+      if (testing.classList.contains('slide-down')){
+        open = true;
+      }else{
+        open = false;
+      }
+
+      if (open == false) {
+        testing.classList.add('slide-down');
+        testingContent.querySelector('.hide').classList.remove('hide');
+        open = true;
+      }else{
+        testing.classList.remove('slide-down');
+        testingContent.querySelectorAll('p')[2].classList.add('hide');
+        open = false;
+      }
+    },
+    validateForms: function(){
+      $('.jotform-form').find('input,textarea,select').on('keyup change',function(){
+        let $this = $(this);
+
+        if ($this.val().length > 0 && $this.is(':valid')) {
+          $this.addClass('validInput');
+        }else{
+          $this.removeClass('validInput');
+        }
       });
     }
   }

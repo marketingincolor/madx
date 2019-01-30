@@ -10,7 +10,7 @@ get_header('home'); ?>
 				<h1 class="white"><?php the_field('home_hero_heading'); ?></h1>
 				<aside class="yellow-underline left"></aside>
 				<p class="white" style="margin-bottom:30px"><?php the_field('home_hero_subhead'); ?></p>
-				<a href="#!" class="btn-yellow solid"><?php the_field('home_hero_play_button_text'); ?>&nbsp;&nbsp;<i class="fas fa-play-circle"></i></a>&nbsp;<br class="show-for-small-only"><br class="show-for-small-only"><br class="show-for-small-only">
+				<a href="#!" class="btn-yellow solid videolink home-page-video" data-videourl="<?php the_field('video_embed_url'); ?>" data-open="video-modal"><?php the_field('home_hero_play_button_text'); ?>&nbsp;&nbsp;<i class="fas fa-play-circle"></i></a>&nbsp;<br class="show-for-small-only"><br class="show-for-small-only"><br class="show-for-small-only">
 				<a href="/about" class="btn-yellow border"><?php the_field('home_hero_about_button_text'); ?></a>
 			</div>
 		</div>
@@ -40,16 +40,18 @@ get_header('home'); ?>
 					<?php if( have_rows('home_modules_small') ):
 					    while ( have_rows('home_modules_small') ) : the_row(); ?>
 
-					  <div class="medium-6 large-3 cell module">
+					  <?php $url_text = substr(get_sub_field('link_url'), 1) ?>
+
+					  <div class="medium-6 large-3 cell module auto-height">
 					  	<a href="<?php the_sub_field('link_url'); ?>">
-					  		<div class="module-bg small relative" style="background-image: url(<?php the_sub_field('image'); ?>);">
+					  		<div class="module-bg small relative consumerRouter_image_<?php echo $url_text; ?>" style="background-image: url(<?php the_sub_field('image'); ?>);">
 					  			<div class="label absolute"><strong><?php the_sub_field('label'); ?></strong></div>
 					  	  </div>
 					  	</a>
 					  	<div class="meta">
-					  		<a href="<?php the_sub_field('link_url'); ?>"><h4 class="blue"><?php the_sub_field('icon'); ?>&nbsp; <?php the_sub_field('heading'); ?></h4></a>
+					  		<a href="<?php the_sub_field('link_url'); ?>"><h4 class="blue consumerRouter_Heading_<?php echo $url_text; ?>"><?php the_sub_field('icon'); ?>&nbsp; <?php the_sub_field('heading'); ?></h4></a>
 					  		<p style="margin-bottom: 30px"><?php the_sub_field('body'); ?></p>
-					  		<a class="read-more" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_text'); ?> &nbsp;<i class="far fa-long-arrow-right"></i></a>
+					  		<a class="read-more consumerRouter_readMore_<?php echo $url_text; ?>" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_text'); ?> &nbsp;<i class="far fa-long-arrow-right"></i></a>
 					  	</div>
 					  </div>
 
@@ -57,17 +59,19 @@ get_header('home'); ?>
 
 					<?php if( have_rows('home_modules_large') ):
 					    while ( have_rows('home_modules_large') ) : the_row(); ?>
+							
+						<?php $url_text = substr(get_sub_field('link_url'), 1) ?>
 
-					  <div class="medium-6 cell module">
+					  <div class="medium-6 cell module auto-height">
 					  	<a href="<?php the_sub_field('link_url'); ?>">
-					  		<div class="module-bg large relative" style="background-image: url(<?php the_sub_field('image'); ?>);">
+					  		<div class="module-bg large relative consumerRouter_image_<?php echo $url_text; ?>" style="background-image: url(<?php the_sub_field('image'); ?>);">
 					  			<div class="label absolute"><strong><?php the_sub_field('label'); ?></strong></div>
 					  		</div>
 					  	</a>
 					  	<div class="meta">
-					  		<a href="<?php the_sub_field('link_url'); ?>"><h4 class="blue"><?php the_sub_field('icon'); ?>&nbsp; <?php the_sub_field('heading'); ?></h4></a>
+					  		<a href="<?php the_sub_field('link_url'); ?>"><h4 class="blue consumerRouter_heading_<?php echo $url_text; ?>"><?php the_sub_field('icon'); ?>&nbsp; <?php the_sub_field('heading'); ?></h4></a>
 					  		<p style="margin-bottom: 30px"><?php the_sub_field('body'); ?></p>
-					  		<a class="read-more" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_text'); ?> &nbsp;<i class="far fa-long-arrow-right"></i></a>
+					  		<a class="read-more consumerRouter_readMore_<?php echo $url_text; ?>" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_text'); ?> &nbsp;<i class="far fa-long-arrow-right"></i></a>
 					  	</div>
 					  </div>
 
@@ -78,5 +82,7 @@ get_header('home'); ?>
 		</div>
 	</div>
 </section>
+
+<madu-video-modal></madu-video-modal>
 
 <?php get_footer();

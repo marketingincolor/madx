@@ -7,7 +7,7 @@ export default{
 	    taxPosts: [],
 	    taxonomy: '',
 	    postType: '',
-	    taxParentSlug: '',
+	    taxParentSlug: 'solar',
 	    taxChildSlug: '',
 	    taxParentId: 0,
 	    activeItem: 'All',
@@ -15,6 +15,7 @@ export default{
 	    singlePostActive: false,
 	    benefits: [],
 	    pdfLink: '',
+	    specSheet: '',
 	    loading: false,
 	    showAllCat: false
 		}
@@ -38,7 +39,7 @@ export default{
 							    </div>
 								</div>
 								<div id="breadcrumbs" class="small-10 small-offset-1 large-12 large-offset-0 cell breadcrumbs" v-if="!singlePostActive && showAllCat">
-									<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span></h5>
+									<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <a @click="scrollToProducts(false)"><span v-html="activeItem"></span></a></h5>
 								</div>
 								<div class="small-10 small-offset-1 large-12 large-offset-0 cell" id="all-posts" v-if="!singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
@@ -46,11 +47,11 @@ export default{
 									    <img src="/wp-content/themes/madx/dist/assets/images/loader.gif" alt="Loading Products" />
 									  </div>
 										<div class="medium-6 large-4 cell module auto-height animated fadeIn" v-for="post in taxPosts">
-											<a @click="scrollToProducts(true);getSinglePost(post.id)"><div class="module-bg" v-bind:style="{backgroundImage: 'url(' + post._embedded['wp:featuredmedia'][0].source_url + ')'}"></a>
+											<a @click="scrollToProducts(true);getSinglePost(post.id)"><div class="module-bg" :class="post.slug + '-product-image'" v-bind:style="{backgroundImage: 'url(' + post._embedded['wp:featuredmedia'][0].source_url + ')'}"></a>
 											<div class="meta">
-												<a @click="scrollToProducts(true);getSinglePost(post.id)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
+												<a @click="scrollToProducts(true);getSinglePost(post.id)"><h4 class="blue" :class="post.slug + '-product-heading'" v-html="post.title.rendered"></h4></a>
 												<div class="content" v-html="$options.filters.limitWords(post.content.rendered,25)"></div>
-												<a @click="scrollToProducts(true);getSinglePost(post.id)" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
+												<a @click="scrollToProducts(true);getSinglePost(post.id)" class="read-more" :class="post.slug + '-product-read-more'">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
 											</div>
 										</div>
 									</div>
@@ -58,7 +59,7 @@ export default{
 								<div class="small-10 small-offset-1 large-8 large-offset-2 cell" id="single-post" v-if="singlePostActive">
 									<div class="grid-x grid-margin-x grid-margin-y">
 										<div class="medium-12 cell breadcrumbs">
-											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <span v-html="activeItem"></span> <i class="fas fa-chevron-right"></i> <span v-html="singlePost.title.rendered"></span></h5>
+											<h5 class="breadcrumb-title">{{ taxParentSlug | changeSlug }} <i class="fas fa-chevron-right"></i> <a @click="scrollToProducts(false)"><span v-html="activeItem"></span></a> <i class="fas fa-chevron-right"></i> <span v-html="singlePost.title.rendered"></span></h5>
 										</div>
 										<div class="medium-12 cell module auto-height animated fadeIn">
 											<img :src="singlePost._embedded['wp:featuredmedia'][0].source_url" :alt="singlePost._embedded['wp:featuredmedia'][0].alt_text">
@@ -69,12 +70,21 @@ export default{
 															<h4 class="blue" v-html="singlePost.title.rendered"></h4>
 															<p class="content" v-html="singlePost.content.rendered"></p>
 															<div class="grid-x grid-margin-y" v-if="pdfLink">
-																<div class="large-1 medium-2 cell text-center">
+																<div class="large-1 small-2 cell text-center">
 																	<i class="fal fa-file-pdf"></i>
 																</div>
-																<div class="medium-10 cell">
+																<div class="small-10 cell">
 																	<a :href="pdfLink" target="_blank">Product Brochure</a>
-																	<p>Click to download brochure</p>
+																	<p>Click to download</p>
+																</div>
+															</div>
+															<div class="grid-x grid-margin-y" v-if="specSheet">
+																<div class="large-1 small-2 cell text-center">
+																	<i class="fal fa-file-pdf"></i>
+																</div>
+																<div class="small-10 cell">
+																	<a :href="specSheet" target="_blank">Solar Performance Specifications</a>
+																	<p>Click to download</p>
 																</div>
 															</div>
 														</div>
@@ -99,56 +109,7 @@ export default{
 				this.postType = 'residential';
 			}else if(currentURL.includes('commercial')){
 				this.postType = 'commercial';
-			}else if (currentURL.includes('automotive')) {
-				this.postType = 'automotive';
-			}else if (currentURL.includes('safety-security')) {
-				this.postType = 'safety';
-			}else if (currentURL.includes('specialty-solutions')) {
-				this.postType = 'specialty';
 			}
-			this.getTaxParent(location.href);
-		},
-		getTaxParent: function(currentURL){
-			switch (this.postType) {
-				case 'residential':
-					if (currentURL.includes('solar')) {
-						this.taxParentSlug = 'solar';
-					}else if(currentURL.includes('decorative')){
-						this.taxParentSlug = 'decorative';
-					}else if (currentURL.includes('safety-security')) {
-						this.taxParentSlug = 'safety-security';
-					}
-					break;
-
-					case 'commercial':
-						if (currentURL.includes('solar')) {
-							this.taxParentSlug = 'solar';
-						}else if(currentURL.includes('decorative')){
-							this.taxParentSlug = 'decorative';
-						}else if (currentURL.includes('safety-security')) {
-							this.taxParentSlug = 'safety-security';
-						}
-						break;
-
-					case 'automotive':
-						if (currentURL.includes('solar')) {
-							this.taxParentSlug = 'solar';
-						}else if(currentURL.includes('decorative')){
-							this.taxParentSlug = 'decorative';
-						}else if (currentURL.includes('safety-security')) {
-							this.taxParentSlug = 'safety-security';
-						}
-						break;
-
-					case 'safety':
-						this.taxParentSlug = 'products';
-						break;
-
-					case 'specialty':
-						this.taxParentSlug = 'products';
-						break;
-			}
-
 			this.getTaxParentId();
 		},
 		getTaxParentId: function(){
@@ -171,7 +132,7 @@ export default{
 			let $this = this;
 
 			axios
-			  .get(apiRoot + $this.postType + '-categories?parent=' + $this.taxParentId)
+			  .get(apiRoot + $this.postType + '-categories?parent=' + $this.taxParentId + '&hide_empty=true')
 			  .then(function (response) {
 			    $this.taxonomies = response.data;
 			    $this.showAllCat = true;
@@ -185,9 +146,9 @@ export default{
 			axios
 			  .get(apiRoot + $this.postType + '?_embed&per_page=99&filter['+ $this.postType +'_taxonomies]=solar')
 			  .then(function (response) {
-			  	$this.loading = false;
-			    $this.taxPosts = response.data;
-			    $this.activeItem = "All";
+			  	$this.loading          = false;
+			    $this.taxPosts         = response.data;
+			    $this.activeItem       = "All";
 			    $this.singlePostActive = false;
 			  }
 			)
@@ -199,9 +160,9 @@ export default{
 			axios
 			  .get(apiRoot + $this.postType + '?_embed&filter['+ $this.postType +'_taxonomies]=' + taxonomyName)
 			  .then(function (response) {
-			  	$this.loading = false;
-			    $this.taxPosts = response.data;
-			    $this.activeItem = event.target.innerHTML;
+			  	$this.loading          = false;
+			    $this.taxPosts         = response.data;
+			    $this.activeItem       = event.target.innerHTML;
 			    $this.singlePostActive = false;
 			  }
 			)
@@ -235,6 +196,7 @@ export default{
 	      $this.singlePost       = postRes.data;
 	      $this.benefits         = acfRes.data.acf.film_benefits;
 	      $this.pdfLink          = acfRes.data.acf.pdf_link;
+	      $this.specSheet        = acfRes.data.acf.spec_sheet;
 	      $this.singlePostActive = true;
 	    }));
 		},

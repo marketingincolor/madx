@@ -1,11 +1,13 @@
 <?php 
 if ( $article_query->have_posts() ) : while ( $article_query->have_posts() ) : $article_query->the_post(); 
 	?>
-	<div class="cell medium-3 module auto-height">
-		<a href="<?php echo get_permalink(); ?>"><?php the_post_thumbnail( 'large', array( 'alt' => get_the_title() ) ); ?></a>
+	<div class="cell medium-12 module auto-height">
+		<?php if (get_the_post_thumbnail()) { ?>
+		  <a href="<?php echo get_permalink(); ?>"><div class="module-bg" style="background-image:url(<?php the_post_thumbnail_url(); ?>)"></div></a>
+	  <?php } ?>
 		<div class="meta">
 			<a href="<?php echo get_permalink(); ?>"><h4 class="blue"><?php the_title() ;?></h4></a>
-			<?php the_excerpt() ;?>
+			<?php echo wp_trim_words(get_the_excerpt(),10,'...'); ?>
 		</div>
 	</div>
 <?php endwhile; else: ?> 

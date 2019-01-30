@@ -22,8 +22,16 @@ get_header(); ?>
 				<p style="margin-bottom: 10px">The page you're looking for doesn't exist.</p>
 				<ul>
 					<li><i class="fal fa-check-circle"></i> &nbsp;Check the URL</li>
-					<li><i class="fal fa-arrow-circle-left"></i> &nbsp;Go to our <a href="/">homepage</a></li>
-					<li><i class="fal fa-search"></i> &nbsp;Or, use our search bar to find what you're looking for</li>
+					<li><i class="fal fa-arrow-circle-left"></i> &nbsp;Visit one of these pages on our site:
+						<ul>
+							<li><a href="/">Homepage</a></li>
+							<li><a href="/automotive">Automotive Window Films</a></li>
+							<li><a href="/residential">Residential Window Films</a></li>
+							<li><a href="/commercial">Commercial Window Films</a></li>
+							<li><a href="/dealer-portal">Dealer Portal</a></li>
+						</ul>
+					</li>
+					<li><i class="fal fa-search"></i> &nbsp;Or, use the search bar in our navigation to find what you're looking for</li>
 				</ul>
 			</div>
 		</div>

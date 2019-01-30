@@ -20,11 +20,11 @@ export default{
 								<div class="small-10 small-offset-1 large-12 large-offset-0 cell animated fadeIn" v-if="autoSinglePost.length == 0">
 							    <div class="grid-x grid-margin-x grid-margin-y">
 										<div class="medium-6 large-4 cell module auto-height" v-for="post in autoPosts">
-											<a @click="scrollToProducts(true);getAutoPostSingle(post.slug)"><div class="module-bg" v-bind:style="{backgroundImage: 'url(' + post._embedded['wp:featuredmedia'][0].source_url + ')'}"></div></a>
+											<a @click="scrollToProducts(true);getAutoPostSingle(post.slug)"><div class="module-bg" :class="post.slug + '-product-image'" v-bind:style="{backgroundImage: 'url(' + post._embedded['wp:featuredmedia'][0].source_url + ')'}"></div></a>
 											<div class="meta">
-												<a @click="scrollToProducts(true);getAutoPostSingle(post.slug)"><h4 class="blue" v-html="post.title.rendered"></h4></a>
+												<a @click="scrollToProducts(true);getAutoPostSingle(post.slug)"><h4 class="blue" :class="post.slug + '-product-heading'" v-html="post.title.rendered"></h4></a>
 												<div class="content" v-html="$options.filters.limitWords(post.content.rendered,25)"></div>
-												<a @click="scrollToProducts(true);getAutoPostSingle(post.slug)" class="read-more">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
+												<a @click="scrollToProducts(true);getAutoPostSingle(post.slug)" class="read-more" :class="post.slug + '-product-read-more'">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
 											</div>
 										</div>
 							    </div>
@@ -43,12 +43,21 @@ export default{
 							    						<h4 class="blue" v-html="autoSinglePost[0].title.rendered"></h4>
 							    						<p class="content" v-html="autoSinglePost[0].content.rendered"></p>
 							    						<div class="grid-x grid-margin-y" v-if="autoSinglePost[0].acf.pdf_link" style="margin-bottom:20px">
-							    							<div class="large-1 medium-2 cell text-center">
+							    							<div class="large-1 small-2 cell text-center">
 							    								<i class="fal fa-file-pdf blue" style="font-size: 2.875rem"></i>
 							    							</div>
-							    							<div class="medium-10 cell">
+							    							<div class="small-10 cell">
 							    								<a :href="autoSinglePost[0].acf.pdf_link" target="_blank">Product Brochure</a>
-							    								<p>Click to download brochure</p>
+							    								<p>Click to download</p>
+							    							</div>
+							    						</div>
+							    						<div class="grid-x grid-margin-y" v-if="autoSinglePost[0].acf.spec_sheet" style="margin-bottom:20px">
+							    							<div class="large-1 small-2 cell text-center">
+							    								<i class="fal fa-file-pdf blue" style="font-size: 2.875rem"></i>
+							    							</div>
+							    							<div class="small-10 cell">
+							    								<a :href="autoSinglePost[0].acf.spec_sheet" target="_blank">Solar Performance Specifications</a>
+							    								<p>Click to download</p>
 							    							</div>
 							    						</div>
 							    						<a class="btn-lt-blue border" @click="scrollToProducts(false)"><i class="fas fa-arrow-alt-left"></i> &nbsp;Back</a>

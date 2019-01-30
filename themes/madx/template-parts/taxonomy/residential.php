@@ -36,6 +36,13 @@ if ($term->slug == 'case-studies' || $term->slug == 'safety-security') {
 	</div>
 </section>
 
+<?php if ($term->slug == 'decorative') { ?>
+	<section class="deco-example" style="padding-top:0">
+		<?php $deco_image = get_field('decorative_image1',$term); ?>
+		<img src="<?php echo $deco_image['url']; ?>" alt="<?php echo $deco_image['alt']; ?>" style="width:100%">
+	</section>
+<?php } ?>
+
 <section id="tax-posts" class="taxonomy-products" style="padding-top: 0">
 	<div class="grid-container">
 		<div class="grid-x">
@@ -54,6 +61,13 @@ if ($term->slug == 'case-studies' || $term->slug == 'safety-security') {
 
 	</div>
 </section>
+
+<?php if ($term->slug == 'decorative') { ?>
+	<section class="deco-example" style="padding:0">
+		<?php $deco_image = get_field('decorative_image2',$term); ?>
+		<img src="<?php echo $deco_image['url']; ?>" alt="<?php echo $deco_image['alt']; ?>" style="width:100%">
+	</section>
+<?php } ?>
 
 <?php get_template_part('/template-parts/taxonomy/faqs'); ?>
 

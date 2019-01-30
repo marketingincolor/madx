@@ -1,7 +1,7 @@
 <?php
 	$url = $_SERVER['REQUEST_URI'];
 	if (strpos($url, 'mu-types') !== false) {
-	    get_header('madicou');
+	  get_header('madicou');
 	}else{
 	  get_header();
 	}

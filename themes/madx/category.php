@@ -1,12 +1,23 @@
-<?php get_header(); ?>
+<?php
+get_header();
+// Get the featured image of the blog page to use on category pages
+$featured_image = get_the_post_thumbnail_url(5);
+$term = get_queried_object();
+?>
 
-<section class="blog-header">
-	<div class="grid-container">
-		<div class="grid-x">
-			<div class="small-10 small-offset-1 large-12 large-offset-0">
+<section class="page-hero relative" style="background-image: url(<?php echo $featured_image; ?>)">
 
+	<div class="show-for-small-only">
+		<?php get_template_part('template-parts/menus/blog-header-menu'); ?>
+	</div>
+
+	<div id="header-grid" class="grid-container">
+		<div class="grid-x grid-margin-x">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
+				<?php get_template_part('template-parts/menus/blog-tablet-menu'); ?>
+			</div>
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-large">
 				<?php get_template_part('template-parts/menus/blog-header-menu'); ?>
-			
 			</div>
 		</div>
 	</div>
@@ -18,6 +29,32 @@
 			<div class="grid-x">
 				<div class="small-10 small-offset-1 large-12 large-offset-0">
 					<div class="grid-x grid-margin-x grid-margin-y">
+						<?php if($term->cat_name !== "News"){ ?>
+							<div class="small-12 cell show-for-large">
+								<h2 class="text-center subhead" style="">Madico Blog</h2>
+								<?php foundationpress_blog_nav(); ?>
+							</div>
+							<div class="small-12 cell hide-for-large">
+								<h2 class="text-center subhead" style="">Madico Blog</h2>
+								<select name="" id="cat-select" onchange="location.href = this.value">
+									
+								<?php
+								  $menu_items = wp_get_nav_menu_items(499);
+								  $url        = $_SERVER['REQUEST_URI'];
+								  foreach ($menu_items as $item) {
+								  	echo '<option value="'.$item->url.'"';
+								  	if (stripos($url, $item->title)) {
+								  		echo ' selected>';
+								  	} else{
+								  		echo ">";
+								  	}
+								  	echo $item->title.'</option>';
+								  }
+								?>
+
+								</select>
+							</div>
+						<?php } ?>
 
 					<?php
 					$cat   = get_queried_object();

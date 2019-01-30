@@ -62,3 +62,32 @@ add_action('rest_api_init', function () {
       'callback' => 'get_current_taxonomy_slug',
     ) );
 });
+
+// Allow cross origin requests during development
+add_action( 'rest_api_init', function() {
+    
+    remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+    add_filter( 'rest_pre_serve_request', function( $value ) {
+        $origin = get_http_origin();
+        if ( $origin ) {
+            header( 'Access-Control-Allow-Origin: ' . esc_url_raw( $origin ) );
+        }
+        header( 'Access-Control-Allow-Origin: ' . esc_url_raw( site_url() ) );
+        header( 'Access-Control-Allow-Methods: GET' );
+
+        return $value;
+        
+    });
+}, 15 );
+
+// This enables the orderby=menu_order for Posts
+add_filter( 'rest_post_collection_params', 'filter_add_rest_orderby_params', 10, 1 );
+// And this for a custom post type called 'portfolio'
+add_filter( 'rest_portfolio_collection_params', 'filter_add_rest_orderby_params', 10, 1 );
+/**
+ * Add menu_order to the list of permitted orderby values
+ */
+function filter_add_rest_orderby_params( $params ) {
+  $params['orderby']['enum'][] = 'menu_order';
+  return $params;
+}

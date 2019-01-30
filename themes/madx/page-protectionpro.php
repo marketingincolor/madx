@@ -55,101 +55,72 @@ get_header(); ?>
 	</div>
 </section>
 
-<section id="body-protection" class="touchscreen-pro" style="padding-top:0">
+<section id="infinity-series" class="infinity-series" style="padding:0;background-color:#FFF">
 	<div class="grid-container">
-		<div class="grid-x">
-			<div class="small-10 small-offset-1 cell">
-				<div class="grid-x grid-margin-x grid-margin-y">
-					<div class="medium-6 small-order-2 medium-order-1 cell">
-						<h2 class="blue"><?php the_field('body_protection_heading'); ?></h2>
-						<aside class="yellow-underline left"></aside>
-						<p><?php the_field('body_protection_subhead'); ?></p>
-						<ul class="checklist">
-
-							<?php
-							if( have_rows('body_checklist') ):
-							  while ( have_rows('body_checklist') ) : the_row(); ?>
-
-							    <li><?php the_sub_field('list_item_icon'); ?>&nbsp;&nbsp;<?php the_sub_field('list_item_text'); ?></li>
-
-							<?php endwhile;endif; ?>
-
-						</ul>
-					</div>
-					<div class="medium-6 small-order-1 medium-order-2 cell text-center">
-						<!-- Owl Carousel goes here -->
-						<div class="full-body-carousel owl-carousel owl-theme">
-							
-							<?php
-							$args = array(
-								'post_type'      => 'ppro_covers', 
-								'posts_per_page' => -1,
-								'orderby'        => 'menu_order',
-								'order'          => 'ASC'
-							);
-							$loop = new WP_Query( $args );
-							while ( $loop->have_posts() ) : $loop->the_post(); ?>
-
-						    <div class="item" data-hash="<?php echo $post->menu_order + 1; ?>">
-						    	<img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
-						    	<h4 style="margin-bottom:15px;font-size: 1.25rem;"><?php the_title(); ?></h4>
-						    </div>
-
-					    <?php $count++;endwhile; wp_reset_postdata(); ?>
-
-						</div>
-					<!-- End Owl Carousel -->
-						
-					<!-- Foundation 6 Orbit goes here -->
-						<div id="swatch-carousel" class="orbit" role="region" aria-label="ProtectionPro Cases" v-f-orbit data-auto-play="false">
-							<p style="margin-bottom:15px">SELECT TO PREVIEW (CLICK ARROWS TO SEE ALL PATTERNS)</p>
-						  <div class="orbit-wrapper relative">
-						    <div class="orbit-controls">
-						      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span><i class="fas fa-chevron-left"></i></button>
-						      <button class="orbit-next"><span class="show-for-sr">Next Slide</span><i class="fas fa-chevron-right"></i></button>
-						    </div>
-						    <!-- CIRCULAR SWATCH CAROUSEL -->
-						    <ul class="orbit-container">
-						      <li class="is-active orbit-slide">
-
-							    	<?php
-								    	$swatch_count = 0;
-								    	$swatches_per_slide = 5;
-								    	$total_post_count = wp_count_posts('ppro_covers')->publish;
-								    	$args = array(
-								    		'post_type'      => 'ppro_covers', 
-								    		'posts_per_page' => -1,
-								    		'orderby'        => 'menu_order',
-								    		'order'          => 'ASC'
-								    	);
-								    	$loop = new WP_Query( $args );
-								    	while ( $loop->have_posts() ) : $loop->the_post();
-								    ?>
-
-						      		<a href="#<?php echo $swatch_count + 1; ?>"><img src="<?php the_field('color_swatch'); ?>" alt="<?php the_title(); ?>" <?php if ($swatch_count == 0){echo 'class="active-swatch"';} ?>></a>
-
-											<?php $swatch_count++; ?>
-											<?php if ($swatch_count % $swatches_per_slide == 0 && $swatch_count != $total_post_count) { ?>
-											  	
-											</li><li class="orbit-slide">
-
-											<?php } ?>
-											<?php if ($swatch_count == $total_post_count) { ?>
-
-											</li>
-
-											<?php } ?>
-
-						        <?php endwhile; wp_reset_postdata(); ?>
-
-						    </ul>
-						  </div>
-						</div>
-					<!-- End foundation orbit -->
-					</div>
-				</div>
+		<div class="grid-x grid-margin-x grid-margin-y">
+			<div class="small-10 small-offset-1 large-8 large-offset-2 cell text-center">
+				<h2 class="blue"><?php the_field('infinity_heading'); ?></h2>
+				<aside class="yellow-underline center"></aside>
+				<p class="subhead"><?php the_field('infinity_subhead'); ?></p>
 			</div>
 		</div>
+	</div>
+	<!-- Infinity Tabs -->
+	<ul class="tabs" v-tabs id="infinity-tabs">
+
+		<?php
+		$tab_count = 1;
+		if( have_rows('infinity_tabs') ):
+		  while ( have_rows('infinity_tabs') ) : the_row(); ?>
+
+		    <li class="tabs-title<?php if($tab_count == 1){echo ' is-active';} ?>" style="background-image:url(<?php the_sub_field('tab_background'); ?>);"><a @click="openDistributionTab" href="<?php echo "#panel{$tab_count}"; ?>" aria-selected="true"><?php the_sub_field('tab_title'); ?></a></li>
+
+		<?php $tab_count++;endwhile;endif; ?>
+	  
+	</ul>
+	<!-- Infinity Tabs Content -->
+	<div class="tabs-content" data-tabs-content="infinity-tabs">
+
+		<?php
+		$tab_count  = 1;
+		if( have_rows('infinity_tab_content') ):
+		  while ( have_rows('infinity_tab_content') ) : the_row();
+		  	$total_rows = count(get_sub_field('tab_color_swatches')); ?>
+
+		    <div class="tabs-panel<?php if($tab_count == 1){echo ' is-active';} ?>" id="<?php echo "panel{$tab_count}"; ?>" style="background-image:url(<?php the_sub_field('tab_background_image'); ?>);">
+		      <div class="grid-container">
+		      	<div class="grid-x grid-margin-x grid-margin-y">
+		      		<div class="small-10 small-offset-1 medium-5 text-column" style="align-self:center">
+		      			<h3 class="blue"><?php the_sub_field('tab_title'); ?></h3>
+		      			<aside class="yellow-underline left"></aside>
+		      			<p style="margin-bottom:30px"><?php the_sub_field('tab_copy'); ?></p>
+		      			<div class="grid-x grid-margin-x grid-margin-y small-up-2 <?php if($total_rows > 10 || $total_rows % 6 === 0){echo 'medium-up-6 ';}else if($total_rows <= 10){echo 'medium-up-5 ';} ?>">
+
+	      			  	<?php
+	      			  	if( have_rows('tab_color_swatches') ):
+	      			  	  while ( have_rows('tab_color_swatches') ) : the_row(); ?>
+										
+										<div class="cell text-center">
+	      			  	  	<img src="<?php the_sub_field('swatch_image') ?>" alt="<?php the_sub_field('swatch_title'); ?>">
+										  <?php if(get_sub_field('swatch_title')){ ?>
+										    <h5><?php the_sub_field('swatch_title'); ?></h5>
+										  <?php } ?>
+										</div>
+
+									<?php endwhile;endif; ?>
+
+		      			</div>	
+		      		</div>
+		      		<div class="small-10 small-offset-1 text-center hide-for-medium">
+		      			<img src="<?php the_sub_field('tab_image') ?>" alt="protectionpro <?php the_sub_field('tab_title'); ?>">
+		      		</div>
+		      		
+		      	</div>
+		      </div>
+		    </div>
+
+		<?php $tab_count++;endwhile;endif; ?>
+	  
 	</div>
 </section>
 
@@ -163,7 +134,7 @@ get_header(); ?>
 					<div class="small-10 small-offset-1 medium-8 medium-offset-2 cell">
 						<h4><?php the_field('protectionpro_contact_header'); ?></h4>
 						<p class="subhead"><?php the_field('protectionpro_contact_subhead'); ?></p>
-						<p><jot-form form-id="82823879486173"></jot-form></p>
+						<div><?php the_field('protectionpro_contact_form'); ?></div>
 					</div>
 				</div>
 			</div>
@@ -178,7 +149,7 @@ get_header(); ?>
 				<h2 class="white"><?php the_field('find_retailer_heading'); ?></h2>
 				<aside class="yellow-underline left"></aside>
 				<p class="white subhead"><?php the_field('find_retailer_subhead'); ?></p>
-				<a href="<?php the_field('find_retailer_button_link'); ?>" class="btn-yellow solid"><?php the_field('find_retailer_button_text'); ?></a>
+				<a href="<?php the_field('find_retailer_button_link'); ?>" class="btn-yellow solid protectionpro-footer-cta" target="_blank"><?php the_field('find_retailer_button_text'); ?></a>
 			</div>
 		</div>
 	</div>

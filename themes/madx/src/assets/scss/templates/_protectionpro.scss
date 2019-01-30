@@ -1,8 +1,12 @@
 .page-template-page-protectionpro{
 
 	.hero{
-		height: 70vh;
-		padding: 60px 0;
+		height: 65vh;
+		padding: 50px 0 75px;
+
+		@include breakpoint (large){
+			max-height: 500px;
+		}
 
 		@include breakpoint (medium down){
 			height: 80vh;
@@ -16,6 +20,7 @@
 		@include breakpoint (small down){
 			height: 70vh;
 			padding: 10% 0;
+			max-height: none;
 		}
 
 		@media(max-width: 375px){
@@ -32,6 +37,110 @@
 
 		.subhead{
 			margin-bottom: 30px;
+		}
+	}
+
+	#infinity-tabs{
+		display: flex;
+		border: 0;
+
+		@include breakpoint(small down){
+			flex-wrap: wrap;
+		}
+
+		.tabs-title{
+			@include bg-center-cover;
+			flex-grow: 1;
+			text-align: center;
+			font-size: 0.875rem;
+			text-transform: uppercase;
+			font-family: 'AvenirLTStd-Medium';
+			border-bottom: 3px solid $white;
+			border-right: 3px solid $white;
+
+			&:last-of-type{
+				border-right: 0;
+
+				@include breakpoint(small down){
+					border-right: 3px solid $white;
+				}
+			}
+
+			&.is-active{
+				border-bottom: 0;
+
+				@include breakpoint(small down){
+					border-bottom: 3px solid $white;
+				}
+			}
+
+			a{
+				color: $text-gray;
+				letter-spacing: 1px;
+			}
+		}
+
+		.tabs-title>a:focus, .tabs-title>a[aria-selected=true],.tabs-title>a:hover{
+			background: transparent;
+		}
+	}
+
+	.tabs-panel{
+		@include bg-center-cover;
+
+		@include breakpoint(small down){
+			padding-bottom: 0;
+			background-position: 0 0;
+		}
+
+		.text-column{
+			padding: 40px 0;
+
+			@media(min-width:1500px){
+				padding: 60px 0;
+			}
+		}
+
+		h3.blue{
+
+			@include breakpoint(small down){
+				font-size: 1.5rem;
+				text-align: center;
+			}
+		}
+
+		p{
+
+			@include breakpoint(small down){
+				text-align: center;
+			}
+		}
+
+		.yellow-underline{
+
+			@include breakpoint(small down){
+				margin: 20px auto 30px;
+			}
+		}
+
+		img{
+
+			@include breakpoint(small down){
+				vertical-align: inherit;
+			}
+		}
+
+		.cell img{
+			margin-bottom: 10px;
+		}
+
+		.cell h5{
+			font-size:0.75rem;
+			color: #333;
+
+			@include breakpoint(small down){
+				font-size: 1rem;
+			}
 		}
 	}
 

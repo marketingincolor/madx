@@ -20,6 +20,11 @@ register_nav_menus(
 		'protectionpro-top-nav' => esc_html__( 'ProtectionPro Top Nav', 'foundationpress' ),
 		'header-top-nav' => esc_html__( 'Header Top Nav', 'foundationpress' ),
 		'blog-top-nav' => esc_html__( 'Blog Top Nav', 'foundationpress' ),
+		'footer-company' => esc_html__( 'Footer Company', 'foundationpress' ),
+		'footer-films' => esc_html__( 'Footer Films', 'foundationpress' ),
+		'footer-specialty' => esc_html__( 'Footer Specialty', 'foundationpress' ),
+		'footer-dealers' => esc_html__( 'Footer Dealers', 'foundationpress' ),
+		'footer-connect' => esc_html__( 'Footer Connect', 'foundationpress' ),
 	)
 );
 
@@ -29,17 +34,40 @@ register_nav_menus(
  *
  * @link http://codex.wordpress.org/Function_Reference/wp_nav_menu
  */
+// Add classes to each menu item <a> tag
+function add_specific_menu_location_atts( $atts, $item, $args ) {
+	// get the relative slug
+	$url = $item->url;
+	// get the title
+	$title = $item->title;
+	// lowercase title and join with hyphen
+	$title_lowercase = strtolower($title);
+	$title_split = explode(' ', $title_lowercase);
+	$title_joined = implode('-', $title_split);
+	// remove the '/' from the beginning
+	$menu_class = substr($url, 1);
+  // check if the item is in the header-top-nav
+  if( $args->theme_location == 'header-top-nav' ) {
+    // add the desired class to the <a> tag:
+    $atts['class'] = 'header-menu-'.$menu_class;
+  }else{
+  	$atts['class'] = 'sub-menu-'.$title_joined;
+  }
+  return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'add_specific_menu_location_atts', 10, 3 );
+
 if ( ! function_exists( 'foundationpress_top_bar_r' ) ) {
 	function foundationpress_top_bar_r() {
 		wp_nav_menu(
 			array(
-				'container'      => false,
-				'menu_class'     => 'dropdown menu',
-				'items_wrap'     => '<ul id="%1$s" class="%2$s desktop-menu" data-dropdown-menu>%3$s</ul>',
-				'theme_location' => 'top-bar-r',
-				'depth'          => 3,
-				'fallback_cb'    => false,
-				'walker'         => new Foundationpress_Top_Bar_Walker(),
+				'container'       => false,
+				'menu_class'      => 'dropdown menu',
+				'items_wrap'      => '<ul id="%1$s" class="%2$s desktop-menu" data-dropdown-menu>%3$s</ul>',
+				'theme_location'  => 'top-bar-r',
+				'depth'           => 3,
+				'fallback_cb'     => false,
+				'walker'          => new Foundationpress_Top_Bar_Walker(),
 			)
 		);
 	}
@@ -219,6 +247,96 @@ if ( ! function_exists( 'foundationpress_blog_nav' ) ) {
 				'menu'           => __( 'blog-top-nav', 'foundationpress' ),
 				'menu_class'     => 'menu',
 				'theme_location' => 'blog-top-nav',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'fallback_cb'    => false,
+			)
+		);
+	}
+}
+
+/**
+ * Footer Navigation - Company Menu
+ */
+if ( ! function_exists( 'foundationpress_footer_company' ) ) {
+	function foundationpress_footer_company() {
+		wp_nav_menu(
+			array(
+				'container'      => false,   // Remove nav container
+				'menu'           => __( 'footer-company', 'foundationpress' ),
+				'menu_class'     => '',
+				'theme_location' => 'footer-company',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'fallback_cb'    => false,
+			)
+		);
+	}
+}
+
+/**
+ * Footer Navigation - Films Menu
+ */
+if ( ! function_exists( 'foundationpress_footer_films' ) ) {
+	function foundationpress_footer_films() {
+		wp_nav_menu(
+			array(
+				'container'      => false,   // Remove nav container
+				'menu'           => __( 'footer-films', 'foundationpress' ),
+				'menu_class'     => '',
+				'theme_location' => 'footer-films',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'fallback_cb'    => false,
+			)
+		);
+	}
+}
+
+/**
+ * Footer Navigation - Specialty Menu
+ */
+if ( ! function_exists( 'foundationpress_footer_specialty' ) ) {
+	function foundationpress_footer_specialty() {
+		wp_nav_menu(
+			array(
+				'container'      => false,   // Remove nav container
+				'menu'           => __( 'footer-specialty', 'foundationpress' ),
+				'menu_class'     => '',
+				'theme_location' => 'footer-specialty',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'fallback_cb'    => false,
+			)
+		);
+	}
+}
+
+/**
+ * Footer Navigation - Dealers Menu
+ */
+if ( ! function_exists( 'foundationpress_footer_dealers' ) ) {
+	function foundationpress_footer_dealers() {
+		wp_nav_menu(
+			array(
+				'container'      => false,   // Remove nav container
+				'menu'           => __( 'footer-dealers', 'foundationpress' ),
+				'menu_class'     => '',
+				'theme_location' => 'footer-dealers',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'fallback_cb'    => false,
+			)
+		);
+	}
+}
+
+/**
+ * Footer Navigation - Connect Menu
+ */
+if ( ! function_exists( 'foundationpress_footer_connect' ) ) {
+	function foundationpress_footer_connect() {
+		wp_nav_menu(
+			array(
+				'container'      => false,   // Remove nav container
+				'menu'           => __( 'footer-connect', 'foundationpress' ),
+				'menu_class'     => '',
+				'theme_location' => 'footer-connect',
 				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 				'fallback_cb'    => false,
 			)

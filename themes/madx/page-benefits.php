@@ -32,6 +32,8 @@ get_header(); ?>
 </section>
 
 <section class="benefits-energy" style="background-image: url(<?php the_field('benefits_energy_bg_image'); ?>);">
+	<?php $energy_image = get_field('benefits_energy_mobile_image'); ?>
+	<img src="<?php echo $energy_image['url'] ?>" alt="<?php echo $energy_image['alt'] ?>" class="hide-for-medium">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="medium-5 small-offset-1 small-10 large-3 cell">
@@ -56,6 +58,8 @@ get_header(); ?>
 </section>
 
 <section class="benefits-fade" style="background-image: url(<?php the_field('benefits_fade_bg_image'); ?>);">
+	<?php $fade_image = get_field('benefits_fade_mobile_image'); ?>
+	<img src="<?php echo $fade_image['url'] ?>" alt="<?php echo $fade_image['alt'] ?>" class="hide-for-medium">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="medium-7 medium-offset-4 small-10 small-offset-1 large-6 large-offset-5 cell text-right">
@@ -68,6 +72,8 @@ get_header(); ?>
 </section>
 
 <section class="benefits-safety" style="background-image: url(<?php the_field('benefits_safety_bg_image'); ?>);">
+	<?php $safety_image = get_field('benefits_safety_mobile_image'); ?>
+	<img src="<?php echo $safety_image['url'] ?>" alt="<?php echo $safety_image['alt'] ?>" class="hide-for-medium">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="medium-5 small-10 small-offset-1 large-4 cell">

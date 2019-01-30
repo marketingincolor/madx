@@ -6,38 +6,38 @@
 	  $terms             = wp_get_object_terms( get_the_ID(), $current_post_type.'_taxonomies');
 	  $term_array        = array();
 
-	if (!array_key_exists('errors', $terms)) {
-	  if (count($terms > 2)) {
-	  	// If post has three taxonomies
-	  	foreach ($terms as $term) {
-	  		if ($term->parent == 0) {
-	  			$parent_tax_id = $term->term_id;
-	  			array_unshift($term_array, $term->slug);
-	  		}
-	  	}
+		if (!array_key_exists('errors', $terms)) {
+		  if (count($terms > 2)) {
+		  	// If post has three taxonomies
+		  	foreach ($terms as $term) {
+		  		if ($term->parent == 0) {
+		  			$parent_tax_id = $term->term_id;
+		  			array_unshift($term_array, $term->slug);
+		  		}
+		  	}
 
-	  	foreach ($terms as $term) {
-	  		if ($term->parent != 0) {
-	  			if ($term->parent == $parent_tax_id) {
-	  				array_push($term_array, $term->slug);
-	  			}else{
-	  				$last_child = $term->slug;
-	  			}
-	  		}
-	  	}
-	  	array_push($term_array, $last_child);
-	  }else{
-	  	// If post has 2 or less taxonomies
-	  	foreach ($terms as $term) {
-	  		if ($term->parent == 0) {
-	  			array_unshift($term_array, strtolower($term->slug));
-	  		}else{
-	  			array_push($term_array, strtolower($term->slug));
-	  		}
-	  	}
+		  	foreach ($terms as $term) {
+		  		if ($term->parent != 0) {
+		  			if ($term->parent == $parent_tax_id) {
+		  				array_push($term_array, $term->slug);
+		  			}else{
+		  				$last_child = $term->slug;
+		  			}
+		  		}
+		  	}
+		  	array_push($term_array, $last_child);
+		  }else{
+		  	// If post has 2 or less taxonomies
+		  	foreach ($terms as $term) {
+		  		if ($term->parent == 0) {
+		  			array_unshift($term_array, strtolower($term->slug));
+		  		}else{
+		  			array_push($term_array, strtolower($term->slug));
+		  		}
+		  	}
 
-	  }
-	}
+		  }
+		}
 	  $tax_url = join('/',$term_array);
 	  // Remove the trailing '/' from $tax_url
 	  $tax_url = substr($tax_url, 0, -1);
@@ -103,6 +103,20 @@
 	}
 	add_filter( 'request', 'wpd_specialty_request_filter' );
 
+	// Filter request to allow for variable amount of taxonomies in 
+	// commercial custom post url
+	function wpd_commercial_request_filter( $request ){
+	    if( array_key_exists( 'commercial_taxonomies' , $request )
+	        && ! get_term_by( 'slug', $request['commercial_taxonomies'], 'commercial_taxonomies' ) ){
+	            $request['commercial'] = $request['commercial_taxonomies'];
+	            $request['name'] = $request['commercial_taxonomies'];
+	            $request['post_type'] = 'commercial';
+	            unset( $request['commercial_taxonomies'] );
+	    }
+	    return $request;
+	}
+	add_filter( 'request', 'wpd_commercial_request_filter' );
+
 	// Uncomment to see full request on page for debugging purposes
 
 	// function filter_parse_request( $array ) {
@@ -124,4 +138,23 @@
 	{
 	    return $GLOBALS['wpse16902_page_rewrite_rules'] + $rewrite_rules;
 	}
-?>
+
+	add_filter('wpml_is_redirected', 'ret_fls');
+	function ret_fls($q){
+	    if(strpos($q, 'commercial')){
+	        return false;
+	    }
+	};
+	/**
+	* This will prevent redirection in the secondary language for the custom rule:
+	* '^products/([A-Za-z0-9-]+)/?' => 'index.php?pagename=new-sample&type=$matches[1]'
+	*/
+	function wpmlcore_4704_block_redirect( $redirect, $post_id, $q ) {
+	// Decide on which condition we should prevent the redirection
+	if ( isset( $q->query_vars['pagename'] ) && 'sample-page' === $q->query_vars['pagename'] ) {
+	return false;
+	}
+	 
+	return $redirect;
+	}
+	add_filter( 'wpml_is_redirected', 'wpmlcore_4704_block_redirect', 10, 3 );

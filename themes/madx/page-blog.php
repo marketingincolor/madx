@@ -2,21 +2,15 @@
 /* Template Name: Blog */
 get_header(); ?>
 
-<div class="show-for-small-only" style="padding-top:30px">
-	<?php get_template_part('template-parts/menus/commercial-header-menu'); ?>
-	<div class="grid-container" style="margin-top:30px">
-		<div class="grid-x grid-margin-x grid-margin-y">
-			<div class="small-10 small-offset-1 cell">
-				<?php get_template_part('template-parts/search/searchform'); ?>
-			</div>
-		</div>		
-	</div>
-</div>
+<section class="page-hero relative" style="background-image: url(<?php the_post_thumbnail_url(); ?>);">
 
-<section class="blog-header show-for-medium">
-	<div class="grid-container">
-		<div class="grid-x">
-			<div class="small-10 small-offset-1 medium-12 medium-offset-0 show-for-medium-only">
+	<div class="show-for-small-only">
+		<?php get_template_part('template-parts/menus/blog-header-menu'); ?>
+	</div>
+
+	<div id="header-grid" class="grid-container">
+		<div class="grid-x grid-margin-x">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
 				<?php get_template_part('template-parts/menus/blog-tablet-menu'); ?>
 			</div>
 			<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-large">
@@ -29,17 +23,41 @@ get_header(); ?>
 <main>
 	<div class="grid-container">
 		<div class="grid-x grid-margin-x">
-			<div class="small-10 small-offset-1 medium-9 medium-offset-0 cell">
+			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 				<section class="blog-container">
 					<div class="grid-x">
 						<div class="small-12 cell">
 							<div class="grid-x grid-margin-x grid-margin-y">
+								<div class="small-12 cell show-for-large">
+									<h2 class="text-center subhead" style="">Madico Blog</h2>
+									<?php foundationpress_blog_nav(); ?>
+								</div>
+								<div class="small-12 cell hide-for-large">
+									<h2 class="text-center subhead" style="">Madico Blog</h2>
+									<select name="" id="cat-select" onchange="location.href = this.value">
+										
+									<?php
+									  $menu_items = wp_get_nav_menu_items(499);
+									  $url        = $_SERVER['REQUEST_URI'];
+									  foreach ($menu_items as $item) {
+									  	echo '<option value="'.$item->url.'"';
+									  	if (stripos($url, $item->title)) {
+									  		echo ' selected>';
+									  	} else{
+									  		echo ">";
+									  	}
+									  	echo $item->title.'</option>';
+									  }
+									?>
+
+									</select>
+								</div>
 
 							<?php
 							$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 							$args = array(
 								'post_type'        => 'post',
-								'category__not_in' => array(9,345,80),
+								'category__not_in' => array(9,345,80,85),
 							  'posts_per_page'   => 9,
 							  'paged'            => $paged
 							);
@@ -88,9 +106,6 @@ get_header(); ?>
 						</div>
 					</div>
 				</section>
-			</div>
-			<div class="small-10 small-offset-1 medium-3 medium-offset-0 cell">
-				<?php get_sidebar(); ?>
 			</div>
 		</div>
 	</div>

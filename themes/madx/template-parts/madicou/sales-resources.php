@@ -3,7 +3,7 @@
 		<div class="grid-x">
 			<!-- Need to update this stuff to not be hardcoded -->
 			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
-			<h3 class="section-h3">Sales Resources <a href="./product-training" class="see-more">See More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
+			<h3 class="section-h3">Sales Resources <a href="/madicou/business/sales" class="see-more">See More &nbsp;<i class="fal fa-long-arrow-right"></i></a></h3>
 			</div>
 			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 				<div class="grid-x grid-margin-x grid-margin-y">
@@ -28,19 +28,22 @@
 								$video_file = get_field('video_attachment'); // Requires ACF Field for 'video_meta'
 								$post_link = '#!'; // Change post_link if it's a video
 							}
+							$title_lower  = strtolower(get_the_title());
+							$title_split  = explode(' ', $title_lower);
+							$title_joined = implode('-', $title_split);
 					?>
 
 					<div class="medium-6 large-4 cell module auto-height">
 						<div class="image-link" data-videotitle="Title of Video">
-						  <a href="<?php echo $post_link; ?>" <?php if (has_post_format('video')) {echo 'data-open="video-modal"';} ?> class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><div class="module-bg small" style="background-image: url(<?php the_post_thumbnail_url(); ?>);"></div></a>
+						  <a href="<?php echo $post_link; ?>" <?php if (has_post_format('video')) {echo 'data-open="video-modal"';} ?> class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><div class="module-bg small madicou-modal-image-<?php echo $title_joined; ?>" style="background-image: url(<?php the_post_thumbnail_url(); ?>);"></div></a>
 						</div>
 						<div class="meta">
-							<a href="<?php echo $post_link; ?>" <?php if (has_post_format('video')) {echo 'data-open="video-modal"';} ?> class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><h4 class="blue"><?php the_title(); ?></h4></a>
+							<a href="<?php echo $post_link; ?>" <?php if (has_post_format('video')) {echo 'data-open="video-modal"';} ?> class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><h4 class="blue madicou-modal-heading-<?php echo $title_joined; ?>"><?php the_title(); ?></h4></a>
 							<?php the_content(); ?>
 								<?php if(has_post_format('video')) { ?>
 									<p><i class="fal fa-clock"></i> &nbsp;<?php echo $video_meta; ?></p>
 								<?php }else{ ?>
-								  <a href="<?php echo $post_link; ?>" class="blue read-more">Learn More &nbsp;<i class="fal fa-long-arrow-right"></i></a>
+								  <a href="<?php echo $post_link; ?>" class="blue read-more madicou-modal-read-more-<?php echo $title_joined; ?>">Learn More &nbsp;<i class="fal fa-long-arrow-right"></i></a>
 							  <?php } ?>
 						</div>
 					</div>

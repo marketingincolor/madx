@@ -1,3 +1,11 @@
+.single-madicou{
+
+	.module .meta img{
+		height: auto;
+		width: auto;
+	}
+}
+
 .single{
 
 	.overlay{
@@ -110,6 +118,15 @@
 			a i{
 				color: $light_blue;
 			}
+		}
+	}
+
+	.case-study-container{
+
+		h3{
+			color: #1a598c;
+			font-size: 1.5rem;
+			font-family: AvenirLTStd-Book;
 		}
 	}
 }

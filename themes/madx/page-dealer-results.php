@@ -7,7 +7,7 @@
 	$api_key    = $ZIP_CODE_API_KEY;
 	$zip_radius = isset($_POST['radius']) ? $_POST['radius'] : 25;
 	$zip_code   = $_POST['zip'];
-	$type       = isset($_POST['type']) ? $_POST['type'] : array('architectural','auto','safety-security');
+	$type       = isset($_POST['type']) ? $_POST['type'] : array('architectural','automotive','safety-security');
 	
 	$api_url    = $api_root.'/'.$api_key.'/radius.json/'.$zip_code.'/'.$zip_radius.'/miles?minimal';
 
@@ -39,12 +39,14 @@
 	// var_dump($zip_array);
   
 	$meta_query_args = array(
-		'post_type' => 'dealer',
-		'meta_query' => array(
+		'post_type'      => 'dealer',
+		'posts_per_page' => -1,
+		'meta_query'     => array(
 			array(
-				'key' => 'zip',
-				'value' => $zip_array,
-				'compare' => 'IN'
+				'key'     => 'zip',
+				'value'   => $zip_array,
+				'compare' => 'IN',
+				'type'    => 'NUMERIC'
 			)
 		),
 		'tax_query' => array(
@@ -97,9 +99,9 @@
 
       	if ($meta_query->have_posts()) : while ( $meta_query->have_posts() ) : $meta_query->the_post();
 
-      		if (has_term('sunscape','designations')) {
+      		if (has_term('sunscape','designation')) {
       			array_push($sunscape_dealers, $post);
-      		}else if (has_term('safety-shield','designations')) {
+      		}else if (has_term('safety-shield','designation')) {
       			array_push($safetyshield_dealers, $post);
       		}else{
       			array_push($other_dealers, $post);
@@ -117,6 +119,7 @@
       		$sorted_dealers = array_merge($sunscape_dealers, $safetyshield_dealers, $other_dealers);
       		// Loop through new sorted dealers array to display them
       		foreach ($sorted_dealers as $dealer) { 
+      			// var_dump($dealer);
       			$dealer_icons  = array();
       			$dealer_street = get_post_meta($dealer->ID,'street',true);
       			$dealer_zip    = get_post_meta($dealer->ID,'zip',true);
@@ -145,14 +148,28 @@
 
       	<div class="medium-6 large-3 cell module auto-height">
       		<div class="dealer-tag"><?php echo $icons_joined; ?></div>
-      		<h5 class="blue" data-dealerName="<?php echo $dealer_name; ?>"><a href="#!" <?php if($dealer_email) { ?>data-open="dealer-modal"<?php } ?>><?php echo $dealer_name; ?></a></h5>
+      		<h5 class="blue" data-dealerName="<?php echo $dealer_name; ?>"><a href="#!" class="dealer-directory-modal-form" <?php if($dealer_email) { ?>data-open="dealer-modal"<?php } ?>><?php echo $dealer_name; ?></a></h5>
       		<ul class="dealer-meta">
       			<li><address><i class="fas fa-map-marker-alt"></i> &nbsp;<?php echo $dealer_street; ?><br> <?php echo $dealer_city; ?>, <?php echo $dealer_state; ?> <?php echo $dealer_zip; ?></address></li>
       			<li><address><i class="fas fa-phone"></i> &nbsp;<?php echo $dealer_phone; ?></address></li>
       			<?php if($dealer_email) { ?>
       			  <li class="email" data-dealerEmail="<?php echo $dealer_email; ?>"><address><i class="fas fa-envelope"></i> &nbsp;<?php echo $dealer_email; ?></address></li>
       			<?php } ?>
+      		
+      		<?php if(has_term('sunscape','designation',$dealer->ID) || has_term('safety-shield','designation',$dealer->ID)){ ?>
+						
+						<hr>
+
+						<?php if (has_term('sunscape','designation',$dealer->ID)) { ?>
+							<li style="text-indent: -1.375rem;"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/sunscape-icon.png" alt="Madico Sunscape Dealer" style="width:auto;height:auto">&nbsp; <span style="font-size:14px">Sunscape Dealer</span></li>
+						<?php } ?>
+
+						<?php if (has_term('safety-shield','designation',$dealer->ID)) { ?>
+							<li style="text-indent: -1.375rem;"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/safety-shield-icon.png" alt="Madico SafetyShield Dealer" style="width:auto;height:auto">&nbsp; <span style="font-size:14px">SafetyShield Premier Partner</span></li>
+						<?php } ?>
       		</ul>
+
+      		<?php } ?>
       	</div>
 
       	<?php	} ?>
