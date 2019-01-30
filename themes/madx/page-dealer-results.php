@@ -156,7 +156,7 @@
       			  <li class="email" data-dealerEmail="<?php echo $dealer_email; ?>"><address><i class="fas fa-envelope"></i> &nbsp;<?php echo $dealer_email; ?></address></li>
       			<?php } ?>
       		
-      		<?php if(has_term('sunscape','designation',$dealer->ID) || has_term('safety-shield','designations',$dealer->ID)){ ?>
+      		<?php if(has_term('sunscape','designation',$dealer->ID) || has_term('safety-shield','designation',$dealer->ID)){ ?>
 						
 						<hr>
 

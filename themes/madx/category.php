@@ -31,11 +31,11 @@ $term = get_queried_object();
 					<div class="grid-x grid-margin-x grid-margin-y">
 						<?php if($term->cat_name !== "News"){ ?>
 							<div class="small-12 cell show-for-large">
-								<h2 class="text-center subhead" style="">Madico Window Film Blog Articles</h2>
+								<h2 class="text-center subhead" style="">Madico Blog</h2>
 								<?php foundationpress_blog_nav(); ?>
 							</div>
 							<div class="small-12 cell hide-for-large">
-								<h2 class="text-center subhead" style="">Madico Window Film Blog Articles</h2>
+								<h2 class="text-center subhead" style="">Madico Blog</h2>
 								<select name="" id="cat-select" onchange="location.href = this.value">
 									
 								<?php
