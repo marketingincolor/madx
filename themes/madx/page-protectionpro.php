@@ -107,8 +107,11 @@ get_header(); ?>
 										  <?php } ?>
 										</div>
 
-									<?php endwhile;endif; ?>
+						<?php endwhile;endif; ?>
 
+						<?php if(get_sub_field('tab_fine_print')) { ?>
+							<p style="font-size:12px; font-style:italic;"><?php the_sub_field('tab_fine_print'); ?></p>
+						<?php } ?>
 		      			</div>	
 		      		</div>
 		      		<div class="small-10 small-offset-1 text-center hide-for-medium">
