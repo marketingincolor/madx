@@ -1,0 +1,38 @@
+.dealer-brandhub{
+	
+	.outer-col{
+		@include breakpoint(medium){
+			width: calc(30% - 1.875rem);
+		}
+	}
+
+	.middle-col{
+		@include breakpoint(medium){
+			width: calc(40% - 1.875rem);
+		}
+
+		@include breakpoint (small down){
+			text-align: center;
+		}
+	}
+}
+
+.support-programs{
+
+	.program{
+		padding: 70px 0;
+
+		img{
+			margin-bottom: 30px;
+		}
+
+		p{
+			margin-bottom: 25px;
+		}
+	}
+}
+
+.dealer-header .page-hero .grid-container{
+	padding: 4% 0 3%;
+}
+
