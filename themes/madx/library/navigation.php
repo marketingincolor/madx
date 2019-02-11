@@ -20,6 +20,7 @@ register_nav_menus(
 		'protectionpro-top-nav' => esc_html__( 'ProtectionPro Top Nav', 'foundationpress' ),
 		'header-top-nav' => esc_html__( 'Header Top Nav', 'foundationpress' ),
 		'blog-top-nav' => esc_html__( 'Blog Top Nav', 'foundationpress' ),
+		'dealers-top-nav' => esc_html__( 'Dealers Top Nav', 'foundationpress' ),
 		'footer-company' => esc_html__( 'Footer Company', 'foundationpress' ),
 		'footer-films' => esc_html__( 'Footer Films', 'foundationpress' ),
 		'footer-specialty' => esc_html__( 'Footer Specialty', 'foundationpress' ),
@@ -247,6 +248,24 @@ if ( ! function_exists( 'foundationpress_blog_nav' ) ) {
 				'menu'           => __( 'blog-top-nav', 'foundationpress' ),
 				'menu_class'     => 'menu',
 				'theme_location' => 'blog-top-nav',
+				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				'fallback_cb'    => false,
+			)
+		);
+	}
+}
+
+/**
+ * Dealers Top Navigation - top nav
+ */
+if ( ! function_exists( 'foundationpress_dealers_nav' ) ) {
+	function foundationpress_dealers_nav() {
+		wp_nav_menu(
+			array(
+				'container'      => false,   // Remove nav container
+				'menu'           => __( 'dealers-top-nav', 'foundationpress' ),
+				'menu_class'     => 'menu',
+				'theme_location' => 'dealers-top-nav',
 				'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 				'fallback_cb'    => false,
 			)
