@@ -130,7 +130,7 @@ Vue.directive('slider', {
 // Add foundation 6 orbit functionality to an element
 Vue.directive('f-orbit', {
     bind: function (el) {
-      new Foundation.Orbit($(el))
+      new Foundation.Orbit($(el));
     },
     unbind: function (el) {
         $(el).foundation.destroy()
@@ -195,7 +195,6 @@ var newVue = new Vue({
     listItems.forEach(function(item){
       item.parentElement.style.display = "none";
     });
-
   },
   mounted(){
     this.menuDropdown();
@@ -203,6 +202,15 @@ var newVue = new Vue({
     this.validateForms();
     if (location.href.includes('protectionpro')) {
       this.protectionProCarousel();
+    }
+    if ($('body').find('#testing')) {
+      let pCount = 1;
+      $('#testing-content').find('p').each(function(){
+        if (pCount !== 1 && pCount !== 2) {
+          $(this).addClass('hide');
+        }
+        pCount++;
+      });
     }
   },
   methods: {
@@ -324,11 +332,17 @@ var newVue = new Vue({
 
       if (open == false) {
         testing.classList.add('slide-down');
-        testingContent.querySelector('.hide').classList.remove('hide');
+        $(testingContent).find('.hide').removeClass('hide');
         open = true;
       }else{
+        let pCount = 1;
         testing.classList.remove('slide-down');
-        testingContent.querySelectorAll('p')[2].classList.add('hide');
+        $(testingContent).find('p').each(function(){
+          if (pCount !== 1 && pCount !== 2) {
+            $(this).addClass('hide');
+          }
+          pCount++;
+        });
         open = false;
       }
     },

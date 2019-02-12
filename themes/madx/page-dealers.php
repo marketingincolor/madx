@@ -8,7 +8,7 @@ get_header(); ?>
 			<?php get_template_part('template-parts/menus/dealers-header-menu'); ?>
 		</div>
 
-		<div id="header-grid" class="grid-container">
+		<div id="header-grid" class="grid-container" style="padding-bottom: 30px">
 			<div class="grid-x">
 				<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
 					<?php get_template_part('template-parts/menus/dealers-tablet-menu'); ?>
@@ -20,27 +20,29 @@ get_header(); ?>
 		</div>
 	</section>
 
-	<section class="featured-products">
+	<section class="dealer-products">
 		<div class="grid-container">
-			<!-- Foundation 6 Carousel/Orbit -->
-			<div class="orbit" role="region" aria-label="Featured Products" v-f-orbit>
-			  <div class="orbit-wrapper">
-			    <div class="orbit-controls">
-			      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span><i class="fas fa-chevron-left"></i></button>
-			      <button class="orbit-next"><span class="show-for-sr">Next Slide</span><i class="fas fa-chevron-right"></i></button>
-			    </div>
-			    <ul class="orbit-container">
+			<div class="grid-x">
+				<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
+					<!-- Foundation 6 Carousel/Orbit -->
+					<div class="orbit" role="region" aria-label="Featured Products" v-f-orbit>
+					  <div class="orbit-wrapper">
+					    <div class="orbit-controls">
+					      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span><i class="fas fa-chevron-left"></i></button>
+					      <button class="orbit-next"><span class="show-for-sr">Next Slide</span><i class="fas fa-chevron-right"></i></button>
+					    </div>
+					    <ul class="orbit-container">
 			    		<?php
 				    		$args = array(
 				    			'post_type'      => 'dealers',
 				    			'posts_per_page' => 1,
 				    			'meta_query'     => array(
-	    			        array(
-    			            'key'     => 'featured_product',
-    			            'value'   => '"Featured Product"',
-    			            'compare' => 'LIKE'
-	    			        )
-		    			    )
+				    			        array(
+			    			            'key'     => 'featured_product',
+			    			            'value'   => '"Featured Product"',
+			    			            'compare' => 'LIKE'
+				    			        )
+					    			    )
 				    		);
 				    		$query = new WP_Query( $args );
 			    			while ( $query->have_posts() ) : $query->the_post();
@@ -48,62 +50,64 @@ get_header(); ?>
 			    		
 					      <li class="is-active orbit-slide">
 					        <div class="grid-x">
-										<div class="small-12 cell">
-											<div class="grid-x module auto-height side-module">
-												<div class="medium-5 cell">
-													<h6 class="blue"><?php the_field('featured_product_title'); ?></h6>
-													<h3><?php the_field('featured_product_copy'); ?></h3>
-													<a href="<?php the_permalink(); ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
-												</div>
-												<div class="medium-7 cell" style="background: url(<?php the_post_thumbnail_url(); ?>) center center / cover no-repeat;">
-													
-												</div>
-											</div>
+								<div class="small-12 cell">
+									<div class="grid-x module auto-height side-module">
+										<div class="medium-5 cell meta">
+											<h6><?php the_field('featured_product_title'); ?></h6>
+											<h3><?php the_field('featured_product_copy'); ?></h3>
+											<a href="<?php the_permalink(); ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
 										</div>
+										<div class="medium-7 cell" style="background: url(<?php the_post_thumbnail_url(); ?>) center center / cover no-repeat;">
+											
+										</div>
+									</div>
+								</div>
 					        </div>
 					      </li>
-
+			
 			    		
 			    		<?php endwhile; wp_reset_postdata(); ?>
-
-  		    		<?php
-  		    			$args = array(
-				    			'post_type'      => 'dealers',
-				    			'posts_per_page' => 99,
-				    			'offset'         => 1,
-				    			'meta_query'     => array(
-	    			        array(
-    			            'key'     => 'featured_product',
-    			            'value'   => '"Featured Product"',
-    			            'compare' => 'LIKE'
-	    			        )
-		    			    )
-				    		);
+			
+	  		    		<?php
+	  		    			$args = array(
+		    			'post_type'      => 'dealers',
+		    			'posts_per_page' => 99,
+		    			'offset'         => 1,
+		    			'meta_query'     => array(
+		    			        array(
+	    			            'key'     => 'featured_product',
+	    			            'value'   => '"Featured Product"',
+	    			            'compare' => 'LIKE'
+		    			        )
+			    			    )
+				    	);
   		    			$query = new WP_Query( $args );
   		    			while ( $query->have_posts() ) : $query->the_post();
-  		    		?>
-  		    		
-  				      <li class="orbit-slide">
-  				        <div class="grid-x">
-										<div class="small-12 cell">
-											<div class="grid-x module auto-height side-module">
-												<div class="medium-5 cell">
-													<h6 class="blue"><?php the_field('featured_product_title'); ?></h6>
-													<h3><?php the_field('featured_product_copy'); ?></h3>
-													<a href="<?php the_permalink(); ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
-												</div>
-												<div class="medium-7 cell" style="background: url(<?php the_post_thumbnail_url(); ?>) center center / cover no-repeat;">
-													
-												</div>
-											</div>
+			  		    		?>
+			  		    		
+	  				    <li class="orbit-slide">
+	  				        <div class="grid-x">
+								<div class="small-12 cell">
+									<div class="grid-x module auto-height side-module">
+										<div class="medium-5 meta cell">
+											<h6 class="blue"><?php the_field('featured_product_title'); ?></h6>
+											<h3><?php the_field('featured_product_copy'); ?></h3>
+											<a href="<?php the_permalink(); ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
 										</div>
+										<div class="medium-7 cell" style="background: url(<?php the_post_thumbnail_url(); ?>) center center / cover no-repeat;">
+											
+										</div>
+									</div>
+								</div>
 					        </div>
-  				      </li>
-  		    		
-  		    		<?php endwhile; wp_reset_postdata(); ?>
-			      
-			    </ul>
-			  </div>
+			  		    </li>
+			  		    		
+			  		    <?php endwhile; wp_reset_postdata(); ?>
+					      
+					    </ul>
+					  </div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -111,7 +115,7 @@ get_header(); ?>
 	<section class="dealer-cta">
 		<div class="grid-container">
 			<div class="grid-x">
-				<div class="small-12 cell" style="background: url(<?php the_field('dealer_cta_background_image'); ?>) center center / cover no-repeat;">
+				<div class="small-12 cell container" style="background: url(<?php the_field('dealer_cta_background_image'); ?>) center center / cover no-repeat;">
 					<div class="grid-x grid-margin-x grid-margin-y align-middle">
 						<div class="medium-8 cell">
 							<h3 class="white"><?php the_field('dealer_cta_title'); ?></h3>
@@ -223,7 +227,7 @@ get_header(); ?>
 	<section class="dealer-brandhub">
 		<div class="grid-container">
 			<div class="grid-x">
-				<div class="small-12 cell" style="background: url(<?php the_field('brand_hub_background_image'); ?>) center center / cover no-repeat;">
+				<div class="small-12 container cell" style="background: url(<?php the_field('brand_hub_background_image'); ?>) center center / cover no-repeat;">
 					<div class="grid-x grid-margin-x grid-margin-y align-middle">
 						<div class="large-4 cell text-center outer-col">
 							<img src="<?php the_field('brand_hub_logo'); ?>" alt="Madico Brand Hub">

@@ -9,20 +9,22 @@
 	}
 }
 
-.archive{
-	
-	.breadcrumbs .breadcrumb-title, .breadcrumbs span, .breadcrumbs a{
-		text-transform: uppercase;
-		font-family: 'AvenirLTStd-Black';
-		color: #a7a9ac;
-		font-size: 0.75rem;
-		margin-bottom: 10px;
-	}
-
-	#breadcrumbs,#single-post{
-		margin-top: 40px;
-	}
+.breadcrumbs .breadcrumb-title, .breadcrumbs span, .breadcrumbs a{
+	text-transform: uppercase;
+	font-family: 'AvenirLTStd-Black';
+	color: #a7a9ac;
+	font-size: 0.75rem;
+	margin-bottom: 10px;
 }
+
+.breadcrumbs .breadcrumb-title i{
+	color: #a7a9ac;
+}
+
+#breadcrumbs,#single-post{
+	margin-top: 40px;
+}
+
 
 .breadcrumb-title i{
 	font-size: .5rem !important;
