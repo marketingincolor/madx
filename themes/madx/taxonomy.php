@@ -8,6 +8,8 @@
 
 	if (strpos($url, 'residential') !== false) {
 	    $post_type = 'residential';
+	}else if (strpos($url, 'dealers') !== false) {
+	    $post_type = 'dealers';
 	}else if (strpos($url, 'commercial') !== false) {
 	    $post_type = 'commercial';
 	}else if (strpos($url, 'automotive') !== false) {
