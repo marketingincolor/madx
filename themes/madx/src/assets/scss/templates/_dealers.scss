@@ -210,3 +210,43 @@
 		}
 	}
 }
+
+.page-template-page-dealer-program{
+
+	.program-hero{
+
+		img{
+			margin-bottom: 30px;
+		}
+
+		p{
+			margin-bottom: 25px;
+		}
+	}
+
+	.cta-section{
+		padding: 50px 0 150px;
+	}
+
+	.contact {
+
+		.content-block{
+			background-color: #FFF;
+			padding: 40px;
+			box-shadow: 0 1px 6px 2px #eee;
+			margin-top: -150px;
+
+			@include breakpoint(medium down){
+				padding: 30px;
+			}
+
+			@include breakpoint(small down){
+				padding: 10px;
+			}
+
+			.meta{
+				padding: 20px 20px 0;
+			}
+		}
+	}
+}
