@@ -31,7 +31,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		</div>
 	</section>
 
-	<section class="support-programs">
+	<section class="support-programs" style="padding-top:0">
 		<div class="grid-container">
 			<div class="grid-x grid-margin-y">
 
