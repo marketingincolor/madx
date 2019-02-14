@@ -113,3 +113,100 @@
 		}
 	}
 }
+
+.page-template-page-dealer-recognition{
+
+	.dealer-carousel{
+
+		.orbit-container{
+			height: auto !important;
+		}
+
+		.orbit-previous,.orbit-next{
+			transition: color 0.2s ease-in-out;
+
+			&:hover,&:active,&:focus{
+				background-color: transparent;
+				color: $yellow;
+			}
+		}
+
+		.orbit-previous{
+			left: -70px;
+		}
+
+		.orbit-next{
+			right: -70px;
+		}
+
+		.award{
+			text-transform: uppercase;
+			color: $yellow;
+			margin-bottom: 20px;
+			font-size: 0.875rem;
+			font-family: 'AvenirLTStd-Black';
+		}
+	}
+
+	.benefit2{
+
+		.small-10.cell{
+
+			@include breakpoint(small down){
+				text-align: center;
+
+				.yellow-underline{
+					margin: 20px auto 30px;
+				}
+			}
+		}
+
+		a{
+			transition: color 0.25s ease-in-out;
+			
+			&:hover{
+				color: $yellow;
+
+				span{
+					color: $yellow;
+					border-color: $yellow;
+				}
+			}
+
+			span{
+				border-bottom: 1px solid $white;
+				color: $white;
+				transition: all 0.25s ease-in-out;
+			}
+		}
+	}
+
+	.benefit3{
+		padding: 70px 0;
+
+		.small-10.cell{
+
+			@include breakpoint(small down){
+				text-align: center;
+
+				.yellow-underline{
+					margin: 20px auto 30px;
+				}
+			}
+		}
+
+		@include breakpoint(medium down){
+
+		}
+
+		@include breakpoint(small only){
+
+			background: none !important;
+			padding: 10% 0 0;
+
+			.mobile-image{
+				padding-top: 30px;
+			}
+		}
+	}
+}
