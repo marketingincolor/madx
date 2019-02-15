@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Dealer Recognition */
+/* Template Name: Dealer Plotters */
 get_header();
 if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
@@ -39,12 +39,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		    		
 				    <li class="<?php if($count === 0){echo 'is-active ';} ?>orbit-slide">
 				        <div class="grid-x grid-margin-x grid-margin-y align-middle">
-							<div class="medium-5 cell">
+							<div class="medium-7 cell">
 								<img src="<?php the_sub_field('image'); ?>" alt="">
 							</div>
-							<div class="medium-7 cell">
-								<h6 class="award"><?php the_sub_field('award_type'); ?></h6>
-								<p class="white"><?php the_sub_field('dealer_bio'); ?></p>
+							<div class="medium-5 cell">
+								<h2 class="blue"><?php the_sub_field('award_type'); ?></h6>
+								<aside class="yellow-underline left"></aside>
+								<p><?php the_sub_field('dealer_bio'); ?></p>
 							</div>
 				        </div>
 				    </li>
@@ -68,14 +69,14 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				<p><?php the_field('intro_copy') ?></p>
 				<?php if(get_field('intro_button_link')){ ?>
 					<p style="margin-bottom:25px"></p>
-					<a href="<?php the_field('intro_button_link'); ?>"><button class="btn-blue border"><?php the_field('intro_button_text'); ?></button></a>
+					<a href="<?php the_field('intro_button_link'); ?>"><button class="btn-lt-blue border"><?php the_field('intro_button_text'); ?></button></a>
 				<?php } ?>
 			</div>
 		</div>
 	</div>
 </section>
 
-<section class="benefit3" style="background: url(<?php the_field('first_benefit_background_image'); ?>) center center / cover no-repeat">
+<section class="benefit3 first" style="background: url(<?php the_field('first_benefit_background_image'); ?>) center center / cover no-repeat">
 	<!-- Mobile Image -->
 	<div class="hide-for-medium">
 		<img src="<?php the_field('first_benefit_mobile_image'); ?>" alt="<?php the_field('third_benefit_heading'); ?>" class="mobile-image">
@@ -94,17 +95,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 <section class="benefit2" style="background: url(<?php the_field('second_benefit_background_image'); ?>) center center / cover no-repeat">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 cell text-right">
+			<div class="small-10 small-offset-1 cell">
 				<h2 class="white"><?php the_field('second_benefit_heading'); ?></h2>
-				<aside class="yellow-underline right"></aside>
-				<?php
-					if(get_field('second_benefit_cta')){
-						$style = 'style="margin-bottom:20px"';
-						$cta   = '<a href="#!" class="white"><span>' . get_field("second_benefit_cta") . '</span> &nbsp;<i class="far fa-long-arrow-right"></i></a>';
-					}
-				?>
-				<div class="content" <?php echo $style; ?>><?php the_field('second_benefit_subhead'); ?></div>
-				<?php echo $cta; ?>
+				<aside class="yellow-underline left"></aside>
+				<div class="content"><?php the_field('second_benefit_subhead'); ?></div>
 			</div>
 		</div>
 	</div>
@@ -126,25 +120,15 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	</div>
 </section>
 
-<section class="cta-section" style="background-color: <?php the_field('cta_background'); ?>">
-	<div class="grid-container">
-		<div class="grid-x">
-			<div class="large-8 small-10 small-offset-1 large-offset-2 cell text-center">
-				<h2 class="white"><?php the_field('cta_heading'); ?></h2>
-				<aside class="yellow-underline center"></aside>
-				<p class="white"><?php the_field('cta_subhead'); ?></p>
-			</div>
-		</div>
-	</div>
-</section>
-
 <section class="contact">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="large-8 small-10 small-offset-1 large-offset-2 cell content-block">
 				<div class="meta">
 					<h4 class="blue"><?php the_field('contact_heading'); ?></h4>
-					<p class="subhead"><?php the_field('contact_subhead'); ?></p>
+					<?php if(get_field('contact_subhead')){ ?>
+					  <p class="subhead"><?php the_field('contact_subhead'); ?></p>
+					<?php } ?>
 				</div>
 				<div><?php the_field('contact_form_shortcode'); ?></div>
 			</div>

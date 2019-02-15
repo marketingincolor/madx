@@ -1,3 +1,17 @@
+.content-block{
+	background-color: #FFF;
+	padding: 40px;
+	box-shadow: 0 1px 6px 2px #eee;
+
+	@include breakpoint(small down){
+		padding: 10px 10px 30px;
+	}
+
+	.meta{
+		padding: 20px 20px 0;
+	}
+}
+
 .dealer-products{
 
 	.orbit-container{
@@ -114,7 +128,7 @@
 	}
 }
 
-.page-template-page-dealer-recognition{
+.page-template-page-dealer-recognition,.page-template-page-dealer-plotters{
 
 	.dealer-carousel{
 
@@ -128,6 +142,10 @@
 			&:hover,&:active,&:focus{
 				background-color: transparent;
 				color: $yellow;
+			}
+
+			@include breakpoint(small down){
+				display: none;
 			}
 		}
 
@@ -179,6 +197,20 @@
 				transition: all 0.25s ease-in-out;
 			}
 		}
+
+		.content{
+
+			@include breakpoint(small down){
+
+				p{
+					text-align: center;
+				}
+			}
+
+			p,li{
+				color: $white;
+			}
+		}
 	}
 
 	.benefit3{
@@ -205,13 +237,123 @@
 			padding: 10% 0 0;
 
 			.mobile-image{
-				padding-top: 30px;
+				padding-bottom: 30px;
 			}
+		}
+
+		&:not(.first){
+
+			@include breakpoint(small only){
+				padding-bottom: 30px;
+				padding-top: 0;
+			}
+		}
+
+		&.last{
+			@include breakpoint(small only){
+				padding: 30px 0 0;
+
+				.mobile-image{
+					padding-bottom: 0;
+				}
+
+				p{
+					margin-bottom: 30px;
+				}
+			}	
+		}
+	}
+}
+
+.page-template-page-dealer-plotters{
+	
+	.dealer-carousel{
+
+		.orbit-previous,.orbit-next{
+			color: $blue;
+
+			@media(max-width:320px){
+				top: 45%;
+			}
+		}
+
+		.orbit-previous{
+
+			@include breakpoint(small down){
+				left: 0;
+			}
+		}
+
+		.orbit-next{
+
+			@include breakpoint(small down){
+				right: 0;
+			}
+		}
+
+		.orbit-slide{
+
+			@include breakpoint(small down){
+				h2,p{
+					text-align: center;
+				}
+				aside{
+					margin: 20px auto 30px;
+				}
+			}
+		}
+	}
+
+	.benefit2{
+
+		.content{
+
+			@include breakpoint(small down){
+				text-align: left;
+
+				p{
+					margin-bottom: 10px;
+				}
+			}
+
+			p,li{
+				color: $white;
+			}
+
+			ul{
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.benefit3.first{
+
+		@include breakpoint(small down){
+			padding-top: 0;
+		}
+
+		.small-10.cell{
+			
+			@include breakpoint(small down){
+				text-align: left;
+				
+				h2,p{
+					text-align: center;
+				}
+
+				p{
+					margin-bottom: 10px;
+				}
+			}			
 		}
 	}
 }
 
 .page-template-page-dealer-program{
+
+	.page-hero .grid-container{
+		padding: 4% 0 5%;
+	}
 
 	.program-hero{
 
@@ -242,10 +384,6 @@
 
 			@include breakpoint(small down){
 				padding: 10px;
-			}
-
-			.meta{
-				padding: 20px 20px 0;
 			}
 		}
 	}
