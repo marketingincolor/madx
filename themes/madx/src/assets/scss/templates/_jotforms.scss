@@ -61,11 +61,26 @@
 		input{
 			width: 100% !important;
 		}
+
+		@include breakpoint(small down){
+		    width: 100%
+		    margin: 0;
+		}
 	}
 
 	.form-line{
 		padding: 0 20px;
+
+	    @include breakpoint(small down){
+		    padding: 2% 5%;
+	    }
 	}
+
+	[data-type="control_dropdown"] .form-input, [data-type="control_dropdown"] .form-input-wide{
+		@include breakpoint(small down){
+		    width: 100%;
+	    }
+    }
 
 	.form-address-table{
 		width: 100%;
