@@ -349,7 +349,7 @@
 	}
 }
 
-.page-template-page-dealer-program{
+.page-template-page-dealer-program,.page-template-page-become-dealer{
 
 	.page-hero .grid-container{
 		padding: 4% 0 5%;
@@ -385,6 +385,25 @@
 			@include breakpoint(small down){
 				padding: 10px;
 			}
+		}
+	}
+}
+
+.page-template-page-become-dealer{
+
+	.dealer-intro{
+		background-color: $blue;
+
+		h4{
+			color: #80a3bf;
+			margin-bottom: 10px;
+		}
+	}
+
+	.distribution-network{
+
+		img{
+			margin-bottom: 30px;
 		}
 	}
 }
