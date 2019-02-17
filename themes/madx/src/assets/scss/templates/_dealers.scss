@@ -407,3 +407,21 @@
 		}
 	}
 }
+
+.page-template-page-recognized-dealers{
+
+	.dealer-list{
+
+		.year{
+			font-size: 1.875rem;
+		}
+
+		.award{
+			color: $yellow;
+			text-transform: uppercase;
+			font-size: 0.875rem;
+			margin-bottom: 20px;
+			font-family: 'AvenirLTStd-Black';
+		}
+	}
+}
