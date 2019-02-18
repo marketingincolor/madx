@@ -78,13 +78,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	</div>
 </section>
 
-<section class="cta-section" style="background-color: <?php the_field('cta_background'); ?>">
+<section id="cta" class="cta-section" style="background-color: <?php the_field('cta_background'); ?>">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="large-8 small-10 small-offset-1 large-offset-2 cell text-center">
 				<h2 class="white"><?php the_field('cta_heading'); ?></h2>
 				<aside class="yellow-underline center"></aside>
-				<p class="white"><?php the_field('cta_subhead'); ?></p>
+				<div class="content"><?php the_field('cta_subhead'); ?></div>
 			</div>
 		</div>
 	</div>

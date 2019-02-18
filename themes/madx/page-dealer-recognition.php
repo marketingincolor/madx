@@ -100,7 +100,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				<?php
 					if(get_field('second_benefit_cta')){
 						$style = 'style="margin-bottom:20px"';
-						$cta   = '<a href="#!" class="white"><span>' . get_field("second_benefit_cta") . '</span> &nbsp;<i class="far fa-long-arrow-right"></i></a>';
+						$cta   = '<a href="#contact" class="white"><span>' . get_field("second_benefit_cta") . '</span> &nbsp;<i class="far fa-long-arrow-right"></i></a>';
 					}
 				?>
 				<div class="content" <?php echo $style; ?>><?php the_field('second_benefit_subhead'); ?></div>
@@ -126,7 +126,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	</div>
 </section>
 
-<section class="cta-section" style="background-color: <?php the_field('cta_background'); ?>">
+<section id="cta" class="cta-section" style="background-color: <?php the_field('cta_background'); ?>">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="large-8 small-10 small-offset-1 large-offset-2 cell text-center">
