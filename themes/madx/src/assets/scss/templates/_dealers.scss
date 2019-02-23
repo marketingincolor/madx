@@ -1,0 +1,709 @@
+.content-block{
+	background-color: #FFF;
+	padding: 40px;
+	box-shadow: 0 1px 6px 2px #eee;
+	border-radius: 5px;
+
+	@include breakpoint(small down){
+		padding: 10px 10px 30px;
+	}
+
+	.meta{
+		padding: 20px 20px 0;
+	}
+}
+
+.tax-dealers_taxonomies{
+
+	.module.auto-height .meta .content{
+		margin-top: 20px;
+	}
+}
+
+.dealer-area{
+
+	div.content,div.content p{
+		color: $white;
+	}
+
+	.module div.content{
+		color: $text-gray;
+	}
+
+	#single-post .content p{
+		color: $text-gray;
+    }
+
+	.page-hero .grid-container{
+		padding: 4% 0;
+	}
+
+	section{
+
+		@include breakpoint(medium down){
+			padding: 3% 0;
+		}
+
+		@include breakpoint(small down){
+			padding: 5% 0;
+		}
+	}
+
+	nav .btn-menu{
+		padding: 0 10px;
+
+		&:hover{
+			background-color: $clear;
+		}
+
+		a{
+			padding: 0!important;
+
+			&:hover{
+				background-color: $clear !important;
+			}
+		}
+
+		button{
+			padding: 0.6rem 1rem;
+			font-size: 13px
+		}
+	}
+
+	nav .desktop-menu{
+		display: none;
+		
+		@media(min-width: 1071px){
+			display: flex;
+		}
+	}
+
+	nav .tablet-menu{
+		display: none;
+
+		@media(min-width: 641px) and (max-width: 1070px){
+			display: block;
+		}
+	}
+
+	#menu-dealers-top-nav-2 .consumer{
+	color: $yellow;
+}
+
+	#header-grid .top-bar-right .menu > li{	
+	    padding: 0.5rem 1rem 0;
+	}
+
+	.btn-blue.border {
+		border: 2px solid #4d7da6;
+		color: #4d7da6;
+		font-size: 1rem;
+
+		&:hover{
+			background-color: #4d7da6;
+			color: $white;
+		}
+	}
+
+	.module {
+
+		.meta h4{
+			color: #1a598c;
+			font-family: 'AvenirLTStd-Black';
+		}
+
+		.read-more{
+			font-family: 'AvenirLTStd-Medium';
+
+			&:hover{
+				color: #1a598c;
+			}
+		}
+	}
+
+	.yellow-underline {
+		width: 120px;
+		border-bottom: 2px solid #e09e10;
+	}
+
+	.about-types{
+		padding: 5% 0;
+
+		@include breakpoint(medium down){
+			padding: 8% 0;
+		}
+
+		@include breakpoint(small down){
+			padding: 10% 0;
+		}
+	}
+}
+
+.dealer-products{
+
+	.orbit-container{
+		height: 400px !important;
+
+		.product-image{
+			height: 400px;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+
+			@include breakpoint(small down){
+				min-height: 250px;
+			}
+		}
+
+		.module .meta{
+			padding: 50px;
+
+			@include breakpoint(medium down){
+				padding: 30px;
+			}
+
+			@include breakpoint(small down){
+				padding: 20px;
+			}
+		}
+	}
+
+	.orbit-previous,.orbit-next{
+		transition: color 0.2s ease-in-out;
+		color: $text-gray;
+
+		i{
+			font-weight: 500;
+		}
+
+		&:hover,&:active,&:focus{
+			background-color: transparent;
+			color: $yellow;
+		}
+
+		@include breakpoint(small down){
+			display: none;
+		}
+	}
+
+	.orbit-previous{
+		left: -50px;
+	}
+
+	.orbit-next{
+		right: -50px;
+	}
+
+	.meta{
+
+		h6{
+			color: $light_blue;
+			text-transform: uppercase;
+			font-size: 0.875rem;
+			margin-bottom: 20px;
+	    }
+
+	    h3{
+	    	margin-bottom: 20px;
+	    	font-size: 2.25rem;
+
+	    	@include breakpoint(medium down){
+	    		font-size: 1.875rem;
+	    	}
+
+	    	@include breakpoint(small down){
+	    		font-size: 1.5rem;
+	    	}
+	    }
+    }
+}
+
+.dealer-cta{
+
+	.container{
+	  padding: 35px 45px 35px 90px;
+
+	  @include breakpoint(medium down){
+	  	padding: 30px 40px 40px;
+	  }
+
+	    h2{
+	        font-size: 2rem;
+	    }
+    }
+}
+
+.dealer-brandhub{
+
+	.container{
+		padding: 45px 0;
+
+		@include breakpoint(medium down){
+			padding: 20px;
+		}
+
+		@include breakpoint(small down){
+			padding: 40px 20px;
+		}
+    }
+	
+	.outer-col{
+		@include breakpoint(medium){
+			width: calc(30% - 1.875rem);
+		}
+	}
+
+	.middle-col{
+		@include breakpoint(medium){
+			width: calc(40% - 1.875rem);
+		}
+
+		@include breakpoint (small down){
+			text-align: center;
+		}
+	}
+}
+
+.support-programs{
+
+	.program{
+		padding: 70px 0;
+
+		img{
+			margin-bottom: 30px;
+		}
+
+		p{
+			margin-bottom: 25px;
+		}
+	}
+}
+
+.single-dealers #safety-tabs{
+	display: flex;
+
+	@include breakpoint(small only){
+		display: block;
+	}
+}
+
+.single-dealers {
+
+	#breadcrumbs{
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	#single-post{
+		margin-top: 0;
+	}
+
+	.taxonomy-products #single-post h4{
+		color: $text-gray;
+		font-family: 'AvenirLTStd-Book';
+	}
+	
+	.taxonomy-products #testing h4{
+		color: $white;
+		font-family: 'AvenirLTStd-Black';
+	}
+
+	#safety-tabs .tabs-title{
+	    flex-grow: 1;
+	}
+
+	#safety-tabs-content{
+		margin-bottom: 40px;
+	}
+
+	.file-downloads .medium-6.cell{
+
+		@include breakpoint(small down){
+			text-align: center;
+		}
+	}
+}
+
+.page-template-page-dealer-recognition,.page-template-page-dealer-plotters{
+
+	.dealer-carousel{
+
+		.orbit-container{
+			height: auto !important;
+
+			img{
+				max-width: 90%;
+
+				@include breakpoint(medium down){
+					max-width: 100%;
+				}
+			}
+		}
+
+		.orbit-previous,.orbit-next{
+			transition: color 0.2s ease-in-out;
+
+			i{
+				font-weight: 500;
+				font-size: 32px;
+			}
+
+			&:hover,&:active,&:focus{
+				background-color: transparent;
+				color: $yellow;
+			}
+
+			@include breakpoint(small down){
+				display: none;
+			}
+		}
+
+		.orbit-previous{
+			left: -70px;
+		}
+
+		.orbit-next{
+			right: -70px;
+		}
+
+		.award{
+			text-transform: uppercase;
+			color: $yellow;
+			margin-bottom: 20px;
+			font-size: 0.875rem;
+			font-family: 'AvenirLTStd-Black';
+		}
+	}
+
+	.page-intro{
+		padding: 4% 0;
+
+		@include breakpoint(medium down){
+			padding: 8% 0;
+		}
+
+		@include breakpoint(small down){
+			padding: 10% 0;
+		}
+	}
+
+	.benefit2{
+
+		.small-10.cell{
+
+			@include breakpoint(small down){
+				text-align: center;
+
+				.yellow-underline{
+					margin: 20px auto 30px;
+				}
+			}
+		}
+
+		a{
+			transition: color 0.25s ease-in-out;
+			
+			&:hover{
+				color: $yellow;
+
+				span{
+					color: $yellow;
+					border-color: $yellow;
+				}
+			}
+
+			span{
+				border-bottom: 1px solid $white;
+				color: $white;
+				transition: all 0.25s ease-in-out;
+			}
+		}
+
+		.content{
+
+			@include breakpoint(small down){
+
+				p{
+					text-align: center;
+				}
+			}
+
+			p,li{
+				color: $white;
+			}
+		}
+	}
+
+	.benefit3{
+		padding: 100px 0;
+
+		.small-10.cell{
+
+			@include breakpoint(small down){
+				text-align: center;
+
+				.yellow-underline{
+					margin: 20px auto 30px;
+				}
+			}
+		}
+
+		@include breakpoint(medium down){
+
+		}
+
+		@include breakpoint(small only){
+
+			background: none !important;
+			padding: 10% 0 0;
+
+			.mobile-image{
+				padding-bottom: 30px;
+			}
+		}
+
+		&:not(.first){
+
+			@include breakpoint(small only){
+				padding-bottom: 30px;
+				padding-top: 0;
+			}
+		}
+
+		&.last{
+			@include breakpoint(small only){
+				padding: 30px 0 0;
+
+				.mobile-image{
+					padding-bottom: 0;
+				}
+
+				p{
+					margin-bottom: 30px;
+				}
+			}	
+		}
+	}
+}
+
+.page-template-page-dealer-recognition{
+
+	.cta-section{
+		padding: 50px 0 150px;
+
+		.content{
+		    color:$white;
+
+			p,li{
+				color: $white;
+			}
+		}
+	}
+
+	.contact {
+
+		.content-block{
+			margin-top: -150px;
+			box-shadow: none;
+
+			@include breakpoint(medium down){
+				padding: 30px;
+			}
+
+			@include breakpoint(small down){
+				padding: 10px;
+			}
+		}
+	}
+}
+
+.page-template-page-dealer-plotters{
+	
+	.dealer-carousel{
+
+		.orbit-container{
+
+			img{
+				max-width: 90%;
+			}
+		}
+
+		.orbit-previous,.orbit-next{
+			color: $blue;
+
+			@media(max-width:320px){
+				top: 45%;
+			}
+		}
+
+		.orbit-previous{
+
+			@include breakpoint(small down){
+				left: 0;
+			}
+		}
+
+		.orbit-next{
+
+			@include breakpoint(small down){
+				right: 0;
+			}
+		}
+
+		.orbit-slide{
+
+			@include breakpoint(small down){
+				h2,p{
+					text-align: center;
+				}
+				aside{
+					margin: 20px auto 30px;
+				}
+			}
+		}
+	}
+
+	.benefit2{
+
+		padding: 50px 0;
+
+		.content{
+
+			@include breakpoint(small down){
+				text-align: left;
+
+				p{
+					margin-bottom: 10px;
+				}
+			}
+
+			p,li{
+				color: $white;
+			}
+
+			ul{
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.benefit3.first{
+
+		padding: 120px 0;
+
+		@include breakpoint(small down){
+			padding: 0 0 30px;
+		}
+
+		.small-10.cell{
+			
+			@include breakpoint(small down){
+				text-align: left;
+				
+				h2,p{
+					text-align: center;
+				}
+
+				p{
+					margin-bottom: 10px;
+				}
+			}			
+		}
+	}
+}
+
+.page-template-page-dealer-program,.page-template-page-become-dealer{
+
+	.page-hero .grid-container{
+		padding: 4% 0 5%;
+	}
+
+	.program-hero{
+
+		padding: 6% 0;
+
+		@include breakpoint(small only){
+			padding: 10% 0;
+		}
+
+		img{
+			margin-bottom: 30px;
+		}
+
+		.content{
+			margin-bottom: 25px;
+		}
+	}
+
+	.cta-section{
+		padding: 50px 0 150px;
+
+		.content{
+		    color:$white;
+
+			p,li{
+				color: $white;
+			}
+		}
+	}
+
+	.contact {
+
+		.content-block{
+			margin-top: -150px;
+			box-shadow: none;
+
+			@include breakpoint(medium down){
+				padding: 30px;
+			}
+
+			@include breakpoint(small down){
+				padding: 10px;
+			}
+		}
+	}
+}
+
+.page-template-page-become-dealer{
+
+	.dealer-intro{
+		background-color: #00467f;
+
+		h4{
+			color: #80a3bf;
+			margin-bottom: 10px;
+		}
+
+		img{
+			max-width: 90%;
+
+			@include breakpoint(medium down){
+				max-width: 100%;
+			}
+		}
+	}
+
+	.distribution-network{
+
+		img{
+			margin-bottom: 30px;
+		}
+	}
+}
+
+.page-template-page-recognized-dealers{
+
+	.dealer-list{
+
+		.year{
+			font-size: 1.875rem;
+		}
+
+		.award{
+			color: $yellow;
+			text-transform: uppercase;
+			font-size: 0.875rem;
+			margin-bottom: 20px;
+			font-family: 'AvenirLTStd-Black';
+		}
+	}
+}
