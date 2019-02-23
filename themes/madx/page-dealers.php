@@ -1,6 +1,6 @@
 <?php 
 /* Template Name: Dealers */
-get_header(); ?>
+get_header('dealers'); ?>
 
 	<section class="page-hero">
 
@@ -9,7 +9,7 @@ get_header(); ?>
 		</div>
 
 		<div id="header-grid" class="grid-container" style="padding-bottom: 30px">
-			<div class="grid-x">
+			<div class="grid-x grid-margin-x">
 				<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
 					<?php get_template_part('template-parts/menus/dealers-tablet-menu'); ?>
 				</div>
@@ -37,12 +37,12 @@ get_header(); ?>
 				    			'post_type'      => 'dealers',
 				    			'posts_per_page' => 1,
 				    			'meta_query'     => array(
-				    			        array(
+			    			        array(
 			    			            'key'     => 'featured_product',
 			    			            'value'   => '"Featured Product"',
 			    			            'compare' => 'LIKE'
-				    			        )
-					    			    )
+			    			        )
+					    		)
 				    		);
 				    		$query = new WP_Query( $args );
 			    			while ( $query->have_posts() ) : $query->the_post();
@@ -51,13 +51,21 @@ get_header(); ?>
 					      <li class="is-active orbit-slide">
 					        <div class="grid-x">
 								<div class="small-12 cell">
-									<div class="grid-x module auto-height side-module">
-										<div class="medium-5 cell meta">
+									<div class="grid-x module auto-height side-module align-middle">
+										<div class="medium-5 cell meta small-order-2 medium-order-1">
 											<h6><?php the_field('featured_product_title'); ?></h6>
-											<h3><?php the_field('featured_product_copy'); ?></h3>
+											<h3>
+											<?php
+											if(get_field('featured_product_copy')){
+												echo wp_trim_words( get_field('featured_product_copy'), 12, '...' );;
+											}else{
+												the_title();
+										    }
+											?>
+											</h3>
 											<a href="<?php the_permalink(); ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
 										</div>
-										<div class="medium-7 cell" style="background: url(<?php the_post_thumbnail_url(); ?>) center center / cover no-repeat;">
+										<div class="medium-7 cell product-image small-order-1 medium-order-2" style="background: url(<?php the_post_thumbnail_url(); ?>) center center / cover no-repeat;">
 											
 										</div>
 									</div>
@@ -88,13 +96,21 @@ get_header(); ?>
 	  				    <li class="orbit-slide">
 	  				        <div class="grid-x">
 								<div class="small-12 cell">
-									<div class="grid-x module auto-height side-module">
+									<div class="grid-x module auto-height side-module align-middle">
 										<div class="medium-5 meta cell">
 											<h6 class="blue"><?php the_field('featured_product_title'); ?></h6>
-											<h3><?php the_field('featured_product_copy'); ?></h3>
+											<h3>
+											<?php
+											if(get_field('featured_product_copy')){
+												echo wp_trim_words( get_field('featured_product_copy'), 12, '...' );;
+											}else{
+												the_title();
+										    }
+											?>
+											</h3>
 											<a href="<?php the_permalink(); ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
 										</div>
-										<div class="medium-7 cell" style="background: url(<?php the_post_thumbnail_url(); ?>) center center / cover no-repeat;">
+										<div class="medium-7 cell product-image" style="background: url(<?php the_post_thumbnail_url(); ?>) center center / cover no-repeat;">
 											
 										</div>
 									</div>
@@ -115,13 +131,13 @@ get_header(); ?>
 	<section class="dealer-cta">
 		<div class="grid-container">
 			<div class="grid-x">
-				<div class="small-12 cell container" style="background: url(<?php the_field('dealer_cta_background_image'); ?>) center center / cover no-repeat;">
+				<div class="small-10 small-offset-1 large-12 large-offset-0 cell container" style="background: url(<?php the_field('dealer_cta_background_image'); ?>) center center no-repeat;">
 					<div class="grid-x grid-margin-x grid-margin-y align-middle">
-						<div class="medium-8 cell">
-							<h3 class="white"><?php the_field('dealer_cta_title'); ?></h3>
-							<p class="white"><?php the_field('dealer_cta_copy'); ?></p>
+						<div class="large-8 cell">
+							<h2 class="white"><?php the_field('dealer_cta_title'); ?></h2>
+							<div class="content"><?php the_field('dealer_cta_copy'); ?></div>
 						</div>
-						<div class="medium-4 cell text-center">
+						<div class="large-4 cell text-center">
 							<a href="<?php the_field('dealer_cta_button_link'); ?>"><button class="btn-yellow border" style="color:#FFF"><?php the_field('dealer_cta_button_text'); ?></button></a>
 						</div>
 					</div>
@@ -210,8 +226,7 @@ get_header(); ?>
 						<div class="medium-4 cell module auto-height">
 							<a href="<?php the_permalink(); ?>"><div class="module-bg small" style="background-image: url(<?php the_post_thumbnail_url(); ?>);"></div></a>
 							<div class="meta">
-								<a href="<?php the_permalink(); ?>" style="margin-bottom: 25px;"><h4 class="blue"><?php echo wp_trim_words(get_the_title(),8,'...'); ?></h4></a>
-								<p><?php echo wp_trim_words(get_the_content(),35,'...'); ?></p>
+								<a href="<?php the_permalink(); ?>"><h4 class="blue" style="margin-bottom: 10px"><?php echo wp_trim_words(get_the_title(),8,'...'); ?></h4></a>
 								<a href="<?php the_permalink(); ?>" class="blue read-more"><?php _e('Read More','madx'); ?> &nbsp;<i class="fal fa-long-arrow-right"></i></a>
 							</div>
 						</div>
@@ -227,7 +242,7 @@ get_header(); ?>
 	<section class="dealer-brandhub">
 		<div class="grid-container">
 			<div class="grid-x">
-				<div class="small-12 container cell" style="background: url(<?php the_field('brand_hub_background_image'); ?>) center center / cover no-repeat;">
+				<div class="small-10 small-offset-1 large-12 large-offset-0 container cell" style="background: url(<?php the_field('brand_hub_background_image'); ?>) center center no-repeat;">
 					<div class="grid-x grid-margin-x grid-margin-y align-middle">
 						<div class="large-4 cell text-center outer-col">
 							<img src="<?php the_field('brand_hub_logo'); ?>" alt="Madico Brand Hub">
@@ -236,7 +251,7 @@ get_header(); ?>
 							<p><?php the_field('brand_hub_copy'); ?></p>
 						</div>
 						<div class="large-4 cell text-center outer-col">
-							<a href="<?php the_field('brand_hub_button_link'); ?>"><button class="btn-blue solid"><?php the_field('brand_hub_button_text'); ?></button></a>
+							<a href="<?php the_field('brand_hub_button_link'); ?>"><button class="btn-yellow solid"><?php the_field('brand_hub_button_text'); ?></button></a>
 						</div>
 					</div>
 				</div>

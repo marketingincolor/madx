@@ -1,6 +1,6 @@
 <?php
 /* Template Name: Recognized Dealers */
-get_header(); ?>
+get_header('dealers'); ?>
 
 <section class="page-hero">
 

@@ -1,6 +1,6 @@
 <?php
 /* Template Name: Dealer Recognition */
-get_header();
+get_header('dealers');
 if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 <div class="show-for-small-only" style="margin-bottom:40px">
@@ -39,8 +39,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		    		
 				    <li class="<?php if($count === 0){echo 'is-active ';} ?>orbit-slide">
 				        <div class="grid-x grid-margin-x grid-margin-y align-middle">
-							<div class="medium-5 cell">
-								<img src="<?php the_sub_field('image'); ?>" alt="">
+							<div class="medium-5 cell text-center">
+								<img src="<?php the_sub_field('image'); ?>" alt="<?php the_sub_field('award_type'); ?>">
 							</div>
 							<div class="medium-7 cell">
 								<h6 class="award"><?php the_sub_field('award_type'); ?></h6>
@@ -100,7 +100,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				<?php
 					if(get_field('second_benefit_cta')){
 						$style = 'style="margin-bottom:20px"';
-						$cta   = '<a href="#contact" class="white"><span>' . get_field("second_benefit_cta") . '</span> &nbsp;<i class="far fa-long-arrow-right"></i></a>';
+						$cta   = '<a data-target="#cta" @click="smoothScroll" class="white"><span>' . get_field("second_benefit_cta") . '</span> &nbsp;<i class="far fa-long-arrow-right"></i></a>';
 					}
 				?>
 				<div class="content" <?php echo $style; ?>><?php the_field('second_benefit_subhead'); ?></div>
@@ -110,7 +110,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	</div>
 </section>
 
-<section class="benefit3 last" style="background: url(<?php the_field('third_benefit_background_image'); ?>) center center / cover no-repeat">
+<section class="benefit3 last" style="background: url(<?php the_field('third_benefit_background_image'); ?>) top center / cover no-repeat">
 	<div class="grid-container">
 		<div class="grid-x grid-margin-y">
 			<div class="large-4 medium-5 small-10 small-offset-1 cell">

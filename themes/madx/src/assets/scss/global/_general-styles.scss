@@ -315,14 +315,16 @@ section.warranty{
 	.module-bg{
 		@include bg-center-cover;
 		background-position: left center;
-		height: 180px;
+		height: 140px;
+		border-top-right-radius: 5px;
+		border-top-left-radius: 5px;
 
 		@include breakpoint(small only){
 			height: 150px;
 		}
 
 		&.large{
-			height: 275px;
+			height: 215px;
 
 			@include breakpoint(small only){
 				height: 150px;
@@ -363,7 +365,7 @@ section.warranty{
 	}
 
 	.meta{
-		padding: 40px;
+		padding: 30px;
 
 		@include breakpoint(medium down){
 			padding: 20px;

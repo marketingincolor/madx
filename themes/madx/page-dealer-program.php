@@ -1,6 +1,6 @@
 <?php 
 /* Template Name: Dealer Program */
-get_header();
+get_header('dealers');
 if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 <section class="page-hero">
@@ -31,15 +31,15 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	</div>
 </section>
 
-<section class="program-hero" style="background:url(<?php the_field('program_hero_image'); ?>) center center / cover no-repeat">
+<section class="program-hero" style="background:url(<?php the_field('program_hero_image'); ?>) top center / cover no-repeat">
 	<div class="grid-container">
 		<div class="grid-x grid-margin-y">
 			<div class="small-10 small-offset-1 cell">
 				<div class="grid-x grid-margin-x">
 					<div class="medium-8 medium-offset-1 large-6 cell">
 						<img src="<?php the_field('hero_program_logo'); ?>" alt="<?php the_field('logo_alt_text'); ?>">
-						<p class="white"><?php the_field('hero_program_copy'); ?></p>
-						<a href="<?php the_field('hero_program_button_link'); ?>"><button class="btn-yellow solid"><?php the_field('hero_program_button_text'); ?></button></a>
+						<div class="content"><?php the_field('hero_program_copy'); ?></div>
+						<a data-target="<?php the_field('hero_program_button_link') ?>" @click="smoothScroll"><button class="btn-yellow solid"><?php the_field('hero_program_button_text'); ?></button></a>
 					</div>
 				</div>
 			</div>

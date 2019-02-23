@@ -2,6 +2,8 @@
 	$url = $_SERVER['REQUEST_URI'];
 	if (strpos($url, 'mu-types') !== false) {
 	  get_header('madicou');
+	}else if (strpos($url, 'dealers') !== false) {
+	  get_header('dealers');
 	}else{
 	  get_header();
 	}

@@ -1,6 +1,6 @@
 <?php 
 /* Template Name: Dealer Support */
-get_header();
+get_header('dealers');
 if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 	<section class="page-hero">

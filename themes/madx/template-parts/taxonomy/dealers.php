@@ -92,7 +92,7 @@
 									<div class="meta">
 										<a href="<?php the_permalink(); ?>"><h4 class="blue"><?php the_title(); ?></h4></a>
 										<div class="content">
-											<?php echo wp_trim_words(get_the_content(),30,'...'); ?>
+											<?php the_field('product_short_description'); ?>
 										</div>
 										<a href="<?php the_permalink(); ?>" class="read-more blue">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
 									</div>

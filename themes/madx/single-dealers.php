@@ -1,5 +1,5 @@
 <?php
-get_header();
+get_header('dealers');
 if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 <div class="show-for-small-only">
@@ -39,7 +39,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					?>
 					<div class="small-12 large-10 large-offset-1 cell">
 						<div id="breadcrumbs" class="breadcrumbs">
-							<h5 class="breadcrumb-title"><a href="<?php echo '/'. $url_array[3]; ?>"><?php echo $url_array[3]; ?></a> <i class="fas fa-chevron-right"></i> <a href="<?php echo '/'. $url_array[3] .'/'. $url_array[4]; ?>"><span><?php echo $url_array[4]; ?></span></a> <i class="fas fa-chevron-right"></i> <a href="<?php echo '/'. $url_array[3] .'/'. $url_array[4] .'/'. $url_array[5]; ?>"><span><?php echo $url_array[5]; ?></span></a></h5>
+							<h5 class="breadcrumb-title"><a href="<?php echo '/'. $url_array[1]; ?>"><?php echo $url_array[1]; ?></a> <i class="fas fa-chevron-right"></i> <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>"><span><?php echo $url_array[2]; ?></span></a> <i class="fas fa-chevron-right"></i> <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2] .'/'. $url_array[3] . '/' . $url_array[4]; ?>"><span><?php echo $url_array[4]; ?></span></a></h5>
 						</div>
 					</div>
 					<div id="single-post" class="small-12 large-10 large-offset-1 cell module auto-height">
@@ -67,7 +67,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 						<div class="meta">
 							<div class="grid-x grid-margin-x grid-margin-y">
 								<div class="medium-12 large-10 large-offset-1 cell">
-									<h4><?php the_field('product_content_block_title'); ?></h4>
+									<h4><?php _e('Product Details'); ?></h4>
 									<div class="content"><?php the_content(); ?></div>
 
 									<?php if(get_field('product_tabs')) { ?>
@@ -128,11 +128,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 										<?php $dl_count++;endwhile; ?>
 
 										</div>
-										<hr>
+										<hr style="margin-bottom:40px">
 
 									<?php endif; ?>
 
-									<a href="">
+									<a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>">
 										<button class="btn-lt-blue border"><i class="fas fa-arrow-alt-left"></i>&nbsp; Back</button>
 									</a>
 								</div>
@@ -145,48 +145,50 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	</div>
 </section>
 
-<section class="related-posts" style="padding-top:0">
+<section class="related-posts" style="padding-top:30px">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 				<div class="grid-x grid-margin-x grid-margin-y">
 					<div class="small-12 large-10 large-offset-1 cell">
-						<h4 style="font-family:'AvenirLTStd-Book'">Related Products</h4>
-					</div>
-					
-				<?php
-					$term = get_the_terms($post->ID,'dealers_taxonomies');
-					$args = array(
-						'post_type'      => 'dealers',
-						'posts_per_page' => 3,
-						'order'          => 'ASC',
-						'orderby'        => 'rand',
-						'post__not_in'   => $post->ID,
-						'tax_query' => array(
-							array(
-								'taxonomy' => 'dealers_taxonomies',
-								'field'    => 'slug',
-								'terms'    => $term[0]->slug,
-							),
-						),
-					);
-					$query = new WP_Query( $args );
-					while ( $query->have_posts() ) : $query->the_post();
-				?>
+						<h4 style="font-family:'AvenirLTStd-Book';margin-bottom:20px"><?php _e('Related Products','madx') ?></h4>
+						<div class="grid-x grid-margin-x grid-margin-y">
 
-				<div class="medium-4 cell module auto-height relative">
-					<a href="<?php the_permalink(); ?>"><div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div></a>
-					<div class="meta">
-						<a href="<?php the_permalink(); ?>"><h4 class="blue"><?php the_title(); ?></h4></a>
-						<div class="content">
-							<?php echo wp_trim_words(get_the_content(),30,'...'); ?>
+							<?php
+								$term = get_the_terms($post->ID,'dealers_taxonomies');
+								$args = array(
+									'post_type'      => 'dealers',
+									'posts_per_page' => 3,
+									'order'          => 'ASC',
+									'orderby'        => 'rand',
+									'post__not_in'   => [$post->ID],
+									'tax_query' => array(
+										array(
+											'taxonomy' => 'dealers_taxonomies',
+											'field'    => 'slug',
+											'terms'    => $term[0]->slug,
+										),
+									),
+								);
+								$query = new WP_Query( $args );
+								while ( $query->have_posts() ) : $query->the_post();
+							?>
+
+							<div class="medium-4 cell module auto-height relative">
+								<a href="<?php the_permalink(); ?>"><div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div></a>
+								<div class="meta">
+									<a href="<?php the_permalink(); ?>"><h4 class="blue"><?php the_title(); ?></h4></a>
+									<div class="content">
+										<?php echo wp_trim_words(get_the_content(),30,'...'); ?>
+									</div>
+									<a href="<?php the_permalink(); ?>" class="read-more blue">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
+								</div>
+							</div>
+
+							<?php endwhile; wp_reset_postdata(); ?>
+
 						</div>
-						<a href="<?php the_permalink(); ?>" class="read-more blue">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
 					</div>
-				</div>
-
-				<?php endwhile; wp_reset_postdata(); ?>
-
 				</div>
 			</div>
 		</div>

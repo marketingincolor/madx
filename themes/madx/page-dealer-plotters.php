@@ -1,22 +1,35 @@
 <?php
 /* Template Name: Dealer Plotters */
-get_header();
+get_header('dealers');
 if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-<div class="show-for-small-only" style="margin-bottom:40px">
-	<?php get_template_part('template-parts/menus/dealers-header-menu'); ?>
-</div>
+	<section class="page-hero">
 
-<div class="grid-container" style="margin-bottom:40px">
-	<div class="grid-x">
-		<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
-			<?php get_template_part('template-parts/menus/dealers-tablet-menu'); ?>
-		</div>
-		<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-large">
+		<div class="show-for-small-only">
 			<?php get_template_part('template-parts/menus/dealers-header-menu'); ?>
 		</div>
-	</div>
-</div>
+
+		<div id="header-grid" class="grid-container">
+			<div class="grid-x">
+				<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-medium-only">
+					<?php get_template_part('template-parts/menus/dealers-tablet-menu'); ?>
+				</div>
+				<div class="small-10 small-offset-1 large-12 large-offset-0 show-for-large">
+					<?php get_template_part('template-parts/menus/dealers-header-menu'); ?>
+				</div>
+			</div>
+		</div>
+
+		<div class="grid-container">
+			<div class="grid-x">
+				<div class="small-10 small-offset-1 medium-8 medium-offset-2 cell text-center">
+					<h1 class="blue"><?php the_field('intro_title'); ?></h1>
+					<aside class="yellow-underline center"></aside>
+					<p><?php the_field('intro_copy') ?></p>
+				</div>
+			</div>
+		</div>
+	</section>
 
 <section class="dealer-carousel" style="background-color: <?php the_field('carousel_background'); ?>">
 	<div class="grid-container">
@@ -55,22 +68,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				    </ul>
 				  </div>
 				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section class="page-intro">
-	<div class="grid-container">
-		<div class="grid-x">
-			<div class="large-8 large-offset-2 small-10 small-offset-1 cell text-center">
-				<h1 class="blue"><?php the_field('intro_title'); ?></h1>
-				<aside class="yellow-underline center"></aside>
-				<p><?php the_field('intro_copy') ?></p>
-				<?php if(get_field('intro_button_link')){ ?>
-					<p style="margin-bottom:25px"></p>
-					<a href="<?php the_field('intro_button_link'); ?>"><button class="btn-lt-blue border"><?php the_field('intro_button_text'); ?></button></a>
-				<?php } ?>
 			</div>
 		</div>
 	</div>

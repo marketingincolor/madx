@@ -22,7 +22,7 @@
 		<link rel="shortcut icon" type="image/x-icon" href="<?php bloginfo('stylesheet_directory');?>/dist/assets/images/madico-favicon.png">
 		<?php wp_head(); ?>
 	</head>
-	<body <?php body_class(); ?>>
+	<body <?php body_class('dealer-area'); ?>>
 
 		<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ2BB3"
@@ -49,7 +49,7 @@
 				<button id="hamburger" aria-label="<?php _e( 'Open Menu', 'madx' ); ?>" class="menu-icon" type="button" @click="mobileLeftMenuOpen"></button>
 			</div>
 			<div class="site-mobile-title title-bar-title">
-				<a href="<?php echo esc_url(home_url('madicou','relative')); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madicou-logo.png" alt="Madico U"></a>
+				<a href="<?php echo esc_url(home_url('madicou','relative')); ?>" rel="home"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madico-mobile-blue.png" alt="Madico U"></a>
 			</div>
 			<div class="search-container">
 				<a id="search-toggle" data-toggle="mobile-search" @click="mobileMenuSearch" aria-open="false"><i class="fal fa-times hide"></i><i class="far fa-search"></i></a>
@@ -71,17 +71,33 @@
 		    </ul>
 			</div>
 			<div class="top-bar-right">
-				<ul class="menu">
+				<ul class="menu desktop-menu">
 					<li><a href="/madicou" class="top-nav-menu-madicou"><i class="icon-madico-u-icon"></i>&nbsp; <?php _e( 'Madico U', 'madx' ); ?></a></li>
-					<li><a href="/dealers" class="top-nav-menu-dealer-portal"><i class="fas fa-id-badge"></i>&nbsp; <?php _e( 'Dealer Portal', 'madx' ); ?></a></li>
-		      <li>
-		        <a data-toggle="search-dropdown" class="top-nav-menu-search"><i class="fas fa-search"></i>&nbsp; <?php _e( 'Search', 'madx' ); ?></a>
-		        <ul class="menu vertical">
-		          <li class="dropdown-pane right" id="search-dropdown" data-position="bottom" v-drop-click>
-								<?php get_template_part('template-parts/search/page-searchform'); ?>
-		          </li>
-		        </ul>
-		      </li>
+					<li><a href="https://brandhub.madico.com" class="top-nav-menu-brandhub"><i class="far fa-download"></i>&nbsp; <?php _e( 'Brand Hub', 'madx' ); ?></a></li>
+					<li><a href="/dealers/dealer-recognition-programs" class="top-nav-menu-dealer-recognition"><i class="far fa-trophy"></i>&nbsp; <?php _e( 'Dealer Recognition', 'madx' ); ?></a></li>
+					<li><a href="/dealers/dealer-support-programs" class="top-nav-menu-dealer-portal"><i class="far fa-hands-helping"></i>&nbsp; <?php _e( 'Dealer Programs', 'madx' ); ?></a></li>
+			      <li>
+			        <a data-toggle="search-dropdown" class="top-nav-menu-search"><i class="fas fa-search"></i>&nbsp; <?php _e( 'Search', 'madx' ); ?></a>
+			        <ul class="menu vertical">
+			          <li class="dropdown-pane right" id="search-dropdown" data-position="bottom" v-drop-click>
+						<?php get_template_part('template-parts/search/page-searchform'); ?>
+			          </li>
+			        </ul>
+			      </li>
+			      <li class="btn-menu"><a href="/dealers/become-dealer"><button class="btn-yellow solid">Become A Dealer</button></a></li>
+			      <!-- <li class="btn-menu"><a href="/dealers/become-dealer"><button class="btn-blue border">Are you a Consumer?</button></a></li> -->
+				</ul>
+				<ul class="dropdown menu tablet-menu" v-dropdown>
+				  <li>
+				    <a id="nav-drop"><?php _e( 'Menu', 'madx' ); ?> &nbsp;<i class="fas fa-chevron-down"></i></a>
+				    <ul class="menu">
+				      <li><a href="/madicou" class="top-nav-menu-madicou"><i class="icon-madico-u-icon"></i>&nbsp; <?php _e( 'Madico U', 'madx' ); ?></a></li>
+				      <li><a href="https://brandhub.madico.com" class="top-nav-menu-brandhub"><i class="far fa-download"></i>&nbsp; <?php _e( 'Brand Hub', 'madx' ); ?></a></li>
+				      <li><a href="/dealers/dealer-recognition-programs" class="top-nav-menu-dealer-recognition"><i class="far fa-trophy"></i>&nbsp; <?php _e( 'Dealer Recognition', 'madx' ); ?></a></li>
+				      <li><a href="/dealers/dealer-support-programs" class="top-nav-menu-dealer-portal"><i class="far fa-hands-helping"></i>&nbsp; <?php _e( 'Dealer Programs', 'madx' ); ?></a></li>
+				      <li><a href="/dealers/become-dealer" class="top-nav-menu-dealer-portal"><i class="fas fa-id-badge"></i>&nbsp; <?php _e( 'Become a Dealer', 'madx' ); ?></a></li>
+				    </ul>
+				  </li>
 				</ul>
 			</div>
 		</nav>

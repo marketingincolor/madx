@@ -200,6 +200,7 @@ var newVue = new Vue({
     this.menuDropdown();
     this.closeMobileMenuOutside();
     this.validateForms();
+    this.smoothScroll();
     if (location.href.includes('protectionpro')) {
       this.protectionProCarousel();
     }
@@ -307,16 +308,16 @@ var newVue = new Vue({
     },
     menuDropdown: function(){
       // Change foundation hover menus to slide down
-      $(".dropdown").on('show.zf.dropdownmenu', function (ev, $el) {
-        $el.css({"display": "none"})
-           .fadeIn(300);
-      });
+      // $(".dropdown").on('show.zf.dropdownmenu', function (ev, $el) {
+      //   $el.css({"display": "none"})
+      //      .fadeIn(300);
+      // });
 
-      $(".dropdown").on('hide.zf.dropdownmenu', function (ev, $el) {
-        $el.children("ul")
-           .css('display', 'inherit')
-           .fadeOut(200);
-      });
+      // $(".dropdown").on('hide.zf.dropdownmenu', function (ev, $el) {
+      //   $el.children("ul")
+      //      .css('display', 'inherit')
+      //      .fadeOut(200);
+      // });
     },
     testingSlideDown: function(){
       let testing = document.getElementById('testing');
@@ -355,6 +356,14 @@ var newVue = new Vue({
         }else{
           $this.removeClass('validInput');
         }
+      });
+    },
+    smoothScroll: function(event){
+      let element = event.target.parentElement;
+      let target  = element.dataset.target;
+      $('html, body').animate({
+          scrollTop: $(target).offset().top
+        }, 500, function() {
       });
     }
   }

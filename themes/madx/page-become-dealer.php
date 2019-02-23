@@ -1,6 +1,6 @@
 <?php 
 /* Template Name: Become Dealer */
-get_header(); ?>
+get_header('dealers'); ?>
 
 <div class="show-for-small-only" style="margin-bottom:40px">
 	<?php get_template_part('template-parts/menus/dealers-header-menu'); ?>
@@ -82,7 +82,7 @@ get_header(); ?>
 <section class="dealer-testimonials" style="background:url(<?php the_field('testimonial_background_image'); ?>) center center / cover no-repeat">
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
+			<div class="small-10 small-offset-1 medium-8 large-6 cell">
 				<h2 class="white"><?php the_field('testimonial_heading'); ?></h2>
 				<aside class="yellow-underline left"></aside>
 				<!-- testimonial loop starts here -->
@@ -104,7 +104,7 @@ get_header(); ?>
 				while ( $query->have_posts() ) : $query->the_post();
 				?>
 
-				<div class="content"><?php the_content(); ?></div>
+				<div class="content" style="margin-bottom:10px"><?php the_content(); ?></div>
 				<address class="name white">
 					<strong><?php the_field('testimonial_name'); ?></strong>
 				</address>
@@ -141,7 +141,7 @@ get_header(); ?>
 			<div class="large-8 small-10 small-offset-1 large-offset-2 cell text-center">
 				<h2 class="white"><?php the_field('cta_heading'); ?></h2>
 				<aside class="yellow-underline center"></aside>
-				<p class="white"><?php the_field('cta_subhead'); ?></p>
+				<div class="content"><?php the_field('cta_subhead'); ?></div>
 			</div>
 		</div>
 	</div>
