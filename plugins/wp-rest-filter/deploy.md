@@ -1,9 +1,12 @@
 # wp-rest-filter.php
 
+<<<<<<< HEAD
 Add Changelog in readme.txt
 
 > x.x.x
 
+=======
+>>>>>>> origin/temporary
 Update version number in /wp-rest-filter.php
 
 > * Version:           x.x.x

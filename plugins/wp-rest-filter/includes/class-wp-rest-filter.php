@@ -14,11 +14,15 @@
  */
 
 add_action('rest_api_init', 'wp_rest_filter_add_filters');
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/temporary
 /**
  * Add the necessary filter to each post type
  **/
 function wp_rest_filter_add_filters() {
+<<<<<<< HEAD
 	/* Adds Filter for All Post Type*/
 	foreach (get_post_types(array('show_in_rest' => true), 'objects') as $post_type) {
 		add_filter('rest_' . $post_type->name . '_query', 'wp_rest_filter_add_filter_param', 10, 2);
@@ -33,6 +37,15 @@ function wp_rest_filter_add_filters() {
 	}
 }
 
+=======
+	foreach (get_post_types(array('show_in_rest' => true), 'objects') as $post_type) {
+		add_filter('rest_' . $post_type->name . '_query', 'wp_rest_filter_add_filter_param', 10, 2);
+	}
+	foreach (get_taxonomies(array('show_in_rest' => true), 'objects') as $tax_type) {
+		add_filter('rest_' . $tax_type->name . '_query', 'wp_rest_filter_add_filter_param', 10, 2);
+	}
+}
+>>>>>>> origin/temporary
 /**
  * Add the filter parameter
  *

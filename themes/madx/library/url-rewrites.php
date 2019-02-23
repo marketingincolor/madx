@@ -107,6 +107,7 @@
 	add_filter( 'request', 'wpd_specialty_request_filter' );
 
 	// Filter request to allow for variable amount of taxonomies in 
+<<<<<<< HEAD
 	// specialty custom post url
 	function wpd_dealers_request_filter( $request ){
 	    if( array_key_exists( 'dealers_taxonomies' , $request )
@@ -121,6 +122,8 @@
 	add_filter( 'request', 'wpd_dealers_request_filter' );
 
 	// Filter request to allow for variable amount of taxonomies in 
+=======
+>>>>>>> origin/temporary
 	// commercial custom post url
 	function wpd_commercial_request_filter( $request ){
 	    if( array_key_exists( 'commercial_taxonomies' , $request )
