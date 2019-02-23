@@ -2,12 +2,16 @@
 	$url = $_SERVER['REQUEST_URI'];
 	if (strpos($url, 'mu-types') !== false) {
 	  get_header('madicou');
+	}else if (strpos($url, 'dealers') !== false) {
+	  get_header('dealers');
 	}else{
 	  get_header();
 	}
 
 	if (strpos($url, 'residential') !== false) {
 	    $post_type = 'residential';
+	}else if (strpos($url, 'dealers') !== false) {
+	    $post_type = 'dealers';
 	}else if (strpos($url, 'commercial') !== false) {
 	    $post_type = 'commercial';
 	}else if (strpos($url, 'automotive') !== false) {
