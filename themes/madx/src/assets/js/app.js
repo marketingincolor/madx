@@ -339,7 +339,7 @@ var newVue = new Vue({
         let pCount = 1;
         testing.classList.remove('slide-down');
         $(testingContent).find('p').each(function(){
-          if (pCount !== 1 && pCount !== 2) {
+          if (pCount !== 1 &&) {
             $(this).addClass('hide');
           }
           pCount++;

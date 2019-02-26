@@ -67,8 +67,16 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 						<div class="meta">
 							<div class="grid-x grid-margin-x grid-margin-y">
 								<div class="medium-12 large-10 large-offset-1 cell">
-									<h4><?php _e('Product Details'); ?></h4>
+									<h4><?php _e('Product Details','madx'); ?></h4>
 									<div class="content"><?php the_content(); ?></div>
+
+                  <?php if(get_field('anchoring_system_title')) { ?>
+                    <h4><?php the_field('anchoring_system_title'); ?></h4>
+                  <?php } ?>
+
+                  <?php if(get_field('anchoring_system_copy')) { ?>
+                    <div class="content"><?php the_field('anchoring_system_copy') ?></div>
+                  <?php } ?>
 
 									<?php if(get_field('product_tabs')) { ?>
 

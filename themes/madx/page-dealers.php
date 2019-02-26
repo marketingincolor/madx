@@ -54,7 +54,7 @@ get_header('dealers'); ?>
 									<div class="grid-x module auto-height side-module align-middle">
 										<div class="medium-5 cell meta small-order-2 medium-order-1">
 											<h6><?php the_field('featured_product_title'); ?></h6>
-											<h3>
+											<div class="featured-copy">
 											<?php
 											if(get_field('featured_product_copy')){
 												echo wp_trim_words( get_field('featured_product_copy'), 12, '...' );;
@@ -62,7 +62,7 @@ get_header('dealers'); ?>
 												the_title();
 										    }
 											?>
-											</h3>
+											</div>
 											<a href="<?php the_permalink(); ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
 										</div>
 										<div class="medium-7 cell product-image small-order-1 medium-order-2" style="background: url(<?php the_post_thumbnail_url(); ?>) center center / cover no-repeat;">
@@ -99,7 +99,7 @@ get_header('dealers'); ?>
 									<div class="grid-x module auto-height side-module align-middle">
 										<div class="medium-5 meta cell">
 											<h6 class="blue"><?php the_field('featured_product_title'); ?></h6>
-											<h3>
+											<div class="featured-copy">
 											<?php
 											if(get_field('featured_product_copy')){
 												echo wp_trim_words( get_field('featured_product_copy'), 12, '...' );;
@@ -107,7 +107,7 @@ get_header('dealers'); ?>
 												the_title();
 										    }
 											?>
-											</h3>
+											</div>
 											<a href="<?php the_permalink(); ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
 										</div>
 										<div class="medium-7 cell product-image" style="background: url(<?php the_post_thumbnail_url(); ?>) center center / cover no-repeat;">
@@ -215,9 +215,8 @@ get_header('dealers'); ?>
 
 							<?php
 								$args = array(
-									'post_type'      => 'post',
+									'post_type'      => 'madicou',
 									'posts_per_page' => 3,
-									'category_name'  => 'dealers,dealer-support',
 								);
 								$query = new WP_Query( $args );
 								while ( $query->have_posts() ) : $query->the_post();
