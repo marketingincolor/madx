@@ -145,6 +145,10 @@
 	.orbit-container{
 		height: 400px !important;
 
+    @include breakpoint(small down){
+      height: auto !important;
+    }
+
 		.product-image{
 			height: 400px;
 			border-top-right-radius: 5px;
@@ -208,7 +212,7 @@
 	    	font-size: 2.25rem;
 
 	    	@include breakpoint(medium down){
-	    		font-size: 1.875rem;
+	    		font-size: 1.25rem;
 	    	}
 
 	    	@include breakpoint(small down){
@@ -313,7 +317,13 @@
 	}
 
   #img-gallery{
-    padding-bottom: 10px;
+    padding-bottom: 50px;
+    padding-top: 30px;
+
+    @include breakpoint(small down){
+      padding-bottom: 30px;
+      padding-top: 20px;
+    }
 
     #image-holder{
       @include bg-center-cover;

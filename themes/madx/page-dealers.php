@@ -97,7 +97,7 @@ get_header('dealers'); ?>
 	  				        <div class="grid-x">
 								<div class="small-12 cell">
 									<div class="grid-x module auto-height side-module align-middle">
-										<div class="medium-5 meta cell">
+										<div class="medium-5 cell meta small-order-2 medium-order-1">
 											<h6 class="blue"><?php the_field('featured_product_title'); ?></h6>
 											<div class="featured-copy" style="margin-bottom:25px;font-size:22px">
 											<?php
@@ -110,7 +110,7 @@ get_header('dealers'); ?>
 											</div>
 											<a href="<?php the_permalink(); ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
 										</div>
-										<div class="medium-7 cell product-image" style="background: url(<?php the_post_thumbnail_url(); ?>) center center / cover no-repeat;">
+										<div class="medium-7 cell product-image small-order-1 medium-order-2" style="background: url(<?php the_post_thumbnail_url(); ?>) center center / cover no-repeat;">
 											
 										</div>
 									</div>
