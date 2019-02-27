@@ -63,7 +63,14 @@ get_header('dealers'); ?>
 										    }
 											?>
 											</div>
-											<a href="<?php the_permalink(); ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
+                      <?php
+                        if(get_field('featured_product_custom_url')) {
+                          $product_link = get_field('featured_product_custom_url');
+                        }else{
+                          $product_link = get_the_permalink();
+                        }
+                      ?>
+											<a href="<?php echo $product_link; ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
 										</div>
                     <?php
                       if (get_field('featured_product_image')) {
@@ -114,8 +121,14 @@ get_header('dealers'); ?>
 												the_title();
 										    }
 											?>
-											</div>
-											<a href="<?php the_permalink(); ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
+											<?php
+                        if(get_field('featured_product_custom_url')) {
+                          $product_link = get_field('featured_product_custom_url');
+                        }else{
+                          $product_link = get_the_permalink();
+                        }
+                      ?>
+                      <a href="<?php echo $product_link; ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
 										</div>
 										<?php
                       if (get_field('featured_product_image')) {

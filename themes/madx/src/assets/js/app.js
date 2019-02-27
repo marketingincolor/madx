@@ -204,9 +204,6 @@ var newVue = new Vue({
     if ($('body').hasClass('single-dealers')) {
       this.setGalleryImage();
     }
-    if (!$('body').hasClass('single-dealers')) {
-      this.smoothScroll();
-    }
     if (location.href.includes('protectionpro')) {
       this.protectionProCarousel();
     }
