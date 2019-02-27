@@ -25,10 +25,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				<!-- Foundation 6 Carousel/Orbit -->
 				<div class="orbit" role="region" aria-label="Dealer Awards" v-f-orbit>
 				  <div class="orbit-wrapper">
-				    <div class="orbit-controls">
-				      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span><i class="fas fa-chevron-left"></i></button>
-				      <button class="orbit-next"><span class="show-for-sr">Next Slide</span><i class="fas fa-chevron-right"></i></button>
-				    </div>
+            <!-- Only show controls if there is more than one slide -->
+            <?php if(count(get_field('carousel')) > 1): ?>
+  				    <div class="orbit-controls">
+  				      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span><i class="fas fa-chevron-left"></i></button>
+  				      <button class="orbit-next"><span class="show-for-sr">Next Slide</span><i class="fas fa-chevron-right"></i></button>
+  				    </div>
+            <?php endif; ?>
 				    <ul class="orbit-container">
 		    		
 		    		<?php
