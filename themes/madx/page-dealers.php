@@ -65,7 +65,14 @@ get_header('dealers'); ?>
 											</div>
 											<a href="<?php the_permalink(); ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
 										</div>
-										<div class="medium-7 cell product-image small-order-1 medium-order-2" style="background: url(<?php the_post_thumbnail_url(); ?>) center center / cover no-repeat;">
+                    <?php
+                      if (get_field('featured_product_image')) {
+                        $image_url = get_field('featured_product_image');
+                      }else{
+                        $image_url = get_the_post_thumbnail_url();
+                      }
+                    ?>
+										<div class="medium-7 cell product-image small-order-1 medium-order-2" style="background: url(<?php echo $image_url; ?>) center center / cover no-repeat;">
 											
 										</div>
 									</div>
@@ -110,9 +117,16 @@ get_header('dealers'); ?>
 											</div>
 											<a href="<?php the_permalink(); ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
 										</div>
-										<div class="medium-7 cell product-image small-order-1 medium-order-2" style="background: url(<?php the_post_thumbnail_url(); ?>) center center / cover no-repeat;">
-											
-										</div>
+										<?php
+                      if (get_field('featured_product_image')) {
+                        $image_url = get_field('featured_product_image');
+                      }else{
+                        $image_url = get_the_post_thumbnail_url();
+                      }
+                    ?>
+                    <div class="medium-7 cell product-image small-order-1 medium-order-2" style="background: url(<?php echo $image_url; ?>) center center / cover no-repeat;">
+                      
+                    </div>
 									</div>
 								</div>
 					        </div>
