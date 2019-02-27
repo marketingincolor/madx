@@ -54,10 +54,10 @@ get_header('dealers'); ?>
 									<div class="grid-x module auto-height side-module align-middle">
 										<div class="medium-5 cell meta small-order-2 medium-order-1">
 											<h6><?php the_field('featured_product_title'); ?></h6>
-											<div class="featured-copy">
+											<div class="featured-copy" style="margin-bottom:25px;font-size:22px">
 											<?php
 											if(get_field('featured_product_copy')){
-												echo wp_trim_words( get_field('featured_product_copy'), 12, '...' );;
+												the_field('featured_product_copy');
 											}else{
 												the_title();
 										    }
@@ -99,10 +99,10 @@ get_header('dealers'); ?>
 									<div class="grid-x module auto-height side-module align-middle">
 										<div class="medium-5 meta cell">
 											<h6 class="blue"><?php the_field('featured_product_title'); ?></h6>
-											<div class="featured-copy">
+											<div class="featured-copy" style="margin-bottom:25px;font-size:22px">
 											<?php
 											if(get_field('featured_product_copy')){
-												echo wp_trim_words( get_field('featured_product_copy'), 12, '...' );;
+												the_field('featured_product_copy');
 											}else{
 												the_title();
 										    }
@@ -217,6 +217,13 @@ get_header('dealers'); ?>
 								$args = array(
 									'post_type'      => 'madicou',
 									'posts_per_page' => 3,
+                  'tax_query' => array(
+                      array(
+                        'taxonomy' => 'madicou_types',
+                        'field'    => 'slug',
+                        'terms'    => array('article','video'),
+                      ),
+                    ),
 								);
 								$query = new WP_Query( $args );
 								while ( $query->have_posts() ) : $query->the_post();

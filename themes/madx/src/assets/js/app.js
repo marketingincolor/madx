@@ -195,9 +195,11 @@ var newVue = new Vue({
     listItems.forEach(function(item){
       item.parentElement.style.display = "none";
     });
+    if ($('body').hasClass('single-dealers')) {
+      this.setGalleryImage();
+    }
   },
   mounted(){
-    this.menuDropdown();
     this.closeMobileMenuOutside();
     this.validateForms();
     this.smoothScroll();
@@ -306,19 +308,6 @@ var newVue = new Vue({
         }
       }
     },
-    menuDropdown: function(){
-      // Change foundation hover menus to slide down
-      // $(".dropdown").on('show.zf.dropdownmenu', function (ev, $el) {
-      //   $el.css({"display": "none"})
-      //      .fadeIn(300);
-      // });
-
-      // $(".dropdown").on('hide.zf.dropdownmenu', function (ev, $el) {
-      //   $el.children("ul")
-      //      .css('display', 'inherit')
-      //      .fadeOut(200);
-      // });
-    },
     testingSlideDown: function(){
       let testing = document.getElementById('testing');
       let learnMore = testing.querySelector('.learn-more');
@@ -339,7 +328,7 @@ var newVue = new Vue({
         let pCount = 1;
         testing.classList.remove('slide-down');
         $(testingContent).find('p').each(function(){
-          if (pCount !== 1 &&) {
+          if (pCount !== 1) {
             $(this).addClass('hide');
           }
           pCount++;
@@ -365,6 +354,30 @@ var newVue = new Vue({
           scrollTop: $(target).offset().top
         }, 500, function() {
       });
+    },
+    setGalleryImage: function(){
+      if (document.getElementById('image-holder')) {
+        let imgHolder     = document.getElementById('image-holder');
+        let gallery       = document.getElementById('img-gallery');
+        let activeImgSrc  = gallery.querySelector('.gallery-active').style.backgroundImage;
+
+        imgHolder.style.backgroundImage = activeImgSrc;
+      }
+
+    },
+    gallerySwitcher: function(event){
+      let activeImg     = event.target;
+      let activeImgSrc  = event.target.style.backgroundImage;
+      let imgHolder     = document.getElementById('image-holder');
+      let gallery       = document.getElementById('img-gallery');
+      let galleryImages = gallery.querySelector('.gallery-list').querySelectorAll('.bg-img');
+
+      // Remove gallery-active class from every image and assign to event.target
+      galleryImages.forEach(function(image){
+        image.classList.remove('gallery-active');
+      });
+      activeImg.classList.add('gallery-active');
+      imgHolder.style.backgroundImage = activeImgSrc;
     }
   }
 });

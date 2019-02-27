@@ -70,6 +70,47 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 									<h4><?php _e('Product Details','madx'); ?></h4>
 									<div class="content"><?php the_content(); ?></div>
 
+                  <?php if(get_field('image_gallery_selector')) { ?>
+
+                    <div id="img-gallery" class="grid-x grid-margin-x grid-margin-y">
+                      <!-- Main Image -->
+                      <div class="medium-5 cell">
+                        <div id="image-holder">
+                          <img src="<?php the_field('gallery_main_image'); ?>" alt="" id="constant-img">
+                        </div>
+                      </div>
+                      <!-- Image Thumbnails -->
+                      <div class="medium-7 cell">
+                        <h3 class="blue"><?php the_field('gallery_title'); ?></h3>
+                        <p><?php the_field('gallery_subhead'); ?></p>
+
+                        <?php
+                        $count  = 0;
+                        $images = get_field('gallery_images');
+                        $size = 'full';
+                        if( $images ): ?>
+
+                            <ul class="gallery-list">
+
+                                <?php foreach( $images as $image ): ?>
+
+                                    <li>
+                                      <a @click="gallerySwitcher">
+                                        <div class="bg-img<?php if($count === 0){echo ' gallery-active';} ?>" style="background-image: url(<?php echo wp_get_attachment_image_url( $image['ID'], $size ); ?>)"></div>
+                                      </a>
+                                    </li>
+
+                                <?php $count++;endforeach; ?>
+
+                            </ul>
+
+                        <?php endif; ?>
+
+                      </div>
+                    </div>
+
+                  <?php } // End image gallery ?>
+
                   <?php if(get_field('anchoring_system_title')) { ?>
                     <h4><?php the_field('anchoring_system_title'); ?></h4>
                   <?php } ?>
