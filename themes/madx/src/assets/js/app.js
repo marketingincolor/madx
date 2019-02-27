@@ -191,18 +191,22 @@ var newVue = new Vue({
   	$(document).foundation();
     this.runIEpolyfills();
     // Hide a language from navbar until it is translated
-    let listItems = document.querySelectorAll('a[href="/ar/international"');
-    listItems.forEach(function(item){
-      item.parentElement.style.display = "none";
-    });
-    if ($('body').hasClass('single-dealers')) {
-      this.setGalleryImage();
+    if ($('body').hasClass('page-template-page-international')) {
+      let listItems = document.querySelectorAll('a[href="/ar/international"');
+      listItems.forEach(function(item){
+        item.parentElement.style.display = "none";
+      });
     }
   },
   mounted(){
     this.closeMobileMenuOutside();
     this.validateForms();
-    this.smoothScroll();
+    if ($('body').hasClass('single-dealers')) {
+      this.setGalleryImage();
+    }
+    if (!$('body').hasClass('single-dealers')) {
+      this.smoothScroll();
+    }
     if (location.href.includes('protectionpro')) {
       this.protectionProCarousel();
     }
@@ -356,14 +360,11 @@ var newVue = new Vue({
       });
     },
     setGalleryImage: function(){
-      if (document.getElementById('image-holder')) {
-        let imgHolder     = document.getElementById('image-holder');
-        let gallery       = document.getElementById('img-gallery');
-        let activeImgSrc  = gallery.querySelector('.gallery-active').style.backgroundImage;
+      const imgHolder     = document.getElementById('image-holder');
+      const gallery       = document.getElementById('img-gallery');
+      const activeImgSrc    = gallery.querySelector('.gallery-active').style.backgroundImage;
 
-        imgHolder.style.backgroundImage = activeImgSrc;
-      }
-
+      imgHolder.style.backgroundImage = activeImgSrc;
     },
     gallerySwitcher: function(event){
       let activeImg     = event.target;
