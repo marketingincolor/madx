@@ -584,6 +584,12 @@
 
 		.orbit-container{
 
+      height: 375px !important;
+
+      @media(max-width: 800px){
+        height: auto !important;
+      }
+
 			img{
 				max-width: 90%;
 			}

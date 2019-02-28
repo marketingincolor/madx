@@ -121,7 +121,8 @@ get_header('dealers'); ?>
 												the_title();
 										    }
 											?>
-											<?php
+										</div>
+                      <?php
                         if(get_field('featured_product_custom_url')) {
                           $product_link = get_field('featured_product_custom_url');
                         }else{
@@ -129,7 +130,6 @@ get_header('dealers'); ?>
                         }
                       ?>
                       <a href="<?php echo $product_link; ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
-										</div>
 										<?php
                       if (get_field('featured_product_image')) {
                         $image_url = get_field('featured_product_image');

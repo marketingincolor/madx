@@ -36,36 +36,33 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 cell">
 				<!-- Foundation 6 Carousel/Orbit -->
-				<div class="orbit" role="region" aria-label="Dealer Awards" v-f-orbit>
+				<div class="orbit" role="region" aria-label="Dealer Awards"data-anim-in-from-right="fade-in" data-anim-in-from-left="fade-in" data-anim-out-to-right="fade-out" data-anim-out-to-left="fade-out" v-f-orbit>
 				  <div class="orbit-wrapper">
-				    <div class="orbit-controls">
-				      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span><i class="fas fa-chevron-left"></i></button>
-				      <button class="orbit-next"><span class="show-for-sr">Next Slide</span><i class="fas fa-chevron-right"></i></button>
-				    </div>
 				    <ul class="orbit-container">
-		    		
-		    		<?php
-		    		    $count = 0;
-		    		    if( have_rows('carousel') ):
-		    		    while ( have_rows('carousel') ) : the_row();
-		    		?>
-		    		
-				    <li class="<?php if($count === 0){echo 'is-active ';} ?>orbit-slide">
-				        <div class="grid-x grid-margin-x grid-margin-y align-middle">
-							<div class="medium-7 cell">
-								<img src="<?php the_sub_field('image'); ?>" alt="">
-							</div>
-							<div class="medium-5 cell">
-								<h2 class="blue"><?php the_sub_field('award_type'); ?></h6>
-								<aside class="yellow-underline left"></aside>
-								<p><?php the_sub_field('dealer_bio'); ?></p>
-							</div>
-				        </div>
-				    </li>
-		  		    		
-		  		    <?php $count++;endwhile;endif; ?>
-				      
-				    </ul>
+                <div class="grid-x grid-margin-x grid-margin-y align-middle">
+                  <div class="medium-7 cell">
+
+                    <?php
+                    $count  = 0;
+                    $images = get_field('carousel_gallery');
+                    $size   = 'full';
+
+                    if( $images ): ?>
+                      <?php foreach( $images as $image ): ?>
+                          <li class="<?php if($count === 0){echo 'is-active ';} ?>orbit-slide">
+                            <?php echo wp_get_attachment_image( $image['ID'], $size ); ?>
+                          </li>
+                      <?php endforeach; ?>
+                    <?php endif; ?>
+
+                  </div>
+                  <div class="medium-5 cell">
+                    <h2 class="blue"><?php the_field('carousel_title'); ?></h6>
+                    <aside class="yellow-underline left"></aside>
+                    <p><?php the_field('carousel_copy'); ?></p>
+                  </div>
+                </div>
+            </ul>
 				  </div>
 				</div>
 			</div>
