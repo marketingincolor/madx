@@ -33,9 +33,10 @@ get_header('dealers'); ?>
 					    </div>
 					    <ul class="orbit-container">
 			    		<?php
+                $count = 0;
 				    		$args = array(
 				    			'post_type'      => 'dealers',
-				    			'posts_per_page' => 1,
+				    			'posts_per_page' => 99,
 				    			'meta_query'     => array(
 			    			        array(
 			    			            'key'     => 'featured_product',
@@ -48,8 +49,8 @@ get_header('dealers'); ?>
 			    			while ( $query->have_posts() ) : $query->the_post();
 			    		?>
 			    		
-					      <li class="is-active orbit-slide">
-					        <div class="grid-x">
+					  <li class="<?php if($count === 0){echo 'is-active ';} ?>orbit-slide">
+					    <div class="grid-x">
 								<div class="small-12 cell">
 									<div class="grid-x module auto-height side-module align-middle">
 										<div class="medium-5 cell meta small-order-2 medium-order-1">
@@ -72,80 +73,20 @@ get_header('dealers'); ?>
                       ?>
 											<a href="<?php echo $product_link; ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
 										</div>
-                    <?php
-                      if (get_field('featured_product_image')) {
-                        $image_url = get_field('featured_product_image');
-                      }else{
-                        $image_url = get_the_post_thumbnail_url();
-                      }
-                    ?>
-										<div class="medium-7 cell product-image small-order-1 medium-order-2" style="background: url(<?php echo $image_url; ?>) center center / cover no-repeat;">
-											
-										</div>
-									</div>
-								</div>
-					        </div>
-					      </li>
-			
-			    		
-			    		<?php endwhile; wp_reset_postdata(); ?>
-			
-	  		    		<?php
-	  		    			$args = array(
-		    			'post_type'      => 'dealers',
-		    			'posts_per_page' => 99,
-		    			'offset'         => 1,
-		    			'meta_query'     => array(
-		    			        array(
-	    			            'key'     => 'featured_product',
-	    			            'value'   => '"Featured Product"',
-	    			            'compare' => 'LIKE'
-		    			        )
-			    			    )
-				    	);
-  		    			$query = new WP_Query( $args );
-  		    			while ( $query->have_posts() ) : $query->the_post();
-			  		    		?>
-			  		    		
-	  				    <li class="orbit-slide">
-	  				        <div class="grid-x">
-								<div class="small-12 cell">
-									<div class="grid-x module auto-height side-module align-middle">
-										<div class="medium-5 cell meta small-order-2 medium-order-1">
-											<h6 class="blue"><?php the_field('featured_product_title'); ?></h6>
-											<div class="featured-copy" style="margin-bottom:25px;font-size:22px">
-											<?php
-											if(get_field('featured_product_copy')){
-												the_field('featured_product_copy');
-											}else{
-												the_title();
-										    }
-											?>
-										</div>
                       <?php
-                        if(get_field('featured_product_custom_url')) {
-                          $product_link = get_field('featured_product_custom_url');
+                        if (get_field('featured_product_image')) {
+                          $image_url = get_field('featured_product_image');
                         }else{
-                          $product_link = get_the_permalink();
+                          $image_url = get_the_post_thumbnail_url();
                         }
                       ?>
-                      <a href="<?php echo $product_link; ?>"><button class="btn-yellow solid"><?php the_field('featured_product_cta_text'); ?></button></a>
-										<?php
-                      if (get_field('featured_product_image')) {
-                        $image_url = get_field('featured_product_image');
-                      }else{
-                        $image_url = get_the_post_thumbnail_url();
-                      }
-                    ?>
-                    <div class="medium-7 cell product-image small-order-1 medium-order-2" style="background: url(<?php echo $image_url; ?>) center center / cover no-repeat;">
-                      
-                    </div>
+  										<div class="medium-7 cell product-image small-order-1 medium-order-2" style="background: url(<?php echo $image_url; ?>) center center / cover no-repeat;"></div>
 									</div>
 								</div>
-					        </div>
-			  		    </li>
-			  		    		
-			  		    <?php endwhile; wp_reset_postdata(); ?>
+					    </div>
+					  </li>
+
+			  		    <?php $count++;endwhile; wp_reset_postdata(); ?>
 					      
 					    </ul>
 					  </div>
