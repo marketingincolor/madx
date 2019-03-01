@@ -22,8 +22,7 @@
 			</div>
 		</div>
 		<section id="posts-container" class="taxonomy-products" style="margin-bottom:0">
-
-      <div class="grid-x">
+            <div class="grid-x">
 				<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 					<ul id="products-tabs" class="tabs tax-cats show-for-large" v-tabs>
 					  <li class="tabs-title is-active"><a href="#all" @click="openDistributionTab"><?php _e( 'All', 'madx' ); ?></a></li>
