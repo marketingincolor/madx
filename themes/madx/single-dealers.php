@@ -154,7 +154,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 									<?php if( have_rows('product_downloads') ) : ?>
 
-										<h4>Documents</h4>
+										<h4><?php _e('Dealer Resources','madx') ?></h4>
 										<hr>
 										<div class="grid-x grid-margin-y grid-margin-x file-downloads">
 
@@ -194,55 +194,62 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	</div>
 </section>
 
+<?php
+$show_related_posts = false;
+if($show_related_posts){
+?>
+
 <section class="related-posts" style="padding-top:30px">
-	<div class="grid-container">
-		<div class="grid-x">
-			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
-				<div class="grid-x grid-margin-x grid-margin-y">
-					<div class="small-12 large-10 large-offset-1 cell">
-						<h4 style="font-family:'AvenirLTStd-Book';margin-bottom:20px"><?php _e('Related Products','madx') ?></h4>
-						<div class="grid-x grid-margin-x grid-margin-y">
+  <div class="grid-container">
+    <div class="grid-x">
+      <div class="small-10 small-offset-1 large-12 large-offset-0 cell">
+        <div class="grid-x grid-margin-x grid-margin-y">
+          <div class="small-12 large-10 large-offset-1 cell">
+            <h4 style="font-family:'AvenirLTStd-Book';margin-bottom:20px"><?php _e('Related Products','madx') ?></h4>
+            <div class="grid-x grid-margin-x grid-margin-y">
 
-							<?php
-								$term = get_the_terms($post->ID,'dealers_taxonomies');
-								$args = array(
-									'post_type'      => 'dealers',
-									'posts_per_page' => 3,
-									'order'          => 'ASC',
-									'orderby'        => 'rand',
-									'post__not_in'   => [$post->ID],
-									'tax_query' => array(
-										array(
-											'taxonomy' => 'dealers_taxonomies',
-											'field'    => 'slug',
-											'terms'    => $term[0]->slug,
-										),
-									),
-								);
-								$query = new WP_Query( $args );
-								while ( $query->have_posts() ) : $query->the_post();
-							?>
+              <?php
+                $term = get_the_terms($post->ID,'dealers_taxonomies');
+                $args = array(
+                  'post_type'      => 'dealers',
+                  'posts_per_page' => 3,
+                  'order'          => 'ASC',
+                  'orderby'        => 'rand',
+                  'post__not_in'   => [$post->ID],
+                  'tax_query' => array(
+                    array(
+                      'taxonomy' => 'dealers_taxonomies',
+                      'field'    => 'slug',
+                      'terms'    => $term[0]->slug,
+                    ),
+                  ),
+                );
+                $query = new WP_Query( $args );
+                while ( $query->have_posts() ) : $query->the_post();
+              ?>
 
-							<div class="medium-4 cell module auto-height relative">
-								<a href="<?php the_permalink(); ?>"><div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div></a>
-								<div class="meta">
-									<a href="<?php the_permalink(); ?>"><h4 class="blue"><?php the_title(); ?></h4></a>
-									<div class="content">
-										<?php echo wp_trim_words(get_the_content(),30,'...'); ?>
-									</div>
-									<a href="<?php the_permalink(); ?>" class="read-more blue">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
-								</div>
-							</div>
+              <div class="medium-4 cell module auto-height relative">
+                <a href="<?php the_permalink(); ?>"><div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div></a>
+                <div class="meta">
+                  <a href="<?php the_permalink(); ?>"><h4 class="blue"><?php the_title(); ?></h4></a>
+                  <div class="content">
+                    <?php echo wp_trim_words(get_the_content(),30,'...'); ?>
+                  </div>
+                  <a href="<?php the_permalink(); ?>" class="read-more blue">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
+                </div>
+              </div>
 
-							<?php endwhile; wp_reset_postdata(); ?>
+              <?php endwhile; wp_reset_postdata(); ?>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>	
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
 </section>
+
+<?php } ?>
 
 <?php 
 endwhile;endif;
