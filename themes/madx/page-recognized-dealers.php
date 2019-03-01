@@ -47,7 +47,7 @@ get_header('dealers'); ?>
 						    while ( have_rows('dealers') ) : the_row(); ?>
 
 							<div class="medium-6 large-4 cell module auto-height">
-								<div class="module-bg small" style="background-image: url(<?php the_sub_field('dealer_image'); ?>)"></div>
+								<div class="module-bg small" style="background-image: url(<?php the_sub_field('dealer_image'); ?>);height: <?php echo get_field('dealer_image_height') . 'px'; ?>;"></div>
 								<div class="meta">
 									<h6 class="award"><?php the_sub_field('award_name'); ?></h6>
 									<h4 class="blue"><?php the_sub_field('dealer_name'); ?></h4>

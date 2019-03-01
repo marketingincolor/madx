@@ -274,13 +274,13 @@ if ( ! function_exists( 'foundationpress_dealers_nav' ) ) {
 }
 
 // Append item to the end of the dealers top nav menu
-add_filter('wp_nav_menu_items', 'add_consumer_link', 10, 2);
-function add_consumer_link($items, $args){
-    if( $args->theme_location == 'dealers-top-nav' ){
-        $items .= '<li class="menu-item show-for-large">|</li><li class="menu-item"><a class="consumer" title="Back to Consumer Area" href="'. esc_url( home_url( '/' ) ) .'">' . __( 'Consumers Only','madx' ) . '</a></li>';
-    }
-    return $items;
-}
+// add_filter('wp_nav_menu_items', 'add_consumer_link', 10, 2);
+// function add_consumer_link($items, $args){
+//     if( $args->theme_location == 'dealers-top-nav' ){
+//         $items .= '<li class="menu-item show-for-large">|</li><li class="menu-item"><a class="consumer" title="Back to Consumer Area" href="'. esc_url( home_url( '/' ) ) .'">' . __( 'Consumers Only','madx' ) . '</a></li>';
+//     }
+//     return $items;
+// }
 
 
 /**

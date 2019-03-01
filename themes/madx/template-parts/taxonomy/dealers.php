@@ -35,7 +35,7 @@
 					  <li class="tabs-title is-active"><a href="#all" @click="openDistributionTab"><?php _e( 'All', 'madx' ); ?></a></li>
 						
 						<?php
-						  // Get child terms of products in specialty taxonomies
+						  // Get child terms of products in dealers taxonomies
 							$args = array(
 								'parent' => $term->term_id,
 								'orderby' => 'slug',
@@ -92,7 +92,7 @@
 									<div class="meta">
 										<a href="<?php the_permalink(); ?>"><h4 class="blue"><?php the_title(); ?></h4></a>
 										<div class="content">
-											<?php the_field('product_short_description'); ?>
+											<?php echo wp_trim_words(get_the_content(),20,'...'); ?>
 										</div>
 										<a href="<?php the_permalink(); ?>" class="read-more blue">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
 									</div>
@@ -131,7 +131,7 @@
 									<div class="meta">
 										<a href="<?php the_permalink(); ?>"><h4 class="blue"><?php the_title(); ?></h4></a>
 										<div class="content">
-											<?php echo wp_trim_words(get_the_content(),30,'...'); ?>
+											<?php echo wp_trim_words(get_the_content(),20,'...'); ?>
 										</div>
 										<a href="<?php the_permalink(); ?>" class="read-more blue">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
 									</div>

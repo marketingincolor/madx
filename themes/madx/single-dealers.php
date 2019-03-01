@@ -67,8 +67,57 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 						<div class="meta">
 							<div class="grid-x grid-margin-x grid-margin-y">
 								<div class="medium-12 large-10 large-offset-1 cell">
-									<h4><?php _e('Product Details'); ?></h4>
+									<h4><?php _e('Product Details','madx'); ?></h4>
 									<div class="content"><?php the_content(); ?></div>
+
+                  <?php if(get_field('image_gallery_selector')) { ?>
+
+                    <div id="img-gallery" class="grid-x grid-margin-x grid-margin-y">
+                      <!-- Main Image -->
+                      <div class="medium-5 cell">
+                        <div id="image-holder">
+                          <img src="<?php the_field('gallery_main_image'); ?>" alt="" id="constant-img">
+                        </div>
+                      </div>
+                      <!-- Image Thumbnails -->
+                      <div class="medium-7 cell">
+                        <h3 class="blue"><?php the_field('gallery_title'); ?></h3>
+                        <p><?php the_field('gallery_subhead'); ?></p>
+
+                        <?php
+                        $count  = 0;
+                        $images = get_field('gallery_images');
+                        $size = 'full';
+                        if( $images ): ?>
+
+                            <ul class="gallery-list">
+
+                                <?php foreach( $images as $image ): ?>
+
+                                    <li>
+                                      <a @click="gallerySwitcher">
+                                        <div class="bg-img<?php if($count === 0){echo ' gallery-active';} ?>" style="background-image: url(<?php echo wp_get_attachment_image_url( $image['ID'], $size ); ?>)"></div>
+                                      </a>
+                                    </li>
+
+                                <?php $count++;endforeach; ?>
+
+                            </ul>
+
+                        <?php endif; ?>
+
+                      </div>
+                    </div>
+
+                  <?php } // End image gallery ?>
+
+                  <?php if(get_field('anchoring_system_title')) { ?>
+                    <h4><?php the_field('anchoring_system_title'); ?></h4>
+                  <?php } ?>
+
+                  <?php if(get_field('anchoring_system_copy')) { ?>
+                    <div class="content"><?php the_field('anchoring_system_copy') ?></div>
+                  <?php } ?>
 
 									<?php if(get_field('product_tabs')) { ?>
 
@@ -105,7 +154,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 									<?php if( have_rows('product_downloads') ) : ?>
 
-										<h4>Documents</h4>
+										<h4><?php _e('Dealer Resources','madx') ?></h4>
 										<hr>
 										<div class="grid-x grid-margin-y grid-margin-x file-downloads">
 
@@ -145,55 +194,62 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	</div>
 </section>
 
+<?php
+$show_related_posts = false;
+if($show_related_posts){
+?>
+
 <section class="related-posts" style="padding-top:30px">
-	<div class="grid-container">
-		<div class="grid-x">
-			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
-				<div class="grid-x grid-margin-x grid-margin-y">
-					<div class="small-12 large-10 large-offset-1 cell">
-						<h4 style="font-family:'AvenirLTStd-Book';margin-bottom:20px"><?php _e('Related Products','madx') ?></h4>
-						<div class="grid-x grid-margin-x grid-margin-y">
+  <div class="grid-container">
+    <div class="grid-x">
+      <div class="small-10 small-offset-1 large-12 large-offset-0 cell">
+        <div class="grid-x grid-margin-x grid-margin-y">
+          <div class="small-12 large-10 large-offset-1 cell">
+            <h4 style="font-family:'AvenirLTStd-Book';margin-bottom:20px"><?php _e('Related Products','madx') ?></h4>
+            <div class="grid-x grid-margin-x grid-margin-y">
 
-							<?php
-								$term = get_the_terms($post->ID,'dealers_taxonomies');
-								$args = array(
-									'post_type'      => 'dealers',
-									'posts_per_page' => 3,
-									'order'          => 'ASC',
-									'orderby'        => 'rand',
-									'post__not_in'   => [$post->ID],
-									'tax_query' => array(
-										array(
-											'taxonomy' => 'dealers_taxonomies',
-											'field'    => 'slug',
-											'terms'    => $term[0]->slug,
-										),
-									),
-								);
-								$query = new WP_Query( $args );
-								while ( $query->have_posts() ) : $query->the_post();
-							?>
+              <?php
+                $term = get_the_terms($post->ID,'dealers_taxonomies');
+                $args = array(
+                  'post_type'      => 'dealers',
+                  'posts_per_page' => 3,
+                  'order'          => 'ASC',
+                  'orderby'        => 'rand',
+                  'post__not_in'   => [$post->ID],
+                  'tax_query' => array(
+                    array(
+                      'taxonomy' => 'dealers_taxonomies',
+                      'field'    => 'slug',
+                      'terms'    => $term[0]->slug,
+                    ),
+                  ),
+                );
+                $query = new WP_Query( $args );
+                while ( $query->have_posts() ) : $query->the_post();
+              ?>
 
-							<div class="medium-4 cell module auto-height relative">
-								<a href="<?php the_permalink(); ?>"><div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div></a>
-								<div class="meta">
-									<a href="<?php the_permalink(); ?>"><h4 class="blue"><?php the_title(); ?></h4></a>
-									<div class="content">
-										<?php echo wp_trim_words(get_the_content(),30,'...'); ?>
-									</div>
-									<a href="<?php the_permalink(); ?>" class="read-more blue">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
-								</div>
-							</div>
+              <div class="medium-4 cell module auto-height relative">
+                <a href="<?php the_permalink(); ?>"><div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div></a>
+                <div class="meta">
+                  <a href="<?php the_permalink(); ?>"><h4 class="blue"><?php the_title(); ?></h4></a>
+                  <div class="content">
+                    <?php echo wp_trim_words(get_the_content(),30,'...'); ?>
+                  </div>
+                  <a href="<?php the_permalink(); ?>" class="read-more blue">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
+                </div>
+              </div>
 
-							<?php endwhile; wp_reset_postdata(); ?>
+              <?php endwhile; wp_reset_postdata(); ?>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>	
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
 </section>
+
+<?php } ?>
 
 <?php 
 endwhile;endif;
