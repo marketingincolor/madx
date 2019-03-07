@@ -231,7 +231,11 @@ jQuery(document).ready(function($) {
 				if(r != false) {
 					if( wpe.updates.areShiny() ) {
 						$element.data('confirmChange', true);
+						if ( $element[0].className.includes('activate-now') ) {
+							window.location.href = $element.attr('href');
+							} else {
 						$element.click();
+							}
 					} else {
 						if( true === actLikeLink ) {
 							window.location.href = $element.attr('href');

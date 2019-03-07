@@ -130,7 +130,7 @@ Vue.directive('slider', {
 // Add foundation 6 orbit functionality to an element
 Vue.directive('f-orbit', {
     bind: function (el) {
-      new Foundation.Orbit($(el))
+      new Foundation.Orbit($(el));
     },
     unbind: function (el) {
         $(el).foundation.destroy()
@@ -191,18 +191,30 @@ var newVue = new Vue({
   	$(document).foundation();
     this.runIEpolyfills();
     // Hide a language from navbar until it is translated
-    let listItems = document.querySelectorAll('a[href="/ar/international"');
-    listItems.forEach(function(item){
-      item.parentElement.style.display = "none";
-    });
-
+    if ($('body').hasClass('page-template-page-international')) {
+      let listItems = document.querySelectorAll('a[href="/ar/international"');
+      listItems.forEach(function(item){
+        item.parentElement.style.display = "none";
+      });
+    }
   },
   mounted(){
-    this.menuDropdown();
     this.closeMobileMenuOutside();
     this.validateForms();
+    if ($('body').hasClass('single-dealers')) {
+      this.setGalleryImage();
+    }
     if (location.href.includes('protectionpro')) {
       this.protectionProCarousel();
+    }
+    if ($('body').find('#testing')) {
+      let pCount = 1;
+      $('#testing-content').find('p').each(function(){
+        if (pCount !== 1 && pCount !== 2) {
+          $(this).addClass('hide');
+        }
+        pCount++;
+      });
     }
   },
   methods: {
@@ -297,19 +309,6 @@ var newVue = new Vue({
         }
       }
     },
-    menuDropdown: function(){
-      // Change foundation hover menus to slide down
-      $(".dropdown").on('show.zf.dropdownmenu', function (ev, $el) {
-        $el.css({"display": "none"})
-           .fadeIn(300);
-      });
-
-      $(".dropdown").on('hide.zf.dropdownmenu', function (ev, $el) {
-        $el.children("ul")
-           .css('display', 'inherit')
-           .fadeOut(200);
-      });
-    },
     testingSlideDown: function(){
       let testing = document.getElementById('testing');
       let learnMore = testing.querySelector('.learn-more');
@@ -324,11 +323,17 @@ var newVue = new Vue({
 
       if (open == false) {
         testing.classList.add('slide-down');
-        testingContent.querySelector('.hide').classList.remove('hide');
+        $(testingContent).find('.hide').removeClass('hide');
         open = true;
       }else{
+        let pCount = 1;
         testing.classList.remove('slide-down');
-        testingContent.querySelectorAll('p')[2].classList.add('hide');
+        $(testingContent).find('p').each(function(){
+          if (pCount !== 1) {
+            $(this).addClass('hide');
+          }
+          pCount++;
+        });
         open = false;
       }
     },
@@ -342,6 +347,35 @@ var newVue = new Vue({
           $this.removeClass('validInput');
         }
       });
+    },
+    smoothScroll: function(event){
+      let element = event.target.parentElement;
+      let target  = element.dataset.target;
+      $('html, body').animate({
+          scrollTop: $(target).offset().top
+        }, 500, function() {
+      });
+    },
+    setGalleryImage: function(){
+      const imgHolder     = document.getElementById('image-holder');
+      const gallery       = document.getElementById('img-gallery');
+      const activeImgSrc    = gallery.querySelector('.gallery-active').style.backgroundImage;
+
+      imgHolder.style.backgroundImage = activeImgSrc;
+    },
+    gallerySwitcher: function(event){
+      let activeImg     = event.target;
+      let activeImgSrc  = event.target.style.backgroundImage;
+      let imgHolder     = document.getElementById('image-holder');
+      let gallery       = document.getElementById('img-gallery');
+      let galleryImages = gallery.querySelector('.gallery-list').querySelectorAll('.bg-img');
+
+      // Remove gallery-active class from every image and assign to event.target
+      galleryImages.forEach(function(image){
+        image.classList.remove('gallery-active');
+      });
+      activeImg.classList.add('gallery-active');
+      imgHolder.style.backgroundImage = activeImgSrc;
     }
   }
 });

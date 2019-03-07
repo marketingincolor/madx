@@ -69,6 +69,9 @@
 	    $newRules['automotive/(.+)/(.+)/?$'] = 'index.php?automotive=$matches[2]';
 	    $newRules['automotive/(.+)/?$'] = 'index.php?automotive_taxonomies=$matches[1]';
 
+	    $newRules['dealers/(.+)/(.+)/?$'] = 'index.php?dealers=$matches[2]';
+	    $newRules['dealers/(.+)/?$'] = 'index.php?dealers_taxonomies=$matches[1]';
+
 	    $newRules['safety-security/(.+)/(.+)/?$'] = 'index.php?safety=$matches[2]';
 	    $newRules['safety-security/(.+)/?$'] = 'index.php?safety_taxonomies=$matches[1]'; 
 
@@ -102,6 +105,20 @@
 	    return $request;
 	}
 	add_filter( 'request', 'wpd_specialty_request_filter' );
+
+	// Filter request to allow for variable amount of taxonomies in 
+	// specialty custom post url
+	function wpd_dealers_request_filter( $request ){
+	    if( array_key_exists( 'dealers_taxonomies' , $request )
+	        && ! get_term_by( 'slug', $request['dealers_taxonomies'], 'dealers_taxonomies' ) ){
+	            $request['dealers'] = $request['dealers_taxonomies'];
+	            $request['name'] = $request['dealers_taxonomies'];
+	            $request['post_type'] = 'dealers';
+	            unset( $request['dealers_taxonomies'] );
+	    }
+	    return $request;
+	}
+	add_filter( 'request', 'wpd_dealers_request_filter' );
 
 	// Filter request to allow for variable amount of taxonomies in 
 	// commercial custom post url

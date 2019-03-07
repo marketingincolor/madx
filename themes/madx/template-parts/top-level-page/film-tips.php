@@ -18,6 +18,8 @@
 		    $category = 'residential';
 		  }if (strpos($current_url, 'safety-security') !== false) {
 		    $category = 'safety-security';
+		  }if (strpos($current_url, 'dealers') !== false) {
+		    $category = 'dealers';
 		  }
 		?>
 

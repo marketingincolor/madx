@@ -108,7 +108,7 @@
 	#Layer_1{
 		width: 34px;
 		position: relative;
-		top: 5px;
+		top: 10px;
 	}
 
 	.is-dropdown-submenu-parent.is-active{
@@ -226,7 +226,7 @@
 	}
 
 	.top-bar-left,.top-bar-right{
-		height: 47px;
+		height: 55px;
 		display: flex;
 
 		.is-dropdown-submenu-parent > a{
@@ -267,6 +267,7 @@
 
 		ul{
 			background-color: $white;
+			align-items: center;
 		}
 
 		#search-dropdown{
@@ -313,7 +314,8 @@
 	}
 
 	.top-bar .menu li:not(:last-child){
-		border:0;
+		border: 0;
+		height: 100%;
 	}
 
 	.dropdown.menu > li.is-dropdown-submenu-parent > a::after{
