@@ -81,13 +81,14 @@
 							?>
 
 								<div class="medium-6 large-4 cell module auto-height relative">
-									<div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url() ?>)"></div>
+									<a href="<?php the_permalink(); ?>"><div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url() ?>)"></div></a>
 									<div class="meta">
 										<h4 class="blue"><?php the_title(); ?></h4>
 										<div class="content">
 											<?php the_field('short_description'); ?>
 										</div>
-										<?php if(get_field('data_sheet')) { ?>
+                    <a href="<?php the_permalink(); ?>" class="read-more blue">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
+										<!-- <?php if(get_field('data_sheet')) { ?>
 
 										  <a href="#!" class="btn-yellow border absolute data-sheet" data-pdf="<?php the_field('data_sheet'); ?>"><?php _e( 'Data Sheet', 'madx' ); ?></a>
 
@@ -95,7 +96,7 @@
 
 									  	<a href="/specialty-solutions/contact" class="btn-yellow border absolute"><?php _e( 'Start A Project', 'madx' ); ?></a>
 
-									  <?php } ?>
+									  <?php } ?> -->
 									</div>
 								</div>
 
@@ -128,13 +129,14 @@
 								?>
 
 								<div class="medium-6 large-4 cell module auto-height relative">
-									<div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url() ?>)"></div>
+									<a href="<?php the_permalink(); ?>"><div class="module-bg" style="background-image: url(<?php the_post_thumbnail_url() ?>)"></div></a>
 									<div class="meta">
 										<h4 class="blue"><?php the_title(); ?></h4>
 										<div class="content">
 											<?php the_field('short_description'); ?>
 										</div>
-										<?php if(get_field('data_sheet')) { ?>
+                    <a href="<?php the_permalink(); ?>" class="read-more blue">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
+										<!-- <?php if(get_field('data_sheet')) { ?>
 
 										  <a href="#!" class="btn-yellow border absolute data-sheet" data-pdf="<?php the_field('data_sheet'); ?>"><?php _e( 'Data Sheet', 'madx' ); ?></a>
 
@@ -142,7 +144,7 @@
 
 									  	<a href="/specialty-solutions/contact" class="btn-yellow border absolute"><?php _e( 'Start Your Project', 'madx' ); ?></a>
 
-									  <?php } ?>
+									  <?php } ?> -->
 									</div>
 								</div>
 
@@ -159,22 +161,3 @@
 		</section>
 	</div>
 </section>
-
-<!-- Form Modal -->
-	<div class="reveal" id="specialty-form-modal" v-reveal>
-		<h3 class="blue">Please fill out the form to access the product's data sheet</h3>
-	  <?php the_field('specialty_short_description',$term); ?>
-	  <button class="close-button" data-close aria-label="Close modal" type="button">
-	    <span aria-hidden="true">&times;</span>
-	  </button>
-	</div>
-<!-- /Form Modal -->
-
-<!-- PDF Modal -->
-	<div class="reveal" id="specialty-pdf-modal" v-reveal>
-		<iframe src="" style="border:0;height:100%;width:100%"></iframe>
-	  <button class="close-button" data-close aria-label="Close modal" type="button">
-	    <span aria-hidden="true">&times;</span>
-	  </button>
-	</div>
-<!-- /PDF Modal -->

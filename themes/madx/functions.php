@@ -54,6 +54,7 @@ function list_distributors($country_array){
       $dist_zip       = get_post_meta($distributor_post->ID,'zip',true);
       $dist_city      = get_post_meta($distributor_post->ID,'city',true);
       $dist_state     = get_post_meta($distributor_post->ID,'state',true);
+      $dist_country   = get_post_meta($distributor_post->ID,'country',true);
       $dist_phone     = get_post_meta($distributor_post->ID,'phone_number',true);
       $dist_altphone  = get_post_meta($distributor_post->ID,'alt_phone_number',true);
       $dist_fax       = get_post_meta($distributor_post->ID,'fax',true);
@@ -61,7 +62,6 @@ function list_distributors($country_array){
       $dist_website   = get_post_meta($distributor_post->ID,'website',true);
       $dist_markets   = get_post_meta($distributor_post->ID,'markets',true);
       $dist_name      = $distributor_post->post_title;
-      $comp_name      = get_post_meta($distributor_post->ID,'compnay_name',true);
       $website_nohttp = preg_replace('/(http:\/\/|https:\/\/|www.)/', '', $dist_website);
 
       echo "<div class='medium-6 large-3 cell module auto-height'>";
@@ -75,7 +75,7 @@ function list_distributors($country_array){
           echo "{$dist_company}<br>";
         }
         if($dist_street) {
-          echo "{$dist_street}<br> {$dist_city}, {$dist_state} {$dist_zip}</address></li>";
+          echo "{$dist_street}<br> {$dist_city}, {$dist_state} {$dist_zip}<br> {$dist_country} </address></li>";
         }
 
       }
