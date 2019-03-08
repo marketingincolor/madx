@@ -34,10 +34,10 @@ get_header(); ?>
 					<li><i class="fal fa-folder-open light-blue"></i> <?php echo $cat[0]->name; ?></li>
 					<li>
 						<ul class="social">
-							<li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
-							<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-							<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+							<li><a href="https://www.facebook.com/MadicoInc/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+							<li><a href="https://twitter.com/madicoinc" target="_blank"><i class="fab fa-twitter"></i></a></li>
+							<!--<li><a href="https://plus.google.com/+MadicoInc" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>-->
+							<li><a href="https://www.linkedin.com/company/madicoinc" target="_blank"><i class="fab fa-linkedin"></i></a></li>
 						</ul>
 					</li>
 				</ul>
