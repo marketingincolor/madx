@@ -142,7 +142,7 @@
 <!-- /Form Modal -->
 
 <!-- PDF Modal -->
-  <div class="reveal" id="specialty-pdf-modal" v-reveal>
+  <div class="reveal" id="specialty-pdf-modal" v-reveal style="height:100%">
     <iframe src="" style="border:0;height:100%;width:100%"></iframe>
     <button class="close-button" data-close aria-label="Close modal" type="button">
       <span aria-hidden="true">&times;</span>
