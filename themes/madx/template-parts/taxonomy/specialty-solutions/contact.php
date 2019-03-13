@@ -3,6 +3,10 @@
 	
 	if ($current_post->ID && $current_post->post_parent == 0) {
 		$page_id = $current_post->ID;
+    if(is_single()){
+      $the_page = get_page_by_path('specialty-solutions');
+      $page_id  = $the_page->ID;
+    }
 	}else if($current_post->ID && $current_post->post_parent != 0){
 		$page_id = $current_post->post_parent;
 	}else{
@@ -16,6 +20,7 @@
 		}
 		$the_page = get_page_by_path($path_path);
 		$page_id  = $the_page->ID;
+    
 	}
 	
  ?>
