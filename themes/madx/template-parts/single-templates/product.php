@@ -19,41 +19,11 @@
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="large-8 medium-10 medium-offset-1 large-offset-2 cell text-center">
-				<h1 class="blue"><?php the_title(); ?></h1>
+				<h1 class="blue"><?php get_field('product_title') ? the_field('product_title') : the_title(); ?></h1>
 			</div>
 		</div>
 	</div>
 </section>
-
-<!-- <section class="case-study-container">
-	<div class="grid-container">
-		<div class="grid-x">
-			<div class="small-10 small-offset-1 cell module auto-height">
-
-				<?php
-				  // Get featured image and alt attribute
-					$thumbnail_id = get_post_thumbnail_id( $post->ID );
-					$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);   
-					the_post_thumbnail( 'full', array( 'alt' => $alt ) );
-				?>
-				
-				<div class="meta">
-					<div class="grid-x">
-						<div class="medium-10 medium-offset-1 cell">
-
-							<div class="content">
-								<?php the_content(); ?>
-							</div>
-							<?php if (get_field('pdf_link')) { ?>
-								<a href="<?php the_field('pdf_link'); ?>"><i class="far fa-file-pdf"></i>&nbsp;&nbsp;Download Product brochure</a>
-							<?php } ?>
-						</div>
-					</div>
-				</div>
-		  </div>
-		</div>
-	</div>
-</section> -->
 
 <section id="tax-posts" class="taxonomy-products" style="padding-top: 0">
   <div class="grid-container">
