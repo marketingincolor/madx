@@ -54,10 +54,15 @@ if ($term->slug == 'case-studies' || $term->slug == 'safety-security') {
 						<p class="subhead"></p>
 					</div>
 				</div>
+        
 				<?php if($term->slug == 'solar') { ?>
-				  <tax-term-posts></tax-term-posts>
+				  
+          <?php include(locate_template('template-parts/taxonomy/product-tabs.php')); ?>
+
 				<?php }else if($term->slug == 'decorative') { ?>
-				  <decorative-posts></decorative-posts>
+				  
+          <?php include(locate_template('template-parts/taxonomy/decorative-posts.php')); ?>
+
 			  <?php } ?>
 
 		</div>

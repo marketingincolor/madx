@@ -67,8 +67,7 @@
 						if ($num_posts <= 1) {
 							include(locate_template('/template-parts/taxonomy/safety-security/single-post-layout.php'));
 						}else{ ?>
-							<?php //include(locate_template('/template-parts/taxonomy/safety-security/multi-post-layout.php')); ?>
-						<safety-products></safety-products>
+							<?php include(locate_template('template-parts/taxonomy/decorative-posts.php')); ?>
 					<?php	} ?>
 
         </div>

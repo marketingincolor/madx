@@ -49,7 +49,7 @@
 
 		<?php if ($term->slug != 'windshield-protection' && $term->slug != 'paint-protection') { ?>
 		  
-		  <auto-posts></auto-posts>
+		  <?php include(locate_template('template-parts/taxonomy/decorative-posts.php')); ?>
 			
 		<?php }else{ ?>
 
