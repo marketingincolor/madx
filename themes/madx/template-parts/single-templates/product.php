@@ -36,12 +36,14 @@
             $url_array   = explode('/', $current_url);
             $url1_split  = explode('-', $url_array[1]);
             $url1_joined = implode(' ', $url1_split);
+            $url3_split  = explode('-', $url_array[3]);
+            $url3_joined = implode(' ', $url3_split);
             $url4_split  = explode('-', $url_array[4]);
             $url4_joined = implode(' ', $url4_split);
           ?>
           <div class="small-12 large-10 large-offset-1 cell">
             <div id="breadcrumbs" class="breadcrumbs" style="margin:20px 0 0">
-              <h5 class="breadcrumb-title"><a href="<?php echo '/'. $url_array[1]; ?>"><?php echo $url1_joined; ?></a> <i class="fas fa-chevron-right"></i> <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>"><span><?php echo $url_array[2]; ?></span></a> <i class="fas fa-chevron-right"></i> <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2] .'/'. $url_array[3] . '/' . $url_array[4]; ?>"><span><?php echo $url4_joined; ?></span></a></h5>
+              <h5 class="breadcrumb-title"><a href="<?php echo '/'. $url_array[1]; ?>"><?php echo $url1_joined; ?></a> <i class="fas fa-chevron-right"></i> <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>"><span><?php echo $url_array[2]; ?></span></a> <?php if($url4_joined){ ?><i class="fas fa-chevron-right"></i> <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2] .'/'. $url_array[3] . '/' . $url_array[4]; ?>"><span><?php echo $url4_joined; ?></span></a></h5><?php } ?>
             </div>
           </div>
           <div id="single-post" class="small-12 large-10 large-offset-1 cell module auto-height" style="margin-top:0">
