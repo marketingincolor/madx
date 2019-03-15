@@ -53,11 +53,15 @@ if ($term->slug == 'case-studies' || $term->slug == 'safety-security') {
 			</div>
 		</div>
 
-		<?php if($term->slug == 'solar') { ?>
-		  <tax-term-posts></tax-term-posts>
-		<?php }else if($term->slug == 'decorative') { ?>
-			<decorative-posts></decorative-posts>
-		<?php } ?>
+      <?php if($term->slug == 'solar') { ?>
+        
+        <?php include(locate_template('template-parts/taxonomy/product-tabs.php')); ?>
+
+      <?php }else if($term->slug == 'decorative') { ?>
+        
+        <?php include(locate_template('template-parts/taxonomy/decorative-posts.php')); ?>
+
+      <?php } ?>
 
 	</div>
 </section>
