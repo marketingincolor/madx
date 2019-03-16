@@ -57,7 +57,7 @@
 
                   <?php if( have_rows('product_downloads') ) : ?>
 
-                    <h4><?php _e('Specialty Resources','madx') ?></h4>
+                    <h4><?php _e(ucfirst(get_post_type()) . ' Resources','madx') ?></h4>
                     <hr>
                     <div class="grid-x grid-margin-y grid-margin-x file-downloads">
 
