@@ -71,7 +71,15 @@
                             <i class="fal fa-file-pdf"></i>
                           </div>
                           <div class="medium-10 cell">
-                            <a href="#!" class="data-sheet" data-pdf="<?php the_sub_field('document_file'); ?>"><?php the_sub_field('document_title'); ?></a>
+                            <?php if(get_post_type() === 'specialty'): ?>
+                              
+                              <a href="#!" class="data-sheet" data-pdf="<?php the_sub_field('document_file'); ?>"><?php the_sub_field('document_title'); ?></a>
+
+                            <?php else: ?>
+
+                              <a href="<?php the_sub_field('document_file'); ?>" class="data-sheet" target="_blank"><?php the_sub_field('document_title'); ?></a>
+
+                            <?php endif; ?>
                             <p><?php the_sub_field('document_download_cta'); ?></p>
                           </div>
                         </div>
@@ -121,3 +129,4 @@
     </button>
   </div>
 <!-- /PDF Modal -->
+
