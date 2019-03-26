@@ -403,7 +403,7 @@
         	<div class="row">
         	    <div class="header small-12 medium-5 medium-offset-1 columns">
         	     <img class="logo" src="<?php echo get_template_directory_uri(); ?>/dist/assets/images/protekt-logo-header.png">
-        	     <h2>Spring Savings! Buy One Roll Save 50% on 2nd Roll</h2>
+        	     <h2>Spring Savings! Buy One Roll, Save 50% on 2nd Roll</h2>
         	     <h4>Paint Protection at its best</h4>
         	     <p>Madico<sup>®</sup> is making it easy to market our industry-leading, paint protection film &mdash;Protekt<sup>®</sup>. Right now, <strong>purchase a roll and get the 2nd roll at 50% off*</strong> on your first order of Protekt PPF! If you have customers who care about preserving a like-new factory finish for their vehicles, then you have even more reason to take advantage of this huge, limited-time savings offer.<br><em>*Available to North American window film dealers only.</em></p>
         	     <a href="#protekt-form" class="button">Order Now!</a>

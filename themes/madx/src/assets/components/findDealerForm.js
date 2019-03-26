@@ -13,7 +13,7 @@ export default{
 	template:
 	 `<div>
 			<form class="zip-search" name="zip-form" id="zip-form" action="/dealer-results" method="post">
-				<input v-model="zipCode" type="text" name="zip" id="zip" maxlength="5" pattern="\\d{5}" placeholder="Zip Code" required>
+				<input v-model="zipCode" type="text" name="zip" id="zip" placeholder="Zip Code" required>
 				<input type="hidden" name="type" :value="type">
 				<button type="submit" id="submit-form" title="Submit Zip Code">
 				   <i class="fas fa-map-marker-alt yellow"></i>
@@ -86,7 +86,7 @@ export default{
   			dataType: 'json',
   			success:function(data){
   				if (data.error_code) {
-  					alert(data.error_msg + ' Please enter a valid zip code');
+  					alert(data.error_msg + ' Please enter a valid Postal code');
   				}else{
   					console.log(data.zip_codes);
   				}
@@ -98,7 +98,7 @@ export default{
 			let zip  = form.querySelector("#zip");
 
 			zip.addEventListener("invalid", function(){
-			  this.setCustomValidity("Zip code must be a 5-digit number");
+			  this.setCustomValidity("Postal Code must be properly formatted for US or Canada");
 			});
 			zip.addEventListener("input", function(){
 			  this.setCustomValidity("");

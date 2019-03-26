@@ -2,63 +2,38 @@
 	/* Template Name: Dealer Results */
 	get_header();
 
+	// This takes in a zip code and returns all zip codes in a specific radius
+	// using the zip code api: https://api.zip-codes.com
 	// https://api.zip-codes.com/ZipCodesAPI.svc/1.0/FindZipCodesInRadius?zipcode=A0A 1E0&minimumradius=0&maximumradius=50&key=39QTNVA8MOX7X6A1DHZ8
 	$new_api_root = 'https://api.zip-codes.com/ZipCodesAPI.svc/1.0/FindZipCodesInRadius?';
-	$new_api_key = '39QTNVA8MOX7X6A1DHZ8';
-	$new_zip_radius = isset($_POST['radius']) ? $_POST['radius'] : 25;
-	$new_zip_code   = $_POST['zip'];
-
-	//$new_api_url    = $new_api_root.'zipcode='.$new_zip_code.'&minimumradius=0&maximumradius='.$new_zip_radius.'&key='.$new_api_key;
-	//$string_trim = 19; //Lenth to trim from FRONT of string for REMOTE (zip-codes.com) NEW API URL
-	$new_api_url = 'https://dev.marketingincolor.com/datalist.json';
-	$string_trim = 17; // Length to trim from FRONT of string for LOCAL (testing) NEW API URL
-	
-$new_data = file_get_contents($new_api_url); // put the contents of the file into a variable - string
-$this_new_data = substr($new_data, $string_trim); // remove unnecessary characters at start of string for better JSON decoding
-$this_new_data = rtrim($this_new_data, "}"); // remove unnecessary characters at end of string for better JSON decoding
-
-// Building the SPECIFIC ZIP CODE array from the dataset
-$brand_new_zip_array = array();
-$result = json_decode($this_new_data);
-foreach ($result as $postal) {
-	array_push($brand_new_zip_array, intval($postal->Code));
-}
-//var_dump($brand_new_zip_array);
-
-	// This takes in a zip code and returns all zip codes in a specific radius
-	// using the zip code api: https://www.zipcodeapi.com/API#radius
-	//$api_root   = 'https://www.zipcodeapi.com/rest';
-	//$api_key    = $ZIP_CODE_API_KEY;
+	$new_api_key = '39QTNVA8MOX7X6A1DHZ8'; // can be set in backend via $ZIP_CODE_API_KEY
 	$zip_radius = isset($_POST['radius']) ? $_POST['radius'] : 25;
-	$zip_code   = $_POST['zip'];
+	settype($zip_radius, "int");
+	$zip_code   = rawurlencode($_POST['zip']);
+	//$zip_code   = $_POST['zip'];
 	$type       = isset($_POST['type']) ? $_POST['type'] : array('architectural','automotive','safety-security');
-	
-	//$api_url    = $api_root.'/'.$api_key.'/radius.json/'.$zip_code.'/'.$zip_radius.'/miles?minimal';
+//var_dump($zip_code);
+	// SETTINGS FOR LIVE SITE
+	$new_api_url    = $new_api_root.'zipcode='.$zip_code.'&minimumradius=0&maximumradius='.$zip_radius.'&key='.$new_api_key;
+	$string_trim = 19; //Lenth to trim from FRONT of string for REMOTE (zip-codes.com) NEW API URL
 
-	/*$curl = curl_init($api_url);
-	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-	$curl_response = curl_exec($curl);
-	if ($curl_response === false) {
-    $info = curl_getinfo($curl);
-    curl_close($curl);
-    die('error occured during curl exec. Additional info: ' . var_export($info));
-	}*/
-	//var_dump($curl_response);
-	// Because all zip codes come back as strings, we set up an array to push 
-	// the new zip code integers into
-	$zip_array = array();
+	// SETTINGS FOR DEV/TESTING SITE
+	//$new_api_url = 'https://dev.marketingincolor.com/datalist.json';
+	//$new_api_url = 'https://dev.marketingincolor.com/100mK2A_4E4.json';
+	//$string_trim = 17; // Length to trim from FRONT of string for LOCAL (testing) NEW API URL
+//var_dump($new_api_url);	
+	$new_data = file_get_contents($new_api_url); // put the contents of the file into a variable - string
+	$this_new_data = substr($new_data, $string_trim); // remove unnecessary characters at start of string for better JSON decoding
+	$this_new_data = rtrim($this_new_data, "}"); // remove unnecessary characters at end of string for better JSON decoding
+//var_dump($new_data);
 
-	// Decode response for easy looping
-	//$curl_response = json_decode($curl_response);
-
-	// var_dump($curl_response);
-
-	// Change zip code strings to integers and push into zip_array
-	/*foreach ($curl_response as $zipcode) {
-		foreach ($zipcode as $the_zip) {
-			array_push($zip_array, intval($the_zip));
-		}
-	}*/
+	// Building the SPECIFIC ZIP CODE array from the dataset
+	$brand_new_zip_array = array();
+	$result = json_decode($this_new_data, true);
+	foreach ($result as $postal) {
+		//array_push($brand_new_zip_array, intval($postal->Code));
+		array_push($brand_new_zip_array, $postal['Code']);
+	}
 
 	$onezip_query_args = array(
 		'post_type'      => 'dealer',
@@ -69,9 +44,10 @@ foreach ($result as $postal) {
 		'meta_query'     => array(
 			array(
 				'key'     => 'zip',
-				'value'   => intval($zip_code),
+				//'value'   => intval($zip_code),
+				'value'   => $zip_code,
 				'compare' => 'IN',
-				'type'    => 'NUMERIC'
+				//'type'    => 'NUMERIC'
 			)
 		),
 		'tax_query' => array(
@@ -84,10 +60,8 @@ foreach ($result as $postal) {
 	);
 	$onezip_query = new WP_Query( $onezip_query_args );
 
-	//$zip_array = array_merge(array((int)$zip_code) + $zip_array);
-	//$new_zip_array = array_shift($zip_array);
-	$filtered_zip_array = array_diff( $brand_new_zip_array, array(intval($zip_code))); //var_dump($filtered_zip_array);
-	// var_dump($zip_array);
+	$filtered_zip_array = array_diff( $brand_new_zip_array, array(intval($zip_code))); 
+	//var_dump($filtered_zip_array);
   
 	$meta_query_args = array(
 		'post_type'      => 'dealer',
@@ -100,7 +74,7 @@ foreach ($result as $postal) {
 				'key'     => 'zip',
 				'value'   => $filtered_zip_array,
 				'compare' => 'IN',
-				'type'    => 'NUMERIC'
+				//'type'    => 'NUMERIC'
 			)
 		),
 		'tax_query' => array(
@@ -137,15 +111,22 @@ foreach ($result as $postal) {
 	  }
 	?>
 
-
 <section class="dealer-results">
 	<div class="grid-container">
 		<div class="grid-x grid-margin-x grid-margin-y">
+		<?php
+ 		if ($new_data == false) { ?>
+			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
+				<h1 class="blue">Search Results Issue</h1>
+				<p class="subhead">The search area you've selected is too broad; please choose a smaller search area.</p>
+			</div>
+		<?php } else { ?>
+
 			<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
 				<h1 class="blue">Dealer Directory Results</h1>
-				<p class="subhead">Here is a list of <span class="underline"><?php echo $type; ?></span> dealers within <span class="underline"><?php echo $zip_radius; ?></span> miles of <span class="underline"><?php echo $zip_code; ?></span></p>
+				<p class="subhead">Here is a list of <span class="underline"><?php echo $type; ?></span> dealers within <span class="underline"><?php echo $zip_radius; ?></span> miles of <span class="underline"><?php echo rawurldecode ($zip_code); ?></span></p>
 			</div>
-			
+
 			<?php
 				$other_dealers        = array(); 
 				$zip_dealers          = array(); 
@@ -159,7 +140,7 @@ foreach ($result as $postal) {
       	endwhile;else : ?>
 
       		<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
-      			<h4>Sorry, no dealers found in that area. Please try a different zip code or a wider radius.</h4>
+      			<h4>We're sorry, there are no Dealers in this search area. Please choose a wider search area.</h4>
       		</div>
 
       	<?php endif; wp_reset_postdata(); ?>
@@ -221,8 +202,9 @@ foreach ($result as $postal) {
       		<?php } ?>
       	</div>
 
-      	<?php	} ?>
+      		<?php } ?>
 			
+		<?php } ?>
 		</div>
 	</div>
 </section>
