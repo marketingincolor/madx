@@ -54,16 +54,17 @@ function short_sharp_jot($atts, $content = null){
 		var callThisOnReturn = function(resp) {
 			console.log(resp);
       if(location.href.indexOf('specialty-solutions/products') > -1){
-	      $('.data-sheet').on('click',function(){
+	      jQuery('.data-sheet').on('click',function(){
 	      	var that = $(this);
 		      if (resp && resp.contact) {
-		      	$('#specialty-pdf-modal').find('iframe').attr('src',$(this).data('pdf'))
-		      	$('#specialty-pdf-modal').foundation('open');
+		      	jQuery('#specialty-pdf-modal').find('iframe').attr('src',jQuery(this).data('pdf'))
+		      	jQuery('#specialty-pdf-modal').foundation('open');
 		      } else{
-						$('#specialty-form-modal').foundation('open');
-						var pdfLink = $(this).data('pdf').split('.com')[1];
-						$('#input_6').val(pdfLink);
-						$('#$jot_id').find('button[type=submit]').on('click',function(event){
+						jQuery('#specialty-form-modal').foundation('open');
+						var pdfLink = jQuery(this).data('pdf');
+						console.log(pdfLink);
+						jQuery('#input_6').val(pdfLink);
+						jQuery('#$jot_id').find('button[type=submit]').on('click',function(event){
 							event.preventDefault();
 							submitForm(pdfLink);
 						});
@@ -93,7 +94,7 @@ function short_sharp_jot($atts, $content = null){
 	<script>
 
 		function submitForm(pdfLink){
-			$.ajax({
+			jQuery.ajax({
 				type: 'POST',
 				success: function(data){
 				  if(location.href.indexOf('specialty-solutions/products') > -1){
@@ -119,11 +120,18 @@ EOT;
 
 	$page_ss = <<<EOT
 		<script>
-			setTimeout(function(){
-				$('#$jot_id').find('button[type=submit]').on('click',function(event){
-					__ss_noform.push(['submit',null, '$ss_id']);
-				});
-			},1000)
+        
+      var jotBtn = jQuery('.form-buttons-wrapper').find('button[type=submit]');
+      jotBtn.css('display','none');
+
+      jQuery('.form-buttons-wrapper').append('<button id="ss-btn" class="btn-yellow solid">Submit</button>');
+
+      setTimeout(function(){
+        jQuery('#ss-btn').on('click',function(){
+          __ss_noform.push(['submit',function(){jotBtn.click()}, '$ss_id']);
+        });
+      },2000)
+			
 		</script>
 		<script type="text/javascript">
 			var address = document.getElementsByClassName('form-address-line')[1];
