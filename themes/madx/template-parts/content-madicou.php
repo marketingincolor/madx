@@ -22,4 +22,9 @@
 		<h1 class="blue"><?php the_title(); ?></h1>
 		<?php the_content(); ?>
 	</div>
+	<?php if (get_field('document_attachment')) { ?>
+		<div class="meta flex-document">
+			<p><a href="<?php echo get_field('document_attachment'); ?>" target="_blank">Download</a> this document</p>
+		</div>
+	<?php } ?>
 </article>

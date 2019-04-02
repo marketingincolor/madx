@@ -1,6 +1,6 @@
 <?php 
 /**
- * Template Name: Protekt PPF Landing Success Page
+ * Template Name: Black Pearl NC Landing Success Page
  *
  * Landing page template without a sidebar
  */
@@ -15,25 +15,12 @@
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-KQ2BB3');</script>
         <!-- End Google Tag Manager --> 
-        <script type="text/javascript">
-            var _ss = _ss || [];
-            _ss.push(['_setDomain', 'https://koi-3QNHJKLJ4E.marketingautomation.services/net']);
-            _ss.push(['_setAccount', 'KOI-42O9KA253C']);
-            _ss.push(['_trackPageView']);
-        (function() {
-            var ss = document.createElement('script');
-            ss.type = 'text/javascript'; ss.async = true;
-            ss.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'koi-3QNHJKLJ4E.marketingautomation.services/client/ss.js?ver=1.1.1';
-            var scr = document.getElementsByTagName('script')[0];
-            scr.parentNode.insertBefore(ss, scr);
-        })();
-        </script>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta charset="utf-8">
-        <title>Protekt&reg; PPF by Madico</title>
+        <title>Black Pearl&reg; Nano-Ceramic by Madico</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.1.2/foundation.min.css" />
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600" rel="stylesheet">
         <link rel="shortcut icon" type="image/x-icon" href="http://www.madico.com/wp-content/themes/madico.com/images/favicon.ico">
         <style>
             /* Foundation Overrides */
@@ -130,15 +117,15 @@
                 .fadein img { left:0px top: 0px;  height: auto;}
             }
             /*======= New Styles ======*/
-            .header { text-align:left; }
-            .header img { padding:3em 0em; }
+            .header { text-align:center; }
+            .header img { padding:20px 0px; }
             .hero{
-                background-image:url(<?php echo get_template_directory_uri(); ?>/dist/assets/images/protekt-hero-alt.jpg);
+                background-image:url(<?php echo get_template_directory_uri(); ?>/dist/assets/images/bpnc-hero.jpg);
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-size: cover;
-                padding: 10% 0;
-                text-align: left;
+                padding: 3% 0;
+                text-align: center;
             }
             .hero img{
                 margin-bottom: 30px;
@@ -148,7 +135,7 @@
                 color:#FFF;
                 font-size: 48px;
                 margin-bottom: 0;
-                letter-spacing:-0.5px;
+                leter-spacing:-0.5px;
             }
             .hero h4 {
                 color:#e09e10;
@@ -201,17 +188,16 @@
             }
 
             .footer{padding:5% 0}
-            .footer img{margin-bottom:30px;}
-            .footer p{color:#000}
-            .footer p,.footer a{font-size: 13px; font-weight:600;}
-            .footer a{ color:#000; }
-            .footer a:hover{ color:#777; }
+            .footer img{margin-bottom:30px}
+            .footer p{color:#787878}
+            .footer p,.footer a{font-size: 13px}
+            .footer a{ color:#787878; }
+            .footer a:hover{ color:#d1d1d1; }
             .footer p:first-of-type{margin-bottom: 0}
 
             /*====== MOBILE ======*/
             @media(max-width: 1024px){
                 .top-bar{top: -124px}
-                .hero{ background-position: center center; }
             }
             @media(max-width: 640px){
                 .top-bar{
@@ -232,9 +218,7 @@
                 }
                 .hero h3{font-size: 36px;line-height: 40px}
                 .hero h4{font-size: 18px}
-                .hero{ background-position: 34% 50%; background-image:linear-gradient( rgba(1, 1, 1, 0.90), rgba(1, 1, 1, 0.10) ),url(<?php echo get_template_directory_uri(); ?>/dist/assets/images/protekt-hero-alt.jpg); }
-                .hero .sm-ico img { max-width:42px; }
-                .header { text-align:center; }
+
                 .features{
                     background-image:none;
                     padding:0;
@@ -261,7 +245,6 @@
                     padding: 10px 20px;
                     font-size: 14px;
                 }
-                .q-item { text-align:center; }
             }
             @media(max-width: 425px){
                 .top-bar{top: -127px}
@@ -274,34 +257,35 @@
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
         <div class="row">
-            <div class="header small-12 columns" style="text-align:center;">
-             <img src="<?php echo get_template_directory_uri(); ?>/dist/assets/images/protekt-logo-header.png" width="360">
+            <div class="header small-12 columns">
+             <img src="<?php echo get_template_directory_uri(); ?>/dist/assets/images/blackpearl-logo-dark.png" width="360">
             </div>
         </div>
         
         <section class="hero">
             <div class="row">
-                <div class="header small-10 small-offset-1 medium-4 medium-offset-1 columns">
+                <div class="header small-12 medium-8 medium-offset-2 columns">
+                    <img src="<?php echo get_template_directory_uri(); ?>/dist/assets/images/bpnc-success-icon.png" width="136" alt="Check!" />
                     <h3>Well Done!</h3>
                     <p>Thank you! We’ve received your information and will be in touch with you very shortly. We appreciate your interest and look forward to helping you grow your business.</p>
                  
                     <div class="small-12 small-centered">
-                        <div class="q-item">
+                        <div class="q-item" style="text-align:center;">
                         <div style="position:relative; margin-bottom:20px;">
-                            <div class="sm-meta" style="position:relative; display:inline-block; vertical-align:middle; padding:10px 10px 10px 0px;" >
-                                <a href="https://www.facebook.com/MadicoInc" target="_blank" class="sm-ico"><img src="<?php echo get_template_directory_uri(); ?>/dist/assets/images/protekt-ico-fb.png" alt="Facebook" width="54" /></a>
+                            <div class="sm-meta" style="position:relative; display:inline-block; vertical-align:middle; padding:10px;" >
+                                <a href="https://www.facebook.com/MadicoInc" target="_blank" class="sm-ico"><img src="<?php echo get_template_directory_uri(); ?>/dist/assets/images/bpnc-ico-fb.png" alt="Facebook" width="54" /></a>
                             </div>
 
                             <div class="sm-meta" style="position:relative; display:inline-block; vertical-align:middle; padding:10px;" >
-                                <a href="https://twitter.com/MadicoInc" target="_blank" class="sm-ico"><img src="<?php echo get_template_directory_uri(); ?>/dist/assets/images/protekt-ico-tw.png" alt="Twitter" width="54" /></a>
+                                <a href="https://twitter.com/MadicoInc" target="_blank" class="sm-ico"><img src="<?php echo get_template_directory_uri(); ?>/dist/assets/images/bpnc-ico-tw.png" alt="Twitter" width="54" /></a>
                             </div> 
 
                             <div class="sm-meta" style="position:relative; display:inline-block; vertical-align:middle; padding:10px;" >
-                                <a href="https://www.linkedin.com/company/madicoinc/" target="_blank" class="sm-ico"><img src="<?php echo get_template_directory_uri(); ?>/dist/assets/images/protekt-ico-li.png" alt="LinkedIn" width="54" /></a>
+                                <a href="https://www.linkedin.com/company/madicoinc/" target="_blank" class="sm-ico"><img src="<?php echo get_template_directory_uri(); ?>/dist/assets/images/bpnc-ico-li.png" alt="LinkedIn" width="54" /></a>
                             </div>
 
                             <div class="sm-meta" style="position:relative; display:inline-block; vertical-align:middle; padding:10px;" >
-                                <a href="https://youtube.com/c/MadicoInc" target="_blank" class="sm-ico"><img src="<?php echo get_template_directory_uri(); ?>/dist/assets/images/protekt-ico-yt.png" alt="YouTube" width="54" /></a>
+                                <a href="https://youtube.com/c/MadicoInc" target="_blank" class="sm-ico"><img src="<?php echo get_template_directory_uri(); ?>/dist/assets/images/bpnc-ico-yt.png" alt="YouTube" width="54" /></a>
                             </div>
                         </div>
                         </div>
@@ -314,7 +298,7 @@
         <section class="footer">
             <div class="row">
                 <div class="small-12 columns text-center">
-                    <p><a href="https://madico.com/">madico.com</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;<a href="https://madico.com/privacy-policy">Privacy Policy</a></p>
+                    <p><a href="https://madico.com">madico.com</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;<a href="https://madico.com/privacy-policy/">Privacy Policy</a></p>
                     <p>&copy; <?php echo date('Y'); ?> Madico<sup>&reg;</sup>, Inc. All rights reserved.</p>
                 </div>
             </div>
