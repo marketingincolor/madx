@@ -49,7 +49,7 @@
 
 		<?php if ($term->slug != 'windshield-protection' && $term->slug != 'paint-protection') { ?>
 		  
-		  <auto-posts></auto-posts>
+		  <?php include(locate_template('template-parts/taxonomy/decorative-posts.php')); ?>
 			
 		<?php }else{ ?>
 
@@ -77,19 +77,36 @@
 									<div class="medium-10 medium-offset-1 cell">
 										<h4 class="blue"><?php the_title(); ?></h4>
 										<div class="content"><?php the_content(); ?></div>
-										<?php if (get_field('pdf_link')) { ?>
+										
+                    <?php if( have_rows('product_downloads') ) : ?>
 
-											<div class="grid-x grid-margin-y">
-												<div class="medium-2 large-1 cell text-center">
-													<i class="fal fa-file-pdf"></i>
-												</div>
-												<div class="medium-10 cell">
-													<a href="<?php the_field('pdf_link'); ?>" target="_blank">Product Brochure</a>
-													<p>Click to download</p>
-												</div>
-											</div>
+                      <h4><?php _e('Automotive Resources','madx') ?></h4>
+                      <hr>
+                      <div class="grid-x grid-margin-y grid-margin-x file-downloads">
 
-										<?php } ?>
+                      <?php
+                        $dl_count = 1;
+                        while ( have_rows('product_downloads') ) : the_row(); ?>
+
+                        <div class="medium-6 large-5<?php if($dl_count % 2 !== 0){echo ' medium-offset-0 large-offset-1';} ?> cell">
+                          <div class="grid-x grid-margin-x grid-margin-y">
+                            <div class="medium-2 cell text-center">
+                              <i class="fal fa-file-pdf"></i>
+                            </div>
+                            <div class="medium-10 cell">
+                              <a href="<?php the_sub_field('document_file'); ?>" class="data-sheet" target="_blank"><?php the_sub_field('document_title'); ?></a>
+                              <p><?php the_sub_field('document_download_cta'); ?></p>
+                            </div>
+                          </div>
+                        </div>
+                      
+                      <?php $dl_count++;endwhile; ?>
+
+                    </div>
+                    <hr style="margin-bottom:40px">
+
+                  <?php endif; ?>
+
 									</div>
 								</div>
 							</div>

@@ -19,41 +19,11 @@
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="large-8 medium-10 medium-offset-1 large-offset-2 cell text-center">
-				<h1 class="blue"><?php the_title(); ?></h1>
+				<h1 class="blue"><?php get_field('product_title') ? the_field('product_title') : the_title(); ?></h1>
 			</div>
 		</div>
 	</div>
 </section>
-
-<!-- <section class="case-study-container">
-	<div class="grid-container">
-		<div class="grid-x">
-			<div class="small-10 small-offset-1 cell module auto-height">
-
-				<?php
-				  // Get featured image and alt attribute
-					$thumbnail_id = get_post_thumbnail_id( $post->ID );
-					$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);   
-					the_post_thumbnail( 'full', array( 'alt' => $alt ) );
-				?>
-				
-				<div class="meta">
-					<div class="grid-x">
-						<div class="medium-10 medium-offset-1 cell">
-
-							<div class="content">
-								<?php the_content(); ?>
-							</div>
-							<?php if (get_field('pdf_link')) { ?>
-								<a href="<?php the_field('pdf_link'); ?>"><i class="far fa-file-pdf"></i>&nbsp;&nbsp;Download Product brochure</a>
-							<?php } ?>
-						</div>
-					</div>
-				</div>
-		  </div>
-		</div>
-	</div>
-</section> -->
 
 <section id="tax-posts" class="taxonomy-products" style="padding-top: 0">
   <div class="grid-container">
@@ -66,12 +36,14 @@
             $url_array   = explode('/', $current_url);
             $url1_split  = explode('-', $url_array[1]);
             $url1_joined = implode(' ', $url1_split);
+            $url3_split  = explode('-', $url_array[3]);
+            $url3_joined = implode(' ', $url3_split);
             $url4_split  = explode('-', $url_array[4]);
             $url4_joined = implode(' ', $url4_split);
           ?>
           <div class="small-12 large-10 large-offset-1 cell">
             <div id="breadcrumbs" class="breadcrumbs" style="margin:20px 0 0">
-              <h5 class="breadcrumb-title"><a href="<?php echo '/'. $url_array[1]; ?>"><?php echo $url1_joined; ?></a> <i class="fas fa-chevron-right"></i> <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>"><span><?php echo $url_array[2]; ?></span></a> <i class="fas fa-chevron-right"></i> <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2] .'/'. $url_array[3] . '/' . $url_array[4]; ?>"><span><?php echo $url4_joined; ?></span></a></h5>
+              <h5 class="breadcrumb-title"><a href="<?php echo '/'. $url_array[1]; ?>"><?php echo $url1_joined; ?></a> <i class="fas fa-chevron-right"></i> <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>"><span><?php echo $url_array[2]; ?></span></a> <?php if($url4_joined){ ?><i class="fas fa-chevron-right"></i> <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2] .'/'. $url_array[3] . '/' . $url_array[4]; ?>"><span><?php echo $url4_joined; ?></span></a></h5><?php } ?>
             </div>
           </div>
           <div id="single-post" class="small-12 large-10 large-offset-1 cell module auto-height" style="margin-top:0">
@@ -85,7 +57,7 @@
 
                   <?php if( have_rows('product_downloads') ) : ?>
 
-                    <h4><?php _e('Specialty Resources','madx') ?></h4>
+                    <h4><?php _e(ucfirst(get_post_type()) . ' Resources','madx') ?></h4>
                     <hr>
                     <div class="grid-x grid-margin-y grid-margin-x file-downloads">
 
@@ -99,7 +71,15 @@
                             <i class="fal fa-file-pdf"></i>
                           </div>
                           <div class="medium-10 cell">
-                            <a href="#!" class="data-sheet" data-pdf="<?php the_sub_field('document_file'); ?>"><?php the_sub_field('document_title'); ?></a>
+                            <?php if(get_post_type() === 'specialty'): ?>
+                              
+                              <a href="#!" class="data-sheet" data-pdf="<?php the_sub_field('document_file'); ?>"><?php the_sub_field('document_title'); ?></a>
+
+                            <?php else: ?>
+
+                              <a href="<?php the_sub_field('document_file'); ?>" class="data-sheet" target="_blank"><?php the_sub_field('document_title'); ?></a>
+
+                            <?php endif; ?>
                             <p><?php the_sub_field('document_download_cta'); ?></p>
                           </div>
                         </div>
@@ -149,3 +129,4 @@
     </button>
   </div>
 <!-- /PDF Modal -->
+
