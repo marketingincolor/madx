@@ -490,7 +490,7 @@
                 <p style="font-size:11px;">*Offer valid on first purchase of Black Pearl Nano-Ceramic and applies to the second roll purchased only. Dealer must purchase full film rolls (no partials) in a single order to qualify for the discounted roll. Discount applies to the least expensive roll. All sales are final.</p>
                 <?php //gravity_form(33, false); /* staging */ ?>
         	    <?php //gravity_form(32, false); /* live */ ?>
-                <?php echo do_shortcode('[jotspring jf="90855482739168" ss="15a9afd5-e633-4fb0-9a26-6e74c52b9add"]'); ?>
+                <?php echo do_shortcode('[jotspring ss="MzE1tExJTDTUNTEyARHm5rqWxpZmuhYmxpYWRmkGRqnmBgA"]'); ?>
         	  </div>
         	</div>
         </div>

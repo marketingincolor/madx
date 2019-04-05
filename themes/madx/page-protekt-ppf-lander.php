@@ -532,7 +532,7 @@
         	    <p class="fdesc">Complete the form below to learn about Protekt PPF and take advantage of our <b>Purchase a Roll, Save 50% on Your 2nd Roll</b> offer!</p>
                 <p style="font-size:11px;">*Offer valid on first purchase of Protekt® PPF and applies to the second roll purchased only. Dealer must purchase full film rolls (no partials) in a single order to qualify for the discounted roll. Discount applies to the least expensive roll. All sales are final.</p>
 
-                <?php echo do_shortcode('[jotspring jf="90774594972171" ss="6156c88f-54d3-4f22-98a9-975012fc6253"]'); ?>
+                <?php echo do_shortcode('[jotspring ss="MzE2MU81Sk7RTUszMNc1STW11E1KNDHWNUtNSUxKNTUwMzVPBgA"]'); ?>
 
         	  </div>
         	</div>
