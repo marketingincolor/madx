@@ -62,11 +62,11 @@
 		<div id="mobile-left-menu" class="mobile-left-menu absolute">
 			<div class="menu-container relative">
 				<button class="absolute" aria-label="<?php _e( 'Close Menu', 'madx' ); ?>" type="button" @click="mobileLeftMenuClose"><i class="fal fa-long-arrow-left"></i></button>
-				<ul id="mobile-lang-menu" class="dropdown menu" data-closing-time="0" v-dropdown>
-		      <li>
-		        <?php icl_post_languages_mobile(); ?>
-		      </li>
-		    </ul>
+				<ul id="mobile-lang-menu" style="top:80px;" class="dropdown menu" data-closing-time="0" v-dropdown>
+						      <li>
+						        <?php icl_post_languages_mobile(); ?>
+						      </li>
+						    </ul>
 				<?php foundationpress_header_nav(); ?>
 			</div>
 		</div>

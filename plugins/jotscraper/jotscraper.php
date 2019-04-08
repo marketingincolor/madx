@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 include 'simple_html_dom.php';
 
-function short_sharp_jot($atts, $content = null){
+function OLD_short_sharp_jot($atts, $content = null){
 
 	$a = shortcode_atts(array(
 		'jf' => '',
@@ -152,4 +152,51 @@ EOT;
 	return $form_output;
 
 }
+
+
+function short_sharp_jot($atts, $content = null){
+	$a = shortcode_atts(array(
+		'jf' => '',
+		'ss' => ''
+	), $atts);
+
+	// this parameter should be passed by the SHORTCODE - [ jotspring jf='' ss='' ]
+	$jot_id     = $a['jf'];
+	$ss_id      = $a['ss'];
+
+	$url = $_SERVER['REQUEST_URI'];
+
+	if (strpos($url, 'specialty-solutions/products') !== false) {
+
+	$page_ss = <<<EOT
+	<script type="text/javascript">
+	    var ss_form = {'account': 'MzawMDE3NjSzBAA', 'formID': '$ss_id'};
+	    ss_form.width = '100%';
+	    ss_form.height = 'auto';
+	    ss_form.domain = 'app-3QNHJKLJ4E.marketingautomation.services';
+	    // ss_form.hidden = {'Company': 'Anon'}; // Modify this for sending hidden variables, or overriding values
+	</script>
+	<script type="text/javascript" src="https://koi-3QNHJKLJ4E.marketingautomation.services/client/form.js?ver=1.1.1"></script>
+EOT;
+
+	$form_output = $page_ss;
+	} else {
+
+	$page_ss = <<<EOT
+	<script type="text/javascript">
+	    var ss_form = {'account': 'MzawMDE3NjSzBAA', 'formID': '$ss_id'};
+	    ss_form.width = '100%';
+	    ss_form.height = '1250';
+	    ss_form.domain = 'app-3QNHJKLJ4E.marketingautomation.services';
+	    // ss_form.hidden = {'Company': 'Anon'}; // Modify this for sending hidden variables, or overriding values
+	</script>
+	<script type="text/javascript" src="https://koi-3QNHJKLJ4E.marketingautomation.services/client/form.js?ver=1.1.1"></script>
+EOT;
+	
+	$form_output = $page_ss;
+	}
+
+	return $form_output;
+}
+
 add_shortcode('jotspring', 'short_sharp_jot');

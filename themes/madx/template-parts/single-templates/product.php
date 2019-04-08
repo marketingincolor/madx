@@ -111,6 +111,42 @@
 
 <?php endwhile; ?>
 
+  <script type="text/javascript">
+    var _ss = _ss || [];
+    console.log(location.href.indexOf('specialty-solutions/products'));
+    var callThisOnReturn = function(resp) {
+      console.log(resp);
+      if(location.href.indexOf('specialty-solutions/products') > -1){
+        jQuery('.data-sheet').on('click',function(){
+          var that = $(this);
+          if (resp && resp.contact) {
+            jQuery('#specialty-pdf-modal').find('iframe').attr('src',jQuery(this).data('pdf'))
+            jQuery('#specialty-pdf-modal').foundation('open');
+          } else {
+        jQuery('#specialty-form-modal').foundation('open');
+        var pdfLink = jQuery(this).data('pdf');
+        console.log(pdfLink);
+        //jQuery('#input_6').val(pdfLink);
+        //jQuery('#$jot_id').find('button[type=submit]').on('click',function(event){
+        //  event.preventDefault();
+        //  submitForm(pdfLink);
+        //});
+          }
+        });
+      }
+    };
+    _ss.push(['_setResponseCallback', callThisOnReturn]);
+    _ss.push(['_setDomain', 'https://koi-3QNHJKLJ4E.marketingautomation.services/net']);
+    _ss.push(['_setAccount', 'KOI-42O9KA253C']);
+    _ss.push(['_trackPageView']);
+    (function() {
+        var ss = document.createElement('script');
+        ss.type = 'text/javascript'; ss.async = true;
+        ss.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'koi-3QNHJKLJ4E.marketingautomation.services/client/ss.js?ver=1.1.1';
+        var scr = document.getElementsByTagName('script')[0];
+        scr.parentNode.insertBefore(ss, scr);
+    })();
+  </script>
 <!-- Form Modal -->
   <div class="reveal" id="specialty-form-modal" v-reveal>
     <h3 class="blue">Please fill out the form to access the product's data sheet</h3>
@@ -129,4 +165,3 @@
     </button>
   </div>
 <!-- /PDF Modal -->
-
