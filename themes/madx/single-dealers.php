@@ -66,11 +66,73 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 						<div class="meta">
 							<div class="grid-x grid-margin-x grid-margin-y">
-								<div class="medium-12 large-10 large-offset-1 cell">
+
+
+
+
+
+
+
+
+								<?php if( have_rows('product_specs') ): 
+									$show_product_colums = 'medium-12 large-6 cell ';
+									else:
+									$show_product_colums = 'medium-12 large-10 large-offset-1 cell '; 
+								endif; ?>
+								<div class="<?php echo $show_product_colums; ?>single-product-details">
 									<h4><?php _e('Product Details','madx'); ?></h4>
 									<div class="content"><?php the_content(); ?></div>
+								</div>
+								<div class="<?php echo $show_product_colums; ?>single-product-specs">
 
-                  <?php if(get_field('image_gallery_selector')) { ?>
+
+									<?php echo '<h4>Product Specs go HERE</h4>'; // temp use only for testing ?>
+
+
+											<?php if( have_rows('product_specs') ): ?>
+
+									<div class="table">
+                			<div class="grid-x grid-margin-x small-margin-collapse film-performance-measurements">
+				  							<div class="cell small-6 data-title text-center alt-left">
+				    							Film Performance Measurements
+				  							</div>
+											<div class="cell small-6 data-title text-center alt-right">
+												<select>
+
+											<?php while ( have_rows('product_specs') ) : the_row();
+											        	//$each_product = the_sub_field('specsheet_product_name');
+											        	//the_sub_field('specsheet_product_specs');
+											        //print_r($each_product['value']);
+											        
+											        $each_product = get_sub_field_object('specsheet_product_name');
+											        //print_r($each_product);
+											        echo '<option value="'.$each_product['value'].'">' . $each_product['value'] . '</option>';
+											    endwhile;
+											?>
+												</select>
+											</div>
+
+											<?php while ( have_rows('product_specs') ) : the_row();
+                          if( have_rows('specsheet_product_specs')):
+                            while ( have_rows('specsheet_product_specs') ) : the_row();
+                              $each_label = get_sub_field('specsheet_data_item_label');
+                              $each_value = get_sub_field('specsheet_data_item_value');
+                              echo '<div class="cell small-6 data-element text-center">'.$each_label.'</div>';
+                              echo '<div class="cell small-6 data-element text-center">'.$each_value.'</div>';
+                            endwhile; endif; //end of subloop for each specsheet data item
+
+                          //$each_product_specs = get_sub_field_object('specsheet_product_specs');
+                          //print_r($each_product_specs);
+                        endwhile;endif; ?>
+										</div>
+									</div>
+
+
+								</div>
+
+								<div class="medium-12 large-10 large-offset-1 cell single-product-gallery">
+
+                  <?php if(get_field('image_gallery_selector')) { //Start image gallery ?>
 
                     <div id="img-gallery" class="grid-x grid-margin-x grid-margin-y">
                       <!-- Main Image -->
@@ -110,7 +172,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                     </div>
 
                   <?php } // End image gallery ?>
+								</div>
 
+
+								<div class="medium-12 large-10 large-offset-1 cell single-product-details">
                   <?php if(get_field('anchoring_system_title')) { ?>
                     <h4><?php the_field('anchoring_system_title'); ?></h4>
                   <?php } ?>
@@ -185,6 +250,18 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 										<button class="btn-lt-blue border"><i class="fas fa-arrow-alt-left"></i>&nbsp; Back</button>
 									</a>
 								</div>
+
+
+
+
+
+
+
+
+
+
+
+
 							</div>
 						</div>
 					</div>
@@ -193,6 +270,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		</div>
 	</div>
 </section>
+
+
+
+
+
+
+
 
 <?php
 $show_related_posts = false;
