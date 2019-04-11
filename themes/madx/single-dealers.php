@@ -135,6 +135,18 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                   </div>
                   <?php endif; // /if statement from line 85 ?>
 
+                <?php if(get_field('product_secondary_data_title')): ?>
+                  <div class="small-12 cell">
+                    <h4><?php the_field('product_secondary_data_title'); ?></h4>
+                  </div>
+                <?php endif; ?>
+                
+                <?php if(get_field('product_secondary_data_content')): ?>
+                  <div class="small-12 cell">
+                    <div class="content" style="margin-bottom:0px"><?php the_field('product_secondary_data_content'); ?></div>
+                  </div>
+                <?php endif; ?>
+
                 <?php if(get_field('image_gallery_selector')) { //Start image gallery ?>
 
                 <div class="grid-x">
