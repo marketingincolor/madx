@@ -76,68 +76,66 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 <?php if( have_rows('product_specs') ): 
 									$show_product_colums = 'medium-12 large-6 cell ';
 									else:
-									$show_product_colums = 'medium-12 large-10 large-offset-1 cell '; 
+									$show_product_colums = 'medium-12 cell '; 
 								endif; ?>
                 <div class="<?php echo $show_product_colums; ?>single-product-details">
-                  <h4><?php _e('Product Details','madx'); ?></h4>
-                  <div class="content"><?php the_content(); ?></div>
+                  <h4 style="margin-bottom:20px"><?php _e('Product Details','madx'); ?></h4>
+                  <div class="content" style="margin-bottom:0"><?php the_content(); ?></div>
                 </div>
-                <div class="<?php echo $show_product_colums; ?>single-product-specs">
+                <?php if( have_rows('product_specs') ): ?>
+                  <div class="<?php echo $show_product_colums; ?>single-product-specs">
+                    <div class="table">
+                      <div class="grid-x grid-margin-x small-margin-collapse film-performance-measurements align-middle">
+                        <div class="cell small-6 medium-7 data-title text-center alt-left">
+                          <p>Film Performance Measurements</p>
+                        </div>
+                        <div class="cell small-6 medium-5 data-title text-center alt-right">
+                          <ul class="tabs" v-tabs id="product-tabs">
+                            <select id="product-list" @change="openProductTab" style="margin-bottom:0">
 
-                  <?php if( have_rows('product_specs') ): ?>
+                              <?php $rowCount = 0; ?>
+                              <?php while ( have_rows('product_specs') ) : the_row();
+                              
+                              $each_product = get_sub_field_object('specsheet_product_name'); ?>
 
-                  <div class="table">
-                    <div class="grid-x grid-margin-x small-margin-collapse film-performance-measurements align-middle">
-                      <div class="cell small-6 medium-7 data-title text-center alt-left">
-                        <p>Film Performance Measurements</p>
-                      </div>
-                      <div class="cell small-6 medium-5 data-title text-center alt-right">
-                        <ul class="tabs" v-tabs id="product-tabs">
-                          <select id="product-list" @change="openProductTab" style="margin-bottom:0">
+                              <option value="#panel<?php echo $rowCount; ?>"><?php echo $each_product['value']; ?>
+                              </option>
+                              <?php $rowCount++;endwhile; ?>
 
-                            <?php $rowCount = 0; ?>
-                            <?php while ( have_rows('product_specs') ) : the_row();
-                            
-                            $each_product = get_sub_field_object('specsheet_product_name'); ?>
-
-                            <option value="#panel<?php echo $rowCount; ?>"><?php echo $each_product['value']; ?>
-                            </option>
-                            <?php $rowCount++;endwhile; ?>
-
-                          </select>
-                        </ul>
-                      </div>
-
-                      <div id="tabs-content" class="tabs-content small-12 cell" data-tabs-content="product-tabs">
-                        <div class="grid-x">
-
-                          <?php $rowCount = 0; ?>
-                          <?php while ( have_rows('product_specs') ) : the_row(); ?>
-
-                          <div id="panel<?php echo $rowCount; ?>"
-                            class="small-12 cell tabs-panel<?php if($rowCount === 0){echo ' is-active';} ?>">
-
-                            <div class="grid-x">
-                              <?php if( have_rows('specsheet_product_specs')):
-                                  while ( have_rows('specsheet_product_specs') ) : the_row();
-                                    $each_label = get_sub_field('specsheet_data_item_label');
-                                    $each_value = get_sub_field('specsheet_data_item_value');
-                                    echo '<div class="cell medium-7 small-6 data-element text-center">'.$each_label.'</div>';
-                                    echo '<div class="cell medium-5 small-6 data-element text-center">'.$each_value.'</div>';
-                                  endwhile; endif; ?>
-                            </div>
-                          
+                            </select>
+                          </ul>
                         </div>
 
-                        <?php $rowCount++;endwhile; ?>
-                      </div>
-                    </div>
-                    <?php endif; // /if statement from line 84 ?>
-                  </div> <!-- /.table -->
-                </div>
-              </div>
+                        <div id="tabs-content" class="tabs-content small-12 cell" data-tabs-content="product-tabs">
+                          <div class="grid-x">
 
-              <?php if(get_field('image_gallery_selector')) { //Start image gallery ?>
+                            <?php $rowCount = 0; ?>
+                            <?php while ( have_rows('product_specs') ) : the_row(); ?>
+
+                            <div id="panel<?php echo $rowCount; ?>"
+                              class="small-12 cell tabs-panel<?php if($rowCount === 0){echo ' is-active';} ?>">
+
+                              <div class="grid-x">
+                                <?php if( have_rows('specsheet_product_specs')):
+                                    while ( have_rows('specsheet_product_specs') ) : the_row();
+                                      $each_label = get_sub_field('specsheet_data_item_label');
+                                      $each_value = get_sub_field('specsheet_data_item_value');
+                                      echo '<div class="cell medium-7 small-6 data-element text-center">'.$each_label.'</div>';
+                                      echo '<div class="cell medium-5 small-6 data-element text-center">'.$each_value.'</div>';
+                                    endwhile; endif; ?>
+                              </div>
+
+                            </div>
+
+                            <?php $rowCount++;endwhile; ?>
+                          </div>
+                        </div> <!-- /#tabs-content -->
+                      </div> <!-- /film-performance-measurements -->
+                    </div> <!-- /.table -->
+                  </div>
+                  <?php endif; // /if statement from line 85 ?>
+
+                <?php if(get_field('image_gallery_selector')) { //Start image gallery ?>
 
                 <div class="grid-x">
                   <div class="medium-12 large-10 large-offset-1 cell single-product-gallery">
@@ -181,9 +179,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                     </div>
                   </div>
                 </div>
-              <?php } // End image gallery ?>
+                <?php } // End image gallery ?>
 
-              <div class="medium-12 cell single-product-details">
+                <div class="medium-12 cell single-product-details">
                   <?php if(get_field('anchoring_system_title')) { ?>
                   <h4><?php the_field('anchoring_system_title'); ?></h4>
                   <?php } ?>
@@ -258,6 +256,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
                   <?php endif; ?>
 
+                  <h4 style="margin-bottom:20px"><?php _e('Benefits','madx') ?></h4>
+
                   <div id="single-benefits" class="grid-x" style="margin-bottom: 30px;">
                     <?php get_template_part('template-parts/taxonomy/benefits'); ?>
                   </div>
@@ -267,13 +267,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                       <button class="btn-lt-blue border"><i class="fas fa-arrow-alt-left"></i>&nbsp; Back</button>
                     </a>
                   </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
 </section>
 <?php
