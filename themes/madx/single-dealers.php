@@ -183,8 +183,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 </div>
               <?php } // End image gallery ?>
 
-              <div class="grid-x">
-                <div class="medium-12 large-10 large-offset-1 cell single-product-details">
+              <div class="medium-12 cell single-product-details">
                   <?php if(get_field('anchoring_system_title')) { ?>
                   <h4><?php the_field('anchoring_system_title'); ?></h4>
                   <?php } ?>
@@ -263,11 +262,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                     <?php get_template_part('template-parts/taxonomy/benefits'); ?>
                   </div>
 
-                  <p style="margin-bottom: 40px;">
+                  <p class="go-back">
                     <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>">
                       <button class="btn-lt-blue border"><i class="fas fa-arrow-alt-left"></i>&nbsp; Back</button>
-                    </a></p>
-                </div>
+                    </a>
+                  </p>
               </div>
             </div>
           </div>
