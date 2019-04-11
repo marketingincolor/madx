@@ -84,7 +84,53 @@
 		.next-prev a{
 			color: #80a3bf;
 		}
-	}
+  }
+  
+  .film-performance-measurements{
+
+    .alt-right,.alt-left{
+      background-color: #dfe2e6;
+      padding: 10px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @media(max-width: 375px){
+        height: 80px;
+      }
+    }
+
+    .alt-left{
+      border-right: 1px solid #FFF;
+      font-size: 0.875rem;
+
+      p{
+        color: $blue;
+      }
+    }
+    
+    .alt-right{
+      border-left: 1px solid #FFF;
+
+      #product-list{
+        background-color: #dfe2e6;
+        color: $blue;
+        border: 2px solid $blue;
+        font-size: 0.875rem;
+      }
+    }
+
+    .tabs-panel{
+      padding: 0;
+    }
+
+    .cell.data-element {
+      border: 1px solid #dfe2e6;
+      padding: 5px;
+      font-size: 0.875rem;
+    }
+  }
 
 	.related-posts{
 

@@ -87,13 +87,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                   <?php if( have_rows('product_specs') ): ?>
 
                   <div class="table">
-                    <div class="grid-x grid-margin-x small-margin-collapse film-performance-measurements">
-                      <div class="cell small-6 data-title text-center alt-left">
-                        Film Performance Measurements
+                    <div class="grid-x grid-margin-x small-margin-collapse film-performance-measurements align-middle">
+                      <div class="cell small-6 medium-7 data-title text-center alt-left">
+                        <p>Film Performance Measurements</p>
                       </div>
-                      <div class="cell small-6 data-title text-center alt-right">
+                      <div class="cell small-6 medium-5 data-title text-center alt-right">
                         <ul class="tabs" v-tabs id="product-tabs">
-                          <select id="product-list" @change="openProductTab">
+                          <select id="product-list" @change="openProductTab" style="margin-bottom:0">
 
                             <?php $rowCount = 0; ?>
                             <?php while ( have_rows('product_specs') ) : the_row();
@@ -122,11 +122,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                                   while ( have_rows('specsheet_product_specs') ) : the_row();
                                     $each_label = get_sub_field('specsheet_data_item_label');
                                     $each_value = get_sub_field('specsheet_data_item_value');
-                                    echo '<div class="cell small-6 data-element text-center">'.$each_label.'</div>';
-                                    echo '<div class="cell small-6 data-element text-center">'.$each_value.'</div>';
+                                    echo '<div class="cell medium-7 small-6 data-element text-center">'.$each_label.'</div>';
+                                    echo '<div class="cell medium-5 small-6 data-element text-center">'.$each_value.'</div>';
                                   endwhile; endif; ?>
                             </div>
-                          <!-- </div> -->
+                          
                         </div>
 
                         <?php $rowCount++;endwhile; ?>
