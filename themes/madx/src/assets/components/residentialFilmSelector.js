@@ -139,7 +139,7 @@ export default{
 						<hr>
 						<div class="grid-x grid-margin-x">
 							<div class="large-7 cell recommendation">
-								<p>The following recommendations are meant to show a variety of solutions that may meet your needs. Please consult an authorized Madio film dealer to discuss your individual window film needs and to determine the most appropriate window film for your residence.</p>
+								<p>The following recommendations are meant to show a variety of solutions that may meet your needs. Please consult an authorized Madico film dealer to discuss your individual window film needs and to determine the most appropriate window film for your residence.</p>
 							</div>
 							<div class="large-5 cell btn-container">
 								<p><a @click="getFilms" class="btn-yellow solid view-results">View Results &nbsp;&nbsp;<i class="fas fa-caret-down"></i></a></p>

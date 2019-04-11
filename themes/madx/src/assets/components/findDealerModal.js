@@ -24,7 +24,7 @@ export default{
 											<h3 class="blue">{{ dealerName }}</h3>
 											<aside class="yellow-underline center"></aside>
 											<p class="subhead">Please fill out the information below to contact {{ dealerName }} directly</p>
-										  <form method="post">
+										  <form method="post" id="dealer-contact-form">
 												<div class="grid-x grid-margin-x">
 													<div class="medium-6 cell">
 														<input id="first-name" v-model="firstName" type="text" name="first_name" placeholder="First Name *" required>
@@ -41,6 +41,7 @@ export default{
 													<div class="medium-12 cell">
 														<textarea id="user-message" v-model="message" name="message" id="message" cols="20" rows="5" placeholder="Message *" required></textarea>
 														<input v-model="dealerEmail" type="hidden" name="dealer_email" value="dealerEmail">
+														<input v-model="dealerName" type="hidden" name="dealer_name" value="dealerName">
 													</div>
 													<div class="medium-12 cell">
 														<p v-if="error" style="color:red">{{ errorMessage }}</p>
