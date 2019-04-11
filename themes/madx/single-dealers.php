@@ -137,131 +137,137 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 </div>
               </div>
 
-              <div class="medium-12 large-10 large-offset-1 cell single-product-gallery">
+              <?php if(get_field('image_gallery_selector')) { //Start image gallery ?>
 
-                <?php if(get_field('image_gallery_selector')) { //Start image gallery ?>
+                <div class="grid-x">
+                  <div class="medium-12 large-10 large-offset-1 cell single-product-gallery">
+                    <div id="img-gallery" class="grid-x grid-margin-x grid-margin-y">
+                      <!-- Main Image -->
+                      <div class="medium-5 cell">
+                        <div id="image-holder">
+                          <img src="<?php the_field('gallery_main_image'); ?>" alt="" id="constant-img">
+                        </div>
+                      </div>
+                      <!-- Image Thumbnails -->
+                      <div class="medium-7 cell">
+                        <h3 class="blue"><?php the_field('gallery_title'); ?></h3>
+                        <p><?php the_field('gallery_subhead'); ?></p>
 
-                <div id="img-gallery" class="grid-x grid-margin-x grid-margin-y">
-                  <!-- Main Image -->
-                  <div class="medium-5 cell">
-                    <div id="image-holder">
-                      <img src="<?php the_field('gallery_main_image'); ?>" alt="" id="constant-img">
+                        <?php
+                            $count  = 0;
+                            $images = get_field('gallery_images');
+                            $size = 'full';
+                            if( $images ): ?>
+
+                        <ul class="gallery-list">
+
+                          <?php foreach( $images as $image ): ?>
+
+                          <li>
+                            <a @click="gallerySwitcher">
+                              <div class="bg-img<?php if($count === 0){echo ' gallery-active';} ?>"
+                                style="background-image: url(<?php echo wp_get_attachment_image_url( $image['ID'], $size ); ?>)">
+                              </div>
+                            </a>
+                          </li>
+
+                          <?php $count++;endforeach; ?>
+
+                        </ul>
+
+                        <?php endif; ?>
+
+                      </div>
                     </div>
                   </div>
-                  <!-- Image Thumbnails -->
-                  <div class="medium-7 cell">
-                    <h3 class="blue"><?php the_field('gallery_title'); ?></h3>
-                    <p><?php the_field('gallery_subhead'); ?></p>
+                </div>
+              <?php } // End image gallery ?>
+
+              <div class="grid-x">
+                <div class="medium-12 large-10 large-offset-1 cell single-product-details">
+                  <?php if(get_field('anchoring_system_title')) { ?>
+                  <h4><?php the_field('anchoring_system_title'); ?></h4>
+                  <?php } ?>
+
+                  <?php if(get_field('anchoring_system_copy')) { ?>
+                  <div class="content"><?php the_field('anchoring_system_copy') ?></div>
+                  <?php } ?>
+
+                  <?php if(get_field('product_tabs')) { ?>
+
+                  <ul class="tabs" id="safety-tabs" v-tabs>
+                    <?php
+                        $tab_title_count = 0;
+                        if( have_rows('product_tabs') ):
+                          while ( have_rows('product_tabs') ) : the_row(); ?>
+
+                    <li class="tabs-title <?php if($tab_title_count == 0){ echo 'is-active';} ?>">
+                      <a href="#<?php echo 'tab'.$tab_title_count; ?>"
+                        @click="openDistributionTab"><?php the_sub_field('tab_title'); ?></a>
+                    </li>
+
+                    <?php $tab_title_count++;endwhile;endif; ?>
+
+                  </ul>
+
+                  <div id="safety-tabs-content" class="tabs-content" data-tabs-content="safety-tabs">
 
                     <?php
-                        $count  = 0;
-                        $images = get_field('gallery_images');
-                        $size = 'full';
-                        if( $images ): ?>
+                        $tab_panel_count = 0;
+                        if( have_rows('product_tabs') ):
+                          while ( have_rows('product_tabs') ) : the_row(); ?>
 
-                    <ul class="gallery-list">
+                    <div class="tabs-panel <?php if($tab_panel_count == 0){ echo 'is-active';} ?>"
+                      id="<?php echo 'tab'.$tab_panel_count; ?>">
+                      <article><?php the_sub_field('tab_content'); ?></article>
+                    </div>
 
-                      <?php foreach( $images as $image ): ?>
-
-                      <li>
-                        <a @click="gallerySwitcher">
-                          <div class="bg-img<?php if($count === 0){echo ' gallery-active';} ?>"
-                            style="background-image: url(<?php echo wp_get_attachment_image_url( $image['ID'], $size ); ?>)">
-                          </div>
-                        </a>
-                      </li>
-
-                      <?php $count++;endforeach; ?>
-
-                    </ul>
-
-                    <?php endif; ?>
+                    <?php $tab_panel_count++;endwhile;endif; ?>
 
                   </div>
-                </div>
 
-                <?php } // End image gallery ?>
-              </div>
+                  <?php } ?>
 
+                  <?php if( have_rows('product_downloads') ) : ?>
 
-              <div class="medium-12 large-10 large-offset-1 cell single-product-details">
-                <?php if(get_field('anchoring_system_title')) { ?>
-                <h4><?php the_field('anchoring_system_title'); ?></h4>
-                <?php } ?>
+                  <h4><?php _e('Dealer Resources','madx') ?></h4>
+                  <hr>
+                  <div class="grid-x grid-margin-y grid-margin-x file-downloads">
 
-                <?php if(get_field('anchoring_system_copy')) { ?>
-                <div class="content"><?php the_field('anchoring_system_copy') ?></div>
-                <?php } ?>
+                    <?php
+                        $dl_count = 1;
+                        while ( have_rows('product_downloads') ) : the_row(); ?>
 
-                <?php if(get_field('product_tabs')) { ?>
-
-                <ul class="tabs" id="safety-tabs" v-tabs>
-                  <?php
-											$tab_title_count = 0;
-											if( have_rows('product_tabs') ):
-											  while ( have_rows('product_tabs') ) : the_row(); ?>
-
-                  <li class="tabs-title <?php if($tab_title_count == 0){ echo 'is-active';} ?>">
-                    <a href="#<?php echo 'tab'.$tab_title_count; ?>"
-                      @click="openDistributionTab"><?php the_sub_field('tab_title'); ?></a>
-                  </li>
-
-                  <?php $tab_title_count++;endwhile;endif; ?>
-
-                </ul>
-
-                <div id="safety-tabs-content" class="tabs-content" data-tabs-content="safety-tabs">
-
-                  <?php
-											$tab_panel_count = 0;
-											if( have_rows('product_tabs') ):
-											  while ( have_rows('product_tabs') ) : the_row(); ?>
-
-                  <div class="tabs-panel <?php if($tab_panel_count == 0){ echo 'is-active';} ?>"
-                    id="<?php echo 'tab'.$tab_panel_count; ?>">
-                    <article><?php the_sub_field('tab_content'); ?></article>
-                  </div>
-
-                  <?php $tab_panel_count++;endwhile;endif; ?>
-
-                </div>
-
-                <?php } ?>
-
-                <?php if( have_rows('product_downloads') ) : ?>
-
-                <h4><?php _e('Dealer Resources','madx') ?></h4>
-                <hr>
-                <div class="grid-x grid-margin-y grid-margin-x file-downloads">
-
-                  <?php
-										  $dl_count = 1;
-										  while ( have_rows('product_downloads') ) : the_row(); ?>
-
-                  <div
-                    class="medium-6 large-5<?php if($dl_count % 2 !== 0){echo ' medium-offset-0 large-offset-1';} ?> cell">
-                    <div class="grid-x grid-margin-x grid-margin-y">
-                      <div class="medium-2 cell text-center">
-                        <i class="fal fa-file-pdf"></i>
-                      </div>
-                      <div class="medium-10 cell">
-                        <a href="<?php the_sub_field('document_file'); ?>"
-                          target="_blank"><?php the_sub_field('document_title'); ?></a>
-                        <p><?php the_sub_field('document_download_cta'); ?></p>
+                    <div
+                      class="medium-6 large-5<?php if($dl_count % 2 !== 0){echo ' medium-offset-0 large-offset-1';} ?> cell">
+                      <div class="grid-x grid-margin-x grid-margin-y">
+                        <div class="medium-2 cell text-center">
+                          <i class="fal fa-file-pdf"></i>
+                        </div>
+                        <div class="medium-10 cell">
+                          <a href="<?php the_sub_field('document_file'); ?>"
+                            target="_blank"><?php the_sub_field('document_title'); ?></a>
+                          <p><?php the_sub_field('document_download_cta'); ?></p>
+                        </div>
                       </div>
                     </div>
+
+                    <?php $dl_count++;endwhile; ?>
+
+                  </div>
+                  <hr style="margin-bottom:40px">
+
+                  <?php endif; ?>
+
+                  <div id="single-benefits" class="grid-x" style="margin-bottom: 30px;">
+                    <?php get_template_part('template-parts/taxonomy/benefits'); ?>
                   </div>
 
-                  <?php $dl_count++;endwhile; ?>
-
+                  <p style="margin-bottom: 40px;">
+                    <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>">
+                      <button class="btn-lt-blue border"><i class="fas fa-arrow-alt-left"></i>&nbsp; Back</button>
+                    </a></p>
                 </div>
-                <hr style="margin-bottom:40px">
-
-                <?php endif; ?>
-
-                <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>">
-                  <button class="btn-lt-blue border"><i class="fas fa-arrow-alt-left"></i>&nbsp; Back</button>
-                </a>
               </div>
             </div>
           </div>
@@ -271,14 +277,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
   </div>
   </div>
 </section>
-
-
-
-
-
-
-
-
 <?php
 $show_related_posts = false;
 if($show_related_posts){
