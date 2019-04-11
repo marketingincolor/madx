@@ -115,8 +115,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                           <?php while ( have_rows('product_specs') ) : the_row(); ?>
 
                           <div id="panel<?php echo $rowCount; ?>"
-                            class="small-12 cell tabs-panel<?php if($rowCount === 0){echo ' is-active';} ?>"
-                            id="panel1">
+                            class="small-12 cell tabs-panel<?php if($rowCount === 0){echo ' is-active';} ?>">
 
                             <div class="grid-x">
                               <?php if( have_rows('specsheet_product_specs')):
@@ -127,13 +126,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                                     echo '<div class="cell small-6 data-element text-center">'.$each_value.'</div>';
                                   endwhile; endif; ?>
                             </div>
-                          </div>
+                          <!-- </div> -->
                         </div>
 
+                        <?php $rowCount++;endwhile; ?>
                       </div>
-
-                      <?php $rowCount++;endwhile; ?>
-                    </div> 
+                    </div>
                     <?php endif; // /if statement from line 84 ?>
                   </div> <!-- /.table -->
                 </div>
