@@ -113,9 +113,7 @@
 
   <script type="text/javascript">
     var _ss = _ss || [];
-    console.log(location.href.indexOf('specialty-solutions/products'));
     var callThisOnReturn = function(resp) {
-      console.log(resp);
       if(location.href.indexOf('specialty-solutions/products') > -1){
         jQuery('.data-sheet').on('click',function(){
           var that = $(this);
@@ -125,12 +123,6 @@
           } else {
         jQuery('#specialty-form-modal').foundation('open');
         var pdfLink = jQuery(this).data('pdf');
-        console.log(pdfLink);
-        //jQuery('#input_6').val(pdfLink);
-        //jQuery('#$jot_id').find('button[type=submit]').on('click',function(event){
-        //  event.preventDefault();
-        //  submitForm(pdfLink);
-        //});
           }
         });
       }
