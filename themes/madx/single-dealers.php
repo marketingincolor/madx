@@ -133,7 +133,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                       </div> <!-- /film-performance-measurements -->
                     </div> <!-- /.table -->
                   </div>
-                  <?php endif; // /if statement from line 85 ?>
+                <?php endif; // /if statement from line 85 ?>
 
                 <?php if(get_field('product_secondary_data_title')): ?>
                   <div class="small-12 cell">
@@ -149,7 +149,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
                 <?php if(get_field('image_gallery_selector')) { //Start image gallery ?>
 
-                <div class="grid-x">
                   <div class="medium-12 large-10 large-offset-1 cell single-product-gallery">
                     <div id="img-gallery" class="grid-x grid-margin-x grid-margin-y">
                       <!-- Main Image -->
@@ -190,7 +189,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                       </div>
                     </div>
                   </div>
-                </div>
                 <?php } // End image gallery ?>
 
                 <div class="medium-12 cell single-product-details">
