@@ -120,7 +120,7 @@
                 <?php endif; // /if statement from line 69 ?>
 
                 <div id="single-benefits" class="medium-12 cell" style="margin-bottom: 30px;">
-                  <h4 style="margin-bottom:20px"><?php _e('Benefits','madx'); ?></h4>
+                  <h4 style="margin-bottom:20px;color:#FFF"><?php _e('Benefits','madx'); ?></h4>
                   <div class="grid-x">
                     <?php get_template_part('template-parts/taxonomy/benefits'); ?>
                   </div>

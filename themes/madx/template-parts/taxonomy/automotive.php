@@ -77,6 +77,14 @@
 									<div class="medium-10 medium-offset-1 cell">
 										<h4 class="blue"><?php the_title(); ?></h4>
 										<div class="content"><?php the_content(); ?></div>
+
+                    <?php if(get_field('product_secondary_data_title')): ?>
+                      <h4><?php the_field('product_secondary_data_title'); ?></h4>
+                    <?php endif; ?>
+                    
+                    <?php if(get_field('product_secondary_data_content')): ?>
+                      <div class="content"><?php the_field('product_secondary_data_content'); ?></div>
+                    <?php endif; ?>
 										
                     <?php if( have_rows('product_downloads') ) : ?>
 
