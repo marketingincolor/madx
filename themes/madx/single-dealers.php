@@ -21,7 +21,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
   <div class="grid-container">
     <div class="grid-x">
       <div class="large-8 small-10 small-offset-1 large-offset-2 cell text-center">
-        <h1 class="blue"><?php the_field('product_title'); ?></h1>
+        <h1 class="blue"><?php get_field('product_title') ? the_field('product_title') : the_title(); ?></h1>
       </div>
     </div>
   </div>
@@ -268,9 +268,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
                   <h4 style="margin-bottom:20px"><?php _e('Benefits','madx') ?></h4>
 
-                  <div id="single-benefits" class="grid-x" style="margin-bottom: 30px;">
-                    <?php get_template_part('template-parts/taxonomy/benefits'); ?>
-                  </div>
+                  <!-- UNCOMMENT TO SHOW BENEFITS -->
+                  <!-- <div id="single-benefits" class="grid-x" style="margin-bottom: 30px;">
+                    <?php //get_template_part('template-parts/taxonomy/benefits'); ?>
+                  </div> -->
 
                   <p class="go-back">
                     <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>">

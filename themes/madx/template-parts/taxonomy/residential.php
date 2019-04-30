@@ -1,7 +1,10 @@
 <?php 
 $term = get_queried_object();
+
 if ($term->slug == 'case-studies' || $term->slug == 'safety-security') {
 	include( locate_template( '/template-parts/taxonomy/residential/residential-'.$term->slug.'.php', false, false ) );
+}else if($term->slug == 'anti-intrusion' || $term->slug == 'natural-disaster-mitigation'){
+  include( locate_template( '/template-parts/taxonomy/residential/residential-safety.php', false, false ) );
 }else{ ?>
 
 	<div class="show-for-small-only">

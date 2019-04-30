@@ -119,6 +119,13 @@
                 </div>
                 <?php endif; // /if statement from line 69 ?>
 
+                <div id="single-benefits" class="medium-12 cell" style="margin-bottom: 30px;">
+                  <h4 style="margin-bottom:20px;color:#FFF"><?php _e('Benefits','madx'); ?></h4>
+                  <div class="grid-x">
+                    <?php get_template_part('template-parts/taxonomy/benefits'); ?>
+                  </div>
+                </div>
+
                 <?php if(get_field('product_secondary_data_title')): ?>
                   <div class="small-12 cell">
                     <h4><?php the_field('product_secondary_data_title'); ?></h4>
@@ -131,9 +138,96 @@
                   </div>
                 <?php endif; ?>
 
-                <?php if( have_rows('product_downloads') ) : ?>
-                
-                <div class="small-12 cell">
+                <?php if(get_field('image_gallery_selector')) { //Start image gallery ?>
+
+                  <div class="medium-12 large-10 large-offset-1 cell single-product-gallery">
+                    <div id="img-gallery" class="grid-x grid-margin-x grid-margin-y">
+                      <!-- Main Image -->
+                      <div class="medium-5 cell">
+                        <div id="image-holder">
+                          <img src="<?php the_field('gallery_main_image'); ?>" alt="" id="constant-img">
+                        </div>
+                      </div>
+                      <!-- Image Thumbnails -->
+                      <div class="medium-7 cell">
+                        <h3 class="blue"><?php the_field('gallery_title'); ?></h3>
+                        <p><?php the_field('gallery_subhead'); ?></p>
+
+                        <?php
+                            $count  = 0;
+                            $images = get_field('gallery_images');
+                            $size = 'full';
+                            if( $images ): ?>
+
+                        <ul class="gallery-list">
+
+                          <?php foreach( $images as $image ): ?>
+
+                          <li>
+                            <a @click="gallerySwitcher">
+                              <div class="bg-img<?php if($count === 0){echo ' gallery-active';} ?>"
+                                style="background-image: url(<?php echo wp_get_attachment_image_url( $image['ID'], $size ); ?>)">
+                              </div>
+                            </a>
+                          </li>
+
+                          <?php $count++;endforeach; ?>
+
+                        </ul>
+
+                        <?php endif; ?>
+
+                      </div>
+                    </div>
+                  </div>
+                <?php } // End image gallery ?>
+
+                <div class="medium-12 cell single-product-details">
+                  <?php if(get_field('anchoring_system_title')) { ?>
+                  <h4><?php the_field('anchoring_system_title'); ?></h4>
+                  <?php } ?>
+
+                  <?php if(get_field('anchoring_system_copy')) { ?>
+                  <div class="content"><?php the_field('anchoring_system_copy') ?></div>
+                  <?php } ?>
+
+                  <?php if(get_field('product_tabs')) { ?>
+
+                  <ul class="tabs" id="safety-tabs" v-tabs>
+                    <?php
+                        $tab_title_count = 0;
+                        if( have_rows('product_tabs') ):
+                          while ( have_rows('product_tabs') ) : the_row(); ?>
+
+                    <li class="tabs-title <?php if($tab_title_count == 0){ echo 'is-active';} ?>">
+                      <a href="#<?php echo 'tab'.$tab_title_count; ?>"
+                        @click="openDistributionTab"><?php the_sub_field('tab_title'); ?></a>
+                    </li>
+
+                    <?php $tab_title_count++;endwhile;endif; ?>
+
+                  </ul>
+
+                  <div id="safety-tabs-content" class="tabs-content" data-tabs-content="safety-tabs">
+
+                    <?php
+                        $tab_panel_count = 0;
+                        if( have_rows('product_tabs') ):
+                          while ( have_rows('product_tabs') ) : the_row(); ?>
+
+                    <div class="tabs-panel <?php if($tab_panel_count == 0){ echo 'is-active';} ?>"
+                      id="<?php echo 'tab'.$tab_panel_count; ?>">
+                      <article><?php the_sub_field('tab_content'); ?></article>
+                    </div>
+
+                    <?php $tab_panel_count++;endwhile;endif; ?>
+
+                  </div>
+
+                  <?php } ?>
+
+                  <?php if( have_rows('product_downloads') ) : ?>
+
                   <h4><?php _e(ucfirst(get_post_type()) . ' Resources','madx') ?></h4>
                   <hr>
                   <div class="grid-x grid-margin-y grid-margin-x file-downloads">
@@ -142,8 +236,7 @@
                         $dl_count = 1;
                         while ( have_rows('product_downloads') ) : the_row(); ?>
 
-                    <div
-                      class="medium-6 large-5<?php if($dl_count % 2 !== 0){echo ' medium-offset-0 large-offset-1';} ?> cell">
+                    <div class="medium-6 large-5<?php if($dl_count % 2 !== 0){echo ' medium-offset-0 large-offset-1';} ?> cell">
                       <div class="grid-x grid-margin-x grid-margin-y">
                         <div class="medium-2 cell text-center">
                           <i class="fal fa-file-pdf"></i>
@@ -169,12 +262,16 @@
 
                   </div>
                   <hr style="margin-bottom:40px">
-                </div>
-                <?php endif; ?>
 
-                <p class="go-back"><a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>">
-                    <button class="btn-lt-blue border"><i class="fas fa-arrow-alt-left"></i>&nbsp; Back</button>
-                  </a></p>
+                  <?php endif; ?>
+
+                  <p class="go-back">
+                    <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>">
+                      <button class="btn-lt-blue border"><i class="fas fa-arrow-alt-left"></i>&nbsp; Back</button>
+                    </a>
+                  </p>
+
+                </div>
               </div>
             </div>
           </div>
@@ -186,7 +283,7 @@
 </section>
 
 <?php if(strpos($current_url, 'specialty-solutions') !== false){ ?>
-<?php get_template_part('template-parts/taxonomy/specialty-solutions/contact'); ?>
+  <?php get_template_part('template-parts/taxonomy/specialty-solutions/contact'); ?>
 <?php } ?>
 
 <?php endwhile; ?>
