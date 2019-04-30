@@ -29,14 +29,14 @@
 	</div>
 	<div class="grid-container">
 		<div class="grid-x">
-			<div class="small-10 small-offset-1 large-12 large-offset-0">
+			<div class="small-10 small-offset-1 large-8 large-offset-2">
 				<div class="grid-x grid-margin-x grid-margin-y">
 
 					<?php
 					if( have_rows('safety_film_types',$term) ):
 					  while ( have_rows('safety_film_types',$term) ) : the_row(); ?>
 
-					<div class="medium-6 large-4 cell module auto-height text-center">
+					<div class="medium-6 cell module auto-height text-center">
 						<a href="<?php the_sub_field('safety_film_link',$term); ?>"><div class="module-bg" style="background-image: url(<?php the_sub_field('safety_film_image',$term); ?>)"></div></a>
 						<div class="meta">
 							<a href="<?php the_sub_field('safety_film_link',$term); ?>"><h4 class="blue"><?php the_sub_field('safety_film_title',$term); ?></h4></a>

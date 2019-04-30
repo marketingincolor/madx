@@ -47,7 +47,7 @@
                 $args = array(
                   'post_type'      => $post_type,
                   'posts_per_page' => -1,
-                  'orderby'        => 'title',
+                  'orderby'        => 'menu_order',
                   'order'          => 'ASC',
                   'tax_query'      => array(
                     array(
@@ -110,7 +110,12 @@
                   <div class="meta">
                     <h4 class="blue"><?php the_title(); ?></h4>
                     <div class="content">
-                      <?php the_field('short_description'); ?>
+                      <?php if (get_field('short_description')) {
+                        the_field('short_description');
+                      }else{
+                        echo wp_trim_words( get_the_content(), 25, '...' );
+                      }
+                      ?>
                     </div>
                     <a href="<?php the_permalink(); ?>" class="read-more blue">View Product Details &nbsp;<i class="far fa-long-arrow-right"></i></a>
                   </div>
