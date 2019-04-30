@@ -17,17 +17,17 @@ if ( $video_query->have_posts() ) : while ( $video_query->have_posts() ) : $vide
 	?>
 
 	<div class="medium-4 cell module auto-height <?php echo $post_slug; ?>">
-		<div class="image-link" data-videotitle="Title of Video">
-			<a href="#!" data-open="video-modal" class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><div class="module-bg madicou-modal-image-<?php echo $title_joined; ?>" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div></a>
+		<div class="image-link">
+			<a href="<?php the_permalink(); ?>"><div class="module-bg madicou-modal-image-<?php echo $title_joined; ?>" style="background-image: url(<?php the_post_thumbnail_url(); ?>)"></div></a>
 		</div>
 		<div class="meta">
-			<button data-open="video-modal" class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><h4 class="blue madicou-modal-heading-<?php echo $title_joined; ?>"><?php the_title() ;?></h4></button>
+			<a href="<?php the_permalink(); ?>"><h4 class="blue madicou-modal-heading-<?php echo $title_joined; ?>"><?php the_title() ;?></h4></a>
 			<p><i class="fal fa-clock"></i> &nbsp;<?php echo $video_meta; ?></p>
 		</div>
 	</div>
 
 <?php endwhile; else: ?> 
 	<div class="cell">
-		<p style="padding:1em;">There are no <?php echo $post->post_title; ?> Videos to display</p>
+		<p style="padding:1em;">There are no <?php echo $post->post_title; ?> videos to display</p>
 	</div>
 <?php endif;wp_reset_postdata(); ?>

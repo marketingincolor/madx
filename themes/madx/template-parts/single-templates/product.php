@@ -36,6 +36,8 @@
             $url_array   = explode('/', $current_url);
             $url1_split  = explode('-', $url_array[1]);
             $url1_joined = implode(' ', $url1_split);
+            $url2_split  = explode('-', $url_array[2]);
+            $url2_joined = implode(' ', $url2_split);
             $url3_split  = explode('-', $url_array[3]);
             $url3_joined = implode(' ', $url3_split);
             $url4_split  = explode('-', $url_array[4]);
@@ -45,7 +47,7 @@
             <div id="breadcrumbs" class="breadcrumbs" style="margin:20px 0 0">
               <h5 class="breadcrumb-title"><a href="<?php echo '/'. $url_array[1]; ?>"><?php echo $url1_joined; ?></a>
                 <i class="fas fa-chevron-right"></i> <a
-                  href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>"><span><?php echo $url_array[2]; ?></span></a>
+                  href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>"><span><?php echo $url2_joined; ?></span></a>
                 <?php if($url4_joined){ ?><i class="fas fa-chevron-right"></i> <a
                   href="<?php echo '/'. $url_array[1] .'/'. $url_array[2] .'/'. $url_array[3] . '/' . $url_array[4]; ?>"><span><?php echo $url4_joined; ?></span></a>
               </h5><?php } ?>
