@@ -303,7 +303,12 @@ export default{
 	      .get(apiRoot + 'automotive/' + postID + '?_embed')
 	      .then(function (response) {
 	      	$this.modalTitle    = response.data.title.rendered;
-	      	$this.modalBody     = response.data.content.rendered;
+	      	//$this.modalBody     = response.data.content.rendered;
+	    	if (response.data.acf.film_selector_product_modal) {
+			$this.modalBody     = response.data.acf.film_selector_product_modal;
+	      	}else{
+			$this.modalBody     = response.data.content.rendered;
+	      	}
 	      	$this.modalImage    = response.data.acf.film_selector_product_image;
 	      	$this.modalLogo     = response.data.acf.film_selector_product_logo;
 	      	$this.modalBrochure = response.data.acf.pdf_link;
