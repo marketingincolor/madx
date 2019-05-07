@@ -16,7 +16,7 @@
           </div>
           <div class="small-6 medium-4 large-2 cell">
             <ul>
-              <li class="heading"><h6 class="blue">Films</h6></li>
+              <li class="heading"><h6 class="blue">Window Films</h6></li>
               <?php foundationpress_footer_films(); ?>
             </ul>
           </div>

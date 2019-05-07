@@ -23,12 +23,12 @@
 		<?php the_content(); ?>
 	</div>
 	<?php if (get_field('document_attachment')) { ?>
-		<div class="meta flex-document">
+		<div class="meta flex-document" style="padding-top:0px;">
 			<p><a href="<?php echo get_field('document_attachment'); ?>" target="_blank">Download</a> this document</p>
 		</div>
 	<?php } ?>
 	<?php if (get_field('video_attachment')) { ?>
-		<div class="meta flex-document">
+		<div class="meta flex-document" style="padding-top:0px;">
 			<p><a href="<?php echo get_field('video_attachment'); ?>" target="_blank">Learn More &nbsp;<i class="far fa-long-arrow-right"></i></a></p>
 		</div>
 	<?php } ?>
