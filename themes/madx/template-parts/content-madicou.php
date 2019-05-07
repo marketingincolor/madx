@@ -29,7 +29,7 @@
 	<?php } ?>
 	<?php if (get_field('video_attachment')) { ?>
 		<div class="meta flex-document">
-			<p><a href="<?php echo get_field('video_attachment'); ?>" target="_blank">Download</a> this document</p>
+			<p><a href="<?php echo get_field('video_attachment'); ?>" target="_blank">Learn More &nbsp;<i class="far fa-long-arrow-right"></i></a></p>
 		</div>
 	<?php } ?>
 </article>
