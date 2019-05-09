@@ -39,7 +39,7 @@
             </ul>
           </div>
           <div class="small-12 cell" style="margin-top:30px">
-            <div class="grid-x grid-margin-x align-middle align-center grid-margin-y small-up-3 medium-up-5 large-up-5 footer-logos">
+            <div class="grid-x grid-margin-x align-middle align-center grid-margin-y small-up-3 medium-up-6 large-up-6 footer-logos">
               <div class="cell text-center">
                 <a href="https://www.aia.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/AIA.png" alt="AIA"></a>
               </div>
@@ -58,6 +58,11 @@
               <div class="cell text-center">
                 <a href="https://www.semashow.com/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/SEMA.png" alt="SEMA"></a>
               </div>
+
+              <div class="cell text-center">
+                <a href="https://www.arcat.com/arcatcos/cos33/arc33948.html" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/ARCAT.png" alt="ARCAT"></a>
+              </div>
+
               <div class="cell text-center">
                 <a href="http://www.ewfa.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/EWFA.png" alt="EWFA"></a>
               </div>
@@ -66,6 +71,9 @@
               </div>
               <div class="cell text-center">
                 <a href="https://www.uitp.org/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/UITP.png" alt="UITP"></a>
+              </div>
+              <div class="cell text-center">
+                <a href="https://www.pca.org/membership?utm_source=Adwords&utm_medium=search&utm_campaign=adwords-search&gclid=Cj0KCQjwn8_mBRCLARIsAKxi0GKI9y3JubQfE4Fb9Th_mrO6al7175b7VOOW0Ab6_30bqGX1BNDyRxEaAofxEALw_wcB" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/footer-logos/PCA.png" alt="PCA"></a>
               </div>
             </div>
           </div>
