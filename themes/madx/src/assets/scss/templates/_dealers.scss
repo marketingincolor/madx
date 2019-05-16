@@ -457,7 +457,47 @@
 		@include breakpoint(small down){
 			padding: 10% 0;
 		}
-	}
+  }
+  
+  .dealer-quarter{
+    padding: 3% 0 6%; 
+
+    .btn-blue.border {
+
+      span{
+        color: #4d7da6;
+        font-size: 1rem;
+        font-family: 'AvenirLTStd-Black';
+      }
+
+      &:hover span{
+        color: $white;
+      }
+    }
+
+    @include breakpoint(medium down){
+      background-position: right center !important;
+    }
+    
+    @include breakpoint(small down){
+      background: none!important;
+
+      .grid-container{
+        padding: 6% 0;
+      }
+    }
+
+    .large-5.cell{
+
+      @include breakpoint(small down){
+        text-align: center;
+
+        .yellow-underline{
+					margin: 20px auto 30px;
+				}
+      }
+    }
+  }
 
 	.benefit2{
 
