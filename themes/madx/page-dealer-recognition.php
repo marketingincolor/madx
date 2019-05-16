@@ -78,6 +78,23 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	</div>
 </section>
 
+<section class="dealer-quarter" style="background: url(<?php the_field('dealer_quarter_background_image'); ?>) center top / cover no-repeat">
+  <!-- Mobile Image -->
+	<div class="hide-for-medium">
+		<img src="<?php the_field('dealer_quarter_background_image'); ?>" alt="<?php the_field('third_benefit_heading'); ?>" class="mobile-image">
+	</div>
+  <div class="grid-container">
+    <div class="grid-x">
+      <div class="small-10 small-offset-1 large-5 large-offset-7 medium-6 medium-offset-6 cell">
+        <h2 class="blue"><?php the_field('dealer_quarter_headline'); ?></h2>
+        <aside class="yellow-underline left"></aside>
+        <p style="margin-bottom:30px;"><?php the_field('dealer_quarter_body'); ?></p>
+        <a data-target="#cta" @click="smoothScroll" class="btn-blue border"><span><?php the_field('dealer_quarter_button_text') ?></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="benefit3" style="background: url(<?php the_field('first_benefit_background_image'); ?>) center center / cover no-repeat">
 	<!-- Mobile Image -->
 	<div class="hide-for-medium">

@@ -21,7 +21,7 @@ if ($query->have_posts()) {
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 large-8 small-offset-1 large-offset-2 text-center">
-				<h2 class="blue">Customer Testimonials</h2>
+				<h2 class="blue">Dealer Testimonials</h2>
 				<aside class="yellow-underline center"></aside>
 				<!-- Foundation 6 Carousel/Orbit -->
 				<div class="orbit" role="region" aria-label="Customer Testimonials" v-f-orbit>
