@@ -156,46 +156,58 @@ EOT;
 
 function short_sharp_jot($atts, $content = null){
 	$a = shortcode_atts(array(
-		'jf' => '',
+		'jc' => '',
 		'ss' => ''
 	), $atts);
 
 	// this parameter should be passed by the SHORTCODE - [ jotspring jf='' ss='' ]
-	$jot_id     = $a['jf'];
+	$jot_id     = $a['jc'];
 	$ss_id      = $a['ss'];
 
+	$simplehtml = file_get_html("https://form.jotform.com/{$jot_id}",false,null,0);
 	$url = $_SERVER['REQUEST_URI'];
+	if ($ss_id != '') {
+		if (strpos($url, 'specialty-solutions/products') !== false) {
 
-	if (strpos($url, 'specialty-solutions/products') !== false) {
-
-	$page_ss = <<<EOT
-	<script type="text/javascript">
-	    var ss_form = {'account': 'MzawMDE3NjSzBAA', 'formID': '$ss_id'};
-	    ss_form.width = '100%';
-	    ss_form.height = 'auto';
-	    ss_form.domain = 'app-3QNHJKLJ4E.marketingautomation.services';
-	    // ss_form.hidden = {'Company': 'Anon'}; // Modify this for sending hidden variables, or overriding values
-	</script>
-	<script type="text/javascript" src="https://koi-3QNHJKLJ4E.marketingautomation.services/client/form.js?ver=1.1.1"></script>
+		$page_ss = <<<EOT
+		<script type="text/javascript">
+		    var ss_form = {'account': 'MzawMDE3NjSzBAA', 'formID': '$ss_id'};
+		    ss_form.width = '100%';
+		    ss_form.height = 'auto';
+		    ss_form.domain = 'app-3QNHJKLJ4E.marketingautomation.services';
+		    // ss_form.hidden = {'Company': 'Anon'}; // Modify this for sending hidden variables, or overriding values
+		</script>
+		<script type="text/javascript" src="https://koi-3QNHJKLJ4E.marketingautomation.services/client/form.js?ver=1.1.1"></script>
 EOT;
 
-	$form_output = $page_ss;
-	} else {
+		$form_output = $page_ss;
+		} else {
 
-	$page_ss = <<<EOT
-	<script type="text/javascript">
-	    var ss_form = {'account': 'MzawMDE3NjSzBAA', 'formID': '$ss_id'};
-	    ss_form.width = '100%';
-	    ss_form.height = '1250';
-	    ss_form.domain = 'app-3QNHJKLJ4E.marketingautomation.services';
-	    // ss_form.hidden = {'Company': 'Anon'}; // Modify this for sending hidden variables, or overriding values
-	</script>
-	<script type="text/javascript" src="https://koi-3QNHJKLJ4E.marketingautomation.services/client/form.js?ver=1.1.1"></script>
+		$page_ss = <<<EOT
+		<script type="text/javascript">
+		    var ss_form = {'account': 'MzawMDE3NjSzBAA', 'formID': '$ss_id'};
+		    ss_form.width = '100%';
+		    ss_form.height = '1250';
+		    ss_form.domain = 'app-3QNHJKLJ4E.marketingautomation.services';
+		    // ss_form.hidden = {'Company': 'Anon'}; // Modify this for sending hidden variables, or overriding values
+		</script>
+		<script type="text/javascript" src="https://koi-3QNHJKLJ4E.marketingautomation.services/client/form.js?ver=1.1.1"></script>
 EOT;
-	
-	$form_output = $page_ss;
+		
+		$form_output = $page_ss;
+		}
 	}
+	if ($jot_id != '') {
+		$page_jot = <<<EOT
+		<script type="text/javascript" src="https://form.jotform.com/jsform/$jot_id"></script>
+EOT;
 
+		$page_html = $simplehtml->find('html',0);
+		$form_output = $page_html;
+	}
+	if ( ($ss_id != '') && ($jot_id != '') ) { 
+		$form_output = 'ERROR WITH JOTSPRING SHORTCODE';
+	}
 	return $form_output;
 }
 
