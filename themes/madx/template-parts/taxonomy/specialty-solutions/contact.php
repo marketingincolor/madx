@@ -33,6 +33,10 @@
 				<aside class="yellow-underline left"></aside>
 				<p class="white"><?php the_field('specialty_contact_subhead',$page_id); ?></p>
 				<a href="<?php the_field('specialty_contact_button_link',$page_id); ?>" class="btn-yellow solid specialty-solutions-footer-cta"><?php the_field('specialty_contact_button_text',$page_id); ?></a>
+			<?php if( get_field('specialty_contact_brochure_link') ): ?>
+				&nbsp;<br class="show-for-small-only"><br class="show-for-small-only"><br class="show-for-small-only">
+				<a href="<?php the_field('specialty_contact_brochure_link',$page_id); ?>" class="btn-yellow border specialty-solutions-footer-cta" style="color:#fff;" target="_blank"><?php the_field('specialty_contact_brochure_text',$page_id); ?></a>
+			<?php endif; ?>
 			</div>
 		</div>
 	</div>

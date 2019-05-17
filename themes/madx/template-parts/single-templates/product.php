@@ -56,6 +56,25 @@
           <div id="single-post" class="small-12 large-10 large-offset-1 cell module auto-height" style="margin-top:0">
             <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>" style="margin-bottom:0">
 
+            <?php if(get_field('product_dropdown_information')) { ?>
+            <div id="testing" class="testing relative">
+              <p class="learn-more white text-center absolute" @click="testingSlideDown"><span
+                  class="white"><?php _e('Learn More','madx') ?></span><br><i class="far fa-chevron-down"></i></p>
+              <div class="grid-x grid-margin-x grid-margin-y">
+                <div class="medium-2 large-1 large-offset-1 cell show-for-large text-right">
+                  <img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/testing-icon.svg"
+                    alt="window film testing regulations">
+                </div>
+                <div class="medium-12 large-9 cell">
+                  <h4 class="white"><?php the_field('product_dropdown_title'); ?></h4>
+                  <div id="testing-content" class="testing-content">
+                    <?php the_field('product_dropdown_information'); ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php } ?>
+
             <div class="meta">
               <div class="grid-x grid-margin-x grid-margin-y">
                 <?php if( have_rows('product_specs') ): 
