@@ -2,6 +2,8 @@
 $term = get_queried_object();
 if ($term->ID == 1258) {
 	$slug = 'protectionpro';
+} elseif ($term->ID == 18804) {
+	$slug = 'sunscape';
 }else{
 	$slug = $term->slug;
 }

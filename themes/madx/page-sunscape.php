@@ -2,45 +2,12 @@
 /* Template Name: SunScape */
 get_header(); ?>
 
-<section class="hero relative" style="background-image: url(<?php the_field('about_hero_background_image'); ?>);">
-	
-	<div class="show-for-small-only small-10 small-offset-1">
-		<?php //get_template_part('template-parts/menus/protectionpro-header-menu'); ?>
-		<a href="/sunscape" rel="top"><img src="/wp-content/uploads/2019/02/sunscape-logo-white-1.png" alt="ProtectionPro by Madico" class="menu-section-home-image"></a>
-	</div>
-
-	<div id="header-grid" class="grid-container">
-		<div class="grid-x onpage relative" style="align-items:flex-start; webkit-align-items:flex-start;">
-			<div class="small-10 small-offset-1 large-12 large-offset-0 cell show-for-medium-only">
-				<?php //get_template_part('template-parts/menus/protectionpro-tablet-menu'); ?>
-				<a href="/sunscape" rel="top"><img src="/wp-content/uploads/2019/02/sunscape-logo-white-1.png" alt="ProtectionPro by Madico" class="menu-section-home-image"></a>
-			</div>
-			<div class="small-10 small-offset-1 large-12 large-offset-0 cell show-for-large">
+<section class="hero-logo relative" style="padding:5% 0;">
+	<div class="grid-container">
+		<div class="grid-x grid-margin-x grid-margin-y">
+			<div class="small-10 small-offset-1 medium-6 medium-offset-3">
 				<?php //get_template_part('template-parts/menus/protectionpro-header-menu'); ?>
-
-				<div class="site-title-bar title-bar" <?php foundationpress_title_bar_responsive_toggle(); ?>>
-					<div class="title-bar-left">
-						<button aria-label="<?php _e( 'Main Menu', 'foundationpress' ); ?>" class="menu-icon" type="button" data-toggle="<?php foundationpress_mobile_menu_id(); ?>"></button>
-						<span class="site-mobile-title title-bar-title">
-							<a href="/protectionpro" rel="top" class="menu-section-home-image"><?php bloginfo( 'template_directory' ); ?></a>
-						</span>
-					</div>
-				</div>
-
-				<div class="top-bar-left">
-					<div class="site-desktop-title top-bar-title">
-						<a href="/sunscape" rel="top"><img src="/wp-content/uploads/2019/02/sunscape-logo-white-1.png" alt="SunScape by Madico" class="menu-section-home-image"></a>
-					</div>
-				</div>
-				<div class="top-bar-right tablet">
-
-				</div>
-
-			</div>
-			<div class="small-10 small-offset-1 medium-6 large-offset-0 cell">
-				<h1 class="white"><?php the_field('about_hero_heading'); ?></h1>
-				<aside class="yellow-underline left"></aside>
-				<p class="white"><?php the_field('about_hero_subhead'); ?></p>
+				<a href="/sunscape" rel="top"><img src="<?php echo get_template_directory_uri(); ?>/dist/assets/images/sunscape-logo-color.svg" alt="SunScape by Madico" class="menu-section-home-image"></a>
 			</div>
 		</div>
 	</div>
@@ -52,7 +19,7 @@ get_header(); ?>
 			<div class="large-8 small-10 small-offset-1 large-offset-2 cell text-center">
 				<h1 class="blue"><?php the_field('sunscape_heading'); ?></h1> 
 				<aside class="yellow-underline center"></aside> 
-				<p class="subhead"><?php the_field('sunscape_subhead'); ?></p>
+				<p class="subhead" style="margin-bottom:10%"><?php the_field('sunscape_subhead'); ?></p>
 			</div>
 		</div> 
 		<div class="grid-x"><!-- sunscape_benefit_icon, sunscape_benefit_title, sunscape_benefit_text -->
@@ -81,13 +48,13 @@ get_header(); ?>
 	</div>
 </section>
 
-<section id="tax-posts" class="taxonomy-products" style="padding-top:0px;">
+<section id="tax-posts" class="taxonomy-products" style="padding-top:6%;">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 large-8 small-offset-1 large-offset-2 text-center">
 				<h2 class="blue"><?php the_field('sunscape_products_heading'); ?></h2> 
 				<aside class="yellow-underline center"></aside> 
-				<p class="subhead"><?php the_field('sunscape_products_subhead'); ?></p>
+				<p><?php the_field('sunscape_products_subhead'); ?></p>
 			</div>
 		</div>
 
@@ -129,6 +96,10 @@ get_header(); ?>
 
 	</div>
 </section>
+
+<?php get_template_part('/template-parts/taxonomy/testimonials'); ?>
+
+<?php get_template_part('/template-parts/taxonomy/find-film'); ?>
 
 <?php get_template_part('template-parts/top-level-page/find-dealer'); ?>
 
