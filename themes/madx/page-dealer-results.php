@@ -186,7 +186,7 @@
       			  <li class="email" data-dealerEmail="<?php echo $dealer_email; ?>"><address><i class="fas fa-envelope"></i> &nbsp;<?php echo $dealer_email; ?></address></li>
       			<?php } ?>
       		
-      		<?php if(has_term('sunscape','designation',$dealer->ID) || has_term('safety-shield','designation',$dealer->ID)){ ?>
+      		<?php if( has_term('sunscape','designation',$dealer->ID) || has_term('safety-shield','designation',$dealer->ID) || has_term('madico-choice','designation',$dealer->ID) ){ ?>
 						
 						<hr>
 
@@ -196,6 +196,10 @@
 
 						<?php if (has_term('safety-shield','designation',$dealer->ID)) { ?>
 							<li style="text-indent: -1.375rem;"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/safety-shield-icon.png" alt="Madico SafetyShield Dealer" style="width:auto;height:auto">&nbsp; <span style="font-size:14px">SafetyShield Premier Partner</span></li>
+						<?php } ?>
+
+						<?php if (has_term('madico-choice','designation',$dealer->ID)) { ?>
+							<li style="text-indent: -1.375rem;"><img src="<?php bloginfo('template_directory'); ?>/dist/assets/images/madico-choice-icon.png" alt="Madico Choice Dealer" style="width:auto;height:auto">&nbsp; <span style="font-size:14px">Madico Choice Dealer</span></li>
 						<?php } ?>
       		</ul>
 
