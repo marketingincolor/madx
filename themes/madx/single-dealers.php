@@ -140,12 +140,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                   </div>
                 <?php endif; // /if statement from line 85 ?>
 
-                <!-- <div id="single-benefits" class="medium-12 cell" style="margin-bottom: 30px;">
-                  <h4 style="margin-bottom:20px;color:#FFF"><?php _e('Benefits','madx'); ?></h4>
-                  <div class="grid-x">
-                    <?php //get_template_part('template-parts/taxonomy/dealer-benefits'); ?>
-                  </div>
-                </div> -->
                 <div class="small-12 cell">
                   <h4 style="margin-bottom:20px"><?php _e('Benefits','madx') ?></h4>
                   
@@ -196,6 +190,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                               <div class="bg-img<?php if($count === 0){echo ' gallery-active';} ?>"
                                 style="background-image: url(<?php echo wp_get_attachment_image_url( $image['ID'], $size ); ?>)">
                               </div>
+                              <span class="swatch-title"><?php echo $image['title']; ?></span>
                             </a>
                           </li>
 

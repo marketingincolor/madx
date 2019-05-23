@@ -201,7 +201,7 @@ var newVue = new Vue({
   mounted(){
     this.closeMobileMenuOutside();
     this.validateForms();
-    if ($('body').hasClass('single-dealers')) {
+    if ($('body').hasClass('single')) {
       this.setGalleryImage();
     }
     if (location.href.includes('protectionpro')) {
@@ -279,7 +279,6 @@ var newVue = new Vue({
         id = event.target.parentElement.hash;
       }else if(event.target.nodeName.toLowerCase() == "select"){
         id = $('select.is-active').find('option:selected').val();
-        console.log(id)
       }
       $(event.target).addClass('is-active');
       $('#tabs-content').find('.tabs-panel').removeClass('is-active');
@@ -356,11 +355,12 @@ var newVue = new Vue({
       });
     },
     setGalleryImage: function(){
-      const imgHolder     = document.getElementById('image-holder');
-      const gallery       = document.getElementById('img-gallery');
-      const activeImgSrc    = gallery.querySelector('.gallery-active').style.backgroundImage;
-
-      imgHolder.style.backgroundImage = activeImgSrc;
+      if (document.getElementById('image-holder')){
+        const imgHolder    = document.getElementById('image-holder');
+        const gallery      = document.getElementById('img-gallery');
+        const activeImgSrc = gallery.querySelector('.gallery-active').style.backgroundImage;
+        imgHolder.style.backgroundImage = activeImgSrc;
+      }
     },
     gallerySwitcher: function(event){
       let activeImg     = event.target;
