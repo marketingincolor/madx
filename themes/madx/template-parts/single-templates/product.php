@@ -32,6 +32,7 @@
         <div class="grid-x grid-margin-x grid-margin-y">
           <?php
             // Get current url and split it up by '/'
+            // This is horrible code. 
             $current_url =  $_SERVER['REQUEST_URI'];
             $url_array   = explode('/', $current_url);
             $url1_split  = explode('-', $url_array[1]);
@@ -164,20 +165,20 @@
                   <div class="medium-12 large-10 large-offset-1 cell single-product-gallery">
                     <div id="img-gallery" class="grid-x grid-margin-x grid-margin-y">
                       <!-- Main Image -->
-                      <div class="medium-5 cell">
+                      <div class="medium-8 medium-offset-2 large-5 large-offset-0 cell">
                         <div id="image-holder">
-                          <img src="<?php the_field('gallery_main_image'); ?>" alt="" id="constant-img">
+                          <img src="<?php the_field('gallery_main_image'); ?>" alt="" id="constant-img" style="height:auto">
                         </div>
                       </div>
                       <!-- Image Thumbnails -->
-                      <div class="medium-7 cell">
+                      <div class="medium-8 medium-offset-2 large-7 large-offset-0 cell">
                         <h3 class="blue"><?php the_field('gallery_title'); ?></h3>
                         <p><?php the_field('gallery_subhead'); ?></p>
 
                         <?php
                             $count  = 0;
                             $images = get_field('gallery_images');
-                            $size = 'full';
+                            $size   = 'full';
                             if( $images ): ?>
 
                         <ul class="gallery-list">
@@ -189,6 +190,7 @@
                               <div class="bg-img<?php if($count === 0){echo ' gallery-active';} ?>"
                                 style="background-image: url(<?php echo wp_get_attachment_image_url( $image['ID'], $size ); ?>)">
                               </div>
+                              <span class="swatch-title"><?php echo $image['title']; ?></span>
                             </a>
                           </li>
 

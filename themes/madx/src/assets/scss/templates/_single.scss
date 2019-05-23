@@ -8,6 +8,66 @@
 
 .single{
 
+  #img-gallery{
+    padding-bottom: 50px;
+    padding-top: 30px;
+
+    @include breakpoint(small down){
+      padding-bottom: 30px;
+      padding-top: 20px;
+    }
+
+    #image-holder{
+      @include bg-center-cover;
+      border-radius: 5px;
+
+      img{
+        border-radius: 5px;
+      }
+    }
+
+    .swatch-title{
+      display: block;
+      text-align: center;
+      text-transform: uppercase;
+      font-family: 'AvenirLTStd-Heavy';
+      font-size: 0.875rem;
+      line-height: 1.3em;
+    }
+
+    p{
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    #constant-img{
+      margin-bottom: 0;
+    }
+
+    .gallery-list{
+      display: flex;
+      margin-left: 0;
+      list-style-type: none;
+      flex-wrap: wrap;
+
+      li{
+        margin: 0 10px;
+      }
+
+      li .bg-img{
+        width: 75px;
+        height: 75px;
+        border-radius: 5px;
+        background-position: -130px -10px;
+        margin: 10px 0;
+
+        &.gallery-active{
+          border: 2px solid $yellow;
+        }
+      }
+    }
+  }
+
 	.overlay{
 		height: 100%;
 		width: 100%;
