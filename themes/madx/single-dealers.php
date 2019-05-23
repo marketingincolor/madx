@@ -235,6 +235,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
                   <?php } ?>
 
+                  <h4 style="margin-bottom:20px"><?php _e('Benefits','madx') ?></h4>
+
+                  <!-- UNCOMMENT TO SHOW BENEFITS -->
+                  <div id="single-benefits" class="grid-x" style="margin-bottom: 30px;">
+                    <?php get_template_part('template-parts/taxonomy/benefits'); ?>
+                  </div>
+
                   <?php if( have_rows('product_downloads') ) : ?>
 
                   <h4><?php _e('Dealer Resources','madx') ?></h4>
@@ -265,13 +272,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                   <hr style="margin-bottom:40px">
 
                   <?php endif; ?>
-
-                  <h4 style="margin-bottom:20px"><?php _e('Benefits','madx') ?></h4>
-
-                  <!-- UNCOMMENT TO SHOW BENEFITS -->
-                  <div id="single-benefits" class="grid-x" style="margin-bottom: 30px;">
-                    <?php get_template_part('template-parts/taxonomy/benefits'); ?>
-                  </div>
 
                   <p class="go-back">
                     <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>">
