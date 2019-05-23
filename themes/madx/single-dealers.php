@@ -146,6 +146,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                     <?php //get_template_part('template-parts/taxonomy/dealer-benefits'); ?>
                   </div>
                 </div> -->
+                <div class="small-12 cell">
+                  <h4 style="margin-bottom:20px"><?php _e('Benefits','madx') ?></h4>
+                  
+                  <div id="single-benefits" class="grid-x" style="margin-bottom: 30px;">
+                    <?php get_template_part('template-parts/taxonomy/benefits'); ?>
+                  </div>
+                </div>
 
                 <?php if(get_field('product_secondary_data_title')): ?>
                   <div class="small-12 cell">
@@ -246,13 +253,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                   </div>
 
                   <?php } ?>
-
-                  <h4 style="margin-bottom:20px"><?php _e('Benefits','madx') ?></h4>
-
-                  <!-- UNCOMMENT TO SHOW BENEFITS -->
-                  <div id="single-benefits" class="grid-x" style="margin-bottom: 30px;">
-                    <?php get_template_part('template-parts/taxonomy/benefits'); ?>
-                  </div>
 
                   <?php if( have_rows('product_downloads') ) : ?>
 
