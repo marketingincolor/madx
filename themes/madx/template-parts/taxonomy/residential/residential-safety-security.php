@@ -41,7 +41,7 @@
 						<div class="meta">
 							<a href="<?php the_sub_field('safety_film_link',$term); ?>"><h4 class="blue"><?php the_sub_field('safety_film_title',$term); ?></h4></a>
 							<p class="content"><?php the_sub_field('safety_film_content',$term); ?></p>
-							<a href="<?php the_sub_field('safety_film_link',$term); ?>"><button class="btn-yellow border"><?php the_sub_field('safety_film_button_text',$term); ?></button>
+							<a href="<?php the_sub_field('safety_film_link',$term); ?>"><button class="btn-yellow border"><?php the_sub_field('safety_film_button_text',$term); ?></button></a>
 						</div>
 					</div>
 
