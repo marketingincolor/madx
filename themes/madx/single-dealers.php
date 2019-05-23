@@ -165,13 +165,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                   <div class="medium-12 large-10 large-offset-1 cell single-product-gallery">
                     <div id="img-gallery" class="grid-x grid-margin-x grid-margin-y">
                       <!-- Main Image -->
-                      <div class="medium-5 cell">
+                      <div class="medium-8 medium-offset-2 large-5 large-offset-0 cell">
                         <div id="image-holder">
                           <img src="<?php the_field('gallery_main_image'); ?>" alt="" id="constant-img">
                         </div>
                       </div>
                       <!-- Image Thumbnails -->
-                      <div class="medium-7 cell">
+                      <div class="medium-8 medium-offset-2 large-7 large-offset-0 cell">
                         <h3 class="blue"><?php the_field('gallery_title'); ?></h3>
                         <p><?php the_field('gallery_subhead'); ?></p>
 
