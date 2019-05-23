@@ -60,6 +60,10 @@
           }
         }
       }
+
+      if(get_post_type() === 'dealers' && $terms[0]->slug === 'decorative'){
+        $child_cat_id = 731;
+      }
 		  
 			$args = array(
 				'post_type' => 'benefits',
