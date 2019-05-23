@@ -35,15 +35,20 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
           <?php
 						// Get current url and split it up by '/'
 						$current_url =  $_SERVER['REQUEST_URI'];
-						$url_array   = explode('/', $current_url);
+            $url_array   = explode('/', $current_url);
 					?>
           <div class="small-12 large-10 large-offset-1 cell">
             <div id="breadcrumbs" class="breadcrumbs">
               <h5 class="breadcrumb-title"><a href="<?php echo '/'. $url_array[1]; ?>"><?php echo $url_array[1]; ?></a>
-                <i class="fas fa-chevron-right"></i> <a
-                  href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>"><span><?php echo $url_array[2]; ?></span></a>
-                <i class="fas fa-chevron-right"></i> <a
-                  href="<?php echo '/'. $url_array[1] .'/'. $url_array[2] .'/'. $url_array[3] . '/' . $url_array[4]; ?>"><span><?php echo $url_array[4]; ?></span></a>
+                <i class="fas fa-chevron-right"></i> 
+                  <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>"><span><?php echo $url_array[2]; ?></span></a>
+                <i class="fas fa-chevron-right"></i> 
+                  <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2] .'/'. $url_array[3]; ?>"><span><?php echo str_replace("-"," ",$url_array[3]); ?></span></a>
+                
+                <?php if($url_array[2] !== 'decorative') { ?>
+                <i class="fas fa-chevron-right"></i> 
+                  <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2] .'/'. $url_array[3] . '/' . $url_array[4]; ?>"><span><?php echo str_replace("-"," ",$url_array[4]); ?></span></a>
+                <?php } ?>
               </h5>
             </div>
           </div>
@@ -141,6 +146,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                     <?php //get_template_part('template-parts/taxonomy/dealer-benefits'); ?>
                   </div>
                 </div> -->
+                <div class="small-12 cell">
+                  <h4 style="margin-bottom:20px"><?php _e('Benefits','madx') ?></h4>
+                  
+                  <div id="single-benefits" class="grid-x" style="margin-bottom: 30px;">
+                    <?php get_template_part('template-parts/taxonomy/benefits'); ?>
+                  </div>
+                </div>
 
                 <?php if(get_field('product_secondary_data_title')): ?>
                   <div class="small-12 cell">
@@ -272,13 +284,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                   <hr style="margin-bottom:40px">
 
                   <?php endif; ?>
-
-                  <h4 style="margin-bottom:20px"><?php //_e('Benefits','madx') ?></h4>
-
-                  <!-- UNCOMMENT TO SHOW BENEFITS -->
-                  <div id="single-benefits" class="grid-x" style="margin-bottom: 30px;">
-                    <?php get_template_part('template-parts/taxonomy/benefits'); ?>
-                  </div>
 
                   <p class="go-back">
                     <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>">
