@@ -158,6 +158,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	</div>
 </section>
 
+</div><!-- Close div#app from header.php -->
+<div id="not-app">
 <section class="contact">
 	<div class="grid-container">
 		<div class="grid-x">
