@@ -5,7 +5,7 @@ get_header(); ?>
 <section class="hero-logo relative" style="padding:5% 0;">
 	<div class="grid-container">
 		<div class="grid-x grid-margin-x grid-margin-y">
-			<div class="small-10 small-offset-1 medium-6 medium-offset-3">
+			<div class="small-10 small-offset-1 medium-4 medium-offset-4">
 				<?php //get_template_part('template-parts/menus/protectionpro-header-menu'); ?>
 				<a href="/sunscape" rel="top"><img src="<?php echo get_template_directory_uri(); ?>/dist/assets/images/sunscape-logo-color.svg" alt="SunScape by Madico" class="menu-section-home-image"></a>
 			</div>

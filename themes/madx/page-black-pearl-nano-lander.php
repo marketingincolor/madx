@@ -485,7 +485,7 @@
         	<div class="row">
         	  <div class="medium-offset-2 medium-8 large-6 large-offset-3 columns text-center">
         	    <img src="<?php echo get_template_directory_uri(); ?>/dist/assets/images/blackpearl-form-icon.png" alt="">
-        	    <h3>Put the pedal to the metal for buy one, get one <br class="show-for-large">50% OFF your first order.</h3>
+        	    <h3>Buy One, Get One <br class="show-for-large">50% OFF your first order.</h3>
         	    <p class="fdesc">Add Black Pearl NC to your portfolio and watch your business grow. Complete the form below to get started.</p>
                 <p style="font-size:11px;">*Offer valid on first purchase of Black Pearl Nano-Ceramic and applies to the second roll purchased only. Dealer must purchase full film rolls (no partials) in a single order to qualify for the discounted roll. Discount applies to the least expensive roll. All sales are final.</p>
                 <?php //gravity_form(33, false); /* staging */ ?>

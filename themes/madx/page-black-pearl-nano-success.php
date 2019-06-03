@@ -267,7 +267,7 @@
                 <div class="header small-12 medium-8 medium-offset-2 columns">
                     <img src="<?php echo get_template_directory_uri(); ?>/dist/assets/images/bpnc-success-icon.png" width="136" alt="Check!" />
                     <h3>Well Done!</h3>
-                    <p>Thank you! We’ve received your information and will be in touch with you very shortly. We appreciate your interest and look forward to helping you grow your business.</p>
+                    <p>We've received your information and will contact you soon.</p>
                  
                     <div class="small-12 small-centered">
                         <div class="q-item" style="text-align:center;">

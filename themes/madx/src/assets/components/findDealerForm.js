@@ -32,7 +32,7 @@ export default{
 	},
 	methods:{
 		getType: function(url){
-			if (url.includes('commercial') || url.includes('residential')) {
+			if (url.includes('commercial') || url.includes('residential') || url.includes('sunscape')) {
 				this.type = 'architectural'
 			}else if (url.includes('safety-security')) {
 				this.type = 'safety-security';
