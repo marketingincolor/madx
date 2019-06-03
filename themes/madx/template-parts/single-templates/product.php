@@ -302,7 +302,7 @@
       </div>
     </div>
   </div>
-  </div>
+  <!--</div> --><!-- was crippling the Node app -->
 </section>
 
 <?php if(strpos($current_url, 'specialty-solutions') !== false){ ?>
