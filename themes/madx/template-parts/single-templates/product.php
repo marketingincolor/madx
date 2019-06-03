@@ -32,6 +32,7 @@
         <div class="grid-x grid-margin-x grid-margin-y">
           <?php
             // Get current url and split it up by '/'
+            // This is horrible code. 
             $current_url =  $_SERVER['REQUEST_URI'];
             $url_array   = explode('/', $current_url);
             $url1_split  = explode('-', $url_array[1]);
@@ -140,6 +141,51 @@
                 </div>
                 <?php endif; // /if statement from line 69 ?>
 
+                <?php if(get_field('image_gallery_selector')) { //Start image gallery ?>
+                
+                  <div class="medium-12 large-10 large-offset-1 cell single-product-gallery">
+                    <div id="img-gallery" class="grid-x grid-margin-x grid-margin-y">
+                      <!-- Main Image -->
+                      <div class="medium-8 medium-offset-2 large-5 large-offset-0 cell">
+                        <div id="image-holder">
+                          <img src="<?php the_field('gallery_main_image'); ?>" alt="" id="constant-img" style="height:auto">
+                        </div>
+                      </div>
+                      <!-- Image Thumbnails -->
+                      <div class="medium-8 medium-offset-2 large-7 large-offset-0 cell">
+                        <h3 class="blue"><?php the_field('gallery_title'); ?></h3>
+                        <p><?php the_field('gallery_subhead'); ?></p>
+                
+                        <?php
+                            $count  = 0;
+                            $images = get_field('gallery_images');
+                            $size   = 'full';
+                            if( $images ): ?>
+                
+                        <ul class="gallery-list">
+                
+                          <?php foreach( $images as $image ): ?>
+                
+                          <li>
+                            <a @click="gallerySwitcher">
+                              <div class="bg-img<?php if($count === 0){echo ' gallery-active';} ?>"
+                                style="background-image: url(<?php echo wp_get_attachment_image_url( $image['ID'], $size ); ?>)">
+                              </div>
+                              <span class="swatch-title"><?php echo $image['title']; ?></span>
+                            </a>
+                          </li>
+                
+                          <?php $count++;endforeach; ?>
+                
+                        </ul>
+                
+                        <?php endif; ?>
+                
+                      </div>
+                    </div>
+                  </div>
+                <?php } // End image gallery ?>
+
                 <div id="single-benefits" class="medium-12 cell" style="margin-bottom: 30px;">
                   <h4 style="margin-bottom:20px;color:#FFF"><?php _e('Benefits','madx'); ?></h4>
                   <div class="grid-x">
@@ -158,50 +204,6 @@
                     <div class="content" style="margin-bottom:0px"><?php the_field('product_secondary_data_content'); ?></div>
                   </div>
                 <?php endif; ?>
-
-                <?php if(get_field('image_gallery_selector')) { //Start image gallery ?>
-
-                  <div class="medium-12 large-10 large-offset-1 cell single-product-gallery">
-                    <div id="img-gallery" class="grid-x grid-margin-x grid-margin-y">
-                      <!-- Main Image -->
-                      <div class="medium-5 cell">
-                        <div id="image-holder">
-                          <img src="<?php the_field('gallery_main_image'); ?>" alt="" id="constant-img">
-                        </div>
-                      </div>
-                      <!-- Image Thumbnails -->
-                      <div class="medium-7 cell">
-                        <h3 class="blue"><?php the_field('gallery_title'); ?></h3>
-                        <p><?php the_field('gallery_subhead'); ?></p>
-
-                        <?php
-                            $count  = 0;
-                            $images = get_field('gallery_images');
-                            $size = 'full';
-                            if( $images ): ?>
-
-                        <ul class="gallery-list">
-
-                          <?php foreach( $images as $image ): ?>
-
-                          <li>
-                            <a @click="gallerySwitcher">
-                              <div class="bg-img<?php if($count === 0){echo ' gallery-active';} ?>"
-                                style="background-image: url(<?php echo wp_get_attachment_image_url( $image['ID'], $size ); ?>)">
-                              </div>
-                            </a>
-                          </li>
-
-                          <?php $count++;endforeach; ?>
-
-                        </ul>
-
-                        <?php endif; ?>
-
-                      </div>
-                    </div>
-                  </div>
-                <?php } // End image gallery ?>
 
                 <div class="medium-12 cell single-product-details">
                   <?php if(get_field('anchoring_system_title')) { ?>

@@ -35,15 +35,20 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
           <?php
 						// Get current url and split it up by '/'
 						$current_url =  $_SERVER['REQUEST_URI'];
-						$url_array   = explode('/', $current_url);
+            $url_array   = explode('/', $current_url);
 					?>
           <div class="small-12 large-10 large-offset-1 cell">
             <div id="breadcrumbs" class="breadcrumbs">
               <h5 class="breadcrumb-title"><a href="<?php echo '/'. $url_array[1]; ?>"><?php echo $url_array[1]; ?></a>
-                <i class="fas fa-chevron-right"></i> <a
-                  href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>"><span><?php echo $url_array[2]; ?></span></a>
-                <i class="fas fa-chevron-right"></i> <a
-                  href="<?php echo '/'. $url_array[1] .'/'. $url_array[2] .'/'. $url_array[3] . '/' . $url_array[4]; ?>"><span><?php echo $url_array[4]; ?></span></a>
+                <i class="fas fa-chevron-right"></i> 
+                  <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>"><span><?php echo $url_array[2]; ?></span></a>
+                <i class="fas fa-chevron-right"></i> 
+                  <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2] .'/'. $url_array[3]; ?>"><span><?php echo str_replace("-"," ",$url_array[3]); ?></span></a>
+                
+                <?php if($url_array[2] !== 'decorative') { ?>
+                <i class="fas fa-chevron-right"></i> 
+                  <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2] .'/'. $url_array[3] . '/' . $url_array[4]; ?>"><span><?php echo str_replace("-"," ",$url_array[4]); ?></span></a>
+                <?php } ?>
               </h5>
             </div>
           </div>
@@ -135,12 +140,58 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                   </div>
                 <?php endif; // /if statement from line 85 ?>
 
-                <!-- <div id="single-benefits" class="medium-12 cell" style="margin-bottom: 30px;">
-                  <h4 style="margin-bottom:20px;color:#FFF"><?php _e('Benefits','madx'); ?></h4>
-                  <div class="grid-x">
-                    <?php //get_template_part('template-parts/taxonomy/dealer-benefits'); ?>
+                <?php if(get_field('image_gallery_selector')) { //Start image gallery ?>
+                
+                  <div class="medium-12 large-10 large-offset-1 cell single-product-gallery">
+                    <div id="img-gallery" class="grid-x grid-margin-x grid-margin-y">
+                      <!-- Main Image -->
+                      <div class="medium-8 medium-offset-2 large-5 large-offset-0 cell">
+                        <div id="image-holder">
+                          <img src="<?php the_field('gallery_main_image'); ?>" alt="" id="constant-img">
+                        </div>
+                      </div>
+                      <!-- Image Thumbnails -->
+                      <div class="medium-8 medium-offset-2 large-7 large-offset-0 cell">
+                        <h3 class="blue"><?php the_field('gallery_title'); ?></h3>
+                        <p><?php the_field('gallery_subhead'); ?></p>
+                
+                        <?php
+                            $count  = 0;
+                            $images = get_field('gallery_images');
+                            $size = 'full';
+                            if( $images ): ?>
+                
+                        <ul class="gallery-list">
+                
+                          <?php foreach( $images as $image ): ?>
+                
+                          <li>
+                            <a @click="gallerySwitcher">
+                              <div class="bg-img<?php if($count === 0){echo ' gallery-active';} ?>"
+                                style="background-image: url(<?php echo wp_get_attachment_image_url( $image['ID'], $size ); ?>)">
+                              </div>
+                              <span class="swatch-title"><?php echo $image['title']; ?></span>
+                            </a>
+                          </li>
+                
+                          <?php $count++;endforeach; ?>
+                
+                        </ul>
+                
+                        <?php endif; ?>
+                
+                      </div>
+                    </div>
                   </div>
-                </div> -->
+                <?php } // End image gallery ?>
+
+                <div class="small-12 cell">
+                  <h4 style="margin-bottom:20px"><?php _e('Benefits','madx') ?></h4>
+                  
+                  <div id="single-benefits" class="grid-x" style="margin-bottom: 30px;">
+                    <?php get_template_part('template-parts/taxonomy/benefits'); ?>
+                  </div>
+                </div>
 
                 <?php if(get_field('product_secondary_data_title')): ?>
                   <div class="small-12 cell">
@@ -153,50 +204,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                     <div class="content" style="margin-bottom:0px"><?php the_field('product_secondary_data_content'); ?></div>
                   </div>
                 <?php endif; ?>
-
-                <?php if(get_field('image_gallery_selector')) { //Start image gallery ?>
-
-                  <div class="medium-12 large-10 large-offset-1 cell single-product-gallery">
-                    <div id="img-gallery" class="grid-x grid-margin-x grid-margin-y">
-                      <!-- Main Image -->
-                      <div class="medium-5 cell">
-                        <div id="image-holder">
-                          <img src="<?php the_field('gallery_main_image'); ?>" alt="" id="constant-img">
-                        </div>
-                      </div>
-                      <!-- Image Thumbnails -->
-                      <div class="medium-7 cell">
-                        <h3 class="blue"><?php the_field('gallery_title'); ?></h3>
-                        <p><?php the_field('gallery_subhead'); ?></p>
-
-                        <?php
-                            $count  = 0;
-                            $images = get_field('gallery_images');
-                            $size = 'full';
-                            if( $images ): ?>
-
-                        <ul class="gallery-list">
-
-                          <?php foreach( $images as $image ): ?>
-
-                          <li>
-                            <a @click="gallerySwitcher">
-                              <div class="bg-img<?php if($count === 0){echo ' gallery-active';} ?>"
-                                style="background-image: url(<?php echo wp_get_attachment_image_url( $image['ID'], $size ); ?>)">
-                              </div>
-                            </a>
-                          </li>
-
-                          <?php $count++;endforeach; ?>
-
-                        </ul>
-
-                        <?php endif; ?>
-
-                      </div>
-                    </div>
-                  </div>
-                <?php } // End image gallery ?>
 
                 <div class="medium-12 cell single-product-details">
                   <?php if(get_field('anchoring_system_title')) { ?>
@@ -272,13 +279,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                   <hr style="margin-bottom:40px">
 
                   <?php endif; ?>
-
-                  <h4 style="margin-bottom:20px"><?php //_e('Benefits','madx') ?></h4>
-
-                  <!-- UNCOMMENT TO SHOW BENEFITS -->
-                  <div id="single-benefits" class="grid-x" style="margin-bottom: 30px;">
-                    <?php get_template_part('template-parts/taxonomy/benefits'); ?>
-                  </div>
 
                   <p class="go-back">
                     <a href="<?php echo '/'. $url_array[1] .'/'. $url_array[2]; ?>">
