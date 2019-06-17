@@ -1,3 +1,22 @@
+.tax-dealers_taxonomies {
+
+  .taxonomy-testimonials{
+    background-color: $blue;
+
+    h2{
+      color: $white;
+    }
+
+    address{
+      color: $white;
+    }
+
+    .orbit-next:hover i, .orbit-previous:hover i{
+      color: $white;
+    }
+  }
+}
+
 .taxonomy-intro,.taxonomy-benefits{
 
 	.subhead{

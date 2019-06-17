@@ -8,6 +8,66 @@
 
 .single{
 
+  #img-gallery{
+    padding-bottom: 50px;
+    padding-top: 30px;
+
+    @include breakpoint(small down){
+      padding-bottom: 30px;
+      padding-top: 20px;
+    }
+
+    #image-holder{
+      @include bg-center-cover;
+      border-radius: 5px;
+
+      img{
+        border-radius: 5px;
+      }
+    }
+
+    .swatch-title{
+      display: block;
+      text-align: center;
+      text-transform: uppercase;
+      font-family: 'AvenirLTStd-Heavy';
+      font-size: 0.875rem;
+      line-height: 1.3em;
+    }
+
+    p{
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    #constant-img{
+      margin-bottom: 0;
+    }
+
+    .gallery-list{
+      display: flex;
+      margin-left: 0;
+      list-style-type: none;
+      flex-wrap: wrap;
+
+      li{
+        margin: 0 10px;
+      }
+
+      li .bg-img{
+        width: 75px;
+        height: 75px;
+        border-radius: 5px;
+        background-position: -130px -10px;
+        margin: 10px 0;
+
+        &.gallery-active{
+          border: 2px solid $yellow;
+        }
+      }
+    }
+  }
+
 	.overlay{
 		height: 100%;
 		width: 100%;
@@ -84,7 +144,83 @@
 		.next-prev a{
 			color: #80a3bf;
 		}
-	}
+  }
+
+  
+  .film-performance-measurements{
+
+    .alt-right,.alt-left{
+      background-color: #dfe2e6;
+      padding: 10px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @media(max-width: 375px){
+        height: 80px;
+      }
+    }
+
+    .alt-left{
+      border-right: 1px solid #FFF;
+      font-size: 0.875rem;
+
+      p{
+        color: $blue;
+      }
+    }
+    
+    .alt-right{
+      border-left: 1px solid #FFF;
+
+      #product-list{
+        background-color: #dfe2e6;
+        color: $blue;
+        border: 2px solid $blue;
+        font-size: 0.875rem;
+      }
+    }
+
+    .tabs-panel{
+      padding: 0;
+    }
+
+    .cell.data-element {
+      border: 1px solid #dfe2e6;
+      padding: 8px;
+      font-size: 0.875rem;
+    }
+  }
+
+  .module .meta{
+    padding: 40px;
+
+    @include breakpoint(small down){
+      padding: 20px;
+    }
+  }
+
+  #single-benefits{
+    background-color: $blue;
+    padding: 20px;
+
+    .copy p {
+      color: $white;
+    }
+    
+    i {
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #e09e10;
+    }
+  }
+
+  .go-back{
+    @include breakpoint(small down){
+      text-align: center;
+    }
+  }
 
 	.related-posts{
 

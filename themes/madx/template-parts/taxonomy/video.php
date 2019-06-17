@@ -34,16 +34,17 @@
 							$video_file = get_field('video_attachment'); // Requires ACF Field for 'video_meta'
 							?>
 
-							<div class="medium-6 large-4 cell module auto-height <?php //echo $post_slug; ?>">
-								<div class="image-link" data-videotitle="Title of Video">
-									<a href="#!" data-open="video-modal" class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><div class="module-bg" style="background-image:url(<?php the_post_thumbnail_url(); ?>)"></div></a>
-								</div>
-								<div class="meta">
-									<button data-open="video-modal" class="videolink" data-videourl="<?php echo $video_url; ?>" data-videotitle="<?php the_title() ;?>" data-videometa="<?php echo $video_meta; ?>" data-attach="<?php echo $video_file; ?>" data-videotxt="<?php the_content() ;?>"><h4 class="blue"><?php the_title() ;?></h4></button>
-									<?php the_content(); ?>
-									<p><i class="fal fa-clock"></i> &nbsp;<?php echo $video_meta; ?></p>
-								</div>
-							</div>
+            <div class="medium-6 large-4 cell module auto-height">
+              <div class="image-link">
+                <a href="<?php the_permalink(); ?>" class="videolink" ><div class="module-bg small madicou-modal-image-<?php echo $title_joined; ?>" style="background-image: url(<?php the_post_thumbnail_url(); ?>);"></div></a>
+              </div>
+              <div class="meta">
+                <a href="<?php the_permalink(); ?>" class="videolink" ><h4 class="blue madicou-modal-heading-<?php echo $title_joined; ?>"><?php the_title(); ?></h4></a>
+                <div class="content"><?php echo wp_trim_words(get_the_content(),25,'...'); ?></div>
+                <p><i class="fal fa-clock"></i> &nbsp;<?php echo $video_meta; ?></p>
+                <p><a href="<?php the_permalink(); ?>" class="blue read-more madicou-modal-read-more-<?php echo $title_joined; ?>">Watch Video &nbsp;<i class="fal fa-long-arrow-right"></i></a></p>
+              </div>
+            </div>
 
 						<?php endwhile; else: ?> 
 							<div class="cell">

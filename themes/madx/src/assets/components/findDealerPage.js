@@ -27,7 +27,7 @@ export default{
 	  	    <option value="100">Within 100 miles</option>
 	  	  </select>
 	  	  <div class="zip">
-	  	  	<input type="text" placeholder="Zip Code" id="zip" name="zip" maxlength="5" pattern="\\d{5}" required v-model="zipCode">
+	  	  	<input type="text" placeholder="Zip Code" id="zip" name="zip" required v-model="zipCode">
 	  	  	<button type="submit" class="btn-yellow solid"><i class="fas fa-caret-right"></i></button>
 	  	  </div>
 		  </fieldset>
@@ -48,7 +48,7 @@ export default{
 			let zip  = form.querySelector("#zip");
 
 			zip.addEventListener("invalid", function(){
-			  this.setCustomValidity("Zip code must be a 5-digit number");
+			  this.setCustomValidity("Postal Code must be properly formatted for US or Canada");
 			});
 			zip.addEventListener("input", function(){
 			  this.setCustomValidity("");
@@ -100,7 +100,7 @@ export default{
     			dataType: 'json',
     			success:function(data){
     				if (data.error_code) {
-    					alert(data.error_msg + ' Please enter a valid zip code');
+    					alert(data.error_msg + ' Please enter a valid Postal code');
     				}else{
     					console.log(data.zip_codes);
     				}

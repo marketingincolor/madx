@@ -3,7 +3,7 @@
 /* Template Name: International */
 get_header('international'); ?>
 
-<section class="hero relative" style="background-image: url(<?php the_field('international_hero_background_image'); ?>);">
+<section class="hero relative" style="padding-top:100px; background-image: url(<?php the_field('international_hero_background_image'); ?>);">
 	<div class="grid-container">
 		<div class="grid-x">
 			<div class="small-10 small-offset-1 medium-8 large-offset-0 cell">

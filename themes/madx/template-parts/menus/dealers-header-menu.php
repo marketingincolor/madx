@@ -12,7 +12,7 @@
 		<div class="top-bar-left">
 			<div class="site-desktop-title top-bar-title">
 				<a href="/dealers" rel="home">
-				    <img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/madico-dealer-portal-logo.png" alt="Madico The Clear Choice" class="menu-section-home-image"></a>
+				    <img src="<?php bloginfo( 'template_directory' ); ?>/dist/assets/images/l-general.svg" alt="Madico The Clear Choice" class="menu-section-home-image"></a>
 			</div>
 		</div>
 		<div class="top-bar-right">
