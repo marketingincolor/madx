@@ -41,8 +41,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				    <div class="orbit-controls">
 							<?php 
 							  $row_count = count(get_field('slider_content'));
-								$display = $count <= 1 ? 'display: none' : '';
-								echo 'ROW COUNT = '.$row_count;
+								$display = $row_count <= 1 ? 'display: none' : '';
 							?>
 				      <button class="orbit-previous" style="<?php echo $display; ?>"><span class="show-for-sr">Previous Slide</span><i class="fas fa-chevron-left"></i></button>
 				      <button class="orbit-next" style="<?php echo $display; ?>"><span class="show-for-sr">Next Slide</span><i class="fas fa-chevron-right"></i></button>
