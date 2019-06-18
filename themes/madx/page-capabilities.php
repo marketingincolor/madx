@@ -42,6 +42,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 							<?php 
 							  $row_count = count(get_field('slider_content'));
 								$display = $count <= 1 ? 'display: none' : '';
+								echo 'ROW COUNT = '.$row_count;
 							?>
 				      <button class="orbit-previous" style="<?php echo $display; ?>"><span class="show-for-sr">Previous Slide</span><i class="fas fa-chevron-left"></i></button>
 				      <button class="orbit-next" style="<?php echo $display; ?>"><span class="show-for-sr">Next Slide</span><i class="fas fa-chevron-right"></i></button>
@@ -51,11 +52,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 						    <ul class="orbit-container">
 
 					    	  <?php
-
+									$slider_count = 0;
 					    	  if( have_rows('slider_content') ):
 					    	    while ( have_rows('slider_content') ) : the_row(); ?>
 
-					    	      <li class="is-active orbit-slide">
+					    	      <li class="<?php if($slider_count === 0){echo 'is-active ';} ?>orbit-slide">
 					    	        <div class="grid-x">
 					    	        	<div class="medium-6 cell small-order-2 medium-order-1 content-container">
 					    	        		<div class="slider-content">
@@ -67,7 +68,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					    	        </div>
 					    	      </li>
 					    	            
-									<?php endwhile;endif; ?>
+									<?php $slider_count++;endwhile;endif; ?>
 						      
 						    </ul>
 				    	</div>
