@@ -37,8 +37,8 @@ get_header(); ?>
 									<select name="" id="cat-select" onchange="location.href = this.value">
 										
 									<?php
+									  // Get the "Blog Top Nav" menu
 									  $menu_items = wp_get_nav_menu_items(499);
-									  $url        = $_SERVER['REQUEST_URI'];
 									  foreach ($menu_items as $item) {
 									  	echo '<option value="'.$item->url.'"';
 									  	if (stripos($url, $item->title)) {
