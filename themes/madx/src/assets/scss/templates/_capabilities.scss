@@ -9,12 +9,14 @@
 		}
 
 		.orbit-next{
+			top: 50% !important;
 			
 			@include breakpoint(medium down){
 				right: -10%;
 			}
 		}
 		.orbit-previous{
+			top: 50% !important;
 			
 			@include breakpoint(medium down){
 				left: -10%;
