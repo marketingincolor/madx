@@ -224,8 +224,10 @@
                 <?php endif; ?>
 
                 <?php if(get_field('youtube_video')): ?>
-                  <div style="text-align: center; position: relative; padding-bottom: 56.25%; padding-top: 25px; height: 0;">
-                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/<?php the_field('youtube_video'); ?>" width="720" height="480" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+                  <div class="small-12 cell">
+                    <div style="text-align: center; position: relative; padding-bottom: 56.25%; padding-top: 25px; height: 0;">
+                      <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/<?php the_field('youtube_video'); ?>" width="720" height="480" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+                    </div>
                   </div>
                 <?php endif; ?>
 
