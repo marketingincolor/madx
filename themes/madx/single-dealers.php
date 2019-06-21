@@ -205,6 +205,32 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                   </div>
                 <?php endif; ?>
 
+                <?php if(get_field('blog_resource_title')): ?>
+                  <div class="small-12 cell">
+                    <div class="wp-block-media-text alignwide is-stacked-on-mobile" style="grid-template-columns: 14% auto;">
+                      <figure class="wp-block-media-text__media" style="text-align: center;">
+                        <img src="http://madicomain.wpengine.com/wp-content/uploads/2018/10/Blog-Icon-01.png" alt="madico blog" srcset="https://madico.com/wp-content/uploads/2018/10/Blog-Icon-01.png 336w, https://madico.com/wp-content/uploads/2018/10/Blog-Icon-01-150x150.png 150w, https://madico.com/wp-content/uploads/2018/10/Blog-Icon-01-300x300.png 300w" sizes="(max-width: 639px) 98vw, (max-width: 1199px) 64vw, 336px" class="wp-image-17390" style="max-width: 125px !important; height: auto !important;">
+                      </figure> 
+                      <div class="NOTwp-block-media-text__content" style="margin: 0px 10px;">
+                        <p></p> 
+                        <h4 id="mce_7"><?php the_field('blog_resource_title'); ?></h4> 
+                        <p></p> 
+                        <p></p> 
+                        <span><?php the_field('blog_resource_content'); ?></a></span> 
+                        <p></p>
+                      </div>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
+                <?php if(get_field('youtube_video')): ?>
+                  <div class="small-12 cell">
+                    <div style="text-align: center; position: relative; padding-bottom: 56.25%; padding-top: 25px; height: 0;">
+                      <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/<?php the_field('youtube_video'); ?>" width="720" height="480" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
                 <div class="medium-12 cell single-product-details">
                   <?php if(get_field('anchoring_system_title')) { ?>
                   <h4><?php the_field('anchoring_system_title'); ?></h4>
