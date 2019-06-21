@@ -14,6 +14,7 @@
  * @since FoundationPress 1.0.0
  */
 
+//  Allows you to write shortcodes in ACF text inputs
 add_filter('acf/format_value/type=text', 'do_shortcode');
 
 // Fix pagination 404 errors on blog category pages
