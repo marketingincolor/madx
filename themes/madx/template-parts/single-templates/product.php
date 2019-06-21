@@ -186,12 +186,16 @@
                   </div>
                 <?php } // End image gallery ?>
 
-                <div id="single-benefits" class="medium-12 cell" style="margin-bottom: 30px;">
-                  <h4 style="margin-bottom:20px;color:#FFF"><?php _e('Benefits','madx'); ?></h4>
-                  <div class="grid-x">
-                    <?php get_template_part('template-parts/taxonomy/benefits'); ?>
+                <?php if(is_singular('specialty')): ?>
+                  <?php get_template_part('template-parts/specialty-solution-benefits'); ?>
+                <?php else : ?>
+                  <div id="single-benefits" class="medium-12 cell" style="margin-bottom: 30px;">
+                    <h4 style="margin-bottom:20px;color:#FFF"><?php _e('Benefits','madx'); ?></h4>
+                    <div class="grid-x">
+                      <?php get_template_part('template-parts/taxonomy/benefits'); ?>
+                    </div>
                   </div>
-                </div>
+                <?php endif; ?>
 
                 <?php if(get_field('product_secondary_data_title')): ?>
                   <div class="small-12 cell">
@@ -293,12 +297,14 @@
                         <div class="medium-10 cell">
                           <?php if(get_post_type() === 'specialty'): ?>
 
-                          <a href="#!" class="data-sheet"
-                            data-pdf="<?php the_sub_field('document_file'); ?>"><?php the_sub_field('document_title'); ?></a>
+                          <!-- <a href="#!" class="data-sheet"
+                            data-pdf="<?php the_sub_field('document_file'); ?>"><?php the_sub_field('document_title'); ?></a> -->
+                          <a href="<?php the_sub_field('document_file'); ?>" class="offdata-sheet"
+                            target="_blank"><?php the_sub_field('document_title'); ?></a>
 
                           <?php else: ?>
 
-                          <a href="<?php the_sub_field('document_file'); ?>" class="data-sheet"
+                          <a href="<?php the_sub_field('document_file'); ?>" class="offdata-sheet"
                             target="_blank"><?php the_sub_field('document_title'); ?></a>
 
                           <?php endif; ?>
