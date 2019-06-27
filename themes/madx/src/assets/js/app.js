@@ -8,24 +8,24 @@ import Foundation from 'foundation-sites';
 // If you want to pick and choose which modules to include, comment out the above and uncomment
 // the line below
 //import './lib/foundation-explicit-pieces';
-import autoPosts from '../components/autoPosts.js';
-import taxTermPosts from '../components/taxTermPosts.js';
 import findDealerForm from '../components/findDealerForm.js';
 import findDealerPage from '../components/findDealerPage.js';
 import filmSelector from '../components/filmSelector.js';
-import safetyPosts from '../components/safetyPosts.js';
-import specialtyIndustries from '../components/specialtyIndustries.js';
 import caseStudies from '../components/caseStudies.js';
-import decorativePosts from '../components/decorativePosts.js';
-import specialtyProducts from '../components/specialtyProducts.js';
-import specialtyProductsHome from '../components/specialtyProductsHome.js';
 import findDealerModal from '../components/findDealerModal.js';
 import faqs from '../components/faqs.js';
 import taxonomyFaqs from '../components/taxonomyFaqs.js';
 import residentialFilmSelector from '../components/residentialFilmSelector.js';
 import maduVideoModal from '../components/maduVideoModal.js';
-import jotForm from '../components/jotForm.js';
-import safetyProducts from '../components/safetyProducts.js';
+// import autoPosts from '../components/autoPosts.js';
+// import taxTermPosts from '../components/taxTermPosts.js';
+// import safetyPosts from '../components/safetyPosts.js';
+// import specialtyIndustries from '../components/specialtyIndustries.js';
+// import decorativePosts from '../components/decorativePosts.js';
+// import specialtyProducts from '../components/specialtyProducts.js';
+// import specialtyProductsHome from '../components/specialtyProductsHome.js';
+// import jotForm from '../components/jotForm.js';
+// import safetyProducts from '../components/safetyProducts.js';
 
 
 // GLOBAL FILTERS
@@ -63,7 +63,7 @@ Vue.filter('userImportance',function (total){
   return value;
 });
 
-// Limit words displayed
+// Change slug
 Vue.filter('changeSlug',function (text){
   if (text == 'safety-security') {
     var textSplit = text.split('-').join(" & ");
@@ -168,24 +168,24 @@ Vue.directive('tooltip', {
 var newVue = new Vue({
   el: '#app',
   components:{
-  	'auto-posts'               : autoPosts,
-  	'tax-term-posts'           : taxTermPosts,
     'find-dealer-form'         : findDealerForm,
     'film-selector'            : filmSelector,
-    'safety-posts'             : safetyPosts,
-    'specialty-industries'     : specialtyIndustries,
     'case-studies'             : caseStudies,
-    'decorative-posts'         : decorativePosts,
-    'specialty-products'       : specialtyProducts,
-    'specialty-products-home'  : specialtyProductsHome,
     'find-dealer-page'         : findDealerPage,
     'find-dealer-modal'        : findDealerModal,
     'faqs'                     : faqs,
     'taxonomy-faqs'            : taxonomyFaqs,
   	'residential-film-selector': residentialFilmSelector,
     'madu-video-modal'         : maduVideoModal,
-    'jot-form'                 : jotForm,
-  	'safety-products'          : safetyProducts,
+  	// 'auto-posts'               : autoPosts,
+  	// 'tax-term-posts'           : taxTermPosts,
+    // 'safety-posts'             : safetyPosts,
+    // 'specialty-industries'     : specialtyIndustries,
+    // 'decorative-posts'         : decorativePosts,
+    // 'specialty-products'       : specialtyProducts,
+    // 'specialty-products-home'  : specialtyProductsHome,
+    // 'jot-form'                 : jotForm,
+  	// 'safety-products'          : safetyProducts,
   },
   created(){
   	$(document).foundation();
