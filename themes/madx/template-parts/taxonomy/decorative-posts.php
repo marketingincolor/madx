@@ -31,7 +31,7 @@
                   <?php if (get_field('short_description')) {
                     the_field('short_description');
                   }else{
-                    echo wp_trim_words( get_the_content(), 25, '...' );
+                    echo wp_trim_words( get_the_content(), 13, '...' );
                   }
                   ?>
                 </div>

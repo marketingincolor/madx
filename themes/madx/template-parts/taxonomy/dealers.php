@@ -31,6 +31,9 @@
 		<div class="grid-container">
 			<div class="grid-x">
 				<div class="small-10 small-offset-1 large-12 large-offset-0 cell">
+
+        <?php if($term->slug !== 'decorative'): ?>
+
 					<ul id="products-tabs" class="tabs tax-cats show-for-large" v-tabs>
 					  <li class="tabs-title is-active"><a href="#all" @click="openDistributionTab"><?php _e( 'All', 'madx' ); ?></a></li>
 						
@@ -50,6 +53,8 @@
 						<?php	} ?>
 
 					</ul>
+
+
 					<div class="grid-x grid-margin-x">
 						<div class="small-12 cell">
 							<ul class="hide-for-large" v-tabs>
@@ -58,13 +63,16 @@
 									<?php
 										$child_terms = get_terms( 'dealers_taxonomies', $args );
 										foreach ($child_terms as $child_term) {
-									?>
+                      ?>
 									<option value="<?php echo "#{$child_term->slug}"; ?>"><?php echo $child_term->name; ?></option>
 								  <?php } ?>
 								</select>
 							</ul>
 						</div>
 					</div>
+          
+        <?php endif; ?>
+
 					<div id="tabs-content" class="tabs-content" data-tabs-content="products-tabs">
 						<div class="tabs-panel is-active" id="all">
 							<div class="grid-x grid-margin-x grid-margin-y">
@@ -148,3 +156,6 @@
 			</div>
 		</div>
 	</section>
+  
+  <?php get_template_part('/template-parts/taxonomy/dealer-testimonials'); ?>
+  

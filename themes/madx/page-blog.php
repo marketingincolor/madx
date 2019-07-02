@@ -29,16 +29,16 @@ get_header(); ?>
 						<div class="small-12 cell">
 							<div class="grid-x grid-margin-x grid-margin-y">
 								<div class="small-12 cell show-for-large">
-									<h2 class="text-center subhead" style="">Madico Blog</h2>
+									<h2 class="text-center subhead" style=""><?php the_title(); ?></h2>
 									<?php foundationpress_blog_nav(); ?>
 								</div>
 								<div class="small-12 cell hide-for-large">
-									<h2 class="text-center subhead" style="">Madico Blog</h2>
+									<h2 class="text-center subhead" style=""><?php the_title(); ?></h2>
 									<select name="" id="cat-select" onchange="location.href = this.value">
 										
 									<?php
+									  // Get the "Blog Top Nav" menu
 									  $menu_items = wp_get_nav_menu_items(499);
-									  $url        = $_SERVER['REQUEST_URI'];
 									  foreach ($menu_items as $item) {
 									  	echo '<option value="'.$item->url.'"';
 									  	if (stripos($url, $item->title)) {

@@ -76,6 +76,7 @@
 					<li><a href="https://brandhub.madico.com" class="top-nav-menu-brandhub"><i class="far fa-download"></i>&nbsp; <?php _e( 'Brand Hub', 'madx' ); ?></a></li>
 					<li><a href="/dealers/dealer-recognition-programs" class="top-nav-menu-dealer-recognition"><i class="far fa-trophy"></i>&nbsp; <?php _e( 'Dealer Recognition', 'madx' ); ?></a></li>
 					<li><a href="/dealers/dealer-support-programs" class="top-nav-menu-dealer-portal"><i class="far fa-hands-helping"></i>&nbsp; <?php _e( 'Dealer Programs', 'madx' ); ?></a></li>
+					<li><a href="/dealer-warranty-information" class="top-nav-menu-warranty"><i class="far fa-award"></i>&nbsp; <?php _e( 'Warranty', 'madx' ); ?></a></li>
 			      <li>
 			        <a data-toggle="search-dropdown" class="top-nav-menu-search"><i class="fas fa-search"></i>&nbsp; <?php _e( 'Search', 'madx' ); ?></a>
 			        <ul class="menu vertical">
@@ -95,6 +96,7 @@
 				      <li><a href="https://brandhub.madico.com" class="top-nav-menu-brandhub"><i class="far fa-download"></i>&nbsp; <?php _e( 'Brand Hub', 'madx' ); ?></a></li>
 				      <li><a href="/dealers/dealer-recognition-programs" class="top-nav-menu-dealer-recognition"><i class="far fa-trophy"></i>&nbsp; <?php _e( 'Dealer Recognition', 'madx' ); ?></a></li>
 				      <li><a href="/dealers/dealer-support-programs" class="top-nav-menu-dealer-portal"><i class="far fa-hands-helping"></i>&nbsp; <?php _e( 'Dealer Programs', 'madx' ); ?></a></li>
+				      <li><a href="/dealer-warranty-information" class="top-nav-menu-warranty"><i class="far fa-award"></i>&nbsp; <?php _e( 'Warranty', 'madx' ); ?></a></li>
 				      <li><a href="/dealers/become-dealer" class="top-nav-menu-dealer-portal"><i class="fas fa-id-badge"></i>&nbsp; <?php _e( 'Become a Dealer', 'madx' ); ?></a></li>
 				    </ul>
 				  </li>

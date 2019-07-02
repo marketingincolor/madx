@@ -80,7 +80,9 @@ get_header('dealers'); ?>
                           $image_url = get_the_post_thumbnail_url();
                         }
                       ?>
-  										<div class="medium-7 cell product-image small-order-1 medium-order-2" style="background: url(<?php echo $image_url; ?>) center center / cover no-repeat;"></div>
+  										<div class="medium-7 cell product-image small-order-1 medium-order-2" style="height:auto !important; min-height:auto !important;">
+											<img src="<?php echo $image_url; ?>" style="width:100%; height:auto;">
+										</div>
 									</div>
 								</div>
 					    </div>
@@ -184,7 +186,7 @@ get_header('dealers'); ?>
 							<?php
 								$args = array(
 									'post_type'      => 'madicou',
-									'posts_per_page' => 3,
+									'posts_per_page' => 6,
                   'tax_query' => array(
                       array(
                         'taxonomy' => 'madicou_types',

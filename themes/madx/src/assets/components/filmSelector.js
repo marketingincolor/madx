@@ -248,13 +248,6 @@ export default{
 		getCarSize: function(){
 			this.carSize = $('#car-original').height() + 'px';
 		},
-		getPostType: function(currentURL){
-		  if (currentURL.includes('residential')) {
-		  	this.postType = 'residential';
-		  }else if (currentURL.includes('automotive')) {
-		  	this.postType = 'automotive';
-		  }
-		},
 		changeSwatch: function(event){
 			$('.img-wrap').removeClass('active-film');
 			$('.middle-percent').css({'display':'none'});
@@ -303,7 +296,12 @@ export default{
 	      .get(apiRoot + 'automotive/' + postID + '?_embed')
 	      .then(function (response) {
 	      	$this.modalTitle    = response.data.title.rendered;
-	      	$this.modalBody     = response.data.content.rendered;
+	      	//$this.modalBody     = response.data.content.rendered;
+	    	if (response.data.acf.film_selector_product_modal) {
+					$this.modalBody     = response.data.acf.film_selector_product_modal;
+	      }else{
+					$this.modalBody     = response.data.content.rendered;
+	      }
 	      	$this.modalImage    = response.data.acf.film_selector_product_image;
 	      	$this.modalLogo     = response.data.acf.film_selector_product_logo;
 	      	$this.modalBrochure = response.data.acf.pdf_link;

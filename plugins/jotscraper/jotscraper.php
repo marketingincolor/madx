@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 include 'simple_html_dom.php';
 
-function short_sharp_jot($atts, $content = null){
+function OLD_short_sharp_jot($atts, $content = null){
 
 	$a = shortcode_atts(array(
 		'jf' => '',
@@ -54,16 +54,17 @@ function short_sharp_jot($atts, $content = null){
 		var callThisOnReturn = function(resp) {
 			console.log(resp);
       if(location.href.indexOf('specialty-solutions/products') > -1){
-	      $('.data-sheet').on('click',function(){
+	      jQuery('.data-sheet').on('click',function(){
 	      	var that = $(this);
 		      if (resp && resp.contact) {
-		      	$('#specialty-pdf-modal').find('iframe').attr('src',$(this).data('pdf'))
-		      	$('#specialty-pdf-modal').foundation('open');
+		      	jQuery('#specialty-pdf-modal').find('iframe').attr('src',jQuery(this).data('pdf'))
+		      	jQuery('#specialty-pdf-modal').foundation('open');
 		      } else{
-						$('#specialty-form-modal').foundation('open');
-						var pdfLink = $(this).data('pdf').split('.com')[1];
-						$('#input_6').val(pdfLink);
-						$('#$jot_id').find('button[type=submit]').on('click',function(event){
+						jQuery('#specialty-form-modal').foundation('open');
+						var pdfLink = jQuery(this).data('pdf');
+						console.log(pdfLink);
+						jQuery('#input_6').val(pdfLink);
+						jQuery('#$jot_id').find('button[type=submit]').on('click',function(event){
 							event.preventDefault();
 							submitForm(pdfLink);
 						});
@@ -93,7 +94,7 @@ function short_sharp_jot($atts, $content = null){
 	<script>
 
 		function submitForm(pdfLink){
-			$.ajax({
+			jQuery.ajax({
 				type: 'POST',
 				success: function(data){
 				  if(location.href.indexOf('specialty-solutions/products') > -1){
@@ -119,11 +120,18 @@ EOT;
 
 	$page_ss = <<<EOT
 		<script>
-			setTimeout(function(){
-				$('#$jot_id').find('button[type=submit]').on('click',function(event){
-					__ss_noform.push(['submit',null, '$ss_id']);
-				});
-			},1000)
+        
+      var jotBtn = jQuery('.form-buttons-wrapper').find('button[type=submit]');
+      jotBtn.css('display','none');
+
+      jQuery('.form-buttons-wrapper').append('<button id="ss-btn" class="btn-yellow solid">Submit</button>');
+
+      setTimeout(function(){
+        jQuery('#ss-btn').on('click',function(){
+          __ss_noform.push(['submit',function(){jotBtn.click()}, '$ss_id']);
+        });
+      },2000)
+			
 		</script>
 		<script type="text/javascript">
 			var address = document.getElementsByClassName('form-address-line')[1];
@@ -144,4 +152,63 @@ EOT;
 	return $form_output;
 
 }
+
+
+function short_sharp_jot($atts, $content = null){
+	$a = shortcode_atts(array(
+		'jc' => '',
+		'ss' => ''
+	), $atts);
+
+	// this parameter should be passed by the SHORTCODE - [ jotspring jf='' ss='' ]
+	$jot_id     = $a['jc'];
+	$ss_id      = $a['ss'];
+
+	$simplehtml = file_get_html("https://form.jotform.com/{$jot_id}",false,null,0);
+	$url = $_SERVER['REQUEST_URI'];
+	if ($ss_id != '') {
+		if (strpos($url, 'specialty-solutions/products') !== false) {
+
+		$page_ss = <<<EOT
+		<script type="text/javascript">
+		    var ss_form = {'account': 'MzawMDE3NjSzBAA', 'formID': '$ss_id'};
+		    ss_form.width = '100%';
+		    ss_form.height = 'auto';
+		    ss_form.domain = 'app-3QNHJKLJ4E.marketingautomation.services';
+		    // ss_form.hidden = {'Company': 'Anon'}; // Modify this for sending hidden variables, or overriding values
+		</script>
+		<script type="text/javascript" src="https://koi-3QNHJKLJ4E.marketingautomation.services/client/form.js?ver=1.1.1"></script>
+EOT;
+
+		$form_output = $page_ss;
+		} else {
+
+		$page_ss = <<<EOT
+		<script type="text/javascript">
+		    var ss_form = {'account': 'MzawMDE3NjSzBAA', 'formID': '$ss_id'};
+		    ss_form.width = '100%';
+		    ss_form.height = '1250';
+		    ss_form.domain = 'app-3QNHJKLJ4E.marketingautomation.services';
+		    // ss_form.hidden = {'Company': 'Anon'}; // Modify this for sending hidden variables, or overriding values
+		</script>
+		<script type="text/javascript" src="https://koi-3QNHJKLJ4E.marketingautomation.services/client/form.js?ver=1.1.1"></script>
+EOT;
+		
+		$form_output = $page_ss;
+		}
+	}
+	if ($jot_id != '') {
+		$page_jot = <<<EOT
+		<script type="text/javascript" src="https://form.jotform.com/jsform/$jot_id"></script>
+EOT;
+
+		$page_html = $simplehtml->find('html',0);
+		$form_output = $page_html;
+	}
+	if ( ($ss_id != '') && ($jot_id != '') ) { 
+		$form_output = 'ERROR WITH JOTSPRING SHORTCODE';
+	}
+	return $form_output;
+}
+
 add_shortcode('jotspring', 'short_sharp_jot');

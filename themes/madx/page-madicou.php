@@ -13,7 +13,7 @@ get_header('madicou'); ?>
 	<?php get_template_part('template-parts/madicou/business-resources') ?>
 	<?php get_template_part('template-parts/madicou/sales-resources') ?>
 	<?php get_template_part('template-parts/madicou/marketing-resources') ?>
-	<madu-video-modal></madu-video-modal>
+	
 
 <?php } elseif (is_page('ask-a-question') || is_page('glossary')) { ?>
 
@@ -27,7 +27,6 @@ get_header('madicou'); ?>
 		<?php get_template_part('template-parts/madicou/page-titleblock') ?>
 	<?php endwhile;endif; ?>
 
-<madu-video-modal></madu-video-modal>
 <section class="page-content">
 	<div class="grid-container">
 		<div class="grid-x grid-margin-x grid-margin-y">
